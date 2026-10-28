@@ -329,7 +329,7 @@ process.disconnect();
 `,
     );
     const worker = fork(workerFile, [f.begun.taskFile, f.requestFile], {
-      execArgv: ["--import", "tsx"],
+      execArgv: ["--conditions=development", "--import", "tsx"],
       silent: true,
     });
     testResources().trackChild(worker);

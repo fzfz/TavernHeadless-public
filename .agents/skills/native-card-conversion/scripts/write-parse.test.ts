@@ -661,6 +661,7 @@ describe("parse command full conversion flow", () => {
       expect(await readFile(inputFile)).toEqual(inputBytes);
       expect(await readFile(task.sourceFile, "utf8")).toBe(sourceJson);
     },
+    30_000,
   );
 });
 

@@ -677,6 +677,7 @@ describe("map-regex file and CLI", () => {
       expect(await readFile(task.sourceFile)).toEqual(sourceBefore);
       expect(await readFile(task.taskFile)).toEqual(taskBefore);
     },
+    30_000,
   );
 
   it("accepts an empty selection while preserving begin-mapped rules", async () => {

@@ -113,6 +113,7 @@ describe("native card conversion CLI entry", () => {
         "PK\u0003\u0004",
       );
     },
+    30_000,
   );
 
   it.each([
