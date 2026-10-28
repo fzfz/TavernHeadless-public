@@ -719,7 +719,7 @@ describe("NativeCardService saved revisions", () => {
     `;
     let childError = "";
     const exit = await new Promise<{ code: number | null; signal: NodeJS.Signals | null }>((resolveExit, reject) => {
-      const child = spawn(process.execPath, ["--import", "tsx/esm", "--input-type=module", "-e", childCode, dbFile, root], { cwd: new URL("../../../../", import.meta.url), stdio: "pipe" });
+      const child = spawn(process.execPath, ["--conditions=development", "--import", "tsx/esm", "--input-type=module", "-e", childCode, dbFile, root], { cwd: new URL("../../../../", import.meta.url), stdio: "pipe" });
       child.stderr?.on("data", chunk => { childError += String(chunk); });
       child.once("error", reject);
       child.once("close", (code, signal) => resolveExit({ code, signal }));

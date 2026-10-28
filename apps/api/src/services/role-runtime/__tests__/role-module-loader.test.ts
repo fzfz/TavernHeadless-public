@@ -372,7 +372,7 @@ it("executes native derive, validate and controller modules through the API tsx 
  `;
  const child = spawnSync(
   process.execPath,
-  ["--import", "tsx", "--input-type=module", "-e", script],
+  ["--conditions=development", "--import", "tsx", "--input-type=module", "-e", script],
   { cwd: new URL("../../../../", import.meta.url), encoding: "utf8", timeout: 30_000, maxBuffer: 1_048_576 },
  );
 
