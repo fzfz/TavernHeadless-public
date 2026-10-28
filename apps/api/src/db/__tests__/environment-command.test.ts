@@ -46,6 +46,7 @@ describe("environment database command", () => {
       const result = spawnSync(
         process.execPath,
         [
+          "--conditions=development",
           "--import",
           "tsx",
           command,
@@ -126,6 +127,7 @@ describe("environment database command", () => {
     const result = spawnSync(
       process.execPath,
       [
+        "--conditions=development",
         "--import",
         "tsx",
         entry,
@@ -168,6 +170,7 @@ describe("environment database command", () => {
       spawnSync(
         process.execPath,
         [
+          "--conditions=development",
           "--import",
           "tsx",
           command,
@@ -207,6 +210,7 @@ describe("environment database command", () => {
       spawnSync(
         process.execPath,
         [
+          "--conditions=development",
           "--import",
           "tsx",
           command,
@@ -266,6 +270,7 @@ describe("environment database command", () => {
     const result = spawnSync(
       process.execPath,
       [
+        "--conditions=development",
         "--import",
         "tsx",
         command,
@@ -297,6 +302,7 @@ describe("environment database command", () => {
     const status = spawnSync(
       process.execPath,
       [
+        "--conditions=development",
         "--import",
         "tsx",
         command,
@@ -322,6 +328,7 @@ describe("environment database command", () => {
     const migrated = spawnSync(
       process.execPath,
       [
+        "--conditions=development",
         "--import",
         "tsx",
         command,
@@ -339,6 +346,7 @@ describe("environment database command", () => {
     const status = spawnSync(
       process.execPath,
       [
+        "--conditions=development",
         "--import",
         "tsx",
         command,
@@ -363,6 +371,7 @@ describe("environment database command", () => {
       spawnSync(
         process.execPath,
         [
+          "--conditions=development",
           "--import",
           "tsx",
           command,

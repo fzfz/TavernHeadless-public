@@ -50,7 +50,12 @@ describe("API database preflight", () => {
       try {
         const result = spawnSync(
           process.execPath,
-          ["--import", "tsx", join(target, worker + "-worker.ts")],
+          [
+            "--conditions=development",
+            "--import",
+            "tsx",
+            join(target, worker + "-worker.ts"),
+          ],
           {
             cwd: directory,
             env: { PATH: dirname(process.execPath) + ":/usr/bin:/bin" },
@@ -78,6 +83,7 @@ describe("API database preflight", () => {
         const result = spawnSync(
           process.execPath,
           [
+            "--conditions=development",
             "--import",
             "tsx",
             fileURLToPath(

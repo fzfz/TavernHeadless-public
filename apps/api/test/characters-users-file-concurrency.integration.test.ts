@@ -44,7 +44,13 @@ async function runInjectedRequestInChild(
   return await new Promise((resolve, reject) => {
     const child = spawn(
       process.execPath,
-      ['--import', 'tsx', INJECT_WORKER_PATH, JSON.stringify({ databasePath, request })],
+      [
+        '--conditions=development',
+        '--import',
+        'tsx',
+        INJECT_WORKER_PATH,
+        JSON.stringify({ databasePath, request }),
+      ],
       {
         cwd: process.cwd(),
         env: {
