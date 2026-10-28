@@ -1,0 +1,1315 @@
+{
+  "passed": true,
+  "records": [
+    {
+      "card": "C005",
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "request": {
+        "message": "“我正在核对当前角色页面的资料。”",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "currentInput": true,
+        "savedAssistant": true,
+        "initialObject": true,
+        "initialArray": true,
+        "prefixRule": true,
+        "boundSnapshot": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "叙述使用第三人称，直接引语按说话者解释。当前角色：Gracie；当前用户：沈知夏 $ <林&>。\n\n这份资料属于Gracie。姓名：沈知夏 $ <林&>。\n\nPersonality: 沉着\n\nScenario: 资料核对\n\nThe user is 沈知夏 $ <林&>: 沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+        },
+        {
+          "role": "assistant",
+          "content": "Gracie: 姓名：沈知夏 $ <林&>，请核对当前资料。"
+        },
+        {
+          "role": "user",
+          "content": "沈知夏 $ <林&>: “我正在核对当前角色页面的资料。”"
+        }
+      ],
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 0,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "“我正在核对当前角色页面的资料。”"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-1ce65f2a-c4e9-45c9-a496-a42a73aa5582",
+        "preset_updated_at": 1791539652694,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-52a4b0f6-be73-4c4d-ac58-135f0155954c",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "hXY66gjqMQu9MzPQjZSTl",
+        "character_version_id": "EXfaFC1HepV2gNQuSW6Mt",
+        "character_imported_format": null,
+        "character_content_hash": "088277e248c09d1755ce71dd6acddc648a6470f53a7e3fb6a635860521ad2aad",
+        "worldbook_activated_entry_uids": [],
+        "worldbook_activated_entries": [],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "e3d9b7bcd2f797c014e09c4502d398aaa247f8de6cb81dcd6bcdbcb1a729a0a4",
+        "prompt_digest": "b37411b4b5d5a63cea9a49746450e853b43e81fbcd999a806c82ed0649d501c2",
+        "token_estimate": 65
+      },
+      "macroTrace": {
+        "warnings": [
+          {
+            "code": "macro_value_missing",
+            "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+            "macro_name": "defaultAuthorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro model has no resolved value and fell back to empty string.",
+            "macro_name": "model"
+          }
+        ],
+        "used_names": ["char", "user"],
+        "mutation_preview": [],
+        "staged_mutations": [],
+        "traces": [
+          {
+            "macro_name": "char",
+            "raw_text": "{{char}}",
+            "resolved_text": "Gracie",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          },
+          {
+            "macro_name": "user",
+            "raw_text": "{{user}}",
+            "resolved_text": "沈知夏 $ <林&>",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          }
+        ]
+      },
+      "view": {
+        "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+        "card": "Gracie",
+        "state": "0",
+        "message": "姓名：沈知夏 $ <林&>，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：沈知夏 $ <林&>，请核对当前资料。"
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-doXUEa/preview-runs/2026-10-09T09-54-11-225Z-3d8c88b1-829f-4204-8f1a-9957efc5486c"
+    },
+    {
+      "card": "C005",
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "request": {
+        "message": "“我正在核对当前角色页面的资料。”",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "currentInput": true,
+        "savedAssistant": true,
+        "initialObject": true,
+        "initialArray": true,
+        "prefixRule": true,
+        "boundSnapshot": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "叙述使用第三人称，直接引语按说话者解释。当前角色：Gracie；当前用户：林婉宁。\n\n这份资料属于Gracie。姓名：林婉宁。\n\nPersonality: 沉着\n\nScenario: 资料核对\n\nThe user is 林婉宁: 林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+        },
+        {
+          "role": "assistant",
+          "content": "Gracie: 姓名：林婉宁，请核对当前资料。"
+        },
+        {
+          "role": "user",
+          "content": "林婉宁: “我正在核对当前角色页面的资料。”"
+        }
+      ],
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 0,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "“我正在核对当前角色页面的资料。”"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-04cdfab0-497d-4e59-ae9b-a1830b2bbc66",
+        "preset_updated_at": 1791539657334,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-c3e002e3-6ea3-4927-8a0b-f3cfa339e7ad",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "FlHLCB-8odLCtlOWqKZcF",
+        "character_version_id": "MmvJGlmKO-voSzUcESeBI",
+        "character_imported_format": null,
+        "character_content_hash": "c638c7141cfbd19c93bfe615c68b0c16c8d956d998baaff96f29893a5fb2b413",
+        "worldbook_activated_entry_uids": [],
+        "worldbook_activated_entries": [],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "ef6743dddb214fef5b25aee6e9b8e09c6954fcc7b84f08ac9f5c8a6fec2dbd23",
+        "prompt_digest": "7ab8971fe50dae2ec86b27c2ae601fbf0de237fc4c8d6ecf4649382bef4f1d1b",
+        "token_estimate": 54
+      },
+      "macroTrace": {
+        "warnings": [
+          {
+            "code": "macro_value_missing",
+            "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+            "macro_name": "defaultAuthorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro model has no resolved value and fell back to empty string.",
+            "macro_name": "model"
+          }
+        ],
+        "used_names": ["char", "user"],
+        "mutation_preview": [],
+        "staged_mutations": [],
+        "traces": [
+          {
+            "macro_name": "char",
+            "raw_text": "{{char}}",
+            "resolved_text": "Gracie",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          },
+          {
+            "macro_name": "user",
+            "raw_text": "{{user}}",
+            "resolved_text": "林婉宁",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          }
+        ]
+      },
+      "view": {
+        "user": "林婉宁 / 林婉宁",
+        "card": "Gracie",
+        "state": "0",
+        "message": "姓名：林婉宁，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：林婉宁，请核对当前资料。"
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-doXUEa/preview-runs/2026-10-09T09-54-16-214Z-bf472c71-45f9-425a-ac37-4fbc7a5413e7"
+    },
+    {
+      "card": "C063",
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "request": {
+        "message": "“我正在核对当前角色页面的资料。”",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "currentInput": true,
+        "savedAssistant": true,
+        "initialObject": true,
+        "initialArray": true,
+        "prefixRule": true,
+        "boundSnapshot": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "叙述使用第三人称，直接引语按说话者解释。当前角色：极乐庄混浴物语；当前用户：沈知夏 $ <林&>。\n\n这份资料属于极乐庄混浴物语。姓名：沈知夏 $ <林&>。\n\nPersonality: 沉着\n\nScenario: 资料核对\n\nThe user is 沈知夏 $ <林&>: 沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+        },
+        {
+          "role": "assistant",
+          "content": "极乐庄混浴物语: 姓名：沈知夏 $ <林&>，请核对当前资料。"
+        },
+        {
+          "role": "user",
+          "content": "沈知夏 $ <林&>: “我正在核对当前角色页面的资料。”"
+        }
+      ],
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 0,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "“我正在核对当前角色页面的资料。”"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-7df00f10-c6c2-4767-89fb-d69fae5819d4",
+        "preset_updated_at": 1791539661193,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-aaeb71a7-0347-441c-90aa-85f17c17c03d",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "gDvSw__N0SqkTViYQ9KJ5",
+        "character_version_id": "cOJJQwuHmfD55ET_5RWm4",
+        "character_imported_format": null,
+        "character_content_hash": "2b7862eb52709b12dbaf800a2fe2d1ef2101b8f027431ec1891d9580008570bf",
+        "worldbook_activated_entry_uids": [],
+        "worldbook_activated_entries": [],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "1879538ce9b184a3cc62ae4980dc7c8f681b0d9ffb015f0266b984c3863da9ef",
+        "prompt_digest": "cfa1e245fe0a5e24b2dbbfc80a6aae0900d7297783e44a710d952865f08d5169",
+        "token_estimate": 65
+      },
+      "macroTrace": {
+        "warnings": [
+          {
+            "code": "macro_value_missing",
+            "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+            "macro_name": "defaultAuthorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro model has no resolved value and fell back to empty string.",
+            "macro_name": "model"
+          }
+        ],
+        "used_names": ["char", "user"],
+        "mutation_preview": [],
+        "staged_mutations": [],
+        "traces": [
+          {
+            "macro_name": "char",
+            "raw_text": "{{char}}",
+            "resolved_text": "极乐庄混浴物语",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          },
+          {
+            "macro_name": "user",
+            "raw_text": "{{user}}",
+            "resolved_text": "沈知夏 $ <林&>",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          }
+        ]
+      },
+      "view": {
+        "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+        "card": "极乐庄混浴物语",
+        "state": "0",
+        "message": "姓名：沈知夏 $ <林&>，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：沈知夏 $ <林&>，请核对当前资料。"
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-k2XtTN/preview-runs/2026-10-09T09-54-20-142Z-46830b52-b964-45c9-a480-c7734926aa1e"
+    },
+    {
+      "card": "C063",
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "request": {
+        "message": "“我正在核对当前角色页面的资料。”",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "currentInput": true,
+        "savedAssistant": true,
+        "initialObject": true,
+        "initialArray": true,
+        "prefixRule": true,
+        "boundSnapshot": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "叙述使用第三人称，直接引语按说话者解释。当前角色：极乐庄混浴物语；当前用户：林婉宁。\n\n这份资料属于极乐庄混浴物语。姓名：林婉宁。\n\nPersonality: 沉着\n\nScenario: 资料核对\n\nThe user is 林婉宁: 林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+        },
+        {
+          "role": "assistant",
+          "content": "极乐庄混浴物语: 姓名：林婉宁，请核对当前资料。"
+        },
+        {
+          "role": "user",
+          "content": "林婉宁: “我正在核对当前角色页面的资料。”"
+        }
+      ],
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 0,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "“我正在核对当前角色页面的资料。”"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-3453658f-0d4d-4c33-9d1f-18a78cd18bbd",
+        "preset_updated_at": 1791539665248,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-3d234df9-83f7-472e-8567-c439db1018f9",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "Gy8dA1-DzmBAx3puLv3G9",
+        "character_version_id": "2QbVJYx-QNsdDwnEqdsZE",
+        "character_imported_format": null,
+        "character_content_hash": "2938b2cce6ccb5df17a969817ecfe662d0bae2d40d40b7cc18f702d85bb685eb",
+        "worldbook_activated_entry_uids": [],
+        "worldbook_activated_entries": [],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "bb0758a2c2aadb314c033101f248f704262d9f71a11e883c51a0350ffe3cdd34",
+        "prompt_digest": "fbf65862266be1f7c2a29a63c41b50d3cf714502283efc68a90312bb768785a7",
+        "token_estimate": 54
+      },
+      "macroTrace": {
+        "warnings": [
+          {
+            "code": "macro_value_missing",
+            "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+            "macro_name": "defaultAuthorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro model has no resolved value and fell back to empty string.",
+            "macro_name": "model"
+          }
+        ],
+        "used_names": ["char", "user"],
+        "mutation_preview": [],
+        "staged_mutations": [],
+        "traces": [
+          {
+            "macro_name": "char",
+            "raw_text": "{{char}}",
+            "resolved_text": "极乐庄混浴物语",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          },
+          {
+            "macro_name": "user",
+            "raw_text": "{{user}}",
+            "resolved_text": "林婉宁",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          }
+        ]
+      },
+      "view": {
+        "user": "林婉宁 / 林婉宁",
+        "card": "极乐庄混浴物语",
+        "state": "0",
+        "message": "姓名：林婉宁，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：林婉宁，请核对当前资料。"
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-k2XtTN/preview-runs/2026-10-09T09-54-24-170Z-cd405694-5801-405b-a32e-1b5c7f86d1b8"
+    },
+    {
+      "card": "C013",
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "request": {
+        "message": "“我正在核对当前角色页面的资料。”",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "currentInput": true,
+        "savedAssistant": true,
+        "initialObject": true,
+        "initialArray": true,
+        "prefixRule": true,
+        "boundSnapshot": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "叙述使用第三人称，直接引语按说话者解释。当前角色：七色光_AMBER_v1.6.41；当前用户：沈知夏 $ <林&>。\n\n这份资料属于七色光_AMBER_v1.6.41。姓名：沈知夏 $ <林&>。\n\nPersonality: 沉着\n\nScenario: 资料核对\n\nThe user is 沈知夏 $ <林&>: 沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+        },
+        {
+          "role": "assistant",
+          "content": "七色光_AMBER_v1.6.41: 姓名：沈知夏 $ <林&>，请核对当前资料。"
+        },
+        {
+          "role": "user",
+          "content": "沈知夏 $ <林&>: “我正在核对当前角色页面的资料。”"
+        }
+      ],
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 0,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "“我正在核对当前角色页面的资料。”"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-5687a777-213c-4d4e-a547-03056a5dac3f",
+        "preset_updated_at": 1791539669111,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-30d8c134-b58a-4232-9448-5758bae62475",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "Wci-6Sftld85BIz7HmaIH",
+        "character_version_id": "a9UWH3ASNLdlU0wFCbqEi",
+        "character_imported_format": null,
+        "character_content_hash": "ffe766187bea59c99f4ec581326608a1e0a87ad563c9d99ebad9a3c7f1c84215",
+        "worldbook_activated_entry_uids": [],
+        "worldbook_activated_entries": [],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "8f5a49fb196913edfce9ecca1ebb6c1a8a5f38f95c8cb3346ba0e99d62914035",
+        "prompt_digest": "986bb6c3792b6e66f162e2c570aa932f3728840e38930ead630d676c08741850",
+        "token_estimate": 73
+      },
+      "macroTrace": {
+        "warnings": [
+          {
+            "code": "macro_value_missing",
+            "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+            "macro_name": "defaultAuthorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro model has no resolved value and fell back to empty string.",
+            "macro_name": "model"
+          }
+        ],
+        "used_names": ["char", "user"],
+        "mutation_preview": [],
+        "staged_mutations": [],
+        "traces": [
+          {
+            "macro_name": "char",
+            "raw_text": "{{char}}",
+            "resolved_text": "七色光_AMBER_v1.6.41",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          },
+          {
+            "macro_name": "user",
+            "raw_text": "{{user}}",
+            "resolved_text": "沈知夏 $ <林&>",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          }
+        ]
+      },
+      "view": {
+        "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+        "card": "七色光_AMBER_v1.6.41",
+        "state": "0",
+        "message": "姓名：沈知夏 $ <林&>，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：沈知夏 $ <林&>，请核对当前资料。"
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-4MSkfp/preview-runs/2026-10-09T09-54-28-073Z-162d4f6c-2e34-4748-aa5e-efbd3391e408"
+    },
+    {
+      "card": "C013",
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "request": {
+        "message": "“我正在核对当前角色页面的资料。”",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "currentInput": true,
+        "savedAssistant": true,
+        "initialObject": true,
+        "initialArray": true,
+        "prefixRule": true,
+        "boundSnapshot": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "叙述使用第三人称，直接引语按说话者解释。当前角色：七色光_AMBER_v1.6.41；当前用户：林婉宁。\n\n这份资料属于七色光_AMBER_v1.6.41。姓名：林婉宁。\n\nPersonality: 沉着\n\nScenario: 资料核对\n\nThe user is 林婉宁: 林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+        },
+        {
+          "role": "assistant",
+          "content": "七色光_AMBER_v1.6.41: 姓名：林婉宁，请核对当前资料。"
+        },
+        {
+          "role": "user",
+          "content": "林婉宁: “我正在核对当前角色页面的资料。”"
+        }
+      ],
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 0,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "“我正在核对当前角色页面的资料。”"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-c672be46-4789-427c-8233-48a26298870c",
+        "preset_updated_at": 1791539672944,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-6778b915-84fc-4c1a-a730-f7412e5c1e08",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "GBVljx2Sg76VXazfMapVQ",
+        "character_version_id": "1UtIitBppiYX6QxVs_0Aa",
+        "character_imported_format": null,
+        "character_content_hash": "c27058c058030a832e068bd504fa76e976dd0653f7b7d900ad89db9485b5f02e",
+        "worldbook_activated_entry_uids": [],
+        "worldbook_activated_entries": [],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "ea05a1e7f85625efa5cbb6a8314e0e64ff5f519183faa2dc389260c87342930e",
+        "prompt_digest": "3fd9550ddb18759018aa2e1e01c2d46de6923a8c9810bfa0f268ef5daa340e0e",
+        "token_estimate": 62
+      },
+      "macroTrace": {
+        "warnings": [
+          {
+            "code": "macro_value_missing",
+            "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+            "macro_name": "defaultAuthorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro model has no resolved value and fell back to empty string.",
+            "macro_name": "model"
+          }
+        ],
+        "used_names": ["char", "user"],
+        "mutation_preview": [],
+        "staged_mutations": [],
+        "traces": [
+          {
+            "macro_name": "char",
+            "raw_text": "{{char}}",
+            "resolved_text": "七色光_AMBER_v1.6.41",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          },
+          {
+            "macro_name": "user",
+            "raw_text": "{{user}}",
+            "resolved_text": "林婉宁",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          }
+        ]
+      },
+      "view": {
+        "user": "林婉宁 / 林婉宁",
+        "card": "七色光_AMBER_v1.6.41",
+        "state": "0",
+        "message": "姓名：林婉宁，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：林婉宁，请核对当前资料。"
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-4MSkfp/preview-runs/2026-10-09T09-54-31-875Z-c1a452bd-48df-4c48-b783-6c0ce21a1b61"
+    },
+    {
+      "card": "C072",
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "request": {
+        "message": "“我正在核对当前角色页面的资料。”",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "currentInput": true,
+        "savedAssistant": true,
+        "initialObject": true,
+        "initialArray": true,
+        "prefixRule": true,
+        "boundSnapshot": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "叙述使用第三人称，直接引语按说话者解释。当前角色：楚昭昭；当前用户：沈知夏 $ <林&>。\n\n这份资料属于楚昭昭。姓名：沈知夏 $ <林&>。\n\nPersonality: 沉着\n\nScenario: 资料核对\n\nThe user is 沈知夏 $ <林&>: 沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+        },
+        {
+          "role": "assistant",
+          "content": "楚昭昭: 姓名：沈知夏 $ <林&>，请核对当前资料。"
+        },
+        {
+          "role": "user",
+          "content": "沈知夏 $ <林&>: “我正在核对当前角色页面的资料。”"
+        }
+      ],
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 0,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "“我正在核对当前角色页面的资料。”"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-4e35d759-d55b-4dae-885c-b7fe12ae9d2b",
+        "preset_updated_at": 1791539676899,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-f8f675e5-864b-4420-b4e1-5b8cb3d6492b",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "BhoZcaEZFU_7JT3ehavDY",
+        "character_version_id": "E1RIdyjEwajpiq3UAMaHN",
+        "character_imported_format": null,
+        "character_content_hash": "4c62ab7792c5881c8f3ff1dd3da7b99933f928fad21f238ca5f1c40c41390bce",
+        "worldbook_activated_entry_uids": [],
+        "worldbook_activated_entries": [],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "3399f097f6014a6d59f05911b9f4259e9050b3e8be24826d34569f3519919f0d",
+        "prompt_digest": "3ead08fb39940614844ccbac0631a9a9b92d93082477fd61486ff9b1baebabb6",
+        "token_estimate": 62
+      },
+      "macroTrace": {
+        "warnings": [
+          {
+            "code": "macro_value_missing",
+            "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+            "macro_name": "defaultAuthorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro model has no resolved value and fell back to empty string.",
+            "macro_name": "model"
+          }
+        ],
+        "used_names": ["char", "user"],
+        "mutation_preview": [],
+        "staged_mutations": [],
+        "traces": [
+          {
+            "macro_name": "char",
+            "raw_text": "{{char}}",
+            "resolved_text": "楚昭昭",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          },
+          {
+            "macro_name": "user",
+            "raw_text": "{{user}}",
+            "resolved_text": "沈知夏 $ <林&>",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          }
+        ]
+      },
+      "view": {
+        "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+        "card": "楚昭昭",
+        "state": "0",
+        "message": "姓名：沈知夏 $ <林&>，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：沈知夏 $ <林&>，请核对当前资料。"
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-4jUw7W/preview-runs/2026-10-09T09-54-35-799Z-e8ca8e5a-b215-4f0f-8991-f80e2f7d5c02"
+    },
+    {
+      "card": "C072",
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "request": {
+        "message": "“我正在核对当前角色页面的资料。”",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "currentInput": true,
+        "savedAssistant": true,
+        "initialObject": true,
+        "initialArray": true,
+        "prefixRule": true,
+        "boundSnapshot": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "叙述使用第三人称，直接引语按说话者解释。当前角色：楚昭昭；当前用户：林婉宁。\n\n这份资料属于楚昭昭。姓名：林婉宁。\n\nPersonality: 沉着\n\nScenario: 资料核对\n\nThe user is 林婉宁: 林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+        },
+        {
+          "role": "assistant",
+          "content": "楚昭昭: 姓名：林婉宁，请核对当前资料。"
+        },
+        {
+          "role": "user",
+          "content": "林婉宁: “我正在核对当前角色页面的资料。”"
+        }
+      ],
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 0,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "“我正在核对当前角色页面的资料。”"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-811d96d9-bfeb-4bc2-ae90-7afab72b9c23",
+        "preset_updated_at": 1791539680749,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-18b5e830-e996-4ba5-9787-14340c2d0c3e",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "Iim9vQSeZ7C38xnXhaA1U",
+        "character_version_id": "MSvY23GV24jYP_MDVXXld",
+        "character_imported_format": null,
+        "character_content_hash": "3531f7263c31b91d60ca0b366720a1ed1519eb84e691ae1ed76f9dee832ca4a2",
+        "worldbook_activated_entry_uids": [],
+        "worldbook_activated_entries": [],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "5b17f6cba2512160c3caf5fe01d510b6ad841d39368cfe8587442c1a5bf216e0",
+        "prompt_digest": "2d7c3baf3f8b9cdb57a01ffdee5fb78035d90ee96d7609c5cedb636d6afc465f",
+        "token_estimate": 51
+      },
+      "macroTrace": {
+        "warnings": [
+          {
+            "code": "macro_value_missing",
+            "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+            "macro_name": "defaultAuthorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro model has no resolved value and fell back to empty string.",
+            "macro_name": "model"
+          }
+        ],
+        "used_names": ["char", "user"],
+        "mutation_preview": [],
+        "staged_mutations": [],
+        "traces": [
+          {
+            "macro_name": "char",
+            "raw_text": "{{char}}",
+            "resolved_text": "楚昭昭",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          },
+          {
+            "macro_name": "user",
+            "raw_text": "{{user}}",
+            "resolved_text": "林婉宁",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          }
+        ]
+      },
+      "view": {
+        "user": "林婉宁 / 林婉宁",
+        "card": "楚昭昭",
+        "state": "0",
+        "message": "姓名：林婉宁，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：林婉宁，请核对当前资料。"
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-4jUw7W/preview-runs/2026-10-09T09-54-39-684Z-ae6f4f9e-a6fc-4673-88b1-60e89719aef8"
+    },
+    {
+      "card": "C025",
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "request": {
+        "message": "“我正在核对当前角色页面的资料。”",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "currentInput": true,
+        "savedAssistant": true,
+        "initialObject": true,
+        "initialArray": true,
+        "prefixRule": true,
+        "boundSnapshot": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "叙述使用第三人称，直接引语按说话者解释。当前角色：叶昀；当前用户：沈知夏 $ <林&>。\n\n这份资料属于叶昀。姓名：沈知夏 $ <林&>。\n\nPersonality: 沉着\n\nScenario: 资料核对\n\nThe user is 沈知夏 $ <林&>: 沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+        },
+        {
+          "role": "assistant",
+          "content": "叶昀: 姓名：沈知夏 $ <林&>，请核对当前资料。"
+        },
+        {
+          "role": "user",
+          "content": "沈知夏 $ <林&>: “我正在核对当前角色页面的资料。”"
+        }
+      ],
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 0,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "“我正在核对当前角色页面的资料。”"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-e9c326c7-f954-4c63-b063-0f7e754aa2df",
+        "preset_updated_at": 1791539684666,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-fdc3956a-1378-4b7b-9899-94134c6e9018",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "yAWT9CkW_huj4nPydr2Vh",
+        "character_version_id": "abz4wvUgWuL3LnMeVwsIv",
+        "character_imported_format": null,
+        "character_content_hash": "ed1ad6a1bc3af8c3b3e8e3d5d36d7c17b26b1a2cee652de5025b2f7a1aad8962",
+        "worldbook_activated_entry_uids": [],
+        "worldbook_activated_entries": [],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "e847bf915c73088331f92d9da4a3d84c9389c056af01c094efece0e1963702e9",
+        "prompt_digest": "c9e1d1e34894cd013c255b3fd430c9a2fc952e0658404768682ec5c52429caf1",
+        "token_estimate": 62
+      },
+      "macroTrace": {
+        "warnings": [
+          {
+            "code": "macro_value_missing",
+            "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+            "macro_name": "defaultAuthorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro model has no resolved value and fell back to empty string.",
+            "macro_name": "model"
+          }
+        ],
+        "used_names": ["char", "user"],
+        "mutation_preview": [],
+        "staged_mutations": [],
+        "traces": [
+          {
+            "macro_name": "char",
+            "raw_text": "{{char}}",
+            "resolved_text": "叶昀",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          },
+          {
+            "macro_name": "user",
+            "raw_text": "{{user}}",
+            "resolved_text": "沈知夏 $ <林&>",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          }
+        ]
+      },
+      "view": {
+        "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+        "card": "叶昀",
+        "state": "0",
+        "message": "姓名：沈知夏 $ <林&>，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：沈知夏 $ <林&>，请核对当前资料。"
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nX8Amt/preview-runs/2026-10-09T09-54-43-473Z-8ac526e4-5b44-4f59-aafa-0f3f370263de"
+    },
+    {
+      "card": "C025",
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "request": {
+        "message": "“我正在核对当前角色页面的资料。”",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "currentInput": true,
+        "savedAssistant": true,
+        "initialObject": true,
+        "initialArray": true,
+        "prefixRule": true,
+        "boundSnapshot": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "叙述使用第三人称，直接引语按说话者解释。当前角色：叶昀；当前用户：林婉宁。\n\n这份资料属于叶昀。姓名：林婉宁。\n\nPersonality: 沉着\n\nScenario: 资料核对\n\nThe user is 林婉宁: 林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+        },
+        {
+          "role": "assistant",
+          "content": "叶昀: 姓名：林婉宁，请核对当前资料。"
+        },
+        {
+          "role": "user",
+          "content": "林婉宁: “我正在核对当前角色页面的资料。”"
+        }
+      ],
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 0,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "“我正在核对当前角色页面的资料。”"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-5a5056a8-fbe6-443d-9e33-a07792e1978c",
+        "preset_updated_at": 1791539688697,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-3552d2cd-c276-471a-9c50-64016e554f10",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "c2tqx4UilkpINa0dffJ6d",
+        "character_version_id": "lK6_qXU1ew-7tL1g4N7-7",
+        "character_imported_format": null,
+        "character_content_hash": "8eb7595fb1845f71c3ae03c7d00a5b012062a9e9a14827b9a976b2c1b91ead65",
+        "worldbook_activated_entry_uids": [],
+        "worldbook_activated_entries": [],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "e57347137b0e7e32080d3570455d50a86dc1c6e4fb54923ce7d708c572f21267",
+        "prompt_digest": "463e31a71fa5a59ffe3992a4ddd71d640afcb8648aef4d2c65497d7f46d60f62",
+        "token_estimate": 51
+      },
+      "macroTrace": {
+        "warnings": [
+          {
+            "code": "macro_value_missing",
+            "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+            "macro_name": "defaultAuthorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro model has no resolved value and fell back to empty string.",
+            "macro_name": "model"
+          }
+        ],
+        "used_names": ["char", "user"],
+        "mutation_preview": [],
+        "staged_mutations": [],
+        "traces": [
+          {
+            "macro_name": "char",
+            "raw_text": "{{char}}",
+            "resolved_text": "叶昀",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          },
+          {
+            "macro_name": "user",
+            "raw_text": "{{user}}",
+            "resolved_text": "林婉宁",
+            "phase": "dry_run",
+            "source_kind": "macro"
+          }
+        ]
+      },
+      "view": {
+        "user": "林婉宁 / 林婉宁",
+        "card": "叶昀",
+        "state": "0",
+        "message": "姓名：林婉宁，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：林婉宁，请核对当前资料。"
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nX8Amt/preview-runs/2026-10-09T09-54-47-544Z-e66a3156-67c0-4f8d-a62f-0f1df8ea6bb8"
+    }
+  ]
+}

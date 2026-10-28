@@ -1,0 +1,34 @@
+{
+  "baseline": "b9d461f11b777e5f66187a538575c3d6c1cacc3a",
+  "branch": "codex/native-card-converter-design",
+  "originMain": "88722f36568a5b098bb9974a6999c524679c081c",
+  "originMainIntegrated": false,
+  "localReferenceCount": 51,
+  "missingReferences": [],
+  "unrelatedTrackedFilesPreserved": 54,
+  "changedUnrelated": [],
+  "newFullCardTrials": 0,
+  "checks": {
+    "format": "passed",
+    "diffWhitespace": "passed",
+    "localFileReferences": "passed"
+  },
+  "reviews": {
+    "independentSkillSemanticAudit": {
+      "agent": "/root/six_issues_skill_final_audit",
+      "findings": 2,
+      "fixes": "重复预览调用改为引用；失败处理补明确主体。"
+    },
+    "independentPlanSemanticAudit": {
+      "agent": "/root/six_issues_plan_final_audit",
+      "findings": 3,
+      "fixes": "只读范围明确约束转换 Agent；删除问题章节中的实施要求。"
+    },
+    "codeReviewSpec": {
+      "agent": "/root/map_entry_spec",
+      "findings": 1,
+      "fixes": "用户输入与 sourceFile 明确只读。",
+      "recheck": "Reviewer 复核确认源副本只读问题已解决。"
+    }
+  }
+}

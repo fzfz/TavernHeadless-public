@@ -1,0 +1,9 @@
+{
+  "dataRoot": "data",
+  "databaseFile": "tavern-headless.db",
+  "roleAssetsDir": "role-assets",
+  "roleAssetStagingDir": "role-asset-staging",
+  "chatTransferArtifactDir": "chat-transfer-artifacts",
+  "backupArtifactDir": "backup-artifacts",
+  "roleAssetMaxUploadBytes": 268435456
+}

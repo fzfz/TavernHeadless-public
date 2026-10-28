@@ -1,0 +1,374 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "const": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variables": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": ["string", "number", "boolean", "array"]
+          },
+          "minimum": {
+            "type": "number"
+          },
+          "maximum": {
+            "type": "number"
+          }
+        },
+        "required": ["type"],
+        "additionalProperties": false
+      }
+    },
+    "initial": {
+      "type": "object"
+    },
+    "ui": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "image"
+              },
+              "file": {
+                "type": "string",
+                "pattern": "^(?:[a-zA-Z0-9_-]+/)*[a-zA-Z0-9_.-]+\\.(svg|png|jpg|jpeg|webp)$"
+              }
+            },
+            "required": ["kind", "file"],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "audio"
+              },
+              "file": {
+                "type": "string",
+                "pattern": "^(?:[a-zA-Z0-9_-]+/)*[a-zA-Z0-9_.-]+\\.(wav|mp3|ogg)$"
+              }
+            },
+            "required": ["kind", "file"],
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "css": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tree": {
+      "$ref": "#/definitions/node"
+    },
+    "actions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "ui.toggle",
+              "chat.fill",
+              "chat.send",
+              "history.prev",
+              "history.latest",
+              "reading.prev",
+              "reading.next",
+              "reading.latest",
+              "reading.auto",
+              "audio.toggle"
+            ]
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "text": {
+            "$ref": "#/definitions/value"
+          },
+          "when": {
+            "$ref": "#/definitions/condition"
+          },
+          "intervalMs": {
+            "type": "integer",
+            "minimum": 500
+          },
+          "asset": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": ["type"],
+        "additionalProperties": false
+      }
+    },
+    "avatar": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "apiVersion",
+    "title",
+    "variables",
+    "initial",
+    "ui",
+    "assets",
+    "css",
+    "tree",
+    "actions",
+    "avatar"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "value": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "enum": ["literal", "view", "current", "ui", "read", "item"]
+        },
+        "key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": ["string", "number", "boolean"]
+        }
+      },
+      "required": ["source"],
+      "additionalProperties": false
+    },
+    "condition": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "enum": ["eq", "ne", "gt", "gte", "lt", "lte"]
+            },
+            "left": {
+              "$ref": "#/definitions/value"
+            },
+            "right": {
+              "$ref": "#/definitions/value"
+            }
+          },
+          "required": ["op", "left", "right"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "enum": ["and", "or"]
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/condition"
+              },
+              "minItems": 1
+            }
+          },
+          "required": ["op", "args"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "enum": ["not"]
+            },
+            "arg": {
+              "$ref": "#/definitions/condition"
+            }
+          },
+          "required": ["op", "arg"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "node": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "enum": ["box", "text", "image", "meter", "button", "repeat", "slot"]
+        },
+        "class": {
+          "type": "string"
+        },
+        "when": {
+          "$ref": "#/definitions/condition"
+        },
+        "classWhen": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/condition"
+          }
+        },
+        "value": {
+          "$ref": "#/definitions/value"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/node"
+          }
+        },
+        "alt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "enum": ["history", "composer"]
+        }
+      },
+      "required": ["id", "type"],
+      "additionalProperties": false
+    },
+    "commit": {
+      "type": "object",
+      "properties": {
+        "snapshotId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branchId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "floorId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attemptId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "versionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "variables": {
+          "type": "object"
+        },
+        "text": {
+          "type": "string"
+        },
+        "input": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "snapshotId",
+        "sessionId",
+        "branchId",
+        "floorId",
+        "attemptId",
+        "versionId",
+        "variables",
+        "text",
+        "input"
+      ],
+      "additionalProperties": false
+    },
+    "request": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branchId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "floorId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attemptId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "versionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cardId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expectedSnapshotId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actionId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "sessionId",
+        "branchId",
+        "floorId",
+        "attemptId",
+        "versionId",
+        "cardId",
+        "expectedSnapshotId"
+      ],
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["text"]
+        },
+        {
+          "type": "object",
+          "required": ["actionId"]
+        }
+      ]
+    }
+  }
+}

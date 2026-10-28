@@ -1,0 +1,23 @@
+{
+  "contractVersion": 1,
+  "generatedAt": "2026-07-05T12:18:31.510Z",
+  "humanEntry": "/TavernHeadless/agent/skills/",
+  "skills": [
+    {
+      "skillId": "tavern-client-integration",
+      "title": "客户端接入与升级",
+      "summary": "指导客户端开发者按推荐路径接入 TavernHeadless，并结合 /agent manifest 评估升级影响。",
+      "status": "active",
+      "humanPage": "/TavernHeadless/agent/skills/tavern-client-integration/",
+      "json": "/TavernHeadless/agent/skills/tavern-client-integration.json"
+    },
+    {
+      "skillId": "tavern-project-contributing",
+      "title": "参与开发与协作",
+      "summary": "指导贡献者按当前仓库的分层边界、验证要求和 PR 规范参与 TavernHeadless 开发。",
+      "status": "active",
+      "humanPage": "/TavernHeadless/agent/skills/tavern-project-contributing/",
+      "json": "/TavernHeadless/agent/skills/tavern-project-contributing.json"
+    }
+  ]
+}

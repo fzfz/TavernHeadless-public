@@ -1,0 +1,43 @@
+{
+  "uid": 125,
+  "key": [
+    "五秒录音",
+    "王授军发来的五秒录音"
+  ],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "证据_五秒录音内容",
+  "order": 78,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": 2,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<证据_五秒录音内容>\n这段五秒录音来自王授军保存的热风机客诉手机通话录音。声音依次为林茜的售后话术“人为损坏只能安排维……”在句中断掉，随后突然吸气、压住的长哼、连续几声短叫，最后是王授军追问：“林经理，您是在工地吗？”\n</证据_五秒录音内容>\n"
+}

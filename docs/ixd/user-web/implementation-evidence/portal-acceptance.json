@@ -1,0 +1,119 @@
+{
+  "base": "http://127.0.0.1:4190",
+  "startedAt": "2026-10-20T10:54:47.457Z",
+  "cases": [
+    {
+      "name": "1440 P05/P06 注册字段、显示密码、校验、返回与真实注册登录",
+      "status": "passed"
+    },
+    {
+      "name": "1440 P07/P08 本人资料、真实数量、昵称取消及保存",
+      "status": "passed"
+    },
+    {
+      "name": "1440 P09–P12 多个人格、默认、完整描述与编辑快照",
+      "status": "passed"
+    },
+    {
+      "name": "1440 P11 草稿离开、恢复与放弃",
+      "status": "passed"
+    },
+    {
+      "name": "1440 人格创建丢响应后幂等核对",
+      "status": "passed"
+    },
+    {
+      "name": "1440 P13/P14 角色开场与本人默认人格创建真实会话",
+      "status": "passed"
+    },
+    {
+      "name": "1440 P19/P20 设置往返、完整固定人设、标题保存",
+      "status": "passed"
+    },
+    {
+      "name": "1440 P21 删除人格确认、取消、固定快照保留",
+      "status": "passed"
+    },
+    {
+      "name": "1440 P22 无法访问、恢复入口及双主题窄屏",
+      "status": "passed"
+    },
+    {
+      "name": "1440 退出登录、会话访问隔离和账号空数据",
+      "status": "passed"
+    },
+    {
+      "name": "1440 浏览器未捕获异常",
+      "status": "passed"
+    },
+    {
+      "name": "390 P05/P06 注册字段、显示密码、校验、返回与真实注册登录",
+      "status": "passed"
+    },
+    {
+      "name": "390 P07/P08 本人资料、真实数量、昵称取消及保存",
+      "status": "passed"
+    },
+    {
+      "name": "390 P09–P12 多个人格、默认、完整描述与编辑快照",
+      "status": "passed"
+    },
+    {
+      "name": "390 P11 草稿离开、恢复与放弃",
+      "status": "passed"
+    },
+    {
+      "name": "390 人格创建丢响应后幂等核对",
+      "status": "passed"
+    },
+    {
+      "name": "390 P13/P14 角色开场与本人默认人格创建真实会话",
+      "status": "passed"
+    },
+    {
+      "name": "390 P19/P20 设置往返、完整固定人设、标题保存",
+      "status": "passed"
+    },
+    {
+      "name": "390 P21 删除人格确认、取消、固定快照保留",
+      "status": "passed"
+    },
+    {
+      "name": "390 P22 无法访问、恢复入口及双主题窄屏",
+      "status": "passed"
+    },
+    {
+      "name": "390 退出登录、会话访问隔离和账号空数据",
+      "status": "passed"
+    },
+    {
+      "name": "390 浏览器未捕获异常",
+      "status": "passed"
+    }
+  ],
+  "screenshots": [
+    "/tmp/tavern-user-web-portal-evidence/1440-P06-register.png",
+    "/tmp/tavern-user-web-portal-evidence/1440-P07-account.png",
+    "/tmp/tavern-user-web-portal-evidence/1440-P12-edit-persona.png",
+    "/tmp/tavern-user-web-portal-evidence/1440-P09-personas.png",
+    "/tmp/tavern-user-web-portal-evidence/1440-P13-start.png",
+    "/tmp/tavern-user-web-portal-evidence/1440-P17-session.png",
+    "/tmp/tavern-user-web-portal-evidence/1440-P20-snapshot.png",
+    "/tmp/tavern-user-web-portal-evidence/1440-P19-settings.png",
+    "/tmp/tavern-user-web-portal-evidence/1440-P21-delete-persona.png",
+    "/tmp/tavern-user-web-portal-evidence/1440-P22-unavailable.png",
+    "/tmp/tavern-user-web-portal-evidence/1440-dark-history.png",
+    "/tmp/tavern-user-web-portal-evidence/390-P06-register.png",
+    "/tmp/tavern-user-web-portal-evidence/390-P07-account.png",
+    "/tmp/tavern-user-web-portal-evidence/390-P12-edit-persona.png",
+    "/tmp/tavern-user-web-portal-evidence/390-P09-personas.png",
+    "/tmp/tavern-user-web-portal-evidence/390-P13-start.png",
+    "/tmp/tavern-user-web-portal-evidence/390-P17-session.png",
+    "/tmp/tavern-user-web-portal-evidence/390-P20-snapshot.png",
+    "/tmp/tavern-user-web-portal-evidence/390-P19-settings.png",
+    "/tmp/tavern-user-web-portal-evidence/390-P21-delete-persona.png",
+    "/tmp/tavern-user-web-portal-evidence/390-P22-unavailable.png",
+    "/tmp/tavern-user-web-portal-evidence/390-dark-history.png"
+  ],
+  "finishedAt": "2026-10-20T10:54:57.482Z"
+}

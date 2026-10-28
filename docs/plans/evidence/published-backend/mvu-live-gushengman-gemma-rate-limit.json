@@ -1,0 +1,65 @@
+{
+  "key": "gushengman",
+  "releaseId": "Uz8r2AIrDM27HL2dEYLGJ",
+  "sessionId": "wzwVabXj9zreYaQV__XFp",
+  "rounds": [
+    {
+      "message": "我在旁边坐下，轻声说：“刚才那段旋律很好听。你愿意和我聊聊它的来历吗？”",
+      "before": {
+        "sessionId": "wzwVabXj9zreYaQV__XFp",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "rcFmb2tNywq5ghvIwHRkQ",
+        "snapshotId": "26075f18-5fb4-4c4d-826a-5a0b1828c827",
+        "parentSnapshotId": null,
+        "variables": {
+          "世界": {
+            "当前地址": "轻音社活动室",
+            "当前时间": "2025年12月15日17:20",
+            "事件状态": "无"
+          },
+          "顾声慢": {
+            "情感连结度": 0,
+            "创作完成度": 0,
+            "心象映射": {
+              "当前心声": "唔哇——他不会觉得我是怪人吧！身体比脑子先动了起来......不过只是为了表达，这也是没有办法的！",
+              "当前脑内旋律": "《前前前世》"
+            }
+          }
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "events": [
+        {
+          "type": "text",
+          "data": {
+            "sessionId": "wzwVabXj9zreYaQV__XFp",
+            "branchId": "main",
+            "floorId": "tDdOs7DU59asBZze2pbSI",
+            "attemptId": "Ni3E9KSOtfyJXhh-MZKBA:1",
+            "streamId": "response:tDdOs7DU59asBZze2pbSI",
+            "runId": "Ni3E9KSOtfyJXhh-MZKBA",
+            "jobId": null,
+            "messageId": null,
+            "revision": 0,
+            "type": "start",
+            "status": "streaming",
+            "text": "",
+            "error": null
+          }
+        }
+      ],
+      "dryRunWithoutMvu": true,
+      "success": false,
+      "error": {
+        "code": "orchestration_failed",
+        "message": "Turn orchestration failed: Generation failed: LLM call failed: Failed after 3 attempts. Last error: Provider returned error"
+      }
+    }
+  ]
+}

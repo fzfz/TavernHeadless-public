@@ -1,0 +1,95 @@
+{
+  "userMessage": "“请给我两份药草，并计算三份药草的总价。”",
+  "requests": [
+    {
+      "model": "test-model",
+      "max_tokens": 4056,
+      "temperature": 0.7,
+      "messages": [
+        {
+          "role": "system",
+          "content": "作者必须使用第三人称叙述，台词中的我和你按照说话者和听话者解释。用户扮演裴修远，角色为林澄。\n\nThe user is 裴修远: 裴修远是二十八岁的男性药师，性格谨慎，正在向林澄询问药草的数量。\n\n林澄是药铺的店主。"
+        },
+        {
+          "role": "assistant",
+          "content": "林澄指着药柜，问裴修远：‘你想买几份药草？’"
+        },
+        {
+          "role": "user",
+          "content": "“请给我两份药草，并计算三份药草的总价。”"
+        }
+      ]
+    },
+    {
+      "model": "test-model",
+      "max_tokens": 4056,
+      "temperature": 0.7,
+      "messages": [
+        {
+          "role": "system",
+          "content": "作者必须使用第三人称叙述，台词中的我和你按照说话者和听话者解释。用户扮演裴修远，角色为林澄。\n\nThe user is 裴修远: 裴修远是二十八岁的男性药师，性格谨慎，正在向林澄询问药草的数量。\n\n林澄是药铺的店主。"
+        },
+        {
+          "role": "assistant",
+          "content": "林澄指着药柜，问裴修远：‘你想买几份药草？’"
+        },
+        {
+          "role": "user",
+          "content": "“请给我两份药草，并计算三份药草的总价。”"
+        },
+        {
+          "role": "assistant",
+          "content": "<tool_call id=\"capability-call\" name=\"calculate\">{\"args\":{\"expression\":{\"op\":\"div\",\"args\":[3,0]}}}</tool_call>"
+        },
+        {
+          "role": "user",
+          "content": "<tool_result id=\"capability-call\" name=\"calculate\" status=\"error\">\n{\n  \"ok\": false,\n  \"error\": {\n    \"code\": \"DIVISION_BY_ZERO\",\n    \"message\": \"除数为 0，请修改 expression 中的除数。\"\n  }\n}\n</tool_result>"
+        }
+      ]
+    }
+  ],
+  "response": {
+    "data": {
+      "floor_id": "4tSSamYnRRGf_6EMTyaaN",
+      "floor_no": 1,
+      "branch_id": "main",
+      "generated_text": "林澄取出两份药草，告诉裴修远：‘每份四枚铜钱，三份共十二枚。’",
+      "summaries": [],
+      "total_usage": {
+        "prompt_tokens": 40,
+        "completion_tokens": 20,
+        "total_tokens": 60
+      },
+      "final_state": "committed"
+    }
+  },
+  "executionRecord": {
+    "id": "20e08269-3e02-4900-8286-4eff3860445a",
+    "runId": "mKT3dWmElXN-IAfDNCLnC",
+    "floorId": "4tSSamYnRRGf_6EMTyaaN",
+    "pageId": "Mq61lHz5IplaxOwdgr7Q9",
+    "callerSlot": "narrator",
+    "providerId": "system:role-model-capabilities",
+    "toolName": "calculate",
+    "providerType": "builtin",
+    "argsJson": "{\"expression\":{\"op\":\"div\",\"args\":[3,0]}}",
+    "resultJson": "{\"ok\":false,\"error\":{\"code\":\"DIVISION_BY_ZERO\",\"message\":\"除数为 0，请修改 expression 中的除数。\"}}",
+    "status": "error",
+    "lifecycleState": "finished",
+    "commitOutcome": "committed",
+    "deliveryMode": "inline",
+    "runtimeJobId": null,
+    "sideEffectLevel": "none",
+    "errorMessage": "除数为 0，请修改 expression 中的除数。",
+    "durationMs": 1,
+    "startedAt": 1790926076892,
+    "finishedAt": 1790926076893,
+    "attemptNo": 1,
+    "replayParentExecutionId": null,
+    "generationStepNo": 1,
+    "callId": "capability-call",
+    "generationAttemptNo": 1,
+    "acceptedPageId": "f2AuRQ0qy8DDF8bB4m_b-",
+    "createdAt": 1790926076892
+  }
+}

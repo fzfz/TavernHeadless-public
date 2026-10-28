@@ -1,0 +1,40 @@
+{
+  "uid": 11,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "地点状态_用户公司_剥削挂墙",
+  "order": 160,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<用户公司_剥削挂墙>\n公司把装裱后的《剥削》固定在{{user}}公司大厅展示墙上。员工、客户和访客经过前台时都能看见。\n</用户公司_剥削挂墙>\n"
+}

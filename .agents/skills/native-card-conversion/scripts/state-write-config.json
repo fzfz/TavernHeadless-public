@@ -1,0 +1,25 @@
+{
+  "files": {
+    "permissions": "state-permissions.json",
+    "coverage": "state-coverage.json",
+    "source": "state-source.json"
+  },
+  "messages": {
+    "invalid": "状态写入未通过校验。请读取 issues 中的文件、字段位置和约束后修正提交数据。",
+    "json": "提交内容不是有效 JSON。请修正引号、逗号和括号后重新提交。",
+    "missingSchema": "开场初值需要状态 schema。请先执行 state-schema 提交字段定义。",
+    "link": "状态文件必须是角色包或任务目录中的普通文件。请移除符号链接并恢复普通文件。",
+    "field": "字段结构无法确定。请读取所列 schema 位置及对应源字段，依据源字段含义补充字段类型和对象 properties；现有接口无法表达需要保留的结构时，按 Skill 第5.2节报告能力缺口。",
+    "permission": "权限字段未在状态 schema 中声明。请从 state-fields 返回的字段引用中选择。",
+    "duplicate": "同一字段或开场收到重复且冲突的提交。请保留一项明确的提交。",
+    "coverage": "源字段覆盖不完整。请为每个源字段提交目标字段或用途变化理由，并为每个 unresolved 项提交 decisions。",
+    "source": "源字段清单与覆盖记录的 sourcePointer 或 symbol 不一致。请先用 state-source 登记本次源声明，再提交覆盖记录。",
+    "sourceText": "源字段声明必须是字符串。请提供包含 Zod 声明的源 JSON Pointer。",
+    "symbol": "指定的 Zod Schema 符号未能唯一定位。请读取 sourcePointer 指向的声明，选择实际声明的符号名称；unresolved 提供源位置。",
+    "opening": "开场标识未在 openings.json 中登记。请从 openings.json 的 items 选择开场标识。",
+    "derived": "该字段由状态命令生成。请通过 state-permissions 提交字段权限，或通过 state-initial 提交开场初值。",
+    "request": "请求参数不符合命令定义。请执行对应 state 命令的 --help，按 requestSchema 修正请求。",
+    "root": "状态 schema 的根必须为 object。请提交对象字段定义。",
+    "profile": "提交文件不符合角色包对应字段定义。请按 issues 中的字段位置和 detail 修正配置。"
+  }
+}

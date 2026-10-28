@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "html": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+    },
+    "css": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+    },
+    "script": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+    },
+    "floorHtml": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+    },
+    "assets": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "image",
+              "audio"
+            ]
+          },
+          "file": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+          },
+          "label": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "kind",
+          "file",
+          "label",
+          "tags"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "data": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+      }
+    }
+  },
+  "required": [
+    "apiVersion",
+    "html",
+    "css",
+    "script",
+    "assets",
+    "data"
+  ],
+  "additionalProperties": false,
+  "$comment": "Generated from schema.ts by scripts/generate-native-card-schemas.ts."
+}

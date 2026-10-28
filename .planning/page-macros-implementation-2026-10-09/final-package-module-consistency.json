@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-doXUEa/task.json",
+      "equalsCurrentBuild": true
+    },
+    {
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-k2XtTN/task.json",
+      "equalsCurrentBuild": true
+    },
+    {
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-4MSkfp/task.json",
+      "equalsCurrentBuild": true
+    },
+    {
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-4jUw7W/task.json",
+      "equalsCurrentBuild": true
+    },
+    {
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nX8Amt/task.json",
+      "equalsCurrentBuild": true
+    },
+    {
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TSmI1G/task.json",
+      "equalsCurrentBuild": true
+    }
+  ]
+}

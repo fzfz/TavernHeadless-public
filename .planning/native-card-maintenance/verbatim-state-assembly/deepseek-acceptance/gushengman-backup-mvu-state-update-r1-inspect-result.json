@@ -1,0 +1,1468 @@
+{
+  "view": {
+    "character_id": "kxfiE4QlGEY3haKWex2Nt",
+    "character_version_id": "HkdRM1AnnRgadXaEkJ4fT",
+    "name": "顾声慢 backup-mvu-state-update",
+    "delivery": {
+      "html": "<section class=\"gal-stage\" data-stage>\n  <img class=\"gal-background\" data-background alt=\"\" />\n  <div class=\"gal-vignette\" aria-hidden=\"true\"></div>\n\n  <div class=\"gal-character-layer\" aria-hidden=\"true\">\n    <img class=\"gal-character gal-character-left\" data-character-left alt=\"\" />\n    <img class=\"gal-character gal-character-center\" data-character-center alt=\"\" />\n    <img class=\"gal-character gal-character-right\" data-character-right alt=\"\" />\n  </div>\n\n  <div class=\"gal-cg\" data-cg-container hidden>\n    <img data-cg alt=\"剧情画面\" />\n  </div>\n\n  <div class=\"gal-location\" data-location hidden></div>\n\n  <aside class=\"gal-status\" data-status hidden>\n    <header>\n      <strong>✦ 顾声慢状态</strong>\n      <button type=\"button\" data-status-close aria-label=\"关闭状态面板\">×</button>\n    </header>\n    <div class=\"gal-status-grid\">\n      <section>\n        <label>情感连结度 <b data-affection-value>0</b></label>\n        <progress data-affection max=\"100\" value=\"0\"></progress>\n        <label>创作完成度 <b data-composition-value>10</b></label>\n        <progress data-composition max=\"100\" value=\"10\"></progress>\n      </section>\n      <section>\n        <span class=\"gal-status-label\">✦ 心象映射</span>\n        <p class=\"gal-melody\" data-melody>《前前前世》</p>\n        <p class=\"gal-voice\" data-voice>唔哇——他不会觉得我是怪人吧！</p>\n      </section>\n      <section>\n        <span class=\"gal-status-label\">✦ 世界状态</span>\n        <dl>\n          <div><dt>当前时间</dt><dd data-time>2025年12月15日17:20</dd></div>\n          <div><dt>当前地址</dt><dd data-world-location>轻音社活动室</dd></div>\n          <div><dt>事件状态</dt><dd data-event>无</dd></div>\n        </dl>\n        <p class=\"gal-turn-delta\" data-turn-delta></p>\n      </section>\n    </div>\n  </aside>\n\n  <aside class=\"gal-display-panel\" data-display-panel hidden>\n    <header><strong>⚙ 显示设置</strong></header>\n    <label>文字大小 <input type=\"range\" min=\"70\" max=\"150\" step=\"10\" value=\"100\" data-font-slider /></label>\n    <label>立绘大小 <input type=\"range\" min=\"60\" max=\"140\" step=\"10\" value=\"100\" data-character-slider /></label>\n    <button type=\"button\" data-display-close>完成</button>\n  </aside>\n\n  <aside class=\"gal-gallery\" data-gallery hidden>\n    <header><strong>CG 画廊</strong><button type=\"button\" data-gallery-close>关闭</button></header>\n    <div class=\"gal-gallery-grid\">\n      <div data-gallery-item-0 hidden><img data-gallery-thumb-0 alt=\"\" /><button type=\"button\" data-gallery-select-0></button></div>\n      <div data-gallery-item-1 hidden><img data-gallery-thumb-1 alt=\"\" /><button type=\"button\" data-gallery-select-1></button></div>\n      <div data-gallery-item-2 hidden><img data-gallery-thumb-2 alt=\"\" /><button type=\"button\" data-gallery-select-2></button></div>\n      <div data-gallery-item-3 hidden><img data-gallery-thumb-3 alt=\"\" /><button type=\"button\" data-gallery-select-3></button></div>\n      <div data-gallery-item-4 hidden><img data-gallery-thumb-4 alt=\"\" /><button type=\"button\" data-gallery-select-4></button></div>\n      <div data-gallery-item-5 hidden><img data-gallery-thumb-5 alt=\"\" /><button type=\"button\" data-gallery-select-5></button></div>\n      <div data-gallery-item-6 hidden><img data-gallery-thumb-6 alt=\"\" /><button type=\"button\" data-gallery-select-6></button></div>\n      <div data-gallery-item-7 hidden><img data-gallery-thumb-7 alt=\"\" /><button type=\"button\" data-gallery-select-7></button></div>\n      <div data-gallery-item-8 hidden><img data-gallery-thumb-8 alt=\"\" /><button type=\"button\" data-gallery-select-8></button></div>\n      <div data-gallery-item-9 hidden><img data-gallery-thumb-9 alt=\"\" /><button type=\"button\" data-gallery-select-9></button></div>\n      <div data-gallery-item-10 hidden><img data-gallery-thumb-10 alt=\"\" /><button type=\"button\" data-gallery-select-10></button></div>\n      <div data-gallery-item-11 hidden><img data-gallery-thumb-11 alt=\"\" /><button type=\"button\" data-gallery-select-11></button></div>\n      <div data-gallery-item-12 hidden><img data-gallery-thumb-12 alt=\"\" /><button type=\"button\" data-gallery-select-12></button></div>\n      <div data-gallery-item-13 hidden><img data-gallery-thumb-13 alt=\"\" /><button type=\"button\" data-gallery-select-13></button></div>\n    </div>\n  </aside>\n\n  <div class=\"gal-gallery-viewer\" data-gallery-viewer hidden>\n    <img data-gallery-viewer-image alt=\"CG 大图\" />\n    <button type=\"button\" data-gallery-viewer-close aria-label=\"关闭 CG 大图\">×</button>\n  </div>\n\n  <div class=\"gal-choice-list\" data-choices hidden>\n    <button type=\"button\" data-choice-0 hidden></button>\n    <button type=\"button\" data-choice-1 hidden></button>\n    <button type=\"button\" data-choice-2 hidden></button>\n    <button type=\"button\" data-choice-3 hidden></button>\n    <button type=\"button\" data-choice-4 hidden></button>\n  </div>\n\n  <section class=\"gal-input-panel\" data-input-panel hidden>\n    <label for=\"gushengman-input\">你想说些什么？</label>\n    <textarea id=\"gushengman-input\" data-input placeholder=\"输入你的话\"></textarea>\n    <div class=\"gal-input-actions\">\n      <button type=\"button\" data-send>发送</button>\n      <button type=\"button\" data-input-close>关闭</button>\n    </div>\n  </section>\n\n  <p class=\"gal-feedback\" data-feedback role=\"alert\"></p>\n\n  <section class=\"gal-dialogue\" data-dialogue>\n    <div class=\"gal-speaker\" data-speaker hidden></div>\n    <p class=\"gal-text\" data-text aria-live=\"polite\"></p>\n    <span class=\"gal-page\" data-page></span>\n  </section>\n\n  <nav class=\"gal-controls\" aria-label=\"视觉小说控制栏\">\n    <button type=\"button\" data-back title=\"上一段\">◀</button>\n    <button type=\"button\" data-hide>隐藏</button>\n    <button type=\"button\" data-bgm>BGM</button>\n    <button type=\"button\" data-display>显示设置</button>\n    <button type=\"button\" data-status-toggle>状态</button>\n    <button type=\"button\" data-gallery-open>CG</button>\n    <button type=\"button\" data-auto>Auto</button>\n    <button type=\"button\" data-skip>Skip</button>\n    <button type=\"button\" data-input-open>说话</button>\n    <button type=\"button\" data-next title=\"下一段\">▶</button>\n  </nav>\n</section>\n",
+      "css": ":host {\n  display: block;\n  color: #352c31;\n  font-family: \"Noto Serif SC\", \"Source Han Serif SC\", \"Microsoft YaHei\", serif;\n}\n\n* {\n  box-sizing: border-box;\n}\n\n[hidden] {\n  display: none !important;\n}\n\nbutton,\ntextarea {\n  font: inherit;\n}\n\nbutton {\n  cursor: pointer;\n}\n\n.gal-stage {\n  --character-scale: 1;\n  --dialogue-font-size: clamp(17px, 2vw, 27px);\n  position: relative;\n  width: min(100%, 1100px);\n  height: min(calc(100dvh - 66px), 619px);\n  min-height: 540px;\n  margin: 0 auto;\n  overflow: hidden;\n  border-radius: 8px;\n  background: #050405;\n  box-shadow: 0 6px 24px rgb(0 0 0 / 45%);\n  user-select: none;\n}\n\n.gal-background,\n.gal-vignette,\n.gal-character-layer,\n.gal-cg {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  height: 100%;\n}\n\n.gal-background {\n  object-fit: cover;\n}\n\n.gal-vignette {\n  z-index: 1;\n  pointer-events: none;\n  background: linear-gradient(90deg, rgb(0 0 0 / 10%), transparent 30%, transparent 70%, rgb(0 0 0 / 12%));\n}\n\n.gal-character-layer {\n  z-index: 2;\n  pointer-events: none;\n}\n\n.gal-character {\n  position: absolute;\n  top: 7%;\n  height: 195%;\n  max-width: none;\n  object-fit: contain;\n  object-position: center 18%;\n  filter: drop-shadow(0 0 10px rgb(0 0 0 / 42%));\n  transform-origin: 50% 15%;\n  transition: filter 180ms ease, opacity 180ms ease, transform 280ms ease;\n}\n\n.gal-character-left {\n  left: 17%;\n  transform: translateX(-50%) scale(var(--character-scale));\n}\n\n.gal-character-center {\n  left: 50%;\n  transform: translateX(-50%) scale(var(--character-scale));\n}\n\n.gal-character-right {\n  left: 83%;\n  transform: translateX(-50%) scaleX(-1) scale(var(--character-scale));\n}\n\n.gal-character.dimmed {\n  filter: brightness(.45) grayscale(.15) drop-shadow(0 0 10px rgb(0 0 0 / 45%));\n}\n\n.gal-character.near.gal-character-left,\n.gal-character.near.gal-character-center {\n  transform: translateX(-50%) scale(calc(var(--character-scale) * 1.08));\n}\n\n.gal-character.near.gal-character-right {\n  transform: translateX(-50%) scaleX(-1) scale(calc(var(--character-scale) * 1.08));\n}\n\n.gal-character.away.gal-character-left,\n.gal-character.away.gal-character-center {\n  transform: translateX(-50%) scale(calc(var(--character-scale) * .92));\n}\n\n.gal-character.away.gal-character-right {\n  transform: translateX(-50%) scaleX(-1) scale(calc(var(--character-scale) * .92));\n}\n\n.gal-character.motion-shake {\n  animation: gal-shake .5s ease-in-out;\n}\n\n.gal-character.motion-up {\n  animation: gal-jump-up .32s ease-out;\n}\n\n.gal-character.motion-down {\n  animation: gal-jump-down .32s ease-out;\n}\n\n@keyframes gal-shake {\n  0%, 100% { margin-left: 0; }\n  25% { margin-left: -8px; }\n  75% { margin-left: 8px; }\n}\n\n@keyframes gal-jump-up {\n  0%, 100% { margin-top: 0; }\n  50% { margin-top: -22px; }\n}\n\n@keyframes gal-jump-down {\n  0%, 100% { margin-top: 0; }\n  50% { margin-top: 12px; }\n}\n\n.gal-cg {\n  z-index: 3;\n  background: #000;\n}\n\n.gal-cg img {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n\n.gal-location {\n  position: absolute;\n  z-index: 8;\n  top: 18px;\n  right: 18px;\n  padding: 7px 17px;\n  border: 2px solid rgb(255 154 158 / 60%);\n  border-radius: 999px;\n  background: rgb(255 255 255 / 86%);\n  box-shadow: 0 4px 15px rgb(0 0 0 / 15%);\n  font-weight: 700;\n  letter-spacing: .08em;\n}\n\n.gal-dialogue {\n  position: absolute;\n  z-index: 5;\n  right: 0;\n  bottom: 30px;\n  left: 0;\n  min-height: 31%;\n  max-height: 46%;\n  padding: 26px 6% 32px;\n  overflow-y: auto;\n  border-top: 2px solid rgb(255 255 255 / 82%);\n  background: linear-gradient(180deg, rgb(255 255 255 / 30%), rgb(255 255 255 / 95%) 22%);\n  backdrop-filter: blur(3px);\n  box-shadow: 0 -4px 16px rgb(0 0 0 / 7%);\n  transition: opacity 180ms ease;\n}\n\n.gal-speaker {\n  position: absolute;\n  top: -1px;\n  left: 5%;\n  padding: 5px 20px;\n  border: 2px solid rgb(255 255 255 / 90%);\n  border-radius: 999px;\n  background: linear-gradient(135deg, #ff9a9e, #fecfef);\n  box-shadow: 0 4px 12px rgb(255 154 158 / 40%);\n  color: #5c4b51;\n  font: 900 15px/1.3 system-ui, sans-serif;\n  letter-spacing: .14em;\n}\n\n.gal-text {\n  min-height: 2.7em;\n  margin: 8px 0 0;\n  color: #3a2c30;\n  font-size: var(--dialogue-font-size);\n  font-weight: 600;\n  line-height: 1.8;\n  letter-spacing: .04em;\n  white-space: pre-wrap;\n  text-shadow: 1px 1px 0 rgb(255 255 255 / 90%);\n}\n\n.gal-page {\n  position: absolute;\n  right: 16px;\n  bottom: 7px;\n  color: #936d78;\n  font: 12px/1.2 system-ui, sans-serif;\n}\n\n.gal-controls {\n  position: absolute;\n  z-index: 10;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  height: 30px;\n  display: flex;\n  background: linear-gradient(90deg, rgb(255 182 193 / 96%), rgb(255 192 203 / 96%));\n  box-shadow: 0 -2px 10px rgb(255 105 135 / 15%);\n}\n\n.gal-controls button {\n  flex: 1;\n  min-width: 0;\n  padding: 0 4px;\n  overflow: hidden;\n  border: 0;\n  border-right: 1px solid rgb(255 255 255 / 42%);\n  background: transparent;\n  color: #fff;\n  font: 700 clamp(10px, 1.25vw, 14px)/1 system-ui, sans-serif;\n  text-overflow: ellipsis;\n  text-shadow: 0 1px 2px rgb(0 0 0 / 15%);\n  white-space: nowrap;\n}\n\n.gal-controls button:hover,\n.gal-controls button.active {\n  background: rgb(255 105 135 / 72%);\n}\n\n.gal-controls button:disabled,\n.gal-input-actions button:disabled,\n.gal-choice-list button:disabled {\n  cursor: default;\n  opacity: .45;\n}\n\nbutton:focus-visible,\ntextarea:focus-visible {\n  outline: 2px solid #fff;\n  outline-offset: -3px;\n}\n\n.gal-status {\n  position: absolute;\n  z-index: 20;\n  top: 50%;\n  left: 50%;\n  width: min(92%, 720px);\n  max-height: 86%;\n  padding: 18px;\n  overflow: auto;\n  border: 2px solid rgb(255 182 193 / 65%);\n  border-radius: 14px;\n  background: rgb(255 255 255 / 96%);\n  box-shadow: 0 14px 50px rgb(0 0 0 / 38%);\n  transform: translate(-50%, -50%);\n}\n\n.gal-display-panel {\n  position: absolute;\n  z-index: 20;\n  top: 50%;\n  left: 50%;\n  width: min(86%, 340px);\n  padding: 20px;\n  border: 2px solid rgb(255 182 193 / 70%);\n  border-radius: 14px;\n  background: rgb(255 255 255 / 96%);\n  box-shadow: 0 14px 50px rgb(0 0 0 / 38%);\n  transform: translate(-50%, -50%);\n  font-family: system-ui, sans-serif;\n}\n\n.gal-display-panel header {\n  margin-bottom: 14px;\n  color: #ff758c;\n}\n\n.gal-display-panel label {\n  display: grid;\n  grid-template-columns: 80px 1fr;\n  align-items: center;\n  gap: 10px;\n  margin: 14px 0;\n  color: #78545d;\n  font-weight: 700;\n}\n\n.gal-display-panel input {\n  width: 100%;\n  accent-color: #ff758c;\n}\n\n.gal-display-panel button,\n.gal-gallery header button,\n.gal-gallery-viewer button {\n  padding: 7px 14px;\n  border: 0;\n  border-radius: 6px;\n  background: #f4bdc8;\n  color: #63464e;\n}\n\n.gal-gallery {\n  position: absolute;\n  z-index: 21;\n  inset: 4%;\n  padding: 18px;\n  overflow: hidden;\n  border-radius: 14px;\n  background: rgb(20 13 17 / 94%);\n  box-shadow: 0 14px 50px rgb(0 0 0 / 48%);\n}\n\n.gal-gallery header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin-bottom: 14px;\n  color: #fff;\n  font-family: system-ui, sans-serif;\n}\n\n.gal-gallery-grid {\n  height: calc(100% - 48px);\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));\n  gap: 12px;\n  overflow-y: auto;\n}\n\n.gal-gallery-grid > div {\n  position: relative;\n  min-height: 112px;\n  overflow: hidden;\n  border: 2px solid rgb(255 255 255 / 14%);\n  border-radius: 8px;\n  background: #080608;\n}\n\n.gal-gallery-grid img {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n\n.gal-gallery-grid button {\n  position: absolute;\n  inset: 0;\n  width: 100%;\n  border: 0;\n  background: linear-gradient(transparent 50%, rgb(0 0 0 / 86%));\n  color: #fff;\n  font: 700 12px/1.4 system-ui, sans-serif;\n  text-align: center;\n  padding: 62px 6px 5px;\n}\n\n.gal-gallery-grid button:disabled {\n  background: rgb(10 8 10 / 84%);\n  color: rgb(255 255 255 / 45%);\n}\n\n.gal-gallery-viewer {\n  position: absolute;\n  z-index: 25;\n  inset: 0;\n  display: grid;\n  place-items: center;\n  background: rgb(0 0 0 / 92%);\n}\n\n.gal-gallery-viewer img {\n  max-width: 94%;\n  max-height: 92%;\n  object-fit: contain;\n}\n\n.gal-gallery-viewer button {\n  position: absolute;\n  top: 12px;\n  right: 12px;\n  width: 36px;\n  height: 36px;\n  padding: 0;\n  border-radius: 50%;\n  font-size: 22px;\n}\n\n.gal-status header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin-bottom: 14px;\n  color: #ff758c;\n  font-family: system-ui, sans-serif;\n}\n\n.gal-status header button {\n  width: 30px;\n  height: 30px;\n  border: 0;\n  border-radius: 50%;\n  background: #ffe1e7;\n  color: #7d4b57;\n}\n\n.gal-status-grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 16px;\n}\n\n.gal-status-grid section + section {\n  padding-left: 16px;\n  border-left: 1px dashed #efb6c2;\n}\n\n.gal-status label,\n.gal-status-label {\n  display: flex;\n  justify-content: space-between;\n  margin: 8px 0;\n  color: #78545d;\n  font: 700 13px/1.5 system-ui, sans-serif;\n}\n\n.gal-status progress {\n  width: 100%;\n  accent-color: #ff758c;\n}\n\n.gal-melody {\n  color: #ff758c;\n  font-weight: 700;\n}\n\n.gal-voice {\n  padding: 10px;\n  border-radius: 8px;\n  background: #fff2f5;\n  font-size: 13px;\n  line-height: 1.6;\n}\n\n.gal-status dl,\n.gal-status dd {\n  margin: 0;\n}\n\n.gal-status dl div {\n  display: flex;\n  justify-content: space-between;\n  gap: 8px;\n  padding: 6px 0;\n  border-bottom: 1px solid #f6dce2;\n  font: 12px/1.5 system-ui, sans-serif;\n}\n\n.gal-status dd {\n  text-align: right;\n}\n\n.gal-turn-delta {\n  color: #a04d62;\n  font: 12px/1.5 system-ui, sans-serif;\n}\n\n.gal-choice-list {\n  position: absolute;\n  z-index: 12;\n  top: 48%;\n  left: 50%;\n  width: min(82%, 400px);\n  display: grid;\n  gap: 10px;\n  transform: translate(-50%, -50%);\n}\n\n.gal-choice-list button {\n  padding: 11px 18px;\n  border: 2px solid #ffc3d0;\n  border-radius: 8px;\n  background: rgb(255 255 255 / 95%);\n  box-shadow: 0 4px 12px rgb(0 0 0 / 22%);\n  color: #5c4b51;\n  font-weight: 700;\n}\n\n.gal-choice-list button:hover {\n  border-color: #ff758c;\n  color: #db5973;\n  transform: scale(1.025);\n}\n\n.gal-input-panel {\n  position: absolute;\n  z-index: 22;\n  right: 5%;\n  bottom: 85px;\n  width: min(90%, 460px);\n  padding: 18px;\n  border: 2px solid #f6b5c2;\n  border-radius: 12px;\n  background: rgb(255 249 250 / 97%);\n  box-shadow: 0 10px 42px rgb(0 0 0 / 38%);\n  font-family: system-ui, sans-serif;\n}\n\n.gal-input-panel label {\n  display: block;\n  margin-bottom: 9px;\n  color: #78545d;\n  font-weight: 700;\n}\n\n.gal-input-panel textarea {\n  width: 100%;\n  height: 92px;\n  resize: vertical;\n  padding: 10px;\n  border: 1px solid #d69eaa;\n  border-radius: 6px;\n  background: #fff;\n  color: #352c31;\n  user-select: text;\n}\n\n.gal-input-actions {\n  display: flex;\n  gap: 8px;\n  margin-top: 10px;\n}\n\n.gal-input-actions button {\n  padding: 8px 18px;\n  border: 0;\n  border-radius: 6px;\n  background: #f4bdc8;\n  color: #63464e;\n}\n\n.gal-feedback {\n  position: absolute;\n  z-index: 24;\n  top: 14px;\n  left: 14px;\n  max-width: 65%;\n  margin: 0;\n  padding: 7px 11px;\n  border-radius: 6px;\n  background: rgb(76 29 42 / 85%);\n  color: #fff;\n  font: 12px/1.45 system-ui, sans-serif;\n}\n\n.gal-feedback:empty {\n  display: none;\n}\n\n.gal-stage.dialogue-hidden .gal-dialogue,\n.gal-stage.dialogue-hidden .gal-controls {\n  opacity: 0;\n  pointer-events: none;\n}\n\n.gal-stage.display-small {\n  --dialogue-font-size: clamp(14px, 1.6vw, 20px);\n  --character-scale: .88;\n}\n\n.gal-stage.display-large {\n  --dialogue-font-size: clamp(20px, 2.4vw, 31px);\n  --character-scale: 1.12;\n}\n\n.gal-stage.font-70 { --dialogue-font-size: clamp(12px, 1.4vw, 19px); }\n.gal-stage.font-80 { --dialogue-font-size: clamp(14px, 1.6vw, 22px); }\n.gal-stage.font-90 { --dialogue-font-size: clamp(16px, 1.8vw, 24px); }\n.gal-stage.font-100 { --dialogue-font-size: clamp(17px, 2vw, 27px); }\n.gal-stage.font-110 { --dialogue-font-size: clamp(18px, 2.2vw, 29px); }\n.gal-stage.font-120 { --dialogue-font-size: clamp(20px, 2.4vw, 32px); }\n.gal-stage.font-130 { --dialogue-font-size: clamp(21px, 2.6vw, 35px); }\n.gal-stage.font-140 { --dialogue-font-size: clamp(23px, 2.8vw, 38px); }\n.gal-stage.font-150 { --dialogue-font-size: clamp(25px, 3vw, 41px); }\n.gal-stage.character-60 { --character-scale: .6; }\n.gal-stage.character-70 { --character-scale: .7; }\n.gal-stage.character-80 { --character-scale: .8; }\n.gal-stage.character-90 { --character-scale: .9; }\n.gal-stage.character-100 { --character-scale: 1; }\n.gal-stage.character-110 { --character-scale: 1.1; }\n.gal-stage.character-120 { --character-scale: 1.2; }\n.gal-stage.character-130 { --character-scale: 1.3; }\n.gal-stage.character-140 { --character-scale: 1.4; }\n\n.gal-stage.effect-flash::after,\n.gal-stage.effect-black::after {\n  content: \"\";\n  position: absolute;\n  z-index: 30;\n  inset: 0;\n  pointer-events: none;\n}\n\n.gal-stage.effect-flash::after {\n  animation: gal-flash .25s ease-out;\n  background: #fff;\n}\n\n.gal-stage.effect-black::after {\n  background: #000;\n  opacity: 1;\n}\n\n@keyframes gal-flash {\n  from { opacity: .85; }\n  to { opacity: 0; }\n}\n\n@media (max-width: 720px) {\n  .gal-stage {\n    height: calc(100dvh - 116px);\n    min-height: 520px;\n    border-radius: 0;\n  }\n\n  .gal-character {\n    top: -2%;\n    height: 235%;\n  }\n\n  .gal-character-left { left: 24%; }\n  .gal-character-right { left: 76%; }\n\n  .gal-dialogue {\n    min-height: 36%;\n    max-height: 51%;\n    padding: 22px 4% 31px;\n  }\n\n  .gal-status-grid {\n    grid-template-columns: 1fr;\n  }\n\n  .gal-status-grid section + section {\n    padding-top: 10px;\n    padding-left: 0;\n    border-top: 1px dashed #efb6c2;\n    border-left: 0;\n  }\n\n  .gal-controls button {\n    font-size: 10px;\n  }\n}\n",
+      "floorHtml": null,
+      "assets": {
+        "sprite:棒球服流泪": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%A3%92%E7%90%83%E6%9C%8D%E6%B5%81%E6%B3%AA.png",
+          "label": "棒球服流泪",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "sprite:棒球服害羞": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%A3%92%E7%90%83%E6%9C%8D%E5%AE%B3%E7%BE%9E.png",
+          "label": "棒球服害羞",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "sprite:棒球服微笑": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%A3%92%E7%90%83%E6%9C%8D%E5%BE%AE%E7%AC%91.png",
+          "label": "棒球服微笑",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "sprite:睡衣平静": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E7%9D%A1%E8%A1%A3%E5%B9%B3%E9%9D%99.png",
+          "label": "睡衣平静",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "sprite:睡衣微笑": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E7%9D%A1%E8%A1%A3%E5%BE%AE%E7%AC%91.png",
+          "label": "睡衣微笑",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "sprite:裸体": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E8%A3%B8%E4%BD%93.png",
+          "label": "裸体",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "sprite:琉夏校服平静": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E7%90%89%E5%A4%8F%E6%A0%A1%E6%9C%8D%E5%B9%B3%E9%9D%99.png",
+          "label": "琉夏校服平静",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "sprite:琉夏校服流泪": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E7%90%89%E5%A4%8F%E6%A0%A1%E6%9C%8D%E6%B5%81%E6%B3%AA.png",
+          "label": "琉夏校服流泪",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "sprite:琉夏校服害羞": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E7%90%89%E5%A4%8F%E6%A0%A1%E6%9C%8D%E5%AE%B3%E7%BE%9E.png",
+          "label": "琉夏校服害羞",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "sprite:琉夏校服微笑": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E7%90%89%E5%A4%8F%E6%A0%A1%E6%9C%8D%E5%BE%AE%E7%AC%91.png",
+          "label": "琉夏校服微笑",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "sprite:泽音校服平静": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B3%BD%E9%9F%B3%E6%A0%A1%E6%9C%8D%E5%B9%B3%E9%9D%99.png",
+          "label": "泽音校服平静",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "sprite:泽音校服流泪": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B3%BD%E9%9F%B3%E6%A0%A1%E6%9C%8D%E6%B5%81%E6%B3%AA.png",
+          "label": "泽音校服流泪",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "sprite:泽音校服害羞": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B3%BD%E9%9F%B3%E6%A0%A1%E6%9C%8D%E5%AE%B3%E7%BE%9E.png",
+          "label": "泽音校服害羞",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "sprite:泽音校服微笑": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B3%BD%E9%9F%B3%E6%A0%A1%E6%9C%8D%E5%BE%AE%E7%AC%91.png",
+          "label": "泽音校服微笑",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "background:便利店": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BE%BF%E5%88%A9%E5%BA%97.jpg",
+          "label": "便利店",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:商店街白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%95%86%E5%BA%97%E8%A1%97%E7%99%BD%E5%A4%A9.jpg",
+          "label": "商店街白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:商店街黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%95%86%E5%BA%97%E8%A1%97%E9%BB%84%E6%98%8F.jpg",
+          "label": "商店街黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:商店街夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%95%86%E5%BA%97%E8%A1%97%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "商店街夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:拱廊商店街白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%8B%B1%E5%BB%8A%E5%95%86%E5%BA%97%E8%A1%97%E7%99%BD%E5%A4%A9.jpg",
+          "label": "拱廊商店街白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:拱廊商店街黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%8B%B1%E5%BB%8A%E5%95%86%E5%BA%97%E8%A1%97%E9%BB%84%E6%98%8F.jpg",
+          "label": "拱廊商店街黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:拱廊商店街夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%8B%B1%E5%BB%8A%E5%95%86%E5%BA%97%E8%A1%97%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "拱廊商店街夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:购物中心白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E8%B4%AD%E7%89%A9%E4%B8%AD%E5%BF%83%E7%99%BD%E5%A4%A9.jpg",
+          "label": "购物中心白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:购物中心黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E8%B4%AD%E7%89%A9%E4%B8%AD%E5%BF%83%E9%BB%84%E6%98%8F.jpg",
+          "label": "购物中心黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:购物中心夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E8%B4%AD%E7%89%A9%E4%B8%AD%E5%BF%83%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "购物中心夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:庙会小吃街白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%BA%99%E4%BC%9A%E5%B0%8F%E5%90%83%E8%A1%97%E7%99%BD%E5%A4%A9.jpg",
+          "label": "庙会小吃街白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:庙会小吃街黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%BA%99%E4%BC%9A%E5%B0%8F%E5%90%83%E8%A1%97%E9%BB%84%E6%98%8F.jpg",
+          "label": "庙会小吃街黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:庙会小吃街夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%BA%99%E4%BC%9A%E5%B0%8F%E5%90%83%E8%A1%97%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "庙会小吃街夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校教室白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%AE%A4%E7%99%BD%E5%A4%A9.jpg",
+          "label": "学校教室白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校教室黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%AE%A4%E9%BB%84%E6%98%8F.jpg",
+          "label": "学校教室黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校教室夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%AE%A4%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "学校教室夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校教室夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%AE%A4%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "学校教室夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校教学楼正门前白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%AD%A6%E6%A5%BC%E6%AD%A3%E9%97%A8%E5%89%8D%E7%99%BD%E5%A4%A9.jpg",
+          "label": "学校教学楼正门前白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校教学楼正门前黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%AD%A6%E6%A5%BC%E6%AD%A3%E9%97%A8%E5%89%8D%E9%BB%84%E6%98%8F.jpg",
+          "label": "学校教学楼正门前黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校教学楼正门前夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%AD%A6%E6%A5%BC%E6%AD%A3%E9%97%A8%E5%89%8D%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "学校教学楼正门前夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校教学楼正门前夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%AD%A6%E6%A5%BC%E6%AD%A3%E9%97%A8%E5%89%8D%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "学校教学楼正门前夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校楼梯白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%A5%BC%E6%A2%AF%E7%99%BD%E5%A4%A9.jpg",
+          "label": "学校楼梯白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校楼梯黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%A5%BC%E6%A2%AF%E9%BB%84%E6%98%8F.jpg",
+          "label": "学校楼梯黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校楼梯夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%A5%BC%E6%A2%AF%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "学校楼梯夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校楼梯夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%A5%BC%E6%A2%AF%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "学校楼梯夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校天台白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E5%A4%A9%E5%8F%B0%E7%99%BD%E5%A4%A9.jpg",
+          "label": "学校天台白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校天台黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E5%A4%A9%E5%8F%B0%E9%BB%84%E6%98%8F.jpg",
+          "label": "学校天台黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校天台夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E5%A4%A9%E5%8F%B0%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "学校天台夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校校园白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%A0%A1%E5%9B%AD%E7%99%BD%E5%A4%A9.jpg",
+          "label": "学校校园白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校校园黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%A0%A1%E5%9B%AD%E9%BB%84%E6%98%8F.jpg",
+          "label": "学校校园黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校校园夜晚": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%A0%A1%E5%9B%AD%E5%A4%9C%E6%99%9A.jpg",
+          "label": "学校校园夜晚",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校校园夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E6%A0%A1%E5%9B%AD%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "学校校园夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校中庭白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E4%B8%AD%E5%BA%AD%E7%99%BD%E5%A4%A9.jpg",
+          "label": "学校中庭白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校中庭黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E4%B8%AD%E5%BA%AD%E9%BB%84%E6%98%8F.jpg",
+          "label": "学校中庭黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校中庭夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E4%B8%AD%E5%BA%AD%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "学校中庭夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:学校中庭夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1%E4%B8%AD%E5%BA%AD%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "学校中庭夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:上学路上白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%B8%8A%E5%AD%A6%E8%B7%AF%E4%B8%8A%E7%99%BD%E5%A4%A9.jpg",
+          "label": "上学路上白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:上学路上黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%B8%8A%E5%AD%A6%E8%B7%AF%E4%B8%8A%E9%BB%84%E6%98%8F.jpg",
+          "label": "上学路上黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:上学路上夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%B8%8A%E5%AD%A6%E8%B7%AF%E4%B8%8A%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "上学路上夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:上学路上夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%B8%8A%E5%AD%A6%E8%B7%AF%E4%B8%8A%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "上学路上夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:图书馆": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%9B%BE%E4%B9%A6%E9%A6%86.jpg",
+          "label": "图书馆",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:男生房间白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E7%94%B7%E7%94%9F%E6%88%BF%E9%97%B4%E7%99%BD%E5%A4%A9.jpg",
+          "label": "男生房间白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:男生房间黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E7%94%B7%E7%94%9F%E6%88%BF%E9%97%B4%E9%BB%84%E6%98%8F.jpg",
+          "label": "男生房间黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:男生房间夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E7%94%B7%E7%94%9F%E6%88%BF%E9%97%B4%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "男生房间夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:男生房间夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E7%94%B7%E7%94%9F%E6%88%BF%E9%97%B4%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "男生房间夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:女生房间白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%A5%B3%E7%94%9F%E6%88%BF%E9%97%B4%E7%99%BD%E5%A4%A9.jpg",
+          "label": "女生房间白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:女生房间黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%A5%B3%E7%94%9F%E6%88%BF%E9%97%B4%E9%BB%84%E6%98%8F.jpg",
+          "label": "女生房间黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:女生房间夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%A5%B3%E7%94%9F%E6%88%BF%E9%97%B4%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "女生房间夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:女生房间夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%A5%B3%E7%94%9F%E6%88%BF%E9%97%B4%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "女生房间夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:女生房间夜晚夜灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%A5%B3%E7%94%9F%E6%88%BF%E9%97%B4%E5%A4%9C%E6%99%9A%E5%A4%9C%E7%81%AF.jpg",
+          "label": "女生房间夜晚夜灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:住所客厅白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BD%8F%E6%89%80%E5%AE%A2%E5%8E%85%E7%99%BD%E5%A4%A9.jpg",
+          "label": "住所客厅白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:住所客厅黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BD%8F%E6%89%80%E5%AE%A2%E5%8E%85%E9%BB%84%E6%98%8F.jpg",
+          "label": "住所客厅黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:住所客厅夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BD%8F%E6%89%80%E5%AE%A2%E5%8E%85%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "住所客厅夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:住所客厅夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BD%8F%E6%89%80%E5%AE%A2%E5%8E%85%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "住所客厅夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:住所玄关白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BD%8F%E6%89%80%E7%8E%84%E5%85%B3%E7%99%BD%E5%A4%A9.jpg",
+          "label": "住所玄关白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:住所玄关黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BD%8F%E6%89%80%E7%8E%84%E5%85%B3%E9%BB%84%E6%98%8F.jpg",
+          "label": "住所玄关黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:住所玄关夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BD%8F%E6%89%80%E7%8E%84%E5%85%B3%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "住所玄关夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:住所玄关夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BD%8F%E6%89%80%E7%8E%84%E5%85%B3%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "住所玄关夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:住所玄关夜晚夜灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BD%8F%E6%89%80%E7%8E%84%E5%85%B3%E5%A4%9C%E6%99%9A%E5%A4%9C%E7%81%AF.jpg",
+          "label": "住所玄关夜晚夜灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:浴室开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B5%B4%E5%AE%A4%E5%BC%80%E7%81%AF.jpg",
+          "label": "浴室开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:浴室关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B5%B4%E5%AE%A4%E5%85%B3%E7%81%AF.jpg",
+          "label": "浴室关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:住宅街白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BD%8F%E5%AE%85%E8%A1%97%E7%99%BD%E5%A4%A9.jpg",
+          "label": "住宅街白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:住宅街黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BD%8F%E5%AE%85%E8%A1%97%E9%BB%84%E6%98%8F.jpg",
+          "label": "住宅街黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:住宅街夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BD%8F%E5%AE%85%E8%A1%97%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "住宅街夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:住宅街夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E4%BD%8F%E5%AE%85%E8%A1%97%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "住宅街夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:地铁站": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%9C%B0%E9%93%81%E7%AB%99.jpg",
+          "label": "地铁站",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:高铁站白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%AB%98%E9%93%81%E7%AB%99%E7%99%BD%E5%A4%A9.jpg",
+          "label": "高铁站白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:高铁站黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%AB%98%E9%93%81%E7%AB%99%E9%BB%84%E6%98%8F.jpg",
+          "label": "高铁站黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:高铁站夜晚": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%AB%98%E9%93%81%E7%AB%99%E5%A4%9C%E6%99%9A.jpg",
+          "label": "高铁站夜晚",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:高铁站夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%AB%98%E9%93%81%E7%AB%99%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "高铁站夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:铁路道口白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%93%81%E8%B7%AF%E9%81%93%E5%8F%A3%E7%99%BD%E5%A4%A9.jpg",
+          "label": "铁路道口白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:铁路道口黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%93%81%E8%B7%AF%E9%81%93%E5%8F%A3%E9%BB%84%E6%98%8F.jpg",
+          "label": "铁路道口黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:铁路道口夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%93%81%E8%B7%AF%E9%81%93%E5%8F%A3%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "铁路道口夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:酒吧内": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%85%92%E5%90%A7%E5%86%85.jpg",
+          "label": "酒吧内",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:温泉白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B8%A9%E6%B3%89%E7%99%BD%E5%A4%A9.jpg",
+          "label": "温泉白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:温泉黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B8%A9%E6%B3%89%E9%BB%84%E6%98%8F.jpg",
+          "label": "温泉黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:温泉夜晚": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B8%A9%E6%B3%89%E5%A4%9C%E6%99%9A.jpg",
+          "label": "温泉夜晚",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:游乐场白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B8%B8%E4%B9%90%E5%9C%BA%E7%99%BD%E5%A4%A9.jpg",
+          "label": "游乐场白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:游乐场黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B8%B8%E4%B9%90%E5%9C%BA%E9%BB%84%E6%98%8F.jpg",
+          "label": "游乐场黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:游乐场夜晚": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B8%B8%E4%B9%90%E5%9C%BA%E5%A4%9C%E6%99%9A.jpg",
+          "label": "游乐场夜晚",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:公园白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%85%AC%E5%9B%AD%E7%99%BD%E5%A4%A9.jpg",
+          "label": "公园白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:公园黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%85%AC%E5%9B%AD%E9%BB%84%E6%98%8F.jpg",
+          "label": "公园黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:公园夜晚": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%85%AC%E5%9B%AD%E5%A4%9C%E6%99%9A.jpg",
+          "label": "公园夜晚",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:公园夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%85%AC%E5%9B%AD%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "公园夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:公园凉亭白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%85%AC%E5%9B%AD%E5%87%89%E4%BA%AD%E7%99%BD%E5%A4%A9.jpg",
+          "label": "公园凉亭白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:公园凉亭黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%85%AC%E5%9B%AD%E5%87%89%E4%BA%AD%E9%BB%84%E6%98%8F.jpg",
+          "label": "公园凉亭黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:公园凉亭夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%85%AC%E5%9B%AD%E5%87%89%E4%BA%AD%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "公园凉亭夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:公园商店白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%85%AC%E5%9B%AD%E5%95%86%E5%BA%97%E7%99%BD%E5%A4%A9.jpg",
+          "label": "公园商店白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:公园商店黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%85%AC%E5%9B%AD%E5%95%86%E5%BA%97%E9%BB%84%E6%98%8F.jpg",
+          "label": "公园商店黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:公园商店夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%85%AC%E5%9B%AD%E5%95%86%E5%BA%97%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "公园商店夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:海滩白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B5%B7%E6%BB%A9%E7%99%BD%E5%A4%A9.jpg",
+          "label": "海滩白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:海滩黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B5%B7%E6%BB%A9%E9%BB%84%E6%98%8F.jpg",
+          "label": "海滩黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:海滩夜晚": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B5%B7%E6%BB%A9%E5%A4%9C%E6%99%9A.jpg",
+          "label": "海滩夜晚",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:河边白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B2%B3%E8%BE%B9%E7%99%BD%E5%A4%A9.jpg",
+          "label": "河边白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:河边黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B2%B3%E8%BE%B9%E9%BB%84%E6%98%8F.jpg",
+          "label": "河边黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:河边夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%B2%B3%E8%BE%B9%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "河边夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:咖啡厅白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%92%96%E5%95%A1%E5%8E%85%E7%99%BD%E5%A4%A9.jpg",
+          "label": "咖啡厅白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:咖啡厅黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%92%96%E5%95%A1%E5%8E%85%E9%BB%84%E6%98%8F.jpg",
+          "label": "咖啡厅黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:咖啡厅夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%92%96%E5%95%A1%E5%8E%85%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "咖啡厅夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:餐馆白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%A4%90%E9%A6%86%E7%99%BD%E5%A4%A9.jpg",
+          "label": "餐馆白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:餐馆黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%A4%90%E9%A6%86%E9%BB%84%E6%98%8F.jpg",
+          "label": "餐馆黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:餐馆夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%A4%90%E9%A6%86%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "餐馆夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:美术馆白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E7%BE%8E%E6%9C%AF%E9%A6%86%E7%99%BD%E5%A4%A9.jpg",
+          "label": "美术馆白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:美术馆夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E7%BE%8E%E6%9C%AF%E9%A6%86%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "美术馆夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:医院病房": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%8C%BB%E9%99%A2%E7%97%85%E6%88%BF.jpg",
+          "label": "医院病房",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:医院大厅开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%8C%BB%E9%99%A2%E5%A4%A7%E5%8E%85%E5%BC%80%E7%81%AF.jpg",
+          "label": "医院大厅开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:医院大厅夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%8C%BB%E9%99%A2%E5%A4%A7%E5%8E%85%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "医院大厅夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:医院大厅夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%8C%BB%E9%99%A2%E5%A4%A7%E5%8E%85%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "医院大厅夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:医院走廊白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%8C%BB%E9%99%A2%E8%B5%B0%E5%BB%8A%E7%99%BD%E5%A4%A9.jpg",
+          "label": "医院走廊白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:医院走廊夜晚": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%8C%BB%E9%99%A2%E8%B5%B0%E5%BB%8A%E5%A4%9C%E6%99%9A.jpg",
+          "label": "医院走廊夜晚",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:酒店白天": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%85%92%E5%BA%97%E7%99%BD%E5%A4%A9.jpg",
+          "label": "酒店白天",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:酒店黄昏": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%85%92%E5%BA%97%E9%BB%84%E6%98%8F.jpg",
+          "label": "酒店黄昏",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:酒店夜晚": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%85%92%E5%BA%97%E5%A4%9C%E6%99%9A.jpg",
+          "label": "酒店夜晚",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:酒店前台开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%85%92%E5%BA%97%E5%89%8D%E5%8F%B0%E5%BC%80%E7%81%AF.jpg",
+          "label": "酒店前台开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:酒店前台夜晚开灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%85%92%E5%BA%97%E5%89%8D%E5%8F%B0%E5%A4%9C%E6%99%9A%E5%BC%80%E7%81%AF.jpg",
+          "label": "酒店前台夜晚开灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "background:酒店前台夜晚关灯": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%85%92%E5%BA%97%E5%89%8D%E5%8F%B0%E5%A4%9C%E6%99%9A%E5%85%B3%E7%81%AF.jpg",
+          "label": "酒店前台夜晚关灯",
+          "tags": [
+            "background"
+          ]
+        },
+        "cg:CG奇迹的压轴_开场": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E5%A5%87%E8%BF%B9%E7%9A%84%E5%8E%8B%E8%BD%B4_%E5%BC%80%E5%9C%BA.png",
+          "label": "CG奇迹的压轴_开场",
+          "tags": [
+            "cg"
+          ]
+        },
+        "cg:CG奇迹的压轴_高潮": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E5%A5%87%E8%BF%B9%E7%9A%84%E5%8E%8B%E8%BD%B4_%E9%AB%98%E6%BD%AE.png",
+          "label": "CG奇迹的压轴_高潮",
+          "tags": [
+            "cg"
+          ]
+        },
+        "cg:CG天台告白_并肩": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E5%A4%A9%E5%8F%B0%E5%91%8A%E7%99%BD_%E5%B9%B6%E8%82%A9.png",
+          "label": "CG天台告白_并肩",
+          "tags": [
+            "cg"
+          ]
+        },
+        "cg:CG天台告白_花火": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E5%A4%A9%E5%8F%B0%E5%91%8A%E7%99%BD_%E8%8A%B1%E7%81%AB.png",
+          "label": "CG天台告白_花火",
+          "tags": [
+            "cg"
+          ]
+        },
+        "cg:CG做爱事后": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E5%81%9A%E7%88%B1%E4%BA%8B%E5%90%8E.png",
+          "label": "CG做爱事后",
+          "tags": [
+            "cg"
+          ]
+        },
+        "cg:CG游乐场": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E6%B8%B8%E4%B9%90%E5%9C%BA.png",
+          "label": "CG游乐场",
+          "tags": [
+            "cg"
+          ]
+        },
+        "cg:CG用餐": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E7%94%A8%E9%A4%90.png",
+          "label": "CG用餐",
+          "tags": [
+            "cg"
+          ]
+        },
+        "cg:CG学校": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E5%AD%A6%E6%A0%A1.png",
+          "label": "CG学校",
+          "tags": [
+            "cg"
+          ]
+        },
+        "cg:CG河边": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E6%B2%B3%E8%BE%B9.png",
+          "label": "CG河边",
+          "tags": [
+            "cg"
+          ]
+        },
+        "cg:CG散步": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E6%95%A3%E6%AD%A5.png",
+          "label": "CG散步",
+          "tags": [
+            "cg"
+          ]
+        },
+        "cg:CG便利店": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E4%BE%BF%E5%88%A9%E5%BA%97.png",
+          "label": "CG便利店",
+          "tags": [
+            "cg"
+          ]
+        },
+        "cg:CG观景": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E8%A7%82%E6%99%AF.png",
+          "label": "CG观景",
+          "tags": [
+            "cg"
+          ]
+        },
+        "cg:CG酒吧": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E9%85%92%E5%90%A7.png",
+          "label": "CG酒吧",
+          "tags": [
+            "cg"
+          ]
+        },
+        "cg:CG居家": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/CG%E5%B1%85%E5%AE%B6.png",
+          "label": "CG居家",
+          "tags": [
+            "cg"
+          ]
+        },
+        "bgm:学校": {
+          "kind": "audio",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E5%AD%A6%E6%A0%A1.mp3",
+          "label": "学校",
+          "tags": [
+            "bgm"
+          ]
+        },
+        "bgm:校外": {
+          "kind": "audio",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%A0%A1%E5%A4%96.mp3",
+          "label": "校外",
+          "tags": [
+            "bgm"
+          ]
+        },
+        "bgm:酒吧": {
+          "kind": "audio",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E9%85%92%E5%90%A7.mp3",
+          "label": "酒吧",
+          "tags": [
+            "bgm"
+          ]
+        },
+        "bgm:白羽": {
+          "kind": "audio",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E7%99%BD%E7%BE%BD.mp3",
+          "label": "白羽",
+          "tags": [
+            "bgm"
+          ]
+        },
+        "sprite:棒球服平静": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/%E6%A3%92%E7%90%83%E6%9C%8D%E5%B9%B3%E9%9D%99.png",
+          "label": "棒球服平静",
+          "tags": [
+            "sprite"
+          ]
+        },
+        "performer-avatar": {
+          "kind": "image",
+          "url": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/assets/visitor.svg",
+          "label": "演绎者",
+          "tags": [
+            "avatar"
+          ]
+        }
+      },
+      "data": {
+        "title": "顾声慢 · 白羽",
+        "assetAliases": {
+          "sprite": {
+            "棒球服流泪": "sprite:棒球服流泪",
+            "棒球服害羞": "sprite:棒球服害羞",
+            "棒球服微笑": "sprite:棒球服微笑",
+            "睡衣平静": "sprite:睡衣平静",
+            "睡衣微笑": "sprite:睡衣微笑",
+            "裸体": "sprite:裸体",
+            "琉夏校服平静": "sprite:琉夏校服平静",
+            "琉夏校服流泪": "sprite:琉夏校服流泪",
+            "琉夏校服害羞": "sprite:琉夏校服害羞",
+            "琉夏校服微笑": "sprite:琉夏校服微笑",
+            "泽音校服平静": "sprite:泽音校服平静",
+            "泽音校服流泪": "sprite:泽音校服流泪",
+            "泽音校服害羞": "sprite:泽音校服害羞",
+            "泽音校服微笑": "sprite:泽音校服微笑",
+            "棒球服平静": "sprite:棒球服平静"
+          },
+          "background": {
+            "便利店": "background:便利店",
+            "商店街白天": "background:商店街白天",
+            "商店街黄昏": "background:商店街黄昏",
+            "商店街夜晚开灯": "background:商店街夜晚开灯",
+            "拱廊商店街白天": "background:拱廊商店街白天",
+            "拱廊商店街黄昏": "background:拱廊商店街黄昏",
+            "拱廊商店街夜晚开灯": "background:拱廊商店街夜晚开灯",
+            "购物中心白天": "background:购物中心白天",
+            "购物中心黄昏": "background:购物中心黄昏",
+            "购物中心夜晚关灯": "background:购物中心夜晚关灯",
+            "庙会小吃街白天": "background:庙会小吃街白天",
+            "庙会小吃街黄昏": "background:庙会小吃街黄昏",
+            "庙会小吃街夜晚开灯": "background:庙会小吃街夜晚开灯",
+            "学校教室白天": "background:学校教室白天",
+            "学校教室黄昏": "background:学校教室黄昏",
+            "学校教室夜晚开灯": "background:学校教室夜晚开灯",
+            "学校教室夜晚关灯": "background:学校教室夜晚关灯",
+            "学校教学楼正门前白天": "background:学校教学楼正门前白天",
+            "学校教学楼正门前黄昏": "background:学校教学楼正门前黄昏",
+            "学校教学楼正门前夜晚开灯": "background:学校教学楼正门前夜晚开灯",
+            "学校教学楼正门前夜晚关灯": "background:学校教学楼正门前夜晚关灯",
+            "学校楼梯白天": "background:学校楼梯白天",
+            "学校楼梯黄昏": "background:学校楼梯黄昏",
+            "学校楼梯夜晚开灯": "background:学校楼梯夜晚开灯",
+            "学校楼梯夜晚关灯": "background:学校楼梯夜晚关灯",
+            "学校天台白天": "background:学校天台白天",
+            "学校天台黄昏": "background:学校天台黄昏",
+            "学校天台夜晚关灯": "background:学校天台夜晚关灯",
+            "学校校园白天": "background:学校校园白天",
+            "学校校园黄昏": "background:学校校园黄昏",
+            "学校校园夜晚": "background:学校校园夜晚",
+            "学校校园夜晚开灯": "background:学校校园夜晚开灯",
+            "学校中庭白天": "background:学校中庭白天",
+            "学校中庭黄昏": "background:学校中庭黄昏",
+            "学校中庭夜晚开灯": "background:学校中庭夜晚开灯",
+            "学校中庭夜晚关灯": "background:学校中庭夜晚关灯",
+            "上学路上白天": "background:上学路上白天",
+            "上学路上黄昏": "background:上学路上黄昏",
+            "上学路上夜晚开灯": "background:上学路上夜晚开灯",
+            "上学路上夜晚关灯": "background:上学路上夜晚关灯",
+            "图书馆": "background:图书馆",
+            "男生房间白天": "background:男生房间白天",
+            "男生房间黄昏": "background:男生房间黄昏",
+            "男生房间夜晚开灯": "background:男生房间夜晚开灯",
+            "男生房间夜晚关灯": "background:男生房间夜晚关灯",
+            "女生房间白天": "background:女生房间白天",
+            "女生房间黄昏": "background:女生房间黄昏",
+            "女生房间夜晚开灯": "background:女生房间夜晚开灯",
+            "女生房间夜晚关灯": "background:女生房间夜晚关灯",
+            "女生房间夜晚夜灯": "background:女生房间夜晚夜灯",
+            "住所客厅白天": "background:住所客厅白天",
+            "住所客厅黄昏": "background:住所客厅黄昏",
+            "住所客厅夜晚开灯": "background:住所客厅夜晚开灯",
+            "住所客厅夜晚关灯": "background:住所客厅夜晚关灯",
+            "住所玄关白天": "background:住所玄关白天",
+            "住所玄关黄昏": "background:住所玄关黄昏",
+            "住所玄关夜晚开灯": "background:住所玄关夜晚开灯",
+            "住所玄关夜晚关灯": "background:住所玄关夜晚关灯",
+            "住所玄关夜晚夜灯": "background:住所玄关夜晚夜灯",
+            "浴室开灯": "background:浴室开灯",
+            "浴室关灯": "background:浴室关灯",
+            "住宅街白天": "background:住宅街白天",
+            "住宅街黄昏": "background:住宅街黄昏",
+            "住宅街夜晚开灯": "background:住宅街夜晚开灯",
+            "住宅街夜晚关灯": "background:住宅街夜晚关灯",
+            "地铁站": "background:地铁站",
+            "高铁站白天": "background:高铁站白天",
+            "高铁站黄昏": "background:高铁站黄昏",
+            "高铁站夜晚": "background:高铁站夜晚",
+            "高铁站夜晚开灯": "background:高铁站夜晚开灯",
+            "铁路道口白天": "background:铁路道口白天",
+            "铁路道口黄昏": "background:铁路道口黄昏",
+            "铁路道口夜晚开灯": "background:铁路道口夜晚开灯",
+            "酒吧内": "background:酒吧内",
+            "温泉白天": "background:温泉白天",
+            "温泉黄昏": "background:温泉黄昏",
+            "温泉夜晚": "background:温泉夜晚",
+            "游乐场白天": "background:游乐场白天",
+            "游乐场黄昏": "background:游乐场黄昏",
+            "游乐场夜晚": "background:游乐场夜晚",
+            "公园白天": "background:公园白天",
+            "公园黄昏": "background:公园黄昏",
+            "公园夜晚": "background:公园夜晚",
+            "公园夜晚开灯": "background:公园夜晚开灯",
+            "公园凉亭白天": "background:公园凉亭白天",
+            "公园凉亭黄昏": "background:公园凉亭黄昏",
+            "公园凉亭夜晚开灯": "background:公园凉亭夜晚开灯",
+            "公园商店白天": "background:公园商店白天",
+            "公园商店黄昏": "background:公园商店黄昏",
+            "公园商店夜晚开灯": "background:公园商店夜晚开灯",
+            "海滩白天": "background:海滩白天",
+            "海滩黄昏": "background:海滩黄昏",
+            "海滩夜晚": "background:海滩夜晚",
+            "河边白天": "background:河边白天",
+            "河边黄昏": "background:河边黄昏",
+            "河边夜晚关灯": "background:河边夜晚关灯",
+            "咖啡厅白天": "background:咖啡厅白天",
+            "咖啡厅黄昏": "background:咖啡厅黄昏",
+            "咖啡厅夜晚开灯": "background:咖啡厅夜晚开灯",
+            "餐馆白天": "background:餐馆白天",
+            "餐馆黄昏": "background:餐馆黄昏",
+            "餐馆夜晚开灯": "background:餐馆夜晚开灯",
+            "美术馆白天": "background:美术馆白天",
+            "美术馆夜晚关灯": "background:美术馆夜晚关灯",
+            "医院病房": "background:医院病房",
+            "医院大厅开灯": "background:医院大厅开灯",
+            "医院大厅夜晚开灯": "background:医院大厅夜晚开灯",
+            "医院大厅夜晚关灯": "background:医院大厅夜晚关灯",
+            "医院走廊白天": "background:医院走廊白天",
+            "医院走廊夜晚": "background:医院走廊夜晚",
+            "酒店白天": "background:酒店白天",
+            "酒店黄昏": "background:酒店黄昏",
+            "酒店夜晚": "background:酒店夜晚",
+            "酒店前台开灯": "background:酒店前台开灯",
+            "酒店前台夜晚开灯": "background:酒店前台夜晚开灯",
+            "酒店前台夜晚关灯": "background:酒店前台夜晚关灯"
+          },
+          "cg": {
+            "CG奇迹的压轴_开场": "cg:CG奇迹的压轴_开场",
+            "CG奇迹的压轴_高潮": "cg:CG奇迹的压轴_高潮",
+            "CG天台告白_并肩": "cg:CG天台告白_并肩",
+            "CG天台告白_花火": "cg:CG天台告白_花火",
+            "CG做爱事后": "cg:CG做爱事后",
+            "CG游乐场": "cg:CG游乐场",
+            "CG用餐": "cg:CG用餐",
+            "CG学校": "cg:CG学校",
+            "CG河边": "cg:CG河边",
+            "CG散步": "cg:CG散步",
+            "CG便利店": "cg:CG便利店",
+            "CG观景": "cg:CG观景",
+            "CG酒吧": "cg:CG酒吧",
+            "CG居家": "cg:CG居家"
+          },
+          "bgm": {
+            "学校": "bgm:学校",
+            "校外": "bgm:校外",
+            "酒吧": "bgm:酒吧",
+            "白羽": "bgm:白羽"
+          }
+        },
+        "autoDelayMs": 1500,
+        "defaultInputPrompt": "继续眼前的故事。",
+        "characterName": "顾声慢",
+        "characterAvatar": "sprite:棒球服平静",
+        "performerName": "周听澜",
+        "performerAvatar": "performer-avatar",
+        "typewriterSpeedMs": 30,
+        "opening": "<gametext>\n[bg|学校楼梯黄昏]\n[bgm|学校]\n旁白|||傍晚，旧教学楼三楼的走廊。夕阳将地面上的光带拉得狭长，从橘红到暗红，每天如此。\n旁白|||顾声慢靠在活动室门外的墙上。距离上一次触摸琴键已经过了半个多小时，指尖残留的触感早已冷却。\n旁白|||名为《白羽》的乐谱上密密麻麻的红叉，排练的压力，死死卡住的旋律过渡段……一切都像一块石头压在胸口。\n旁白|||嗒、嗒、嗒。不轻不重的脚步声在走廊另一头响起。\n旁白|||第七天了。这个脚步声每天傍晚都会准时出现，停在走廊尽头的窗边。\n旁白|||顾声慢没有抬头，盯着自己左手小指侧面磨红的茧。\n旁白|||那人停在窗边，背对着她，微微仰起头，对着窗外正在被暮色吞噬的天空，轻轻呼出了一口气。\n旁白|||冬日的冷空气让那道气息瞬间凝成白雾。它缓慢地翻卷、舒展，然后在光线中一点点消散，边缘变得模糊，直至完全透明。\n旁白|||顾声慢的呼吸停住了。白雾消散的轨迹在脑海中分解——不是生硬的转折，不是粗暴的切割，而是让压抑被看见，然后自然地容纳、转化。\n旁白|||她扶着墙站起来，一把推开了活动室的门。\n[bg|学校教室黄昏]\n[show|顾声慢|C|棒球服平静]\n旁白|||钢琴静静立在中央。顾声慢没有犹豫，径直坐在琴凳上。她学着那人的样子，深深地呼出一口气，随后指尖落下。\n旁白|||起初是轻柔的单音，左手切入最简单的三和弦。到了那个卡了整整一周的过渡段，她没有强行推进。\n[alter|顾声慢|棒球服微笑]\n旁白|||旋律在这里悬停，随后音域自然拓宽，像雾散之后天光亮起。没有突兀的高潮，只有温和却坚定的光亮。\n旁白|||最后一个音符落下，活动室里安静得能听见微尘浮动的声音。指尖在琴键上微微颤抖。破局的路径，找到了。\n旁白|||就在这时，走廊上传来脚步声——那人正在离开。\n[bg|学校楼梯夜晚关灯]\n[alter|顾声慢|棒球服平静]\n顾声慢|C|棒球服平静|等等——\n旁白|||她猛地推开门追了出去。声音出口的瞬间，她自己都愣了一下。那人停住脚步，转过身。\n旁白|||逆着走廊尽头仅剩的一点天光，看不清那人的脸，只能看见一个模糊的轮廓。\n[alter|顾声慢|棒球服害羞]\n顾声慢|C|棒球服害羞|……你，你的名字是......？\n[bg|学校楼梯夜晚开灯]\n旁白|||问完的瞬间，走廊尽头的应急灯“啪”地一声亮起，投下一地冷白色的光，照亮了她微微发烫的耳尖。\n[choice|告诉她名字|反问她刚才弹的是什么曲子|保持沉默，转身走下楼梯]\n</gametext>"
+      },
+      "mode": "custom",
+      "scriptUrl": "/role-assets/HkdRM1AnnRgadXaEkJ4fT/main.js"
+    },
+    "initial": {
+      "sessionId": "LrmpKr8l2lKJequJyyTiC",
+      "branchId": "main",
+      "floorId": null,
+      "attemptId": null,
+      "versionId": "HkdRM1AnnRgadXaEkJ4fT",
+      "snapshotId": "edd9f65d-f81f-4b88-b4c9-a306927a7077",
+      "parentSnapshotId": null,
+      "variables": {
+        "世界": {
+          "当前地址": "轻音社活动室",
+          "当前时间": "2025年12月15日17:20",
+          "事件状态": "无"
+        },
+        "顾声慢": {
+          "情感连结度": 0,
+          "创作完成度": 0,
+          "心象映射": {
+            "当前心声": "唔哇——他不会觉得我是怪人吧！身体比脑子先动了起来......不过只是为了表达，这也是没有办法的！",
+            "当前脑内旋律": "《前前前世》"
+          }
+        }
+      },
+      "source": {
+        "kind": "initial",
+        "runId": null,
+        "jobId": null
+      }
+    },
+    "current": {
+      "sessionId": "LrmpKr8l2lKJequJyyTiC",
+      "branchId": "main",
+      "floorId": "LpJLh6wc2K84qB7t3BiwW",
+      "attemptId": "W38HtWfVPMOQ9WcFh7QhK:1",
+      "versionId": "HkdRM1AnnRgadXaEkJ4fT",
+      "snapshotId": "eb1364aa-89de-49dc-adb2-8ebbfa7f1bf7",
+      "parentSnapshotId": "edd9f65d-f81f-4b88-b4c9-a306927a7077",
+      "variables": {
+        "世界": {
+          "当前地址": "旧教学楼三楼走廊",
+          "当前时间": "2025年12月15日17:35",
+          "事件状态": "无"
+        },
+        "顾声慢": {
+          "情感连结度": 2,
+          "创作完成度": 0,
+          "心象映射": {
+            "当前心声": "他听出来了……那段过渡段亮起来的感觉。七天里第一次说上话，我却问了个冒失的问题。他会怎么回答？",
+            "当前脑内旋律": "《君の知らない物語》"
+          }
+        }
+      },
+      "source": {
+        "kind": "floor",
+        "runId": "W38HtWfVPMOQ9WcFh7QhK",
+        "jobId": null
+      }
+    },
+    "processing": {
+      "pendingMain": null,
+      "pendingFollowups": false,
+      "pendingStateFloorId": null
+    },
+    "capabilities": {
+      "send": true,
+      "history": true,
+      "customFloors": false
+    }
+  },
+  "messages": [
+    {
+      "id": "FbQh5xu_wJ-39Wvg_Jy7R",
+      "role": "user",
+      "content": "周听澜停下脚步，转向她。“我叫周听澜。刚才那段钢琴我听到了，最后的旋律像是慢慢亮起来了，很好听。你想说什么？我不急着走。”",
+      "source": "api"
+    },
+    {
+      "id": "FHdhqfWJGxcdd-9iUQW7Y",
+      "role": "assistant",
+      "content": "\n\n<gametext>\n[bgm|学校]\n[bg|学校楼梯黄昏]\n[show|顾声慢|C|棒球服害羞]\n旁白|||周听澜。他在暮色里报出这三个字，语气平常得像是在说今天食堂的味噌汤有点咸。\n旁白|||顾声慢的脑子短暂地卡了一拍。她原本准备的台词——如果对方问“你是谁”“有什么事吗”——全都没用上。他直接说了名字，还说了曲子。说最后那段旋律像慢慢亮起来了。\n旁白|||亮起来了。她下意识攥紧了垂在身侧的手指。那正是她弹的时候脑子里浮现的画面——雾散之后天光一点点透出来。这个人只是站在走廊上听，就听到了。\n[alter|顾声慢|棒球服平静]\n旁白|||不行，得说点什么。人家站在那里等她开口，还说了“不急着走”。这句话的潜台词是不是“你慢慢想，我等你”？不不不，也可能只是客套，对，就是客套。\n顾声慢|C|棒球服平静|……周听澜同学。\n旁白|||声音比预想中稳，还好。她微微抬起帽檐，视线落在对方肩头的位置——黄昏的光从走廊尽头漫过来，把那道轮廓勾出一层毛茸茸的边。\n顾声慢|C|棒球服平静|刚才那首曲子，其实卡了很久。是你站在窗边呼出的那口气，让我找到了过渡段的解法。\n旁白|||说出来了。她有点想立刻把帽檐压回去。这种话听起来会不会很奇怪？什么“呼出的那口气”——太抽象了吧，正常人谁会用别人的呼吸当灵感啊。\n[alter|顾声慢|棒球服害羞]\n旁白|||可话已经出口了，收不回来。她索性把后半句也说了。\n顾声慢|C|棒球服害羞|所以……谢谢你。虽然你可能只是碰巧站在那里。[action|顾声慢|jump_down]\n旁白|||说完就后悔了。什么叫“碰巧站在那里”，这不是把对方的好意硬生生降级成偶然事件了吗。顾声慢在心里默默给自己的沟通能力打了个不及格。\n[alter|顾声慢|棒球服平静]\n旁白|||走廊里安静了几秒。应急灯的白光把两个人的影子拖得很长，交叠在磨得发亮的地板上。\n旁白|||她忽然意识到，这是七天以来，他们第一次真正说上话。此前她只知道每天傍晚会有一个脚步声停在窗边，停留片刻，然后离开。她甚至不确定对方有没有注意到活动室里有人。\n顾声慢|C|棒球服平静|……你每天都来。是有什么事吗？\n旁白|||问完又觉得冒失。人家来走廊站一会儿怎么了，学校又不是她家开的。可这句话憋了七天，不问出来总觉得像乐谱上缺了一个音，怎么弹都不完整。\n[choice|回答“只是觉得这里的夕阳很好看”|反问她“你是轻音社的？”|说“没什么事，就是随便走走”]\n</gametext>",
+      "source": "narrator"
+    }
+  ]
+}

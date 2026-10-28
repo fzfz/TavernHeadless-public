@@ -1,0 +1,120 @@
+{
+  "originalCount": 6,
+  "roleTextCount": 0,
+  "retainedRoleTextIndices": [
+    null
+  ],
+  "events": [
+    {
+      "payload": {
+        "branchId": "main",
+        "floorId": "TzHVjoXR1kbMkDMlNN6AN",
+        "floorNo": 9
+      },
+      "type": "start"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": null,
+        "error": null,
+        "floorId": "TzHVjoXR1kbMkDMlNN6AN",
+        "pendingOutput": null,
+        "phase": "semantic_resolved",
+        "phaseSeq": 2,
+        "publicPhase": "preparing",
+        "runId": "8GRe7Vyzq-j7LrAex7DwS",
+        "runType": "respond",
+        "startedAt": 1791215395672,
+        "status": "running",
+        "updatedAt": 1791215395677,
+        "verifier": null
+      },
+      "type": "run"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": null,
+        "error": null,
+        "floorId": "TzHVjoXR1kbMkDMlNN6AN",
+        "pendingOutput": null,
+        "phase": "prechecked",
+        "phaseSeq": 3,
+        "publicPhase": "preparing",
+        "runId": "8GRe7Vyzq-j7LrAex7DwS",
+        "runType": "respond",
+        "startedAt": 1791215395672,
+        "status": "running",
+        "updatedAt": 1791215395677,
+        "verifier": null
+      },
+      "type": "run"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": null,
+        "error": null,
+        "floorId": "TzHVjoXR1kbMkDMlNN6AN",
+        "pendingOutput": null,
+        "phase": "prompt_assembled",
+        "phaseSeq": 4,
+        "publicPhase": "preparing",
+        "runId": "8GRe7Vyzq-j7LrAex7DwS",
+        "runType": "respond",
+        "startedAt": 1791215395672,
+        "status": "running",
+        "updatedAt": 1791215395692,
+        "verifier": null
+      },
+      "type": "run"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": null,
+        "error": null,
+        "floorId": "TzHVjoXR1kbMkDMlNN6AN",
+        "pendingOutput": null,
+        "phase": "page_generating",
+        "phaseSeq": 5,
+        "publicPhase": "generating",
+        "runId": "8GRe7Vyzq-j7LrAex7DwS",
+        "runType": "respond",
+        "startedAt": 1791215395672,
+        "status": "running",
+        "updatedAt": 1791215395694,
+        "verifier": null
+      },
+      "type": "run"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": null,
+        "error": null,
+        "floorId": "TzHVjoXR1kbMkDMlNN6AN",
+        "pendingOutput": {
+          "attemptNo": 1,
+          "error": null,
+          "startedAt": 1791215395695,
+          "state": "draft",
+          "tempId": "temp-8GRe7Vyzq-j7LrAex7DwS-1-tHlhx3",
+          "text": "",
+          "updatedAt": 1791215395695
+        },
+        "phase": "page_generating",
+        "phaseSeq": 6,
+        "publicPhase": "generating",
+        "runId": "8GRe7Vyzq-j7LrAex7DwS",
+        "runType": "respond",
+        "startedAt": 1791215395672,
+        "status": "running",
+        "updatedAt": 1791215395695,
+        "verifier": null
+      },
+      "type": "run"
+    }
+  ]
+}

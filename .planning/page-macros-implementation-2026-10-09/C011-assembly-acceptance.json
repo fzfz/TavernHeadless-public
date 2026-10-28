@@ -1,0 +1,1527 @@
+{
+  "passed": true,
+  "records": [
+    {
+      "opening": {
+        "openingId": "default",
+        "kind": "introduction"
+      },
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是陆泽的妻子，性格沉着、直率。她正在阅读人物介绍，准备了解陆泽与其他人物的关系。"
+      },
+      "request": {
+        "message": "“我已经读完人物介绍，想先了解陆泽。”",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "prefixRule": true,
+        "currentInput": true
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TSmI1G/preview-runs/2026-10-09T09-54-30-675Z-9e2b588c-4142-455a-bf28-accab5436a53",
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 23,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "“我已经读完人物介绍，想先了解陆泽。”"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-f669d7cc-3d9a-4298-a485-4c77376ae164",
+        "preset_updated_at": 1791539671969,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-25d468a6-f40d-4f8c-b136-d788767d64cc",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "0GwVuiS_HpzvTaR9LZE2_",
+        "character_version_id": "t72kYB9-Wh0M8iA0TIhDL",
+        "character_imported_format": null,
+        "character_content_hash": "b6f6c2ce11e9e5f91ec65319973a454b414bd4ca94ffdd155065d650dcf7266b",
+        "worldbook_activated_entry_uids": [
+          33, 15, 25, 0, 14, 23, 13, 21, 12, 19, 11, 17, 10, 8, 30, 9, 5, 3, 2,
+          4, 1, 27, 29
+        ],
+        "worldbook_activated_entries": [
+          {
+            "uid": 0,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:0",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "before"
+            }
+          },
+          {
+            "uid": 15,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:15",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 25,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:25",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 14,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:14",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 23,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:23",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 13,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:13",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 21,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:21",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 12,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:12",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 19,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:19",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 11,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:11",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 17,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:17",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 10,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:10",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 8,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:8",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 30,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:30",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 9,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:9",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 5,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:5",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 3,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:3",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 2,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:2",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 4,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:4",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 1,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:1",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 27,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:27",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 29,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:29",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 33,
+            "activation_key": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1:entry:33",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "ZX6uiTtyJZaHQsXLXVJFj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:ZX6uiTtyJZaHQsXLXVJFj:1"
+            },
+            "insertion": {
+              "position": "at_depth",
+              "depth": 0,
+              "role": "system"
+            }
+          }
+        ],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "49bf9e5aa287c5f210f4bb943c68f3429d6226e77630b61ac81750bce741f148",
+        "prompt_digest": "2112cc452627b926037829943d9c1e671a2754f7cc65eee19c32029ad39c7174",
+        "token_estimate": 5655
+      }
+    },
+    {
+      "opening": {
+        "openingId": "default",
+        "kind": "introduction"
+      },
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是31岁的女性，是陆泽的妻子，性格沉着、直率。她正在阅读人物介绍，准备了解陆泽与其他人物的关系。"
+      },
+      "request": {
+        "message": "“我已经读完人物介绍，想先了解陆泽。”",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "prefixRule": true,
+        "currentInput": true
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TSmI1G/preview-runs/2026-10-09T09-54-39-781Z-3ce2c59d-523d-4650-a67c-622f8ef5fa98",
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 23,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "“我已经读完人物介绍，想先了解陆泽。”"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-bd5c1575-bc1f-487f-ba55-31f1ba196b96",
+        "preset_updated_at": 1791539681025,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-7850b819-fa4a-43f4-89c5-8c9b1cac5b30",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "pPEG7Ol3i_v6vqud3-sOn",
+        "character_version_id": "2QD3W6D3U3I9QejEoc0ho",
+        "character_imported_format": null,
+        "character_content_hash": "777ff5f70daac1fd4173e29585b4ef1a3573f8a3fa3ec3a13385bd819d3b27c7",
+        "worldbook_activated_entry_uids": [
+          33, 15, 25, 0, 14, 23, 13, 21, 12, 19, 11, 17, 10, 8, 30, 9, 5, 3, 2,
+          4, 1, 27, 29
+        ],
+        "worldbook_activated_entries": [
+          {
+            "uid": 0,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:0",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "before"
+            }
+          },
+          {
+            "uid": 15,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:15",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 25,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:25",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 14,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:14",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 23,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:23",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 13,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:13",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 21,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:21",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 12,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:12",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 19,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:19",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 11,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:11",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 17,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:17",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 10,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:10",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 8,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:8",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 30,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:30",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 9,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:9",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 5,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:5",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 3,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:3",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 2,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:2",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 4,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:4",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 1,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:1",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 27,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:27",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 29,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:29",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 33,
+            "activation_key": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1:entry:33",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "yvzAkF-uJ9c0waf6ImEcA",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:yvzAkF-uJ9c0waf6ImEcA:1"
+            },
+            "insertion": {
+              "position": "at_depth",
+              "depth": 0,
+              "role": "system"
+            }
+          }
+        ],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "ccd8c767cb35f10d021f8bca44e8c03909dc722eb00cab62ba641a1f740e6745",
+        "prompt_digest": "8f2a2729f098af628ebf332730613e6f7fe59726d2ca27f3284c581c58df5bfd",
+        "token_estimate": 5272
+      }
+    },
+    {
+      "opening": {
+        "openingId": "husband-away",
+        "kind": "state-name",
+        "path": ["location", "user"]
+      },
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是陆泽的妻子，性格沉着、直率。她正在阅读人物介绍，准备了解陆泽与其他人物的关系。"
+      },
+      "request": {
+        "message": "【给写作者的要求】请接续当前开场，叙述继续使用第三人称。",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "prefixRule": true,
+        "currentInput": true
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TSmI1G/preview-runs/2026-10-09T09-54-48-193Z-6db703aa-a4a3-4fee-b092-ef1671515c2d",
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 23,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "【给写作者的要求】请接续当前开场，叙述继续使用第三人称。"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-60d66d77-2527-4c2c-b480-7a3556092561",
+        "preset_updated_at": 1791539689404,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-8a2e73b3-7ec2-49b0-b1cc-cf2ff3d494cd",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "DaMDWu2qS50ksU1VH50y8",
+        "character_version_id": "yvBFO8bHGLJR101YpnhON",
+        "character_imported_format": null,
+        "character_content_hash": "b83b9edd163394c5666f2f306909d837737efb529e088b6da097517507e620eb",
+        "worldbook_activated_entry_uids": [
+          33, 15, 25, 0, 14, 23, 13, 21, 12, 19, 11, 17, 10, 8, 30, 9, 5, 3, 2,
+          4, 1, 27, 29
+        ],
+        "worldbook_activated_entries": [
+          {
+            "uid": 0,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:0",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "before"
+            }
+          },
+          {
+            "uid": 15,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:15",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 25,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:25",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 14,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:14",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 23,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:23",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 13,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:13",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 21,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:21",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 12,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:12",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 19,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:19",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 11,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:11",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 17,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:17",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 10,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:10",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 8,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:8",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 30,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:30",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 9,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:9",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 5,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:5",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 3,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:3",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 2,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:2",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 4,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:4",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 1,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:1",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 27,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:27",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 29,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:29",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 33,
+            "activation_key": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1:entry:33",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "3BAwRT_Nl8d6-hGWazjGj",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:3BAwRT_Nl8d6-hGWazjGj:1"
+            },
+            "insertion": {
+              "position": "at_depth",
+              "depth": 0,
+              "role": "system"
+            }
+          }
+        ],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "cb2e22145f8aabec1c1b8645cb7bdb6d013cf371dd6db8e8f3b28097953bb4d3",
+        "prompt_digest": "b07df91ec8dbd06cac5b6ee25e628bde606e78b439ccf115663ea8b4fe811ea8",
+        "token_estimate": 5925
+      }
+    },
+    {
+      "opening": {
+        "openingId": "husband-away",
+        "kind": "state-name",
+        "path": ["location", "user"]
+      },
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是31岁的女性，是陆泽的妻子，性格沉着、直率。她正在阅读人物介绍，准备了解陆泽与其他人物的关系。"
+      },
+      "request": {
+        "message": "【给写作者的要求】请接续当前开场，叙述继续使用第三人称。",
+        "branch_id": "main",
+        "prompt_intent": "normal"
+      },
+      "checks": {
+        "fullDescription": true,
+        "thirdPerson": true,
+        "prefixRule": true,
+        "currentInput": true
+      },
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TSmI1G/preview-runs/2026-10-09T09-54-56-299Z-c4c46632-baaf-4647-ae29-aa47722d6e5a",
+      "assembly": {
+        "mode": "preset",
+        "prompt_intent": "normal",
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "preset_used": true,
+        "worldbook_hits": 23,
+        "selected_prompt_order_character_id": 100000,
+        "ignored_prompt_order_character_ids": [],
+        "regex_pre_rules": [],
+        "regex_post_rules": [],
+        "memory_summary_injected": false,
+        "reserved_variable_collisions": [],
+        "unsupported_preset_fields": [],
+        "ignored_preset_fields": [],
+        "unresolved_preset_markers": [],
+        "preset_warnings": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "always",
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "preprocessed_user_message": "【给写作者的要求】请接续当前开场，叙述继续使用第三人称。"
+      },
+      "snapshot": {
+        "preset_id": "preview-preset-d03e9131-3953-420f-a0e7-8907f61a512b",
+        "preset_updated_at": 1791539697474,
+        "preset_version": 1,
+        "preset_version_id": "preview-preset-version-704a1ef5-031f-4b97-b1e7-dd400f92d96e",
+        "preset_content_hash": "isolated-preview-preset",
+        "worldbook_id": null,
+        "worldbook_updated_at": null,
+        "worldbook_version": null,
+        "worldbook_version_id": null,
+        "worldbook_content_hash": null,
+        "regex_profile_id": null,
+        "regex_profile_updated_at": null,
+        "regex_profile_version": null,
+        "regex_profile_version_id": null,
+        "regex_profile_content_hash": null,
+        "character_id": "bSWAhFwRv1uJeggMHElSv",
+        "character_version_id": "0qKVmU9dkXDFBp6jabpO_",
+        "character_imported_format": null,
+        "character_content_hash": "afb07c7edc33a2d232297d84cb5abe02d2a9301327db4259d377ccad8644d29d",
+        "worldbook_activated_entry_uids": [
+          33, 15, 25, 0, 14, 23, 13, 21, 12, 19, 11, 17, 10, 8, 30, 9, 5, 3, 2,
+          4, 1, 27, 29
+        ],
+        "worldbook_activated_entries": [
+          {
+            "uid": 0,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:0",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "before"
+            }
+          },
+          {
+            "uid": 15,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:15",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 25,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:25",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 14,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:14",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 23,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:23",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 13,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:13",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 21,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:21",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 12,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:12",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 19,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:19",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 11,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:11",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 17,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:17",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 10,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:10",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 8,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:8",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 30,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:30",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 9,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:9",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 5,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:5",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 3,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:3",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 2,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:2",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 4,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:4",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 1,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:1",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 27,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:27",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 29,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:29",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "after"
+            }
+          },
+          {
+            "uid": 33,
+            "activation_key": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1:entry:33",
+            "source": {
+              "kind": "session_worldbook",
+              "worldbook_id": "MelpBrPWEK_8PfCNEDJ9w",
+              "worldbook_name": "我的心碎成很多片，每一片爱上不同的人",
+              "asset_scope_id": "worldbook:MelpBrPWEK_8PfCNEDJ9w:1"
+            },
+            "insertion": {
+              "position": "at_depth",
+              "depth": 0,
+              "role": "system"
+            }
+          }
+        ],
+        "regex_pre_rule_names": [],
+        "regex_post_rule_names": [],
+        "prompt_mode": "native",
+        "asset_manifest_digest": "2e822bd7e287dab97b00b8d9ba6e1387e8765a35e858d551196998dfeeff27df",
+        "prompt_digest": "aeed9b2acb1b37dc457ec9a4a462e20a5e646ef21a74945279baabc857413f83",
+        "token_estimate": 5521
+      }
+    }
+  ]
+}

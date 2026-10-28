@@ -1,0 +1,49 @@
+{
+  "mode": "openrouter",
+  "turns": [
+    {
+      "floorId": "script-gushengman:floor:1",
+      "attemptId": "script-gushengman:floor:1:attempt:1",
+      "models": {
+        "narrator": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+        "updater": "nex-agi/nex-n2.5-pro:free"
+      },
+      "proposal": {
+        "changes": [
+          {
+            "op": "set",
+            "path": "/世界/当前地址",
+            "value": "学校楼梯"
+          },
+          {
+            "op": "set",
+            "path": "/世界/当前时间",
+            "value": "2025年12月15日17:22"
+          },
+          {
+            "op": "set",
+            "path": "/世界/事件状态",
+            "value": "两人已道别"
+          },
+          {
+            "op": "set",
+            "path": "/顾声慢/情感连结度",
+            "value": 1
+          },
+          {
+            "op": "set",
+            "path": "/顾声慢/心象映射/当前心声",
+            "value": "明天再一起听琴，真期待。"
+          }
+        ],
+        "evidenceMessageIds": [
+          "script-gushengman:floor:1:user",
+          "script-gushengman:floor:1:assistant"
+        ]
+      },
+      "beforeSnapshotId": "script-gushengman:snapshot:0",
+      "afterSnapshotId": "script-gushengman:floor:1:attempt:1:snapshot"
+    }
+  ],
+  "failure": null
+}

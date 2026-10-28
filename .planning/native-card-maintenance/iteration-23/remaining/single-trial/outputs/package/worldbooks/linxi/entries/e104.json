@@ -1,0 +1,40 @@
+{
+  "uid": 104,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": true,
+  "comment": "林茜_身体边界控制器",
+  "order": 1040,
+  "disable": false,
+  "position": 4,
+  "selectiveLogic": 0,
+  "depth": 0,
+  "role": 1,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": false,
+  "preventRecursion": false,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": true,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<%_\nvar controllerWorldbook = charLoreBook || '林茜_世界书_v1.3.32';\nvar bodyFeeling = getvar('stat_data.林茜.感情');\nvar bodyFall = getvar('stat_data.林茜.堕落');\n\nif (\n  typeof bodyFeeling === 'number' && Number.isFinite(bodyFeeling) && bodyFeeling >= 0 && bodyFeeling <= 999 &&\n  typeof bodyFall === 'number' && Number.isFinite(bodyFall) && bodyFall >= 0 && bodyFall <= 999\n) {\n\nprint(await getwi(controllerWorldbook, '林茜_身体边界_用户共同'));\nif (bodyFeeling >= 450) {\n  print(await getwi(controllerWorldbook, '林茜_身体边界_用户_450以上'));\n} else if (bodyFeeling >= 300) {\n  print(await getwi(controllerWorldbook, '林茜_身体边界_用户_300_449'));\n} else {\n  print(await getwi(controllerWorldbook, '林茜_身体边界_用户_299以下'));\n}\n\nprint(await getwi(controllerWorldbook, '林茜_身体边界_杨桃子共同'));\nif (bodyFall >= 620) {\n  print(await getwi(controllerWorldbook, '杨桃子_称呼阶段_620以上'));\n} else if (bodyFall >= 380) {\n  print(await getwi(controllerWorldbook, '杨桃子_称呼阶段_380_619'));\n} else if (bodyFall >= 200) {\n  print(await getwi(controllerWorldbook, '杨桃子_称呼阶段_200_379'));\n} else {\n  print(await getwi(controllerWorldbook, '杨桃子_称呼阶段_0_199'));\n}\n\nif (bodyFall >= 620) {\n  print(await getwi(controllerWorldbook, '林茜_身体边界_杨桃子_620以上'));\n} else if (bodyFall >= 380) {\n  print(await getwi(controllerWorldbook, '林茜_身体边界_杨桃子_380_619'));\n} else if (bodyFall >= 220) {\n  print(await getwi(controllerWorldbook, '林茜_身体边界_杨桃子_220_379'));\n} else if (bodyFall >= 81) {\n  print(await getwi(controllerWorldbook, '林茜_身体边界_杨桃子_81_219'));\n} else {\n  print(await getwi(controllerWorldbook, '林茜_身体边界_杨桃子_0_80'));\n}\n\nvar eventConsent = getvar('stat_data.世界.已触发事件.事件_E012') === true;\nvar eventDeath = getvar('stat_data.世界.已触发事件.事件_E035') === true;\nif (eventConsent && !eventDeath) {\n  print(await getwi(controllerWorldbook, '林茜_身体边界_王授军'));\n}\n}\n_%>\n"
+}

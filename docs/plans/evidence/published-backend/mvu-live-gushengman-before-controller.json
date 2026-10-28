@@ -1,0 +1,101 @@
+{
+  "key": "gushengman",
+  "releaseId": "PQo1K7qwHw9htnsfnJg65",
+  "sessionId": "Nk0Ozus69ynkomsnCpSPs",
+  "rounds": [
+    {
+      "message": "我在旁边坐下，轻声说：“刚才那段旋律很好听。你愿意和我聊聊它的来历吗？”",
+      "before": {
+        "sessionId": "Nk0Ozus69ynkomsnCpSPs",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "WmzqXAl2Nz-QY5EN3Gz1p",
+        "snapshotId": "a88a8873-ac05-498a-9d4d-2c51f1d03e11",
+        "parentSnapshotId": null,
+        "variables": {
+          "世界": {
+            "当前地址": "轻音社活动室",
+            "当前时间": "2025年12月15日17:20",
+            "事件状态": "无"
+          },
+          "顾声慢": {
+            "情感连结度": 0,
+            "创作完成度": 0,
+            "心象映射": {
+              "当前心声": "唔哇——他不会觉得我是怪人吧！身体比脑子先动了起来......不过只是为了表达，这也是没有办法的！",
+              "当前脑内旋律": "《前前前世》"
+            }
+          }
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "events": [
+        {
+          "type": "text",
+          "data": {
+            "sessionId": "Nk0Ozus69ynkomsnCpSPs",
+            "branchId": "main",
+            "floorId": "hE6lDYwJNGkVzHT_XpJye",
+            "attemptId": "WLfchMn0PBtoc9nMvLNbe:1",
+            "streamId": "response:hE6lDYwJNGkVzHT_XpJye",
+            "runId": "WLfchMn0PBtoc9nMvLNbe",
+            "jobId": null,
+            "messageId": null,
+            "revision": 0,
+            "type": "start",
+            "status": "streaming",
+            "text": "",
+            "error": null
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "sessionId": "Nk0Ozus69ynkomsnCpSPs",
+            "branchId": "main",
+            "floorId": "hE6lDYwJNGkVzHT_XpJye",
+            "attemptId": "WLfchMn0PBtoc9nMvLNbe:1",
+            "streamId": "response:hE6lDYwJNGkVzHT_XpJye",
+            "runId": "WLfchMn0PBtoc9nMvLNbe",
+            "jobId": null,
+            "messageId": null,
+            "revision": 1,
+            "type": "update",
+            "status": "streaming",
+            "text": "<gametext>\n[bg|学校楼梯黄昏]\n[bgm|学校]\n旁白|||脚步停在窗边，顾声慢回头时，应急灯的白光正落在她脸上。她显然没料到会被叫住，肩膀放松下来，目光却仍留着几分戒备。\n旁白|||有人坐到窗台旁，开口称赞了她刚才的演奏，还问起那段旋律的来历。这个搭话方式不算差，至少没有把她当成什么需要被围观的怪人。\n[alter|顾声慢|棒球服平静]\n旁白|||顾声慢没有立刻回答。她转身推开活动室的门，让走廊里的人看见那架旧钢琴，随后才侧过身，示意对方进来。\n旁白|||活动室里的夕阳已经褪去大半，乐谱架上的红笔、写满批注的谱纸和那杯早已凉透的饮料还摆在原处。这里显然不是临时起意练琴的地方，而是她每天放学后都会回来的据点。\n[show|顾声慢|C|棒球服平静]\n顾声慢|C|棒球服平静|嗯……可以。不过，先说好，不是那种“我随便弹着玩，灵感自己跑出来了”的故事。[action|顾声慢|near]\n旁白|||她走到钢琴前，把谱纸摊平，指尖在某个过渡段上点了点。红笔圈出的地方，正是刚才旋律忽然舒展的位置。\n顾声慢|C|棒球服平静|这里卡了我很久。我一直想把它写得更顺，可越顺，就越没意思。后来……我在走廊里看见有人叹气，白雾散开的样子，让我忽然觉得，音乐也可以先让情绪出来，再让它慢慢消失。\n旁白|||她顿了顿，像是觉得这个解释有点丢脸，抬手把帽檐压低了些。\n顾声慢|C|棒球服害羞|……听起来很怪吧？\n旁白|||她说完便看向琴键，没有继续追问，也没有急着替对方下结论。那副样子，像是在等对方把话说完，又像是在等对方别把这件事当成笑话。\n旁白|||活动室外的天色彻底暗了下来，走廊里的灯一盏接一盏亮着。顾声慢把椅子往琴凳旁挪了挪，给来人留出位置。\n顾声慢|C|棒球服平静|如果你愿意听，我可以把这段弹给你听。只是……别笑我给它取了个很土的名字。\n旁白|||她把手重新放回琴键上，指尖轻轻落下，却没有立刻弹出声音。片刻后，她偏过头，像是在确认对方有没有跟上自己的节奏。\n顾声慢|C|棒球服害羞|还有，你刚才说那段旋律很好听……是真的觉得好听，还是为了让我继续说下去？\n[choice|“是真的好听，我想听你讲完。”|“先别弹，告诉我你给它取了什么名字。”|“我可以坐在旁边听，但你要把谱子给我看。”]\n</gametext>",
+            "error": null
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "sessionId": "Nk0Ozus69ynkomsnCpSPs",
+            "branchId": "main",
+            "floorId": "hE6lDYwJNGkVzHT_XpJye",
+            "attemptId": "WLfchMn0PBtoc9nMvLNbe:1",
+            "streamId": "response:hE6lDYwJNGkVzHT_XpJye",
+            "runId": "WLfchMn0PBtoc9nMvLNbe",
+            "jobId": null,
+            "messageId": "u0TKrrf-cfBA37sApQdI5",
+            "revision": 2,
+            "type": "end",
+            "status": "completed",
+            "text": "<gametext>\n[bg|学校楼梯黄昏]\n[bgm|学校]\n旁白|||脚步停在窗边，顾声慢回头时，应急灯的白光正落在她脸上。她显然没料到会被叫住，肩膀放松下来，目光却仍留着几分戒备。\n旁白|||有人坐到窗台旁，开口称赞了她刚才的演奏，还问起那段旋律的来历。这个搭话方式不算差，至少没有把她当成什么需要被围观的怪人。\n[alter|顾声慢|棒球服平静]\n旁白|||顾声慢没有立刻回答。她转身推开活动室的门，让走廊里的人看见那架旧钢琴，随后才侧过身，示意对方进来。\n旁白|||活动室里的夕阳已经褪去大半，乐谱架上的红笔、写满批注的谱纸和那杯早已凉透的饮料还摆在原处。这里显然不是临时起意练琴的地方，而是她每天放学后都会回来的据点。\n[show|顾声慢|C|棒球服平静]\n顾声慢|C|棒球服平静|嗯……可以。不过，先说好，不是那种“我随便弹着玩，灵感自己跑出来了”的故事。[action|顾声慢|near]\n旁白|||她走到钢琴前，把谱纸摊平，指尖在某个过渡段上点了点。红笔圈出的地方，正是刚才旋律忽然舒展的位置。\n顾声慢|C|棒球服平静|这里卡了我很久。我一直想把它写得更顺，可越顺，就越没意思。后来……我在走廊里看见有人叹气，白雾散开的样子，让我忽然觉得，音乐也可以先让情绪出来，再让它慢慢消失。\n旁白|||她顿了顿，像是觉得这个解释有点丢脸，抬手把帽檐压低了些。\n顾声慢|C|棒球服害羞|……听起来很怪吧？\n旁白|||她说完便看向琴键，没有继续追问，也没有急着替对方下结论。那副样子，像是在等对方把话说完，又像是在等对方别把这件事当成笑话。\n旁白|||活动室外的天色彻底暗了下来，走廊里的灯一盏接一盏亮着。顾声慢把椅子往琴凳旁挪了挪，给来人留出位置。\n顾声慢|C|棒球服平静|如果你愿意听，我可以把这段弹给你听。只是……别笑我给它取了个很土的名字。\n旁白|||她把手重新放回琴键上，指尖轻轻落下，却没有立刻弹出声音。片刻后，她偏过头，像是在确认对方有没有跟上自己的节奏。\n顾声慢|C|棒球服害羞|还有，你刚才说那段旋律很好听……是真的觉得好听，还是为了让我继续说下去？\n[choice|“是真的好听，我想听你讲完。”|“先别弹，告诉我你给它取了什么名字。”|“我可以坐在旁边听，但你要把谱子给我看。”]\n</gametext>",
+            "error": null
+          }
+        }
+      ],
+      "dryRunWithoutMvu": true,
+      "success": false,
+      "error": {
+        "code": "role_state_update_failed",
+        "message": "State update failed. Retry the state update."
+      }
+    }
+  ]
+}

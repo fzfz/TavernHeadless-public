@@ -1,0 +1,6 @@
+{
+  "status": 400,
+  "contentType": "application/json",
+  "elapsedMs": 1396,
+  "text": "{\"error\":{\"message\":\"Provider returned error\",\"code\":400,\"metadata\":{\"raw\":\"{\\\"code\\\":400,\\\"reason\\\":\\\"INVALID_REQUEST_BODY\\\",\\\"message\\\":\\\"Model 'apodex/apodex-1.1-mini' does not support 'json_schema' response format. Supported formats: json_object.\\\",\\\"metadata\\\":{}}\",\"provider_name\":\"Novita\",\"is_byok\":false}},\"user_id\":\"user_2eaKHkAWDCnviVoRJzVRt7gkThs\"}"
+}

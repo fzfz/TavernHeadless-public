@@ -1,0 +1,84 @@
+{
+  "scope": "8份Skill文档及状态组装架构方案；后端实现和新角色卡转换未执行",
+  "results": [
+    {
+      "check": "Skill启动检查",
+      "status": "passed",
+      "command": "python3 /Users/developer/.cc-switch/skills/skill-creator/scripts/quick_validate.py .agents/skills/native-card-conversion",
+      "result": "Skill is valid!"
+    },
+    {
+      "check": "Markdownlint",
+      "status": "passed",
+      "files": 17,
+      "errors": 0
+    },
+    {
+      "check": "Prettier",
+      "status": "passed",
+      "files": 17
+    },
+    {
+      "check": "文档本地引用",
+      "status": "passed",
+      "files": 12,
+      "links": 89,
+      "missing": 0,
+      "record": "reference-check.json",
+      "limit": "本地文件及新增最高原则标题；未扩查既有其他锚点"
+    },
+    {
+      "check": "Skill入口及API引用测试",
+      "status": "passed",
+      "files": 2,
+      "passed": 9,
+      "skipped": 50,
+      "record": "entry-tests-final.log",
+      "limit": "按命令筛选相关用例，不代表全部工具测试"
+    },
+    {
+      "check": "Skill文档独立语义审阅",
+      "status": "passed",
+      "record": "skill-semantic-review-final.json"
+    },
+    {
+      "check": "入口删句后的独立复审",
+      "status": "passed",
+      "record": "skill-entry-semantic-review-pass.json"
+    },
+    {
+      "check": "架构方案独立语义审阅",
+      "status": "passed",
+      "record": "proposal-semantic-review-pass.json"
+    },
+    {
+      "check": "code-review Standards",
+      "status": "passed",
+      "mandatoryFindings": 0,
+      "record": "code-review-standards.json"
+    },
+    {
+      "check": "code-review Spec",
+      "status": "passed",
+      "mandatoryFindings": 0,
+      "record": "code-review-spec.json"
+    },
+    {
+      "check": "收尾计划及进度独立语义审阅",
+      "status": "passed",
+      "record": "progress-semantic-review.json"
+    }
+  ],
+  "notExecuted": [
+    "本轮新的角色卡转换",
+    "真实模型与正式前后端验收",
+    "后端架构实现",
+    "全项目测试及构建"
+  ],
+  "reason": "本次为文档修订和待批准架构方案；完整117项维护与项目完成检查仍按原计划执行",
+  "errorsAndRepairs": "check-errors.json",
+  "userCorrection": {
+    "deleted": "规则正文作为实际消费者的输入。",
+    "file": ".agents/skills/native-card-conversion/SKILL.md"
+  }
+}

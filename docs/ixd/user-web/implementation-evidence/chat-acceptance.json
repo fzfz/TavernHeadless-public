@@ -1,0 +1,114 @@
+{
+  "base": "http://127.0.0.1:4190",
+  "cases": [
+    {
+      "name": "自定义Runtime资源与组装",
+      "status": "passed"
+    },
+    {
+      "name": "桌面IME、换行、流式发送与下一条草稿",
+      "status": "passed"
+    },
+    {
+      "name": "编辑草稿刷新恢复与保存正文",
+      "status": "passed"
+    },
+    {
+      "name": "跨页面编辑版本冲突与刷新草稿恢复",
+      "status": "passed"
+    },
+    {
+      "name": "重新生成与候选切换",
+      "status": "passed"
+    },
+    {
+      "name": "续写保存assistant-only楼层",
+      "status": "passed"
+    },
+    {
+      "name": "分支确认取消、创建、继承与继续演绎",
+      "status": "passed"
+    },
+    {
+      "name": "单条删除的Esc、取消与修订保存",
+      "status": "passed"
+    },
+    {
+      "name": "编辑已保存后响应丢失的同操作核对",
+      "status": "passed"
+    },
+    {
+      "name": "删除后历史参与下一次生成",
+      "status": "passed"
+    },
+    {
+      "name": "手机自定义布局、Enter换行与外接键盘发送",
+      "status": "passed"
+    },
+    {
+      "name": "手机系统聊天的固定输入和页头",
+      "status": "passed"
+    },
+    {
+      "name": "首个响应丢失后刷新核对唯一生成",
+      "status": "passed"
+    },
+    {
+      "name": "停止生成与服务器取消结果",
+      "status": "passed"
+    }
+  ],
+  "screenshots": [
+    "desktop-custom.png",
+    "mobile-custom.png",
+    "mobile-system.png",
+    "mobile-stopped.png"
+  ],
+  "errors": [],
+  "generationScope": "本地确定性供应商；验收界面、传输、保存与恢复。",
+  "customSessionId": "eY1P0zibhClWlgJCf4RkC",
+  "selectedCandidate": {
+    "sessionId": "eY1P0zibhClWlgJCf4RkC",
+    "branchId": "main",
+    "floorId": "M44q3bgCzAs7DSrfFS1XS",
+    "attemptId": "3rmNj_asm0OACmkz0uFbY:1",
+    "versionId": "qnSYksS4kMPz-kT2TX6Kx",
+    "snapshotId": "2c76df55-6aa4-41c3-81cc-5b7684288370",
+    "parentSnapshotId": "10ffe0ef-4f4c-420a-83d4-1c218082f8d2",
+    "variables": {
+      "location": "花园门口",
+      "hour": 23,
+      "trust": 21
+    },
+    "source": {
+      "kind": "manual",
+      "runId": null,
+      "jobId": null
+    }
+  },
+  "continuedFloorId": "v9s33UutOcx4QjzFA6WHJ",
+  "branchId": "branch-1f528f92-5c31-470d-bbe7-f88de0a8dc95",
+  "lostEditOperation": "d6f389b1-05a1-4cc0-b08d-b489d444e9ef",
+  "systemSessionId": "_VpMFi1N0eZU9YjyaHqQg",
+  "lostStartOperation": {
+    "intent": "send",
+    "operationId": "b5bb1f5c-ca4c-417d-8bbf-67b51e163bfe",
+    "sessionId": "_VpMFi1N0eZU9YjyaHqQg",
+    "branchId": "main",
+    "floorId": "vAOMqRS1gX5RB9EQQ-UXc",
+    "floorState": "committed",
+    "runStatus": "completed",
+    "publicPhase": "post_processing"
+  },
+  "stoppedOperation": {
+    "intent": "send",
+    "operationId": "18454c6f-c58e-4032-b197-794a35224aa3",
+    "sessionId": "_VpMFi1N0eZU9YjyaHqQg",
+    "branchId": "main",
+    "floorId": "aZR0MV0QeeGjild3C_bZY",
+    "floorState": "failed",
+    "runStatus": "cancelled",
+    "publicPhase": "generating"
+  },
+  "status": "passed"
+}

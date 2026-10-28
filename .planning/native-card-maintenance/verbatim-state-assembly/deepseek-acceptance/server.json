@@ -1,0 +1,9 @@
+{
+  "address": "http://127.0.0.1:56511",
+  "controlAddress": "http://127.0.0.1:56512",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "cap": 40,
+  "maximumUsd": 1,
+  "automaticRetries": 0,
+  "sourceCommit": "79e6206"
+}

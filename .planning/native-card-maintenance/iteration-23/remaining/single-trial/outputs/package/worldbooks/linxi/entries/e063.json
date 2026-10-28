@@ -1,0 +1,40 @@
+{
+  "uid": 63,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_4_AM_业务接触",
+  "order": 260,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E004>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n艾沫沫已经是林茜的上司兼好友。{{user}}以前去家电城接林茜时见过她，也知道两人是校友；那次林茜暂时离开，艾沫沫留在卖场陪{{user}}聊天，谈起过家电城和林茜读书时的事，她们亲近得有时不像上下级。\n\n艾沫沫打电话给{{user}},报出自己的名字，语气比在卖场时客气许多：“你好，我是艾沫沫。最近有件业务上的事，想跟你咨询一下。方便出来吃个饭吗？”“业务上的事”说得稳妥，最后那句邀请却放轻了声音。电话挂断后，{{user}}的手机收到她发来的地址：家电城附近的一家商务酒店餐厅。\n\n艾沫沫提前到了，坐在靠墙的位置等他。她把手机扣在桌面，手指反复将餐巾纸叠成小方块，又拆开重叠。见{{user}}坐下，她先谈了几句家电城的近况，随后停了停，低头说：“其实我不太擅长单独跟异性聊天。尤其是……林茜的丈夫。”\n\n她没有立刻解释所谓业务，反而问起{{user}}最近的生活，又提到两人共同认识的学校和林茜在店里的状态。她始终把“业务咨询”留作可以退回去的说法，真正想确认的是{{user}}对林茜近况知道多少。谈到林茜时，她轻声说：“她其实很在乎你。”说完便看向桌上的餐巾纸，等待{{user}}的回应。\n\n这次见面留下了一个新的私下联系通道。艾沫沫仍然以工作为名发来消息或邀约，每次都把真实意图藏在业务说法后面；林茜尚未知道她在背后单独联系自己的丈夫。\n</事件_E004>\n"
+}

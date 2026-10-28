@@ -1,0 +1,656 @@
+{
+  "date": "2026-10-20T08:29:52.579Z",
+  "scope": "设计交付阅读版；原型交互证据引用阶段 7",
+  "checks": {
+    "structure": {
+      "sourceCount": 30,
+      "pageCount": 22,
+      "pageSections": [
+        {
+          "file": "phase4-page-specs/page-P01.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P02.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P03.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P04.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P05.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P06.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P07.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P08.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P09.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P10.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P11.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P12.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P13.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P14.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P15.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P16.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P17.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P18.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P19.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P20.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P21.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        },
+        {
+          "file": "phase4-page-specs/page-P22.md",
+          "sections": [
+            "1. 页面概述",
+            "2. 页面布局",
+            "3. 组件清单",
+            "4. 交互行为详述",
+            "5. 页面状态流转",
+            "6. 动效说明",
+            "7. 数据策略",
+            "8. 适配说明",
+            "10. 特定场景微交互说明"
+          ]
+        }
+      ],
+      "diagrams": 8,
+      "unrenderedDiagrams": 0,
+      "brokenAnchors": [],
+      "duplicateIds": []
+    },
+    "localLinks": [
+      {
+        "href": "phase8-document.html",
+        "exists": true
+      },
+      {
+        "href": "phase8-review-round-1.md",
+        "exists": true
+      },
+      {
+        "href": "phase1-context.md",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/user-web/package.json",
+        "exists": true
+      },
+      {
+        "href": "progress.json",
+        "exists": true
+      },
+      {
+        "href": "phase2-architecture.md",
+        "exists": true
+      },
+      {
+        "href": "feature-basis.md#2-%E9%A1%B5%E9%9D%A2%E5%85%83%E7%B4%A0%E4%B8%8E%E4%BA%A4%E4%BA%92%E8%A6%86%E7%9B%96",
+        "exists": true
+      },
+      {
+        "href": "user-web-requirements.md#4-%E7%8B%AC%E7%AB%8B%E6%BC%94%E7%BB%8E%E9%A1%B5%E9%9D%A2%E4%B8%8E%E6%B8%B2%E6%9F%93%E8%81%8C%E8%B4%A3",
+        "exists": true
+      },
+      {
+        "href": "phase3-userflows.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/README.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P01.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P02.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P03.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P04.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P05.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P06.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P07.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P08.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P09.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P10.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P11.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P12.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P13.md",
+        "exists": true
+      },
+      {
+        "href": "../../character-authoring/session-openings.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P14.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P15.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P16.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P17.md",
+        "exists": true
+      },
+      {
+        "href": "../../character-authoring/runtime-architecture.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P18.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P19.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P20.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P21.md",
+        "exists": true
+      },
+      {
+        "href": "phase4-page-specs/page-P22.md",
+        "exists": true
+      },
+      {
+        "href": "phase5-components.md",
+        "exists": true
+      },
+      {
+        "href": "phase6-tokens.json",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/user-web/src/runtime/script-runtime.ts",
+        "exists": true
+      },
+      {
+        "href": "phase6-contrast.json",
+        "exists": true
+      },
+      {
+        "href": "phase6-visual.md",
+        "exists": true
+      },
+      {
+        "href": "phase6-style-tile.html",
+        "exists": true
+      },
+      {
+        "href": "prototype/icons.mjs",
+        "exists": true
+      },
+      {
+        "href": "phase7-prototype-desktop.html",
+        "exists": true
+      },
+      {
+        "href": "phase7-prototype-mobile.html",
+        "exists": true
+      },
+      {
+        "href": "phase7-review-master.md",
+        "exists": true
+      },
+      {
+        "href": "phase7-evidence/desktop-session-light.png",
+        "exists": true
+      },
+      {
+        "href": "phase7-evidence/desktop-session-dark.png",
+        "exists": true
+      },
+      {
+        "href": "phase7-evidence/mobile-session-light.png",
+        "exists": true
+      },
+      {
+        "href": "phase7-evidence/mobile-session-dark.png",
+        "exists": true
+      },
+      {
+        "href": "../../development-index.md",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/user-web/CONTEXT.md",
+        "exists": true
+      },
+      {
+        "href": "user-web-requirements.md",
+        "exists": true
+      },
+      {
+        "href": "../../../packages/shared/CONTEXT.md",
+        "exists": true
+      },
+      {
+        "href": "prototype/index.html",
+        "exists": true
+      },
+      {
+        "href": "phase1-context.md#2-%E7%9B%AE%E6%A0%87%E5%B9%B3%E5%8F%B0%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%9F%BA%E7%A1%80",
+        "exists": true
+      },
+      {
+        "href": "prototype/app.mjs",
+        "exists": true
+      },
+      {
+        "href": "prototype/model.mjs",
+        "exists": true
+      },
+      {
+        "href": "prototype/browser.test.cjs",
+        "exists": true
+      },
+      {
+        "href": "prototype/model.test.mjs",
+        "exists": true
+      },
+      {
+        "href": "prototype/runtime-browser.test.cjs",
+        "exists": true
+      },
+      {
+        "href": "../../../AGENTS.md",
+        "exists": true
+      },
+      {
+        "href": "feature-basis.md",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/api/src/plugins/auth.ts",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/api/src/routes/accounts.ts",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/api/src/routes/users.ts",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/api/src/routes/sessions.ts",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/api/src/routes/characters.ts",
+        "exists": true
+      },
+      {
+        "href": "../../../packages/shared/src/schemas/native-card-package/character.schema.json",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/api/src/routes/role-releases.ts",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/api/src/routes/chat/index.ts",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/api/src/routes/pages.ts",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/api/src/routes/chat/schemas.ts",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/api/src/routes/messages.ts",
+        "exists": true
+      },
+      {
+        "href": "../../../apps/api/src/routes/floors.ts",
+        "exists": true
+      },
+      {
+        "href": "phase8-build.mjs",
+        "exists": true
+      }
+    ],
+    "widths": [
+      {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "overflow": false
+      },
+      {
+        "viewport": 390,
+        "documentWidth": 390,
+        "overflow": false
+      }
+    ],
+    "tokens": {
+      "count": 95,
+      "colors": 28,
+      "contrastPairs": 124,
+      "failedContrast": 0
+    },
+    "errors": [],
+    "documentationBuild": {
+      "command": "node vitepress/node_modules/vitepress/bin/vitepress.js build vitepress",
+      "result": "PASS",
+      "durationSeconds": 6.08
+    },
+    "textReview": {
+      "independentReview": "completed; findings resolved",
+      "stcErrors": 0,
+      "antiEcho": 0,
+      "manualWarningDisposition": [
+        "实现用于指代具体开发工作和功能缺口。",
+        "部分成功是批量操作的结果状态，采用逐项结果判断。"
+      ]
+    }
+  },
+  "pass": true
+}

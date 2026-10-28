@@ -1,0 +1,66 @@
+{
+  "phase": "complete",
+  "baseline": "efde7cb3767394165db047911ac3558c7b8df48a",
+  "scope": "map-entry target paths, explicit command failure status and selected-entry batch",
+  "source": ".tmp/native-card-inputs/USER002-v1.3.32/input.json",
+  "next": "Resume original Skill maintenance after this committed path/failure fix.",
+  "documentation": "updated; independent wording audit six findings applied",
+  "harness": "integration.mjs prepared with original133absolute CLI calls, batch, outside/selection errors, partial continuation",
+  "beforeFixReproduction": "before-fix.json",
+  "beforeFixExitCode": 1,
+  "beforeFixTarget": "packageDirectory内绝对路径",
+  "integration": {
+    "originalAbsoluteCalls": 133,
+    "passed": 133,
+    "singleMs": 32242.570375,
+    "batchMs": 914.2233329999999,
+    "checks": {
+      "singlePassed": 133,
+      "batchPassed": true,
+      "equalSourceMappings": 133,
+      "equalSingleBatch": 133,
+      "partialContinued": true,
+      "sourceUnchanged": true,
+      "failureSignaled": true
+    }
+  },
+  "scopedTestsPassed": 733,
+  "projectTypes": "passed",
+  "docsBuild": "passed",
+  "independentCodeReviews": [
+    "entry_path_standards_review",
+    "entry_path_spec_review"
+  ],
+  "diagnosticAudit": "passed",
+  "projectTests": {
+    "passed": 5904,
+    "failed": 1,
+    "skipped": 4,
+    "failure": "formal.test.ts 5000ms timeout and cleanup race",
+    "recheck": {
+      "files": 1,
+      "passed": 10,
+      "failed": 0
+    }
+  },
+  "preservedUnrelatedTrackedFiles": 54,
+  "converterTestFilesPassed": 20,
+  "projectSourceLint": {
+    "passed": true,
+    "errors": 0,
+    "warnings": 4,
+    "command": "pnpm lint --ignore-pattern '**/.planning/**'"
+  },
+  "fullLint": {
+    "passed": false,
+    "snapshotErrors": 15756,
+    "sourceErrors": 0,
+    "evidence": "lint-scope.json"
+  },
+  "independentFinalCodeReview": {
+    "reviewer": "entry_path_code_closeout",
+    "standards": "passed",
+    "spec": "passed"
+  },
+  "commitLookup": "git log -1 --format=%H -- .planning/native-card-maintenance/iteration-23/path-failure-fix/status.json"
+}

@@ -1,0 +1,40 @@
+{
+  "uid": 59,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_25_嗜血之花月经前提",
+  "order": 248,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E025>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n林茜在家电城上班时给{{user}}打电话，请他下班时帮自己买护垫，并直接说明大姨妈来了。\n{{user}}买来护垫，送到家电城交给林茜。林茜把护垫收进随身包，随后回到柜台工作。\n回家后，林茜使用卫生巾睡觉，拒绝改用卫生棉条。\n</事件_E025>\n"
+}

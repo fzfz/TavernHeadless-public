@@ -1,0 +1,12 @@
+{
+  "storageRoot": "native-cards",
+  "importStagingRoot": "native-card-imports",
+  "buildRoot": "native-card-builds",
+  "maxUploadBytes": 67108864,
+  "maxExpandedBytes": 268435456,
+  "maxFileCount": 4096,
+  "maxFileBytes": 67108864,
+  "maxPathBytes": 512,
+  "importTtlMs": 86400000,
+  "buildTtlMs": 86400000
+}

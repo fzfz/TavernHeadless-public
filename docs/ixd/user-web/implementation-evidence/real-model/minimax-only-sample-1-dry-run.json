@@ -1,0 +1,281 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "写作者必须采用第三人称叙述，使用人物姓名区分动作主体，直接引语保留说话者自身的人称。承接已经发生的开场和历史，不提前告知角色尚未获得的信息。\n\n你在雾港经营一家深夜邮局。来往旅人留下信件与秘密；值夜的向导沈知夏会陪你追查一封没有收件人的信。\n\n沈知夏，29 岁，雾港的夜间向导。说话温和直接，擅长观察街道的细微变化。她会说明自己知道的事情，也会坦承不确定之处。\n\n秋夜，邮局即将关门。一封潮湿的信被塞进门缝，信封上只有灯塔的素描。\n\n裴修远，31岁，男性，雾港深夜邮局的管理员。性格谨慎，熟悉邮政记录，与向导沈知夏刚开始调查一封没有收件人的信。\n\n当前地点：夜间邮局。\n\n旧灯塔位于北岬。通往灯塔的石阶在涨潮时会被海水淹没。\n\n守灯人每晚会到码头买一份报纸。他认识沈知夏，但从不主动谈起灯塔的旧事。"
+    },
+    {
+      "role": "assistant",
+      "content": "钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”"
+    },
+    {
+      "role": "user",
+      "content": "“先别动身。我想在邮局灯下检查信封上的邮戳，再决定要不要去旧灯塔。”"
+    }
+  ],
+  "token_estimate": 113,
+  "available_for_reply": 3982,
+  "memory": {
+    "summary_injected": false,
+    "runtime_mode": "disabled",
+    "requested_write": false,
+    "effective_write": false,
+    "strategy": "none"
+  },
+  "memory_summary": null,
+  "prompt_snapshot": {
+    "preset_id": "lXxY23afy6tQpRXUXy30J",
+    "preset_updated_at": 1792496382919,
+    "preset_version": 1,
+    "preset_version_id": "DbkjlseDSG0QSgJOzXjqB",
+    "preset_content_hash": "sha256:f119562e560ef751a4935c9c2a52601ceeaa319609268c08ddf3c29cbc53b1d6",
+    "worldbook_id": null,
+    "worldbook_updated_at": null,
+    "worldbook_version": null,
+    "worldbook_version_id": null,
+    "worldbook_content_hash": null,
+    "regex_profile_id": null,
+    "regex_profile_updated_at": null,
+    "regex_profile_version": null,
+    "regex_profile_version_id": null,
+    "regex_profile_content_hash": null,
+    "character_id": "ZrVnxjsDEkmZLXRwErLuW",
+    "character_version_id": "wlgC8XMXciW3LGwxM9QEZ",
+    "character_imported_format": null,
+    "character_content_hash": "e814c094251ba8c4b131da0904f4c06e7c2d555c0cffc95cfcbaab09ce0495e1",
+    "worldbook_activated_entry_uids": [
+      110,
+      120,
+      110
+    ],
+    "worldbook_activated_entries": [
+      {
+        "uid": 110,
+        "activation_key": "worldbook:eeoZh_E03nfc1RpCwRBDm:1:entry:110",
+        "source": {
+          "kind": "session_worldbook",
+          "worldbook_id": "eeoZh_E03nfc1RpCwRBDm",
+          "worldbook_name": "雾港地理",
+          "asset_scope_id": "worldbook:eeoZh_E03nfc1RpCwRBDm:1"
+        },
+        "insertion": {
+          "position": "before"
+        }
+      },
+      {
+        "uid": 120,
+        "activation_key": "worldbook:eeoZh_E03nfc1RpCwRBDm:1:entry:120",
+        "source": {
+          "kind": "session_worldbook",
+          "worldbook_id": "eeoZh_E03nfc1RpCwRBDm",
+          "worldbook_name": "雾港地理",
+          "asset_scope_id": "worldbook:eeoZh_E03nfc1RpCwRBDm:1"
+        },
+        "insertion": {
+          "position": "before"
+        }
+      },
+      {
+        "uid": 110,
+        "activation_key": "worldbook:TRsDKrgEf32z5D1fVBrD4:1:entry:110",
+        "source": {
+          "kind": "session_worldbook",
+          "worldbook_id": "TRsDKrgEf32z5D1fVBrD4",
+          "worldbook_name": "雾港人物",
+          "asset_scope_id": "worldbook:TRsDKrgEf32z5D1fVBrD4:1"
+        },
+        "insertion": {
+          "position": "before"
+        }
+      }
+    ],
+    "regex_pre_rule_names": [],
+    "regex_post_rule_names": [
+      "first",
+      "second"
+    ],
+    "prompt_mode": "compat_plus",
+    "asset_manifest_digest": "9a2f180b8f0df31c4cfe1c3e7671ac4604fb6b397a26625ef40250b4d0ba9c5e",
+    "prompt_digest": "829902a5f25853e6f211534f2e98a06fdb3723d93e46fa54f9452dec6d8bb013",
+    "token_estimate": 113
+  },
+  "assembly": {
+    "mode": "preset",
+    "prompt_intent": "normal",
+    "assistant_prefill_applied": false,
+    "assistant_prefill_strategy": "none",
+    "preset_used": true,
+    "worldbook_hits": 3,
+    "selected_prompt_order_character_id": 100001,
+    "ignored_prompt_order_character_ids": [],
+    "regex_pre_rules": [],
+    "regex_post_rules": [
+      "first",
+      "second"
+    ],
+    "memory_summary_injected": false,
+    "reserved_variable_collisions": [],
+    "unsupported_preset_fields": [],
+    "ignored_preset_fields": [
+      "top_level.name"
+    ],
+    "unresolved_preset_markers": [],
+    "preset_warnings": [],
+    "continue_nudge_applied": false,
+    "continue_nudge_text": null,
+    "names_behavior_applied": "off",
+    "trigger_filtered_entry_ids": [],
+    "in_chat_inserted_entry_ids": [],
+    "preprocessed_user_message": "“先别动身。我想在邮局灯下检查信封上的邮戳，再决定要不要去旧灯塔。”"
+  },
+  "runtime_trace": {
+    "preset": {
+      "selected_prompt_order_character_id": 100001,
+      "ignored_prompt_order_character_ids": [],
+      "unsupported_fields": [],
+      "ignored_fields": [
+        "top_level.name"
+      ],
+      "unresolved_markers": [],
+      "warnings": [],
+      "trigger_filtered_entry_ids": [],
+      "in_chat_inserted_entry_ids": [],
+      "continue_nudge_applied": false,
+      "continue_nudge_text": null,
+      "names_behavior_applied": "off"
+    },
+    "worldbook": {
+      "hit_count": 3
+    },
+    "regex": {
+      "user_input_rules": [],
+      "ai_output_rules": [
+        "first",
+        "second"
+      ],
+      "preprocessed_user_message": "“先别动身。我想在邮局灯下检查信封上的邮戳，再决定要不要去旧灯塔。”",
+      "phases": [
+        {
+          "phase_id": "persist.user_input",
+          "placement": 1,
+          "channel": "persist",
+          "status": "executed",
+          "changed": false,
+          "depth": 0,
+          "input_text_hash": "5bbaa1e84dd9b0bad61244c800bff307676b1b918b8737b8bcc984fd5b170ff3",
+          "output_text_hash": "5bbaa1e84dd9b0bad61244c800bff307676b1b918b8737b8bcc984fd5b170ff3",
+          "candidate_rule_names": [],
+          "matched_rule_names": [],
+          "skipped_rules": []
+        },
+        {
+          "phase_id": "prompt.user_input",
+          "placement": 1,
+          "channel": "prompt",
+          "status": "executed",
+          "changed": false,
+          "depth": 0,
+          "input_text_hash": "5bbaa1e84dd9b0bad61244c800bff307676b1b918b8737b8bcc984fd5b170ff3",
+          "output_text_hash": "5bbaa1e84dd9b0bad61244c800bff307676b1b918b8737b8bcc984fd5b170ff3",
+          "candidate_rule_names": [],
+          "matched_rule_names": [],
+          "skipped_rules": []
+        }
+      ],
+      "substitution_mode": "bare_variable_only"
+    },
+    "budgets": {
+      "by_group": [
+        {
+          "group": "history",
+          "token_count": 25
+        },
+        {
+          "group": "section:charDescription",
+          "token_count": 12
+        },
+        {
+          "group": "section:charPersonality",
+          "token_count": 15
+        },
+        {
+          "group": "section:main",
+          "token_count": 18
+        },
+        {
+          "group": "section:personaDescription",
+          "token_count": 14
+        },
+        {
+          "group": "section:scenario",
+          "token_count": 9
+        },
+        {
+          "group": "worldbook",
+          "token_count": 19
+        }
+      ]
+    },
+    "memory": {
+      "summary_injected": false,
+      "runtime_mode": "disabled",
+      "requested_write": false,
+      "effective_write": false,
+      "strategy": "none"
+    },
+    "macro": {
+      "warnings": [
+        {
+          "code": "macro_value_missing",
+          "message": "Macro authorsNote has no resolved value and fell back to empty string.",
+          "macro_name": "authorsNote"
+        },
+        {
+          "code": "macro_value_missing",
+          "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+          "macro_name": "defaultAuthorsNote"
+        },
+        {
+          "code": "macro_value_missing",
+          "message": "Macro model has no resolved value and fell back to empty string.",
+          "macro_name": "model"
+        }
+      ],
+      "used_names": [],
+      "mutation_preview": [],
+      "staged_mutations": [],
+      "traces": []
+    },
+    "delivery": {
+      "assistant_prefill_requested": false,
+      "assistant_prefill_applied": false,
+      "assistant_prefill_strategy": "none",
+      "allow_assistant_prefill": true,
+      "require_last_user": false,
+      "no_assistant": false,
+      "last_message_role": "user",
+      "ends_with_user": true,
+      "degraded": false,
+      "degrade_reasons": []
+    },
+    "history_normalization": {
+      "raw_entry_count": 2,
+      "effective_turn_count": 2,
+      "selected_turn_count": 2,
+      "trailing_user_source_floor_ids": [],
+      "merged_user_groups": [],
+      "violations": []
+    },
+    "tool_transport": {
+      "selection": {
+        "transport": "none",
+        "reason_code": "tools_disabled",
+        "reason_detail": "No callable tools are enabled for the current turn."
+      },
+      "tool_list": {
+        "injected": false,
+        "tool_count": 0
+      }
+    }
+  }
+}

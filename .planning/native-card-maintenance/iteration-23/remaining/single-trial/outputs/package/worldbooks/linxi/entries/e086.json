@@ -1,0 +1,40 @@
+{
+  "uid": 86,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "日常事件_秘密通讯_杨桃子邀约",
+  "order": 342,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_D002>\n杨桃子通过微信给林茜发一条试图让她去拆迁旧楼408室见面的消息。\n每次通讯都由杨桃子先找合理的承接上文的理由试探林茜有没有空，再写清见面地点是拆迁旧楼408室。他说话胆怯、黏人，消息内容承接前文,并发送到林茜手机。\n</事件_D002>\n"
+}

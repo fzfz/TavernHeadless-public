@@ -1,0 +1,28 @@
+{
+  "before": {
+    "score": 20,
+    "level": 2,
+    "location": "大厅"
+  },
+  "candidate": {
+    "score": 25,
+    "level": 2,
+    "location": "花园"
+  },
+  "sourceMessages": [
+    {
+      "messageId": "message-1",
+      "revision": 1,
+      "role": "assistant",
+      "text": "完成检查，获得5点积分，随后抵达花园。"
+    }
+  ],
+  "priorFacts": [],
+  "floorBefore": {
+    "score": 20,
+    "level": 2,
+    "location": "大厅"
+  },
+  "facts": {},
+  "toolEvidence": []
+}

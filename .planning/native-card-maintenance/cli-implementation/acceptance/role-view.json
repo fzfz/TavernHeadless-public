@@ -1,0 +1,88 @@
+{
+  "data": {
+    "character_id": "AuXcX-7TwgwOuDn7zveyr",
+    "character_version_id": "XN5DuQpgCdV9ZuJgMq9Eu",
+    "name": "雾港来信",
+    "delivery": {
+      "html": "<section class=\"story\"><h1>雾港来信</h1><img src=\"/role-assets/XN5DuQpgCdV9ZuJgMq9Eu/assets/portrait.svg\" alt=\"雾港夜景\"><p id=\"location\"></p><button id=\"latest\">返回最新状态</button><div id=\"chat\"></div></section>",
+      "css": ".story {color:#d4e1df;background:#132c30;padding:24px;} .story img{width:240px;max-width:100%;} button{padding:8px;}",
+      "floorHtml": null,
+      "assets": {
+        "cover": {
+          "kind": "image",
+          "url": "/role-assets/XN5DuQpgCdV9ZuJgMq9Eu/assets/portrait.svg",
+          "label": "雾港夜景",
+          "tags": [
+            "封面"
+          ]
+        }
+      },
+      "data": {
+        "caseFile": {
+          "location": "雾港邮局",
+          "clue": "灯塔素描"
+        },
+        "opening": "钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”",
+        "performerName": "裴修远"
+      },
+      "scriptUrl": "/role-assets/XN5DuQpgCdV9ZuJgMq9Eu/frontend/main.js",
+      "htmlUrl": "/role-assets/XN5DuQpgCdV9ZuJgMq9Eu/frontend/index.html",
+      "htmlAssetOriginOffsets": [
+        46
+      ],
+      "dataUrls": {
+        "caseFile": "/role-assets/XN5DuQpgCdV9ZuJgMq9Eu/data/case.json"
+      },
+      "cssUrl": "/role-assets/XN5DuQpgCdV9ZuJgMq9Eu/frontend/style.css",
+      "mode": "custom"
+    },
+    "initial": {
+      "sessionId": "G3zo_y21aMFSk7NYWQVW3",
+      "branchId": "main",
+      "floorId": null,
+      "attemptId": null,
+      "versionId": "XN5DuQpgCdV9ZuJgMq9Eu",
+      "snapshotId": "29ed496b-1141-4407-840d-315eb119e503",
+      "parentSnapshotId": null,
+      "variables": {
+        "location": "夜间邮局",
+        "hour": 23,
+        "trust": 20
+      },
+      "source": {
+        "kind": "initial",
+        "runId": null,
+        "jobId": null
+      }
+    },
+    "current": {
+      "sessionId": "G3zo_y21aMFSk7NYWQVW3",
+      "branchId": "main",
+      "floorId": null,
+      "attemptId": null,
+      "versionId": "XN5DuQpgCdV9ZuJgMq9Eu",
+      "snapshotId": "29ed496b-1141-4407-840d-315eb119e503",
+      "parentSnapshotId": null,
+      "variables": {
+        "location": "夜间邮局",
+        "hour": 23,
+        "trust": 20
+      },
+      "source": {
+        "kind": "initial",
+        "runId": null,
+        "jobId": null
+      }
+    },
+    "processing": {
+      "pendingMain": null,
+      "pendingFollowups": false,
+      "pendingStateFloorId": null
+    },
+    "capabilities": {
+      "send": true,
+      "history": true,
+      "customFloors": false
+    }
+  }
+}

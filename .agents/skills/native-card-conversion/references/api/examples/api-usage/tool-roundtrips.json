@@ -1,0 +1,198 @@
+[
+  {
+    "toolName": "get_variable",
+    "callId": "call-get_variable",
+    "args": {
+      "key": "stat_data"
+    },
+    "result": {
+      "data": {
+        "key": "stat_data",
+        "value": {
+          "location": "大厅",
+          "energy": 10
+        }
+      }
+    }
+  },
+  {
+    "toolName": "set_variable",
+    "callId": "call-set_variable",
+    "args": {
+      "key": "last_action",
+      "value": "检查仓库",
+      "intent": "page_only"
+    },
+    "result": {
+      "data": {
+        "key": "last_action",
+        "value": "检查仓库",
+        "scope": "page",
+        "intent": "page_only",
+        "reason": "builtin:set_variable"
+      }
+    }
+  },
+  {
+    "toolName": "random",
+    "callId": "call-random-range",
+    "args": {
+      "domain": {
+        "kind": "integer_range",
+        "min": 1,
+        "max": 6
+      },
+      "distribution": {
+        "kind": "uniform"
+      },
+      "count": 2,
+      "replacement": true
+    },
+    "result": {
+      "data": {
+        "ok": true,
+        "data": {
+          "samples": [
+            2,
+            5
+          ],
+          "indices": null
+        }
+      }
+    }
+  },
+  {
+    "toolName": "random",
+    "callId": "call-random-choices",
+    "args": {
+      "domain": {
+        "kind": "choices",
+        "values": [
+          "花园",
+          "书房"
+        ]
+      },
+      "distribution": {
+        "kind": "uniform"
+      },
+      "count": 1,
+      "replacement": true
+    },
+    "result": {
+      "data": {
+        "ok": true,
+        "data": {
+          "samples": [
+            "书房"
+          ],
+          "indices": [
+            1
+          ]
+        }
+      }
+    }
+  },
+  {
+    "toolName": "get_time",
+    "callId": "call-get_time",
+    "args": {},
+    "result": {
+      "data": {
+        "iso": "2026-09-28T00:00:00.000Z",
+        "unix": 1790553600000,
+        "readable": "2026/9/28 08:00:00"
+      }
+    }
+  },
+  {
+    "toolName": "query_memory",
+    "callId": "call-query_memory",
+    "args": {
+      "type": "fact",
+      "limit": 5
+    },
+    "result": {
+      "data": {
+        "count": 1,
+        "items": [
+          {
+            "id": "memory-1",
+            "type": "fact",
+            "content": "仓库钥匙放在前台抽屉。",
+            "importance": 0.8
+          }
+        ]
+      }
+    }
+  },
+  {
+    "toolName": "get_character_info",
+    "callId": "call-get_character_info",
+    "args": {
+      "field": "sessionId"
+    },
+    "result": {
+      "data": {
+        "sessionId": "session-1"
+      }
+    }
+  },
+  {
+    "toolName": "update_todo_list",
+    "callId": "call-update_todo_list",
+    "args": {
+      "mode": "rewrite",
+      "items": [
+        {
+          "title": "检查仓库",
+          "status": "pending"
+        }
+      ]
+    },
+    "result": {
+      "data": {
+        "items": [
+          {
+            "id": "todo-1",
+            "title": "检查仓库",
+            "status": "pending"
+          }
+        ],
+        "counts": {
+          "total": 1,
+          "pending": 1,
+          "in_progress": 0,
+          "completed": 0,
+          "blocked": 0,
+          "cancelled": 0
+        },
+        "revision": 1
+      }
+    }
+  },
+  {
+    "toolName": "get_todo_list",
+    "callId": "call-get_todo_list",
+    "args": {},
+    "result": {
+      "data": {
+        "items": [
+          {
+            "id": "todo-1",
+            "title": "检查仓库",
+            "status": "pending"
+          }
+        ],
+        "counts": {
+          "total": 1,
+          "pending": 1,
+          "in_progress": 0,
+          "completed": 0,
+          "blocked": 0,
+          "cancelled": 0
+        },
+        "revision": 1
+      }
+    }
+  }
+]

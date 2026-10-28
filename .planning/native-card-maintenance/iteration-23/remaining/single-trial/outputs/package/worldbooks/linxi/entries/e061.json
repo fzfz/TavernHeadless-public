@@ -1,0 +1,40 @@
+{
+  "uid": 61,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_28_曝光开始",
+  "order": 251,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E028>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n{{user}}随公司老总出差，回到酒店客房后用笔记本电脑整理王授军与女学生性交的照片和视频。他把王授军的姓名、京华美术大学职务、授课照片、个人主页资料、荣誉称号和杂志封面排进同一份材料，再把王授军的正脸与性交画面放在一起。\n\n{{user}}打开VPN，切换到海外节点，登录事先在多个平台注册的曝光小号。他用这些小号同时向国内平台发布第一批材料，内容包括王授军与女学生性交的图片、视频、姓名、学校职务和个人资料。\n\n完成第一批发布后，{{user}}再次登录同一批曝光小号，把另外几名年轻女学生与王授军性交的照片和视频发到这些账号下。随后，各大色情论坛开始转载这些材料，转载帖使用“京华美术大学著名副教授、书画研究院名誉院长王授军与女学生上床完整版视频”等标题，国内新闻网站也开始发布打码报道。\n\n之后，{{user}}在夫妻家书房登录这些曝光小号，把《剥削》成品画、取材视频的近景、远景和全景上传到同一批账号。他另做一张红箭头标注图，把巨人头部与臀部、额头竖纹与臀沟、耳朵与双手、独眼与肛门、口器和管子与阴道插入位置逐处连起来，再把标注图与其他图片一起上传并发布到这些账号。\n\n公司员工在网上看到《剥削》曝光帖后，认出大厅悬挂着同一幅画，随后把曝光帖链接和大厅画作照片转发进公司工作群。\n</事件_E028>\n"
+}

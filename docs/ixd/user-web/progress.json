@@ -1,0 +1,131 @@
+{
+  "product": "TavernHeadless 用户 Web",
+  "platform": "both",
+  "language": "zh",
+  "preliminaryPrototype": {
+    "status": "reviewed_for_phase1",
+    "file": "prototype/index.html",
+    "url": "http://127.0.0.1:4178/",
+    "summary": "用户 Web 布局原型；功能规则见 user-web-requirements.md；使用本机模拟数据。",
+    "runtimeBuildCommand": "node docs/ixd/user-web/prototype/build-runtime.mjs",
+    "startCommand": "python3 -m http.server 4178 --bind 127.0.0.1 --directory docs/ixd/user-web/prototype"
+  },
+  "phases": {
+    "1": {
+      "status": "done",
+      "file": "phase1-context.md",
+      "summary": "角色演绎用户 Web；3 类使用场景、6 个 P0 模块；桌面与手机浏览器同等重要，分别交付布局与原型；保留角色 Runtime 独立表现，通用操作保持一致；视觉方向为克制、清晰、温和、阅读优先。"
+    },
+    "2": {
+      "status": "done",
+      "file": "phase2-architecture.md",
+      "summary": "22 个页面与弹层交付项，桌面和手机各覆盖 15 项；四入口导航：桌面侧栏、手机底栏；演绎页独立；最深 L3；已核对 22 类页面，17 类有承载、5 类在范围外。"
+    },
+    "3": {
+      "status": "done",
+      "file": "phase3-userflows.md",
+      "summary": "5 个核心流程：账号访问、人格管理、选择角色并开始演绎、单次演绎、历史管理；2 个共用流程：页面恢复、提交结果核对；7 张流程图，覆盖双端页面及失败、取消、部分成功和结果待确认路径。"
+    },
+    "4": {
+      "status": "done",
+      "file": "phase4-page-specs/",
+      "summary": "已完成 22/22 项页面交互规格，每项包含 10 节；7 组桌面与手机页面分别设计，8 项共用页面覆盖双端；包含布局、操作、状态、动效、数据策略、适配、验收清单与微交互。",
+      "pagesCompleted": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10",
+        "P11",
+        "P12",
+        "P13",
+        "P14",
+        "P15",
+        "P16",
+        "P17",
+        "P18",
+        "P19",
+        "P20",
+        "P21",
+        "P22"
+      ],
+      "pagesTotal": 22
+    },
+    "5": {
+      "status": "done",
+      "file": "phase5-components.md",
+      "summary": "27 个复用组件覆盖 22 项页面的 126 个组件条目；组件输入、状态、事件与双端适配完整；95 个变量值由 phase6-tokens.json 维护并投影到组件规格。"
+    },
+    "6": {
+      "status": "done",
+      "file": "phase6-visual.md",
+      "summary": "10 项视觉规范，17 类代表标注覆盖 22 项页面；95 个变量含 28 组双主题颜色；124 组对比度通过；浅深色样式板及 5 种宽度检查通过，独立语义审阅与文档构建通过。"
+    },
+    "7": {
+      "status": "done",
+      "file": "phase7-review-master.md",
+      "files": {
+        "desktop": "phase7-prototype-desktop.html",
+        "mobile": "phase7-prototype-mobile.html"
+      },
+      "summary": "已完成 22/22 项双端交互原型：账号、角色、人格、开始演绎、历史管理、独立 Runtime 演绎页及共用弹层。浏览器流程、账号隔离、恢复与异常路径、浅深主题、窄屏和大字检查通过；相关规格与验收文档已同步。",
+      "pagesCompleted": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10",
+        "P11",
+        "P12",
+        "P13",
+        "P14",
+        "P15",
+        "P16",
+        "P17",
+        "P18",
+        "P19",
+        "P20",
+        "P21",
+        "P22"
+      ],
+      "pagesTotal": 22,
+      "lastBatch": 6,
+      "batchStatus": "complete",
+      "preview": {
+        "desktop": "http://127.0.0.1:4180/phase7-prototype-desktop.html",
+        "mobile": "http://127.0.0.1:4180/phase7-prototype-mobile.html"
+      },
+      "buildCommand": "node docs/ixd/user-web/prototype/phase7/build.mjs",
+      "startCommand": "python3 -m http.server 4180 --bind 127.0.0.1 --directory docs/ixd/user-web"
+    },
+    "8": {
+      "status": "done",
+      "file": "phase8-document.md",
+      "files": {
+        "reader": "phase8-document.html",
+        "review": "phase8-review-round-1.md",
+        "evidence": "phase8-evidence.json"
+      },
+      "summary": "设计交付完成：7 章与 6 项附录；完整阅读版展开 22 项页面规格和 8 张流程图；双端原型、功能依据与验收入口齐备；独立文字审阅、结构核对及文档构建通过；真实后端接入按功能依据验收。",
+      "reviewRounds": 1,
+      "reviewResult": "PASS",
+      "buildCommand": "NODE_PATH=/Users/developer/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules node docs/ixd/user-web/phase8-build.mjs"
+    }
+  },
+  "lastUpdated": "2026-10-20T08:31:20.565934+00:00",
+  "requirementsFile": "user-web-requirements.md",
+  "domainFile": "../../../apps/user-web/CONTEXT.md",
+  "featureBasisFile": "feature-basis.md",
+  "outputDirectory": "docs/ixd/user-web",
+  "platformSurface": "browser"
+}

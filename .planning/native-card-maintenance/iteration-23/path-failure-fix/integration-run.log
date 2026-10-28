@@ -1,0 +1,13 @@
+{
+  "singleMs": 32242.570375,
+  "batchMs": 914.2233329999999,
+  "checks": {
+    "singlePassed": 133,
+    "batchPassed": true,
+    "equalSourceMappings": 133,
+    "equalSingleBatch": 133,
+    "partialContinued": true,
+    "sourceUnchanged": true,
+    "failureSignaled": true
+  }
+}

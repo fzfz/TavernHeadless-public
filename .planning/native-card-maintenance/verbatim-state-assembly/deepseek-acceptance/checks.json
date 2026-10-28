@@ -1,0 +1,44 @@
+{
+  "tests": {
+    "status": "passed",
+    "files": 562,
+    "tests": 5176
+  },
+  "targetedCommitTests": {
+    "status": "passed",
+    "tests": 36,
+    "redPhaseFailures": 2
+  },
+  "typecheck": {
+    "status": "passed"
+  },
+  "lint": {
+    "status": "passed",
+    "errors": 0,
+    "existingWarnings": 4
+  },
+  "structure": {
+    "passed": 533,
+    "failed": 13,
+    "historicalDefectCount": 13,
+    "currentFailureCount": 0,
+    "stageSampleCounts": {
+      "baseline": 13,
+      "corrected": 2
+    }
+  },
+  "independentReview": {
+    "standards": "no_findings",
+    "spec": "no_findings",
+    "acceptanceHarness": "no_findings",
+    "documentSemanticAudit": "passed_after_repairs"
+  },
+  "markdownlint": {
+    "status": "passed",
+    "errors": 0
+  },
+  "secretLiteralScan": {
+    "status": "passed",
+    "matches": 0
+  }
+}

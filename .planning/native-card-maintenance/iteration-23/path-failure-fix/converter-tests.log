@@ -1,0 +1,148 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+ RUN  v2.1.9 /srv/tavern/TavernHeadless-remove-preview-credentials
+
+ ✓ scripts/native-card-conversion/source.test.ts (51 tests) 917ms
+ ✓ scripts/native-card-conversion/tool.test.ts (21 tests) 959ms
+ ✓ scripts/native-card-conversion/replay-fixture.test.ts (7 tests) 209ms
+ ✓ scripts/native-card-conversion/write.test.ts (159 tests) 2785ms
+   ✓ map-entry file and CLI > accepts the entry JSON produced by read and writes an equivalent native file 724ms
+   ✓ map-entry file and CLI > writes partial valid configuration and returns issues for invalid values 405ms
+   ✓ map-entry file and CLI > resolves a relative task path in the caller directory 387ms
+   ✓ map-entry file and CLI > rejects invalid command arguments %j 366ms
+   ✓ map-entry file and CLI > rejects invalid command arguments "a" 424ms
+   ✓ map-entry file and CLI > rejects invalid command arguments "a" 344ms
+ ✓ scripts/native-card-conversion/mvu-regressions.test.ts (9 tests) 104ms
+ ✓ scripts/native-card-conversion/source-aliases.test.ts (38 tests) 25ms
+ ✓ scripts/native-card-conversion/write-regex.test.ts (65 tests) 4456ms
+   ✓ map-regex file and CLI > reports malformed CLI selections as JSON errors 473ms
+   ✓ map-regex file and CLI > completes begin, read, map-entry, and map-regex from a json input and a cwd with spaces 1489ms
+   ✓ map-regex file and CLI > completes begin, read, map-entry, and map-regex from a png input and a cwd with spaces 1503ms
+   ✓ map-regex file and CLI > accepts an empty --indices value as an empty profile 421ms
+   ✓ map-regex file and CLI > rejects a CLI target outside the package with a JSON error 432ms
+ ✓ scripts/native-card-conversion/source-features.test.ts (67 tests) 44ms
+ ✓ scripts/native-card-conversion/source-assessment.test.ts (54 tests) 24ms
+ ✓ scripts/native-card-conversion/png-source.test.ts (20 tests) 552ms
+ ✓ scripts/native-card-conversion/source-read.test.ts (73 tests) 5422ms
+   ✓ read task and command errors > resolves a relative task path before changing directories and preserves root pointer argument 445ms
+   ✓ read task and command errors > writes large text verbatim and keeps command output small 343ms
+   ✓ read task and command errors > overwrites the same task files on repeated reads, including empty strings 512ms
+ ✓ scripts/native-card-conversion/output.test.ts (12 tests) 40ms
+ ✓ scripts/native-card-conversion/write-copy.test.ts (47 tests) 6709ms
+   ✓ copy command text files > copies HTML, CSS, CRLF and UTF-16 content from a json card without adding bytes 694ms
+   ✓ copy command text files > copies HTML, CSS, CRLF and UTF-16 content from a png card without adding bytes 643ms
+   ✓ copy command text files > accepts the matching substring flags through the public CLI 383ms
+   ✓ copy command JSON values and target pointers > uses an empty target pointer to replace the entire JSON value 446ms
+   ✓ copy command JSON values and target pointers > returns malformed CLI Pointer errors as JSON 420ms
+   ✓ copy command arguments and package paths > rejects CLI options for '缺少终点' 421ms
+   ✓ copy command arguments and package paths > rejects CLI options for '缺少起点' 428ms
+   ✓ copy command arguments and package paths > rejects CLI options for '重复选项' 410ms
+   ✓ copy command arguments and package paths > rejects CLI options for '重复目标字段选项' 399ms
+   ✓ copy command arguments and package paths > rejects CLI options for '未知选项' 389ms
+   ✓ copy command arguments and package paths > rejects CLI options for '非整数索引' 395ms
+   ✓ copy command arguments and package paths > rejects CLI options for '负索引' 374ms
+   ✓ copy command arguments and package paths > rejects CLI options for '不安全索引' 482ms
+   ✓ copy command arguments and package paths > rejects a fragment option for a non-string value through the CLI 424ms
+ ✓ scripts/native-card-conversion/index.test.ts (12 tests) 6999ms
+   ✓ index command > indexes the required files in a minimal package 479ms
+   ✓ index command > indexes a begin task when the caller working directory contains spaces 430ms
+   ✓ index command > rejects symlinks, malformed tasks, frontend paths and CLI arguments 780ms
+   ✓ index after the complete source conversion flow > indexes JSON and PNG inputs after begin, read, map-entry, map-regex, copy and parse (json) 2581ms
+   ✓ index after the complete source conversion flow > indexes JSON and PNG inputs after begin, read, map-entry, map-regex, copy and parse (png) 2611ms
+ ✓ scripts/native-card-conversion/pack-publish.test.ts (6 tests) 948ms
+ ✓ scripts/native-card-conversion/write-parse.test.ts (35 tests) 8654ms
+   ✓ parse command JSON format > parses JSON text from the source and writes the value to a package file 531ms
+   ✓ parse command YAML format > parses a YAML fragment through the CLI and preserves existing target fields 411ms
+   ✓ parse errors leave package content unchanged > rejects non-string source 0 through the CLI 416ms
+   ✓ parse errors leave package content unchanged > rejects non-string source false through the CLI 403ms
+   ✓ parse errors leave package content unchanged > rejects non-string source null through the CLI 418ms
+   ✓ parse errors leave package content unchanged > rejects non-string source %j through the CLI 427ms
+   ✓ parse errors leave package content unchanged > rejects non-string source {"value":"文本外"} through the CLI 374ms
+   ✓ parse errors leave package content unchanged > rejects malformed CLI format arguments as JSON errors 1590ms
+   ✓ parse command full conversion flow > completes begin, read, map-entry, map-regex, copy and parse from a json input 2174ms
+   ✓ parse command full conversion flow > completes begin, read, map-entry, map-regex, copy and parse from a png input 1625ms
+ ✓ scripts/native-card-conversion/map-entry-batch.test.ts (17 tests) 6760ms
+   ✓ map-entry batch CLI > reports the usage message for 'missing selection value' 428ms
+   ✓ map-entry batch CLI > reports the usage message for 'extra arguments' 410ms
+   ✓ map-entry batch CLI > reports the usage message for 'unknown final flag' 384ms
+   ✓ map-entry batch CLI > reports that the batch source pointer must identify the entries array 449ms
+   ✓ map-entry batch CLI > writes only selected entries with exact content and source-number filenames 435ms
+   ✓ map-entry batch CLI > preserves existing content without copying source content 419ms
+   ✓ map-entry batch CLI > continues after an existing target type error and preserves that file 403ms
+   ✓ map-entry batch CLI > passes selected members when an unselected sibling is not an object 404ms
+   ✓ map-entry batch CLI > fails only a selected malformed member while other selected entries pass 540ms
+   ✓ map-entry batch CLI > does not mix issues whose source indices share a numeric prefix 858ms
+   ✓ map-entry batch CLI > marks field type issues as failed even when partial output is written 332ms
+   ✓ map-entry batch CLI > rejects malformed, duplicate, or out-of-range selection 02 308ms
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stdout | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning (llm-profile-fP1UJ2eQtnyPOjYV4JdQh-turn-mEJRysab.chat / offline-example-narrator): The feature "topK" is not supported.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning (role-state.chat / offline-example-state-updater): The feature "topK" is not supported.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning (llm-profile-fP1UJ2eQtnyPOjYV4JdQh-turn-5HwWkJVm.chat / offline-example-narrator): The feature "topK" is not supported.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning (role-state.chat / offline-example-state-updater): The feature "topK" is not supported.
+
+ ✓ scripts/native-card-conversion/skill-entry.test.ts (10 tests) 8754ms
+   ✓ native card conversion CLI entry > begins from JSON and continues through index, validate, pack and resume 3252ms
+   ✓ native card conversion CLI entry > begins from PNG and continues through index, validate, pack and resume 2433ms
+   ✓ native card conversion CLI entry > preserves a failing CLI status and actionable diagnostics for %j 609ms
+   ✓ native card conversion CLI entry > preserves a failing CLI status and actionable diagnostics for "unknown" 626ms
+   ✓ native card conversion CLI entry > preserves a failing CLI status and actionable diagnostics for "inspect" 619ms
+ ✓ scripts/native-card-conversion/formal.test.ts (10 tests) 8691ms
+   ✓ verifyFormalPackage > imports through the formal API and compares every saved file byte-for-byte 2789ms
+   ✓ verifyFormalPackage > saves API and shared-schema diagnostics when package validation fails 708ms
+   ✓ verifyFormalPackage > records ZIP reader and API errors for an invalid archive 656ms
+   ✓ verifyFormalPackage > preserves the confirmation response and does not attempt readback after confirmation fails 659ms
+   ✓ verifyFormalPackage > marks mismatched saved bytes as failed and records the changed GET response 1619ms
+   ✓ verifyFormalPackage > continues file checks when the readback endpoint returns an error 1589ms
+   ✓ verifyFormalPackage > returns the confirmation response when saving formal evidence fails 647ms
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > isolates concurrent replay and role assets, keeps B live after closing A and failed startup, then restores the original key
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > isolates concurrent replay and role assets, keeps B live after closing A and failed startup, then restores the original key
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > streams a formal turn, saves the assistant body, runs the state updater, and reads the updated formal role view
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > streams a formal turn, saves the assistant body, runs the state updater, and reads the updated formal role view
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+ ✓ scripts/native-card-conversion/preview.test.ts (20 tests) 23430ms
+   ✓ formal isolated native-card preview server > records one failed dry-run, continues the next, and opens and closes the preview page 2453ms
+   ✓ formal isolated native-card preview server > records empty assembled messages as a failed check and continues later checks 1660ms
+   ✓ formal isolated native-card preview server > records a missing persona description in assembled messages without aborting the page 1273ms
+   ✓ formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order 1172ms
+   ✓ formal isolated native-card preview server > imports, seeds the named persona and preset, verifies dry-run content, serves a loopback URL, and closes every listener 1549ms
+   ✓ formal isolated native-card preview server > starts two previews concurrently on distinct ports with working pages, configs, proxies, and cleanup 2304ms
+   ✓ formal isolated native-card preview server > isolates concurrent replay and role assets, keeps B live after closing A and failed startup, then restores the original key 2842ms
+   ✓ formal isolated native-card preview server > restores the original master key after reverse-order and parallel close 4437ms
+   ✓ formal isolated native-card preview server > streams a formal turn, saves the assistant body, runs the state updater, and reads the updated formal role view 1639ms
+   ✓ formal isolated native-card preview server > records the actual import error and aborts before creating the preview page 751ms
+   ✓ formal isolated native-card preview server > marks generation as unavailable when the scenario supplies no offline response fixture 1198ms
+   ✓ formal isolated native-card preview server > preserves explicit null model capabilities in the formal preview request 1189ms
+   ✓ formal isolated native-card preview server > records the actual preview request when model capability limits exceed system policy 813ms
+
+ Test Files  20 passed (20)
+      Tests  733 passed (733)
+   Start at  14:56:13
+   Duration  30.47s (transform 5.34s, setup 0ms, collect 21.63s, tests 86.48s, environment 2ms, prepare 1.06s)

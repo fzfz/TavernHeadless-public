@@ -1,0 +1,77 @@
+name: Deploy Docs
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build Docs
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      publish: ${{ steps.release.outputs.publish }}
+    steps:
+      - name: Checkout exact CI commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Verify release and load site configuration
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: pnpm exec tsx scripts/prepare-docs-release.ts
+      - name: Check documentation tools
+        if: steps.release.outputs.publish == 'true'
+        run: |
+          pnpm exec tsc --project scripts/docs/tsconfig.json
+          pnpm exec vitest run scripts/docs
+      - name: Build VitePress site
+        if: steps.release.outputs.publish == 'true'
+        run: pnpm docs:build
+      - name: Checkout public documentation repository
+        if: steps.release.outputs.publish == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.release.outputs.publication_repository }}
+          ref: ${{ steps.release.outputs.publication_branch }}
+          path: .tmp/docs-publication
+          ssh-key: ${{ secrets.DOCS_DEPLOY_KEY }}
+      - name: Publish static documentation
+        if: steps.release.outputs.publish == 'true'
+        env:
+          PUBLICATION_BRANCH: ${{ steps.release.outputs.publication_branch }}
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          cp LICENSE vitepress/.vitepress/dist/LICENSE
+          bash scripts/publish-docs.sh vitepress/.vitepress/dist .tmp/docs-publication "$AGENT_HEAD_SHA" "$PUBLICATION_BRANCH"

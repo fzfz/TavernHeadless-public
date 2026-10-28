@@ -1,0 +1,73 @@
+{
+  "initial": {
+    "scene.id": "inside",
+    "actor.trust": 20,
+    "actor.fatigue": 10,
+    "story.time": "14:10",
+    "story.clue": "尚未展开的旅程",
+    "actor.present": true
+  },
+  "turns": [
+    {
+      "text": "第二天，你到得比平时早了一些。旧教学楼三层的走廊被午后的日光照得明亮，雨水仍沿着窗框缓缓滴落。\n\n她听见脚步声，抬起头。琴房里的最后一个音符渐渐散去。\n\n“你来了。”她把身旁的椅子拉开一点，“我想让你听听，这次修改后的旋律。”",
+      "variables": {
+        "scene.id": "inside",
+        "actor.trust": 35,
+        "actor.fatigue": 30,
+        "story.time": "22:12",
+        "story.clue": "发现印记",
+        "actor.present": true
+      },
+      "agentText": "她补充道：“把这个细节也记下来。”",
+      "jobVariables": {
+        "scene.id": "inside",
+        "actor.trust": 35,
+        "actor.fatigue": 30,
+        "story.time": "22:12",
+        "story.clue": "发现印记 · 已记录",
+        "actor.present": true
+      }
+    },
+    {
+      "text": "她把乐谱放在窗边，指尖停在第三行音符上。\n\n“这里还缺少一点什么。”她看着你，像是在等待一个从未说出口的答案。\n\n一阵风吹过走廊。她合上琴盖，提议一起去外面走走。",
+      "variables": {
+        "scene.id": "outside",
+        "actor.trust": 60,
+        "actor.fatigue": 85,
+        "story.time": "22:20",
+        "story.clue": "确定方向",
+        "actor.present": false
+      },
+      "agentText": "她补充道：“把这个细节也记下来。”",
+      "jobVariables": {
+        "scene.id": "outside",
+        "actor.trust": 60,
+        "actor.fatigue": 85,
+        "story.time": "22:20",
+        "story.clue": "确定方向 · 已记录",
+        "actor.present": false
+      }
+    },
+    {
+      "text": "她重新坐回钢琴前。\n\n这一次，旋律没有在同一个地方停下。你听见安静的琴房里，出现了一个轻盈而笃定的结尾。",
+      "variables": {
+        "scene.id": "inside",
+        "actor.trust": 85,
+        "actor.fatigue": 20,
+        "story.time": "22:30",
+        "story.clue": "抵达目的地",
+        "actor.present": true
+      },
+      "agentText": "她补充道：“把这个细节也记下来。”",
+      "jobVariables": {
+        "scene.id": "inside",
+        "actor.trust": 85,
+        "actor.fatigue": 20,
+        "story.time": "22:30",
+        "story.clue": "抵达目的地 · 已记录",
+        "actor.present": true
+      }
+    }
+  ],
+  "failureText": "生成失败，请重试。"
+}

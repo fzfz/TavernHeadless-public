@@ -1,0 +1,320 @@
+{
+  "id": "linqian-state-update-v1",
+  "updaterPrompt": "你是林茜角色状态更新 Agent。读取 before、sources、consumedSources、规则文件、factsSchema 和 outputSchema，输出符合 outputSchema 的 JSON 对象。changes 只写 writablePaths；内心想法和完整行动选项按 stateSchema 填写。derivedPaths 由后端根据 facts 计算。sources 是本批唯一的新增剧情事实来源；consumedSources 用于识别已处理的历史，priorFacts 用于识别已结算事实。facts 必须完整填写，每个字段遵守 factsSchema 中的 description，并按其引用的 update-rules.json 条目判断。后端负责整楼层的累计计算和数值结算。evidenceMessageIds 必须包含本批实际依据的 sources.messageId。",
+  "stateSchemaFile": "state.schema.json",
+  "ruleFiles": [
+    "update-rules.json"
+  ],
+  "deriveScript": "derive.js",
+  "validateScript": "validate.js",
+  "moduleFiles": [
+    "rules.constants.json"
+  ],
+  "factsSchema": {
+    "type": "object",
+    "properties": {
+      "elapsedMinutes": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 525600,
+        "description": "依据原卡世界书条目115「世界/日期、小时、分钟」判断本批正文经过的分钟数：即时反应或短对白推进0~3分钟，连续行动、等待、赶路、用餐、洗澡、睡眠和转场按正文跨度，用户指定时长或时刻时优先采用；只计算正文实际写出的连续过程，正文未明确写出跨日过程时保持同日。"
+      },
+      "finalLocation": {
+        "type": "string",
+        "minLength": 1,
+        "description": "本批来源正文最后一幕实际发生的最具体地点；角色仍在移动时填写从原地点前往目标地点的途中。"
+      },
+      "completedA1Events": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "D002",
+                "D003"
+              ],
+              "description": "本组完成的日常事件类型：D002对应条目86的秘密通讯事件，D003对应条目85的秘密通讯事件。"
+            },
+            "completedDate": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "本组事件在正文中达到完成点时对应的实际日期，格式为YYYY-MM-DD。"
+            }
+          },
+          "required": [
+            "kind",
+            "completedDate"
+          ],
+          "additionalProperties": false,
+          "description": "一组已经完成的A1日常事件及其完成日期。"
+        },
+        "maxItems": 9,
+        "description": "列出本批来源正文已经完整承接并完成的每一组D002或D003；同类事件完成多组时分别保留多个数组项，derive只统计completedDate等于本轮结束日期的数组项。"
+      },
+      "d001Completed": {
+        "type": "boolean",
+        "description": "本批来源正文完整实现条目126中D001_S01与D001_S02全部要求时填写true；仅加载、提及或只完成部分阶段时填写false。"
+      },
+      "completedOneTimeEvents": {
+        "type": "array",
+        "items": {
+          "enum": [
+            "事件_E001",
+            "事件_E002",
+            "事件_E003",
+            "事件_E004",
+            "事件_E005",
+            "事件_E006",
+            "事件_E008",
+            "事件_E009",
+            "事件_E010",
+            "事件_E011",
+            "事件_E012",
+            "事件_E013",
+            "事件_E014",
+            "事件_E015",
+            "事件_E016",
+            "事件_E017",
+            "事件_E018",
+            "事件_E019",
+            "事件_E020",
+            "事件_E021",
+            "事件_E022",
+            "事件_E023",
+            "事件_E024",
+            "事件_E025",
+            "事件_E026",
+            "事件_E027",
+            "事件_E028",
+            "事件_E029",
+            "事件_E030",
+            "事件_E031",
+            "事件_E032",
+            "事件_E033",
+            "事件_E034",
+            "事件_E035",
+            "事件_E048",
+            "事件_E049"
+          ],
+          "description": "与update-rules.json structuredIndex.oneTimeEvents对应的已完成一次性事件键。"
+        },
+        "uniqueItems": true,
+        "maxItems": 36,
+        "description": "数组仅包含本批来源正文已经完整演完至完成点的一次性事件键。"
+      },
+      "relationship": {
+        "type": "object",
+        "properties": {
+          "positiveDelta": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5,
+            "description": "本批新增日常正向互动带来的感情增量；仅衔接前文、重复描述同一次互动或没有新增正向互动时为0。"
+          },
+          "negativeDelta": {
+            "type": "integer",
+            "minimum": -1,
+            "maximum": 0,
+            "description": "本批新增日常负向互动为-1，没有新增负向互动为0。"
+          },
+          "intimacyTier": {
+            "enum": [
+              "none",
+              "ordinary",
+              "preferred",
+              "high",
+              "extreme"
+            ],
+            "description": "对应原卡世界书条目115「林茜/感情」中本轮用户与林茜已完成性行为的最高档：none=未满足该项更新条件；ordinary=普通性交；preferred=正面性交、常规后入或侧卧抱姿后入；high=无套性交、内射、口内射精或吞咽；extreme=跪姿后入、蹲姿后入或肛交。"
+          }
+        },
+        "required": [
+          "positiveDelta",
+          "negativeDelta",
+          "intimacyTier"
+        ],
+        "additionalProperties": false,
+        "description": "记录本批来源正文新增的日常关系变化与性生活偏好档位；后端按整楼层facts合计后结算感情值。"
+      },
+      "corruptionSettlement": {
+        "type": "object",
+        "properties": {
+          "settlementTriggered": {
+            "type": "boolean",
+            "description": "本批来源正文已经进入事后、分开、离开、清理痕迹或换场中的任一结算点时填写true；行为仍在进行或尚未到达结算点时填写false。"
+          },
+          "specialStimulatorOnly": {
+            "type": "boolean",
+            "description": "本批来源事实明确属于林茜仅使用飞机杯刺激他人且没有其他基础行为时填写true；后端保留结算点之前各批次的true，出现其他基础行为时取消固定5点分支。"
+          },
+          "behaviors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "enum": [
+                    "stimulator",
+                    "touch",
+                    "unspecified",
+                    "front",
+                    "side_or_rear",
+                    "crouching",
+                    "kneeling",
+                    "oral",
+                    "anal",
+                    "two_targets",
+                    "three_plus_targets"
+                  ],
+                  "description": "条目115基础行为档位：stimulator=飞机杯套弄；touch=手淫、互相手淫或直接性触碰；unspecified=体位未明的阴道性交；front=正面、骑乘或女上位阴道性交；side_or_rear=侧卧抱姿后入或常规后入；crouching=蹲姿后入；kneeling=跪姿后入；oral=口交；anal=肛交；two_targets=两名目标3P；three_plus_targets=三名及以上目标。"
+                },
+                "count": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 3,
+                  "description": "该tier在本批来源正文中的发生次数；1和2表示对应次数，3表示三次及以上。"
+                }
+              },
+              "required": [
+                "tier",
+                "count"
+              ],
+              "additionalProperties": false,
+              "description": "一种基础行为及其在本批来源正文中的发生次数。"
+            },
+            "maxItems": 11,
+            "description": "逐项列出本批来源正文中新发生的每一种基础行为及各自次数；同批出现多种行为时全部列出，没有新增基础行为时使用空数组。"
+          },
+          "resultTier": {
+            "enum": [
+              "none",
+              "new_barrier",
+              "old_barrier",
+              "unspecified",
+              "unprotected_unspecified",
+              "unprotected_external",
+              "unprotected_internal",
+              "oral",
+              "swallowed"
+            ],
+            "description": "条目115射精结果最高档：none=本批没有相关结果；new_barrier=全程新避孕套且套内射精；old_barrier=使用旧避孕套且套内射精；unspecified=未说明避孕或射精位置；unprotected_unspecified=无套插入且射精位置未明；unprotected_external=无套体外射精；unprotected_internal=无套阴道内射；oral=口内射精；swallowed=吞咽。"
+          },
+          "materialAnomaly": {
+            "type": "boolean",
+            "description": "本批来源正文同时出现材料异常状态与同场性交时填写true；其他情况填写false。"
+          }
+        },
+        "required": [
+          "settlementTriggered",
+          "specialStimulatorOnly",
+          "behaviors",
+          "resultTier",
+          "materialAnomaly"
+        ],
+        "additionalProperties": false,
+        "description": "记录本批来源正文新增的林茜与用户以外的角色发生的性行为、结果、异常状态与结算点；后端合并本楼层全部批次，在形成结算点后按条目115结算一次堕落值。"
+      },
+      "ending": {
+        "type": "object",
+        "properties": {
+          "routeRulesLoaded": {
+            "type": "boolean",
+            "description": "本次更新输入包含并采用条目110的终局路线变量规则时填写true；没有采用该规则时填写false。"
+          },
+          "formedRoute": {
+            "enum": [
+              null,
+              "结局一_离婚",
+              "结局二_三人共处",
+              "结局三_隔离守婚",
+              "双向出轨"
+            ],
+            "description": "本批来源正文实际形成的终局路线；仅有试探、争吵、威胁、计划或路线尚未落定时填写null。"
+          },
+          "explicitReselection": {
+            "type": "boolean",
+            "description": "用户在本批来源消息中明确要求重选已经确定的终局路线时填写true；其他情况填写false。"
+          },
+          "divorceFormed": {
+            "type": "boolean",
+            "description": "本批来源正文已经实际形成离婚事实时填写true；谈判、威胁、争吵或计划离婚时填写false。"
+          },
+          "completedStage": {
+            "enum": [
+              null,
+              "Z001",
+              "Z002",
+              "Z003",
+              "Z004",
+              "Z005",
+              "Z006",
+              "Z007",
+              "Z008",
+              "Z009",
+              "Z010",
+              "Z011",
+              "Z012",
+              "Z013",
+              "Z010_Z013"
+            ],
+            "description": "本批来源正文完整实现某个终局阶段条目的全部剧情要求时填写对应Z代码；仅加载标签、完成部分要求或没有达到完成点时填写null；共享条目Z010_Z013完整完成时填写Z010_Z013，由后端依据已锁定路线确定Z010或Z013。"
+          }
+        },
+        "required": [
+          "routeRulesLoaded",
+          "formedRoute",
+          "explicitReselection",
+          "divorceFormed",
+          "completedStage"
+        ],
+        "additionalProperties": false,
+        "description": "记录本批来源正文中新形成的终局路线、离婚事实、用户重选和完整终局阶段；后端使用当前已锁定路线执行确定性更新。"
+      }
+    },
+    "required": [
+      "elapsedMinutes",
+      "finalLocation",
+      "completedA1Events",
+      "d001Completed",
+      "completedOneTimeEvents",
+      "relationship",
+      "corruptionSettlement",
+      "ending"
+    ],
+    "additionalProperties": false,
+    "description": "本对象的剧情事实仅取自本次 sources 中新增且已经发生的内容，consumedSources 用于识别已处理的历史。ending.routeRulesLoaded 表示规则输入状态，其判断来源按该字段的 description 执行。"
+  },
+  "derivedPaths": [
+    "/林茜/感情",
+    "/林茜/堕落",
+    "/世界/日期",
+    "/世界/星期",
+    "/世界/小时",
+    "/世界/分钟",
+    "/世界/状态_A1_日期",
+    "/世界/状态_A1_计数",
+    "/世界/时间",
+    "/世界/地点",
+    "/世界/事件_D001记录日期",
+    "/世界/已触发事件",
+    "/世界/已离婚",
+    "/世界/终局路线",
+    "/世界/终局阶段",
+    "/世界/开局模式"
+  ],
+  "sourceAgentBindingIds": [],
+  "followupAgents": [],
+  "writablePaths": [
+    "/林茜/内心想法",
+    "/行动选项"
+  ],
+  "maxTokens": 4096,
+  "promptBundleFile": "prompt-bundle.json",
+  "narratorReasoning": {
+    "effort": "none"
+  },
+  "updaterReasoning": {
+    "effort": "none"
+  }
+}

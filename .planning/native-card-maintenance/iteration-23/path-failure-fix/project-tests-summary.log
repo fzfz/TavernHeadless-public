@@ -1,0 +1,30 @@
+ ✓ apps/api/src/routes/__tests__/chat/sse-writer.test.ts > writeSse > writes event and data lines followed by a blank line
+ ✓ apps/api/src/services/__tests__/runtime-revision-guard.test.ts > RuntimeRevisionGuard > throws when the runtime scope revision no longer matches the snapshot
+ ✓ apps/api/test/role-preview.integration.test.ts > removes the credential route POST /preview-sessions/preview/handoffs 1025ms
+ ✓ packages/official-integration-kit/client-helpers/src/stream/role-text.test.ts > leaves role projection events for the role session controller
+ ✓ apps/api/src/routes/__tests__/chat/contract.test.ts > chat route compatibility export > keeps the top-level chat route entry wired to the nested implementation
+ ✓ apps/api/test/role-preview.integration.test.ts > removes the credential route POST /preview-handoffs/exchange 910ms
+ ✓ apps/api/src/services/__tests__/chat/workflow-regression.test.ts > chat service compatibility export > keeps the top-level chat-service entry wired to the nested implementation
+ ✓ apps/api/test/role-preview.integration.test.ts > removes the credential route GET /preview-access 650ms
+ ✓ apps/api/test/app.error-handler.test.ts > app error handler > maps PromptRuntimeControlServiceError to API error responses 891ms
+ ✓ apps/api/test/role-preview.integration.test.ts > ignores a removed preview header in local mode 750ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  scripts/native-card-conversion/formal.test.ts > verifyFormalPackage > imports through the formal API and compares every saved file byte-for-byte
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  scripts/native-card-conversion/formal.test.ts > verifyFormalPackage > imports through the formal API and compares every saved file byte-for-byte
+Error: ENOTEMPTY: directory not empty, rmdir '/var/folders/td/trvrwv_d2bxb0ns9qgpmmlqm0000gn/T/native-card-formal-0r3X3w/evidence/formal-runs/2026-10-06T06-44-15-816Z-a39d7f8c-eabe-4677-9346-b86ae242d83f'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { errno: -66, code: 'ENOTEMPTY', syscall: 'rmdir', path: '/var/folders/td/trvrwv_d2bxb0ns9qgpmmlqm0000gn/T/native-card-formal-0r3X3w/evidence/formal-runs/2026-10-06T06-44-15-816Z-a39d7f8c-eabe-4677-9346-b86ae242d83f' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+ Test Files  1 failed | 582 passed | 3 skipped (586)
+      Tests  1 failed | 5904 passed | 4 skipped (5909)
+   Start at  14:42:43
+   Duration  241.78s (transform 17.57s, setup 0ms, collect 480.31s, tests 1527.60s, environment 78ms, prepare 27.37s)
+
+ ELIFECYCLE  Command failed with exit code 1.

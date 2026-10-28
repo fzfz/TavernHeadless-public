@@ -1,0 +1,17 @@
+{
+  "command": [
+    "validate",
+    "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-EbNAJX/task.json"
+  ],
+  "task": {
+    "id": "run-EbNAJX",
+    "sourceFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-EbNAJX/source.json",
+    "originalSourceFile": "/var/folders/td/trvrwv_d2bxb0ns9qgpmmlqm0000gn/T/legacy task baseline pghCxt/card.json",
+    "repositoryRoot": "/srv/tavern/TavernHeadless-remove-preview-credentials",
+    "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-EbNAJX",
+    "packageDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-EbNAJX/package"
+  },
+  "exitCode": 1,
+  "stdout": "{\n  \"passed\": false,\n  \"diagnostic\": {\n    \"file\": \"task.schema.json\",\n    \"pointer\": \"\",\n    \"check\": \"json_schema\",\n    \"category\": \"validation\",\n    \"message\": \"[{\\\"instancePath\\\":\\\"\\\",\\\"schemaPath\\\":\\\"#/required\\\",\\\"keyword\\\":\\\"required\\\",\\\"params\\\":{\\\"missingProperty\\\":\\\"version\\\"},\\\"message\\\":\\\"must have required property 'version'\\\"},{\\\"instancePath\\\":\\\"\\\",\\\"schemaPath\\\":\\\"#/required\\\",\\\"keyword\\\":\\\"required\\\",\\\"params\\\":{\\\"missingProperty\\\":\\\"packageVersion\\\"},\\\"message\\\":\\\"must have required property 'packageVersion'\\\"},{\\\"instancePath\\\":\\\"\\\",\\\"schemaPath\\\":\\\"#/required\\\",\\\"keyword\\\":\\\"required\\\",\\\"params\\\":{\\\"missingProperty\\\":\\\"apiVersion\\\"},\\\"message\\\":\\\"must have required property 'apiVersion'\\\"},{\\\"instancePath\\\":\\\"\\\",\\\"schemaPath\\\":\\\"#/required\\\",\\\"keyword\\\":\\\"required\\\",\\\"params\\\":{\\\"missingProperty\\\":\\\"apiDocuments\\\"},\\\"message\\\":\\\"must have required property 'apiDocuments'\\\"},{\\\"instancePath\\\":\\\"\\\",\\\"schemaPath\\\":\\\"#/required\\\",\\\"keyword\\\":\\\"required\\\",\\\"params\\\":{\\\"missingProperty\\\":\\\"toolEntry\\\"},\\\"message\\\":\\\"must have required property 'toolEntry'\\\"},{\\\"instancePath\\\":\\\"\\\",\\\"schemaPath\\\":\\\"#/required\\\",\\\"keyword\\\":\\\"required\\\",\\\"params\\\":{\\\"missingProperty\\\":\\\"createdAt\\\"},\\\"message\\\":\\\"must have required property 'createdAt'\\\"},{\\\"instancePath\\\":\\\"\\\",\\\"schemaPath\\\":\\\"#/required\\\",\\\"keyword\\\":\\\"required\\\",\\\"params\\\":{\\\"missingProperty\\\":\\\"examples\\\"},\\\"message\\\":\\\"must have required property 'examples'\\\"},{\\\"instancePath\\\":\\\"\\\",\\\"schemaPath\\\":\\\"#/additionalProperties\\\",\\\"keyword\\\":\\\"additionalProperties\\\",\\\"params\\\":{\\\"additionalProperty\\\":\\\"originalSourceFile\\\"},\\\"message\\\":\\\"must NOT have additional properties\\\"}]\",\n    \"action\": \"修正指定文件或提供可访问的资料，再重新执行该检查。\"\n  }\n}\n",
+  "stderr": ""
+}

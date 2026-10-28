@@ -1,0 +1,220 @@
+{
+  "common": {
+    "env": {
+      "type": "string",
+      "required": true,
+      "choices": ["dev", "staging", "prod"],
+      "description": "目标环境"
+    },
+    "sandbox": {
+      "type": "string",
+      "description": "隔离验证根目录（绝对路径）"
+    },
+    "input": {
+      "type": "string",
+      "description": "JSON 参数文件；- 表示标准输入"
+    }
+  },
+  "commands": {
+    "init": {
+      "description": "创建环境目录与缺失配置模板",
+      "options": {
+        "release": {
+          "type": "string",
+          "description": "发布环境初始化使用的发布标识"
+        }
+      }
+    },
+    "start": {
+      "description": "启动目标环境并验证健康",
+      "options": {
+        "timeout-seconds": {
+          "type": "number",
+          "description": "健康等待秒数；默认读取环境配置"
+        }
+      }
+    },
+    "stop": {
+      "description": "停止身份匹配的目标环境进程",
+      "options": {
+        "force": {
+          "type": "boolean",
+          "default": false,
+          "description": "超时后强制结束已再次确认身份的进程"
+        }
+      }
+    },
+    "restart": {
+      "description": "停止成功后启动目标环境",
+      "options": {
+        "timeout-seconds": {
+          "type": "number",
+          "description": "健康等待秒数；默认读取环境配置"
+        }
+      }
+    },
+    "status": {
+      "description": "查询进程身份和入口健康",
+      "options": {
+        "probe": {
+          "type": "boolean-value",
+          "default": true,
+          "description": "是否发送健康请求"
+        }
+      }
+    },
+    "logs": {
+      "description": "返回日志路径或持续输出日志",
+      "options": {
+        "component": {
+          "type": "string",
+          "default": "operations",
+          "choices": [
+            "api",
+            "nginx",
+            "web",
+            "user-web",
+            "studio",
+            "debug",
+            "operations"
+          ],
+          "description": "日志组件"
+        },
+        "operation": { "type": "string", "description": "操作标识" },
+        "follow": {
+          "type": "boolean",
+          "default": false,
+          "description": "持续输出选定日志"
+        }
+      }
+    },
+    "build": {
+      "environments": ["dev"],
+      "description": "从标签构建包含依赖的发布归档",
+      "options": {
+        "ref": {
+          "type": "string",
+          "required": true,
+          "description": "已批准的 Git 标签"
+        },
+        "release": {
+          "type": "string",
+          "required": true,
+          "description": "唯一发布标识"
+        },
+        "installation-approval": {
+          "type": "string",
+          "required": true,
+          "description": "安装授权记录的绝对路径；使用 node scripts/environments/installation-approval.mjs --help 查看标签授权生成方法"
+        }
+      }
+    },
+    "deploy": {
+      "environments": ["staging", "prod"],
+      "description": "停机部署已验证产物",
+      "options": {
+        "release": {
+          "type": "string",
+          "required": true,
+          "description": "发布标识"
+        },
+        "artifact": { "type": "string", "description": "原始归档目录" },
+        "acceptance": {
+          "type": "string",
+          "description": "prod 必填的 staging 验收记录 JSON 文件路径"
+        }
+      }
+    },
+    "migrate": {
+      "description": "显式迁移停止写入的数据库",
+      "options": {
+        "release": {
+          "type": "string",
+          "description": "发布环境必填的目标发布标识"
+        },
+        "artifact": { "type": "string", "description": "原始归档目录" },
+        "backup": {
+          "type": "string",
+          "description": "已有数据库必填的操作前备份标识"
+        }
+      }
+    },
+    "backup": {
+      "description": "保存数据库、文件和配套配置",
+      "options": {
+        "backup": {
+          "type": "string",
+          "required": true,
+          "description": "备份标识"
+        }
+      }
+    },
+    "restore": {
+      "description": "预览或恢复同环境完整备份",
+      "options": {
+        "backup": {
+          "type": "string",
+          "required": true,
+          "description": "备份标识"
+        },
+        "release": {
+          "type": "string",
+          "description": "发布环境必填的匹配发布标识"
+        },
+        "preview": {
+          "type": "boolean",
+          "default": false,
+          "description": "只预览恢复对象"
+        },
+        "authorization": {
+          "type": "string",
+          "description": "执行覆盖式恢复所需的授权记录 JSON 文件路径；格式见 docs/environment-operations.md 第 6.2 节"
+        }
+      }
+    },
+    "rollback": {
+      "environments": ["staging", "prod"],
+      "description": "按兼容性证据回退应用版本",
+      "options": {
+        "release": {
+          "type": "string",
+          "required": true,
+          "description": "目标发布标识"
+        },
+        "backup": {
+          "type": "string",
+          "required": true,
+          "description": "操作前备份标识"
+        },
+        "compatibility": {
+          "type": "string",
+          "required": true,
+          "description": "目标版本读写兼容性验收记录 JSON 文件路径；格式见 docs/environment-operations.md 第 6.1 节"
+        }
+      }
+    },
+    "verify": {
+      "description": "运行本地与 CI 共用验证",
+      "options": {
+        "suite": {
+          "type": "string",
+          "required": true,
+          "choices": ["unit", "release", "acceptance", "full"],
+          "description": "验证范围"
+        },
+        "release": {
+          "type": "string",
+          "description": "发布环境必填的发布标识"
+        },
+        "evidence": {
+          "type": "string",
+          "description": "人工操作验收证据索引 JSON 文件路径"
+        },
+        "checks": {
+          "type": "string",
+          "description": "full 范围的检查 ID，使用英文逗号分隔；默认执行全部检查"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/task.json",
+  "sourceFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/source.json",
+  "originalSourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/IVORY_七色光_v1.6.51.png",
+  "packageDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/package",
+  "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB",
+  "artifacts": [
+    "formal",
+    "pack-95bnll",
+    "package",
+    "preview-runs",
+    "preview.json",
+    "read-content.txt",
+    "read-lines.json",
+    "role.zip",
+    "source.json",
+    "task.json",
+    "validation-OAPMZ7",
+    "validation-sVJmn0"
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tavern-headless.local/native-card-maintenance/replay-fixture.schema.json",
+  "title": "Offline OpenAI-compatible response replay fixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["host", "port", "steps"],
+  "properties": {
+    "host": {
+      "const": "127.0.0.1",
+      "description": "The fixture binds only to the IPv4 loopback interface."
+    },
+    "port": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535,
+      "description": "Use zero to let the operating system select an available local port."
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/narratorResponse" },
+          { "$ref": "#/$defs/stateUpdaterResponse" },
+          { "$ref": "#/$defs/plannedFailure" }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "purpose": {
+      "type": "string",
+      "enum": ["narrator", "state_updater"]
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "narratorResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["purpose", "model", "text"],
+      "properties": {
+        "purpose": { "const": "narrator" },
+        "model": { "$ref": "#/$defs/model" },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The assistant message content returned by the configured model call."
+        }
+      }
+    },
+    "stateUpdaterResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["purpose", "model", "agentOutput"],
+      "properties": {
+        "purpose": { "const": "state_updater" },
+        "model": { "$ref": "#/$defs/model" },
+        "agentOutput": { "$ref": "#/$defs/agentOutput" }
+      }
+    },
+    "plannedFailure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["purpose", "model", "failure"],
+      "properties": {
+        "purpose": { "$ref": "#/$defs/purpose" },
+        "model": { "$ref": "#/$defs/model" },
+        "failure": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["statusCode", "type", "code", "message"],
+          "properties": {
+            "statusCode": { "type": "integer", "minimum": 400, "maximum": 599 },
+            "type": { "type": "string", "minLength": 1 },
+            "code": { "type": "string", "minLength": 1 },
+            "message": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "agentOutput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["changes", "evidenceMessageIds"],
+      "properties": {
+        "changes": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["op", "path", "value"],
+                "properties": {
+                  "op": { "const": "set" },
+                  "path": { "type": "string", "pattern": "^/[^/].*" },
+                  "value": {}
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["op", "path"],
+                "properties": {
+                  "op": { "const": "remove" },
+                  "path": { "type": "string", "pattern": "^/[^/].*" }
+                }
+              }
+            ]
+          }
+        },
+        "evidenceMessageIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A message ID from this update's sources. The fixture also resolves the explicit token $sourceMessageId[n] to the nth sources[].messageId in the actual request."
+          }
+        },
+        "facts": { "type": "object" }
+      }
+    }
+  }
+}

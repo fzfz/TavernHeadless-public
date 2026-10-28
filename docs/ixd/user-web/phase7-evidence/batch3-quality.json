@@ -1,0 +1,38 @@
+[
+  {
+    "platform": "mobile",
+    "route": "personas",
+    "check": "HTML直接运行、三种页面的设备框、窄屏与横屏、长文本和200%文字、44px操作范围",
+    "result": "pass"
+  },
+  {
+    "platform": "mobile",
+    "route": "personas/new",
+    "check": "HTML直接运行、三种页面的设备框、窄屏与横屏、长文本和200%文字、44px操作范围",
+    "result": "pass"
+  },
+  {
+    "platform": "mobile",
+    "route": "personas/edit/p1",
+    "check": "HTML直接运行、三种页面的设备框、窄屏与横屏、长文本和200%文字、44px操作范围",
+    "result": "pass"
+  },
+  {
+    "platform": "desktop",
+    "route": "personas",
+    "check": "HTML直接运行、三种页面的设备框、窄屏与横屏、长文本和200%文字、44px操作范围",
+    "result": "pass"
+  },
+  {
+    "platform": "desktop",
+    "route": "personas/new",
+    "check": "HTML直接运行、三种页面的设备框、窄屏与横屏、长文本和200%文字、44px操作范围",
+    "result": "pass"
+  },
+  {
+    "platform": "desktop",
+    "route": "personas/edit/p1",
+    "check": "HTML直接运行、三种页面的设备框、窄屏与横屏、长文本和200%文字、44px操作范围",
+    "result": "pass"
+  }
+]

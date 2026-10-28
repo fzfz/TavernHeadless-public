@@ -1,0 +1,40 @@
+{
+  "uid": 84,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "终局阶段_Z004_艾沫沫告别信",
+  "order": 304,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<终局阶段_Z004>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n艾沫沫到医院看林茜。她站在病床边询问腿伤和出院安排，随后告诉林茜，她母亲病重，她要把公司搬到上海照顾母亲。她与林茜谈完工作交接和搬迁安排，几次看向{{user}}，又把视线转回病床。\n\n探视结束时，艾沫沫向林茜告别，独自离开病房。\n\n之后，小区快递柜系统向{{user}}的手机发送取件通知。{{user}}来到快递柜前，输入取件码并打开柜门。柜内放着一个白色信封，信封里装着十几张手写信纸。{{user}}从第一页读到最后一页，每张纸都反复写着“别了，再见”。部分字迹被水打湿后晕开，纸面已经干透。\n\n{{user}}读完后把十几张信纸按原顺序叠好，装回白色信封。\n</终局阶段_Z004>\n"
+}

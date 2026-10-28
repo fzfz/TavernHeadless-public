@@ -1,0 +1,1673 @@
+{
+  "updatedAt": "2026-10-06T05:11:26.804776+00:00",
+  "phase": "remaining_steps",
+  "plan": "execution-improvement-plan.md",
+  "baseline": "conversion-time-analysis.json",
+  "userCorrectionsApplied": [
+    "删除转换与验收职责调整；按同一转换Agent和相同任务范围比较Skill执行耗时",
+    "维护者在测试前分析源卡结构并实现各阶段固定脚本",
+    "新增确定性字段预检；固定映射由脚本处理，剩余用途和删除范围由Agent判断",
+    "固定工具承接文件复制、写入、登记与检查；卡内程序仍按源逻辑转写",
+    "主代理在交付方案前完成实际卡结构分析、直接映射配置和阶段脚本接口设计；执行者按既定设计实现",
+    "禁止设计或新增程序门禁及任何hashing门禁或校验逻辑；删除转换记录生成、强制保存、校验、覆盖和完成度判定逻辑",
+    "删除通用写入操作JSON及其请求schema；确定性命令直接接收参数，其他原生文件由宿主文件工具写入",
+    "章节标题明确为待实施设计，实际卡结构调研结果归入现状调研；设计与已有实现分别描述",
+    "预检阶段按Agent调用、脚本已写入字段、待Agent判断内容、Agent后续动作描述；begin直接完成人物确定性映射，去掉重复map-character调用",
+    "先按作用、输入、返回值和Agent后续动作设计协作流程；脚本内部逻辑另设章节供计划执行者实现",
+    "全部新增脚本按作用、调用时机与输入、返回数据、Agent后续动作分别描述；字段处理规则直接写入计划正文，删除字段映射配置JSON",
+    "begin阶段Agent只调用命令并读取返回结果；后续判断、写入和引用转写动作不写入begin节",
+    "删除各命令返回说明后的泛泛行动尾句和跨阶段说明；保留当前节需要的输入、输出及具体判断"
+  ],
+  "independentReviews": [
+    {
+      "agent": "/root/execution_improvement_plan_audit",
+      "findings": 5,
+      "disposition": "resolved"
+    },
+    {
+      "agent": "/root/execution_improvement_plan_final_audit",
+      "findings": 2,
+      "disposition": "resolved"
+    },
+    {
+      "agent": "/root/execution_improvement_sections_audit",
+      "findings": 2,
+      "disposition": "resolved"
+    },
+    {
+      "agent": "/root/execution_improvement_revised_plan_audit",
+      "findings": 3,
+      "disposition": "resolved"
+    },
+    {
+      "agent": "/root/execution_improvement_sentence_closeout",
+      "findings": 1,
+      "disposition": "applied_exact_reviewer_replacement"
+    },
+    {
+      "agent": "/root/concrete_precheck_design_audit",
+      "findings": 4,
+      "disposition": "resolved"
+    },
+    {
+      "agent": "/root/concrete_design_wording_closeout",
+      "findings": 3,
+      "disposition": "resolved",
+      "timingBoundary": "预检返回至最后一次内容文件或程序写入返回"
+    },
+    {
+      "agent": "/root/plan_no_gates_semantic_audit",
+      "findings": 3,
+      "disposition": "resolved"
+    },
+    {
+      "agent": "/root/direct_command_plan_audit",
+      "findings": 4,
+      "disposition": "resolved"
+    },
+    {
+      "agent": "/root/plan_design_titles_audit",
+      "findings": 1,
+      "disposition": "applied_reviewer_wording"
+    },
+    {
+      "agent": "/root/collaboration_plan_semantic_audit",
+      "findings": 4,
+      "disposition": "resolved"
+    },
+    {
+      "agent": "/root/begin_stage_wording_audit",
+      "findings": 2,
+      "disposition": "resolved_with_user_stage_scope_requirement"
+    },
+    {
+      "agent": "/root/begin_stage_final_audit",
+      "findings": 0,
+      "disposition": "passed"
+    },
+    {
+      "agent": "/root/plan_tail_cleanup_audit",
+      "findings": 3,
+      "disposition": "resolved; map-entry返回说明仅保留返回数据，按用户要求删除后续动作"
+    }
+  ],
+  "checks": {
+    "requiredSections": 8,
+    "localLinks": 6,
+    "frontmatter": "passed",
+    "orderedLists": "passed",
+    "prettier": "passed",
+    "scope": "设计配置及请求schema；未执行转换、联调或模型调用",
+    "previousWriteSchemaChecks": "已删除的设计文件；历史检查不适用于当前方案",
+    "previousMappingChecks": "已删除的设计配置；当前规则位于计划正文"
+  },
+  "implementationStarted": true,
+  "newConversionTests": 0,
+  "newPreviews": 0,
+  "newRuntimeModelRequests": 0,
+  "changedFiles": [
+    "execution-improvement-plan.md",
+    "execution-improvement-progress.json",
+    "source-structure-design-evidence.json",
+    "concrete-design-checks.json",
+    "design-document-checks.json"
+  ],
+  "preservedExistingChanges": true,
+  "structureSurvey": {
+    "cards": 117,
+    "worldbookEntries": 5043,
+    "regexRules": 444,
+    "sillyTavernVersion": "1.18.0",
+    "sillyTavernCommit": "51ad27fb86d39a3daca3adaa970375c9670c12df"
+  },
+  "designedInterfaces": [
+    "begin",
+    "read",
+    "map-entry",
+    "map-regex",
+    "copy",
+    "parse",
+    "index"
+  ],
+  "latestChangeFiles": [
+    "execution-improvement-plan.md",
+    "execution-improvement-progress.json"
+  ],
+  "removedDesigns": [
+    "转换字段决策记录自动生成",
+    "转换记录schema和引用校验",
+    "逐路径覆盖和完成度检查",
+    "运行错误专用新增校验阶段"
+  ],
+  "removedArtifacts": [
+    "deterministic-write-request.schema.json",
+    "deterministic-field-map.json"
+  ],
+  "implementationScope": "approved remaining steps: copy, parse, index, existing commands, workflow docs, one clean-context trial",
+  "beginEvidence": "begin-implementation/summary.json",
+  "beginInputTypes": [
+    "PNG",
+    "JSON"
+  ],
+  "remainingBeginIntegration": [
+    {
+      "stage": "后续命令",
+      "issue": "旧loadTask及resume依赖旧任务schema、资料绑定和source-original.json，不能消费新begin任务。",
+      "nextAction": "后续命令统一读取简化任务文件，并按批准方案移除转换记录门禁；begin不补回旧门禁。"
+    },
+    {
+      "stage": "已有入口测试",
+      "issue": "skill-entry.test.ts仍断言旧sourceFile路径并连测旧resume。",
+      "nextAction": "在衔接阶段更新入口测试，分开新begin与后续恢复验收。"
+    }
+  ],
+  "beginCommit": "a192dce0d5b483a9e288e20b43f0eea4012e6e80",
+  "beginAssessment": {
+    "status": "superseded_by_feature_iteration",
+    "report": "begin-assessment.md",
+    "cards": 117,
+    "equalAliasDuplicates": 348,
+    "nonemptyProseWrites": 0,
+    "productionFilesChanged": false,
+    "independentReviewer": "/root/begin_semantic_handoff_review",
+    "writtenValuesChecked": 1146,
+    "writtenValueMismatches": 0,
+    "valuesEvidence": "begin-assessment-values.json",
+    "readyForSemanticReading": true,
+    "readyForExistingFollowupCommands": false,
+    "commonBeginImprovements": [
+      "known_alias_deduplication",
+      "legacy_creatorcomment_classification",
+      "pending_object_names"
+    ],
+    "followupToolImprovements": [
+      "consume_simplified_task",
+      "remove_conversion_record_dependencies",
+      "implement_planned_read"
+    ],
+    "reviewDisposition": {
+      "taskContract": "update_followup_consumers",
+      "structureInventory": "remove_old_dependency; do_not_restore_inventory"
+    },
+    "textAudits": [
+      {
+        "agent": "/root/begin_assessment_text_audit",
+        "findings": 4,
+        "resolved": true
+      },
+      {
+        "agent": "/root/begin_assessment_text_closeout",
+        "findings": 1,
+        "resolved": "applied_exact_reviewer_replacement"
+      }
+    ],
+    "missedIssue": "nonempty_character_text_blanket_pending",
+    "affectedFields": [
+      "description",
+      "personality",
+      "scenario",
+      "mes_example",
+      "system_prompt",
+      "post_history_instructions",
+      "creator_notes"
+    ]
+  },
+  "beginFeatureIteration": {
+    "scope": "begin_feature_detection",
+    "baselineCommit": "a192dce0d5b483a9e288e20b43f0eea4012e6e80",
+    "evidenceDirectory": "begin-features",
+    "status": "complete",
+    "redTests": {
+      "failed": 44,
+      "passed": 43
+    },
+    "newConversionTests": 0,
+    "newPreviews": 0,
+    "newRuntimeModelRequests": 0,
+    "firstCorpus": {
+      "count": 117,
+      "written": 1261,
+      "characterPending": 28,
+      "newCopies": 115
+    },
+    "firstCorpusMisses": [
+      "status_panel_output",
+      "json_single_line_requirement",
+      "numeric_calculation_requirement",
+      "unsupported_character_macro"
+    ],
+    "unitTests": {
+      "passed": 132,
+      "failed": 0
+    },
+    "scopeLint": "passed",
+    "finalCorpus": {
+      "count": 117,
+      "written": 1249,
+      "pending": 7429,
+      "characterPending": 40,
+      "featureTextPending": 38,
+      "invalidCharacterTypes": 2,
+      "newCopies": 103,
+      "writtenValueMismatches": 0
+    },
+    "reviewedFirstCorpus": {
+      "newCopiedFieldsRead": 115,
+      "characterPendingRead": 28,
+      "categoriesOfFindings": 6
+    },
+    "retrospective": "begin-features/retrospective.md",
+    "rootTagOrderFix": "fixed_and_tested",
+    "syntaxRepair": "CSS unicode regex closing brace escaped",
+    "scopeTypecheck": "passed",
+    "projectTypecheck": "passed",
+    "projectLint": {
+      "status": "failed",
+      "errors": 13826,
+      "warnings": 8,
+      "log": "begin-features/lint-full.log"
+    },
+    "projectTests": {
+      "status": "failed",
+      "failedFiles": 389,
+      "passedFiles": 920,
+      "skippedFiles": 3,
+      "failedTests": 27,
+      "passedTests": 9256,
+      "skippedTests": 4,
+      "log": "begin-features/tests-full.log"
+    },
+    "reviewRegressions": {
+      "cases": 16,
+      "passed": 16,
+      "evidence": "begin-features/review-regressions.json"
+    },
+    "incrementFalsePositiveFix": "fixed_numeric_range_and_markdown_separator",
+    "finalReviews": [
+      {
+        "agent": "/root/begin_features_final_standards",
+        "axis": "Standards",
+        "status": "passed"
+      },
+      {
+        "agent": "/root/begin_features_final_spec",
+        "axis": "Spec",
+        "status": "passed",
+        "actualResultsRead": 117,
+        "originalFeatureExcerptsChecked": 4552
+      },
+      {
+        "agent": "/root/begin_features_final_text",
+        "axis": "text",
+        "status": "four_retrospective_findings_fixed; Skill_sections_and_plan_paragraph_passed"
+      }
+    ],
+    "remainingIssues": [
+      "348_equal_alias_duplicates",
+      "planned_read_command_not_implemented",
+      "old_followup_commands_require_task_contract_and_gate_cleanup"
+    ],
+    "commit": "60c19885b11d33f9be397bcd49bf815d08f210a7",
+    "changedFiles": [
+      ".agents/skills/native-card-conversion/SKILL.md",
+      ".agents/skills/native-card-conversion/references/tools.md",
+      "scripts/native-card-conversion/source.ts",
+      "scripts/native-card-conversion/source-config.ts",
+      "scripts/native-card-conversion/source.test.ts",
+      "scripts/native-card-conversion/png-source.test.ts",
+      "scripts/native-card-conversion/source-features.test.ts"
+    ],
+    "retrospectiveTextReview": {
+      "agent": "/root/begin_retrospective_sentences_audit",
+      "findings": 2,
+      "disposition": "applied_exact_deletions; remaining_sentences_passed"
+    },
+    "retrospectiveTextReviews": [
+      {
+        "agent": "/root/begin_features_final_text",
+        "findings": 4,
+        "disposition": "fixed"
+      },
+      {
+        "agent": "/root/begin_retrospective_text_closeout",
+        "findings": 1,
+        "disposition": "fixed_with_command_and_file_names"
+      },
+      {
+        "agent": "/root/begin_retrospective_text_final",
+        "findings": 3,
+        "disposition": "fixed; unchanged_text_passed"
+      }
+    ],
+    "nextScope": "implement_read_and_simplify_followup_task_consumers; deduplicate_known_aliases"
+  },
+  "beginAliasIteration": {
+    "status": "complete",
+    "scope": "known_alias_deduplication_and_source_favorite_removal",
+    "baselineCommit": "60c19885b11d33f9be397bcd49bf815d08f210a7",
+    "evidenceDirectory": "begin-aliases",
+    "userCorrection": "Exclude fav and talkativeness entirely; deduplicate author notes",
+    "newConversionTests": 0,
+    "newPreviews": 0,
+    "corpus": {
+      "cards": 117,
+      "written": 1247,
+      "pending": 6848,
+      "excludedKnownFieldsStillPending": 0,
+      "equalAuthorAliasExtraPending": 0,
+      "conflictingAuthorCards": [
+        {
+          "id": "C013",
+          "issues": [
+            {
+              "pointer": "/creatorcomment",
+              "valueType": "string",
+              "message": "该字段的值或类型与 /data/creator_notes 处字段的值或类型不同，请确认应保留的内容。"
+            }
+          ]
+        },
+        {
+          "id": "USER002",
+          "issues": [
+            {
+              "pointer": "/creatorcomment",
+              "valueType": "string",
+              "message": "该字段的值或类型与 /data/creator_notes 处字段的值或类型不同，请确认应保留的内容。"
+            }
+          ]
+        }
+      ],
+      "removedPending": {
+        "/creatorcomment": 114,
+        "/talkativeness": 117,
+        "/fav": 117,
+        "/data/extensions/talkativeness": 117,
+        "/data/extensions/fav": 117,
+        "/data/creatorcomment": 1
+      },
+      "pendingReduction": 581
+    },
+    "unitTests": {
+      "passed": 170,
+      "failed": 0
+    },
+    "projectTypes": "passed",
+    "scopeTypes": "passed",
+    "scopeLint": "passed",
+    "initialReviews": [
+      {
+        "agent": "/root/begin_alias_spec_review",
+        "findings": 1,
+        "resolved": true
+      },
+      {
+        "agent": "/root/begin_alias_standards_review",
+        "findings": 1,
+        "resolved": true
+      },
+      {
+        "agent": "/root/begin_alias_text_audit",
+        "findings": 1,
+        "resolved": true
+      }
+    ],
+    "errors": [
+      {
+        "command": "node --experimental-strip-types run-corpus.ts",
+        "error": "ERR_MODULE_NOT_FOUND for role-assets.js",
+        "resolution": "Used installed tsx loader; original error preserved in conversation"
+      }
+    ],
+    "pendingUserQuestion": "group_only_greetings: preserve prose as ordinary alternate opening or delete",
+    "finalReviews": [
+      {
+        "agent": "/root/begin_alias_final_spec",
+        "axis": "Spec",
+        "status": "passed",
+        "actualResultsRead": 117
+      },
+      {
+        "agent": "/root/begin_alias_final_standards",
+        "axis": "Standards",
+        "status": "passed"
+      },
+      {
+        "agent": "/root/begin_alias_final_config_review",
+        "scope": "final_source_config",
+        "status": "passed"
+      },
+      {
+        "agent": "/root/begin_alias_final_text",
+        "axis": "text",
+        "findings": 3,
+        "resolved": true
+      },
+      {
+        "agent": "/root/begin_alias_text_closeout",
+        "axis": "text",
+        "findings": 3,
+        "resolved": true
+      },
+      {
+        "agent": "/root/begin_alias_final_sentences",
+        "axis": "text",
+        "findings": 1,
+        "disposition": "applied_exact_reviewer_replacement; other_changed_sentences_passed"
+      }
+    ],
+    "projectLint": {
+      "status": "failed",
+      "errors": 13826,
+      "warnings": 8,
+      "log": "begin-aliases/lint-full.log"
+    },
+    "projectTestsRaw": {
+      "status": "failed",
+      "failedFiles": 390,
+      "passedFiles": 920,
+      "failedTests": 37,
+      "passedTests": 9309,
+      "log": "begin-aliases/tests-full.log",
+      "scopeNote": "Ran while root extension correction was applied; ten added regression cases ran against earlier source load. Stable source passed all170 scoped tests afterward."
+    },
+    "projectTestsFinal": {
+      "status": "failed",
+      "command": "pnpm test:ci --exclude '**/.planning/**'",
+      "passedFiles": 575,
+      "failedFiles": 1,
+      "skippedFiles": 3,
+      "passedTests": 5487,
+      "failedTests": 1,
+      "skippedTests": 4,
+      "failure": "scripts/native-card-conversion/skill-entry.test.ts: existing old task/entry contract",
+      "log": "begin-aliases/tests-project-final.log"
+    },
+    "commit": "e5ba0bb",
+    "checks": {
+      "targetedTests": 170,
+      "targetedFailures": 0,
+      "scopedLint": "passed",
+      "scopedTypes": "passed",
+      "projectTypes": "passed",
+      "prettier": "passed",
+      "diffCheck": "passed"
+    },
+    "changedFiles": [
+      "scripts/native-card-conversion/source.ts",
+      "scripts/native-card-conversion/source-config.ts",
+      "scripts/native-card-conversion/source-aliases.test.ts",
+      ".agents/skills/native-card-conversion/references/character-fields.md",
+      ".agents/skills/native-card-conversion/references/tools.md"
+    ],
+    "preservedUnrelatedChanges": true
+  },
+  "currentBeginAssessment": {
+    "status": "complete",
+    "baselineCommit": "e5ba0bb",
+    "evidenceDirectory": "begin-assessment-current",
+    "cards": 117,
+    "reviewers": [
+      "/root/begin_written_semantic_assessment",
+      "/root/begin_pending_handoff_assessment"
+    ],
+    "structureSummary": "begin-assessment-current/structure-summary.json",
+    "emptyContentSummary": "begin-assessment-current/empty-content-summary.json",
+    "errors": [
+      {
+        "action": "helper variable inventory",
+        "error": "Python list JSON pointer traversed as dictionary",
+        "resolved": "array indices handled as integers"
+      }
+    ],
+    "pendingUserQuestion": {
+      "fields": [
+        "chat",
+        "isPinned",
+        "pinnedTimestamp",
+        "create_date"
+      ],
+      "question": "exclude source-local management fields or preserve as author metadata",
+      "status": "awaiting_answer"
+    },
+    "confirmedReadinessIssue": {
+      "beginTaskKeys": [
+        "id",
+        "sourceFile",
+        "originalSourceFile",
+        "repositoryRoot",
+        "outputDirectory",
+        "packageDirectory"
+      ],
+      "oldCommandsRequireDifferentTaskSchema": true,
+      "plannedReadNotImplemented": true
+    },
+    "structureFindings": {
+      "emptyDepthPrompts": 112,
+      "emptyHelperVariables": 81,
+      "avatarNoneCandidates": "111 root positions and3 data positions",
+      "nonemptyProseAwaitingSemanticReview": 101,
+      "nonemptyProseCharacters": 83173
+    },
+    "corpus": {
+      "cards": 117,
+      "written": 1239,
+      "pending": 6540,
+      "removedEmptyPending": 316,
+      "movedTextFields": 8
+    },
+    "unitTests": {
+      "passed": 224,
+      "failed": 0
+    },
+    "scopeLint": "passed",
+    "projectTypes": "passed",
+    "report": "begin-assessment-current/assessment.md",
+    "initialFinalReviewFindings": [
+      {
+        "axis": "Standards",
+        "agent": "/root/begin_assessment_final_standards",
+        "finding": "empty_depth_prompt_must_retain_invalid_depth_or_role",
+        "status": "awaiting_spec_review_completion_before_fix"
+      },
+      {
+        "axis": "text",
+        "agent": "/root/begin_assessment_final_text",
+        "findings": 1,
+        "status": "applied_exact_requested_deletion"
+      }
+    ],
+    "scopeTypes": "passed",
+    "depthPromptTypeFinding": "fixed_and_tested",
+    "projectTests": {
+      "passed": 5530,
+      "failed": 1,
+      "passedFiles": 576,
+      "failedFiles": 1,
+      "skippedFiles": 3,
+      "failure": "existing_skill-entry_old_source_and_resume_contract",
+      "log": "begin-assessment-current/tests-project.log"
+    },
+    "finalReviews": [
+      {
+        "agent": "/root/begin_assessment_closeout_standards",
+        "axis": "Standards",
+        "status": "passed"
+      },
+      {
+        "agent": "/root/begin_assessment_closeout_spec",
+        "axis": "Spec",
+        "status": "passed",
+        "cardsChecked": 117,
+        "nonBlockingFinding": "wrapped_root_extensions_helper_empty_variables_remains_pending"
+      },
+      {
+        "agent": "/root/begin_assessment_closeout_text",
+        "axis": "text",
+        "findings": 2,
+        "status": "applied_exact_requested_replacements; other_text_passed"
+      }
+    ],
+    "remainingEmptyContainerOptimization": {
+      "pointer": "/extensions/tavern_helper",
+      "condition": "wrapped card; root-only helper with variables={}",
+      "effect": "whole helper remains pending; no data lost; no affected corpus card found"
+    },
+    "changedFiles": [
+      "scripts/native-card-conversion/source.ts",
+      "scripts/native-card-conversion/source-config.ts",
+      "scripts/native-card-conversion/source.test.ts",
+      "scripts/native-card-conversion/source-assessment.test.ts",
+      ".agents/skills/native-card-conversion/SKILL.md",
+      ".agents/skills/native-card-conversion/references/tools.md"
+    ],
+    "commit": "af87526",
+    "preservedUnrelatedChanges": true,
+    "nextScope": "read_command_and_followup_task_contract"
+  },
+  "beginIdMapRemoval": {
+    "status": "complete",
+    "baselineCommit": "af87526",
+    "authorization": "Remove begin idMap and update complete SKILL begin invocation and returned-value handling",
+    "scope": [
+      "scripts/native-card-conversion/source.ts",
+      "scripts/native-card-conversion/source.test.ts",
+      ".agents/skills/native-card-conversion/SKILL.md",
+      ".agents/skills/native-card-conversion/references/tools.md",
+      ".planning/native-card-maintenance/iteration-23/execution-improvement-plan.md"
+    ],
+    "preserveSourceIdDiagnostics": true,
+    "mappingOwner": "future_entry_write_script",
+    "targetedTests": {
+      "passed": 229,
+      "failed": 0
+    },
+    "initialRedTests": {
+      "failed": 8,
+      "passed": 42
+    },
+    "diagnosticRegression": {
+      "redFailed": 1,
+      "fixed": true,
+      "assertsActualIdInMessage": true
+    },
+    "scopeTypes": "passed",
+    "projectTypes": "passed",
+    "scopeLint": "passed",
+    "corpus": {
+      "cards": 117,
+      "png": 115,
+      "json": 2,
+      "written": 1239,
+      "pending": 6540,
+      "issues": 4,
+      "differencesFromBaseline": [],
+      "idMapAbsent": true
+    },
+    "initialReviews": [
+      {
+        "axis": "Standards",
+        "agent": "/root/begin_no_idmap_standards",
+        "findings": 1,
+        "fixed": true
+      },
+      {
+        "axis": "Spec",
+        "agent": "/root/begin_no_idmap_spec",
+        "findings": 1,
+        "fixed": true
+      },
+      {
+        "axis": "text",
+        "agent": "/root/begin_no_idmap_text",
+        "skillText": "passed",
+        "planFindings": 3,
+        "fixed": true
+      }
+    ],
+    "evidenceDirectory": "begin-id-map-removal",
+    "projectTests": {
+      "passed": 5546,
+      "failed": 1,
+      "failure": "existing_skill-entry_sourceFile_and_resume_contract",
+      "log": "begin-id-map-removal/tests-project.log"
+    },
+    "finalReviews": [
+      {
+        "agent": "/root/begin_no_idmap_final_spec",
+        "axis": "Spec",
+        "status": "passed",
+        "cardsChecked": 117
+      },
+      {
+        "agent": "/root/begin_no_idmap_final_standards",
+        "axis": "Standards",
+        "status": "passed"
+      },
+      {
+        "agent": "/root/begin_no_idmap_text",
+        "axis": "skill_and_tools_text",
+        "status": "passed"
+      },
+      {
+        "agent": "/root/begin_no_idmap_final_plan_text",
+        "axis": "plan_text",
+        "findings": 2,
+        "status": "applied_exact_reviewer_replacements; other_text_passed"
+      }
+    ],
+    "changedTrackedFiles": [
+      "scripts/native-card-conversion/source.ts",
+      "scripts/native-card-conversion/source.test.ts",
+      ".agents/skills/native-card-conversion/SKILL.md",
+      ".agents/skills/native-card-conversion/references/tools.md"
+    ],
+    "localPlanSynchronized": true,
+    "commit": "a939219",
+    "preservedUnrelatedChanges": true
+  },
+  "readImplementation": {
+    "status": "implemented_tested_reviewed_committed",
+    "baselineCommit": "a939219",
+    "scope": "plan_4.1.2_read",
+    "contract": {
+      "arguments": [
+        "taskFile",
+        "sourcePointer"
+      ],
+      "returns": [
+        "pointer",
+        "valueType",
+        "contentFile",
+        "linesFile_for_strings"
+      ],
+      "writesFiles": true,
+      "sourceAndPackageReadOnly": true
+    },
+    "evidenceDirectory": "read-implementation",
+    "scopedTests": {
+      "passed": 285,
+      "newReadTests": 56
+    },
+    "actualCards": {
+      "passed": 117,
+      "png": 115,
+      "json": 2,
+      "reads": 14672,
+      "strings": 8791,
+      "lineRanges": 469176
+    },
+    "checks": {
+      "sourceTypecheck": "passed",
+      "scopedEslint": "passed",
+      "projectTypecheck": "passed",
+      "projectTests": {
+        "command": "pnpm test:ci --exclude '**/.planning/**'",
+        "passed": 5602,
+        "failed": 1,
+        "skipped": 4,
+        "failure": "existing untracked skill-entry.test.ts expects sourceFile to equal original input instead of begin source copy",
+        "evidence": "read-implementation/project-tests.log"
+      }
+    },
+    "findings": [
+      "Full original values and line ranges passed structural checks.",
+      "Large text output can exceed host output limits; explicit segment reading proposed."
+    ],
+    "reviews": [
+      {
+        "agent": "/root/read_spec_review",
+        "axis": "Spec",
+        "status": "passed"
+      },
+      {
+        "agent": "/root/read_standards_review",
+        "axis": "Standards_and_Simplify",
+        "status": "passed"
+      },
+      {
+        "agent": "/root/read_text_audit",
+        "axis": "text",
+        "findings": 4,
+        "status": "applied_exact_replacements_and_plan_links"
+      },
+      {
+        "agent": "/root/read_final_text_audit",
+        "axis": "final_text",
+        "findings": 3,
+        "status": "applied_exact_reviewer_replacements; other_text_passed"
+      }
+    ],
+    "commit": "988775a1637f19c706dbb760a502cb71bab262f1",
+    "report": "read-implementation/assessment-and-improvement.md",
+    "preservedUnrelatedChanges": true,
+    "improvement": {
+      "status": "proposed_not_implemented",
+      "scope": "explicit original-text segment reads with global UTF-16 offsets and totalLength"
+    },
+    "changedTrackedFiles": [
+      "scripts/native-card-conversion/source.ts",
+      "scripts/native-card-conversion/source-config.ts",
+      "scripts/native-card-conversion/source-read.test.ts",
+      ".agents/skills/native-card-conversion/scripts/convert.mjs",
+      ".agents/skills/native-card-conversion/SKILL.md",
+      ".agents/skills/native-card-conversion/references/tools.md"
+    ],
+    "currentCommit": "e7bd004a7caf8cf537c32e0421a1d6c9578ffd24"
+  },
+  "readPathCorrection": {
+    "status": "implemented_tested_reviewed_committed",
+    "baselineCommit": "988775a",
+    "userInstruction": "return file paths instead of large text",
+    "scopedTests": {
+      "passed": 294,
+      "readTests": 65
+    },
+    "actualTasks": {
+      "count": 117,
+      "cliCalls": 234,
+      "maxStdoutBytes": 375,
+      "longScriptOldStdoutBytes": 726306,
+      "longScriptNewStdoutBytes": 372,
+      "longScriptFileBytes": 323414
+    },
+    "checks": {
+      "strictSourceTypecheck": "passed",
+      "scopedEslint": "passed",
+      "projectTypecheck": "passed",
+      "projectTests": {
+        "passed": 5611,
+        "failed": 1,
+        "skipped": 4,
+        "failure": "existing skill-entry.test.ts sourceFile original-path assertion"
+      }
+    },
+    "reviews": [
+      {
+        "agent": "/root/read_paths_spec",
+        "axis": "Spec",
+        "status": "passed"
+      },
+      {
+        "agent": "/root/read_paths_standards",
+        "axis": "Standards_and_Simplify",
+        "status": "passed"
+      },
+      {
+        "agent": "/root/read_paths_text",
+        "axis": "independent_text",
+        "status": "applied_exact_reviewer_replacements; other_text_passed"
+      }
+    ],
+    "previousSegmentProposal": "withdrawn",
+    "commit": "e7bd004a7caf8cf537c32e0421a1d6c9578ffd24",
+    "preservedUnrelatedChanges": true
+  },
+  "mapEntryImplementation": {
+    "status": "complete",
+    "baselineCommit": "e7bd004",
+    "scope": "plan_4.1.3_and_4.2.2",
+    "sourceCorpus": {
+      "books": 109,
+      "entries": 5043,
+      "stringIds": 89,
+      "arrayComments": 3
+    },
+    "evidenceDirectory": "map-entry",
+    "assessment": {
+      "books": 109,
+      "entries": 5043,
+      "writes": 10086,
+      "cliCalls": 216,
+      "readCalls": 109,
+      "schemaPass": 5040,
+      "arrayCommentIssues": 3,
+      "maxStdoutBytes": 826
+    },
+    "reviews": "passed_after_fixes",
+    "remainingWork": [
+      "reduce_repeated_inactive_and_editor_configuration_decisions",
+      "legacy_skill_entry_test_assertion",
+      "remaining_plan_tools_and_full_card_acceptance"
+    ],
+    "commit": "d0b385123518df2d62b496297b4b14f4b7963f2d"
+  },
+  "mapEntryConfigCleanup": {
+    "status": "committed",
+    "baselineCommit": "d0b3851",
+    "scope": "seven_repeated_entry_configuration_fields",
+    "evidenceDirectory": "map-entry-config-cleanup",
+    "sourceLocations": {
+      "editor": [
+        "entry.display_index",
+        "entry.extensions.display_index"
+      ],
+      "inactiveExtensions": [
+        "use_group_scoring",
+        "automation_id",
+        "vectorized",
+        "sticky",
+        "cooldown"
+      ],
+      "unusedKeywordFlag": "entry.use_regex true/false/null"
+    },
+    "sourceFindings": {
+      "useRegexTrue": 4840,
+      "useRegexFalse": 203,
+      "sourceConsumer": "world-info.js:337; characters.js:681",
+      "targetConsumer": "trigger-engine.ts:262",
+      "initialAssessmentError": "use_regex values were read from extensions instead of the entry root"
+    },
+    "assessment": "map-entry-config-cleanup/final-root-fix/assessment-results.json",
+    "results": {
+      "cards": 117,
+      "books": 109,
+      "entries": 5043,
+      "fileWrites": 10086,
+      "readCalls": 109,
+      "mapCliCalls": 216,
+      "copiedSchemaPass": 5040,
+      "configSchemaPass": 5040,
+      "maxMapStdoutBytes": 428,
+      "remainingFields": {
+        "secondary_keys_logic": 8,
+        "name": 62,
+        "case_sensitive": 62,
+        "weight": 138,
+        "cfSortKey": 18,
+        "uid": 62,
+        "addMemo": 62,
+        "ignoreBudget": 62
+      },
+      "issues": [
+        {
+          "card": "C024",
+          "pointer": "/data/character_book/entries/0/comment",
+          "valueType": "array",
+          "message": "源值不符合目标字段 comment 的格式；该字段未写入。"
+        },
+        {
+          "card": "C028",
+          "pointer": "/data/character_book/entries/0/comment",
+          "valueType": "array",
+          "message": "源值不符合目标字段 comment 的格式；该字段未写入。"
+        },
+        {
+          "card": "C094",
+          "pointer": "/data/character_book/entries/0/comment",
+          "valueType": "array",
+          "message": "源值不符合目标字段 comment 的格式；该字段未写入。"
+        }
+      ]
+    },
+    "scopedTests": {
+      "passed": 420,
+      "failed": 0
+    },
+    "pendingBefore": 35775,
+    "pendingAfter": 474,
+    "checks": "map-entry-config-cleanup/checks.json",
+    "reviews": "map-entry-config-cleanup/reviews.json",
+    "commit": "b50c837aef39c2de86621f05565360080bc55bad"
+  },
+  "entryAliasCleanup": {
+    "status": "committed",
+    "baselineCommit": "b50c837aef39c2de86621f05565360080bc55bad",
+    "evidenceDirectory": "entry-alias-cleanup",
+    "scope": [
+      "name",
+      "case_sensitive",
+      "uid",
+      "ignoreBudget",
+      "addMemo",
+      "secondary_keys_logic",
+      "weight",
+      "cfSortKey"
+    ],
+    "existingPending": 474,
+    "duplicateRules": [
+      "name=comment",
+      "root case_sensitive=extensions.case_sensitive",
+      "extensions.uid=id",
+      "extensions.ignoreBudget=extensions.ignore_budget"
+    ],
+    "omittedEditorField": "addMemo",
+    "testsPassed": 152,
+    "research": {
+      "STSourceCommit": "51ad27fb86d39a3daca3adaa970375c9670c12df",
+      "unconsumedExtensions": [
+        "secondary_keys_logic",
+        "weight",
+        "cfSortKey"
+      ],
+      "producer": "not_established",
+      "sourceFieldConsumers": [
+        "world-info.js:5498–5557",
+        "world-info.js:4812–4862",
+        "world-info.js:5333–5339",
+        "world-info.js:2170–2177",
+        "characters.js:682–694"
+      ],
+      "scope": "local ST code/history, official release, CCv2, candidate producer pages",
+      "nativeTreatment": "remain pending; Agent checks source script/plugin readers; preserve source original",
+      "errors": [
+        "apply_patch table header mismatch after Prettier; reapplied paragraph and exact header replacement"
+      ]
+    },
+    "results": {
+      "cards": 117,
+      "books": 109,
+      "entries": 5043,
+      "fileWrites": 10086,
+      "readCalls": 109,
+      "mapCliCalls": 216,
+      "copiedSchemaPass": 5040,
+      "configSchemaPass": 5040,
+      "maxMapStdoutBytes": 308,
+      "remainingFields": {
+        "secondary_keys_logic": 8,
+        "weight": 138,
+        "cfSortKey": 18
+      },
+      "issues": [
+        {
+          "card": "C024",
+          "pointer": "/data/character_book/entries/0/comment",
+          "valueType": "array",
+          "message": "源值不符合目标字段 comment 的格式；该字段未写入。"
+        },
+        {
+          "card": "C028",
+          "pointer": "/data/character_book/entries/0/comment",
+          "valueType": "array",
+          "message": "源值不符合目标字段 comment 的格式；该字段未写入。"
+        },
+        {
+          "card": "C094",
+          "pointer": "/data/character_book/entries/0/comment",
+          "valueType": "array",
+          "message": "源值不符合目标字段 comment 的格式；该字段未写入。"
+        }
+      ]
+    },
+    "scopedTestsPassed": 447,
+    "remainingPending": 164,
+    "researchAgent": "entry_extra_field_research",
+    "dispatchError": "alias_spec_review spawn initially rejected agent thread limit; alias_final_spec subsequently dispatched after prior reviewers completed",
+    "checks": "entry-alias-cleanup/checks.json",
+    "reviews": "entry-alias-cleanup/reviews.json",
+    "commit": "95d752f99af9eb859ff1df95857b960699a12976"
+  },
+  "mapRegex": {
+    "status": "implemented-tested-reviewed-committed",
+    "baselineCommit": "95d752f99af9eb859ff1df95857b960699a12976",
+    "evidenceDirectory": "map-regex",
+    "scope": "plan 4.1.4 and begin/read/map-entry integration",
+    "errors": [
+      "attempted nonexistent source-read.ts and regex-script.schema.ts; resolved actual source.ts and schemas/regex-source.ts via rg",
+      "Counter.update(mapping) treated regex values as counts; fixed to mapping.keys()",
+      "mapRegex initially accepted non-array input with empty selection; added explicit array check and regression test",
+      "text audit dispatch initially rejected agent thread limit; waiting for a fresh Reviewer slot",
+      "Spec Reviewer found normalized ID reservation mismatch; fixed and added 2 regression cases",
+      "prompt wording patch initially used mismatched text; reapplied exact current line"
+    ],
+    "sourceFields": "map-regex/source-fields.json",
+    "unusedEntryExtensions": "implemented: ignore extensions.secondary_keys_logic, extensions.weight, extensions.cfSortKey for all values; preserve same-name root fields and actual runtime configuration",
+    "resultsFile": "map-regex/final/assessment-results.json",
+    "scopedTestsPassed": 515,
+    "results": {
+      "cards": 117,
+      "png": 115,
+      "json": 2,
+      "beginCli": 2,
+      "readCalls": 183,
+      "entryCli": 108,
+      "entries": 5043,
+      "entrySchemaPass": 5040,
+      "entryRemaining": 0,
+      "regexCards": 74,
+      "regexRules": 444,
+      "regexCli": 222,
+      "regexSchemaPass": 444,
+      "maxRegexStdoutBytes": 613,
+      "issues": [
+        {
+          "card": "C024",
+          "pointer": "/data/character_book/entries/0/comment",
+          "valueType": "array",
+          "message": "源值不符合目标字段 comment 的格式；该字段未写入。"
+        },
+        {
+          "card": "C028",
+          "pointer": "/data/character_book/entries/0/comment",
+          "valueType": "array",
+          "message": "源值不符合目标字段 comment 的格式；该字段未写入。"
+        },
+        {
+          "card": "C094",
+          "pointer": "/data/character_book/entries/0/comment",
+          "valueType": "array",
+          "message": "源值不符合目标字段 comment 的格式；该字段未写入。"
+        }
+      ],
+      "regexRemaining": [
+        {
+          "card": "C058",
+          "pointer": "/data/extensions/regex_scripts/0/version"
+        },
+        {
+          "card": "C058",
+          "pointer": "/data/extensions/regex_scripts/1/version"
+        },
+        {
+          "card": "C058",
+          "pointer": "/data/extensions/regex_scripts/2/version"
+        },
+        {
+          "card": "C058",
+          "pointer": "/data/extensions/regex_scripts/3/version"
+        },
+        {
+          "card": "C058",
+          "pointer": "/data/extensions/regex_scripts/4/version"
+        },
+        {
+          "card": "C058",
+          "pointer": "/data/extensions/regex_scripts/5/version"
+        },
+        {
+          "card": "C058",
+          "pointer": "/data/extensions/regex_scripts/6/version"
+        },
+        {
+          "card": "C058",
+          "pointer": "/data/extensions/regex_scripts/7/version"
+        },
+        {
+          "card": "C058",
+          "pointer": "/data/extensions/regex_scripts/8/version"
+        }
+      ],
+      "elapsedMs": 122348.69712499999
+    },
+    "checks": "map-regex/checks.json",
+    "reviews": "map-regex/reviews.json",
+    "commit": "b51bff45a5e143c080e46b20ba77ea215f0c8a53",
+    "report": "map-regex/report.md",
+    "fullSuitePreexistingFailure": "skill-entry.test.ts:37",
+    "fullSuitePassed": 5832
+  },
+  "remainingSteps": {
+    "status": "implementation_and_single_trial_closeout_complete",
+    "baseline": "b51bff45a5e143c080e46b20ba77ea215f0c8a53",
+    "order": [
+      "copy",
+      "parse",
+      "index",
+      "existing_commands_cleanup",
+      "documentation",
+      "one_clean_context_retest",
+      "checks_review_commit"
+    ],
+    "rule": "Each step must integrate with all completed prior steps, review actual output, and fix before advancing.",
+    "evidenceDirectory": "remaining",
+    "resume": "Read task_plan.md current section, this remainingSteps record, remaining/progress.md and remaining/findings.md; do not repeat completed stages.",
+    "stages": {
+      "copy": {
+        "status": "complete",
+        "newTestsPassed": 45,
+        "integratedTestsPassed": 401,
+        "integration": "remaining/copy/assessment.json",
+        "cards": 117,
+        "copies": 650,
+        "review": "remaining_copy_text_audit; exact recommendations applied",
+        "retrospective": {
+          "problems": [
+            "formal file rule has mediaTypes array, not mediaType",
+            "fragment and array error messages needed precise corrective action"
+          ],
+          "fixes": [
+            "use official mediaTypes",
+            "apply independent wording findings"
+          ],
+          "remainingProblems": []
+        }
+      },
+      "parse": {
+        "status": "complete",
+        "actualSourceIntegration": "remaining/parse/assessment.json",
+        "cards": 3,
+        "parseCalls": 6,
+        "actualSourceResult": "passed",
+        "remaining": null,
+        "boundaryEvidence": "remaining/parse/boundaries.json",
+        "boundaryChecksPassed": 8,
+        "typecheck": "passed",
+        "testRunIssue": "parse test was being replaced by its owner; initial regression log omitted that file, must rerun after owner completes",
+        "newTestsPassed": 34,
+        "copyTestsPassed": 46,
+        "integratedTestsPassed": 414,
+        "extraRegressionTestsPassed": 3,
+        "retrospective": {
+          "problems": [
+            "YAML Buffer toJSON hid source type",
+            "JSON overflowing numbers became null",
+            "serialization failure truncated existing target",
+            "YAML key string conversion could merge numeric and string keys"
+          ],
+          "fixes": [
+            "inspect original JSON value before serialization",
+            "reject non-finite numbers for all JSON writes",
+            "serialize before writing; replace after temporary write succeeds",
+            "parse YAML keys as strings and reject collisions or complex keys"
+          ],
+          "remainingProblems": []
+        },
+        "extraYamlTestsPassed": 2
+      },
+      "index": {
+        "status": "complete",
+        "integration": "remaining/index/assessment.json",
+        "cards": 117,
+        "cliCalls": 1,
+        "diagnosticsReturned": 117,
+        "knownIncomplete": "prior deterministic outputs have no openings.json; all index calls return the exact missing-required-file issue and still write manifest",
+        "errors": [
+          "initial maintenance harness loaded TypeScript before register; fixed invocation to node --import tsx",
+          "wording patch context mismatch after prettier; reapplied exact current text"
+        ],
+        "textReview": {
+          "agent": "index_wording_audit",
+          "findings": 2,
+          "disposition": "applied concrete path and extensions from formal configuration"
+        },
+        "newTestsPassed": 10,
+        "integratedTestsPassed": 426,
+        "typecheck": "passed",
+        "retrospective": {
+          "problems": [
+            "resource/frontend diagnostics lacked concrete correction targets"
+          ],
+          "fixes": [
+            "derive supported resource extensions and frontend path from official configuration"
+          ],
+          "remainingProblems": []
+        },
+        "tdd": "first test ran after implementation was available; no artificial rollback"
+      },
+      "existing_commands_cleanup": {
+        "status": "complete",
+        "mainChanges": [
+          "formal evidence schema runtime gate removed",
+          "preview request record schema runtime gate removed",
+          "all CLI first path parameters resolved before cwd change"
+        ],
+        "errors": [
+          "first formal/preview test command included read-only planning snapshots; rerun with explicit .planning exclusion",
+          "node_repl bootstrap failed with missing default export; used installed bundled Playwright via shell",
+          "bundled Playwright browser binary missing; used existing Google Chrome executable without installation",
+          "browser networkidle timed out on persistent page connections; changed smoke test to DOM load and actual role-name readiness",
+          "typecheck found fail default action narrowed to literal after messages were centralized; assigned explicit string type and rerun to owner"
+        ],
+        "formalPreviewTestsPassed": 25,
+        "formalPreviewEvidence": "remaining/formal-preview-tests.log",
+        "testedBehavior": [
+          "formal import and exact file readback",
+          "failed import and failed confirmation actual response",
+          "readback mismatch and failed GET",
+          "dry-run configured persona, preset, history",
+          "formal streamed body/state update and replay",
+          "preview concurrent isolation and listener cleanup",
+          "actual model capability policy rejection"
+        ],
+        "documentationChanges": [
+          "removed forced field-decisions/behavior-map/coverage requirements from Skill and field references",
+          "conversion-records.md now defines only final conversion explanation",
+          "fixed obsolete conversion-record links in semantic experience",
+          "applied independent wording findings"
+        ],
+        "wordingReview": {
+          "agent": "legacy_docs_wording_audit",
+          "findings": 4,
+          "disposition": "applied; full semantic document final audit remains"
+        },
+        "integrationFixtureFixes": [
+          "added formal opening default IDs, summary, kind and audience after schema diagnostics",
+          "bound the copied worldbook entry through book.json and character.worldbooks after feature-disabled diagnostic"
+        ],
+        "actualCliIntegration": "remaining/legacy-assessment.json",
+        "actualCliResults": "index/validate/pack/formal/resume passed",
+        "actualPreview": "remaining/preview/assessment.json",
+        "screenshot": "remaining/preview/page.png",
+        "pageHttpStatus": 200,
+        "browserPageErrors": 0,
+        "pageReading": "main agent inspected screenshot; actual source name and opening displayed; this is tool smoke, not full semantic card acceptance",
+        "remaining": null,
+        "mainTestConfirmation": {
+          "passed": 34,
+          "failed": 0,
+          "log": "remaining/legacy-closeout-tests.log"
+        },
+        "removedSchemas": "remaining/removed-record-schemas.json",
+        "textReview": {
+          "agent": "remaining_tools_text_audit",
+          "findings": 6,
+          "disposition": "all 6 applied; target ID changes explicitly refer to writable outputs"
+        },
+        "typecheck": "passed",
+        "retrospective": {
+          "problems": [
+            "old task schema blocked new begin results",
+            "conversion records controlled validation",
+            "fixtures lacked valid openings",
+            "default action literal caused TS2345"
+          ],
+          "fixes": [
+            "read current six-field task",
+            "remove record schemas and gates",
+            "complete formal package fixtures",
+            "explicit string type"
+          ],
+          "remainingProblems": []
+        },
+        "testsPassed": 35,
+        "executorChecks": [
+          "typecheck passed",
+          "ESLint passed",
+          "Prettier passed"
+        ],
+        "reviewFollowup": "fix task path single source, centralized diagnostics, per-request preview failure continuation; assigned remaining_copy_tests",
+        "reviewRepairs": {
+          "taskPaths": "single source taskPaths.task/package",
+          "diagnostics": "formal/preview templates in tool-config.ts",
+          "dryRuns": "failure records kept; remaining requests and page continue",
+          "scopedFiles": 6,
+          "testsPassed": 65,
+          "scriptTypecheck": "passed",
+          "lint": "passed",
+          "prettier": "passed",
+          "executor": "remaining_copy_tests",
+          "errorsFixed": [
+            "old English error assertions after message update",
+            "fixture did not remove independently injected persona; response seam now models missing actual assembled persona"
+          ],
+          "actualPreview": {
+            "report": "remaining/preview-closeout/assessment.json",
+            "firstStatus": 404,
+            "firstPassed": false,
+            "secondStatus": 200,
+            "secondPassed": true,
+            "pageHttp": 200,
+            "pageErrors": 0,
+            "screenshot": "remaining/preview-closeout/page.png",
+            "scope": "tool integration, not source-card semantic acceptance"
+          }
+        }
+      },
+      "documentation": {
+        "status": "complete",
+        "files": [
+          "SKILL.md",
+          "references/tools.md",
+          "references/character-fields.md",
+          "references/conversion-map.md",
+          "references/sources.md",
+          "references/acceptance.md",
+          "references/semantic-experience.md",
+          "references/conversion-records.md"
+        ],
+        "changes": [
+          "removed obsolete begin examples returns",
+          "updated file ownership and index registration",
+          "resume reads only unfinished source and API sections",
+          "one preview per ZIP with independent checks continuing on failure",
+          "repeat checks only for changed package or test configuration"
+        ],
+        "errors": [
+          "simplify review spawn reached agent thread limit; will dispatch after wording reviewer finishes",
+          "final wording closeout spawn reached limit; run after two code-review axes complete",
+          "depth prompt replacement originally required a period absent from table cell; matched actual cell text and fixed"
+        ],
+        "reviews": [
+          {
+            "agent": "remaining_workflow_text_audit",
+            "findings": 10,
+            "disposition": "applied scoped wording and hierarchy fixes"
+          },
+          {
+            "agent": "remaining_reference_text_audit",
+            "findings": 4,
+            "disposition": "applied including historical tense in findings"
+          }
+        ],
+        "linkCheck": {
+          "localTargets": 70,
+          "missing": 0,
+          "report": "remaining/doc-links.json"
+        },
+        "issuesFound": [
+          "resume documentation described task/records but actual return is flat paths/artifacts; correct docs to current tested contract"
+        ],
+        "finalTextReview": {
+          "agent": "remaining_docs_final_audit",
+          "findings": 6,
+          "disposition": "fixed links, duplication, chapter roles and subjects; file owners now in directory tree"
+        },
+        "closeoutReview": {
+          "agent": "remaining_docs_closeout",
+          "findings": 6,
+          "disposition": "removed directory purpose duplication, duplicate wrapper definition and request method explanation; fixed concrete helper/depth prompt wording"
+        },
+        "inspectionError": "looked up nonexistent native-card-package/agents.ts; actual ruleFiles consumer verified directly in state-update-service.ts",
+        "lastWordingAudit": {
+          "agent": "remaining_last_wording",
+          "findings": 5,
+          "disposition": "applied concrete replacements; macro check uses confirm rather than requiring a new record"
+        },
+        "finalAudit": {
+          "agent": "remaining_docs_wording_final",
+          "findings": 1,
+          "disposition": "applied explicit deletion subject; other 7 documents passed"
+        },
+        "diagnosticTextAudit": {
+          "agent": "remaining_diagnostic_wording",
+          "findings": 3,
+          "disposition": "tools.md import object corrected; two diagnostic strings assigned owning Executor; replay message identifies same-purpose steps rather than one step"
+        },
+        "previewReturn": "dryRuns ID, passed, HTTP status, diagnostics",
+        "shortFinalAudit": {
+          "agent": "remaining_final_short_wording",
+          "findings": 6,
+          "disposition": "duplicates removed; request IDs explicit; lint history retained in dedicated processed-check section; state facts and pending scope separated",
+          "diagnosticMessages": "passed",
+          "previewSection": "passed"
+        },
+        "referenceHeaders": {
+          "files": 10,
+          "apiSectionsUnchanged": true,
+          "metadata": "purpose and reading time in YAML; removed duplicate reader/time/purpose introductions from three HTTP copies",
+          "reviewer": "remaining_reference_metadata_final",
+          "finalResult": "passed"
+        }
+      },
+      "one_clean_context_retest": {
+        "status": "terminated_readonly_boundary_violation",
+        "preparation": {
+          "input": ".tmp/native-card-inputs/USER002-v1.3.32/input.json",
+          "inputDirectoryFiles": [
+            "input.json"
+          ],
+          "bytes": 567948,
+          "sourceEntries": 133,
+          "sourceRegexRules": 8,
+          "priorCases": "iteration-23/main-acceptance-cases.json",
+          "mainSourceReview": "remaining/source-core-review.json",
+          "dispatches": 1,
+          "note": "no additional information will be attached to the minimal dispatch"
+        },
+        "runtimeLimitEvidence": {
+          "record": "remaining/old-module-resource-purpose.json",
+          "oldFinalModuleDataJson": 122,
+          "oldFinalServerScripts": 3,
+          "maxModuleFiles": 128,
+          "scope": "current backend resource count includes every declared data JSON/server module; child must use current APIs and tests without guidance"
+        },
+        "dispatch": "remaining/single-trial/dispatch.json",
+        "agent": "/root/linxi_deterministic_tools_single_trial",
+        "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-pdG3cp/task.json",
+        "mainSourcePreparation": [
+          "remaining/single-trial/source-reading.json",
+          "remaining/single-trial/source-responsibilities.json"
+        ],
+        "intermediateEvidence": [
+          "remaining/single-trial/observations.json",
+          "remaining/single-trial/execution-progress.json",
+          "remaining/single-trial/readonly-intermediate.json"
+        ],
+        "latestChildReport": "child changed application maxModuleFiles128->256; main terminated foreground processes; trap restored byte-identical baseline; default-runtime preview fails128 resource limit",
+        "efficiencyIntermediate": {
+          "status": "failed",
+          "at": "2026-10-06T04:33:24.764715+00:00",
+          "reason": "still writing frontend after 36 minutes from Harness session start; semantic/write phase exceeds 20m and offline total exceeds 30m",
+          "finalTimingPending": true
+        },
+        "terminationEvidence": "remaining/single-trial/termination-and-boundary.json",
+        "guidanceMessages": 0,
+        "dispatches": 1,
+        "mainAcceptance": "complete_failed"
+      },
+      "checks_review_commit": {
+        "status": "checks_and_reviews_complete",
+        "projectTypecheck": "passed",
+        "scopeESLint": "passed",
+        "diffWhitespace": "passed",
+        "fullSuite": {
+          "status": "passed",
+          "filesPassed": 582,
+          "filesSkipped": 3,
+          "testsPassed": 5872,
+          "testsSkipped": 4,
+          "log": "remaining/project-tests.log"
+        },
+        "fullSuiteLog": "remaining/project-tests.log",
+        "simplify": {
+          "reviewer": "remaining_simplify_review",
+          "fixes": [
+            "correct resume docs",
+            "reuse existing JSON reader while preserving null/error semantics",
+            "reuse idempotent preview close",
+            "remove repeated lexical boundary checks"
+          ],
+          "declined": "local transport record helper offers limited benefit and risks altering error classification; current branches retained; existing basename fallback is unreachable and left unchanged in this review scope",
+          "testsPassed": 371,
+          "testsLog": "remaining/simplify-tests.log",
+          "typecheck": "passed",
+          "scope": "10 relevant files, after simplification",
+          "errors": [
+            "initial patch searched a nonexistent private function name; script aborted before writing, then used actual writeCopiedValue and reapplied"
+          ],
+          "lint": "passed"
+        },
+        "reviews": {
+          "standards": {
+            "agent": "remaining_code_standards",
+            "hardFindings": 2,
+            "smells": 1,
+            "result": "fixing",
+            "finalAgent": "remaining_code_standards_final",
+            "finalResult": "P1 task package root can redirect copy/parse/index",
+            "reproduction": "six-field task packageDirectory points unrelated temporary directory; copy/parse/index write; loadTask rejects task_boundary",
+            "repair": "extract and reuse existing lightweight task/path checks across readSource/prepareTarget/index/loadTask; regression root replacement and symlink, no workflow gates",
+            "repairScope": [
+              "read/write/index task boundary",
+              "begin output-root symlink before first write"
+            ]
+          },
+          "spec": {
+            "agent": "remaining_code_spec",
+            "findings": 1,
+            "result": "fixing; single dry-run failure must preserve independent checks",
+            "finalAgent": "remaining_code_spec_final",
+            "finalResult": "passed,149 tests",
+            "pathAgent": "remaining_paths_spec_closeout",
+            "pathStatus": "passed for shared task/path scope,235 tests",
+            "pathIntermediate": {
+              "tests": 235,
+              "files": 6,
+              "result": "passed for stable task loading/write/index; read result writing pending",
+              "excludedHistory": true
+            }
+          }
+        },
+        "projectLint": {
+          "status": "failed_historical_snapshots",
+          "log": "remaining/project-lint.log",
+          "problems": 13836,
+          "historicalSnapshotFiles": 439,
+          "sourceFiles": 4,
+          "retry": {
+            "command": "pnpm lint --ignore-pattern '**/.planning/**'",
+            "session": 94728,
+            "log": "remaining/project-lint-source.log",
+            "status": "passed",
+            "errors": 0,
+            "warnings": 4
+          }
+        },
+        "docsBuild": {
+          "status": "passed",
+          "session": 89574,
+          "log": "remaining/project-docs.log"
+        },
+        "errors": [
+          "progress update initially addressed checks_review_commit outside stages; no write occurred, corrected nesting",
+          "pnpm lint scanned historical read-only source snapshots and maintenance helpers in .planning; rerun excluding that evidence directory without changing repository lint config",
+          "main looked for task.ts before Executor chose a helper path; file did not exist; wait for released file list rather than assuming implementation name",
+          "Spec reviewer first test run included old .planning snapshots; explicit exclusion rerun passed 235 tests"
+        ],
+        "reviewFixOwner": "remaining_copy_tests",
+        "pathRepairIntermediate": {
+          "targetTestsPassed": 193,
+          "precedingToolTestsPassed": 271,
+          "status": "begin output-root reuse in progress",
+          "fixtureFix": "old tests copied task.json outside task directory; updated to actual begin task",
+          "typecheck": "passed before final begin change",
+          "lint": "passed before final begin change"
+        },
+        "pathRepairCompleted": {
+          "executor": "remaining_copy_tests",
+          "testsPassed": 466,
+          "testFiles": 9,
+          "typecheck": "passed",
+          "lint": "passed",
+          "prettier": "passed",
+          "scope": "shared task/path reading and begin output-root check before first write",
+          "files": [
+            "task-context.ts",
+            "tool.ts",
+            "source.ts",
+            "write.ts",
+            "index.ts",
+            "source-read.test.ts",
+            "source.test.ts",
+            "write-copy.test.ts",
+            "write-parse.test.ts",
+            "index.test.ts",
+            "tool.test.ts"
+          ]
+        },
+        "readResultRepair": {
+          "status": "complete",
+          "executor": "remaining_copy_tests",
+          "files": [
+            "atomic-write.ts",
+            "source.ts",
+            "source-read.test.ts",
+            "write.ts"
+          ],
+          "testsPassed": 470,
+          "testFiles": 9,
+          "typecheck": "passed",
+          "lint": "passed",
+          "prettier": "passed",
+          "reviewers": [
+            "read_write_final_standards",
+            "read_write_final_spec"
+          ],
+          "specFinal": "passed; read_write_final_spec",
+          "standardsFinal": "implementation passed; P3 read error pointed to package path, corrected to specific result path in sourceMessages",
+          "diagnosticReview": "read_result_diagnostic_audit; exact wording applied",
+          "finalSourceReadTests": 73
+        },
+        "dependencyReview": {
+          "report": "remaining/commit-imports.json",
+          "selectedFiles": 71,
+          "missingImports": 0,
+          "repaired": "bundled run-tools.ts uses bundled capability config; path replacement recorded in API manifest",
+          "actualExample": "remaining/bundled-tools-example.json"
+        },
+        "documentCloseout": "remaining/wording-closeout.json"
+      }
+    },
+    "lastRecovery": {
+      "next": "Read remaining/commit-result.json first to confirm submission. This implementation and one-shot trial closeout are finished. Original 117 semantic acceptances remain; await API proposal approval before the dependency-loading change. Do not resume or redispatch the terminated trial.",
+      "readFirst": [
+        "remaining/commit-result.json",
+        "remaining/progress.md",
+        "remaining/single-trial/main-acceptance.json",
+        "remaining/next-iteration-plan.md"
+      ]
+    },
+    "trialAcceptance": {
+      "overall": "failed",
+      "passed": 6,
+      "failed": 3,
+      "notExecuted": 4,
+      "formalReadbackFiles": 155,
+      "defaultPreview": "failed_module_file_limit",
+      "durationSeconds": 3314.02,
+      "report": "remaining/single-trial/retrospective.md",
+      "nextIterationPlan": "remaining/next-iteration-plan.md",
+      "trialMayResume": false
+    }
+  }
+}

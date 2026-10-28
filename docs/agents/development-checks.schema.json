@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "static",
+    "types",
+    "tests",
+    "generated",
+    "docs",
+    "clientTypes",
+    "clientTests"
+  ],
+  "properties": {
+    "static": {
+      "type": "string",
+      "minLength": 1
+    },
+    "types": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tests": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated": {
+      "type": "string",
+      "minLength": 1
+    },
+    "docs": {
+      "type": "string",
+      "minLength": 1
+    },
+    "clientTypes": {
+      "type": "string",
+      "minLength": 1
+    },
+    "clientTests": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "timeoutMs": 1500,
+  "maxBufferBytes": 2097152,
+  "maxInputBytes": 8388608,
+  "maxModuleBytes": 4194304,
+  "maxModuleFiles": 128,
+  "maxConcurrentWorkers": 4,
+  "maxOldGenerationSizeMb": 64,
+  "evaluationTimeoutMs": 1000
+}

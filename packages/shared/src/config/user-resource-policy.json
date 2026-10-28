@@ -1,0 +1,7 @@
+{
+  "personaNameMaxLength": 200,
+  "personaDescriptionMaxLength": 4000,
+  "sessionTitleMaxLength": 200,
+  "historyPageSize": 20,
+  "personaPageSize": 20
+}

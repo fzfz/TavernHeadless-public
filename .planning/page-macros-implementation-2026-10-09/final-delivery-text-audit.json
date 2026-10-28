@@ -1,0 +1,55 @@
+{
+  "review_type": "独立逐行文字审计",
+  "scope": [
+    ".planning/page-macros-implementation-2026-10-09/task_plan.md",
+    ".planning/page-macros-implementation-2026-10-09/findings.md",
+    ".planning/page-macros-implementation-2026-10-09/progress.md",
+    ".planning/page-macros-implementation-2026-10-09/acceptance.md",
+    ".agents/skills/native-card-conversion/scripts/tool-config.ts:410-411"
+  ],
+  "method": "仅依据指定目标文字，核对文档用途、章节职责、重复解释和中文表达；未核实引用证据或代码行为。",
+  "findings": [
+    {
+      "id": "T1",
+      "severity": "medium",
+      "file": ".planning/page-macros-implementation-2026-10-09/acceptance.md",
+      "lines": [11, 11],
+      "finding": "“98 项决定”没有说明决定的对象，“17 项具有用途条件”没有说明属于 36 项已实现宏还是全部 98 项。消费者无法从实施范围判断条件支持项与已实现项、宿主能力诊断项的关系。",
+      "action": "明确 98 项所统计的对象及 17 项的所属集合；若原计划已定义这些分类，则引用对应节，只保留本次统计结果。"
+    },
+    {
+      "id": "T2",
+      "severity": "medium",
+      "file": ".planning/page-macros-implementation-2026-10-09/acceptance.md",
+      "lines": [12, 12],
+      "related_locations": [
+        {
+          "file": ".planning/page-macros-implementation-2026-10-09/findings.md",
+          "lines": [31, 32]
+        }
+      ],
+      "finding": "本项在实施范围中重述绑定命令生成任务、返回字段及调用方接续步骤，与 findings.md 第 4 节重复解释产物责任及使用方法，也将命令流程写成了另一份文字来源。",
+      "action": "在 acceptance.md 中改为引用 findings.md 第 4 节及验收证据；findings.md 保留并发缺陷原因和已完成修复事实，将持续适用的调用流程指向对应代码或使用说明。"
+    },
+    {
+      "id": "T3",
+      "severity": "medium",
+      "file": ".planning/page-macros-implementation-2026-10-09/acceptance.md",
+      "lines": [62, 64],
+      "related_locations": [
+        {
+          "file": ".planning/page-macros-implementation-2026-10-09/progress.md",
+          "lines": [13, 16]
+        }
+      ],
+      "finding": "第 6 节再次规定压缩后的恢复读取顺序，与 progress.md 第 2 节重复；该节内容也超出 acceptance.md 的实施范围和验收结果汇总用途。",
+      "action": "删除 acceptance.md 第 6 节，统一由 progress.md 第 2 节承担恢复步骤。"
+    }
+  ],
+  "passed_observations": [
+    "四份 Markdown 文件均包含文档用途及读取时机 YAML 字段，并使用标题与有序列表组织主体内容。",
+    "progress.md 的阶段记录总体能够区分已执行动作、首次失败、后续修正和当前结果；本审计保留用户要求的历史动作记录。",
+    "tool-config.ts 第 410—411 行的 taskFile 说明明确了当前任务文件路径及传入 - 时的读取行为，本次文字审计未发现问题。"
+  ],
+  "target_files_modified": false
+}

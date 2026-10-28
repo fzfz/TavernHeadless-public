@@ -1,0 +1,37 @@
+{
+  "auditType": "独立逐行文字审计",
+  "scope": [
+    ".agents/skills/native-card-conversion/SKILL.md",
+    ".agents/skills/native-card-conversion/references/tools.md",
+    ".agents/skills/native-card-conversion/references/character-fields.md",
+    ".agents/skills/native-card-conversion/references/sources.md",
+    ".agents/skills/native-card-conversion/config/page-macros.json 的 purpose 与 diagnostic 中文文字",
+    ".agents/skills/native-card-conversion/scripts/tool-config.ts 的 bind-page-macros 用户说明文字"
+  ],
+  "findings": [
+    {
+      "id": "TEXT-01",
+      "priority": "P2",
+      "file": ".agents/skills/native-card-conversion/scripts/tool-config.ts",
+      "lineStart": 410,
+      "lineEnd": 410,
+      "title": "taskFile 参数说明与连续绑定的任务选择规则冲突",
+      "evidence": "参数说明将 taskFile 定义为“begin返回的taskFile”；同文件第362行要求连续绑定使用返回的 taskFile，references/tools.md 第131至132行也要求沿成功返回的任务逐次调用。",
+      "impact": "转换 Agent 阅读 bind-page-macros 的参数帮助时，会同时收到使用 begin 任务和使用前次绑定结果两种指令，无法据此唯一确定第二次绑定的输入任务。",
+      "recommendation": "将共享 taskFile 参数说明改为当前转换任务的 taskFile，并让 bind-page-macros 的命令说明承担连续绑定任务选择规则；保留 stdin 的参数用法。"
+    },
+    {
+      "id": "TEXT-02",
+      "priority": "P2",
+      "file": ".agents/skills/native-card-conversion/config/page-macros.json",
+      "lineStart": 591,
+      "lineEnd": 591,
+      "title": "charCreatorNotes 的用途说明混淆角色卡作者说明与作者注释扩展",
+      "evidence": "charCreatorNotes 的 purpose 将内容称为“作者注释”；references/character-fields.md 第46行将 creator_notes 定义为“作者说明及使用指引”，而同一配置第1291、1302、1313行分别用“作者注释”描述聊天注释、当前角色的扩展注释和扩展默认注释。",
+      "impact": "帮助内容用同一名称指代角色卡 creator_notes 和作者注释扩展的不同内容，转换 Agent 仅按用途选择宏时容易混淆资料来源。",
+      "recommendation": "将 charCreatorNotes 的 purpose 改为“输出角色包固定版本的角色卡作者说明。”，与角色字段参考中的名称保持一致。"
+    }
+  ],
+  "result": "指定范围内发现2项需要修正的文字问题；其余已审计文字未发现具有明确使用影响的问题。",
+  "productFilesModified": false
+}

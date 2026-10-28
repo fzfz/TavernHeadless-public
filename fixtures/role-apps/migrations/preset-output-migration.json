@@ -1,0 +1,35 @@
+{
+  "sourceRuleIds": [
+    "d0939a86-4170-44d8-8968-b6148a5c2ed6"
+  ],
+  "delivery": "streaming",
+  "streaming": {
+    "startMarkers": [
+      "<-begin-response->",
+      "这是你需求的最终输出：",
+      "我将进行符合需求的创作："
+    ],
+    "hiddenBlocks": [
+      {
+        "start": "<!--",
+        "end": "-->",
+        "removeFollowingWhitespace": true
+      },
+      {
+        "start": "<thinking>",
+        "end": "</thinking>"
+      },
+      {
+        "start": "<content>",
+        "startSuffix": "##",
+        "end": "---"
+      }
+    ],
+    "removedTokens": [
+      "<正文>",
+      "</正文>",
+      "<-end-response->"
+    ],
+    "startMarkerLineBreak": true
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "defaultOpeningIds": {
+      "type": "object",
+      "properties": {
+        "individual": {
+          "type": "string",
+          "minLength": 1
+        },
+        "group": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "story",
+              "introduction"
+            ]
+          },
+          "audience": {
+            "type": "string",
+            "enum": [
+              "individual",
+              "group",
+              "both"
+            ]
+          },
+          "textFile": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+          },
+          "initialStateFile": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "summary",
+          "kind",
+          "audience",
+          "textFile"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "defaultOpeningIds",
+    "items"
+  ],
+  "additionalProperties": false,
+  "$comment": "Generated from schema.ts by scripts/generate-native-card-schemas.ts."
+}

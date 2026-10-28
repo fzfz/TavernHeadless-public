@@ -1,0 +1,9 @@
+{
+  "static": "pnpm lint",
+  "types": "pnpm typecheck",
+  "tests": "pnpm test:ci",
+  "generated": "pnpm sdk:generate && pnpm sdk:check",
+  "docs": "pnpm docs:build",
+  "clientTypes": "pnpm --filter @tavern/web typecheck",
+  "clientTests": "pnpm --filter @tavern/web test"
+}

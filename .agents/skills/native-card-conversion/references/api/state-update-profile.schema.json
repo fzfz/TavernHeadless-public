@@ -1,0 +1,122 @@
+{
+  "type": "object",
+  "properties": {
+    "updaterPrompt": {
+      "type": "string"
+    },
+    "presetRef": {
+      "type": "object",
+      "properties": {
+        "presetId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "presetVersionId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "presetId",
+        "presetVersionId"
+      ],
+      "additionalProperties": false
+    },
+    "writablePaths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^\\/"
+      }
+    },
+    "derivedPaths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^\\/"
+      }
+    },
+    "controllerOwnedPaths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^\\/"
+      }
+    },
+    "initialDescriptionPaths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^\\/"
+      }
+    },
+    "stateSchemaFile": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+    },
+    "ruleFiles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+      }
+    },
+    "deriveScript": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+    },
+    "validateScript": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+    },
+    "moduleFiles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+      }
+    },
+    "factsSchema": {
+      "type": "object",
+      "additionalProperties": {}
+    },
+    "maxTokens": {
+      "type": "integer",
+      "exclusiveMinimum": 0
+    },
+    "updaterReasoning": {
+      "type": "object",
+      "properties": {
+        "effort": {
+          "type": "string",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      },
+      "required": [
+        "effort"
+      ],
+      "additionalProperties": true
+    },
+    "extra": {
+      "type": "object",
+      "additionalProperties": {}
+    }
+  },
+  "required": [
+    "updaterPrompt",
+    "writablePaths"
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$comment": "Generated from schema.ts by scripts/generate-native-card-schemas.ts."
+}

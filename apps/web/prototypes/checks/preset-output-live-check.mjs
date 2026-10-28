@@ -1,0 +1,27 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createFormalTransport} from '../shared/formal-transport.prototype.js';
+const base='http://localhost:43876';
+const api=async(path,body)=>{const r=await fetch(base+path,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{});const j=await r.json();assert(r.ok,JSON.stringify(j.error));return j.data;};
+const migrations=JSON.parse(fs.readFileSync(new URL('../../../../docs/plans/evidence/published-backend/preset-output-migration.json',import.meta.url)));
+const migration=migrations.find(x=>x.characterId==='XoBoeL6-DuqKdMwyPdu2y');
+const release=await api('/role-releases/'+migration.releaseId);
+const created=process.argv[2]?{session:{id:process.argv[2]}}:await api(`/role-releases/${release.id}/sessions`,{user_id:release.default_user_id,opening_id:release.openings.find(o=>o.default).id});
+const evidence={releaseId:release.id,sessionId:created.session.id,requests:[],events:[]};
+const destination=new URL('../../../../docs/plans/evidence/published-backend/preset-output-live.json',import.meta.url);
+const save=()=>fs.writeFileSync(destination,JSON.stringify(evidence,null,2)+'\n');
+const transport=createFormalTransport({sessionId:evidence.sessionId,fetchImpl:(url,options)=>{evidence.requests.push(url);return fetch(base+url,options);}});
+console.log(JSON.stringify({sessionId:evidence.sessionId}));save();
+const initial=await transport.loadSession();
+try{
+await transport.send({text:'我轻声问：“你刚才弹的曲子叫什么？我可以留下来听一会儿吗？”',current:initial.current,route:"/send",testHeaders:{},emit:e=>{evidence.events.push(e);save();}});
+const current=await transport.loadSession();
+const texts=evidence.events.filter(e=>e.type==='text');
+const end=texts.findLast(e=>e.data.type==='end').data.text;
+const messages=await transport.getMessages({floorId:current.current.floorId});
+assert.equal(messages.findLast(m=>m.role==='assistant').text,end);
+assert(end.length>0);assert(!end.includes('这是你需求的最终输出：'));
+assert(!evidence.requests.some(url=>url.includes('/regex-profiles/')));
+evidence.current=current.current;evidence.success=true;evidence.completedText=end;
+}catch(error){evidence.success=false;evidence.error={message:error.message,code:error.code};}
+save();console.log(JSON.stringify({success:evidence.success,error:evidence.error}));

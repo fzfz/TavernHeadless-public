@@ -1,0 +1,18 @@
+{
+  "labels": {
+    "status": "当前状态",
+    "actions": "行动选项",
+    "unavailable": "数据暂不可用",
+    "sendFailed": "发送失败，请检查当前会话状态后重试。",
+    "repair": "状态修复",
+    "recalculate": "重新处理最新变量",
+    "restore": "补齐缺失变量",
+    "noFloor": "请先完成一轮对话。",
+    "working": "正在处理变量…",
+    "recalculateDone": "变量已重新计算。",
+    "restoreNoChange": "当前变量完整。",
+    "restoreDone": "缺失变量已补齐。"
+  },
+  "optionCount": 4,
+  "directivePrefix": "元指令:"
+}

@@ -1,0 +1,131 @@
+{
+  "checks": [
+    {
+      "sample": "minimax-only-sample-1",
+      "turn": 1,
+      "callId": "SkbeKdTL08OLuGlpCW6qq",
+      "requestEqualsDryRun": true,
+      "rawEqualsModelRecord": true,
+      "modelRecordEqualsStored": true,
+      "storedEqualsPublic": true,
+      "publicEqualsBrowser": null,
+      "actualRequestParameters": {
+        "model": "minimax/minimax-m3.1-flash:free",
+        "max_tokens": 3982,
+        "temperature": 0.3,
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "finishReason": "stop",
+      "durationSeconds": 27.229
+    },
+    {
+      "sample": "sample-1",
+      "turn": 1,
+      "callId": "gcOpZPxYxPNV_GDYnjZPf",
+      "requestEqualsDryRun": true,
+      "rawEqualsModelRecord": true,
+      "modelRecordEqualsStored": true,
+      "storedEqualsPublic": true,
+      "publicEqualsBrowser": true,
+      "actualRequestParameters": {
+        "model": "minimax/minimax-m3.1-flash:free",
+        "max_tokens": 3982,
+        "temperature": 0.3,
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "finishReason": "stop",
+      "durationSeconds": 25.682
+    },
+    {
+      "sample": "sample-2",
+      "turn": 1,
+      "callId": "WWxkgeye2ZI3UUeee7X3U",
+      "requestEqualsDryRun": true,
+      "rawEqualsModelRecord": true,
+      "modelRecordEqualsStored": true,
+      "storedEqualsPublic": true,
+      "publicEqualsBrowser": true,
+      "actualRequestParameters": {
+        "model": "minimax/minimax-m3.1-flash:free",
+        "max_tokens": 3982,
+        "temperature": 0.3,
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "finishReason": "stop",
+      "durationSeconds": 4.271
+    },
+    {
+      "sample": "sample-2",
+      "turn": 2,
+      "callId": "KczbLh_lDKrBBP2FoS2LD",
+      "requestEqualsDryRun": true,
+      "rawEqualsModelRecord": true,
+      "modelRecordEqualsStored": true,
+      "storedEqualsPublic": true,
+      "publicEqualsBrowser": true,
+      "actualRequestParameters": {
+        "model": "minimax/minimax-m3.1-flash:free",
+        "max_tokens": 3882,
+        "temperature": 0.3,
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "finishReason": "stop",
+      "durationSeconds": 6.183
+    },
+    {
+      "sample": "sample-2",
+      "turn": 3,
+      "callId": "L1y8EjIchPjUxm6H_8qvi",
+      "requestEqualsDryRun": true,
+      "rawEqualsModelRecord": true,
+      "modelRecordEqualsStored": true,
+      "storedEqualsPublic": true,
+      "publicEqualsBrowser": true,
+      "actualRequestParameters": {
+        "model": "minimax/minimax-m3.1-flash:free",
+        "max_tokens": 3761,
+        "temperature": 0.3,
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "finishReason": "stop",
+      "durationSeconds": 14.907
+    },
+    {
+      "sample": "sample-3",
+      "turn": 1,
+      "callId": "3UTAYfcsf8gSDo914M_VJ",
+      "requestEqualsDryRun": true,
+      "rawEqualsModelRecord": true,
+      "modelRecordEqualsStored": true,
+      "storedEqualsPublic": true,
+      "publicEqualsBrowser": true,
+      "actualRequestParameters": {
+        "model": "minimax/minimax-m3.1-flash:free",
+        "max_tokens": 3982,
+        "temperature": 0.3,
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "finishReason": "stop",
+      "durationSeconds": 51.289
+    }
+  ],
+  "browserReloadPreservesBodies": true
+}

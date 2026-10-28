@@ -1,0 +1,7 @@
+---
+NoThinking refers to a method that bypasses the explicit reasoning process through prompting, directly generating the final solution and answer. This is achieved by forcing the thinking box to be empty during the decoding process
+
+<think>
+- According to the user's input, I'm only responsible for updating variables.
+- Okay, I think I have finished thinking.
+</thi

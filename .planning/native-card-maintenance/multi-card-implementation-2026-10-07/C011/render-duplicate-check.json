@@ -1,0 +1,11 @@
+{
+  "providerBodyCharacters": 2208,
+  "pageExactCopyCount": 2,
+  "first60CharactersCopyCount": 2,
+  "savedMessageId": "PS9QQzawns5hTNc9kRpSZ",
+  "savedAssistantCount": 1,
+  "status": "unverified",
+  "stage": "maintainer_dom_probe",
+  "logInvalidLines": [],
+  "reason": "textContent 同时包含隐藏的 pendingText 和历史正文；该计数不能证明页面可见正文重复。数据库仅保存一条回复。"
+}

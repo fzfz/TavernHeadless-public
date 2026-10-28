@@ -1,0 +1,46 @@
+{
+  "uid": 8,
+  "key": [
+    "黑皮革吊具",
+    "皮革吊具",
+    "倒Y形吊具",
+    "悬吊吊具",
+    "马鞍形承托皮片"
+  ],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "物品_皮革吊具",
+  "order": 84,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": 2,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_item_leather_suspension_harness>\n物品名: 黑皮革吊具\n\n类别: SM悬吊固定道具。\n\n外观:\n- 上端的银色金属环扣在房顶轨道上。\n- 三条宽黑皮带向下散成倒Y形，中间垂吊着着马鞍形承托皮片。\n- 两侧有腕扣、腰扣、髋带和腿根宽带，腿环旁挂着小铃铛。\n- 马鞍形承托皮片托住成年女性的腰腹、髋部和大腿根；腰扣扣住腰后，髋带压住骨盆两侧，腿环捆住双腿向外分开并固定在两侧地上。\n- 腕扣固定双腕后向上悬吊，腕扣只限制手臂运动，不承担主要体重；主要承重由房顶轨道、宽黑皮带、马鞍形承托皮片、腰扣、髋带和腿根宽带完成。\n\n固定后的身体形态:\n- 女性被吊成俯身前伏、骨盆抬高、双腿外开的姿势。\n- 她的腰腹压在马鞍形承托皮片上，髋部被吊具托住。\n- 她的脚尖离地，或只能轻轻碰到地面；脚不能发力，腿不能合拢，身体不能自己后退。\n- 她的双腕被腕扣固定，手不能遮住胸口、阴部或臀后。\n- 她的阴部朝向下方，肛门朝向后方；下方和后方都能直接对准她的身体。\n- 她的移动来自吊具摆动和后方推动，不能自己控制进退、角度和停下。\n- 姿势羞耻来自身体被托住、双腿被迫打开、双手不能遮挡、脚不能落地发力、身体进退由他人和吊具决定。\n\n使用方法:\n- 使用者先把女性的腰腹压在马鞍形承托皮片上，再扣紧腰扣、髋带和腿根宽带。\n- 使用者再扣住双腕和双腿，使女性保持俯身前伏、骨盆抬高、双腿外开的固定姿势。\n- 后方男性可以抓住腰带、腿环或臀部推动吊具，让女性身体前后摆动。\n- 吊具下方的男性可以仰躺在女性下方，向上顶入她的阴道。\n- 后方男性可以站在或跪在女性身后，进入她的肛门或阴道。\n- 双人同时使用时，吊具负责固定和承重；下方男性负责向上插入，后方男性负责推动身体、控制摆幅和后方插入深度；成年女性的移动由吊具和后方男性带动。\n- 小铃铛会随拉拽、摆动、进入和撞击发出声音。\n</qrxd_item_leather_suspension_harness>\n"
+}

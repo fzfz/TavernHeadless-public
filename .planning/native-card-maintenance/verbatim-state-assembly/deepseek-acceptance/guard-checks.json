@@ -1,0 +1,40 @@
+{
+  "default_restart_rejected": {
+    "passed": true,
+    "exitCode": 1
+  },
+  "concurrent_request_rejected": {
+    "passed": true,
+    "status": 409,
+    "error": "Acceptance step already running"
+  },
+  "duplicate_body": {
+    "passed": true,
+    "status": 409,
+    "error": "Body round must follow the latest successful body round"
+  },
+  "skipped_body_round": {
+    "passed": true,
+    "status": 409,
+    "error": "Body round must follow the latest successful body round"
+  },
+  "wrong_state_round": {
+    "passed": true,
+    "status": 409,
+    "error": "Requested round has no successful body output"
+  },
+  "duplicate_evidence_label": {
+    "passed": true,
+    "status": 409,
+    "error": "Evidence label already exists; use a distinct variant"
+  },
+  "rejected_steps_do_not_call_provider": {
+    "passed": true,
+    "before": 28,
+    "after": 28
+  },
+  "processing_heartbeats_do_not_extend_request_deadline": {
+    "passed": true,
+    "elapsedMs": 107
+  }
+}

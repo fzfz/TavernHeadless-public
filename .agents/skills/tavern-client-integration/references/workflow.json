@@ -1,0 +1,156 @@
+{
+  "$schema": "workflow.schema.json",
+  "contractVersion": 1,
+  "skillId": "tavern-client-integration",
+  "title": "客户端接入与升级",
+  "summary": "指导 Agent 按当前 worktree 的公开接口和官方包边界接入 TavernHeadless 客户端，并在升级任务中比较发布影响。",
+  "status": "active",
+  "audience": [
+    "web-client-developers",
+    "desktop-client-developers",
+    "script-integrators",
+    "agent-consumers"
+  ],
+  "recommendedWhen": [
+    "任务要求新接入 TavernHeadless 客户端。",
+    "任务要求升级已有客户端的公开接口或官方包用法。",
+    "任务要求核对 HTTP、SSE、错误语义或 manifest 对客户端的影响。"
+  ],
+  "avoidWhen": [
+    "任务只修改引擎、后端或共享模块的内部实现时，使用 tavern-project-contributing。",
+    "任务只要求查看单个协议字段时，直接查阅 API 参考或 OpenAPI。",
+    "任务只涉及组件布局或页面交互时，按应用层规则处理。"
+  ],
+  "decisionRules": [
+    {
+      "title": "当前接口由 worktree 决定",
+      "rule": "Agent 必须以任务指定 worktree 的 OpenAPI、SDK 源码、SSE 实现和测试判断当前客户端契约。"
+    },
+    {
+      "title": "公开资源访问使用 @tavern/sdk",
+      "rule": "客户端的 HTTP、SSE、统一错误和资源访问必须优先使用 @tavern/sdk 已提供的能力。"
+    },
+    {
+      "title": "共享客户端语义使用 @tavern/client-helpers",
+      "rule": "timeline、usage、流式中间态和界面错误映射等与框架无关的整理逻辑必须优先使用 @tavern/client-helpers。"
+    },
+    {
+      "title": "应用层承载框架绑定",
+      "rule": "组件、store、hook 与页面交互逻辑必须保留在客户端应用层。"
+    },
+    {
+      "title": "原始协议调用保持单点封装",
+      "rule": "官方包尚未覆盖目标能力时，Agent 可以在应用层集中封装原始 HTTP 或 SSE，并记录对应的公开能力缺口。"
+    },
+    {
+      "title": "发布资料只服务版本比较",
+      "rule": "普通本地接入使用当前 worktree；跟进发布或升级接入时，Agent 才读取发布 manifest，并明确比较的两个提交。"
+    }
+  ],
+  "workflow": [
+    {
+      "step": 1,
+      "title": "确认输入和版本",
+      "action": "Agent 确认目标仓库根目录、项目规则文件、开发文档入口、分支、HEAD 和未提交改动。"
+    },
+    {
+      "step": 2,
+      "title": "核对公开契约",
+      "action": "Agent 读取本次资源的 OpenAPI、SDK、SSE、错误文档与实现测试，列明客户端需要遵守的当前行为。"
+    },
+    {
+      "step": 3,
+      "title": "按需比较发布版本",
+      "action": "Agent 按“发布资料只服务版本比较”规则定位受影响的导出、模块和消费者，并记录比较结果。",
+      "relatedAgentFields": [
+        "summary.breaking",
+        "surfaceSummaries.openapi",
+        "surfaceSummaries.sdk.impactedExports",
+        "surfaceSummaries.sdk.impactedModules",
+        "surfaceSummaries.sdk.impactedConsumers",
+        "surfaceSummaries.clientHelpers.impactedConsumers"
+      ]
+    },
+    {
+      "step": 4,
+      "title": "确定接入边界",
+      "action": "Agent 按三个分层决策规则，列出本次接入功能在 SDK、client-helpers 与应用层的实现位置。"
+    },
+    {
+      "step": 5,
+      "title": "实施已授权接入",
+      "action": "Agent 完成任务范围内的客户端代码、错误处理、流式状态和文档改动，并补充对应分支测试。"
+    },
+    {
+      "step": 6,
+      "title": "验证并报告",
+      "action": "Agent 运行受影响包和客户端的类型检查与测试，直接核对 HTTP、SSE 和错误结果，并报告版本依据与未验证项。"
+    }
+  ],
+  "checks": [
+    {
+      "command": "types",
+      "purpose": "SDK 使用或实现变化时，验证公开类型和调用签名。"
+    },
+    {
+      "command": "tests",
+      "purpose": "SDK 使用或实现变化时，验证 HTTP、SSE、错误和资源分支。"
+    },
+    {
+      "command": "types",
+      "purpose": "client-helpers 变化时，验证共享语义整理与类型。"
+    },
+    {
+      "command": "clientTypes",
+      "purpose": "客户端调用变化时，验证目标客户端的类型与调用签名。"
+    },
+    {
+      "command": "docs",
+      "purpose": "公开接入文档或示例变化时，验证 Agent 资料、Skill JSON 和站点构建。"
+    }
+  ],
+  "relatedAgentFields": [
+    "summary.breaking",
+    "surfaceSummaries.openapi",
+    "surfaceSummaries.openapi.schemaFieldChanges",
+    "surfaceSummaries.sdk",
+    "surfaceSummaries.sdk.impactedExports",
+    "surfaceSummaries.sdk.impactedModules",
+    "surfaceSummaries.sdk.impactedConsumers",
+    "surfaceSummaries.clientHelpers",
+    "surfaceSummaries.clientHelpers.impactedConsumers"
+  ],
+  "relatedDocs": [
+    {
+      "title": "本地开发入口",
+      "path": "development/local-development"
+    },
+    {
+      "title": "官方集成层",
+      "path": "guide/integration-kit"
+    },
+    {
+      "title": "SDK 总览",
+      "path": "sdk/"
+    },
+    {
+      "title": "SSE",
+      "path": "sdk/sse"
+    },
+    {
+      "title": "错误处理",
+      "path": "sdk/errors"
+    },
+    {
+      "title": "API 参考",
+      "path": "reference/api"
+    },
+    {
+      "title": "Skill 页面",
+      "path": "agent/skills/tavern-client-integration"
+    }
+  ],
+  "humanPage": "agent/skills/tavern-client-integration",
+  "json": "agent/skills/tavern-client-integration.json",
+  "lastReviewedAt": "2026-09-14"
+}

@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "name": "role selector loads a new document",
+      "passed": true
+    },
+    {
+      "name": "role selector opens selected session",
+      "passed": true
+    },
+    {
+      "name": "author Auto timer advances current text",
+      "passed": true
+    },
+    {
+      "name": "author input closes after shared send completes",
+      "passed": true
+    },
+    {
+      "name": "author input persisted via shared host",
+      "passed": true
+    },
+    {
+      "name": "managed audio channel created",
+      "passed": true
+    },
+    {
+      "name": "interrupted main response has explicit unknown result",
+      "passed": true
+    },
+    {
+      "name": "interrupted main stream released",
+      "passed": true
+    },
+    {
+      "name": "main promise remains successful when later stream disconnects",
+      "passed": true
+    },
+    {
+      "name": "interrupted job stream released",
+      "passed": true
+    },
+    {
+      "name": "subscriber receives no obsolete live streams",
+      "passed": true
+    },
+    {
+      "name": "no uncaught browser exceptions",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

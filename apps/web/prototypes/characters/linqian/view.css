@@ -1,0 +1,281 @@
+:host {
+  --bg-panel: #fff;
+  --bg-soft: #eaf4ff;
+  --text-main: #17324d;
+  --text-muted: #5d7690;
+  --accent: #1f7acb;
+  --accent-soft: #b9ddff;
+  --border: #c9e2f7;
+  --shadow: 0 6px 18px rgba(31, 122, 203, 0.12);
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+:host {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--text-main);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei",
+    sans-serif;
+}
+button {
+  font: inherit;
+}
+.linxi-status {
+  width: min(100%, 620px);
+  margin: var(--space-sm) auto;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-panel);
+  box-shadow: var(--shadow);
+}
+.linxi-status__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(90deg, #dff0ff, #f7fbff);
+}
+.linxi-status__title {
+  color: #0f5fa8;
+  font-size: 14px;
+  font-weight: 700;
+}
+.linxi-status__place {
+  max-width: 45%;
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: 12px;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.linxi-status__profile {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px;
+  background: #f8fcff;
+}
+.linxi-status__portrait {
+  display: block;
+  width: 104px;
+  height: 156px;
+  object-fit: cover;
+  object-position: center center;
+  border: 1px solid #b9d8ef;
+  border-radius: 7px;
+  background: var(--bg-soft);
+  box-shadow: 0 3px 10px rgba(30, 92, 145, 0.12);
+}
+.linxi-status__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  height: 156px;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--border);
+}
+.linxi-status__cell {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 10px;
+  background: var(--bg-panel);
+}
+.linxi-status__label {
+  margin-bottom: 3px;
+  color: var(--text-muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+.linxi-status__value {
+  min-height: 18px;
+  overflow: hidden;
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.linxi-status__bar {
+  height: 6px;
+  margin-top: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--bg-soft);
+}
+.linxi-status__fill {
+  width: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-soft), var(--accent));
+  transition: width 0.2s ease;
+}
+.linxi-status__voice {
+  padding: 10px 12px 11px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-panel);
+}
+.linxi-status__voice .linxi-status__value {
+  min-height: 34px;
+  line-height: 1.45;
+  white-space: normal;
+}
+@media (max-width: 420px) {
+  .linxi-status {
+    width: 100%;
+    margin: 4px 0;
+  }
+  .linxi-status__profile {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 9px;
+    padding: 9px;
+  }
+  .linxi-status__portrait {
+    width: 88px;
+    height: 132px;
+    border-radius: 6px;
+  }
+  .linxi-status__grid {
+    height: 132px;
+  }
+  .linxi-status__cell {
+    padding: 5px 6px;
+  }
+  .linxi-status__label {
+    font-size: 10px;
+  }
+  .linxi-status__value {
+    font-size: 11px;
+  }
+  .linxi-status__place {
+    max-width: 40%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .linxi-status__fill {
+    transition: none;
+  }
+}
+
+.mvu-option-bar {
+  font-family: inherit;
+  color: inherit;
+  margin-top: 12px;
+}
+.mvu-option-bar__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.mvu-option {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(127, 127, 127, 0.35);
+  border-radius: 10px;
+  background: rgba(127, 127, 127, 0.08);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.mvu-option:hover:not(:disabled) {
+  background: rgba(127, 127, 127, 0.16);
+}
+.mvu-option:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+.mvu-option__label {
+  font-weight: 700;
+  font-size: 0.9em;
+}
+.mvu-option__text {
+  font-size: 0.92em;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.mvu-option-bar__feedback {
+  margin: 8px 0 0;
+  color: #c44;
+  font-size: 0.9em;
+}
+@media (max-width: 620px) {
+  .mvu-option-bar__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.linxi-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 620px);
+  gap: 24px;
+  padding: 24px;
+  background: #f1f5f9;
+  min-height: calc(100vh - 64px);
+  color: #17324d;
+}
+.linxi-chat {
+  min-width: 0;
+}
+.linxi-chat h1 {
+  font-size: 24px;
+}
+.linxi-chat [data-chat] {
+  height: 70vh;
+}
+.linxi-chat [data-opening] {
+  white-space: pre-wrap;
+  max-height: 22vh;
+  overflow: auto;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+progress {
+  height: 8px;
+  width: 100%;
+  accent-color: #1f7acb;
+}
+.linxi-status {
+  width: 100%;
+  font-size: 16px;
+}
+.linxi-status__title {
+  font-size: 20px;
+}
+.linxi-status__value {
+  font-size: 16px;
+}
+.linxi-status__label {
+  font-size: 13px;
+}
+@media (max-width: 850px) {
+  .linxi-page {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .linxi-page aside {
+    grid-row: 1;
+  }
+}

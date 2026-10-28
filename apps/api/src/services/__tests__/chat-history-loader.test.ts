@@ -1,0 +1,210 @@
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { nanoid } from "nanoid";
+
+import { createTestDatabase, type DatabaseConnection } from "../../../test/helpers/create-test-db.js";
+import { sessions, floors, messagePages, messages } from "../../db/schema.js";
+import { DEFAULT_ADMIN_ACCOUNT_ID } from "../../accounts/constants.js";
+import {
+  ChatHistoryLoader,
+  type PromptVisibilityPolicy,
+} from "../chat-history-loader.js";
+
+describe("ChatHistoryLoader visibility policy", () => {
+  let database: DatabaseConnection;
+
+  beforeEach(() => {
+    database = createTestDatabase(":memory:");
+  });
+
+  afterEach(() => {
+    database.close();
+  });
+
+  async function seedSessionWithFloors() {
+    const now = Date.now();
+    const sessionId = nanoid();
+
+    await database.db.insert(sessions).values({
+      id: sessionId,
+      title: "History Visibility Session",
+      accountId: DEFAULT_ADMIN_ACCOUNT_ID,
+      status: "active",
+      createdAt: now,
+      updatedAt: now,
+    });
+
+    let previousFloorId: string | null = null;
+    for (let floorNo = 1; floorNo <= 5; floorNo += 1) {
+      const floorId = nanoid();
+      const pageId = nanoid();
+      await database.db.insert(floors).values({
+        id: floorId,
+        sessionId,
+        floorNo,
+        branchId: "main",
+        parentFloorId: previousFloorId,
+        state: "committed",
+        tokenIn: 0,
+        tokenOut: 0,
+        createdAt: now + floorNo,
+        updatedAt: now + floorNo,
+      });
+      await database.db.insert(messagePages).values({
+        id: pageId,
+        floorId,
+        pageNo: 1,
+        pageKind: "input",
+        isActive: true,
+        version: 1,
+        checksum: null,
+        createdAt: now + floorNo,
+        updatedAt: now + floorNo,
+      });
+      await database.db.insert(messages).values({
+        id: nanoid(),
+        pageId,
+        role: "user",
+        content: `floor-${floorNo}`,
+        seq: 1,
+        isHidden: false,
+        createdAt: now + floorNo,
+      });
+      previousFloorId = floorId;
+    }
+
+    return sessionId;
+  }
+
+  async function loadVisibleMessages(args: {
+    sessionId: string;
+    historyMaxFloors?: number;
+    visibility?: PromptVisibilityPolicy;
+  }) {
+    const loader = new ChatHistoryLoader(database.db, args.historyMaxFloors);
+    return loader.loadHistory(args.sessionId, "main", undefined, args.visibility);
+  }
+
+  it("filters hidden floor ranges before applying historyMaxFloors", async () => {
+    const sessionId = await seedSessionWithFloors();
+
+    const messages = await loadVisibleMessages({
+      sessionId,
+      historyMaxFloors: 2,
+      visibility: {
+        hiddenFloorRanges: [{ startFloorNo: 5, endFloorNo: 5 }],
+      },
+    });
+
+    expect(messages.map((message) => message.content)).toEqual(["floor-3", "floor-4"]);
+  });
+
+  it("supports multiple hidden ranges", async () => {
+    const sessionId = await seedSessionWithFloors();
+
+    const messages = await loadVisibleMessages({
+      sessionId,
+      visibility: {
+        hiddenFloorRanges: [
+          { startFloorNo: 2, endFloorNo: 3 },
+          { startFloorNo: 5, endFloorNo: 5 },
+        ],
+      },
+    });
+
+    expect(messages.map((message) => message.content)).toEqual(["floor-1", "floor-4"]);
+  });
+
+  it("supports deny_all_except_visible mode", async () => {
+    const sessionId = await seedSessionWithFloors();
+
+    const messages = await loadVisibleMessages({
+      sessionId,
+      visibility: {
+        mode: "deny_all_except_visible",
+        visibleFloorRanges: [{ startFloorNo: 2, endFloorNo: 4 }],
+      },
+    });
+
+    expect(messages.map((message) => message.content)).toEqual(["floor-2", "floor-3", "floor-4"]);
+  });
+
+  it("supports hidden floor ids", async () => {
+    const now = Date.now();
+    const sessionId = nanoid();
+    await database.db.insert(sessions).values({
+      id: sessionId,
+      title: "History Hidden Id Session",
+      accountId: DEFAULT_ADMIN_ACCOUNT_ID,
+      status: "active",
+      createdAt: now,
+      updatedAt: now,
+    });
+
+    const floorIds: string[] = [];
+    let previousFloorId: string | null = null;
+    for (let floorNo = 1; floorNo <= 3; floorNo += 1) {
+      const floorId = nanoid();
+      floorIds.push(floorId);
+      const pageId = nanoid();
+      await database.db.insert(floors).values({
+        id: floorId,
+        sessionId,
+        floorNo,
+        branchId: "main",
+        parentFloorId: previousFloorId,
+        state: "committed",
+        tokenIn: 0,
+        tokenOut: 0,
+        createdAt: now + floorNo,
+        updatedAt: now + floorNo,
+      });
+      await database.db.insert(messagePages).values({
+        id: pageId,
+        floorId,
+        pageNo: 1,
+        pageKind: "input",
+        isActive: true,
+        version: 1,
+        checksum: null,
+        createdAt: now + floorNo,
+        updatedAt: now + floorNo,
+      });
+      await database.db.insert(messages).values({
+        id: nanoid(),
+        pageId,
+        role: "user",
+        content: `visible-${floorNo}`,
+        seq: 1,
+        isHidden: false,
+        createdAt: now + floorNo,
+      });
+      previousFloorId = floorId;
+    }
+
+    const messagesLoaded = await loadVisibleMessages({
+      sessionId,
+      visibility: {
+        hiddenFloorIds: [floorIds[1]!],
+      },
+    });
+
+    expect(messagesLoaded.map((message) => message.content)).toEqual(["visible-1", "visible-3"]);
+  });
+
+  it("loads structured history entries with floor, page, and message provenance", async () => {
+    const sessionId = await seedSessionWithFloors();
+    const loader = new ChatHistoryLoader(database.db);
+
+    const entries = await loader.loadHistoryEntries(sessionId, "main");
+
+    expect(entries).toHaveLength(5);
+    expect(entries[0]).toMatchObject({
+      floorNo: 1,
+      pageNo: 1,
+      seq: 1,
+      role: "user",
+      content: "floor-1",
+    });
+    expect(entries.every((entry) => entry.floorId && entry.pageId && entry.messageId)).toBe(true);
+  });
+});

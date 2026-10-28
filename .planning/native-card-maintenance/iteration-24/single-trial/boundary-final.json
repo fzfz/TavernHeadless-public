@@ -1,0 +1,50 @@
+{
+  "checkedFiles": 1049,
+  "changed": [
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "owner": "main-agent or authorized implementation worker"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/api/state-update-api.md",
+      "owner": "main-agent or authorized implementation worker"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/semantic-experience.md",
+      "owner": "main-agent or authorized implementation worker"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/sources.md",
+      "owner": "main-agent or authorized implementation worker"
+    },
+    {
+      "file": "apps/api/src/services/native-card/native-card-service.ts",
+      "owner": "main-agent or authorized implementation worker"
+    },
+    {
+      "file": "apps/api/src/services/role-runtime/__tests__/role-module-loader.test.ts",
+      "owner": "main-agent or authorized implementation worker"
+    },
+    {
+      "file": "apps/api/src/services/role-runtime/native-module-dependencies.ts",
+      "owner": "main-agent or authorized implementation worker"
+    },
+    {
+      "file": "docs/character-authoring/state-update-api.md",
+      "owner": "main-agent or authorized implementation worker"
+    },
+    {
+      "file": "scripts/native-card-conversion/tool.test.ts",
+      "owner": "main-agent or authorized implementation worker"
+    },
+    {
+      "file": "scripts/native-card-conversion/tool.ts",
+      "owner": "main-agent or authorized implementation worker"
+    }
+  ],
+  "unchangedFiles": 1039,
+  "childOutOfScopeWriteObserved": false,
+  "childOutOfScopeReadObserved": true,
+  "method": "逐字节比较已保存副本；结合公开调用区分主代理及队员修改",
+  "readEvidence": "out-of-scope-read.json"
+}

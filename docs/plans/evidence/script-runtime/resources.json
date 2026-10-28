@@ -1,0 +1,57 @@
+{
+  "runtime": {
+    "scopes": 1,
+    "floorScopes": 0,
+    "pendingOperations": 0,
+    "layouts": 2,
+    "subscriptions": 5,
+    "eventListeners": 4,
+    "timers": 0,
+    "media": 0,
+    "widgets": 1,
+    "floorLists": 1,
+    "historyCacheEntries": 4,
+    "historyCacheBytes": 2199,
+    "settledStreamCacheEntries": 1,
+    "settledStreamCacheBytes": 438,
+    "diagnosticEntries": 0,
+    "diagnosticBytes": 0
+  },
+  "host": {
+    "busy": false,
+    "chatWidgets": 1,
+    "activeStreams": 0,
+    "listeners": {
+      "current": 2,
+      "view": 1,
+      "commit": 3,
+      "text": 2
+    },
+    "history": {
+      "entries": 24,
+      "bytes": 13726
+    },
+    "settled": {
+      "entries": 1,
+      "bytes": 438
+    },
+    "diagnostics": {
+      "entries": 0,
+      "bytes": 0
+    },
+    "lists": [
+      {
+        "items": 103,
+        "mounted": 3,
+        "visibleStart": 0,
+        "visibleEnd": 0,
+        "firstVisibleFloorId": "script-harbor:floor:1",
+        "lastVisibleFloorId": "script-harbor:floor:1",
+        "followTail": true,
+        "cached": 0,
+        "cacheBytes": 0,
+        "hasNextPage": false
+      }
+    ]
+  }
+}

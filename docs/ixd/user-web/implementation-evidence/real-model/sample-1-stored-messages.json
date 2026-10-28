@@ -1,0 +1,50 @@
+[
+  {
+    "id": "e6EklRXwyBtUMfdraD0v2",
+    "page_id": "56WmGIMjtyHRiQ1bvsaQj",
+    "seq": 0,
+    "role": "assistant",
+    "content": "钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”",
+    "content_format": "text",
+    "token_count": 16,
+    "is_hidden": 0,
+    "source": "greeting",
+    "created_at": 1792496640147,
+    "floor_id": "aZCrsL9hYpALrq7mWhFIl",
+    "is_active": 1,
+    "floor_no": 0,
+    "floor_state": "committed"
+  },
+  {
+    "id": "EyTJaYeEmHq0EZc8Ao4UC",
+    "page_id": "ZCY5QERD5LKhm7Pvy6YcB",
+    "seq": 0,
+    "role": "user",
+    "content": "“先别动身。我想在邮局灯下检查信封上的邮戳，再决定要不要去旧灯塔。”",
+    "content_format": "text",
+    "token_count": 9,
+    "is_hidden": 0,
+    "source": "api",
+    "created_at": 1792496665705,
+    "floor_id": "ww9XgtXECbd5h1jFooMnn",
+    "is_active": 1,
+    "floor_no": 1,
+    "floor_state": "committed"
+  },
+  {
+    "id": "wpZvK-wArysMdi6icuzZX",
+    "page_id": "PEuTM9FAfUHybf5h0YuTj",
+    "seq": 0,
+    "role": "assistant",
+    "content": "裴修远依言没有动身。他关掉柜台旁多余的灯，只留一盏罩着绿色玻璃罩的台灯，又从抽屉里取出一柄放大镜。\n\n“别拆。”裴修远将信封平放在灯下，“纸张还湿，边缘一扯，封口上的痕迹就可能全毁了。”\n\n他俯身辨认邮戳。圆戳中央是“北岬灯塔”四字，外圈刻着波纹，日期正是今夜，时间却写着二十三点五十分。右下方还有一串已经停用的旧邮路编号：**灯北—3**。\n\n裴修远翻开当夜的投递登记簿，逐页核对。现有邮路中并没有这个编号；最后一笔记录停在二十三点二十分，收件栏也空着。\n\n沈知夏用指腹托起信封下缘，没有碰邮戳。海水浸出的盐痕已经发白，唯独邮戳的墨线仍然清楚。\n\n“信是湿的，戳却没花。”她缓缓说道，“盖戳的时候，它已经沾过水了。”\n\n裴修远点头，将放大镜转向信封背面。素描中的旧灯塔画得很细，灯室却没有画灯，只在窗后留了一小块未着墨的空白。\n\n两人一时都没有说话。\n\n窗外传来潮水拍击码头石壁的声音。沈知夏看了眼墙上的潮汐表：“旧灯塔的石阶再过二十分钟就会没入水下。守灯人今晚会来码头买报纸。”\n\n裴修远合上登记簿：“先去码头。若有人还在使用那枚旧邮戳，守灯人至少可能见过。等潮水涨起来，再走北岬就太冒险了。”\n\n他将信封装进透明邮袋，封口暂时不动。",
+    "content_format": "text",
+    "token_count": 130,
+    "is_hidden": 0,
+    "source": "narrator",
+    "created_at": 1792496691540,
+    "floor_id": "ww9XgtXECbd5h1jFooMnn",
+    "is_active": 1,
+    "floor_no": 1,
+    "floor_state": "committed"
+  }
+]

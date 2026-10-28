@@ -1,0 +1,506 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://tavern-headless.local/state-update.schema.json",
+  "title": "Proposed role state update contracts",
+  "definitions": {
+    "profile": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stateSchemaFile": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ruleFiles": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "modelSlot": {
+          "type": "string",
+          "minLength": 1
+        },
+        "deriveScript": {
+          "type": "string",
+          "minLength": 1
+        },
+        "validateScript": {
+          "type": "string",
+          "minLength": 1
+        },
+        "factsSchema": {
+          "type": "object"
+        },
+        "sourceAgentBindingIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "writablePaths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "uniqueItems": true
+        },
+        "derivedPaths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "uniqueItems": true
+        },
+        "moduleFiles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "controllerOwnedPaths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "stateSchemaFile",
+        "ruleFiles",
+        "modelSlot",
+        "deriveScript",
+        "validateScript",
+        "sourceAgentBindingIds",
+        "writablePaths",
+        "derivedPaths"
+      ],
+      "additionalProperties": false
+    },
+    "agentOutput": {
+      "type": "object",
+      "properties": {
+        "changes": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "set"
+                  },
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/[^/].*"
+                  },
+                  "value": {}
+                },
+                "required": [
+                  "op",
+                  "path",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "const": "remove"
+                  },
+                  "path": {
+                    "type": "string",
+                    "pattern": "^/[^/].*"
+                  }
+                },
+                "required": [
+                  "op",
+                  "path"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "evidenceMessageIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "facts": {
+          "type": "object"
+        },
+        "evidenceExecutionIds": {
+          "$ref": "https://tavern-headless.local/role-tool-evidence.schema.json#/definitions/evidenceExecutionIds"
+        }
+      },
+      "required": [
+        "changes",
+        "evidenceMessageIds"
+      ],
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "messageId",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "proposal": {
+      "type": "object",
+      "properties": {
+        "updateId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profileId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branchId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "floorId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attemptId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "characterVersionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseSnapshotId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/source"
+          }
+        },
+        "output": {
+          "$ref": "#/definitions/agentOutput"
+        }
+      },
+      "required": [
+        "updateId",
+        "profileId",
+        "sessionId",
+        "branchId",
+        "floorId",
+        "attemptId",
+        "characterVersionId",
+        "baseSnapshotId",
+        "sources",
+        "output"
+      ],
+      "additionalProperties": false
+    },
+    "updateStatus": {
+      "type": "object",
+      "properties": {
+        "updateId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profileId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branchId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "floorId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attemptId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "characterVersionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseSnapshotId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/source"
+          }
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status": {
+          "enum": [
+            "queued",
+            "running",
+            "committed",
+            "failed",
+            "stale",
+            "cancelled"
+          ]
+        },
+        "committedSnapshotId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "paths": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "code",
+                "paths"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "updateId",
+        "profileId",
+        "sessionId",
+        "branchId",
+        "floorId",
+        "attemptId",
+        "characterVersionId",
+        "baseSnapshotId",
+        "sources",
+        "revision",
+        "status",
+        "committedSnapshotId",
+        "error"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "committed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "committedSnapshotId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "error": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "committedSnapshotId": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "failed",
+                  "stale"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "error": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "sourceMessage": {
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "role": {
+          "enum": [
+            "user",
+            "assistant",
+            "agent"
+          ]
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "messageId",
+        "revision",
+        "role",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "computeContext": {
+      "type": "object",
+      "properties": {
+        "before": {
+          "type": "object"
+        },
+        "candidate": {
+          "type": "object"
+        },
+        "sourceMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sourceMessage"
+          }
+        },
+        "facts": {
+          "type": "object"
+        },
+        "priorFacts": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "floorBefore": {
+          "type": "object"
+        },
+        "toolEvidence": {
+          "$ref": "https://tavern-headless.local/role-tool-evidence.schema.json#/definitions/toolEvidence"
+        }
+      },
+      "required": [
+        "before",
+        "candidate",
+        "sourceMessages",
+        "facts",
+        "priorFacts",
+        "floorBefore",
+        "toolEvidence"
+      ],
+      "additionalProperties": false
+    },
+    "validationResult": {
+      "type": "object",
+      "properties": {
+        "issues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string",
+                "minLength": 1
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "path",
+              "code",
+              "message"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "issues"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

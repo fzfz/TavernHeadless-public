@@ -1,0 +1,29 @@
+{
+  "sessionId": "5ZoCR0MnbCwCCgPS7iQa9",
+  "branchId": "main",
+  "floorId": "PmUySLjLFDgFFGETJgcK_",
+  "attemptId": "OKnMV9UNCy37q3eyLnzfS:1",
+  "versionId": "HkdRM1AnnRgadXaEkJ4fT",
+  "snapshotId": "dd62e688-e919-4803-9e40-d821a2836dd8",
+  "parentSnapshotId": "39df4de5-cd06-4152-b318-4bc8e1fd6b7a",
+  "variables": {
+    "世界": {
+      "当前地址": "旧教学楼三楼走廊",
+      "当前时间": "2025年12月15日17:35",
+      "事件状态": "无"
+    },
+    "顾声慢": {
+      "情感连结度": 1,
+      "创作完成度": 4,
+      "心象映射": {
+        "当前心声": "他隔着两道门就听懂了那段过渡……这个人，好像真的能听见我弹的东西。可我现在追着人家问名字，也太奇怪了吧。",
+        "当前脑内旋律": "《God knows...》"
+      }
+    }
+  },
+  "source": {
+    "kind": "floor",
+    "runId": "OKnMV9UNCy37q3eyLnzfS",
+    "jobId": null
+  }
+}

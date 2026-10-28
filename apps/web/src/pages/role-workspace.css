@@ -1,0 +1,1222 @@
+/* Adapted from WorkspaceViewportFrame, WorkspaceNav, WorkspaceCanvas and WorkspaceInspector. */
+.role-workspace {
+  color-scheme: dark;
+  --bg: #09090b;
+  --canvas: #050505;
+  --panel: #121215;
+  --surface: #18181b;
+  --line: rgba(255, 255, 255, 0.09);
+  --text: #e4e4e7;
+  --muted: #a1a1aa;
+  --accent: #2dd4bf;
+  font-family: Inter, "Noto Sans SC", system-ui, sans-serif;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text);
+}
+.role-workspace :deep(*) {
+  box-sizing: border-box;
+}
+.role-workspace {
+  margin: 0;
+}
+.role-workspace :deep(button),
+.role-workspace :deep(input),
+.role-workspace :deep(select),
+.role-workspace :deep(textarea) {
+  font: inherit;
+}
+.role-workspace :deep(button) {
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--muted);
+  padding: 8px 10px;
+  cursor: pointer;
+}
+.role-workspace :deep(button:hover) {
+  background: var(--surface);
+  color: white;
+}
+.role-workspace :deep(button:disabled) {
+  opacity: 0.4;
+  cursor: default;
+}
+.role-workspace :deep(button:focus-visible),
+.role-workspace :deep(input:focus-visible),
+.role-workspace :deep(select:focus-visible),
+.role-workspace :deep(textarea:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.role-workspace :deep(.primary) {
+  background: var(--accent);
+  color: #042f2e;
+  border-color: var(--accent);
+}
+.role-workspace :deep(.primary:hover) {
+  background: #5eead4;
+  color: #042f2e;
+}
+.role-workspace :deep(.topbar) {
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--line);
+}
+.role-workspace :deep(.brand) {
+  font-size: 16px;
+  font-weight: 600;
+}
+.role-workspace :deep(.brand span) {
+  font-weight: 300;
+  color: var(--muted);
+}
+.role-workspace :deep(.mono) {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--muted);
+}
+.role-workspace :deep(.tag) {
+  display: inline-block;
+  padding: 3px 7px;
+  border: 1px solid #2dd4bf40;
+  border-radius: 4px;
+  color: var(--accent);
+  font-size: 11px;
+}
+.role-workspace :deep(.workspace) {
+  display: grid;
+  grid-template-columns: 260px minmax(350px, 1fr) 340px;
+  min-height: calc(100vh - 49px);
+}
+.role-workspace :deep(.sidebar) {
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-right: 1px solid var(--line);
+}
+.role-workspace :deep(.caption) {
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  color: #71717a;
+  margin: 4px 0 10px;
+}
+.role-workspace :deep(.box) {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 5px;
+  padding: 12px;
+}
+.role-workspace :deep(.navitem) {
+  width: 100%;
+  text-align: left;
+  display: block;
+  margin: 5px 0;
+}
+.role-workspace :deep(.active) {
+  background: #2dd4bf12 !important;
+  border-color: #2dd4bf55 !important;
+  color: var(--text) !important;
+}
+.role-workspace :deep(.row) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.role-workspace :deep(.stack) {
+  display: grid;
+  gap: 9px;
+}
+.role-workspace :deep(.small) {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.role-workspace :deep(.sidebar-footer) {
+  margin-top: auto;
+}
+.role-workspace :deep(.canvas) {
+  min-width: 0;
+  background: var(--canvas);
+  display: flex;
+  flex-direction: column;
+}
+.role-workspace :deep(.session-head) {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+}
+.role-workspace :deep(h1) {
+  font-size: 17px;
+  margin: 0 0 10px;
+}
+.role-workspace :deep(h2) {
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+.role-workspace :deep(p) {
+  line-height: 1.8;
+}
+.role-workspace :deep(.chips) {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.role-workspace :deep(.chips span) {
+  font-size: 11px;
+  background: var(--surface);
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--muted);
+}
+.role-workspace :deep(.messages) {
+  flex: 1;
+  padding: 28px 28px 50px;
+  min-height: 330px;
+  max-height: 65vh;
+  overflow: auto;
+}
+.role-workspace :deep(.message) {
+  padding: 0 0 24px;
+  margin: 0 0 22px;
+  border-bottom: 1px solid var(--line);
+}
+.role-workspace :deep(.speaker) {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  font-size: 12px;
+}
+.role-workspace :deep(.message p) {
+  margin: 8px 0 0;
+  color: #d4d4d8;
+  white-space: pre-wrap;
+}
+.role-workspace :deep(.composer) {
+  border-top: 1px solid var(--line);
+  padding: 18px 24px;
+}
+.role-workspace :deep(.composer textarea) {
+  width: 100%;
+  min-height: 72px;
+  resize: vertical;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 5px;
+  padding: 12px;
+}
+.role-workspace :deep(.composer .row) {
+  margin-top: 10px;
+}
+.role-workspace :deep(.inspector) {
+  border-left: 1px solid var(--line);
+  padding-bottom: 16px;
+}
+.role-workspace :deep(.tabs) {
+  display: flex;
+  overflow: auto;
+  border-bottom: 1px solid var(--line);
+}
+.role-workspace :deep(.tabs button) {
+  border: 0;
+  border-radius: 0;
+  padding: 14px 12px;
+  white-space: nowrap;
+  font-size: 11px;
+}
+.role-workspace :deep(.tabs button[aria-selected="true"]) {
+  border-bottom: 2px solid var(--accent);
+  color: var(--accent);
+}
+.role-workspace :deep(.inspector-body) {
+  padding: 18px 16px;
+}
+.role-workspace :deep(.field) {
+  display: block;
+  margin: 0 0 15px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.role-workspace :deep(.field select),
+.role-workspace :deep(.field input) {
+  display: block;
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--text);
+  padding: 9px;
+  margin-top: 7px;
+}
+.role-workspace :deep(.actions) {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+.role-workspace :deep(.feedback) {
+  margin: 18px 16px 0;
+  border-top: 1px solid var(--line);
+  padding-top: 13px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.role-workspace :deep(.version) {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.role-workspace :deep(dialog) {
+  width: min(540px, 90vw);
+  background: var(--bg);
+  border: 1px solid #3f3f46;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 22px;
+}
+.role-workspace :deep(dialog::backdrop) {
+  background: #0009;
+}
+.role-workspace :deep(.dialog-list) {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+.role-workspace :deep(.dialog-list button) {
+  text-align: left;
+  padding: 14px;
+}
+.role-workspace :deep(.empty) {
+  padding: 24px 5px;
+  color: #71717a;
+  font-size: 12px;
+}
+.role-workspace :deep([hidden]) {
+  display: none !important;
+}
+@media (max-width: 1100px) {
+  .role-workspace :deep(.workspace) {
+    grid-template-columns: 210px minmax(300px, 1fr);
+  }
+  .role-workspace :deep(.inspector) {
+    grid-column: 1/-1;
+    border-top: 1px solid var(--line);
+  }
+  .role-workspace :deep(.inspector-body) {
+    max-width: 750px;
+  }
+  .role-workspace :deep(.sidebar) {
+    grid-row: 1;
+  }
+}
+@media (max-width: 640px) {
+  .role-workspace :deep(.workspace) {
+    display: block;
+  }
+  .role-workspace :deep(.sidebar) {
+    border-bottom: 1px solid var(--line);
+    display: block;
+  }
+  .role-workspace :deep(.sidebar .box),
+  .role-workspace :deep(.sidebar-footer) {
+    margin-bottom: 10px;
+  }
+  .role-workspace :deep(.session-head),
+  .role-workspace :deep(.composer),
+  .role-workspace :deep(.messages) {
+    padding: 18px;
+  }
+  .role-workspace :deep(.topbar) {
+    padding: 0 12px;
+  }
+  .role-workspace :deep(.topbar .mono) {
+    font-size: 10px;
+  }
+}
+
+.role-workspace :deep(.field textarea) {
+  display: block;
+  width: 100%;
+  min-height: 110px;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 12px;
+  margin-top: 7px;
+  resize: vertical;
+  line-height: 1.7;
+}
+.role-workspace :deep(.toolbar) {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.role-workspace :deep(.toolbar h1),
+.role-workspace :deep(.toolbar h2) {
+  margin: 0;
+  flex: 1;
+}
+.role-workspace :deep(.danger) {
+  color: #fda4af;
+}
+.role-workspace :deep(.editor-shell) {
+  padding: 24px;
+  flex: 1;
+}
+.role-workspace :deep(.editor-grid) {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+.role-workspace :deep(.editor-fields) {
+  min-width: 0;
+}
+.role-workspace :deep(.editor-fields .field) {
+  font-size: 12px;
+}
+.role-workspace :deep(.entry) {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin: 6px 0;
+}
+.role-workspace :deep(.entry button:first-child) {
+  flex: 1;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.role-workspace :deep(.resource-card) {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.role-workspace :deep(.resource-card .actions) {
+  margin-bottom: 0;
+}
+.role-workspace :deep(.binding) {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.role-workspace :deep(.binding select) {
+  width: 100%;
+  margin: 8px 0;
+  background: var(--panel);
+  color: var(--text);
+  padding: 8px;
+  border: 1px solid var(--line);
+}
+.role-workspace :deep(.muted) {
+  color: var(--muted);
+}
+.role-workspace :deep(.empty-state) {
+  padding: 70px 28px;
+  text-align: center;
+  max-width: 540px;
+  margin: auto;
+}
+.role-workspace :deep(.empty-state p) {
+  color: var(--muted);
+}
+.role-workspace :deep(#notice) {
+  position: sticky;
+  bottom: 0;
+  background: var(--panel);
+  padding: 12px 24px;
+  min-height: 42px;
+  border-top: 1px solid var(--line);
+}
+.role-workspace :deep(#library) {
+  width: min(780px, 92vw);
+  max-height: 85vh;
+}
+.role-workspace :deep(#dialogError) {
+  color: #fda4af;
+  line-height: 1.7;
+}
+.role-workspace :deep(.readonly) {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.8;
+}
+.role-workspace :deep(.messages) {
+  max-height: 58vh;
+}
+@media (max-width: 640px) {
+  .role-workspace :deep(.editor-grid) {
+    grid-template-columns: 1fr;
+  }
+  .role-workspace :deep(.editor-shell) {
+    padding: 18px;
+  }
+  .role-workspace :deep(.workspace) {
+    min-height: 100vh;
+  }
+}
+.role-workspace :deep(#mainView) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.role-workspace :deep(.field input[type="checkbox"]) {
+  width: auto;
+  display: inline-block;
+  margin-left: 12px;
+}
+
+.role-workspace {
+  --left-width: 250px;
+  --right-width: 330px;
+}
+.role-workspace :deep(.workspace) {
+  display: grid;
+  grid-template-columns: var(--left-width) 5px minmax(300px, 1fr) 5px var(
+      --right-width
+    );
+}
+.role-workspace :deep(.resize-handle) {
+  cursor: col-resize;
+  background: #202026;
+}
+.role-workspace :deep(.resize-handle:hover),
+.role-workspace :deep(.resize-handle:focus) {
+  background: var(--accent);
+}
+.role-workspace :deep(.event-list) {
+  max-height: 220px;
+  overflow: auto;
+}
+.role-workspace :deep(.table-scroll) {
+  overflow: auto;
+  margin: 16px 0;
+}
+.role-workspace :deep(table) {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.role-workspace :deep(th),
+.role-workspace :deep(td) {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #34343d;
+  vertical-align: top;
+}
+.role-workspace :deep(td button) {
+  margin: 3px;
+}
+.role-workspace :deep(td pre) {
+  max-width: 600px;
+  white-space: pre-wrap;
+}
+.role-workspace :deep(.markdown-block pre) {
+  overflow: auto;
+}
+.role-workspace :deep(.mobile-toggle) {
+  display: none;
+}
+.role-workspace :deep([hidden]) {
+  display: none !important;
+}
+.role-workspace :deep(#mainView) {
+  min-width: 0;
+}
+.role-workspace :deep(.topbar) {
+  height: auto;
+  min-height: 54px;
+  flex-wrap: wrap;
+}
+.role-workspace :deep(.topbar select) {
+  width: auto;
+}
+.role-workspace :deep(.editor-shell) {
+  overflow: auto;
+}
+.role-workspace :deep(.panel) {
+  padding: 24px;
+  min-width: 0;
+}
+.role-workspace :deep(.cards) {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+.role-workspace :deep(.card) {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  overflow: auto;
+}
+.role-workspace :deep(.card strong),
+.role-workspace :deep(.card span) {
+  display: block;
+}
+.role-workspace :deep(.card pre) {
+  max-height: 320px;
+  white-space: pre-wrap;
+  overflow: auto;
+}
+.role-workspace :deep(.md) {
+  margin-top: 10px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.role-workspace :deep(.inspector) {
+  min-width: 0;
+}
+@media (min-width: 1100px) {
+  .role-workspace {
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .role-workspace :deep(.topbar) {
+    flex-shrink: 0;
+  }
+  .role-workspace :deep(.workspace) {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .role-workspace :deep(.sidebar),
+  .role-workspace :deep(.inspector) {
+    min-height: 0;
+    overflow-y: auto;
+  }
+  .role-workspace :deep(.canvas) {
+    min-height: 0;
+    overflow: hidden;
+  }
+  .role-workspace :deep(#mainView) {
+    min-height: 0;
+    overflow: auto;
+  }
+  .role-workspace :deep(.session-head),
+  .role-workspace :deep(.composer),
+  .role-workspace :deep(#notice) {
+    flex-shrink: 0;
+  }
+  .role-workspace :deep(.messages) {
+    min-height: 0;
+    max-height: none;
+  }
+}
+
+@media (max-width: 1099px) {
+  .role-workspace {
+    overflow: hidden;
+  }
+  .role-workspace :deep(.topbar) {
+    flex-shrink: 0;
+  }
+  .role-workspace :deep(.workspace) {
+    display: block;
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+  .role-workspace :deep(.resize-handle) {
+    display: none;
+  }
+  .role-workspace :deep(.mobile-toggle) {
+    display: inline-block;
+  }
+  .role-workspace :deep(.sidebar),
+  .role-workspace :deep(.inspector) {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: min(90vw, 360px);
+    overflow: auto;
+    z-index: 20;
+    background: #101015;
+  }
+  .role-workspace :deep(.sidebar) {
+    left: 0;
+  }
+  .role-workspace :deep(.inspector) {
+    right: 0;
+  }
+  .role-workspace :deep(.sidebar.drawer-open),
+  .role-workspace :deep(.inspector.drawer-open) {
+    display: block;
+  }
+  .role-workspace :deep(.canvas) {
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .role-workspace :deep(#mainView) {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+  }
+}
+
+.role-workspace :deep(.generation-detail) {
+  padding: 24px;
+  min-width: 0;
+}
+.role-workspace :deep(.generation-header),
+.role-workspace :deep(.generation-context),
+.role-workspace :deep(.generation-content-header) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.role-workspace :deep(.generation-header h1) {
+  font-size: 22px;
+  margin: 8px 0 20px;
+}
+.role-workspace :deep(.generation-context) {
+  align-items: flex-end;
+}
+.role-workspace :deep(.generation-context label) {
+  flex: 1;
+  margin: 0;
+}
+.role-workspace :deep(.generation-status) {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 0;
+  color: #a1a1aa;
+  font-size: 12px;
+}
+.role-workspace :deep(.generation-status span:first-child) {
+  color: #a5b4fc;
+}
+.role-workspace :deep(.generation-layout) {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 20px;
+  border-top: 1px solid #30303b;
+  padding-top: 20px;
+}
+.role-workspace :deep(.generation-nav) {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-self: start;
+  position: sticky;
+  top: 16px;
+}
+.role-workspace :deep(.generation-nav button) {
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 12px;
+}
+.role-workspace :deep(.generation-nav button.active) {
+  background: #232339;
+  color: #c7d2fe;
+}
+.role-workspace :deep(.generation-content) {
+  min-width: 0;
+}
+.role-workspace :deep(.generation-content-header) {
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.role-workspace :deep(.generation-content-header h2) {
+  margin: 0;
+}
+.role-workspace :deep(.generation-section) {
+  border: 1px solid #30303b;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  background: #14141b;
+  overflow: hidden;
+}
+.role-workspace :deep(.generation-section > summary) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+.role-workspace :deep(.generation-section > summary::-webkit-details-marker) {
+  display: none;
+}
+.role-workspace :deep(.generation-section small) {
+  color: #9494a5;
+  margin-left: 8px;
+  font-weight: 400;
+}
+.role-workspace :deep(.generation-disclosure) {
+  transform: rotate(-90deg);
+}
+.role-workspace
+  :deep(.generation-section[open] > summary .generation-disclosure) {
+  transform: rotate(0);
+}
+.role-workspace :deep(.generation-section[open] > summary) {
+  border-bottom: 1px solid #30303b;
+}
+.role-workspace :deep(.generation-section-body) {
+  padding: 16px;
+}
+.role-workspace :deep(.generation-fields) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 18px;
+}
+.role-workspace :deep(.generation-fields dt) {
+  font-size: 11px;
+  color: #9292a3;
+  margin-bottom: 6px;
+}
+.role-workspace :deep(.generation-fields dd) {
+  font-size: 12px;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.role-workspace :deep(.generation-text) {
+  font:
+    12px/1.8 ui-monospace,
+    monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 0;
+  max-height: 480px;
+  overflow: auto;
+  user-select: text;
+}
+.role-workspace :deep(.generation-text:focus) {
+  outline: 1px solid #818cf8;
+}
+.role-workspace :deep(.generation-missing) {
+  color: #9090a0;
+  font-size: 12px;
+  line-height: 1.7;
+  padding: 18px;
+  border: 1px dashed #353543;
+  border-radius: 6px;
+  margin: 0;
+}
+.role-workspace :deep(.generation-pair) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.role-workspace :deep(.generation-pair h3) {
+  font-size: 12px;
+  margin: 0 0 10px;
+}
+.role-workspace :deep(.generation-error) {
+  padding: 16px;
+  background: #351b24;
+  border-radius: 6px;
+}
+.role-workspace :deep(.generation-timeline) {
+  list-style: none;
+  margin: 0;
+  padding-left: 14px;
+  border-left: 1px solid #44445a;
+}
+.role-workspace :deep(.generation-timeline li) {
+  padding: 0 0 20px 14px;
+}
+.role-workspace :deep(.generation-timeline time) {
+  color: #9090a0;
+  font: 11px monospace;
+}
+.role-workspace :deep(.generation-timeline p) {
+  margin: 6px 0;
+  font-size: 13px;
+}
+@media (max-width: 1450px) {
+  .role-workspace :deep(.generation-layout) {
+    grid-template-columns: 1fr;
+  }
+  .role-workspace :deep(.generation-nav) {
+    position: static;
+    flex-direction: row;
+    overflow: auto;
+  }
+  .role-workspace :deep(.generation-nav button) {
+    white-space: nowrap;
+  }
+  .role-workspace :deep(.generation-pair) {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .role-workspace :deep(.generation-detail) {
+    padding: 16px;
+  }
+  .role-workspace :deep(.generation-context) {
+    display: block;
+  }
+  .role-workspace :deep(.generation-fields) {
+    grid-template-columns: 1fr;
+  }
+  .role-workspace :deep(.generation-context .actions) {
+    margin-top: 12px;
+  }
+}
+.role-workspace.generation-focused :deep(.workspace) {
+  display: block;
+}
+.role-workspace.generation-focused :deep(.sidebar),
+.role-workspace.generation-focused :deep(.inspector),
+.role-workspace.generation-focused :deep(.resize-handle) {
+  display: none;
+}
+.role-workspace.generation-focused :deep(.canvas) {
+  max-width: 1440px;
+  margin: 0 auto;
+  border: 0;
+}
+@media (min-width: 1100px) {
+  .role-workspace.generation-focused :deep(.canvas) {
+    height: 100%;
+  }
+}
+.role-workspace.generation-focused :deep(.generation-layout) {
+  grid-template-columns: 180px minmax(0, 1fr);
+}
+.role-workspace.generation-focused :deep(.generation-nav) {
+  flex-direction: column;
+  position: sticky;
+}
+.role-workspace.generation-focused :deep(.generation-pair) {
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 760px) {
+  .role-workspace.generation-focused :deep(.generation-layout) {
+    grid-template-columns: 1fr;
+  }
+  .role-workspace.generation-focused :deep(.generation-nav) {
+    flex-direction: row;
+    position: static;
+  }
+  .role-workspace.generation-focused :deep(.generation-pair) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.role-workspace :deep(.trial-records) {
+  padding: 16px 24px 36px;
+  max-width: 1400px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+}
+.role-workspace :deep(.trial-records h1) {
+  font-size: 17px;
+  margin: 0;
+}
+.role-workspace :deep(.session-header) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #29292d;
+}
+.role-workspace :deep(.session-heading) {
+  flex: 1 1 auto;
+  min-width: 220px;
+}
+.role-workspace :deep(.session-title-line) {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+.role-workspace :deep(.session-title-line .caption) {
+  margin: 0;
+}
+.role-workspace :deep(.session-meta) {
+  margin: 8px 0 0;
+  line-height: 1.5;
+}
+.role-workspace :deep(.session-actions) {
+  display: flex;
+  flex: 0 1 720px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.role-workspace :deep(.session-actions button) {
+  padding: 6px 9px;
+}
+.role-workspace :deep(.floor-row) {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid #29292d;
+}
+.role-workspace :deep(.floor-row-content) {
+  min-width: 0;
+  flex: 1;
+}
+.role-workspace :deep(.round-heading) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.role-workspace :deep(.opening-row) {
+  padding-top: 4px;
+}
+.role-workspace :deep(.floor-row .tag) {
+  margin-left: 12px;
+}
+.role-workspace :deep(.timeline-message-list) {
+  padding: 16px 4px 0 0;
+}
+.role-workspace :deep(.opening-row .timeline-message-list) {
+  padding-top: 0;
+}
+.role-workspace :deep(.timeline-message-list .message:last-child) {
+  margin-bottom: 0;
+}
+.role-workspace :deep(.speaker-identity) {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.role-workspace :deep(.speaker-identity strong) {
+  color: var(--text);
+}
+.role-workspace :deep(.message p) {
+  overflow-wrap: anywhere;
+  line-height: 1.8;
+}
+.role-workspace :deep(.floor-message-empty) {
+  margin: 16px 0 0;
+}
+.role-workspace :deep(.floor-row button) {
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.role-workspace {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  line-height: normal;
+  font-family: Inter, "Noto Sans SC", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+.role-workspace :deep(h1),
+.role-workspace :deep(h2),
+.role-workspace :deep(h3),
+.role-workspace :deep(strong) {
+  font-weight: bold;
+}
+.role-workspace :deep(p) {
+  margin: 1em 0;
+}
+.role-workspace :deep(select) {
+  appearance: auto;
+}
+.role-workspace :deep(.workspace) {
+  min-height: 0;
+  grid-template-columns: var(--left-pane-width) 5px minmax(300px, 1fr) 5px var(
+      --right-pane-width
+    );
+}
+.role-workspace :deep(.resize-handle) {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+.role-workspace :deep(.tabs) {
+  flex-shrink: 0;
+}
+.role-workspace :deep(.sidebar),
+.role-workspace :deep(.inspector),
+.role-workspace :deep(#mainView) {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+.role-workspace :deep(::-webkit-scrollbar) {
+  width: 12px;
+  height: 12px;
+}
+.role-workspace :deep(::-webkit-scrollbar-track) {
+  background: #17171c;
+}
+.role-workspace :deep(::-webkit-scrollbar-thumb) {
+  background: #73737d;
+  border: 3px solid #17171c;
+  border-radius: 8px;
+  min-height: 32px;
+}
+.role-workspace :deep(.inspector) {
+  display: block;
+}
+.role-workspace :deep(.inspector-body) {
+  overflow: visible;
+}
+.role-workspace :deep(.binding) {
+  padding: 10px 0;
+}
+.role-workspace :deep(.version-label) {
+  font-size: 11px;
+  color: var(--muted);
+}
+.role-workspace :deep(.drawer-backdrop) {
+  position: absolute;
+  inset: 0;
+  z-index: 19;
+  background: #0008;
+  border: 0;
+  border-radius: 0;
+}
+.role-workspace :deep(.inline-error) {
+  color: #fda4af;
+}
+.role-workspace :deep(pre) {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  max-height: 480px;
+  overflow: auto;
+}
+.role-workspace :deep(.app-select) {
+  max-width: 220px;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 6px;
+}
+.role-workspace :deep(.model-editor) {
+  margin: 18px 0;
+}
+.role-workspace :deep(.trial-records) {
+  flex-shrink: 0;
+  overflow: visible;
+}
+.role-workspace :deep(.modal-backdrop) {
+  position: fixed;
+  inset: 0;
+  background: #0009;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+}
+.role-workspace :deep(.modal-card) {
+  background: var(--panel);
+  padding: 24px;
+  border: 1px solid var(--line);
+  width: min(480px, 92vw);
+  border-radius: 6px;
+}
+@media (max-width: 1099px) {
+  .role-workspace :deep(.workspace) {
+    display: block;
+    overflow: hidden;
+  }
+  .role-workspace :deep(.inspector) {
+    display: none;
+  }
+  .role-workspace :deep(.inspector.drawer-open) {
+    display: block;
+  }
+  .role-workspace :deep(.sidebar),
+  .role-workspace :deep(.inspector) {
+    scrollbar-gutter: auto;
+  }
+  .role-workspace :deep(.canvas) {
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .role-workspace :deep(#mainView) {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+  }
+  .role-workspace :deep(.topbar) {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .role-workspace :deep(.topbar .row) {
+    flex-wrap: wrap;
+  }
+  .role-workspace :deep(.app-select) {
+    max-width: 140px;
+  }
+}
+
+@media (max-width: 760px) {
+  .role-workspace :deep(.trial-records) {
+    padding: 16px;
+  }
+  .role-workspace :deep(.session-header) {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .role-workspace :deep(.session-heading) {
+    min-width: 0;
+  }
+  .role-workspace :deep(.session-actions) {
+    flex: 0 1 auto;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+.role-workspace :deep(.app-switch) {
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.role-workspace :deep(dialog) {
+  margin: auto;
+}
+.role-workspace :deep(.placement-fields) {
+  border: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+.role-workspace :deep(.placement-fields label) {
+  display: block;
+  padding: 7px;
+}
+
+.role-workspace :deep(.library-only) {
+  padding: 0;
+}
+.role-workspace :deep(button) {
+  appearance: auto;
+}
+
+.role-workspace :deep(.library-filters input),
+.role-workspace :deep(.library-filters select) {
+  all: revert;
+  font: inherit;
+}
+
+.role-workspace :deep(.publication-panel) {
+  margin-top: 24px;
+}

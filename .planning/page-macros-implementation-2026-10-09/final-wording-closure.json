@@ -1,0 +1,30 @@
+{
+  "scope": [
+    ".agents/skills/native-card-conversion/scripts/tool-config.ts:362",
+    ".agents/skills/native-card-conversion/scripts/tool-config.ts:410",
+    ".agents/skills/native-card-conversion/config/page-macros.json:591"
+  ],
+  "findings": [
+    {
+      "file": ".agents/skills/native-card-conversion/scripts/tool-config.ts",
+      "line": 410,
+      "severity": "low",
+      "text": "当前转换任务的taskFile；传入-时从stdin读取上游结果路径。",
+      "problem": "taskFile 参数说明用同名参数解释自身，未说明直接传入的值是任务文件路径。相比同文件 sourceFile、requestFile 等参数说明，此处缺少具体输入对象，消费者需要借助命令示例确定参数格式。",
+      "recommendation": "改为“当前转换任务的 task.json 文件路径；传入 - 时，命令从 stdin 读取上游结果文件路径。”"
+    }
+  ],
+  "no_findings": [
+    {
+      "file": ".agents/skills/native-card-conversion/scripts/tool-config.ts",
+      "line": 362,
+      "target": "bind-page-macros.description"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/config/page-macros.json",
+      "line": 591,
+      "target": "charCreatorNotes.purpose"
+    }
+  ],
+  "limitations": "本次仅核对指定文字的表达与同文件参数说明的一致性，未验证程序行为。"
+}

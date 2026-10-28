@@ -1,0 +1,47 @@
+{
+  "result": "passed",
+  "cards": [
+    {
+      "id": "card-bookshop",
+      "packageValid": true,
+      "turnValues": [
+        10,
+        35,
+        75
+      ],
+      "conditionalLayout": true,
+      "historyIsolated": true,
+      "staleRejected": true,
+      "failedCommitPreserved": true
+    },
+    {
+      "id": "card-novel",
+      "packageValid": true,
+      "turnValues": [
+        10,
+        35,
+        75
+      ],
+      "conditionalLayout": true,
+      "historyIsolated": true,
+      "staleRejected": true,
+      "failedCommitPreserved": true
+    }
+  ],
+  "thirdComposition": "passed without renderer changes",
+  "serverVariableValidation": true,
+  "serverActionValidation": true,
+  "actions": [
+    "ui.toggle",
+    "chat.fill",
+    "chat.send",
+    "history.prev",
+    "history.latest",
+    "reading.prev",
+    "reading.next",
+    "reading.auto",
+    "reading.latest",
+    "audio.toggle"
+  ],
+  "consoleErrors": []
+}

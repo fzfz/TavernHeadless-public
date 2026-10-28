@@ -1,0 +1,359 @@
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { and, eq } from "drizzle-orm";
+
+import { createTestDatabase, type DatabaseConnection } from "./helpers/create-test-db.js";
+import { llmInstanceConfigs } from "../src/db/schema";
+import {
+  DEFAULT_LLM_INSTANCE_CAPABILITIES,
+} from "../src/lib/llm-capabilities.js";
+import {
+  LlmInstanceService,
+  LlmInstanceServiceError,
+} from "../src/services/llm-instance-service";
+import { createTestSessionWithScope } from "../src/__tests__/helpers/workspace-project";
+
+describe("LlmInstanceService", () => {
+  let connection: DatabaseConnection;
+  let service: LlmInstanceService;
+  const accountId = "default-admin";
+  let sessionWorkspaceId: string;
+  let clock: number;
+
+  beforeEach(async () => {
+    connection = createTestDatabase(":memory:");
+    sessionWorkspaceId = createTestSessionWithScope(connection.db, {
+      id: "sess-1",
+      accountId,
+      title: "Test Session",
+    }).workspaceId;
+    clock = 1700000000000;
+    service = new LlmInstanceService(connection.db, { now: () => clock });
+  });
+
+  afterEach(() => {
+    connection.close();
+  });
+
+  // ── upsertConfig ──
+
+  describe("upsertConfig", () => {
+    it("creates a new global config", async () => {
+      const config = await service.upsertConfig(accountId, "global", "global", "narrator", {
+        enabled: true,
+        modelIdOverride: "gpt-4.1-mini",
+        params: { temperature: 0.8, maxOutputTokens: 1024 },
+      });
+
+      expect(config.id).toBeTruthy();
+      expect(config.scope).toBe("global");
+      expect(config.scopeId).toBe("global");
+      expect(config.instanceSlot).toBe("narrator");
+      expect(config.enabled).toBe(true);
+      expect(config.modelIdOverride).toBe("gpt-4.1-mini");
+      expect(config.params).toEqual({ temperature: 0.8, maxOutputTokens: 1024 });
+      expect(config.createdAt).toBe(clock);
+      expect(config.updatedAt).toBe(clock);
+
+      const [row] = await connection.db
+        .select({ workspaceId: llmInstanceConfigs.workspaceId })
+        .from(llmInstanceConfigs)
+        .where(eq(llmInstanceConfigs.id, config.id));
+      expect(row?.workspaceId).toBe("ws_default_default-admin");
+    });
+
+    it("updates an existing config on conflict", async () => {
+      await service.upsertConfig(accountId, "global", "global", "narrator", {
+        enabled: true,
+        params: { temperature: 0.5 },
+      });
+
+      clock += 1000;
+
+      const updated = await service.upsertConfig(accountId, "global", "global", "narrator", {
+        enabled: false,
+        params: { temperature: 0.9 },
+      });
+
+      expect(updated.enabled).toBe(false);
+      expect(updated.params).toEqual({ temperature: 0.9 });
+      expect(updated.updatedAt).toBe(clock);
+
+      const all = await service.listConfigs(accountId);
+      expect(all).toHaveLength(1);
+    });
+
+    it("creates a session-scoped config", async () => {
+      const config = await service.upsertConfig(accountId, "session", "sess-1", "director", {
+        presetId: "preset-abc",
+      });
+
+      expect(config.scope).toBe("session");
+      expect(config.scopeId).toBe("sess-1");
+      expect(config.instanceSlot).toBe("director");
+      expect(config.presetId).toBe("preset-abc");
+
+      const [row] = await connection.db
+        .select({ workspaceId: llmInstanceConfigs.workspaceId })
+        .from(llmInstanceConfigs)
+        .where(and(
+          eq(llmInstanceConfigs.scope, "session"),
+          eq(llmInstanceConfigs.scopeId, "sess-1"),
+        ));
+      expect(row?.workspaceId).toBe(sessionWorkspaceId);
+    });
+
+    it("accepts null params to clear existing params", async () => {
+      await service.upsertConfig(accountId, "global", "global", "narrator", {
+        params: { temperature: 0.5 },
+      });
+
+      clock += 1000;
+
+      const updated = await service.upsertConfig(accountId, "global", "global", "narrator", {
+        params: null,
+      });
+
+      expect(updated.params).toBeNull();
+    });
+
+    it("accepts null modelIdOverride to clear an existing override", async () => {
+      await service.upsertConfig(accountId, "global", "global", "narrator", {
+        modelIdOverride: "gpt-4.1-mini",
+      });
+
+      clock += 1000;
+
+      const updated = await service.upsertConfig(accountId, "global", "global", "narrator", {
+        modelIdOverride: null,
+      });
+
+      expect(updated.modelIdOverride).toBeNull();
+    });
+
+    it("rejects params with out-of-range values", async () => {
+      await expect(
+        service.upsertConfig(accountId, "global", "global", "narrator", {
+          params: { temperature: 5 },
+        })
+      ).rejects.toMatchObject({ code: "invalid_params" });
+    });
+
+    it("rejects non-object params", async () => {
+      await expect(
+        service.upsertConfig(accountId, "global", "global", "narrator", {
+          params: "bad" as any,
+        })
+      ).rejects.toMatchObject({ code: "invalid_params" });
+    });
+  });
+
+  // ── deleteConfig ──
+
+  describe("deleteConfig", () => {
+    it("deletes an existing config", async () => {
+      await service.upsertConfig(accountId, "global", "global", "narrator", { enabled: true });
+
+      await service.deleteConfig(accountId, "global", "global", "narrator");
+
+      const all = await service.listConfigs(accountId);
+      expect(all).toHaveLength(0);
+    });
+
+    it("throws config_not_found for non-existent config", async () => {
+      await expect(
+        service.deleteConfig(accountId, "global", "global", "narrator")
+      ).rejects.toMatchObject({ code: "config_not_found" });
+    });
+  });
+
+  // ── listConfigs ──
+
+  describe("listConfigs", () => {
+    it("returns all configs for an account", async () => {
+      await service.upsertConfig(accountId, "global", "global", "narrator", { enabled: true });
+      clock += 1;
+      await service.upsertConfig(accountId, "global", "global", "*", { enabled: true });
+      clock += 1;
+      await service.upsertConfig(accountId, "session", "sess-1", "director", { enabled: false });
+
+      const all = await service.listConfigs(accountId);
+      expect(all).toHaveLength(3);
+    });
+
+    it("filters by scope", async () => {
+      await service.upsertConfig(accountId, "global", "global", "narrator", { enabled: true });
+      clock += 1;
+      await service.upsertConfig(accountId, "session", "sess-1", "director", { enabled: false });
+
+      const globalOnly = await service.listConfigs(accountId, "global");
+      expect(globalOnly).toHaveLength(1);
+      expect(globalOnly[0]!.instanceSlot).toBe("narrator");
+
+      const sessionOnly = await service.listConfigs(accountId, "session", "sess-1");
+      expect(sessionOnly).toHaveLength(1);
+      expect(sessionOnly[0]!.instanceSlot).toBe("director");
+    });
+
+    it("returns empty array for account with no configs", async () => {
+      const all = await service.listConfigs(accountId);
+      expect(all).toEqual([]);
+    });
+  });
+
+  // ── getConfigsBySlot ──
+
+  describe("getConfigsBySlot", () => {
+    it("returns configs matching a specific slot", async () => {
+      await service.upsertConfig(accountId, "global", "global", "narrator", { enabled: true });
+      clock += 1;
+      await service.upsertConfig(accountId, "session", "sess-1", "narrator", { enabled: false });
+      clock += 1;
+      await service.upsertConfig(accountId, "global", "global", "director", { enabled: true });
+
+      const configs = await service.getConfigsBySlot(accountId, "narrator");
+      expect(configs).toHaveLength(2);
+      expect(configs.every((c) => c.instanceSlot === "narrator")).toBe(true);
+    });
+
+    it("throws invalid_slot for unknown slot", async () => {
+      await expect(
+        service.getConfigsBySlot(accountId, "unknown" as any)
+      ).rejects.toMatchObject({ code: "invalid_slot" });
+    });
+  });
+
+  // ── resolveConfigs ──
+
+  describe("resolveConfigs", () => {
+    it("persists capabilities on configs and resolves conservative defaults for other slots", async () => {
+      const config = await service.upsertConfig(accountId, "global", "global", "narrator", {
+        enabled: true,
+        capabilities: {
+          supportsFunctionCall: false,
+          supportsToolChoice: false,
+          supportsStreamingToolCall: false,
+          unsupportedGenerationParams: ["stopSequences"],
+        },
+      });
+
+      expect(config.capabilities).toEqual({
+        supportsFunctionCall: false,
+        supportsToolChoice: false,
+        supportsStreamingToolCall: false,
+        unsupportedGenerationParams: ["stopSequences"],
+      });
+
+      const resolved = await service.resolveConfigs(accountId);
+      const narrator = resolved.find((slot) => slot.slot === "narrator")!;
+      const memory = resolved.find((slot) => slot.slot === "memory")!;
+
+      expect(narrator.capabilities).toEqual({
+        supportsFunctionCall: false,
+        supportsToolChoice: false,
+        supportsStreamingToolCall: false,
+        unsupportedGenerationParams: ["stopSequences"],
+      });
+      expect(memory.capabilities).toEqual({
+        ...DEFAULT_LLM_INSTANCE_CAPABILITIES,
+        unsupportedGenerationParams: [],
+      });
+    });
+
+    it("returns defaults for all 6 slots when no configs exist", async () => {
+      const resolved = await service.resolveConfigs(accountId);
+
+      expect(resolved).toHaveLength(6);
+      const slotNames = resolved.map((s) => s.slot);
+      expect(slotNames).toEqual(["*", "narrator", "director", "verifier", "memory", "state_updater"]);
+
+      for (const slot of resolved) {
+        expect(slot.source).toBe("default");
+        expect(slot.scope).toBeNull();
+        expect(slot.configId).toBeNull();
+        expect(slot.enabled).toBe(true);
+        expect(slot.params).toBeNull();
+      }
+    });
+
+    it("resolves a global config for a named slot", async () => {
+      await service.upsertConfig(accountId, "global", "global", "narrator", {
+        enabled: true,
+        modelIdOverride: "gpt-4.1-mini",
+        params: { temperature: 0.7 },
+      });
+
+      const resolved = await service.resolveConfigs(accountId);
+      const narrator = resolved.find((s) => s.slot === "narrator")!;
+
+      expect(narrator.source).toBe("global_config");
+      expect(narrator.scope).toBe("global");
+      expect(narrator.enabled).toBe(true);
+      expect(narrator.modelIdOverride).toBe("gpt-4.1-mini");
+      expect(narrator.params).toEqual({ temperature: 0.7 });
+      expect(narrator.configId).toBeTruthy();
+    });
+
+    it("session(slot) overrides global(slot)", async () => {
+      await service.upsertConfig(accountId, "global", "global", "narrator", {
+        params: { temperature: 0.5 },
+      });
+      clock += 1;
+      await service.upsertConfig(accountId, "session", "sess-1", "narrator", {
+        params: { temperature: 0.9 },
+      });
+
+      const resolved = await service.resolveConfigs(accountId, "sess-1");
+      const narrator = resolved.find((s) => s.slot === "narrator")!;
+
+      expect(narrator.source).toBe("session_config");
+      expect(narrator.scope).toBe("session");
+      expect(narrator.params).toEqual({ temperature: 0.9 });
+    });
+
+    it("falls back to global(*) when no specific slot config exists", async () => {
+      await service.upsertConfig(accountId, "global", "global", "*", {
+        params: { temperature: 0.6 },
+        presetId: "fallback-preset",
+      });
+
+      const resolved = await service.resolveConfigs(accountId);
+      const narrator = resolved.find((s) => s.slot === "narrator")!;
+
+      expect(narrator.source).toBe("global_config");
+      expect(narrator.params).toEqual({ temperature: 0.6 });
+      expect(narrator.presetId).toBe("fallback-preset");
+
+      const wildcard = resolved.find((s) => s.slot === "*")!;
+      expect(wildcard.source).toBe("global_config");
+    });
+
+    it("session(*) overrides global(slot)", async () => {
+      await service.upsertConfig(accountId, "global", "global", "narrator", {
+        params: { temperature: 0.5 },
+      });
+      clock += 1;
+      await service.upsertConfig(accountId, "session", "sess-1", "*", {
+        params: { temperature: 0.99 },
+      });
+
+      const resolved = await service.resolveConfigs(accountId, "sess-1");
+      const narrator = resolved.find((s) => s.slot === "narrator")!;
+
+      // Priority: session(narrator) > session(*) > global(narrator) > global(*)
+      // No session(narrator), but session(*) exists → wins over global(narrator)
+      expect(narrator.source).toBe("session_config");
+      expect(narrator.params).toEqual({ temperature: 0.99 });
+    });
+
+    it("without sessionId, skips all session candidates", async () => {
+      await service.upsertConfig(accountId, "session", "sess-1", "narrator", {
+        params: { temperature: 0.9 },
+      });
+
+      const resolved = await service.resolveConfigs(accountId);
+      const narrator = resolved.find((s) => s.slot === "narrator")!;
+
+      expect(narrator.source).toBe("default");
+    });
+  });
+});

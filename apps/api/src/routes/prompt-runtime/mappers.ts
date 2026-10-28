@@ -1,0 +1,156 @@
+import type { PromptMode } from "../../services/prompt-assembler.js";
+import type { PromptRuntimeInspectRequest } from "../../services/prompt-runtime/types.js";
+import type { PromptRuntimeModeView } from "../../services/prompt-runtime-control-service.js";
+import type {
+  PromptRuntimeInjectionPatchInput,
+  PromptRuntimeInjectionWriteInput,
+} from "../../services/prompt-runtime/injection-service.js";
+
+import type { PromptRuntimePreviewRequest } from "../../services/chat/contracts.js";
+import type { RespondRequest } from "../../services/chat/contracts.js";
+import type {
+  PromptRuntimeInspectBody,
+  PromptRuntimeInjectionBody,
+  PromptRuntimeModePatchBody,
+  PromptRuntimePersistedInjectionCreateBody,
+  PromptRuntimePersistedInjectionPatchBody,
+} from "./schemas.js";
+import {
+  mapGenerationParams,
+  mapLiveDebugOptionsRequest,
+  mapPlacementParamsBody,
+  mapPromptBudgetRequest,
+  mapPromptDeliveryRequest,
+  mapPromptSourceSelectionRequest,
+  mapPromptRuntimeInjectionsRequest,
+  mapPromptStructureRequest,
+  mapTurnSessionStateWritesRequest,
+  mapDryRunVisibilityRequest,
+} from "../chat/mappers.js";
+
+function isPromptMode(value: unknown): value is PromptMode {
+  return value === "compat_strict" || value === "compat_plus" || value === "native";
+}
+
+export function mapModeViewToSnakeCase(view: PromptRuntimeModeView): Record<string, unknown> {
+  return {
+    prompt_mode: view.promptMode,
+    session_prompt_mode: view.sessionPromptMode,
+    effective_prompt_mode: view.effectivePromptMode,
+    default_prompt_mode: view.defaultPromptMode,
+    legacy_fallback: view.legacyFallback,
+    source: view.source,
+  };
+}
+
+export function mapModeViewToCamelCase(body: PromptRuntimeModePatchBody): { promptMode: PromptMode | null } {
+  return {
+    promptMode: isPromptMode(body.prompt_mode) ? body.prompt_mode : null,
+  };
+}
+
+interface PromptRuntimePreviewBody {
+  text: string;
+  branch_id?: string;
+  source_floor_id?: string;
+  visibility?: PromptRuntimeInspectBody["visibility"];
+  structure?: PromptRuntimeInspectBody["structure"];
+  delivery?: PromptRuntimeInspectBody["delivery"];
+  budget?: PromptRuntimeInspectBody["budget"];
+  source_selection?: PromptRuntimeInspectBody["source_selection"];
+  prompt_runtime_injections?: PromptRuntimeInjectionBody[];
+}
+
+export function mapPromptRuntimeInspectBodyToCamelCase(
+  body: PromptRuntimeInspectBody,
+): PromptRuntimeInspectRequest {
+  return {
+    message: body.message,
+    branchId: body.branch_id,
+    sourceFloorId: body.source_floor_id,
+    promptIntent: body.prompt_intent,
+    config: body.config,
+    generationParams: body.generation_params
+      ? mapGenerationParams(body.generation_params)
+      : undefined,
+    sessionStateWrites: mapTurnSessionStateWritesRequest(body.session_state_writes),
+    debugOptions: mapLiveDebugOptionsRequest(body.debug_options),
+    visibility: mapDryRunVisibilityRequest(body.visibility),
+    structure: mapPromptStructureRequest(body.structure),
+    delivery: mapPromptDeliveryRequest(body.delivery),
+    budget: mapPromptBudgetRequest(body.budget),
+    sourceSelection: mapPromptSourceSelectionRequest(body.source_selection),
+    promptRuntimeInjections: mapPromptRuntimeInjectionsRequest(body.prompt_runtime_injections),
+  };
+}
+
+export function mapPromptRuntimePreviewBodyToCamelCase(
+  body: PromptRuntimePreviewBody,
+): PromptRuntimePreviewRequest {
+  return {
+    text: body.text,
+    branchId: body.branch_id,
+    sourceFloorId: body.source_floor_id,
+    visibility: mapDryRunVisibilityRequest(body.visibility),
+    structure: mapPromptStructureRequest(body.structure),
+    delivery: mapPromptDeliveryRequest(body.delivery),
+    budget: mapPromptBudgetRequest(body.budget),
+    sourceSelection: mapPromptSourceSelectionRequest(body.source_selection),
+    promptRuntimeInjections: mapPromptRuntimeInjectionsRequest(body.prompt_runtime_injections),
+  };
+}
+
+export function mapPromptRuntimeLiveRequestBodyToCamelCase(
+  body: PromptRuntimeInspectBody,
+): RespondRequest {
+  return {
+    message: body.message,
+    promptIntent: body.prompt_intent,
+    config: body.config,
+    generationParams: body.generation_params
+      ? mapGenerationParams(body.generation_params)
+      : undefined,
+    branchId: body.branch_id,
+    sourceFloorId: body.source_floor_id,
+    structure: mapPromptStructureRequest(body.structure),
+    delivery: mapPromptDeliveryRequest(body.delivery),
+    sessionStateWrites: mapTurnSessionStateWritesRequest(body.session_state_writes),
+    debugOptions: mapLiveDebugOptionsRequest(body.debug_options),
+    promptRuntimeInjections: mapPromptRuntimeInjectionsRequest(body.prompt_runtime_injections),
+  };
+}
+
+export function mapPromptRuntimePersistedInjectionCreateBodyToCamelCase(
+  body: PromptRuntimePersistedInjectionCreateBody,
+): PromptRuntimeInjectionWriteInput {
+  const placementParams = mapPlacementParamsBody(body.placement_params);
+  return {
+    sourceKind: body.source_kind,
+    title: body.title,
+    content: body.content,
+    placement: body.placement,
+    ...(placementParams ? { placementParams } : {}),
+    ...(body.order !== undefined ? { order: body.order } : {}),
+    ...(body.enabled !== undefined ? { enabled: body.enabled } : {}),
+    ...(body.mode_scope !== undefined ? { modeScope: body.mode_scope } : {}),
+    ...(body.ttl_ms !== undefined ? { ttlMs: body.ttl_ms } : {}),
+  };
+}
+
+export function mapPromptRuntimePersistedInjectionPatchBodyToCamelCase(
+  body: PromptRuntimePersistedInjectionPatchBody,
+): PromptRuntimeInjectionPatchInput {
+  return {
+    ...(body.source_kind !== undefined ? { sourceKind: body.source_kind } : {}),
+    ...(body.title !== undefined ? { title: body.title } : {}),
+    ...(body.content !== undefined ? { content: body.content } : {}),
+    ...(body.placement !== undefined ? { placement: body.placement } : {}),
+    ...(body.placement_params !== undefined
+      ? { placementParams: mapPlacementParamsBody(body.placement_params) ?? null }
+      : {}),
+    ...(body.order !== undefined ? { order: body.order } : {}),
+    ...(body.enabled !== undefined ? { enabled: body.enabled } : {}),
+    ...(body.mode_scope !== undefined ? { modeScope: body.mode_scope } : {}),
+    ...(body.ttl_ms !== undefined ? { ttlMs: body.ttl_ms } : {}),
+  };
+}

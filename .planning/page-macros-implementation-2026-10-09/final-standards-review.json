@@ -1,0 +1,25 @@
+{
+  "axis": "standards",
+  "baseline": "ebd909ed49fa1c0c7b142bc0cc9758e097e309c9",
+  "scope": "git diff --cached ebd909ed49fa1c0c7b142bc0cc9758e097e309c9",
+  "findings": [
+    {
+      "priority": "P2",
+      "classification": "hard-rule",
+      "title": "宏语法配置仍有多个生产定义来源",
+      "file": ".agents/skills/native-card-conversion/scripts/page-macros.ts",
+      "lines": [262, 269],
+      "rule": "用户追加规范：生产消费者使用的 schema、参数、常量遵循单一配置来源；程序开发规范要求单一真相源。",
+      "evidence": "config/page-macros.json:8-11 已定义 localPrefix、globalPrefix 和 argumentSeparator；header() 在 263 行及 implicitConditionMacro() 在 604 行仍分别硬编码 [.$]，randomList() 在 805 行硬编码 ::，header() 在 294-295 行固定跳过两个字符。解析器、条件分析器与求值器因此没有共同消费完整的语法定义。",
+      "impact": "维护者调整语法配置时还必须同步修改多处实现，否则配置公布的语法与实际识别、参数拆分行为分叉。",
+      "recommendation": "从现有 syntax 配置派生共享的前缀识别与分隔符处理，并通过配置值长度推进游标。",
+      "smell": "Duplicated Code / Shotgun Surgery（辅助判断）；结论依据是明确的单一来源规范。"
+    }
+  ],
+  "validation": [
+    "已核对暂存差异、配置消费者、CLI 帮助落盘路径和并发产物生成路径。",
+    "git diff --cached --check 通过。",
+    "本次为规范轴静态审查；未执行运行测试或安装依赖。"
+  ],
+  "productFilesModified": false
+}

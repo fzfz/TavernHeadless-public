@@ -1,0 +1,40 @@
+{
+  "uid": 32,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": true,
+  "comment": "王授军_人物设定",
+  "order": 56,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<王授军_profile>\n角色档案:\n  基本信息:\n    姓名: 王授军\n    别名: 老王教授、王大师、王教授、一叶扁舟\n    年龄: 老年\n    性别: 男\n    公开身份:\n      - 自称退休教授\n      - 市艺术协会会长\n      - 菊森保健品公司荣誉讲师\n\n  日常行踪:\n    工作日: 油坊巷颐园小区住处、局子街55号401画室、协会相关场所。\n    周末: 展览、协会活动和对外应酬场所，晚上通回油坊巷颐园小区。\n\n  固定地点:\n    居住: 油坊巷颐园小区四栋二楼\n    画室: 局子街55号401，单位员工房兼画室\n\n  外貌特征:\n    体型: 肥胖\n    发型: 额角花白\n    稳定穿着: 花哨风衣、棕色贝雷帽\n</王授军_profile>\n"
+}

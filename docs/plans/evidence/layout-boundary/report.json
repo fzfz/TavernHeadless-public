@@ -1,0 +1,93 @@
+{
+  "schema": {
+    "validVariants": 4,
+    "invalidVariableActionRejected": true
+  },
+  "variants": [
+    {
+      "title": "灯塔来信",
+      "layout": "stage",
+      "sceneX": 0,
+      "chatX": 561.140625,
+      "composers": 1,
+      "timelines": 1,
+      "topbarVisible": true,
+      "choices": [
+        "letter",
+        "lighthouse",
+        "stay",
+        "records"
+      ],
+      "cards": 0,
+      "avatars": true,
+      "width": 1247,
+      "variant": "bookshop",
+      "mobileWidth": 390
+    },
+    {
+      "title": "港湾夜话",
+      "layout": "stage",
+      "sceneX": 810.546875,
+      "chatX": 0,
+      "composers": 1,
+      "timelines": 1,
+      "topbarVisible": true,
+      "choices": [
+        "listen",
+        "letter"
+      ],
+      "cards": 0,
+      "avatars": true,
+      "width": 1247,
+      "variant": "harbor",
+      "mobileWidth": 390
+    },
+    {
+      "title": "书店对话",
+      "layout": "inline",
+      "composers": 1,
+      "timelines": 1,
+      "topbarVisible": true,
+      "choices": [],
+      "cards": 3,
+      "avatars": true,
+      "width": 1247,
+      "variant": "plain",
+      "mobileWidth": 390
+    }
+  ],
+  "checks": [
+    {
+      "variant": "bookshop",
+      "historyOptionsIsolated": true,
+      "missingChatSlotRejected": true,
+      "inputPreserved": true,
+      "nullMediaRendersWithoutImages": true,
+      "sceneHasNoHorizontalOverflow": true
+    },
+    {
+      "variant": "bookshop",
+      "editorInvalidConfigurationsRejected": 8,
+      "jsonSyntaxLocated": true,
+      "savedLayoutUsedInNewTrial": true
+    },
+    {
+      "variant": "harbor",
+      "historyOptionsIsolated": true,
+      "missingChatSlotRejected": true,
+      "inputPreserved": true,
+      "nullMediaRendersWithoutImages": true,
+      "sceneHasNoHorizontalOverflow": true
+    },
+    {
+      "variant": "harbor",
+      "failedRetryCommitted": true,
+      "fillWithoutSend": true,
+      "sendCreatesOneRound": true,
+      "historicalAvatarFixed": true,
+      "performerIndependent": true
+    }
+  ],
+  "consoleErrors": [],
+  "result": "passed"
+}

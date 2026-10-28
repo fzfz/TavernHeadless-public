@@ -1,0 +1,40 @@
+[
+  {
+    "key": "linqian",
+    "releaseId": "QspBKo6Zw4uZWqaVAn3-1",
+    "cleanAgentRules": true,
+    "openings": [
+      {
+        "openingId": "first",
+        "initialMatches": true,
+        "noLegacyMvu": true,
+        "noEjs": true
+      },
+      {
+        "openingId": "alternate-1",
+        "initialMatches": true,
+        "noLegacyMvu": true,
+        "noEjs": true
+      }
+    ]
+  },
+  {
+    "key": "gushengman",
+    "releaseId": "oztwEAgYFcXUs93jI4nV4",
+    "cleanAgentRules": true,
+    "openings": [
+      {
+        "openingId": "first",
+        "initialMatches": true,
+        "noLegacyMvu": true,
+        "noEjs": true
+      },
+      {
+        "openingId": "alternate-1",
+        "initialMatches": true,
+        "noLegacyMvu": true,
+        "noEjs": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "platform": "desktop",
+    "status": "PASS",
+    "initial": 12,
+    "total": 14,
+    "checks": [
+      "title and cover detail links",
+      "card start",
+      "unapplied keyword remains draft when tag changes",
+      "native radio arrow selection",
+      "search and no match reset",
+      "append failure preserves cards and retries same offset",
+      "full catalogue pagination",
+      "return restores loaded cards and scroll anchor",
+      "opening preview selection and expansion",
+      "offline cached reading and disabled start",
+      "reconnect revalidation",
+      "login returns selected role/opening",
+      "narrow and landscape overflow",
+      "browser errors none"
+    ]
+  },
+  {
+    "platform": "mobile",
+    "status": "PASS",
+    "initial": 12,
+    "total": 14,
+    "checks": [
+      "title and cover detail links",
+      "card start",
+      "unapplied keyword remains draft when tag changes",
+      "native radio arrow selection",
+      "search and no match reset",
+      "append failure preserves cards and retries same offset",
+      "full catalogue pagination",
+      "return restores loaded cards and scroll anchor",
+      "opening preview selection and expansion",
+      "offline cached reading and disabled start",
+      "reconnect revalidation",
+      "login returns selected role/opening",
+      "narrow and landscape overflow",
+      "browser errors none"
+    ]
+  }
+]

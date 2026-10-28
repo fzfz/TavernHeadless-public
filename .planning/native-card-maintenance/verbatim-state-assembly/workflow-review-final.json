@@ -1,0 +1,47 @@
+{
+  "standards": {
+    "fullScopeAgent": "/root/workflow_semantic_closeout",
+    "tableScopeAgent": "/root/workflow_tables_audit",
+    "wordingScopeAgent": "/root/workflow_field_wording_audit",
+    "tableScopeFindings": [
+      {
+        "issue": "scenario 的开场内容归属不具体",
+        "resolution": "引用目标文件与格式第2章的具体文件位置。"
+      },
+      {
+        "issue": "群聊选择的实现和删除理由混作选择对象",
+        "resolution": "明确按需求选择实现方式，删除时记录理由。"
+      }
+    ],
+    "remainingFindings": [],
+    "coverage": "五份全文审阅后，仅复审发生修改的四节字段表和两行表述。",
+    "result": "所有已报告问题均已修正；修改处的独立复审未发现实质问题。"
+  },
+  "spec": {
+    "agent": "/root/workflow_spec_final",
+    "remainingFindings": [],
+    "result": "未发现要求缺失、错误实现或范围扩大。"
+  },
+  "checks": {
+    "skillValidate": "passed",
+    "markdownlint": "passed",
+    "prettier": "passed",
+    "diffWhitespace": "passed",
+    "localLinks": {
+      "checked": 54,
+      "errors": 0
+    },
+    "renderedTablesInOrderedLists": {
+      "tools.md": 1,
+      "character-fields.md": 3,
+      "worldbook-fields.md": 4,
+      "extension-fields.md": 2
+    },
+    "entryAndDiagnosticTests": {
+      "passed": 9,
+      "skipped": 50,
+      "filesPassed": 2
+    },
+    "newConversionTests": 0
+  }
+}

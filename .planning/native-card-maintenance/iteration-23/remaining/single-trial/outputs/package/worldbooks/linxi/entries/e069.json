@@ -1,0 +1,40 @@
+{
+  "uid": 69,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_31_万家宾馆后果",
+  "order": 276,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E031>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n{{user}}在万家宾馆302客房关闭笔记本电脑中的301监控窗口，听见走廊脚步声接近后，从302房门进入走廊。\n{{user}}走到301门外敲门，故意提高声音，说房间里的叫床声太大，已经影响隔壁。\n走廊上的网红和抗议人群听见房号，立即把镜头转向301，开始围门、拍摄和喊话。\n{{user}}离开门口，让人群继续围住301。\n随后，{{user}}手机上的新闻客户端推送“王授军围攻现场”。新闻视频拍到人群围住王授军，医护人员把他抬上急救车。\n林茜给{{user}}发短信，说自己搬东西时崴脚，已经向家电城请假并先回家。\n{{user}}回到车里，用手机重新同步王授军云盘，随后在新增文件中发现《抉择》相关视频。\n</事件_E031>\n"
+}

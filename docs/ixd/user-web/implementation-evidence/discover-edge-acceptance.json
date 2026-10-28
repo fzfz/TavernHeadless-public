@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "checks": [
+    "first request failure and same-query retry",
+    "IME composing Enter does not apply search",
+    "draft edit sends no request",
+    "newest query wins delayed earlier response",
+    "real Chrome window minimize/restore reloads current query",
+    "missing role actual404 enters inaccessible page",
+    "empty isolated API collection and reload"
+  ]
+}

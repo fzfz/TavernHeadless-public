@@ -1,0 +1,134 @@
+{
+  "eventId": "tavernheadless-main-654dd1979cf872403bea874559ab0edd6cfaebf9",
+  "source": {
+    "repo": "HerSophia/TavernHeadless",
+    "branch": "main",
+    "commit": "654dd1979cf872403bea874559ab0edd6cfaebf9",
+    "workflow": "CI",
+    "workflowRunId": 28740112817,
+    "conclusion": "success"
+  },
+  "summary": {
+    "breaking": false,
+    "domains": [
+      "other",
+      "api",
+      "core"
+    ]
+  },
+  "changes": [
+    {
+      "domain": "other",
+      "kind": "non_breaking",
+      "target": "repository",
+      "changeType": "paths_changed",
+      "description": "Detected 6 changed file(s) in the other domain.",
+      "migrationHint": "按需检查本次仓库更新的影响范围。"
+    },
+    {
+      "domain": "api",
+      "kind": "non_breaking",
+      "target": "apps/api",
+      "changeType": "paths_changed",
+      "description": "Detected 11 changed file(s) in the api domain.",
+      "migrationHint": "检查受影响接口的请求体、响应体和错误语义。"
+    },
+    {
+      "domain": "core",
+      "kind": "non_breaking",
+      "target": "packages/core",
+      "changeType": "paths_changed",
+      "description": "Detected 10 changed file(s) in the core domain.",
+      "migrationHint": "检查核心运行语义变化是否会影响外部接入层。"
+    }
+  ],
+  "surfaceSummaries": {
+    "openapi": {
+      "status": "unchanged",
+      "summary": "OpenAPI diff detected no route or schema field changes.",
+      "compareBaseCommit": "e5fe6a8bdd4b69bd1799b03b2cdd69db8eb767d5",
+      "currentVersion": "0.2.0-beta.3",
+      "previousVersion": "0.2.0-beta.3",
+      "addedCount": 0,
+      "removedCount": 0,
+      "changedCount": 0,
+      "addedOperations": [],
+      "removedOperations": [],
+      "changedOperations": [],
+      "schemaFieldAddedCount": 0,
+      "schemaFieldRemovedCount": 0,
+      "schemaFieldChangedCount": 0,
+      "schemaFieldChanges": [],
+      "migrationHint": "本次未检测到 OpenAPI 路由级变化。"
+    },
+    "sdk": {
+      "packageName": "@tavern/sdk",
+      "status": "unchanged",
+      "summary": "No changed files were detected under @tavern/sdk.",
+      "entryFile": "packages/official-integration-kit/sdk/src/index.ts",
+      "compareBaseCommit": "e5fe6a8bdd4b69bd1799b03b2cdd69db8eb767d5",
+      "changedFileCount": 0,
+      "changedFiles": [],
+      "affectedModules": [],
+      "currentExportCount": 659,
+      "previousExportCount": 659,
+      "addedExportCount": 0,
+      "removedExportCount": 0,
+      "addedExports": [],
+      "removedExports": [],
+      "publicExportsChanged": false,
+      "impactedExportCount": 0,
+      "impactedExports": [],
+      "impactedModuleCount": 0,
+      "impactedModules": [],
+      "consumerFileCount": 41,
+      "impactedConsumerCount": 0,
+      "impactedConsumers": [],
+      "migrationHint": "本次未检测到 @tavern/sdk 的公开导出变化。"
+    },
+    "clientHelpers": {
+      "packageName": "@tavern/client-helpers",
+      "status": "unchanged",
+      "summary": "No changed files were detected under @tavern/client-helpers.",
+      "entryFile": "packages/official-integration-kit/client-helpers/src/index.ts",
+      "compareBaseCommit": "e5fe6a8bdd4b69bd1799b03b2cdd69db8eb767d5",
+      "changedFileCount": 0,
+      "changedFiles": [],
+      "affectedModules": [],
+      "currentExportCount": 60,
+      "previousExportCount": 60,
+      "addedExportCount": 0,
+      "removedExportCount": 0,
+      "addedExports": [],
+      "removedExports": [],
+      "publicExportsChanged": false,
+      "impactedExportCount": 0,
+      "impactedExports": [],
+      "impactedModuleCount": 0,
+      "impactedModules": [],
+      "consumerFileCount": 11,
+      "impactedConsumerCount": 0,
+      "impactedConsumers": [],
+      "migrationHint": "本次未检测到 @tavern/client-helpers 的公开导出变化。"
+    }
+  },
+  "recommendedActions": [
+    "pull latest manifest",
+    "check affected surfaces before updating dependent workspaces",
+    "run local typecheck and tests after applying required changes",
+    "recheck API request, response and error handling compatibility for affected integrations"
+  ],
+  "artifacts": {
+    "integrationGuide": "/TavernHeadless/guide/integration-kit",
+    "apiReference": "/TavernHeadless/reference/api",
+    "sdkDocs": "/TavernHeadless/sdk/",
+    "clientHelpersDocs": "/TavernHeadless/sdk/client-helpers"
+  },
+  "links": {
+    "humanEntry": "/TavernHeadless/agent/",
+    "docs": "/TavernHeadless/guide/integration-kit"
+  },
+  "compareBase": {
+    "commit": "e5fe6a8bdd4b69bd1799b03b2cdd69db8eb767d5"
+  }
+}

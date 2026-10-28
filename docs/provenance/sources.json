@@ -1,0 +1,174 @@
+{
+  "$schema": "sources.schema.json",
+  "contractVersion": 1,
+  "checkedAt": "2026-09-14T14:59:58+08:00",
+  "localBaseline": {
+    "repository": "fzfz/TavernHeadless",
+    "branch": "codex/inspect-20260914",
+    "head": "5061b3cc2b0a1007beb59b7943cc61812255b83d",
+    "workingTreeCapturedBeforeImplementation": true,
+    "dirtyPaths": [
+      ".dockerignore",
+      ".env.production.example",
+      ".github/workflows/ci.yml",
+      ".github/workflows/docker-verify-release.yml",
+      ".gitignore",
+      "apps/api/openapi/openapi.json",
+      "docker/Dockerfile.api",
+      "docker/Dockerfile.verify",
+      "docker/Dockerfile.web",
+      "docker/compose.prod.yml",
+      "docker/compose.verify.yml",
+      "docker/nginx.conf",
+      "docs/docker-release.md",
+      "plans/docker-environment-release-plan.md",
+      "plans/local-documentation-and-skills-plan.md",
+      "scripts/audit-install-surface.sh",
+      "scripts/check-generated-artifacts.sh",
+      "scripts/check-production-auth-guard.sh",
+      "scripts/docker-verify.sh",
+      "scripts/patch-esm-relative-specifiers.mjs",
+      "scripts/patch-production-package-exports.mjs",
+      "scripts/prune-production-api-artifacts.mjs",
+      "scripts/sync-openapi-generated.sh",
+      "scripts/verify-release.sh"
+    ]
+  },
+  "publishedRelationship": {
+    "publishedCommit": "654dd1979cf872403bea874559ab0edd6cfaebf9",
+    "relation": "ancestor",
+    "commitsAhead": 8
+  },
+  "sources": [
+    {
+      "id": "development-plan",
+      "type": "local-document",
+      "localPath": "plans/local-documentation-and-skills-plan.md",
+      "sourceUrl": null,
+      "sourceCommit": null,
+      "sourcePath": "plans/local-documentation-and-skills-plan.md",
+      "checkStatus": "pending",
+      "note": "方案由当前任务提供；尚无包含该文件的已发布提交，来源为 localPath。"
+    },
+    {
+      "id": "getting-started",
+      "type": "local-document",
+      "localPath": "vitepress/guide/getting-started.md",
+      "sourceUrl": "https://github.com/fzfz/TavernHeadless/blob/5061b3cc2b0a1007beb59b7943cc61812255b83d/vitepress/guide/getting-started.md",
+      "sourceCommit": "5061b3cc2b0a1007beb59b7943cc61812255b83d",
+      "sourcePath": "vitepress/guide/getting-started.md",
+      "checkStatus": "verified",
+      "note": "安装、工作区构建、配置和启动入口已与 package.json 及 API 配置核对。"
+    },
+    {
+      "id": "architecture",
+      "type": "local-document",
+      "localPath": "docs/architecture.md",
+      "sourceUrl": "https://github.com/fzfz/TavernHeadless/blob/5061b3cc2b0a1007beb59b7943cc61812255b83d/docs/architecture.md",
+      "sourceCommit": "5061b3cc2b0a1007beb59b7943cc61812255b83d",
+      "sourcePath": "docs/architecture.md",
+      "checkStatus": "verified",
+      "note": "仓库分层与目录已核对；具体运行语义仍由相关实现和测试决定。"
+    },
+    {
+      "id": "database",
+      "type": "local-document",
+      "localPath": "docs/database.md",
+      "sourceUrl": "https://github.com/fzfz/TavernHeadless/blob/5061b3cc2b0a1007beb59b7943cc61812255b83d/docs/database.md",
+      "sourceCommit": "5061b3cc2b0a1007beb59b7943cc61812255b83d",
+      "sourcePath": "docs/database.md",
+      "checkStatus": "verified-with-differences",
+      "note": "文档写的最新迁移为 0060，当前迁移目录已到 0088。"
+    },
+    {
+      "id": "studio-evolution",
+      "type": "local-document",
+      "localPath": "docs/nodegraph-studio-evolution.md",
+      "sourceUrl": "https://github.com/fzfz/TavernHeadless/blob/5061b3cc2b0a1007beb59b7943cc61812255b83d/docs/nodegraph-studio-evolution.md",
+      "sourceCommit": "5061b3cc2b0a1007beb59b7943cc61812255b83d",
+      "sourcePath": "docs/nodegraph-studio-evolution.md",
+      "checkStatus": "verified-with-differences",
+      "note": "路线文档的多个未勾选项目已在 Studio 源码中出现实现证据。"
+    },
+    {
+      "id": "contributing",
+      "type": "local-document",
+      "localPath": "docs/contributing.md",
+      "sourceUrl": "https://github.com/fzfz/TavernHeadless/blob/5061b3cc2b0a1007beb59b7943cc61812255b83d/docs/contributing.md",
+      "sourceCommit": "5061b3cc2b0a1007beb59b7943cc61812255b83d",
+      "sourcePath": "docs/contributing.md",
+      "checkStatus": "verified",
+      "note": "协作入口、包边界和根级检查命令已与仓库文件核对。"
+    },
+    {
+      "id": "testing-and-ci",
+      "type": "local-document",
+      "localPath": "docs/testing-and-ci.md",
+      "sourceUrl": "https://github.com/fzfz/TavernHeadless/blob/5061b3cc2b0a1007beb59b7943cc61812255b83d/docs/testing-and-ci.md",
+      "sourceCommit": "5061b3cc2b0a1007beb59b7943cc61812255b83d",
+      "sourcePath": "docs/testing-and-ci.md",
+      "checkStatus": "verified",
+      "note": "测试命令与测试目录已经核对。"
+    },
+    {
+      "id": "skill-generator",
+      "type": "local-code",
+      "localPath": "scripts/generate-skill-artifacts.ts",
+      "sourceUrl": "https://github.com/fzfz/TavernHeadless/blob/5061b3cc2b0a1007beb59b7943cc61812255b83d/scripts/generate-skill-artifacts.ts",
+      "sourceCommit": "5061b3cc2b0a1007beb59b7943cc61812255b83d",
+      "sourcePath": "scripts/generate-skill-artifacts.ts",
+      "checkStatus": "verified",
+      "note": "SkillDocument 字段和站点 JSON 生成路径已经核对。"
+    },
+    {
+      "id": "upstream-latest",
+      "type": "upstream-release-json",
+      "localPath": "docs/provenance/upstream/654dd1979cf872403bea874559ab0edd6cfaebf9/agent/latest.json",
+      "sourceUrl": "https://hersophia.github.io/TavernHeadless/agent/latest.json",
+      "sourceCommit": "654dd1979cf872403bea874559ab0edd6cfaebf9",
+      "sourcePath": "agent/latest.json",
+      "checkStatus": "verified",
+      "note": "原始响应已保存；该文件声明发布提交、工作流运行和 manifest 地址。"
+    },
+    {
+      "id": "upstream-catalog",
+      "type": "upstream-release-json",
+      "localPath": "docs/provenance/upstream/654dd1979cf872403bea874559ab0edd6cfaebf9/agent/skills/catalog.json",
+      "sourceUrl": "https://hersophia.github.io/TavernHeadless/agent/skills/catalog.json",
+      "sourceCommit": "654dd1979cf872403bea874559ab0edd6cfaebf9",
+      "sourcePath": "agent/skills/catalog.json",
+      "checkStatus": "verified",
+      "note": "原始响应已保存；catalog 列出两个 Skill JSON。"
+    },
+    {
+      "id": "upstream-client-skill",
+      "type": "upstream-release-json",
+      "localPath": "docs/provenance/upstream/654dd1979cf872403bea874559ab0edd6cfaebf9/agent/skills/tavern-client-integration.json",
+      "sourceUrl": "https://hersophia.github.io/TavernHeadless/agent/skills/tavern-client-integration.json",
+      "sourceCommit": "654dd1979cf872403bea874559ab0edd6cfaebf9",
+      "sourcePath": "agent/skills/tavern-client-integration.json",
+      "checkStatus": "verified",
+      "note": "原始客户端接入工作流已保存并映射到仓库级 Skill。"
+    },
+    {
+      "id": "upstream-contributing-skill",
+      "type": "upstream-release-json",
+      "localPath": "docs/provenance/upstream/654dd1979cf872403bea874559ab0edd6cfaebf9/agent/skills/tavern-project-contributing.json",
+      "sourceUrl": "https://hersophia.github.io/TavernHeadless/agent/skills/tavern-project-contributing.json",
+      "sourceCommit": "654dd1979cf872403bea874559ab0edd6cfaebf9",
+      "sourcePath": "agent/skills/tavern-project-contributing.json",
+      "checkStatus": "verified",
+      "note": "原始项目贡献工作流已保存并映射到仓库级 Skill。"
+    },
+    {
+      "id": "upstream-manifest",
+      "type": "upstream-release-json",
+      "localPath": "docs/provenance/upstream/654dd1979cf872403bea874559ab0edd6cfaebf9/agent/manifests/654dd1979cf872403bea874559ab0edd6cfaebf9.json",
+      "sourceUrl": "https://hersophia.github.io/TavernHeadless/agent/manifests/654dd1979cf872403bea874559ab0edd6cfaebf9.json",
+      "sourceCommit": "654dd1979cf872403bea874559ab0edd6cfaebf9",
+      "sourcePath": "agent/manifests/654dd1979cf872403bea874559ab0edd6cfaebf9.json",
+      "checkStatus": "verified",
+      "note": "原始 manifest 已保存；其 source.conclusion 为 success。"
+    }
+  ]
+}

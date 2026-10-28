@@ -1,0 +1,87 @@
+{
+  "purpose": "保存计划执行用预设的来源及使用顺序",
+  "activationPhase": "approved-plan-execution",
+  "primary": {
+    "file": "primary-state-update.json",
+    "name": "天琴座裁剪版变量状态更新预设",
+    "sourceFile": "sources/tianqin-beta-3.9.original.json",
+    "repositorySource": "fixtures/role-apps/linqian/preset-tianqin-beta-3.9.json",
+    "sourceEntryCount": 144,
+    "preparedEntryCount": 16,
+    "retainedIdentifiers": [
+      "personaDescription",
+      "worldInfoBefore",
+      "charDescription",
+      "charPersonality",
+      "worldInfoAfter",
+      "scenario",
+      "dialogueExamples",
+      "chatHistory"
+    ],
+    "replacedIdentifiers": [
+      "main",
+      "jailbreak"
+    ],
+    "removedExtensions": [
+      "regex_scripts",
+      "SPreset",
+      "tavern_helper"
+    ],
+    "outputInstructionSource": "packages/shared/src/config/role-state.json",
+    "outputInstructionLanguage": "zh-CN",
+    "verification": "formal-import-and-three-mode-dry-run"
+  },
+  "backup": {
+    "frameworkLocalReference": "/srv/data/mac bookpro old/AI/SillyTavern/cards/穗并町.json",
+    "frameworkUrl": "https://testingcf.jsdelivr.net/gh/MagicalAstrogy/MagVarUpdate/artifact/bundle.js",
+    "repository": "https://github.com/MagicalAstrogy/MagVarUpdate",
+    "commit": "438f9ffcba95e6c54497fa8d4223f0f48506d35a",
+    "sourceDirectory": "sources/mvu-builtin",
+    "sourceFiles": [
+      "extra_model_task.txt",
+      "gemini_head.txt",
+      "gemini_tail.txt",
+      "claude_head.txt",
+      "claude_tail.txt"
+    ],
+    "sourceEncoding": "base64",
+    "decodingAuthorized": true,
+    "preparedFile": "backup-mvu-state-update.json",
+    "name": "MVU 内置任务结构适配版变量状态更新预设",
+    "decodedSourceDirectory": "sources/mvu-builtin/decoded",
+    "originalExports": [
+      "sources/mvu-builtin/gemini-preset.original.json",
+      "sources/mvu-builtin/claude-preset.original.json"
+    ],
+    "builtinOrderedData": [
+      "personaDescription",
+      "charDescription",
+      "worldInfoBefore",
+      "worldInfoAfter",
+      "chatHistory"
+    ],
+    "preparedEntryCount": 19,
+    "adaptation": {
+      "head": "保留 Gemini 内置身份及判断规则原文",
+      "task": "保留内置变量判断指令，删除与变量判断无关的生死存亡表述及重复的任务边界，将 format 段的 MVU 标签协议改为引用“状态提案输出”指令",
+      "tail": "移除提供商专用的思考预填充及额外输出前缀",
+      "output": "引用主预设相同的正式 JSON 提案输出指令"
+    },
+    "verification": "formal-import-and-three-mode-dry-run"
+  },
+  "selection": "见 architecture-proposal.md 第4.5.3节第3项",
+  "implementationAdaptation": {
+    "stateSourceMarkers": [
+      "stateDefinition",
+      "stateRules",
+      "stateBefore",
+      "stateHistory",
+      "stateEvidence",
+      "stateOutputContract"
+    ],
+    "worldbookFormat": "{0}",
+    "worldbookFormatPurpose": "保留已激活世界书条目的正文。",
+    "acceptanceDirectory": "../acceptance",
+    "providerOutputVerification": "not_verified"
+  }
+}

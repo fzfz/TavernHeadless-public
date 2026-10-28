@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-06T11:10:58.284Z",
+  "expression": "(async()=>{const s=Array.from(document.querySelectorAll('*')).find(e=>e.shadowRoot).shadowRoot;const locked=Array.from(s.querySelectorAll('[id^=\"portrait-event-\"]')).filter(e=>e.disabled).length;s.querySelector('#portrait-opening-01').click();const opened=s.querySelector('#art-viewer').open;const image=s.querySelector('#viewer-image').src;s.querySelector('#viewer-close').click();s.querySelector('#gallery-next').click();await new Promise(r=>setTimeout(r,600));return {locked,eventItems:s.querySelectorAll('[id^=\"portrait-event-\"]').length,opened,image,closed:!s.querySelector('#art-viewer').open,scrollLeft:s.querySelector('#art-gallery').scrollLeft}})()",
+  "result": {
+    "locked": 36,
+    "eventItems": 36,
+    "opened": true,
+    "image": "https://pub-83157422bca048e4a4c06e37b239f44d.r2.dev/sillytavern/linxi/v1.3.32/portraits/opening/opening-01-full.png",
+    "closed": true,
+    "scrollLeft": 439
+  },
+  "errors": []
+}

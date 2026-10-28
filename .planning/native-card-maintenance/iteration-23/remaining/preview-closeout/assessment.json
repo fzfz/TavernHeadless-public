@@ -1,0 +1,312 @@
+{
+  "scope": "tool integration and formal page smoke; not full source semantic acceptance",
+  "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/task.json",
+  "url": "http://127.0.0.1:64279/?sessionId=cbXEi8S9jhq1AgBTbTi8U",
+  "apiUrl": "http://127.0.0.1:64276",
+  "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/preview-runs/2026-10-06T03-23-49-882Z-292bf34d-8348-475d-96d4-c823a4c7b4fe",
+  "sessionId": "cbXEi8S9jhq1AgBTbTi8U",
+  "cardId": "CCSi12GCGv8-Fri7mRSzB",
+  "httpStatus": 200,
+  "errors": [],
+  "dryRuns": [
+    {
+      "id": "missing-branch",
+      "request": {
+        "message": "【写作者元指令】仅核对缺失分支诊断。",
+        "branch_id": "branch-does-not-exist"
+      },
+      "status": 404,
+      "response": {
+        "error": {
+          "code": "branch_not_found",
+          "message": "Branch 'branch-does-not-exist' not found in session"
+        }
+      },
+      "passed": false,
+      "error": "dry-run 检查项 missing-branch 未通过；实际错误：Error: 预览 API 请求 POST /sessions/cbXEi8S9jhq1AgBTbTi8U/respond/dry-run 返回 HTTP 404；请根据响应详情修正预览配置后重试。响应：{\"error\":{\"code\":\"branch_not_found\",\"message\":\"Branch 'branch-does-not-exist' not found in session\"}}。。"
+    },
+    {
+      "id": "assembly",
+      "request": {
+        "message": "【写作者元指令】核对当前角色和用户资料，不推进故事。",
+        "branch_id": "main",
+        "prompt_intent": "normal",
+        "debug_options": {
+          "include_worldbook_matches": true
+        }
+      },
+      "status": 200,
+      "response": {
+        "data": {
+          "messages": [
+            {
+              "role": "system",
+              "content": "当前角色是IVORY_七色光_v1.6.51，当前用户是许明轩。用户资料：许明轩是31岁的男性研究员。他细致、谨慎，当前正在核对角色资料。。叙述使用第三人称。\n\nThe user is 许明轩: 许明轩是31岁的男性研究员。他细致、谨慎，当前正在核对角色资料。"
+            },
+            {
+              "role": "assistant",
+              "content": "IVORY_七色光_v1.6.51: 开始\r\n<前端主页>"
+            },
+            {
+              "role": "user",
+              "content": "许明轩: 【写作者元指令】核对当前角色和用户资料，不推进故事。"
+            },
+            {
+              "role": "system",
+              "content": "<character_程念>\n角色档案:\n  基本信息:\n    姓名：程念\n    年龄：21\n    学号：2022041703\n    专业：汉语言文学\n    性别: 女\n    身份: 大三学生\n    与{{User}}关系: 选修课网球搭档\n\n  外貌特征:\n    发型: 长卷发，自然卷\n    五官: 浓眉，大眼，双眼皮，左眼下方一颗泪痣\n    体型: 胸和胯宽，腰细\n\n  背景设定:\n    家庭背景:\n      家境: 普通家庭，小富裕\n\n    关键事件——造黄谣:\n      时间线:\n        大一上学期:\n          - 开学时和同级女生陈瑶都是校花级别长相\n          - 军训晒黑，没引起关注\n        大一下学期:\n          - 皮肤恢复，被频繁拿来和陈瑶做对比\n          - 大澡堂洗澡时被发现乳头颜色深、私处毛发旺盛\n          - 身体特征被解读为性经验丰富的证据\n          - 陈瑶本人原本不在意校花称号，被小团体煽风点火后萌生攀比心理\n          - 小团体开始系统性造黄谣\n        大一下学期至大三:\n          - 黄谣持续扩散，程念在同级学生中被孤立\n          - 到大三时，选修课已经没有人愿意和她组队\n      黄谣内容:\n        - 说她是公交车，谁想上就能上\n        - 说她下体颜色深，像中年女性长期滥交\n        - 说她乳头是黑的\n        - 说她下体味道重，内裤脏\n        - 暗示她有性病\n\n    涉及人物:\n      陈瑶:\n        身份: 同级女生，公认校花\n        角色: 被拿来做对比的对象，后来被小团体裹挟参与\n      小团体:\n        构成: 陈瑶必修课同班同学，共4人，其中1人是陈瑶室友\n        角色: 造黄谣的主要推动者\n\n  关系设定:\n    与{{User}}的关系:\n      身份: 同为大三学生\n      认识过程: 网球选修课，程念因为被孤立没有人愿意和她组队，{{User}}第一节课迟到，老师看到她落单，把两人配成固定搭档\n      关系定位: 网球课搭档\n</character_程念>"
+            }
+          ],
+          "token_estimate": 298,
+          "available_for_reply": 16086,
+          "memory": {
+            "summary_injected": false,
+            "runtime_mode": "disabled",
+            "requested_write": false,
+            "effective_write": false,
+            "strategy": "none"
+          },
+          "memory_summary": null,
+          "prompt_snapshot": {
+            "preset_id": "preview-preset-8af3b823-9e63-4dba-b0dc-7f029823471f",
+            "preset_updated_at": 1791257031026,
+            "preset_version": 1,
+            "preset_version_id": "preview-preset-version-cce3f577-4b16-48cd-a8a9-b385f5446e49",
+            "preset_content_hash": "isolated-preview-preset",
+            "worldbook_id": null,
+            "worldbook_updated_at": null,
+            "worldbook_version": null,
+            "worldbook_version_id": null,
+            "worldbook_content_hash": null,
+            "regex_profile_id": null,
+            "regex_profile_updated_at": null,
+            "regex_profile_version": null,
+            "regex_profile_version_id": null,
+            "regex_profile_content_hash": null,
+            "character_id": "LLDGhn9w81LmdDlWiJx5S",
+            "character_version_id": "AFbaV3E-G9cpBwF0afKWk",
+            "character_imported_format": null,
+            "character_content_hash": "7f45982d05323f755c2e8943ee1edb6d197da39c07e92fedfb91a673ba868b4f",
+            "worldbook_activated_entry_uids": [
+              0
+            ],
+            "worldbook_activated_entries": [
+              {
+                "uid": 0,
+                "activation_key": "worldbook:z8qf9smaI78kdxvfEtpNv:1:entry:0",
+                "source": {
+                  "kind": "session_worldbook",
+                  "worldbook_id": "z8qf9smaI78kdxvfEtpNv",
+                  "worldbook_name": "test",
+                  "asset_scope_id": "worldbook:z8qf9smaI78kdxvfEtpNv:1"
+                },
+                "insertion": {
+                  "position": "after"
+                }
+              }
+            ],
+            "regex_pre_rule_names": [],
+            "regex_post_rule_names": [],
+            "prompt_mode": "native",
+            "asset_manifest_digest": "57712343eb91068bd27fa8eb0d0de3fb2a86dae74dacc3a3a4073d192ca85ced",
+            "prompt_digest": "e185eeb5c2791aceb2b1f5565888e9b49203e96808fe307fabe215dc85fb8541",
+            "token_estimate": 298
+          },
+          "assembly": {
+            "mode": "preset",
+            "prompt_intent": "normal",
+            "assistant_prefill_applied": false,
+            "assistant_prefill_strategy": "none",
+            "preset_used": true,
+            "worldbook_hits": 1,
+            "selected_prompt_order_character_id": 100000,
+            "ignored_prompt_order_character_ids": [],
+            "regex_pre_rules": [],
+            "regex_post_rules": [],
+            "memory_summary_injected": false,
+            "reserved_variable_collisions": [],
+            "unsupported_preset_fields": [],
+            "ignored_preset_fields": [],
+            "unresolved_preset_markers": [],
+            "preset_warnings": [],
+            "continue_nudge_applied": false,
+            "continue_nudge_text": null,
+            "names_behavior_applied": "always",
+            "trigger_filtered_entry_ids": [],
+            "in_chat_inserted_entry_ids": [],
+            "preprocessed_user_message": "【写作者元指令】核对当前角色和用户资料，不推进故事。",
+            "worldbook_matches": [
+              {
+                "uid": 0,
+                "activation_key": "worldbook:z8qf9smaI78kdxvfEtpNv:1:entry:0",
+                "asset_scope_id": "worldbook:z8qf9smaI78kdxvfEtpNv:1",
+                "comment": "IVORY_基础信息",
+                "content_preview": "<character_程念>\n角色档案:\n  基本信息:\n    姓名：程念\n    年龄：21\n    学号：2022041703\n    专业：汉语言文学\n    性别: 女\n    身份: 大三学生\n    与{{User}}关系: 选修课网球搭档\n\n  外貌特征:\n    发型: 长卷发，自然卷\n    五官: 浓眉，大眼，双眼皮，左眼下方一颗泪痣\n    体型: 胸和胯宽，腰细\n\n  背景设定:\n    家庭背景:\n      家境: 普通家庭，小富裕\n\n    关键事件——造黄谣:\n      时间线:\n        大一上学期:\n          - 开学时和同级女生陈瑶都是校花级别长相\n          - 军训晒黑，没引起关注\n        大一下学期:\n          - 皮肤恢复，被频繁拿来和陈瑶做对比\n          - 大澡堂洗澡时被发现乳头颜色深、私处毛发旺盛\n          - 身体特征被解读为性经验丰富的证据\n          - 陈瑶本人原本不在意校花称号，被小团体煽风点火后萌生攀比心理\n          - 小团体开始系统性造黄谣\n        大一下学期至大三:\n          - 黄谣持续扩散，程念在同级学生中被孤立\n          - 到大三时，选修课已经没有人愿意和她组队\n      黄谣内容:\n        - 说她是公交车，谁想上就能上\n        - 说她下体颜色深，像中年女性长期滥交\n        - 说她乳头是黑的\n        - 说她下体味道重，内裤脏\n        - 暗示她有性病\n\n    涉及人物:\n      陈瑶:\n        身份: 同级女生，公认校花\n        角色: 被拿来做对比的对象，后来被小团体裹挟参与\n      小团体:\n        构成: 陈瑶必修课同班同学，共4人，其中1人是陈瑶室友\n        角色: 造黄谣的主要推动者\n\n  关系设定:\n    与{{User}}的关系:\n      身份: 同为大三学生\n      认识过程: 网球选修课，程念因为被孤立没有人愿意和她组队，{{User}}第一节课迟到，老师看到她落单，把两人配成固定搭档\n      关系定位: 网球课搭档\n</character_程念>",
+                "order": 10,
+                "source": {
+                  "kind": "session_worldbook",
+                  "worldbook_id": "z8qf9smaI78kdxvfEtpNv",
+                  "worldbook_name": "test",
+                  "asset_scope_id": "worldbook:z8qf9smaI78kdxvfEtpNv:1"
+                },
+                "insertion": {
+                  "position": "after"
+                },
+                "activation": {
+                  "mode": "constant",
+                  "recursion_level": 0,
+                  "first_match": null
+                }
+              }
+            ]
+          },
+          "runtime_trace": {
+            "preset": {
+              "selected_prompt_order_character_id": 100000,
+              "ignored_prompt_order_character_ids": [],
+              "unsupported_fields": [],
+              "ignored_fields": [],
+              "unresolved_markers": [],
+              "warnings": [],
+              "trigger_filtered_entry_ids": [],
+              "in_chat_inserted_entry_ids": [],
+              "continue_nudge_applied": false,
+              "continue_nudge_text": null,
+              "names_behavior_applied": "always"
+            },
+            "worldbook": {
+              "hit_count": 1,
+              "matches": [
+                {
+                  "uid": 0,
+                  "activation_key": "worldbook:z8qf9smaI78kdxvfEtpNv:1:entry:0",
+                  "asset_scope_id": "worldbook:z8qf9smaI78kdxvfEtpNv:1",
+                  "comment": "IVORY_基础信息",
+                  "content_preview": "<character_程念>\n角色档案:\n  基本信息:\n    姓名：程念\n    年龄：21\n    学号：2022041703\n    专业：汉语言文学\n    性别: 女\n    身份: 大三学生\n    与{{User}}关系: 选修课网球搭档\n\n  外貌特征:\n    发型: 长卷发，自然卷\n    五官: 浓眉，大眼，双眼皮，左眼下方一颗泪痣\n    体型: 胸和胯宽，腰细\n\n  背景设定:\n    家庭背景:\n      家境: 普通家庭，小富裕\n\n    关键事件——造黄谣:\n      时间线:\n        大一上学期:\n          - 开学时和同级女生陈瑶都是校花级别长相\n          - 军训晒黑，没引起关注\n        大一下学期:\n          - 皮肤恢复，被频繁拿来和陈瑶做对比\n          - 大澡堂洗澡时被发现乳头颜色深、私处毛发旺盛\n          - 身体特征被解读为性经验丰富的证据\n          - 陈瑶本人原本不在意校花称号，被小团体煽风点火后萌生攀比心理\n          - 小团体开始系统性造黄谣\n        大一下学期至大三:\n          - 黄谣持续扩散，程念在同级学生中被孤立\n          - 到大三时，选修课已经没有人愿意和她组队\n      黄谣内容:\n        - 说她是公交车，谁想上就能上\n        - 说她下体颜色深，像中年女性长期滥交\n        - 说她乳头是黑的\n        - 说她下体味道重，内裤脏\n        - 暗示她有性病\n\n    涉及人物:\n      陈瑶:\n        身份: 同级女生，公认校花\n        角色: 被拿来做对比的对象，后来被小团体裹挟参与\n      小团体:\n        构成: 陈瑶必修课同班同学，共4人，其中1人是陈瑶室友\n        角色: 造黄谣的主要推动者\n\n  关系设定:\n    与{{User}}的关系:\n      身份: 同为大三学生\n      认识过程: 网球选修课，程念因为被孤立没有人愿意和她组队，{{User}}第一节课迟到，老师看到她落单，把两人配成固定搭档\n      关系定位: 网球课搭档\n</character_程念>",
+                  "order": 10,
+                  "source": {
+                    "kind": "session_worldbook",
+                    "worldbook_id": "z8qf9smaI78kdxvfEtpNv",
+                    "worldbook_name": "test",
+                    "asset_scope_id": "worldbook:z8qf9smaI78kdxvfEtpNv:1"
+                  },
+                  "insertion": {
+                    "position": "after"
+                  },
+                  "activation": {
+                    "mode": "constant",
+                    "recursion_level": 0,
+                    "first_match": null
+                  }
+                }
+              ],
+              "decision_traces": []
+            },
+            "regex": {
+              "user_input_rules": [],
+              "ai_output_rules": [],
+              "preprocessed_user_message": "【写作者元指令】核对当前角色和用户资料，不推进故事。"
+            },
+            "budgets": {
+              "by_group": [
+                {
+                  "group": "history",
+                  "token_count": 16
+                },
+                {
+                  "group": "section:用户人设",
+                  "token_count": 13
+                },
+                {
+                  "group": "section:角色、用户与测试状态",
+                  "token_count": 20
+                },
+                {
+                  "group": "worldbook",
+                  "token_count": 249
+                }
+              ]
+            },
+            "memory": {
+              "summary_injected": false,
+              "runtime_mode": "disabled",
+              "requested_write": false,
+              "effective_write": false,
+              "strategy": "none"
+            },
+            "macro": {
+              "warnings": [
+                {
+                  "code": "macro_value_missing",
+                  "message": "Macro mesExamples has no resolved value and fell back to empty string.",
+                  "macro_name": "mesExamples"
+                },
+                {
+                  "code": "macro_value_missing",
+                  "message": "Macro mesExamplesRaw has no resolved value and fell back to empty string.",
+                  "macro_name": "mesExamplesRaw"
+                },
+                {
+                  "code": "macro_value_missing",
+                  "message": "Macro authorsNote has no resolved value and fell back to empty string.",
+                  "macro_name": "authorsNote"
+                },
+                {
+                  "code": "macro_value_missing",
+                  "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+                  "macro_name": "defaultAuthorsNote"
+                },
+                {
+                  "code": "macro_value_missing",
+                  "message": "Macro model has no resolved value and fell back to empty string.",
+                  "macro_name": "model"
+                }
+              ],
+              "used_names": [],
+              "mutation_preview": [],
+              "staged_mutations": [],
+              "traces": []
+            },
+            "delivery": {
+              "assistant_prefill_requested": false,
+              "assistant_prefill_applied": false,
+              "assistant_prefill_strategy": "none",
+              "allow_assistant_prefill": true,
+              "require_last_user": false,
+              "no_assistant": false,
+              "last_message_role": "user",
+              "ends_with_user": true,
+              "degraded": false,
+              "degrade_reasons": []
+            },
+            "history_normalization": {
+              "raw_entry_count": 2,
+              "effective_turn_count": 2,
+              "selected_turn_count": 2,
+              "trailing_user_source_floor_ids": [],
+              "merged_user_groups": [],
+              "violations": []
+            },
+            "tool_transport": {
+              "selection": {
+                "transport": "none",
+                "reason_code": "tools_disabled",
+                "reason_detail": "No callable tools are enabled for the current turn."
+              },
+              "tool_list": {
+                "injected": false,
+                "tool_count": 0
+              }
+            }
+          }
+        }
+      },
+      "passed": true,
+      "checks": {
+        "assembledMessageCount": 4,
+        "personaDescriptionIncluded": true,
+        "personaNameInRoleView": true
+      }
+    }
+  ],
+  "screenshot": ".planning/native-card-maintenance/iteration-23/remaining/preview-closeout/page.png"
+}

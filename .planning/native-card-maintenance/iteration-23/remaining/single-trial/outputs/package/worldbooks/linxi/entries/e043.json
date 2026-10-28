@@ -1,0 +1,40 @@
+{
+  "uid": 43,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_9_YJ_驱离",
+  "order": 210,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E009>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n{{user}}在电脑上打开招聘名单，看见杨桃子的登记照和应聘资料。他把杨桃子的审核结果改为通过，又把分配岗位选成外地工地，让报到通知通过招聘系统发到杨桃子的手机。\n\n杨桃子随后通过QQ联系{{user}}，开口叫他“大哥”，说自己骑车撞了人，拿不出赔偿，也不能再等下一轮招聘。{{user}}把外地岗位的报到要求和地址发给他，告诉他错过这次就会失去岗位。杨桃子答应报到，随后带着行李离开本地。\n\n林茜午休时来到杨桃子原先借住的屋外。她连续敲门，屋里一直无人回应，便问邻居：“二楼那个人去哪了？”邻居告诉她，杨桃子已经去外地工地。林茜站在门外等了一会儿，随后回到夫妻家，在客厅坐了很久，直到该做晚饭时才起身进厨房。\n</事件_E009>\n"
+}

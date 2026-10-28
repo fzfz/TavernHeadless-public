@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Documentation site",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "repository",
+    "siteUrl",
+    "basePath",
+    "publishBranch",
+    "title",
+    "upstreamRepository",
+    "upstreamSiteUrl",
+    "publicationRepository",
+    "publicationBranch"
+  ],
+  "properties": {
+    "repository": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+    },
+    "siteUrl": {
+      "type": "string",
+      "pattern": "^https://[^/]+/.*$"
+    },
+    "basePath": {
+      "type": "string",
+      "pattern": "^/(?:[A-Za-z0-9_.-]+/)*$"
+    },
+    "publishBranch": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_./-]+$"
+    },
+    "title": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "upstreamRepository": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+    },
+    "upstreamSiteUrl": {
+      "type": "string",
+      "pattern": "^https://[^/]+/.*$"
+    },
+    "publicationRepository": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+    },
+    "publicationBranch": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_./-]+$"
+    }
+  }
+}

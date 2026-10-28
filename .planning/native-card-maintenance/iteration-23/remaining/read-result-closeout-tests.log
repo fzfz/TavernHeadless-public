@@ -1,0 +1,13 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+ RUN  v2.1.9 /srv/tavern/TavernHeadless-remove-preview-credentials
+
+ ✓ scripts/native-card-conversion/source-read.test.ts (73 tests) 3714ms
+   ✓ read task and command errors > resolves a relative task path before changing directories and preserves root pointer argument 380ms
+   ✓ read task and command errors > overwrites the same task files on repeated reads, including empty strings 350ms
+
+ Test Files  1 passed (1)
+      Tests  73 passed (73)
+   Start at  11:56:04
+   Duration  4.11s (transform 73ms, setup 0ms, collect 101ms, tests 3.71s, environment 0ms, prepare 47ms)
+

@@ -1,0 +1,29 @@
+{
+  "sessionId": "5ZoCR0MnbCwCCgPS7iQa9",
+  "branchId": "main",
+  "floorId": "OTEoy63UZoh-MJLp9LT3z",
+  "attemptId": "P1nTWKV619GIR4wX-YIHZ:1",
+  "versionId": "HkdRM1AnnRgadXaEkJ4fT",
+  "snapshotId": "7484f70e-cdd6-4ee7-b0c1-f3fa03ffdcd0",
+  "parentSnapshotId": "6fb790d9-bd43-4553-bac1-a46670bf0219",
+  "variables": {
+    "世界": {
+      "当前地址": "旧教学楼三楼活动室",
+      "当前时间": "2025年12月15日18:50",
+      "事件状态": "无"
+    },
+    "顾声慢": {
+      "情感连结度": 10,
+      "创作完成度": 22,
+      "心象映射": {
+        "当前心声": "他说四拍刚好，再多就散了。然后只是说“我想听”。不是评价，不是指导……只是听。被这样听着，比被夸还让人安心。",
+        "当前脑内旋律": "《One Summer's Day》"
+      }
+    }
+  },
+  "source": {
+    "kind": "floor",
+    "runId": "P1nTWKV619GIR4wX-YIHZ",
+    "jobId": null
+  }
+}

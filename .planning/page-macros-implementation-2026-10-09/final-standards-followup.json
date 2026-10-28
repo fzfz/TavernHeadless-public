@@ -1,0 +1,69 @@
+{
+  "axis": "standards",
+  "scope": [
+    ".agents/skills/native-card-conversion/scripts/page-macros.ts",
+    ".agents/skills/native-card-conversion/scripts/page-macros.test.ts",
+    ".agents/skills/native-card-conversion/config/page-macros.json"
+  ],
+  "reviewedState": "当前暂存内容；三个文件的工作区内容与暂存内容一致。",
+  "conclusion": "通过：原报告中的语法前缀、分隔符和推进长度单一来源问题已解决；本次窄范围复核未发现相关修改引入结构性问题。",
+  "findings": [],
+  "resolvedFindings": [
+    {
+      "title": "宏语法配置仍有多个生产定义来源",
+      "sourceReport": ".planning/page-macros-implementation-2026-10-09/final-standards-review.json",
+      "evidence": [
+        {
+          "file": ".agents/skills/native-card-conversion/config/page-macros.json",
+          "lines": [8, 13],
+          "result": "前缀、参数分隔符及前缀对应宏名由 syntax 配置提供。"
+        },
+        {
+          "file": ".agents/skills/native-card-conversion/scripts/page-macros.ts",
+          "lines": [237, 270],
+          "result": "variableShorthand 根据配置识别前缀；macroIdentifier 根据配置识别参数边界，两者均为模块内部函数。"
+        },
+        {
+          "file": ".agents/skills/native-card-conversion/scripts/page-macros.ts",
+          "lines": [303, 338],
+          "result": "header 复用 variableShorthand，前缀偏移及两类参数分隔符推进量使用配置字符串长度。"
+        },
+        {
+          "file": ".agents/skills/native-card-conversion/scripts/page-macros.ts",
+          "lines": [201, 235],
+          "result": "splitArguments 根据配置识别分隔符并按其长度推进；嵌套宏深度仍控制参数边界。"
+        },
+        {
+          "file": ".agents/skills/native-card-conversion/scripts/page-macros.ts",
+          "lines": [643, 650],
+          "result": "implicitConditionMacro 复用同一 variableShorthand，条件分析与条件求值共同消费该函数。"
+        },
+        {
+          "file": ".agents/skills/native-card-conversion/scripts/page-macros.ts",
+          "lines": [848, 852],
+          "result": "randomList 的分隔符检测和拆分均读取同一配置字段。"
+        },
+        {
+          "file": ".agents/skills/native-card-conversion/scripts/page-macros.test.ts",
+          "lines": [98, 146],
+          "result": "配置替换用例覆盖多字符前缀、三字符分隔符、条件依赖、参数偏移、旧式分隔符与随机列表，并在 finally 恢复配置。"
+        }
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "command": "git diff --cached --check",
+      "result": "通过。"
+    },
+    {
+      "command": "git diff -- <三个审查文件>",
+      "result": "无差异。"
+    },
+    {
+      "command": "pnpm exec vitest run .agents/skills/native-card-conversion/scripts/page-macros.test.ts --reporter=dot",
+      "result": "1 个测试文件通过，162 个测试通过。"
+    }
+  ],
+  "productFilesModified": false
+}

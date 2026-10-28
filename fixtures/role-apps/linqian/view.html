@@ -1,0 +1,76 @@
+<main class="linxi-page">
+  <section class="linxi-chat">
+    <h1>妻心如刀 · 林茜</h1>
+    <div data-opening></div>
+    <div data-chat></div>
+  </section>
+  <aside>
+    <div
+      id="statusBar"
+      class="linxi-status status-bar"
+      data-mvu-statusbar
+      aria-label="当前状态"
+    >
+      <div class="linxi-status__head">
+        <div class="linxi-status__title">当前状态</div>
+        <div class="linxi-status__place" id="status-place">拆迁旧楼408室内</div>
+      </div>
+      <div class="linxi-status__profile">
+        <img
+          id="status-portrait"
+          class="linxi-status__portrait"
+          alt="林茜头像"
+        />
+        <div class="linxi-status__grid">
+          <div class="linxi-status__cell">
+            <div class="linxi-status__label">日期</div>
+            <div class="linxi-status__value" id="status-date">
+              2025年03月10日 周一
+            </div>
+          </div>
+          <div class="linxi-status__cell">
+            <div class="linxi-status__label">时间</div>
+            <div class="linxi-status__value" id="status-time">12:24 · 中午</div>
+          </div>
+          <div class="linxi-status__cell">
+            <div class="linxi-status__label">林茜感情</div>
+            <div class="linxi-status__value" id="status-affection">505</div>
+            <progress id="status-affection-bar" max="999" value="0"></progress>
+          </div>
+          <div class="linxi-status__cell">
+            <div class="linxi-status__label">林茜堕落</div>
+            <div class="linxi-status__value" id="status-fall">80</div>
+            <progress id="status-fall-bar" max="999" value="0"></progress>
+          </div>
+        </div>
+      </div>
+      <div class="linxi-status__voice">
+        <div class="linxi-status__label">内心想法</div>
+        <div class="linxi-status__value" id="status-voice">数据暂不可用</div>
+      </div>
+      <section class="mvu-option-bar" aria-label="行动选项">
+        <div class="mvu-option-bar__grid" data-option-container>
+          <button class="mvu-option" data-option="0">
+            <span class="mvu-option__label">续演事件</span
+            ><span data-option-text="0" class="mvu-option__text"></span></button
+          ><button class="mvu-option" data-option="1">
+            <span class="mvu-option__label">增加感情</span
+            ><span data-option-text="1" class="mvu-option__text"></span></button
+          ><button class="mvu-option" data-option="2">
+            <span class="mvu-option__label">揭破当前秘密</span
+            ><span data-option-text="2" class="mvu-option__text"></span></button
+          ><button class="mvu-option" data-option="3">
+            <span class="mvu-option__label">快速转场</span
+            ><span data-option-text="3" class="mvu-option__text"></span>
+          </button>
+        </div>
+        <p
+          class="mvu-option-bar__feedback"
+          data-option-feedback
+          role="status"
+          aria-live="polite"
+        ></p>
+      </section>
+    </div>
+  </aside>
+</main>

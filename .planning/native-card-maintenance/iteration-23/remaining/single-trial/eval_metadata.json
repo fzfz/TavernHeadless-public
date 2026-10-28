@@ -1,0 +1,4 @@
+{
+  "eval_id": "USER002-single-trial",
+  "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-inputs/USER002-v1.3.32/input.json。"
+}

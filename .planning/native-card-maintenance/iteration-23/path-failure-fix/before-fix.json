@@ -1,0 +1,7 @@
+{
+  "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-M26enl/task.json",
+  "code": 1,
+  "result": {
+    "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。"
+  }
+}

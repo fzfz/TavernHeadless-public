@@ -1,0 +1,140 @@
+[
+  {
+    "agent": "/root/convert_c008_r3",
+    "threadId": "01a116af-b415-7f32-a985-1beb24464821",
+    "rollout": "/Users/developer/.codex/sessions/2026/10/07/rollout-2026-10-07T22-06-16-01a116af-b415-7f32-a985-1beb24464821.jsonl",
+    "startedAt": "2026-10-07T14:06:16.190Z",
+    "completion": {
+      "started_at": 1791381976,
+      "completed_at": 1791382112,
+      "duration_ms": 136418
+    },
+    "lastEventAt": "2026-10-07T14:08:32.755Z",
+    "toolCalls": 13,
+    "shellCalls": 23,
+    "userMessageCount": 1
+  },
+  {
+    "agent": "/root/convert_c058",
+    "threadId": "01a1168b-24c0-7fa1-af91-a399acb7b65c",
+    "rollout": "/Users/developer/.codex/sessions/2026/10/07/rollout-2026-10-07T21-26-20-01a1168b-24c0-7fa1-af91-a399acb7b65c.jsonl",
+    "startedAt": "2026-10-07T13:26:20.124Z",
+    "completion": {
+      "started_at": 1791379580,
+      "completed_at": 1791379717,
+      "duration_ms": 136986
+    },
+    "lastEventAt": "2026-10-07T13:28:37.235Z",
+    "toolCalls": 17,
+    "shellCalls": 18,
+    "userMessageCount": 1
+  },
+  {
+    "agent": "/root/convert_c008_r2",
+    "threadId": "01a116a8-6596-78c1-811c-63b678557629",
+    "rollout": "/Users/developer/.codex/sessions/2026/10/07/rollout-2026-10-07T21-58-17-01a116a8-6596-78c1-811c-63b678557629.jsonl",
+    "startedAt": "2026-10-07T13:58:17.263Z",
+    "completion": {
+      "started_at": 1791381497,
+      "completed_at": 1791381613,
+      "duration_ms": 116616
+    },
+    "lastEventAt": "2026-10-07T14:00:13.994Z",
+    "toolCalls": 13,
+    "shellCalls": 12,
+    "userMessageCount": 1
+  },
+  {
+    "agent": "/root/convert_user002_r2",
+    "threadId": "01a1169d-745f-7ae3-a19d-42579a6462ca",
+    "rollout": "/Users/developer/.codex/sessions/2026/10/07/rollout-2026-10-07T21-46-20-01a1169d-745f-7ae3-a19d-42579a6462ca.jsonl",
+    "startedAt": "2026-10-07T13:46:20.183Z",
+    "completion": {
+      "started_at": 1791380780,
+      "completed_at": 1791381963,
+      "duration_ms": 1182918
+    },
+    "lastEventAt": "2026-10-07T14:06:03.367Z",
+    "toolCalls": 75,
+    "shellCalls": 102,
+    "userMessageCount": 1
+  },
+  {
+    "agent": "/root/convert_user002",
+    "threadId": "01a1168a-5d24-7923-9771-319ec215d67b",
+    "rollout": "/Users/developer/.codex/sessions/2026/10/07/rollout-2026-10-07T21-25-29-01a1168a-5d24-7923-9771-319ec215d67b.jsonl",
+    "startedAt": "2026-10-07T13:25:29.022Z",
+    "completion": {
+      "started_at": 1791379529,
+      "completed_at": 1791380056,
+      "duration_ms": 527120
+    },
+    "lastEventAt": "2026-10-07T13:34:16.261Z",
+    "toolCalls": 37,
+    "shellCalls": 61,
+    "userMessageCount": 1
+  },
+  {
+    "agent": "/root/convert_c011",
+    "threadId": "01a1168d-84d3-7e42-abe4-cadd7497ab9e",
+    "rollout": "/Users/developer/.codex/sessions/2026/10/07/rollout-2026-10-07T21-28-55-01a1168d-84d3-7e42-abe4-cadd7497ab9e.jsonl",
+    "startedAt": "2026-10-07T13:28:55.788Z",
+    "completion": {
+      "started_at": 1791379735,
+      "completed_at": 1791380918,
+      "duration_ms": 1182487
+    },
+    "lastEventAt": "2026-10-07T13:48:38.398Z",
+    "toolCalls": 51,
+    "shellCalls": 78,
+    "userMessageCount": 1
+  },
+  {
+    "agent": "/root/convert_c008",
+    "threadId": "01a11688-f30e-78c2-8e8c-906b6560b8f8",
+    "rollout": "/Users/developer/.codex/sessions/2026/10/07/rollout-2026-10-07T21-23-56-01a11688-f30e-78c2-8e8c-906b6560b8f8.jsonl",
+    "startedAt": "2026-10-07T13:23:56.330Z",
+    "completion": {
+      "started_at": 1791379436,
+      "completed_at": 1791379557,
+      "duration_ms": 121238
+    },
+    "lastEventAt": "2026-10-07T13:25:57.678Z",
+    "toolCalls": 15,
+    "shellCalls": 19,
+    "userMessageCount": 1
+  },
+  {
+    "agent": "/root/convert_c024",
+    "threadId": "01a1169f-abc8-7563-9f18-6bd6f3eee5b7",
+    "rollout": "/Users/developer/.codex/sessions/2026/10/07/rollout-2026-10-07T21-48-45-01a1169f-abc8-7563-9f18-6bd6f3eee5b7.jsonl",
+    "startedAt": "2026-10-07T13:48:45.561Z",
+    "completion": {
+      "started_at": 1791380925,
+      "completed_at": 1791381489,
+      "duration_ms": 563578
+    },
+    "lastEventAt": "2026-10-07T13:58:09.357Z",
+    "toolCalls": 34,
+    "shellCalls": 50,
+    "userMessageCount": 1
+  },
+  {
+    "agent": "/root/convert_user002_r3",
+    "threadId": "01a116ca-f1c0-76c0-953a-c461ff4d7f66",
+    "rollout": "/Users/developer/.codex/sessions/2026/10/07/rollout-2026-10-07T22-36-01-01a116ca-f1c0-76c0-953a-c461ff4d7f66.jsonl",
+    "startedAt": "2026-10-07T14:36:01.519Z",
+    "completion": {
+      "type": "task_complete",
+      "turn_id": "01a116ca-f22b-7af3-b060-ea0ea2125ba0",
+      "last_agent_message": "已完成角色卡转换。生成 ZIP：[role.zip](/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-0H4RDx/pack-kEjn5H/role.zip)。\n\n包内含 149 个文件，打包验证通过，`unzip -t` 未发现压缩错误。角色卡包校验通过且无 issues，保留了 129 条世界书条目和两个开场版本。\n\n尚需根代理安排独立语义审计：根 AGENTS 要求委派审计队员，而我收到的子代理指令禁止继续派生代理。实际导入、模型生成和运行预览未执行；来源未提供 preset，正式运行前需绑定 preset。",
+      "started_at": 1791383761,
+      "completed_at": 1791385685,
+      "duration_ms": 1923918,
+      "time_to_first_token_ms": 32983
+    },
+    "toolCalls": 120,
+    "shellCalls": 117,
+    "userMessageCount": 1
+  }
+]

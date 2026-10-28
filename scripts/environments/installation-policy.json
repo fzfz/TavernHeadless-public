@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "rootScripts": [
+    "preinstall",
+    "install",
+    "postinstall",
+    "prepare",
+    "prepublish"
+  ],
+  "dependencyScripts": {
+    "better-sqlite3": ["install"],
+    "esbuild": ["postinstall"]
+  }
+}

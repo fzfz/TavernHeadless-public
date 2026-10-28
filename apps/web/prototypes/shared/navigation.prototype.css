@@ -1,0 +1,252 @@
+.trial-records {
+  padding: 28px;
+  max-width: 1100px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+}
+.trial-records h1 {
+  font-size: 23px;
+  margin: 8px 0;
+}
+.trial-entry {
+  background: #111c1c;
+  border: 1px solid #225853;
+  padding: 22px;
+  margin: 26px 0;
+}
+.trial-entry p {
+  color: #acb8b8;
+  line-height: 1.8;
+}
+.records-heading {
+  margin: 28px 0 10px;
+}
+.floor-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid #29292d;
+}
+.floor-row .tag {
+  margin-left: 12px;
+}
+.floor-row p {
+  line-height: 1.7;
+  color: #c2c2ca;
+}
+.floor-row button {
+  flex-shrink: 0;
+}
+.user-surface .workspace {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  max-width: 1500px;
+  width: 100%;
+  margin: auto;
+}
+.user-surface .resize-handle,
+.user-surface .inspector {
+  display: none !important;
+}
+.user-surface .canvas {
+  min-width: 0;
+}
+.user-surface .messages {
+  padding: 24px max(28px, calc((100% - 820px) / 2));
+  overflow: auto;
+}
+.user-surface .session-head {
+  padding: 20px 28px;
+}
+.user-surface .session-head h1 {
+  font-size: 21px;
+  margin: 8px 0;
+}
+.user-surface .composer {
+  padding: 18px max(28px, calc((100% - 820px) / 2));
+}
+.user-surface #notice {
+  min-height: 22px;
+}
+.user-surface .message {
+  padding-bottom: 26px;
+  margin-bottom: 22px;
+}
+.user-surface .message .markdown-block {
+  font-size: 16px;
+  line-height: 1.9;
+}
+.role-intro {
+  padding: 80px 8%;
+  max-width: 850px;
+}
+.role-intro h1 {
+  font-size: 42px;
+  line-height: 1.4;
+  margin: 22px 0;
+}
+.role-lead {
+  font-size: 18px;
+  line-height: 2;
+  color: #babac4;
+  max-width: 600px;
+}
+.role-details {
+  display: flex;
+  gap: 16px;
+  margin: 28px 0 45px;
+  color: #a1b9b3;
+  font-size: 13px;
+}
+.role-intro button {
+  margin-right: 12px;
+}
+.user-surface .sidebar {
+  border-right: 1px solid #29292d;
+}
+.user-surface .markdown-block table {
+  table-layout: auto;
+  font-size: 13px;
+}
+.user-surface .generation-focused .sidebar {
+  display: block;
+}
+@media (max-width: 800px) {
+  .user-surface .workspace {
+    display: block;
+  }
+  .user-surface .sidebar {
+    display: none;
+  }
+  .user-surface .sidebar.drawer-open {
+    display: block;
+  }
+  .user-surface .canvas {
+    height: calc(100dvh - 60px);
+    min-height: 0;
+  }
+  .user-surface .messages {
+    padding: 16px;
+  }
+  .user-surface .composer {
+    padding: 14px 16px;
+  }
+  .user-surface .session-head {
+    padding: 14px 16px;
+  }
+  .role-intro {
+    padding: 40px 22px;
+  }
+  .role-intro h1 {
+    font-size: 30px;
+  }
+  .trial-records {
+    padding: 18px;
+  }
+  .floor-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .user-surface .toolbar {
+    flex-wrap: wrap;
+  }
+}
+
+body.user-surface {
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.user-surface .topbar {
+  flex-shrink: 0;
+}
+.user-surface .workspace {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.user-surface .canvas {
+  height: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.user-surface #mainView {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+.user-surface #notice:empty {
+  display: none;
+}
+.user-surface .composer {
+  flex-shrink: 0;
+}
+.user-surface .session-head {
+  flex-shrink: 0;
+}
+.user-surface .messages {
+  flex: 1;
+  min-height: 0;
+  max-height: none;
+}
+.user-surface .brand span {
+  display: none;
+}
+@media (max-width: 800px) {
+  .user-surface .workspace {
+    display: flex;
+  }
+  .user-surface .canvas {
+    width: 100%;
+  }
+  .user-surface .topbar {
+    padding: 10px;
+  }
+  .user-surface .topbar .row {
+    gap: 6px;
+  }
+  .user-surface .brand {
+    font-size: 15px;
+  }
+}
+
+/* Keep management pane scrollbars visible and give each pane one scroll owner. */
+html::-webkit-scrollbar,
+body:not(.user-surface) ::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+html::-webkit-scrollbar-track,
+body:not(.user-surface) ::-webkit-scrollbar-track {
+  background: #17171c;
+}
+html::-webkit-scrollbar-thumb,
+body:not(.user-surface) ::-webkit-scrollbar-thumb {
+  background: #73737d;
+  border: 3px solid #17171c;
+  border-radius: 8px;
+  min-height: 32px;
+}
+html::-webkit-scrollbar-thumb:hover,
+body:not(.user-surface) ::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+@media (min-width: 1100px) {
+  body:not(.user-surface) .sidebar,
+  body:not(.user-surface) .inspector,
+  body:not(.user-surface) #mainView {
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+  body:not(.user-surface) #mainView > .trial-records,
+  body:not(.user-surface) #mainView > .editor-shell,
+  body:not(.user-surface) #mainView > .generation-detail {
+    flex-shrink: 0;
+    overflow: visible;
+  }
+}

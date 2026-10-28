@@ -1,0 +1,99 @@
+{
+  "floor": [
+    {
+      "key": "prompt",
+      "label": "历史提示词解析与资源来源",
+      "path": "/floors/{floor}/prompt-runtime/explain",
+      "committed": true
+    },
+    {
+      "key": "tools",
+      "label": "工具执行与提交",
+      "path": "/floors/{floor}/tool-executions",
+      "list": true
+    },
+    {
+      "key": "calls",
+      "label": "工具调用记录",
+      "path": "/tools/call-records?floor_id={floor}",
+      "list": true
+    },
+    {
+      "key": "operations",
+      "label": "轮次操作日志",
+      "path": "/floors/{floor}/operation-logs",
+      "list": true
+    },
+    {
+      "key": "state",
+      "label": "会话状态快照",
+      "path": "/sessions/{session}/state/floors/{floor}/snapshot"
+    },
+    {
+      "key": "roleState",
+      "label": "角色变量更新快照",
+      "path": "/sessions/{session}/role-view/floors/{floor}"
+    },
+    {
+      "key": "memoryJobs",
+      "label": "记忆处理任务",
+      "path": "/memory/jobs?floor_id={floor}",
+      "list": true
+    }
+  ],
+  "page": [
+    {
+      "key": "staged",
+      "label": "变量暂存",
+      "path": "/pages/{page}/variables/staged"
+    },
+    {
+      "key": "promotions",
+      "label": "变量提交",
+      "path": "/pages/{page}/variables/promotions"
+    },
+    {
+      "key": "memoryProposals",
+      "label": "记忆提案",
+      "path": "/pages/{page}/memory/proposals"
+    },
+    {
+      "key": "memoryPromotions",
+      "label": "记忆提交",
+      "path": "/pages/{page}/memory/promotions"
+    },
+    {
+      "key": "mutations",
+      "label": "会话状态变更",
+      "path": "/pages/{page}/session-state/mutations"
+    },
+    {
+      "key": "revisions",
+      "label": "页面手动修订",
+      "path": "/pages/{page}/manual-revisions",
+      "committed": true
+    }
+  ],
+  "promptFields": {
+    "prompt_snapshot": "历史提示词快照",
+    "assets": "绑定资源版本",
+    "scope": "执行范围",
+    "resolved_policy": "生效策略",
+    "source_map": "提示词来源",
+    "trim_reasons": "裁剪原因",
+    "excluded_sources": "排除的内容",
+    "section_stats": "各段 Token 统计",
+    "memory": "记忆注入",
+    "governance": "提示词约束",
+    "diagnostics": "诊断记录",
+    "result": "生成结果"
+  },
+  "message": [
+    {
+      "key": "messageRevisions",
+      "label": "消息手动修订",
+      "path": "/messages/{message}/manual-revisions",
+      "committed": true
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "maximumUsd": 1,
+  "confirmedGenerationCostsUsd": 0.06129465329999999,
+  "unresolvedReservationsUsd": 0.13876589999999994,
+  "conservativeTotalUsd": 0.20006055329999994,
+  "keyUsageBefore": 0.040084413,
+  "keyUsageAfter": 0.101379054,
+  "keyUsageChangeUsd": 0.061294641,
+  "unresolvedRequestNumbers": [
+    2,
+    3,
+    29,
+    30
+  ]
+}

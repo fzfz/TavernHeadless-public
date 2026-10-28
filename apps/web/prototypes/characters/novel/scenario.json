@@ -1,0 +1,73 @@
+{
+  "initial": {
+    "scene.id": "inside",
+    "actor.trust": 20,
+    "actor.fatigue": 10,
+    "story.time": "14:10",
+    "story.clue": "尚未展开的旅程",
+    "actor.present": true
+  },
+  "turns": [
+    {
+      "text": "她放下琴弓，轻轻翻开下一页乐谱。",
+      "variables": {
+        "scene.id": "inside",
+        "actor.trust": 35,
+        "actor.fatigue": 30,
+        "story.time": "22:12",
+        "story.clue": "发现印记",
+        "actor.present": true
+      },
+      "agentText": "她补充道：“把这个细节也记下来。”",
+      "jobVariables": {
+        "scene.id": "inside",
+        "actor.trust": 35,
+        "actor.fatigue": 30,
+        "story.time": "22:12",
+        "story.clue": "发现印记 · 已记录",
+        "actor.present": true
+      }
+    },
+    {
+      "text": "阳光落在窗沿，她微笑着向你招手。",
+      "variables": {
+        "scene.id": "outside",
+        "actor.trust": 60,
+        "actor.fatigue": 85,
+        "story.time": "22:20",
+        "story.clue": "确定方向",
+        "actor.present": false
+      },
+      "agentText": "她补充道：“把这个细节也记下来。”",
+      "jobVariables": {
+        "scene.id": "outside",
+        "actor.trust": 60,
+        "actor.fatigue": 85,
+        "story.time": "22:20",
+        "story.clue": "确定方向 · 已记录",
+        "actor.present": false
+      }
+    },
+    {
+      "text": "走廊安静下来，只留下最后一个音符。",
+      "variables": {
+        "scene.id": "inside",
+        "actor.trust": 85,
+        "actor.fatigue": 20,
+        "story.time": "22:30",
+        "story.clue": "抵达目的地",
+        "actor.present": true
+      },
+      "agentText": "她补充道：“把这个细节也记下来。”",
+      "jobVariables": {
+        "scene.id": "inside",
+        "actor.trust": 85,
+        "actor.fatigue": 20,
+        "story.time": "22:30",
+        "story.clue": "抵达目的地 · 已记录",
+        "actor.present": true
+      }
+    }
+  ],
+  "failureText": "生成失败，请重试。"
+}

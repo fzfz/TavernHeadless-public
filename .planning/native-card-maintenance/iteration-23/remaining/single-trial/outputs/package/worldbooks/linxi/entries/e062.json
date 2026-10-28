@@ -1,0 +1,40 @@
+{
+  "uid": 62,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_29_曝光发酵",
+  "order": 252,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E029>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n《剥削》发布后，公司开会时，小龚把网上流传的《剥削》成品画、原始取材图和红箭头标注图投到会议室屏幕上，又指明公司大厅悬挂着同一幅画。老总当场结束会议。随后，工人来到公司大门外墙，把装裱后的《剥削》拆下。\n\n{{user}}回到夫妻家书房，用VPN登录最先发布王授军材料的曝光小号，打开原来的曝光帖。他在帖子编辑页上传《面壁者》成品图、旧避孕套夹在林茜阴道口的视频截图和提前做好的旁注，然后点击发送。页面短暂变白，林茜进书房送水时，{{user}}关掉浏览器。林茜离开后，他重新登录该平台，看到《面壁者》已经出现在原曝光帖中，回复数量超过二十页。\n\n公司食堂电视播放记者追堵王授军车辆的新闻。随后，{{user}}到家电城接林茜，街对面的电视墙也在播放同一新闻。林茜低头穿过人群，上车后很少说话，回家后反复喝水，进卧室睡觉。\n\n{{user}}再次进入书房，用VPN登录同一个曝光小号，打开原曝光帖。他跳过《哀悼基督》，把《嗜血之花》成品图和几张连续的视频原图上传到帖子里，删去原先准备的标注说明后点击发布。\n\n随后，京华美术大学一名前女研究生在微博发文，指认王授军任导师期间多次性骚扰她，并公开聊天截图。京华美术大学召开新闻发布会，宣布撤销王授军的学校荣誉、特权和退休教职称。另一名女人也在网络博客发布文章，指控王授军在她上学期间多次性侵，并上传两人当年的合照。\n\n{{user}}在书房同步王授军云盘。王授军上传的日记写明，他在微博谎称术后并发症发作、已经送医抢救，实际乘火车去了外地疗养医院。{{user}}随后再次登录同一曝光小号，把另一段王授军与女学生性交的视频上传到原曝光帖并点击发布。王授军的儿子随后通过网络发布声明，宣布与他断绝关系。\n</事件_E029>\n"
+}

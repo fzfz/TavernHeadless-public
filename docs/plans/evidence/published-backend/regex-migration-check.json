@@ -1,0 +1,28 @@
+[
+  {
+    "releaseId": "HzAk_yR2F9HDAI_pWmpKf",
+    "nearMatches": [
+      "对模型隐藏历史Analysis"
+    ],
+    "farMatches": [
+      "对模型隐藏历史Analysis",
+      "提示词历史裁剪3楼前的变量更新块"
+    ],
+    "displayPreservesNarrative": true,
+    "dryRun": true,
+    "sessionId": "ZPQN8hmB4tdhJoWnZMH-Z"
+  },
+  {
+    "releaseId": "RWc041KCFEPZTOCz-PsP7",
+    "nearMatches": [
+      "仅格式思维链"
+    ],
+    "farMatches": [
+      "仅格式思维链",
+      "只发送最新3楼的变量更新"
+    ],
+    "displayPreservesNarrative": true,
+    "dryRun": true,
+    "sessionId": "rdYUwp7dvp_5Mpptg00Hf"
+  }
+]

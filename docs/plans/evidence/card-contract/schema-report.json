@@ -1,0 +1,19 @@
+{
+  "result": "passed",
+  "checks": [
+    {
+      "card": "card-bookshop",
+      "schema": true,
+      "commits": 2,
+      "invalidPackages": 11
+    },
+    {
+      "card": "card-novel",
+      "schema": true,
+      "commits": 2,
+      "invalidPackages": 11
+    }
+  ],
+  "expressionOperators": 9,
+  "requestExclusiveInput": true
+}

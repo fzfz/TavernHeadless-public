@@ -1,0 +1,20 @@
+{
+  "openings": [
+    {
+      "opening": "first",
+      "targetCharacters": 1992,
+      "sourceCharacters": 3669,
+      "literalNarrativePresent": true
+    },
+    {
+      "opening": "alternate-1",
+      "targetCharacters": 1325,
+      "sourceCharacters": 2964,
+      "literalNarrativePresent": true
+    }
+  ],
+  "zipFiles": 155,
+  "packageDifferences": [],
+  "rule105Verbatim": true,
+  "rule110Verbatim": true
+}

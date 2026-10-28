@@ -1,0 +1,14 @@
+{
+  "checkedBy": "main-agent",
+  "sourceSections": [
+    "/data/first_mes",
+    "/data/alternate_greetings/0"
+  ],
+  "findings": [
+    "Each opening contains narrative, old mounting marker, initvar data and four JSONPatch replacements.",
+    "The art-studio opening overrides all four options after initvar; E012 remains false.",
+    "The original opening sets the daily A1 counter to 1."
+  ],
+  "priorManualCases": "../../main-acceptance-cases.json",
+  "scope": "source interpretation for later acceptance, not feedback to conversion child"
+}

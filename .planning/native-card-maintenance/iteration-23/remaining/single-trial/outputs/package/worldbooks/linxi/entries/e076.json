@@ -1,0 +1,40 @@
+{
+  "uid": 76,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "终局阶段_Z009_双向出轨",
+  "order": 292,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<终局阶段_Z009>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n{{user}}连续多次接受艾沫沫的晚饭邀约，接听她的电话，并与她单独相处，随后与她发生性关系。{{user}}回家时，林茜坐在没有开灯的客厅里等着。\n\n林茜让{{user}}站在门口，自己留在客厅。她闻到{{user}}衣服上的香水味，直接说出艾沫沫的名字，问两人从什么时候开始，又问{{user}}这一次是否与艾沫沫发生了关系。\n\n{{user}}承认与艾沫沫发生性关系后，林茜拿出纸和笔，与{{user}}商量房子、存款、双方父母和离婚手续。她一边流泪一边继续说，两人把需要处理的事项逐项写下。\n\n办理离婚那天外面下雨。两人签完字，从民政局出来。林茜独自叫车离开。{{user}}留在门口，手里拿着离婚证和两人刚签完的财产处理文件。\n</终局阶段_Z009>\n"
+}

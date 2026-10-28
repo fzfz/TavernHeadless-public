@@ -1,0 +1,54 @@
+<div class="stage expedition">
+  <img class="background" data-background alt="" />
+  <section class="map-side">
+    <header>
+      <small>北境 · 雾谷</small>
+      <h1>雾谷远征</h1>
+      <p data-scene-title></p>
+    </header>
+    <div class="map">
+      <svg viewBox="0 0 500 300" aria-hidden="true">
+        <path d="M70 220Q190 100 270 190T420 60" /></svg
+      ><button class="map-point bridge" data-bridge>石桥</button
+      ><button class="map-point ridge" data-ridge>月下山脊</button
+      ><button class="map-point camp" data-camp>营地</button>
+    </div>
+    <p class="map-hint" data-preview>选择要前往的地点</p>
+    <button data-reset>查看当前状态</button>
+    <div class="companion">
+      <img data-portrait alt="伊芙" /><span>同行者 · 伊芙</span>
+    </div>
+    <section class="status" data-status-panel>
+      <div class="status-head">
+        <strong>角色状态</strong><span data-location></span>
+      </div>
+      <div class="values">
+        <div><small>时间</small><b data-clock></b></div>
+        <div><small>信任</small><b data-trust></b></div>
+        <div><small>体力</small><b data-energy></b></div>
+      </div>
+      <progress data-progress max="100"></progress>
+      <p data-clue></p>
+    </section>
+  </section>
+  <section class="conversation">
+    <div class="conversation-head">
+      <strong>远征日志</strong><button data-music>♫ 环境音</button
+      ><button data-toggle>收起状态</button>
+    </div>
+    <div class="stream" aria-live="polite">
+      <small>当前回复</small>
+      <p data-live></p>
+      <p data-agent></p>
+    </div>
+    <div class="choices">
+      <button data-choice-a></button><button data-choice-b></button>
+    </div>
+    <p class="feedback" data-feedback aria-live="polite"></p>
+    <div data-chat class="chat-slot"></div>
+    <details class="journal">
+      <summary>旅程记录</summary>
+      <div class="floor-list" data-floors></div>
+    </details>
+  </section>
+</div>

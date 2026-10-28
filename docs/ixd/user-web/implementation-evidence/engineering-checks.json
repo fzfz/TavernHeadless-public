@@ -1,0 +1,52 @@
+{
+  "recordedAt": "2026-10-20T11:21:41.399346+00:00",
+  "nodeVersion": "25.8.2",
+  "baseCommit": "07f06127fe243890946420db73ef23002433601f",
+  "checks": [
+    {
+      "id": "tests",
+      "command": "pnpm test:ci --maxWorkers=2 --minWorkers=2",
+      "status": "passed",
+      "testFiles": 609,
+      "tests": 6305,
+      "durationSeconds": 820.24
+    },
+    {
+      "id": "static",
+      "command": "pnpm lint",
+      "status": "passed",
+      "errors": 0,
+      "warnings": 4
+    },
+    {
+      "id": "types",
+      "command": "pnpm typecheck",
+      "status": "passed"
+    },
+    {
+      "id": "generated",
+      "command": "pnpm sdk:generate && pnpm sdk:check",
+      "status": "passed"
+    },
+    {
+      "id": "docs",
+      "command": "pnpm docs:build",
+      "status": "passed"
+    },
+    {
+      "id": "userWebBuild",
+      "command": "pnpm --filter @tavern/user-web build",
+      "status": "passed",
+      "warnings": [
+        "bundled chunk exceeds 500 kB"
+      ]
+    },
+    {
+      "id": "chatFocused",
+      "command": "pnpm --filter @tavern/user-web exec vitest run src/features/chat/__tests__/ --maxWorkers=2 --minWorkers=1",
+      "status": "passed",
+      "testFiles": 5,
+      "tests": 30
+    }
+  ]
+}

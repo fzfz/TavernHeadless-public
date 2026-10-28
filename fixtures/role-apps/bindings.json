@@ -1,0 +1,33 @@
+{
+  "roles": [
+    {
+      "id": "linqian",
+      "directory": "linqian",
+      "preset": "presets/tianqin-beta-3.9.json",
+      "promptBundle": "prompt-bundle.json"
+    },
+    {
+      "id": "gushengman",
+      "directory": "gushengman",
+      "preset": "presets/tianqin-beta-3.9.json"
+    }
+  ],
+  "presetPromptOrderCharacterId": 100001,
+  "performers": [
+    {
+      "name": "你",
+      "description": ""
+    },
+    {
+      "name": "裴修远",
+      "description": ""
+    }
+  ],
+  "disabledSlots": [
+    "director",
+    "verifier",
+    "memory"
+  ],
+  "maxOutputTokens": 8192,
+  "modelTimeoutMs": 600000
+}

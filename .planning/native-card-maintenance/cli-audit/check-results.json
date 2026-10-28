@@ -1,0 +1,255 @@
+{
+  "sourceFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/cli-audit/source.json",
+  "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-HXFjA9/task.json",
+  "raceTaskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Mep5nw/task.json",
+  "outputs": [
+    {
+      "label": "begin",
+      "stdoutBytes": 501402,
+      "stderrBytes": 0,
+      "keys": [
+        "id",
+        "sourceFile",
+        "originalSourceFile",
+        "repositoryRoot",
+        "outputDirectory",
+        "packageDirectory",
+        "taskFile",
+        "written",
+        "pending",
+        "issues"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "read-long",
+      "stdoutBytes": 338,
+      "stderrBytes": 0,
+      "keys": [
+        "pointer",
+        "valueType",
+        "contentFile",
+        "linesFile"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "map-entry-batch",
+      "stdoutBytes": 28250,
+      "stderrBytes": 0,
+      "keys": [
+        "passed",
+        "results"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "map-regex",
+      "stdoutBytes": 1019521,
+      "stderrBytes": 0,
+      "keys": [
+        "file",
+        "issues",
+        "remaining"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "copy",
+      "stdoutBytes": 144,
+      "stderrBytes": 0,
+      "keys": [
+        "file"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "parse-error",
+      "stdoutBytes": 119,
+      "stderrBytes": 0,
+      "keys": [
+        "passed",
+        "error"
+      ],
+      "exitCode": 1
+    },
+    {
+      "label": "index",
+      "stdoutBytes": 1887456,
+      "stderrBytes": 0,
+      "keys": [
+        "file",
+        "files",
+        "issues"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "validate",
+      "stdoutBytes": 7831,
+      "stderrBytes": 0,
+      "keys": [
+        "passed",
+        "record",
+        "issues",
+        "issueSummary"
+      ],
+      "exitCode": 1
+    },
+    {
+      "label": "pack-failed",
+      "stdoutBytes": 7831,
+      "stderrBytes": 0,
+      "keys": [
+        "passed",
+        "record",
+        "issues",
+        "issueSummary"
+      ],
+      "exitCode": 1
+    },
+    {
+      "label": "resume",
+      "stdoutBytes": 856,
+      "stderrBytes": 0,
+      "keys": [
+        "taskFile",
+        "sourceFile",
+        "originalSourceFile",
+        "packageDirectory",
+        "outputDirectory",
+        "artifacts"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "read-parallel-2",
+      "stdoutBytes": 337,
+      "stderrBytes": 0,
+      "keys": [
+        "pointer",
+        "valueType",
+        "contentFile",
+        "linesFile"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "read-parallel-5",
+      "stdoutBytes": 337,
+      "stderrBytes": 0,
+      "keys": [
+        "pointer",
+        "valueType",
+        "contentFile",
+        "linesFile"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "read-parallel-0",
+      "stdoutBytes": 337,
+      "stderrBytes": 0,
+      "keys": [
+        "pointer",
+        "valueType",
+        "contentFile",
+        "linesFile"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "read-parallel-7",
+      "stdoutBytes": 337,
+      "stderrBytes": 0,
+      "keys": [
+        "pointer",
+        "valueType",
+        "contentFile",
+        "linesFile"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "read-parallel-4",
+      "stdoutBytes": 337,
+      "stderrBytes": 0,
+      "keys": [
+        "pointer",
+        "valueType",
+        "contentFile",
+        "linesFile"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "read-parallel-1",
+      "stdoutBytes": 337,
+      "stderrBytes": 0,
+      "keys": [
+        "pointer",
+        "valueType",
+        "contentFile",
+        "linesFile"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "read-parallel-6",
+      "stdoutBytes": 337,
+      "stderrBytes": 0,
+      "keys": [
+        "pointer",
+        "valueType",
+        "contentFile",
+        "linesFile"
+      ],
+      "exitCode": 0
+    },
+    {
+      "label": "read-parallel-3",
+      "stdoutBytes": 337,
+      "stderrBytes": 0,
+      "keys": [
+        "pointer",
+        "valueType",
+        "contentFile",
+        "linesFile"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "parallelReads": {
+    "requested": 8,
+    "distinctResultPaths": 1,
+    "retainedContents": [
+      "值3",
+      "值3",
+      "值3",
+      "值3",
+      "值3",
+      "值3",
+      "值3",
+      "值3"
+    ]
+  },
+  "sameFileWrites": {
+    "successfulCalls": 8,
+    "retainedFields": [
+      "k3"
+    ]
+  },
+  "differentFileWrites": {
+    "successfulCalls": 8,
+    "retainedContents": [
+      "值0",
+      "值1",
+      "值2",
+      "值3",
+      "值4",
+      "值5",
+      "值6",
+      "值7"
+    ]
+  }
+}

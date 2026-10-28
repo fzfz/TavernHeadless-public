@@ -1,0 +1,447 @@
+import { execFileSync } from "node:child_process";
+import {
+  siteConfig,
+  assertSiteEnvironment,
+} from "../../scripts/docs/site-config";
+import { defineConfig } from "vitepress";
+
+assertSiteEnvironment(process.env);
+const commit = execFileSync("git", ["rev-parse", "HEAD"], {
+  encoding: "utf8",
+}).trim();
+if (process.env.AGENT_HEAD_SHA && process.env.AGENT_HEAD_SHA !== commit) {
+  throw new Error("文档构建提交与 Agent 发布提交不一致。");
+}
+const dirty =
+  execFileSync("git", ["status", "--porcelain"], { encoding: "utf8" }).trim()
+    .length > 0;
+
+export default defineConfig({
+  lang: "zh-CN",
+  base: siteConfig.basePath,
+  title: siteConfig.title,
+  description: "一个为开发者而生的 AI RP 后端引擎",
+
+  sitemap: { hostname: siteConfig.siteUrl },
+  head: [
+    ["meta", { name: "theme-color", content: "#2dd4bf" }],
+    ["meta", { name: "og:type", content: "website" }],
+    ["meta", { name: "og:site_name", content: siteConfig.title }],
+  ],
+
+  themeConfig: {
+    logo: undefined,
+    siteTitle: siteConfig.title,
+    projectVersion: {
+      commit,
+      dirty,
+      repository: siteConfig.repository,
+      conclusion: process.env.AGENT_CONCLUSION ?? "not-verified",
+    },
+
+    nav: [
+      {
+        text: "指南",
+        items: [
+          { text: "简介", link: "/guide/introduction" },
+          { text: "快速开始", link: "/guide/getting-started" },
+          { text: "架构设计", link: "/guide/architecture" },
+          { text: "官方集成层", link: "/guide/integration-kit" },
+          { text: "前端设计", link: "/guide/frontend-vision" },
+        ],
+      },
+      {
+        text: "开发",
+        items: [
+          { text: "本仓库开发入口", link: "/development/local-development" },
+          { text: "协作指南", link: "/development/contributing" },
+          { text: "测试与 CI", link: "/development/testing" },
+          { text: "文档规范", link: "/development/doc-standards" },
+        ],
+      },
+      {
+        text: "参考",
+        items: [
+          { text: "数据库字典", link: "/reference/database" },
+          { text: "API 参考", link: "/reference/api" },
+          { text: "API 资源索引", link: "/reference/api/sessions" },
+        ],
+      },
+      {
+        text: "SDK",
+        items: [
+          { text: "总览", link: "/sdk/" },
+          { text: "Sessions", link: "/sdk/sessions" },
+          { text: "Chat", link: "/sdk/chat" },
+          { text: "Client Helpers", link: "/sdk/client-helpers" },
+        ],
+      },
+      { text: "Agent", link: "/agent/" },
+      { text: "进度", link: "/progress/" },
+      { text: "思路", link: "/ideas/" },
+    ],
+
+    sidebar: {
+      "/guide/": [
+        {
+          text: "指南",
+          items: [
+            { text: "简介", link: "/guide/introduction" },
+            { text: "快速开始", link: "/guide/getting-started" },
+            { text: "架构设计", link: "/guide/architecture" },
+            { text: "官方集成层", link: "/guide/integration-kit" },
+            { text: "前端设计", link: "/guide/frontend-vision" },
+          ],
+        },
+      ],
+      "/development/": [
+        {
+          text: "开发",
+          items: [
+            { text: "本仓库开发入口", link: "/development/local-development" },
+            { text: "协作指南", link: "/development/contributing" },
+            { text: "测试与 CI", link: "/development/testing" },
+            { text: "文档规范", link: "/development/doc-standards" },
+          ],
+        },
+      ],
+      "/reference/": [
+        {
+          text: "参考",
+          items: [
+            { text: "数据库字典", link: "/reference/database" },
+            { text: "API 参考", link: "/reference/api" },
+          ],
+        },
+        {
+          text: "API 资源",
+          items: [
+            { text: "Sessions（会话）", link: "/reference/api/sessions" },
+            { text: "Chat（对话生成）", link: "/reference/api/chat" },
+            { text: "Floors（楼层）", link: "/reference/api/floors" },
+            { text: "Pages（消息页）", link: "/reference/api/pages" },
+            { text: "Messages（消息）", link: "/reference/api/messages" },
+            { text: "Characters（角色卡）", link: "/reference/api/characters" },
+            { text: "Users（用户卡）", link: "/reference/api/users" },
+            { text: "Variables（变量）", link: "/reference/api/variables" },
+            { text: "Macros（宏系统）", link: "/reference/api/macros" },
+
+            { text: "Memories（记忆）", link: "/reference/api/memories" },
+            { text: "Imports（导入）", link: "/reference/api/imports" },
+            { text: "Exports（导出）", link: "/reference/api/exports" },
+            { text: "Presets（预设）", link: "/reference/api/presets" },
+            { text: "Worldbooks（世界书）", link: "/reference/api/worldbooks" },
+            {
+              text: "Regex Profiles（正则配置）",
+              link: "/reference/api/regex-profiles",
+            },
+            { text: "LLM Profiles", link: "/reference/api/llm-profiles" },
+            {
+              text: "LLM Instances（实例配置）",
+              link: "/reference/api/llm-instances",
+            },
+            { text: "Tools（工具调用）", link: "/reference/api/tools" },
+            { text: "MCP Servers（MCP 服务器）", link: "/reference/api/mcp" },
+            { text: "Accounts（账号）", link: "/reference/api/accounts" },
+          ],
+        },
+        {
+          text: "高级 API 资源",
+          items: [
+            {
+              text: "Prompt Runtime（提示词运行时）",
+              items: [
+                { text: "总览", link: "/reference/api/prompt-runtime" },
+                {
+                  text: "Mode（提示词模式）",
+                  link: "/reference/api/prompt-runtime-mode",
+                },
+                {
+                  text: "Policy（策略面）",
+                  link: "/reference/api/prompt-runtime-policy",
+                },
+                {
+                  text: "Assets（资源绑定）",
+                  link: "/reference/api/prompt-runtime-assets",
+                },
+                {
+                  text: "Injections（注入与高级位置）",
+                  link: "/reference/api/prompt-runtime-injections",
+                },
+                {
+                  text: "Inspection（预览与检查）",
+                  link: "/reference/api/prompt-runtime-inspection",
+                },
+                {
+                  text: "Capabilities（能力目录）",
+                  link: "/reference/api/prompt-runtime-capabilities",
+                },
+              ],
+            },
+            {
+              text: "Workspace / Project（工作区与项目）",
+              items: [
+                { text: "总览", link: "/reference/api/workspace-project" },
+                {
+                  text: "Workspaces（Workspace 管理）",
+                  link: "/reference/api/workspaces",
+                },
+                {
+                  text: "Projects（项目基础接口）",
+                  link: "/reference/api/projects",
+                },
+                {
+                  text: "Derived Outputs（项目派生结果）",
+                  link: "/reference/api/projects-derived-outputs",
+                },
+                {
+                  text: "Inbox（项目收件箱）",
+                  link: "/reference/api/projects-inbox",
+                },
+                {
+                  text: "Agent Types（Agent 类型）",
+                  link: "/reference/api/agent-types",
+                },
+                {
+                  text: "Agent Bindings（Agent 启用）",
+                  link: "/reference/api/project-agent-bindings",
+                },
+                {
+                  text: "Agent Jobs（后台作业看板）",
+                  link: "/reference/api/project-agent-jobs",
+                },
+                {
+                  text: "NodeGraph Runtime（图运行时）",
+                  link: "/reference/api/node-graphs",
+                },
+                {
+                  text: "Settings（设置覆盖）",
+                  link: "/reference/api/project-settings",
+                },
+                {
+                  text: "Effective Config（生效配置）",
+                  link: "/reference/api/effective-config",
+                },
+              ],
+            },
+            {
+              text: "Temporary Conversations（临时对话）",
+              link: "/reference/api/temporary-conversations",
+            },
+            {
+              text: "Backup（核心资产备份）",
+              items: [
+                { text: "总览", link: "/reference/api/backup" },
+                {
+                  text: "Backup Jobs（备份作业）",
+                  link: "/reference/api/backup-jobs",
+                },
+              ],
+            },
+            {
+              text: "Background Jobs（后台作业）",
+              items: [
+                { text: "总览", link: "/reference/api/background-jobs" },
+                {
+                  text: "Chat Transfer Jobs（聊天传输作业）",
+                  link: "/reference/api/chat-transfer-jobs",
+                },
+                {
+                  text: "Memory Jobs（记忆后台作业）",
+                  link: "/reference/api/memory-jobs",
+                },
+              ],
+            },
+            {
+              text: "Session State（会话状态治理）",
+              items: [
+                {
+                  text: "公开受治理 API",
+                  link: "/reference/api/session-state",
+                },
+                {
+                  text: "内部观察面",
+                  link: "/reference/api/session-state-observation",
+                },
+              ],
+            },
+            {
+              text: "Client Data（客户端专属数据域）",
+              link: "/reference/api/client-data",
+            },
+            {
+              text: "Operation Logs（操作日志）",
+              link: "/reference/api/operation-logs",
+            },
+            {
+              text: "Scope Integrity（作用域一致性运维）",
+              link: "/reference/api/scope-integrity",
+            },
+            { text: "Clients（客户端身份）", link: "/reference/api/clients" },
+            { text: "VC Tags（版本标签）", link: "/reference/api/vc-tags" },
+          ],
+        },
+      ],
+      "/sdk/": [
+        {
+          text: "SDK 总览",
+          items: [
+            { text: "安装与配置", link: "/sdk/" },
+            { text: "错误处理", link: "/sdk/errors" },
+            { text: "SSE 流", link: "/sdk/sse" },
+          ],
+        },
+        {
+          text: "资源方法",
+          items: [
+            { text: "Sessions（会话）", link: "/sdk/sessions" },
+            { text: "Chat（对话生成）", link: "/sdk/chat" },
+            { text: "Floors（楼层）", link: "/sdk/floors" },
+            { text: "Pages（消息页）", link: "/sdk/pages" },
+            { text: "Messages（消息）", link: "/sdk/messages" },
+            { text: "Characters（角色卡）", link: "/sdk/characters" },
+            { text: "Users（用户卡）", link: "/sdk/users" },
+            { text: "Accounts（账号）", link: "/sdk/accounts" },
+            { text: "Variables（变量）", link: "/sdk/variables" },
+            { text: "Memories（记忆）", link: "/sdk/memories" },
+            { text: "Imports（导入）", link: "/sdk/imports" },
+            { text: "Exports（导出）", link: "/sdk/exports" },
+            { text: "Presets（预设）", link: "/sdk/presets" },
+            { text: "Worldbooks（世界书）", link: "/sdk/worldbooks" },
+            { text: "Regex Profiles（正则配置）", link: "/sdk/regex-profiles" },
+            { text: "LLM Profiles", link: "/sdk/llm-profiles" },
+            { text: "LLM Instances（实例配置）", link: "/sdk/llm-instances" },
+            { text: "Tools（工具调用）", link: "/sdk/tools" },
+            { text: "MCP Servers", link: "/sdk/mcp" },
+          ],
+        },
+        {
+          text: "Client Helpers",
+          items: [{ text: "Client Helpers", link: "/sdk/client-helpers" }],
+        },
+      ],
+      "/agent/": [
+        {
+          text: "Agent 与 Skill",
+          items: [
+            { text: "总入口", link: "/agent/" },
+            {
+              text: "Skill",
+              items: [
+                { text: "Skill 索引", link: "/agent/skills/" },
+                {
+                  text: "客户端接入与升级",
+                  link: "/agent/skills/tavern-client-integration",
+                },
+                {
+                  text: "参与开发与协作",
+                  link: "/agent/skills/tavern-project-contributing",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      "/progress/": [
+        {
+          text: "进度",
+          items: [
+            { text: "总览", link: "/progress/" },
+            { text: "核心引擎", link: "/progress/core" },
+            { text: "后端 API", link: "/progress/api" },
+            { text: "管理前端", link: "/progress/web" },
+          ],
+        },
+      ],
+      "/ideas/": [
+        {
+          text: "思路",
+          items: [
+            { text: "总览", link: "/ideas/" },
+            { text: "Why TavernHeadless？", link: "/ideas/why-tavernheadless" },
+            {
+              text: "Know What & Know How",
+              link: "/ideas/know-what-and-know-how",
+            },
+            {
+              text: "好像哪里都是，那就干脆做个通用的。",
+              link: "/ideas/unified-version-control",
+            },
+            {
+              text: "不一定得是一张角色卡",
+              link: "/ideas/not-just-a-character-card",
+            },
+            { text: "边界的规划", link: "/ideas/boundary-planning" },
+            {
+              text: "为什么多了一层 Message？",
+              link: "/ideas/why-message-layer",
+            },
+            {
+              text: "为什么多了一种变量？",
+              link: "/ideas/why-branch-variable",
+            },
+            { text: "它很小，但它很重要", link: "/ideas/why-worldbook-trace" },
+            {
+              text: "因为它很重要，所以它被扩展",
+              link: "/ideas/why-prompt-runtime",
+            },
+            { text: "可追踪的记忆", link: "/ideas/traceable-memory" },
+            {
+              text: "LLM 实例化？其实是 Sub Agent 的前身",
+              link: "/ideas/llm-instantiation-sub-agent",
+            },
+            { text: "为什么需要工作区？", link: "/ideas/why-workspace" },
+            {
+              text: "临时对话为什么重要",
+              link: "/ideas/why-temporary-conversation",
+            },
+          ],
+        },
+      ],
+    },
+
+    socialLinks: [
+      { icon: "github", link: `https://github.com/${siteConfig.repository}` },
+    ],
+    editLink: {
+      pattern: `https://github.com/${siteConfig.repository}/edit/${siteConfig.publishBranch}/vitepress/:path`,
+      text: "在本仓库编辑此页",
+    },
+
+    outline: {
+      level: [2, 3],
+      label: "本页目录",
+    },
+
+    docFooter: {
+      prev: "上一页",
+      next: "下一页",
+    },
+
+    lastUpdated: {
+      text: "最后更新",
+    },
+
+    search: {
+      provider: "local",
+      options: {
+        translations: {
+          button: { buttonText: "搜索文档", buttonAriaLabel: "搜索文档" },
+          modal: {
+            noResultsText: "未找到结果",
+            resetButtonTitle: "清除查询",
+            footer: {
+              selectText: "选择",
+              navigateText: "切换",
+              closeText: "关闭",
+            },
+          },
+        },
+      },
+    },
+
+    returnToTopLabel: "回到顶部",
+    sidebarMenuLabel: "菜单",
+    darkModeSwitchLabel: "主题",
+  },
+});

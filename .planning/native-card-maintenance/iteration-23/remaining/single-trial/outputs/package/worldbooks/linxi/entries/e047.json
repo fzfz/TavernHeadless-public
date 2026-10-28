@@ -1,0 +1,40 @@
+{
+  "uid": 47,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_19_取走硬盘",
+  "order": 242,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E019>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n{{user}}到达局子街55号401，用银行卡拨开老式门锁，确认走廊无人后进入画室。\n{{user}}依次检查画室，在墙角看见顶角摄像头，在房间里看见床、画架、颜料、电脑和硬盘读取设备。\n电脑机箱内有一块硬盘，桌上的黑色读取器连接两块外置硬盘。{{user}}关闭电脑和读取器，拆下内置硬盘，再把读取器和两块外置硬盘装进工具包。\n{{user}}装回机箱侧板，把桌面物品放回原位，随后锁门离开。王授军在整个过程中没有返回。\n回到夫妻家书房后，{{user}}把硬盘接入电脑。硬盘目录按字母缩写分类，各文件夹里保存着十多个女人的视频。\n{{user}}运行恢复程序。扫描结果显示回收站中存在一段被删除的大体积录像，录像文件的来源栏写着“401画室顶角摄像头”。恢复程序同时列出与这段录像绑定的截图、画稿和视频索引，{{user}}把这些文件一起恢复到书房电脑。\n</事件_E019>\n"
+}

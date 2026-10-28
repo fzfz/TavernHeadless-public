@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TavernHeadless · 自有角色卡转换原型</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #09090b;
+      --canvas: #050607;
+      --panel: #121619;
+      --surface: #191f22;
+      --line: rgba(255,255,255,.1);
+      --text: #e5e7eb;
+      --muted: #9ba5a8;
+      --accent: #2dd4bf;
+      --warning: #fbbf24;
+      --danger: #fb7185;
+      font: 13px/1.6 Inter, "Noto Sans SC", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; }
+    button, select, textarea { font: inherit; }
+    button, select, textarea { color: var(--text); }
+    button {
+      border: 1px solid var(--line); background: transparent; border-radius: 5px;
+      padding: 8px 11px; cursor: pointer;
+    }
+    button:hover:not(:disabled) { background: var(--surface); border-color: #2dd4bf66; }
+    button:disabled { opacity: .4; cursor: not-allowed; }
+    button:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: 2px;
+    }
+    select, textarea {
+      background: #0b0f11; border: 1px solid var(--line); border-radius: 5px; padding: 8px;
+      width: 100%;
+    }
+    textarea { resize: vertical; min-height: 56px; }
+    .primary { background: var(--accent); border-color: var(--accent); color: #042f2e; font-weight: 650; }
+    .primary:hover:not(:disabled) { background: #5eead4; color: #042f2e; }
+    .quiet { color: var(--muted); }
+    .topbar {
+      min-height: 49px; padding: 8px 22px; border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .brand { font-size: 15px; font-weight: 650; letter-spacing: .1px; }
+    .brand span { color: var(--muted); font-weight: 400; }
+    .top-meta { color: var(--muted); font-size: 11px; }
+    .page { max-width: 1460px; margin: 0 auto; padding: 22px; }
+    .banner {
+      padding: 10px 13px; border: 1px solid #2dd4bf55; border-radius: 6px;
+      background: #0b2926; color: #99f6e4; font-weight: 600; letter-spacing: .1px;
+    }
+    .intro { display: flex; justify-content: space-between; align-items: end; gap: 28px; margin: 22px 0 18px; }
+    .eyebrow { color: var(--accent); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
+    h1 { margin: 3px 0 5px; font-size: clamp(21px, 2.6vw, 29px); line-height: 1.3; }
+    h2 { font-size: 14px; margin: 0 0 10px; }
+    h3 { font-size: 13px; margin: 0 0 7px; }
+    p { margin: 5px 0; }
+    .intro p, .small { color: var(--muted); font-size: 12px; }
+    .spec-tag, .tag {
+      display: inline-flex; align-items: center; border: 1px solid #2dd4bf44; border-radius: 4px;
+      padding: 3px 8px; color: var(--accent); font-size: 11px; white-space: nowrap;
+    }
+    .mode-tabs { display: flex; gap: 7px; border-bottom: 1px solid var(--line); margin-bottom: 16px; overflow-x: auto; }
+    .mode-tabs button { border-radius: 5px 5px 0 0; border-bottom-color: transparent; white-space: nowrap; color: var(--muted); }
+    .mode-tabs button.active { color: var(--text); background: #2dd4bf12; border-color: #2dd4bf55; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; }
+    .main-col, .rail { min-width: 0; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 7px; padding: 15px; margin-bottom: 12px; }
+    .card-head { display: flex; justify-content: space-between; align-items: start; gap: 12px; margin-bottom: 12px; }
+    .stepper { display: grid; grid-template-columns: repeat(5, minmax(84px, 1fr)); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; margin-bottom: 13px; }
+    .stepper button { border: 0; border-right: 1px solid var(--line); border-radius: 0; min-height: 57px; text-align: left; padding: 8px 10px; color: var(--muted); }
+    .stepper button:last-child { border-right: 0; }
+    .stepper button.active { color: var(--text); background: #2dd4bf13; box-shadow: inset 0 -2px var(--accent); }
+    .step-num { display: block; color: var(--accent); font: 10px/1.4 ui-monospace, monospace; }
+    .step-label { font-size: 11px; white-space: nowrap; }
+    .source-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .source-card { text-align: left; min-height: 145px; display: flex; flex-direction: column; gap: 7px; background: #0b0f11; }
+    .source-card.selected { border-color: var(--accent); background: #0b2926; }
+    .source-card strong { font-size: 13px; color: var(--text); }
+    .source-card .small { line-height: 1.55; }
+    .source-card .tag { margin-top: auto; align-self: start; }
+    .flow-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: end; margin-top: 14px; }
+    .status-grid { display: flex; gap: 6px; flex-wrap: wrap; }
+    .status-pill { display: inline-flex; gap: 5px; align-items: center; border: 1px solid var(--line); border-radius: 99px; padding: 3px 8px; color: var(--muted); font-size: 10px; }
+    .status-pill b { font-size: 11px; color: var(--text); }
+    .report-list { display: grid; gap: 9px; }
+    .report-item { background: #0b0f11; border: 1px solid var(--line); border-radius: 6px; padding: 12px; min-width: 0; }
+    .report-item.blocked { border-color: #fb718566; }
+    .report-item.resolved { border-color: #2dd4bf4d; }
+    .report-title { display: flex; justify-content: space-between; align-items: start; gap: 10px; }
+    .report-title h3 { margin: 0; }
+    .status { font-size: 10px; border: 1px solid var(--line); border-radius: 4px; padding: 2px 7px; white-space: nowrap; }
+    .status.direct { color: #86efac; border-color: #86efac55; }
+    .status.convertible { color: #67e8f9; border-color: #67e8f955; }
+    .status.confirm { color: var(--warning); border-color: #fbbf2455; }
+    .status.unsupported, .status.missing { color: var(--danger); border-color: #fb718555; }
+    .field-line { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 7px; padding: 5px 0; border-bottom: 1px solid #ffffff09; font-size: 11px; }
+    .field-line:last-child { border-bottom: 0; }
+    .field-name { color: var(--muted); }
+    .field-value { min-width: 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+    .code { color: #cbd5e1; font: 10px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .decision { display: grid; grid-template-columns: minmax(180px, .8fr) minmax(200px, 1.2fr) auto; gap: 8px; align-items: end; margin-top: 10px; }
+    .decision label { display: block; color: var(--muted); font-size: 10px; margin-bottom: 4px; }
+    .decision-note { grid-column: 1 / -1; color: var(--muted); font-size: 10px; }
+    .notice { padding: 9px 11px; border: 1px solid var(--line); border-radius: 5px; margin: 10px 0; color: var(--muted); background: #0b0f11; }
+    .notice.warn { color: #fde68a; border-color: #fbbf2455; background: #2b2110; }
+    .notice.error { color: #fecdd3; border-color: #fb718555; background: #2a1118; }
+    .notice.ok { color: #99f6e4; border-color: #2dd4bf55; background: #0b2926; }
+    .summary-grid { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 6px; }
+    .summary-cell { padding: 8px; background: #0b0f11; border: 1px solid var(--line); border-radius: 5px; }
+    .summary-cell b { display: block; font-size: 17px; }
+    .summary-cell span { color: var(--muted); font-size: 10px; }
+    .target-tree { display: grid; gap: 7px; }
+    .target-node { display: flex; align-items: start; justify-content: space-between; gap: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 5px; background: #0b0f11; }
+    .target-node code { color: var(--accent); font-size: 10px; overflow-wrap: anywhere; }
+    .target-node span { color: var(--muted); font-size: 10px; text-align: right; }
+    .confirm-row { display: flex; align-items: start; gap: 9px; margin-top: 13px; border-top: 1px solid var(--line); padding-top: 12px; }
+    .confirm-row input { accent-color: var(--accent); margin-top: 4px; }
+    .confirm-row label { font-size: 11px; }
+    .state-rail { position: sticky; top: 12px; }
+    .state-list { display: grid; gap: 0; }
+    .state-line { display: grid; grid-template-columns: 105px minmax(0,1fr); gap: 7px; padding: 6px 0; border-bottom: 1px solid #ffffff0a; font-size: 10px; }
+    .state-line:last-child { border-bottom: 0; }
+    .state-line .field-value { color: #d4d4d8; }
+    .quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .quick-actions button { font-size: 10px; padding: 7px; }
+    .guide-tabs { display: flex; gap: 5px; overflow-x: auto; margin-bottom: 10px; }
+    .guide-tabs button { white-space: nowrap; font-size: 10px; padding: 6px 9px; }
+    .guide-tabs button.active { border-color: var(--accent); color: var(--accent); }
+    .guide-step { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid #ffffff0a; font-size: 11px; }
+    .guide-step.current { color: var(--accent); }
+    .schema-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+    .schema-node { border: 1px solid var(--line); border-radius: 5px; padding: 8px; background: #0b0f11; }
+    .schema-node code { color: var(--accent); font-size: 10px; }
+    .schema-node p { color: var(--muted); font-size: 10px; margin: 3px 0 0; }
+    .inline-form { display: grid; gap: 8px; max-width: 650px; }
+    .choice-row { display: flex; flex-wrap: wrap; gap: 7px; }
+    .choice-row button.active { color: var(--accent); border-color: var(--accent); background: #2dd4bf12; }
+    .flow-list { display: grid; gap: 8px; counter-reset: flow; }
+    .flow-step { padding: 11px; border: 1px solid var(--line); border-radius: 5px; background: #0b0f11; }
+    .flow-step strong { display: block; margin-bottom: 3px; }
+    .flow-step p { color: var(--muted); font-size: 11px; margin: 0; }
+    .empty { padding: 28px 14px; color: var(--muted); text-align: center; border: 1px dashed var(--line); border-radius: 5px; }
+    .footnote { color: var(--muted); font-size: 10px; line-height: 1.7; }
+    .download-link { color: var(--accent); }
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: minmax(0, 1fr) 260px; }
+      .decision { grid-template-columns: 1fr 1fr; }
+      .decision button { grid-column: 2; justify-self: end; }
+    }
+    @media (max-width: 700px) {
+      .page { padding: 14px 12px 30px; }
+      .topbar { padding: 8px 12px; }
+      .top-meta { display: none; }
+      .intro { display: block; margin: 18px 0 13px; }
+      .intro .spec-tag { margin-top: 8px; }
+      .layout { display: flex; flex-direction: column; }
+      .main-col, .rail { width: 100%; }
+      .state-rail { position: static; }
+      .source-grid { grid-template-columns: 1fr; }
+      .source-card { min-height: 116px; }
+      .stepper { grid-template-columns: repeat(5, minmax(67px, 1fr)); overflow-x: auto; }
+      .stepper button { min-width: 67px; padding: 7px 5px; }
+      .step-label { font-size: 9px; white-space: normal; line-height: 1.35; }
+      .step-num { font-size: 9px; }
+      .summary-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+      .field-line { grid-template-columns: 83px minmax(0, 1fr); }
+      .decision { grid-template-columns: 1fr; }
+      .decision button { grid-column: auto; justify-self: stretch; }
+      .schema-grid { grid-template-columns: 1fr; }
+      .card { padding: 12px; }
+    }
+    @media (max-width: 390px) {
+      :root { font-size: 12px; }
+      .page { padding: 10px 9px 24px; }
+      .banner { font-size: 11px; padding: 8px 9px; }
+      .stepper button { min-width: 60px; }
+      .state-line { grid-template-columns: 90px minmax(0, 1fr); }
+      .field-line { grid-template-columns: 75px minmax(0, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">TavernHeadless <span>· 原型</span></div>
+    <div class="top-meta">本地交互演示　/　内存状态　/　无服务连接</div>
+  </header>
+  <main class="page">
+    <div class="banner" id="notice-banner">设计原型 · 内置示例 · 不读取真实卡片，不写入资源库</div>
+    <section class="intro">
+      <div>
+        <div class="eyebrow">正式目标格式提案 · tavern_headless_card 1.0.0</div>
+        <h1>角色卡转换工作台</h1>
+        <p>这个交互原型用来确认：转换器能否把原文、来源证据、决策原因和目标位置逐项连起来，并阻止未解决项或过期报告进入下载。正式目标结构仅作设计提案展示；本页下载使用独立的演示包装格式，不声明符合正式 1.0.0。</p>
+      </div>
+      <span class="spec-tag">提案：tavern_headless_card 1.0.0</span>
+    </section>
+    <nav class="mode-tabs" id="mode-tabs" aria-label="工作流程"></nav>
+    <div class="layout">
+      <section class="main-col" id="main-view" aria-live="polite"></section>
+      <aside class="rail">
+        <section class="card state-rail" id="state-panel" aria-live="polite"></section>
+        <section class="card" id="quick-panel"></section>
+        <section class="card" id="guide-panel"></section>
+      </aside>
+    </div>
+  </main>
+
+  <script type="application/json" id="prototype-config">
+  {
+    "spec": {"name":"tavern_headless_card","version":"1.0.0"},
+    "demoSpec": {"name":"tavern_headless_card_demo","version":"0.1.0"},
+    "labels": {
+      "modes":{"convert":"转换","import":"导入自有卡","export":"导出自有卡"},
+      "steps":["选择源示例","预转换报告","逐项处理","目标预览","完成下载"],
+      "statuses":{"direct":"直接","convertible":"可转换","confirm":"需确认","unsupported":"不支持","missing":"缺依赖"},
+      "decision":{"convert":"采用建议映射","exclude":"移出目标格式（有损）"},
+      "actions":{"next":"继续逐项处理","preview":"生成目标预览","confirm":"确认本次报告版本","download":"生成并下载示例 JSON","repair":"修复示例源并重检","repairDependency":"模拟补齐依赖并重检","inspect":"检查示例包","apply":"执行导入演示","checkExport":"检查固定版本与依赖","downloadExport":"下载完整包结构示例 JSON"},
+      "railTitle":"当前状态",
+      "guideTitle":"情境导览",
+      "quickTitle":"自由操作",
+      "emptySource":"先选择一个内置源示例，查看逐项报告。",
+      "blockedPreview":"预览被阻止：先处理全部阻塞项，并让需确认内容绑定当前报告版本。",
+      "stalePreview":"预览已过期：源示例、报告版本或逐项决策已经变化，请重新处理并生成预览。",
+      "repairDone":"示例源已修复并重检：未知必需脚本已替换为确定性剧情规则；报告版本已更新，旧决策与预览失效。",
+      "dependencyRepaired":"已模拟补齐媒体依赖并重检，媒体内容仍为占位记录；报告版本已更新，旧决策与预览失效。",
+      "reasonRequired":"移出目标格式必须填写具体原因；系统会把结果标记为有损。",
+      "requiredCannotSkip":"未知必需脚本不能标记为忽略。修复示例源并重检后再继续。",
+      "previewDone":"报告完整，目标预览已生成。最终下载前还需确认当前报告版本。",
+      "downloadDone":"示例 JSON 已生成。文件只包含内置演示数据。",
+      "importNoWrite":"演示结果只显示将采取的导入动作，不会写入资源库。",
+      "exportNoWrite":"下载内容由内置示例在本地生成，不调用接口或第三方资源。"
+    },
+    "schema": [
+      {"path":"character","label":"角色基础","detail":"姓名、描述、身份和角色设定"},
+      {"path":"worldbooks[0].entries","label":"剧情知识","detail":"世界书条目与可检索剧情知识"},
+      {"path":"openings[]","label":"开场初值","detail":"开场白与角色初始状态"},
+      {"path":"agents[kind=state_update].ruleFiles","label":"变量规则","detail":"角色变量及其明确的更新规则"},
+      {"path":"controllers[]","label":"确定性剧情","detail":"可复现的剧情条件与状态转换"},
+      {"path":"prompting.regexFiles","label":"正则资源","detail":"从旧扩展迁移的正则文件资源"},
+      {"path":"files","label":"媒体文件","detail":"图片、音频等随包携带的媒体文件"},
+      {"path":"state","label":"初始状态","detail":"当前示例没有独立状态功能时为 null"},
+      {"path":"presentation","label":"展示模板","detail":"当前示例没有展示模板功能时为 null"},
+      {"path":"provenance","label":"只读源记录","detail":"来源版本、来源指针和转换报告版本"}
+    ],
+    "sources": [
+      {
+        "id":"v2","name":"V2 基础卡","badge":"正常转换路径","summary":"有描述、开场白、世界书和一条旧正则扩展。可逐项映射，也可说明原因后移出旧扩展。","spec":"chara_card_v2","version":"2.0","hasAssets":true,
+        "items":[
+          {"id":"name","name":"角色姓名","original":"霁月","pointer":"/data/name","evidence":"字段为纯文本名称；未发现额外解释标记。","status":"direct","target":"character.name","action":"原样映射","outputPath":"character.name","output":"霁月"},
+          {"id":"description","name":"角色设定","original":"霁月是住在海港城的档案员，谨慎、好奇，习惯先核实线索。","pointer":"/data/description","evidence":"字段是完整角色描述；自有格式 character.description 可承载原文。","status":"direct","target":"character.description","action":"保留完整原文","outputPath":"character.description","output":"霁月是住在海港城的档案员，谨慎、好奇，习惯先核实线索。"},
+          {"id":"opening","name":"开场白","original":"雨刚停，霁月把一张旧地图推到桌面中央。","pointer":"/data/first_mes","evidence":"单条开场正文；目标 openings 数组可直接表达。","status":"convertible","target":"openings[0]","action":"逐项确认后转换","outputPath":"openings[0]","output":"雨刚停，霁月把一张旧地图推到桌面中央。"},
+          {"id":"alt-openings","name":"备用开场","original":"霁月在码头仓库门口等候，手里拿着未拆封的信。","pointer":"/data/alternate_greetings/0","evidence":"备用开场数组中的第一条；目标 openings 数组支持多条开场。","status":"convertible","target":"openings[1]","action":"逐项确认后转换","outputPath":"openings[1]","output":"霁月在码头仓库门口等候，手里拿着未拆封的信。"},
+          {"id":"worldbook","name":"世界书条目","original":"旧港的钟楼每天只在潮汐转向时敲响。","pointer":"/data/character_book/entries/0/content","evidence":"启用条目正文完整；条目标题和关键词保留在同一来源对象。","status":"direct","target":"worldbooks[0].entries[0]","action":"保留正文与触发词","outputPath":"worldbooks[0].entries[0]","output":{"title":"旧港钟楼","keys":["钟楼","潮汐"],"content":"旧港的钟楼每天只在潮汐转向时敲响。"}},
+          {"id":"legacy-regex","name":"旧正则扩展","original":"pattern: /\\[线索:(.*?)\\]/g ； replacement: 【$1】","pointer":"/data/extensions/regex_scripts/0","evidence":"该扩展引用旧运行时资源；需确认保留、转存正则文件资源，或写明理由后移出目标格式。","status":"confirm","target":"prompting.regexFiles[0] 或明确移出目标格式","action":"需选择转存正则文件资源或移出；移出必须写明原因","outputPath":"prompting.regexFiles[0]","output":{"id":"clue-label","pattern":"\\[线索:(.*?)\\]","flags":["global"],"replacement":"【$1】","resourceType":"regex-file"},"canExclude":true,"lossyIfExcluded":true}
+        ]
+      },
+      {
+        "id":"v3","name":"V3 + MVU 未知脚本","badge":"阻塞与修复路径","summary":"包含混合 MVU 条目、未知必需脚本和缺失图片。正文知识与变量规则会拆成两个目标。","spec":"chara_card_v3","version":"3.0","hasAssets":false,
+        "items":[
+          {"id":"name","name":"角色姓名","original":"林澈","pointer":"/data/name","evidence":"字段为纯文本名称。","status":"direct","target":"character.name","action":"原样映射","outputPath":"character.name","output":"林澈"},
+          {"id":"description","name":"角色设定","original":"林澈是成年航海测绘师，记录海域变化，遇到未知现象时先收集证据。","pointer":"/data/description","evidence":"完整描述可放入 character.description；该示例中的身份信息已经包含在源描述。","status":"direct","target":"character.description","action":"保留完整原文","outputPath":"character.description","output":"林澈是成年航海测绘师，记录海域变化，遇到未知现象时先收集证据。"},
+          {"id":"mixed-knowledge","name":"混合 MVU 条目 · 剧情知识","original":"{\"content\":\"雾墙出现前，海图上的北针会短暂指向陆地。\",\"triggers\":[\"雾墙\",\"北针\"],\"set_variables\":{\"fog_seen\":true}}","pointer":"/data/extensions/mvu/entries/0/content","evidence":"同一个 MVU 条目同时包含可阅读正文和变量写入。此行只提取 content 与 triggers，变量写入由下一行单独承接。","status":"convertible","target":"worldbooks[0].entries[0]","action":"把正文与触发词映射为剧情知识","outputPath":"worldbooks[0].entries[0]","output":{"title":"雾墙与北针","keys":["雾墙","北针"],"content":"雾墙出现前，海图上的北针会短暂指向陆地。"},"splitGroup":"mvu-entry-1"},
+          {"id":"mixed-variable","name":"混合 MVU 条目 · 变量规则","original":"{\"content\":\"雾墙出现前，海图上的北针会短暂指向陆地。\",\"triggers\":[\"雾墙\",\"北针\"],\"set_variables\":{\"fog_seen\":true}}","pointer":"/data/extensions/mvu/entries/0/set_variables/fog_seen","evidence":"同一对象的 set_variables 与正文分开检查；目标变量规则保留触发条件和写入值，不与知识正文混在一起。","status":"convertible","target":"agents[kind=state_update].ruleFiles[0]","action":"把触发词和变量写入映射为状态更新规则文件","outputPath":"agents[0].ruleFiles[0]","output":{"id":"fog-state","when":{"anyOf":["雾墙","北针"]},"set":{"fog_seen":true}},"splitGroup":"mvu-entry-1"},
+          {"id":"unknown-script","name":"未知必需脚本","original":"onMessage: runExternal('mvu-plugin://fog-state', message)","pointer":"/data/extensions/mvu/on_message","evidence":"脚本调用未登记的外部运行时，且源卡将其标为必需；无法推导等价规则。","status":"unsupported","target":"未知脚本不能进入自有格式","action":"修复示例源并重新检查；不能忽略","required":true},
+          {"id":"legacy-regex","name":"旧正则扩展","original":"pattern: /\\[航迹:(.*?)\\]/g ； replacement: 航迹「$1」","pointer":"/data/extensions/regex_scripts/0","evidence":"旧运行时扩展可转存为 prompting.regexFiles 文件资源；是否迁移属于用户决策。","status":"confirm","target":"prompting.regexFiles[0] 或明确移出目标格式","action":"需选择转存正则文件资源或移出；移出必须写明原因","outputPath":"prompting.regexFiles[0]","output":{"id":"route-label","pattern":"\\[航迹:(.*?)\\]","flags":["global"],"replacement":"航迹「$1」","resourceType":"regex-file"},"canExclude":true,"lossyIfExcluded":true},
+          {"id":"portrait","name":"角色立绘","original":"asset://portrait/main.webp（源清单指向此文件，但示例包内不存在）","pointer":"/data/assets/0/uri","evidence":"源清单声明了立绘文件；内置示例未提供该文件，依赖闭合检查失败。","status":"missing","target":"files[0]","action":"模拟补齐依赖并重检，或明确移出该依赖子树并标记有损","outputPath":"files[0]","output":{"id":"portrait-main","path":"media/portrait/main.webp","kind":"image","demoPlaceholder":true},"canExclude":true,"lossyIfExcluded":true}
+        ]
+      },
+      {
+        "id":"missing","name":"含缺失资源的 V2 卡","badge":"依赖边界","summary":"源卡结构可读，但媒体依赖没有随包提供。可模拟补齐依赖，或说明原因后移出依赖子树并标记有损。","spec":"chara_card_v2","version":"2.0","hasAssets":false,
+        "items":[
+          {"id":"name","name":"角色姓名","original":"渡鸦","pointer":"/data/name","evidence":"字段为纯文本名称。","status":"direct","target":"character.name","action":"原样映射","outputPath":"character.name","output":"渡鸦"},
+          {"id":"description","name":"角色设定","original":"渡鸦是成年钟表修复师，习惯用零件的磨损判断物件经历。","pointer":"/data/description","evidence":"完整描述可放入角色基础字段。","status":"direct","target":"character.description","action":"保留完整原文","outputPath":"character.description","output":"渡鸦是成年钟表修复师，习惯用零件的磨损判断物件经历。"},
+          {"id":"opening","name":"开场白","original":"渡鸦放下镊子，示意你看一只停在三点十七分的怀表。","pointer":"/data/first_mes","evidence":"单条开场正文；目标 openings 数组可表达。","status":"convertible","target":"openings[0]","action":"逐项确认后转换","outputPath":"openings[0]","output":"渡鸦放下镊子，示意你看一只停在三点十七分的怀表。"},
+          {"id":"portrait","name":"角色立绘","original":"asset://raven/portrait.png（清单声明文件缺失）","pointer":"/data/assets/0/uri","evidence":"源清单列出媒体路径，但内置示例包没有对应二进制文件。","status":"missing","target":"files[0]","action":"模拟补齐依赖并重检，或明确移出该依赖子树并标记有损","outputPath":"files[0]","output":{"id":"raven-portrait","path":"media/raven/portrait.png","kind":"image","demoPlaceholder":true},"canExclude":true,"lossyIfExcluded":true}
+        ]
+      }
+    ],
+    "repair": {
+      "sourceId":"v3",
+      "removeItemId":"unknown-script",
+      "addItem":{"id":"controller-repaired","name":"修复后的确定性剧情规则","original":"if fog_seen == true then reveal('north_route')","pointer":"/data/extensions/mvu/repaired_controller","evidence":"示例源修复后由源内规则表达；重新检查为明确条件与明确剧情结果。","status":"convertible","target":"controllers[0]","action":"逐项确认后转换","outputPath":"controllers[0]","output":{"id":"north-route","when":{"fog_seen":true},"then":"reveal north_route","deterministic":true}}
+    },
+    "guides": [
+      {"id":"normal","name":"正常转换","description":"从 V2 基础卡开始，逐项确认正文映射，查看自有格式预览并确认报告版本后下载。","steps":[
+        {"label":"选择 V2 基础卡","action":{"type":"SELECT_SOURCE","sourceId":"v2"}},
+        {"label":"确认开场白映射","action":{"type":"DECIDE_ITEM","itemId":"opening","choice":"convert"}},
+        {"label":"确认备用开场映射","action":{"type":"DECIDE_ITEM","itemId":"alt-openings","choice":"convert"}},
+        {"label":"将旧正则转存为正则文件资源","action":{"type":"DECIDE_ITEM","itemId":"legacy-regex","choice":"convert"}},
+        {"label":"生成目标预览","action":{"type":"PREVIEW"}},
+        {"label":"确认本次报告版本","action":{"type":"FINAL_CONFIRM"}},
+        {"label":"生成示例下载","action":{"type":"GENERATE"}}
+      ]},
+      {"id":"blocked","name":"阻塞与修复","description":"未知必需脚本会阻止转换。修复内置源并重检后，混合 MVU 条目拆为剧情知识和变量规则；演示中可模拟补齐缺失图片依赖，或说明原因后移出。","steps":[
+        {"label":"选择 V3 + MVU 未知脚本","action":{"type":"SELECT_SOURCE","sourceId":"v3"}},
+        {"label":"尝试预览，观察必需脚本阻塞","action":{"type":"PREVIEW"}},
+        {"label":"修复示例源并重检","action":{"type":"REPAIR_SOURCE"}},
+        {"label":"转换 MVU 正文知识","action":{"type":"DECIDE_ITEM","itemId":"mixed-knowledge","choice":"convert"}},
+        {"label":"转换 MVU 变量规则","action":{"type":"DECIDE_ITEM","itemId":"mixed-variable","choice":"convert"}},
+        {"label":"将旧扩展移出并写明理由","action":{"type":"DECIDE_ITEM","itemId":"legacy-regex","choice":"exclude","reason":"旧协议正则依赖已弃用的运行时；本次不迁移，后续由确定性模板替代。"}},
+        {"label":"移出缺失立绘依赖并标记有损","action":{"type":"DECIDE_ITEM","itemId":"portrait","choice":"exclude","reason":"示例包没有立绘文件；仅导出文本与规则，后续补齐媒体后重新转换。"}},
+        {"label":"转换修复后的剧情规则","action":{"type":"DECIDE_ITEM","itemId":"controller-repaired","choice":"convert"}},
+        {"label":"生成预览","action":{"type":"PREVIEW"}},
+        {"label":"确认本次报告版本","action":{"type":"FINAL_CONFIRM"}},
+        {"label":"生成示例下载","action":{"type":"GENERATE"}}
+      ]},
+      {"id":"stale","name":"过期报告","description":"先生成有效预览，再重新选择源。源修订会使旧报告确认与预览失效，旧结果不能用于生成下载。","steps":[
+        {"label":"选择 V2 基础卡","action":{"type":"SELECT_SOURCE","sourceId":"v2"}},
+        {"label":"确认开场白映射","action":{"type":"DECIDE_ITEM","itemId":"opening","choice":"convert"}},
+        {"label":"确认备用开场映射","action":{"type":"DECIDE_ITEM","itemId":"alt-openings","choice":"convert"}},
+        {"label":"确认旧正则迁移","action":{"type":"DECIDE_ITEM","itemId":"legacy-regex","choice":"convert"}},
+        {"label":"生成当前报告预览","action":{"type":"PREVIEW"}},
+        {"label":"重新选择同一源，令旧预览过期","action":{"type":"SELECT_SOURCE","sourceId":"v2"}},
+        {"label":"尝试用旧报告生成下载","action":{"type":"GENERATE"}}
+      ]}
+    ],
+    "importSamples":[
+      {"id":"valid","name":"有效自有格式包","spec":"tavern_headless_card","version":"1.0.0","dependenciesClosed":true,"existing":{"id":"moon-archive","version":"1.2.0"},"incoming":{"id":"moon-archive","version":"1.3.0"},"summary":"版本兼容、依赖闭合，且与现有资源同 ID、不同版本。"},
+      {"id":"wrong-spec","name":"其他格式包","spec":"chara_card_v2","version":"2.0","dependenciesClosed":true,"existing":null,"incoming":{"id":"foreign","version":"2.0"},"summary":"包结构可读，但 spec 不属于 tavern_headless_card。"},
+      {"id":"wrong-version","name":"未来版本包","spec":"tavern_headless_card","version":"2.1.0","dependenciesClosed":true,"existing":null,"incoming":{"id":"future","version":"2.1.0"},"summary":"spec 名称正确，但版本超出当前原型支持范围。"},
+      {"id":"open-dependency","name":"缺依赖包","spec":"tavern_headless_card","version":"1.0.0","dependenciesClosed":false,"existing":null,"incoming":{"id":"broken","version":"1.0.0"},"summary":"自有格式版本正确，但包引用的媒体文件不存在。"}
+    ],
+    "exportSamples":[
+      {"id":"complete","name":"完整角色资源","version":"character@1.4.0 · worldbook@2.1.0 · media@1.0.2","dependenciesClosed":true,"description":"固定三个资源版本；角色、世界书和媒体都能在包内找到。"},
+      {"id":"missing","name":"缺少媒体的资源","version":"character@1.4.0 · worldbook@2.1.0 · media@1.0.2","dependenciesClosed":false,"description":"版本已固定，但角色引用的 portrait.webp 不在导出依赖集合中。"}
+    ]
+  }
+  </script>
+
+  <script>
+    "use strict";
+    const CONFIG = JSON.parse(document.getElementById("prototype-config").textContent);
+    const emptyConversion = () => ({step:1, sourceId:null, repaired:false, repairedDependencies:[], reportRevision:0, decisionRevision:0, decisions:{}, preview:null, finalConfirmation:null, generated:null, notice:"", noticeType:""});
+    const initialState = () => ({mode:"convert", conversion:emptyConversion(), importFlow:{sampleId:"valid", inspection:null, choice:"", result:null}, exportFlow:{sampleId:"complete", check:null, downloaded:false}, guide:{scenarioId:"normal", step:0, started:false}});
+
+    // Pure state transition module. It receives only plain state/actions and never reads the DOM.
+    function reducer(state, action) {
+      const c = state.conversion;
+      const withNotice = (next, message, type="") => ({...next, conversion:{...next.conversion, notice:message, noticeType:type}});
+      switch (action.type) {
+        case "SET_MODE": return {...state, mode:action.mode};
+        case "SELECT_SOURCE": {
+          const source = getSource(action.sourceId);
+          if (!source) return state;
+          const rev = c.reportRevision + 1;
+          const invalidPreview = c.preview ? {...c.preview, valid:false, invalidatedReason:"源已重新选择，报告版本变化。"} : null;
+          const nextC = {...emptyConversion(), sourceId:source.id, step:2, repaired:false, reportRevision:rev, decisionRevision:c.decisionRevision+1, preview:invalidPreview, notice:`已选择 ${source.name}，报告版本 R${rev}。旧确认和预览已失效。`, noticeType:"warn"};
+          return {...state, mode:"convert", conversion:nextC, guide:{...state.guide, started:false}};
+        }
+        case "REPAIR_SOURCE": {
+          if (c.sourceId !== CONFIG.repair.sourceId || c.repaired) return withNotice(state, "当前源没有可执行的示例修复。", "warn");
+          const old = c.preview ? {...c.preview, valid:false, invalidatedReason:"示例源已修复并重新检查。"} : null;
+          const rev = c.reportRevision + 1;
+          const nextC = {...emptyConversion(), sourceId:c.sourceId, repaired:true, repairedDependencies:c.repairedDependencies, step:2, reportRevision:rev, decisionRevision:c.decisionRevision+1, preview:old, notice:CONFIG.labels.repairDone, noticeType:"ok"};
+          return {...state, conversion:nextC};
+        }
+        case "REPAIR_DEPENDENCY": {
+          const item = getItems(c).find(x => x.id === action.itemId);
+          if (!item || item.status !== "missing" || c.repairedDependencies.includes(item.id)) return withNotice(state, "当前报告没有可补齐的缺失示例资源。", "warn");
+          const old = c.preview ? {...c.preview, valid:false, invalidatedReason:"已模拟补齐缺失依赖并重新检查。"} : null;
+          const rev = c.reportRevision + 1;
+          const nextC = {...emptyConversion(), sourceId:c.sourceId, repaired:c.repaired, repairedDependencies:[...c.repairedDependencies,item.id], step:2, reportRevision:rev, decisionRevision:c.decisionRevision+1, preview:old, notice:CONFIG.labels.dependencyRepaired, noticeType:"ok"};
+          return {...state, conversion:nextC};
+        }
+        case "DECIDE_ITEM": {
+          const item = getItems(c).find(x => x.id === action.itemId);
+          if (!item) return state;
+          if (item.status === "unsupported" && item.required) return withNotice(state, CONFIG.labels.requiredCannotSkip, "error");
+          if (item.status === "missing" && action.choice === "convert") return withNotice(state, "缺失资源不能直接采用映射。请模拟补齐依赖并重检，或填写原因后明确移出依赖子树。", "error");
+          if (action.choice === "exclude" && !String(action.reason || "").trim()) return withNotice(state, CONFIG.labels.reasonRequired, "error");
+          if (action.choice === "exclude" && !item.canExclude) return withNotice(state, "此项没有可排除的依赖子树。", "error");
+          if (action.choice !== "convert" && action.choice !== "exclude") return state;
+          const nextDecision = {choice:action.choice, reason:String(action.reason || "").trim(), confirmedForRevision:c.reportRevision};
+          const preview = c.preview ? {...c.preview, valid:false, invalidatedReason:"逐项决策已修改。"} : null;
+          const nextC = {...c, decisions:{...c.decisions, [item.id]:nextDecision}, decisionRevision:c.decisionRevision+1, preview, finalConfirmation:null, generated:null, notice:`${item.name} 已记录为「${action.choice === "convert" ? CONFIG.labels.decision.convert : CONFIG.labels.decision.exclude}」，绑定报告 R${c.reportRevision}。旧预览已失效。`, noticeType:"ok"};
+          return {...state, conversion:nextC};
+        }
+        case "GO_STEP": {
+          if (action.step < 1 || action.step > 5) return state;
+          if (!c.sourceId && action.step > 1) return withNotice(state, CONFIG.labels.emptySource, "warn");
+          if (action.step >= 4 && getBlockers(state).length) return withNotice(state, CONFIG.labels.blockedPreview, "error");
+          if (action.step === 5 && !isCurrentPreview(state)) return withNotice(state, CONFIG.labels.stalePreview, "error");
+          if (action.step === 5 && !isConfirmed(state)) return withNotice(state, "先确认当前报告版本，才能进入完成步骤。", "warn");
+          return {...state, conversion:{...c, step:action.step}};
+        }
+        case "PREVIEW": {
+          const blockers = getBlockers(state);
+          if (blockers.length) return withNotice(state, `${CONFIG.labels.blockedPreview} 阻塞 ${blockers.length} 项。`, "error");
+          const preview = createPreview(state);
+          return {...state, conversion:{...c, step:4, preview, finalConfirmation:null, generated:null, notice:CONFIG.labels.previewDone, noticeType:"ok"}};
+        }
+        case "FINAL_CONFIRM": {
+          if (!isCurrentPreview(state)) return withNotice(state, CONFIG.labels.stalePreview, "error");
+          return {...state, conversion:{...c, finalConfirmation:{reportRevision:c.reportRevision, decisionRevision:c.decisionRevision}, notice:`已确认报告 R${c.reportRevision} / 决策 D${c.decisionRevision}。`, noticeType:"ok"}};
+        }
+        case "CLEAR_CONFIRM": return {...state, conversion:{...c, finalConfirmation:null, generated:null, notice:"已撤销最终确认。", noticeType:"warn"}};
+        case "GENERATE": {
+          if (!isCurrentPreview(state) || !isConfirmed(state)) return withNotice(state, CONFIG.labels.stalePreview + " 需要重新生成预览并确认版本。", "error");
+          const card = buildOwnCard(state);
+          return {...state, conversion:{...c, step:5, generated:{filename:`${slug(card.card.character.name)}-tavern-headless-card-demo.json`, payload:card}, notice:CONFIG.labels.downloadDone, noticeType:"ok"}};
+        }
+        case "RESET_CONVERSION": return {...state, mode:"convert", conversion:emptyConversion(), guide:{...state.guide, started:false}};
+        case "GUIDE_SELECT": return {...initialState(), guide:{scenarioId:action.scenarioId, step:0, started:true}};
+        case "GUIDE_STEP": {
+          const guide = CONFIG.guides.find(x => x.id === state.guide.scenarioId);
+          if (!guide || !state.guide.started) return state;
+          const item = guide.steps[state.guide.step];
+          if (!item) return state;
+          const advanced = reducer(state, item.action);
+          return {...advanced, guide:{...advanced.guide, scenarioId:guide.id, step:state.guide.step+1, started:true}};
+        }
+        case "IMPORT_SELECT": return {...state, mode:"import", importFlow:{sampleId:action.sampleId, inspection:null, choice:"", result:null}};
+        case "IMPORT_INSPECT": {
+          const sample = CONFIG.importSamples.find(x => x.id === state.importFlow.sampleId);
+      const issues = [];
+          if (sample.spec !== CONFIG.spec.name) issues.push(`只接受 ${CONFIG.spec.name} 格式。请改选正确格式的自有卡包，再次检查。`);
+          if (sample.version !== CONFIG.spec.version) issues.push("当前版本不受支持。当前仅接受 tavern_headless_card 1.0.0；请选兼容版本并重新检查。");
+          if (!sample.dependenciesClosed) issues.push("包内媒体依赖缺失。请补齐缺失文件，再点“检查示例包”重新检查；依赖闭合后才能导入。");
+          const conflict = !!sample.existing && sample.existing.id === sample.incoming.id;
+          return {...state, importFlow:{...state.importFlow, inspection:{valid:issues.length===0, issues, conflict, sampleId:sample.id}, result:null}, mode:"import"};
+        }
+        case "IMPORT_CHOICE": return {...state, importFlow:{...state.importFlow, choice:action.choice, result:null}};
+        case "IMPORT_APPLY": {
+          const f = state.importFlow;
+          if (!f.inspection || !f.inspection.valid) return {...state, importFlow:{...f, result:{ok:false, text:"包检查未通过，导入演示已阻止。"}}};
+          if (f.inspection.conflict && !["copy","new-version"].includes(f.choice)) return {...state, importFlow:{...f, result:{ok:false, text:"检测到 ID 冲突，请选择创建副本或导入新版本。"}}};
+          const text = f.inspection.conflict ? (f.choice === "copy" ? "演示：将创建一个新 ID 的副本。" : "演示：将同一角色 ID 导入为新版本。") : "演示：包已通过检查，可作为新资源导入。";
+          return {...state, importFlow:{...f, result:{ok:true, text: text + " 本原型不会写入资源库。"}}};
+        }
+        case "EXPORT_SELECT": return {...state, mode:"export", exportFlow:{sampleId:action.sampleId, check:null, downloaded:false}};
+        case "EXPORT_CHECK": {
+          const sample = CONFIG.exportSamples.find(x => x.id === state.exportFlow.sampleId);
+          const issues = sample.dependenciesClosed ? [] : ["固定版本的媒体依赖未闭合：缺少 portrait.webp。请补入该文件或重新选择完整示例，再点“检查固定版本与依赖”复检。"];
+          return {...state, mode:"export", exportFlow:{...state.exportFlow, check:{ok:issues.length===0, issues, sampleId:sample.id}, downloaded:false}};
+        }
+        case "EXPORT_DOWNLOAD": {
+          const f = state.exportFlow;
+          if (!f.check || !f.check.ok) return state;
+          return {...state, mode:"export", exportFlow:{...f, downloaded:true}};
+        }
+        default: return state;
+      }
+    }
+
+    function getSource(id) { return CONFIG.sources.find(x => x.id === id); }
+    function getItems(c) {
+      const source = getSource(c.sourceId);
+      if (!source) return [];
+      let items = source.items.map(x => ({...x}));
+      if (c.sourceId === CONFIG.repair.sourceId && c.repaired) {
+        items = items.filter(x => x.id !== CONFIG.repair.removeItemId);
+        items.push({...CONFIG.repair.addItem});
+      }
+      return items.map(item => c.repairedDependencies.includes(item.id) ? {...item,status:"direct",action:"已模拟补齐依赖并重检，保留媒体占位记录。",evidence:item.evidence + " 演示已模拟依赖重检通过；媒体内容仍为占位记录。"} : item);
+    }
+    function getBlockers(state) {
+      const c = state.conversion;
+      if (!c.sourceId) return ["未选择源示例"];
+      return getItems(c).filter(item => {
+        if (item.status === "direct") return false;
+        if (item.status === "unsupported" && item.required) return true;
+        const decision = c.decisions[item.id];
+        if (item.status === "missing") return !decision || decision.choice !== "exclude" || !decision.reason.trim() || decision.confirmedForRevision !== c.reportRevision;
+        return !decision || decision.confirmedForRevision !== c.reportRevision;
+      });
+    }
+    function isCurrentPreview(state) {
+      const c = state.conversion, p = c.preview;
+      return !!p && p.valid && p.reportRevision === c.reportRevision && p.decisionRevision === c.decisionRevision && getBlockers(state).length === 0;
+    }
+    function isConfirmed(state) {
+      const c = state.conversion, f = c.finalConfirmation;
+      return isCurrentPreview(state) && !!f && f.reportRevision === c.reportRevision && f.decisionRevision === c.decisionRevision;
+    }
+    function createPreview(state) {
+      const c = state.conversion;
+      const items = getItems(c);
+      const excluded = items.filter(x => c.decisions[x.id]?.choice === "exclude");
+      const mapped = items.filter(x => x.status === "direct" || c.decisions[x.id]?.choice === "convert");
+      return {valid:true, reportRevision:c.reportRevision, decisionRevision:c.decisionRevision, mappedCount:mapped.length, excludedCount:excluded.length, lossy:excluded.length>0, mapped:mapped.map(x=>({name:x.name,target:x.target,pointer:x.pointer,action:x.status==="direct"?x.action:CONFIG.labels.decision.convert})), excluded:excluded.map(x=>({name:x.name,target:x.target,pointer:x.pointer,reason:c.decisions[x.id].reason})), ownCard:buildOwnCard(state)};
+    }
+    function buildOwnCard(state) {
+      const c = state.conversion, source = getSource(c.sourceId);
+      const card = {character:{},worldbooks:[{entries:[]}],openings:[],agents:[{kind:"state_update",ruleFiles:[]}],controllers:[],prompting:{regexFiles:[]},files:[],state:null,presentation:null,provenance:{source:{id:source.id,name:source.name,spec:source.spec,version:source.version,readOnly:true},reportRevision:c.reportRevision,decisionRevision:c.decisionRevision,lossy:false,excluded:[]}};
+      for (const item of getItems(c)) {
+        const decision = c.decisions[item.id];
+        if (decision?.choice === "exclude") { card.provenance.lossy = true; card.provenance.excluded.push({sourcePointer:item.pointer,reason:decision.reason}); continue; }
+        if (item.outputPath && item.output !== undefined) setPath(card,item.outputPath,item.output);
+      }
+      return {spec:CONFIG.demoSpec.name,specVersion:CONFIG.demoSpec.version,demoOf:{spec:CONFIG.spec.name,specVersion:CONFIG.spec.version},demoOnly:true,card};
+    }
+    function setPath(object,path,value) {
+      const parts = path.replace(/\[(\d+)\]/g,".$1").split(".");
+      let cursor = object;
+      for (let i=0;i<parts.length-1;i++) {
+        const key = parts[i], nextIsIndex = /^\d+$/.test(parts[i+1]);
+        if (cursor[key] == null) cursor[key] = nextIsIndex ? [] : {};
+        cursor = cursor[key];
+      }
+      cursor[parts[parts.length-1]] = structuredClone(value);
+    }
+    function slug(text) { return String(text || "角色卡").toLowerCase().replace(/[^\p{L}\p{N}]+/gu,"-").replace(/^-|-$/g,"") || "character"; }
+
+    let state = initialState();
+    const $ = id => document.getElementById(id);
+    const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch]));
+    const source = () => getSource(state.conversion.sourceId);
+    const dispatch = action => {
+      const previous = state;
+      state = reducer(state, action);
+      render();
+      if (!previous.conversion.generated && state.conversion.generated) {
+        downloadJson(state.conversion.generated.filename, state.conversion.generated.payload);
+      }
+      if (action.type === "EXPORT_DOWNLOAD" && state.exportFlow.downloaded && !previous.exportFlow.downloaded) {
+        const sample = CONFIG.exportSamples.find(x=>x.id===state.exportFlow.sampleId);
+        const payload = {spec:CONFIG.demoSpec.name,specVersion:CONFIG.demoSpec.version,demoOf:{spec:CONFIG.spec.name,specVersion:CONFIG.spec.version},demoOnly:true,kind:"complete-demo-package",resourceVersions:sample.version.split(" · "),card:{character:{name:"档案守灯人",description:"内置演示角色。"},worldbooks:[{entries:[{title:"海港档案",content:"潮汐改变时，旧钟楼会响一次。"}]}],openings:["雨停后，档案室的灯还亮着。"],agents:[{kind:"state_update",ruleFiles:[]}],controllers:[],prompting:{regexFiles:[]},files:[{id:"portrait-demo",path:"media/portrait/main.webp",kind:"image",demoPlaceholder:true}],state:null,presentation:null,provenance:{readOnly:true,source:"内置完整包结构示例 JSON"}}};
+        downloadJson("tavern-headless-card-package-demo.json",payload);
+      }
+    };
+    function downloadJson(filename, payload) {
+      const blob = new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a"); link.href=url; link.download=filename; document.body.appendChild(link); link.click(); link.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),1000);
+    }
+    function statusPill(status) { return `<span class="status ${escapeHtml(status)}">${escapeHtml(CONFIG.labels.statuses[status])}</span>`; }
+    function field(label,value,mono=false) { return `<div class="field-line"><span class="field-name">${escapeHtml(label)}</span><span class="field-value ${mono?"code":""}">${escapeHtml(value)}</span></div>`; }
+    function notice(message,type="") { return message ? `<div class="notice ${escapeHtml(type)}" role="status">${escapeHtml(message)}</div>` : ""; }
+    function getCounts() {
+      const items=getItems(state.conversion); const result={direct:0,convertible:0,confirm:0,unsupported:0,missing:0,resolved:0,blocked:0};
+      for(const item of items){ result[item.status]++; if(item.status==="direct" || state.conversion.decisions[item.id]) result.resolved++; }
+      result.blocked=getBlockers(state).length; return result;
+    }
+    function render() {
+      renderModes(); renderMain(); renderState(); renderQuickActions(); renderDependencyRepairActions(); renderGuide();
+    }
+    function renderModes() {
+      $("mode-tabs").innerHTML=Object.entries(CONFIG.labels.modes).map(([id,label])=>`<button data-mode="${id}" class="${state.mode===id?"active":""}" aria-current="${state.mode===id?"page":"false"}">${escapeHtml(label)}</button>`).join("");
+    }
+    function renderMain() {
+      if(state.mode==="convert") renderConversion();
+      if(state.mode==="import") renderImport();
+      if(state.mode==="export") renderExport();
+    }
+    function renderConversion() {
+      const c=state.conversion, selected=source();
+      const stepper=`<div class="stepper" aria-label="转换步骤">${CONFIG.labels.steps.map((label,i)=>`<button data-step="${i+1}" class="${c.step===i+1?"active":""}" ${i===0||selected?"":"disabled"}><span class="step-num">0${i+1}</span><span class="step-label">${escapeHtml(label)}</span></button>`).join("")}</div>`;
+      let body="";
+      if(c.step===1) body=renderSourcePicker();
+      else if(c.step===2) body=renderReportOverview();
+      else if(c.step===3) body=renderDecisions();
+      else if(c.step===4) body=renderPreview();
+      else body=renderCompletion();
+      $("main-view").innerHTML=stepper+notice(c.notice,c.noticeType)+body+renderSchemaCard();
+    }
+    function renderSourcePicker() {
+      const selected=state.conversion.sourceId;
+      return `<section class="card"><div class="card-head"><div><h2>1 · 选择源示例</h2><p class="small">示例只存在于页面配置中。选择时会建立新的报告修订号，并清空该源的逐项决策。</p></div><span class="tag">只读源快照</span></div><div class="source-grid">${CONFIG.sources.map(s=>`<button class="source-card ${selected===s.id?"selected":""}" data-source="${escapeHtml(s.id)}"><strong>${escapeHtml(s.name)}</strong><span class="small">${escapeHtml(s.summary)}</span><span class="tag">${escapeHtml(s.badge)}</span></button>`).join("")}</div></section>`;
+    }
+    function renderReportOverview() {
+      const c=state.conversion, s=source(), items=getItems(c), counts=getCounts();
+      return `<section class="card"><div class="card-head"><div><h2>2 · 预转换报告</h2><p class="small">报告 R${c.reportRevision} · ${escapeHtml(s.name)} · 原格式 ${escapeHtml(s.spec)} ${escapeHtml(s.version)}${c.repaired?" · 已修复重检":""}</p></div><button data-action="REPAIR_SOURCE" ${s.id===CONFIG.repair.sourceId&&!c.repaired?"":"disabled"}>${escapeHtml(CONFIG.labels.actions.repair)}</button></div><div class="summary-grid">${[["direct","直接"],["convertible","可转换"],["confirm","需确认"],["unsupported","不支持"],["missing","缺依赖"]].map(([key,label])=>`<div class="summary-cell"><b>${counts[key]}</b><span>${label}</span></div>`).join("")}</div><p class="small">${items.length} 条报告记录。混合 MVU 条目按可迁移语义拆分成剧情知识和变量规则两个目标。</p>${items.map(item=>reportItem(item,false)).join("")}<div class="flow-actions"><button class="primary" data-action="GO_STEP" data-step="3">${escapeHtml(CONFIG.labels.actions.next)}</button></div></section>`;
+    }
+    function renderDecisions() {
+      const c=state.conversion, items=getItems(c), blockers=getBlockers(state);
+      return `<section class="card"><div class="card-head"><div><h2>3 · 逐项处理</h2><p class="small">每个决定记录在报告 R${c.reportRevision}。修改决定会使已有预览过期。移出目标格式必须填写原因；未知必需脚本只允许修复源并重检。</p></div><span class="tag">${blockers.length?`阻塞 ${blockers.length} 项`:"可生成预览"}</span></div><div class="report-list">${items.map(item=>reportItem(item,true)).join("")}</div><div class="flow-actions"><button data-action="GO_STEP" data-step="2">返回报告</button><button class="primary" data-action="PREVIEW">${escapeHtml(CONFIG.labels.actions.preview)}</button></div></section>`;
+    }
+    function reportItem(item, editable) {
+      const c=state.conversion, decision=c.decisions[item.id], blocking=item.status==="unsupported"&&item.required || (item.status!=="direct"&&!decision), resolved=item.status==="direct"||!!decision;
+      const actionText=item.status==="direct"?item.action:decision?(decision.choice==="convert"?CONFIG.labels.decision.convert:`${CONFIG.labels.decision.exclude}：${decision.reason}`):item.action;
+      let controls="";
+      if(editable && item.status!=="direct" && !(item.status==="unsupported"&&item.required)) {
+        const excludeAllowed=!!item.canExclude;
+        controls=`<div class="decision"><div><label for="choice-${escapeHtml(item.id)}">处理动作</label><select id="choice-${escapeHtml(item.id)}" data-choice="${escapeHtml(item.id)}"><option value="">选择处理动作…</option><option value="convert" ${decision?.choice==="convert"?"selected":""}>${escapeHtml(CONFIG.labels.decision.convert)}</option>${excludeAllowed?`<option value="exclude" ${decision?.choice==="exclude"?"selected":""}>${escapeHtml(CONFIG.labels.decision.exclude)}</option>`:""}</select></div>${excludeAllowed?`<div><label for="reason-${escapeHtml(item.id)}">移出原因（必填）</label><textarea id="reason-${escapeHtml(item.id)}" data-reason="${escapeHtml(item.id)}" placeholder="说明为何移出及造成的内容损失">${escapeHtml(decision?.choice==="exclude"?decision.reason:"")}</textarea></div>`:`<div class="decision-note">采用映射后，此项会绑定当前报告修订 R${c.reportRevision}。</div>`}<button data-save-decision="${escapeHtml(item.id)}">记录决定</button></div>`;
+      }
+      const split=item.splitGroup?`<div class="decision-note">同一 MVU 条目拆分组 ${escapeHtml(item.splitGroup)}：该行只进入「${escapeHtml(item.target)}」。</div>`:"";
+      const required=item.required?`<div class="notice error">未知必需脚本阻塞转换。请修复示例源并重检；没有“忽略”选项。</div>`:"";
+      const revision=decision?`确认绑定：报告 R${decision.confirmedForRevision}`:"未确认";
+      return `<article class="report-item ${blocking?"blocked":resolved?"resolved":""}"><div class="report-title"><h3>${escapeHtml(item.name)}</h3>${statusPill(item.status)}</div>${field("源原文",item.original)}${field("JSON 来源指针",item.pointer,true)}${field("检测证据",item.evidence)}${field("目标位置",item.target,true)}${field("处理动作与原因",actionText)}${item.status!=="direct"?field("报告绑定",revision,true):""}${split}${required}${controls}</article>`;
+    }
+    function renderPreview() {
+      const c=state.conversion, p=c.preview, current=isCurrentPreview(state);
+      const sample=current?p.ownCard:buildOwnCard(state);
+      const previewTitle=current?"将生成的演示包装 JSON 结构":"当前草稿结构（未生成有效预览）";
+      const rows=CONFIG.schema.map(item=>`<div class="target-node"><code>${escapeHtml(item.path)}</code><span>${escapeHtml(item.label)} · ${escapeHtml(item.detail)}</span></div>`).join("");
+      return `<section class="card"><div class="card-head"><div><h2>4 · 目标预览</h2><p class="small">预览绑定报告 R${p?.reportRevision ?? "—"} / 决策 D${p?.decisionRevision ?? "—"}；当前状态 ${current?"有效":"无效或未生成"}。</p></div><span class="tag">${current?"有效预览":"需要重做"}</span></div>${p&&!p.valid?notice(`上次预览 R${p.reportRevision} / D${p.decisionRevision} 已失效：${p.invalidatedReason}`,"warn"):""}<div class="target-tree">${rows}</div><div class="summary-grid" style="margin-top:10px"><div class="summary-cell"><b>${current?p.mappedCount:"—"}</b><span>已映射</span></div><div class="summary-cell"><b>${current?p.excludedCount:"—"}</b><span>已移出</span></div><div class="summary-cell"><b>${sample.card.provenance.lossy?"是":"否"}</b><span>有损结果</span></div></div><details style="margin-top:12px"><summary>${escapeHtml(previewTitle)}</summary><pre class="code" style="white-space:pre-wrap;overflow-wrap:anywhere">${escapeHtml(JSON.stringify(sample,null,2))}</pre></details><div class="confirm-row"><input type="checkbox" id="final-confirm" data-final-confirm ${isConfirmed(state)?"checked":""} ${current?"":"disabled"}><label for="final-confirm">我已核对报告 R${c.reportRevision} 与目标预览。最终确认绑定报告 R${c.reportRevision} / 决策 D${c.decisionRevision}；任何源或决策变化都会要求重新预览和确认。</label></div><div class="flow-actions"><button data-action="GO_STEP" data-step="3">返回逐项处理</button><button class="primary" data-action="GENERATE" ${isConfirmed(state)?"":"disabled"}>${escapeHtml(CONFIG.labels.actions.download)}</button></div></section>`;
+    }
+    function renderCompletion() {
+      const g=state.conversion.generated;
+      return `<section class="card"><div class="card-head"><div><h2>5 · 完成下载</h2><p class="small">${g?"下载文件已在本地生成。":"尚未生成文件。"}</p></div><span class="tag">${g?"演示数据":"等待确认"}</span></div>${g?`<div class="notice ok">文件名：${escapeHtml(g.filename)}。内容来自内置示例 JSON，经浏览器本地 Blob 下载。</div><div class="schema-grid">${CONFIG.schema.map(x=>`<div class="schema-node"><code>${escapeHtml(x.path)}</code><p>${escapeHtml(x.label)}</p></div>`).join("")}</div><p class="footnote">provenance 保留来源 ID、源格式和只读标记；确认报告 R${g.payload.card.provenance.reportRevision} / 决策 D${g.payload.card.provenance.decisionRevision}。${g.payload.card.provenance.lossy?"本包已标记有损，并附移出原因。":"本包没有移出项。"}</p><button class="primary" data-download-again>再次下载本地示例 JSON</button>`:`<div class="empty">请回到目标预览，确认当前报告修订后再生成。</div>`}<div class="flow-actions"><button data-action="GO_STEP" data-step="4">返回预览</button><button data-action="RESET_CONVERSION">重新开始转换</button></div></section>`;
+    }
+    function renderSchemaCard() {
+      return `<section class="card"><div class="card-head"><div><h2>正式目标结构提案</h2><p class="small">报告按正式目标路径展示；下载使用 tavern_headless_card_demo 包装，只是交互示例。</p></div></div><div class="schema-grid">${CONFIG.schema.map(x=>`<div class="schema-node"><code>${escapeHtml(x.path)}</code><p><strong>${escapeHtml(x.label)}</strong> · ${escapeHtml(x.detail)}</p></div>`).join("")}</div></section>`;
+    }
+    function renderState() {
+      const c=state.conversion, s=source(), counts=getCounts(), p=c.preview;
+      const lines=[
+        ["当前流程",CONFIG.labels.modes[state.mode]],
+        ["转换步骤",`${c.step} / 5 · ${CONFIG.labels.steps[c.step-1]}`],
+        ["源示例",s?`${s.name}${c.repaired?"（已修复）":""}`:"未选择"],
+        ["源格式",s?`${s.spec} ${s.version}`:"—"],
+        ["报告修订",`R${c.reportRevision}`],
+        ["决策修订",`D${c.decisionRevision}`],
+        ["项目状态",s?`直接 ${counts.direct} · 可转换 ${counts.convertible} · 需确认 ${counts.confirm} · 不支持 ${counts.unsupported} · 缺依赖 ${counts.missing}`:"—"],
+        ["未解决阻塞",s?String(counts.blocked):"—"],
+        ["旧预览",p?`R${p.reportRevision}/D${p.decisionRevision} · ${isCurrentPreview(state)?"有效":p.valid?"过期":"已失效"}`:"无"],
+        ["最终确认",c.finalConfirmation?`R${c.finalConfirmation.reportRevision}/D${c.finalConfirmation.decisionRevision}`:"未确认"],
+        ["生成文件",c.generated?c.generated.filename:"未生成"],
+        ["导入检查",state.importFlow.inspection?(state.importFlow.inspection.valid?"通过":"阻塞")+(state.importFlow.result?` · ${state.importFlow.result.ok?"演示完成":"未执行"}`:""):"未检查"],
+        ["导出检查",state.exportFlow.check?(state.exportFlow.check.ok?"通过":"阻塞")+(state.exportFlow.downloaded?" · 已下载":""):"未检查"]
+      ];
+      $("state-panel").innerHTML=`<div class="card-head"><div><h2>${escapeHtml(CONFIG.labels.railTitle)}</h2><p class="small">每次操作后更新</p></div><span class="tag">内存状态</span></div><div class="state-list">${lines.map(([k,v])=>`<div class="state-line"><span class="field-name">${escapeHtml(k)}</span><span class="field-value">${escapeHtml(v)}</span></div>`).join("")}</div>${c.notice?notice(c.notice,c.noticeType):""}<p class="footnote">报告版本仅在换源或重检时增加。每条决定绑定其确认时的报告版本；修改决定增加决策修订并作废旧预览。</p>`;
+    }
+    function renderQuickActions() {
+      $("quick-panel").innerHTML=`<div class="card-head"><div><h2>${escapeHtml(CONFIG.labels.quickTitle)}</h2><p class="small">任何顺序都可点；完整状态会同步显示。</p></div></div><div class="quick-actions"><button data-action="RESET_CONVERSION">重置转换</button><button data-action="PREVIEW">尝试生成预览</button>${CONFIG.sources.map(s=>`<button data-source="${escapeHtml(s.id)}">选择 ${escapeHtml(s.name)}</button>`).join("")}<button data-action="REPAIR_SOURCE" ${cangetRepair()?"":"disabled"}>修复当前示例源并重检</button></div><p class="footnote">未解决项会阻止预览；必需未知脚本不能忽略。排除缺失依赖或旧协议内容需要填写原因，并把导出标记为有损。</p>`;
+    }
+    function cangetRepair(){return state.conversion.sourceId===CONFIG.repair.sourceId&&!state.conversion.repaired;}
+    function renderDependencyRepairActions(){
+      const missing=getItems(state.conversion).filter(item=>item.status==="missing");
+      if(!missing.length)return;
+      $("quick-panel").innerHTML += "<div class=\"quick-actions\">" + missing.map(item=>"<button data-repair-dependency=\"" + escapeHtml(item.id) + "\">" + escapeHtml(CONFIG.labels.actions.repairDependency) + " · " + escapeHtml(item.name) + "</button>").join("") + "</div>";
+    }
+    function renderGuide() {
+      const guide=CONFIG.guides.find(x=>x.id===state.guide.scenarioId)||CONFIG.guides[0];
+      const current=guide.steps[state.guide.step];
+      const done=state.guide.started&&state.guide.step>=guide.steps.length;
+      $("guide-panel").innerHTML=`<div class="card-head"><div><h2>${escapeHtml(CONFIG.labels.guideTitle)}</h2><p class="small">逐步点按钮运行指定状态路径。</p></div></div><div class="guide-tabs">${CONFIG.guides.map(g=>`<button data-guide="${g.id}" class="${guide.id===g.id?"active":""}">${escapeHtml(g.name)}</button>`).join("")}</div><p class="small">${escapeHtml(guide.description)}</p><div>${guide.steps.map((s,i)=>`<div class="guide-step ${state.guide.started&&i===state.guide.step?"current":""}"><span>${i+1}. ${escapeHtml(s.label)}</span><span>${state.guide.started&&i<state.guide.step?"完成":state.guide.started&&i===state.guide.step?"当前":"待执行"}</span></div>`).join("")}</div><div class="flow-actions"><button data-guide="${guide.id}" data-guide-reset>重新开始本导览</button><button class="primary" data-guide-step ${!state.guide.started||done?"disabled":""}>${done?"导览完成":current?`执行：${escapeHtml(current.label)}`:"开始导览"}</button></div>`;
+    }
+    function renderImport() {
+      const f=state.importFlow, sample=CONFIG.importSamples.find(x=>x.id===f.sampleId), i=f.inspection;
+      const sampleCards=CONFIG.importSamples.map(s=>`<button class="source-card ${f.sampleId===s.id?"selected":""}" data-import-sample="${s.id}"><strong>${escapeHtml(s.name)}</strong><span class="small">${escapeHtml(s.summary)}</span><span class="tag">${escapeHtml(s.spec)} · ${escapeHtml(s.version)}</span></button>`).join("");
+      $("main-view").innerHTML=`<section class="card"><div class="card-head"><div><h2>导入自有卡</h2><p class="small">只接受 spec=${escapeHtml(CONFIG.spec.name)}、specVersion=${escapeHtml(CONFIG.spec.version)}；检查依赖闭合后再选择冲突处理方式。流程只演示计划，不写资源库。</p></div><span class="tag">独立流程</span></div><div class="source-grid">${sampleCards}</div><div class="flow-actions"><button class="primary" data-action="IMPORT_INSPECT">${escapeHtml(CONFIG.labels.actions.inspect)}</button></div>${i?`<div class="card" style="margin-top:12px"><h2>版本与依赖检查</h2>${field("输入 spec",sample.spec,true)}${field("输入 specVersion",sample.version,true)}${field("依赖闭合",sample.dependenciesClosed?"是":"否")}${field("冲突",i.conflict?`现有 ${sample.existing.id}@${sample.existing.version} / 输入 ${sample.incoming.id}@${sample.incoming.version}`:"无")}${i.issues.length?notice(i.issues.join(" "),"error"):notice("格式、版本与依赖均通过。", "ok")}${i.conflict?`<div class="choice-row"><button data-import-choice="copy" class="${f.choice==="copy"?"active":""}">创建副本（新 ID）</button><button data-import-choice="new-version" class="${f.choice==="new-version"?"active":""}">导入新版本（同 ID）</button></div>`:""}<div class="flow-actions"><button data-action="IMPORT_APPLY" ${i.valid?"":"disabled"}>${escapeHtml(CONFIG.labels.actions.apply)}</button></div>${f.result?notice(f.result.text,f.result.ok?"ok":"warn"):""}</div>`:""}<p class="footnote">冲突示例提供“创建副本”与“导入新版本”。未通过格式、版本或依赖检查时，应用动作不可执行。</p></section>${renderSchemaCard()}`;
+    }
+    function renderExport() {
+      const f=state.exportFlow, sample=CONFIG.exportSamples.find(x=>x.id===f.sampleId), check=f.check;
+      $("main-view").innerHTML=`<section class="card"><div class="card-head"><div><h2>导出自有卡</h2><p class="small">导出前固定角色、世界书和媒体的资源版本，检查所有引用依赖，再下载自有完整包结构示例 JSON；媒体内容使用占位记录。</p></div><span class="tag">独立流程</span></div><div class="source-grid">${CONFIG.exportSamples.map(s=>`<button class="source-card ${f.sampleId===s.id?"selected":""}" data-export-sample="${s.id}"><strong>${escapeHtml(s.name)}</strong><span class="small">${escapeHtml(s.description)}</span><span class="tag">${escapeHtml(s.version)}</span></button>`).join("")}</div><div class="flow-actions"><button class="primary" data-action="EXPORT_CHECK">${escapeHtml(CONFIG.labels.actions.checkExport)}</button></div>${check?`<div class="card" style="margin-top:12px"><h2>固定版本与依赖清单</h2>${field("角色 / 世界书 / 媒体",sample.version,true)}${field("依赖闭合",sample.dependenciesClosed?"是":"否")}${check.issues.length?notice(check.issues.join(" "),"error"):notice("资源版本已固定，依赖闭合。可下载完整包结构示例 JSON。", "ok")}<div class="flow-actions"><button data-action="EXPORT_DOWNLOAD" ${check.ok?"":"disabled"}>${escapeHtml(CONFIG.labels.actions.downloadExport)}</button></div>${f.downloaded?notice("完整包结构示例 JSON 已触发本地下载；媒体为占位记录。","ok"):""}</div>`:""}<p class="footnote">${escapeHtml(CONFIG.labels.exportNoWrite)}</p></section>${renderSchemaCard()}`;
+    }
+    document.addEventListener("click",event=>{
+      const target=event.target.closest("button"); if(!target)return;
+      if(target.dataset.mode){dispatch({type:"SET_MODE",mode:target.dataset.mode});return;}
+      if(target.dataset.source){dispatch({type:"SELECT_SOURCE",sourceId:target.dataset.source});return;}
+      if(target.dataset.repairDependency){dispatch({type:"REPAIR_DEPENDENCY",itemId:target.dataset.repairDependency});return;}
+      if(target.dataset.step){dispatch({type:"GO_STEP",step:Number(target.dataset.step)});return;}
+      if(target.dataset.action){dispatch({type:target.dataset.action,step:target.dataset.step?Number(target.dataset.step):undefined});return;}
+      if(target.dataset.saveDecision){
+        const id=target.dataset.saveDecision, choice=$("choice-"+id)?.value, reason=$("reason-"+id)?.value||"";
+        dispatch({type:"DECIDE_ITEM",itemId:id,choice,reason}); return;
+      }
+      if(target.dataset.guideReset){dispatch({type:"GUIDE_SELECT",scenarioId:target.dataset.guideReset});return;}
+      if(target.hasAttribute("data-guide-step")){dispatch({type:"GUIDE_STEP"});return;}
+      if(target.dataset.guide){dispatch({type:"GUIDE_SELECT",scenarioId:target.dataset.guide});return;}
+      if(target.dataset.importSample){dispatch({type:"IMPORT_SELECT",sampleId:target.dataset.importSample});return;}
+      if(target.dataset.importChoice){dispatch({type:"IMPORT_CHOICE",choice:target.dataset.importChoice});return;}
+      if(target.dataset.exportSample){dispatch({type:"EXPORT_SELECT",sampleId:target.dataset.exportSample});return;}
+      if(target.hasAttribute("data-download-again")&&state.conversion.generated)downloadJson(state.conversion.generated.filename,state.conversion.generated.payload);
+    });
+    document.addEventListener("change",event=>{
+      if(event.target.matches("[data-final-confirm]")){dispatch({type:event.target.checked?"FINAL_CONFIRM":"CLEAR_CONFIRM"});}
+    });
+
+    render();
+  </script>
+</body>
+</html>

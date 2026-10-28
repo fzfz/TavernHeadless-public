@@ -1,0 +1,40 @@
+{
+  "uid": 109,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": true,
+  "comment": "[mvu_update]变量输出格式",
+  "order": 1100,
+  "disable": false,
+  "position": 4,
+  "selectiveLogic": 0,
+  "depth": 0,
+  "role": 1,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": true,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "---\n变量输出格式:\n  rule:\n    - You MUST append exactly one complete variable update block after the story in every reply.\n    - `<Analysis>` MUST be written in English and contain no more than 80 words. Replace every directive in the format with current findings based only on the current reply and the current variable list.\n    - `<JSONPatch>` MUST contain one valid MVU patch array of operation objects, never a nested state snapshot. Supported operations are `replace`, `delta`, `insert`, `remove`, and `move`.\n    - In every actual reply, replace the example operations with only the operations required by the current reply. If no operation is required, write `[]`.\n    - The current variable list is the sole authority for current values of exposed fields. Never infer a missing current value.\n    - Valid ordinary patch paths and value types come from the current Schema, variable list, and variable update rules. Every ordinary path written by the model must be present in the current variable list.\n    - If current variables are missing or unreadable, keep every ordinary variable unchanged and do not initialize or reset variables.\n    - You MUST write exactly one `replace` for every required `/行动选项/<序号>` path even when ordinary variables are unchanged or unreadable; generate those strings only from the current reply and the contract.\n    - Do not write comments, ellipses, unresolved project placeholders, or interface markers inside `<JSONPatch>`.\n  format: |-\n    <UpdateVariable>\n    <Analysis>$(IN ENGLISH, no more than 80 words)\n    - ${calculate time passed}\n    - ${decide whether dramatic updates are allowed: yes/no}\n    - ${analyze every variable against its corresponding check using only the current reply}\n    </Analysis>\n    <JSONPatch>\n    [\n      { \"op\": \"replace\", \"path\": \"${/path/to/existing_variable}\", \"value\": \"${new_value}\" },\n      { \"op\": \"delta\", \"path\": \"${/path/to/existing_number}\", \"value\": \"${positive_or_negative_delta}\" },\n      { \"op\": \"insert\", \"path\": \"${/path/to/new_key_or_array/-}\", \"value\": \"${new_value}\" },\n      { \"op\": \"remove\", \"path\": \"${/path/to/existing_key_or_array/index}\" },\n      { \"op\": \"move\", \"from\": \"${/path/to/source}\", \"to\": \"${/path/to/destination}\" }\n    ]\n    </JSONPatch>\n    </UpdateVariable>\n"
+}

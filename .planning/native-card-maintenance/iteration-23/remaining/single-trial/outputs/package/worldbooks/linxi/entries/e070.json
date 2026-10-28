@@ -1,0 +1,40 @@
+{
+  "uid": 70,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_33_私宅视频后离家",
+  "order": 278,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E033>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n{{user}}在车内关闭王授军私宅录像，随后开车离开停车处，没有立刻回家。林茜第一次打来电话时，{{user}}按掉来电。\n林茜继续拨打{{user}}的手机，并在手机留言中询问{{user}}去了哪里、是否生气、是否出了事。\n{{user}}把车开到家电城附近。艾沫沫走到车旁敲窗，请{{user}}顺路送她去滨江西路。\n艾沫沫上车后发现{{user}}没有按平常回家的方向开车，便询问{{user}}准备去哪里、有没有吃晚饭、是否需要休息。{{user}}把她送到滨江西路后，艾沫沫下车离开，随后又打电话询问{{user}}有没有吃饭。\n{{user}}住进路边小旅馆，给林茜回电话，谎称公司临时安排自己出差。\n林茜在电话里说，{{user}}没有回家让她害怕；如果自己哪里做错，她愿意改。\n</事件_E033>\n"
+}

@@ -1,0 +1,115 @@
+<section class="gal-stage" data-stage>
+  <img class="gal-background" data-background alt="" />
+  <div class="gal-vignette" aria-hidden="true"></div>
+
+  <div class="gal-character-layer" aria-hidden="true">
+    <img class="gal-character gal-character-left" data-character-left alt="" />
+    <img class="gal-character gal-character-center" data-character-center alt="" />
+    <img class="gal-character gal-character-right" data-character-right alt="" />
+  </div>
+
+  <div class="gal-cg" data-cg-container hidden>
+    <img data-cg alt="剧情画面" />
+  </div>
+
+  <div class="gal-location" data-location hidden></div>
+
+  <aside class="gal-status" data-status hidden>
+    <header>
+      <strong>✦ 顾声慢状态</strong>
+      <button type="button" data-status-close aria-label="关闭状态面板">×</button>
+    </header>
+    <div class="gal-status-grid">
+      <section>
+        <label>情感连结度 <b data-affection-value>0</b></label>
+        <progress data-affection max="100" value="0"></progress>
+        <label>创作完成度 <b data-composition-value>10</b></label>
+        <progress data-composition max="100" value="10"></progress>
+      </section>
+      <section>
+        <span class="gal-status-label">✦ 心象映射</span>
+        <p class="gal-melody" data-melody>《前前前世》</p>
+        <p class="gal-voice" data-voice>唔哇——他不会觉得我是怪人吧！</p>
+      </section>
+      <section>
+        <span class="gal-status-label">✦ 世界状态</span>
+        <dl>
+          <div><dt>当前时间</dt><dd data-time>2025年12月15日17:20</dd></div>
+          <div><dt>当前地址</dt><dd data-world-location>轻音社活动室</dd></div>
+          <div><dt>事件状态</dt><dd data-event>无</dd></div>
+        </dl>
+        <p class="gal-turn-delta" data-turn-delta></p>
+      </section>
+    </div>
+  </aside>
+
+  <aside class="gal-display-panel" data-display-panel hidden>
+    <header><strong>⚙ 显示设置</strong></header>
+    <label>文字大小 <input type="range" min="70" max="150" step="10" value="100" data-font-slider /></label>
+    <label>立绘大小 <input type="range" min="60" max="140" step="10" value="100" data-character-slider /></label>
+    <button type="button" data-display-close>完成</button>
+  </aside>
+
+  <aside class="gal-gallery" data-gallery hidden>
+    <header><strong>CG 画廊</strong><button type="button" data-gallery-close>关闭</button></header>
+    <div class="gal-gallery-grid">
+      <div data-gallery-item-0 hidden><img data-gallery-thumb-0 alt="" /><button type="button" data-gallery-select-0></button></div>
+      <div data-gallery-item-1 hidden><img data-gallery-thumb-1 alt="" /><button type="button" data-gallery-select-1></button></div>
+      <div data-gallery-item-2 hidden><img data-gallery-thumb-2 alt="" /><button type="button" data-gallery-select-2></button></div>
+      <div data-gallery-item-3 hidden><img data-gallery-thumb-3 alt="" /><button type="button" data-gallery-select-3></button></div>
+      <div data-gallery-item-4 hidden><img data-gallery-thumb-4 alt="" /><button type="button" data-gallery-select-4></button></div>
+      <div data-gallery-item-5 hidden><img data-gallery-thumb-5 alt="" /><button type="button" data-gallery-select-5></button></div>
+      <div data-gallery-item-6 hidden><img data-gallery-thumb-6 alt="" /><button type="button" data-gallery-select-6></button></div>
+      <div data-gallery-item-7 hidden><img data-gallery-thumb-7 alt="" /><button type="button" data-gallery-select-7></button></div>
+      <div data-gallery-item-8 hidden><img data-gallery-thumb-8 alt="" /><button type="button" data-gallery-select-8></button></div>
+      <div data-gallery-item-9 hidden><img data-gallery-thumb-9 alt="" /><button type="button" data-gallery-select-9></button></div>
+      <div data-gallery-item-10 hidden><img data-gallery-thumb-10 alt="" /><button type="button" data-gallery-select-10></button></div>
+      <div data-gallery-item-11 hidden><img data-gallery-thumb-11 alt="" /><button type="button" data-gallery-select-11></button></div>
+      <div data-gallery-item-12 hidden><img data-gallery-thumb-12 alt="" /><button type="button" data-gallery-select-12></button></div>
+      <div data-gallery-item-13 hidden><img data-gallery-thumb-13 alt="" /><button type="button" data-gallery-select-13></button></div>
+    </div>
+  </aside>
+
+  <div class="gal-gallery-viewer" data-gallery-viewer hidden>
+    <img data-gallery-viewer-image alt="CG 大图" />
+    <button type="button" data-gallery-viewer-close aria-label="关闭 CG 大图">×</button>
+  </div>
+
+  <div class="gal-choice-list" data-choices hidden>
+    <button type="button" data-choice-0 hidden></button>
+    <button type="button" data-choice-1 hidden></button>
+    <button type="button" data-choice-2 hidden></button>
+    <button type="button" data-choice-3 hidden></button>
+    <button type="button" data-choice-4 hidden></button>
+  </div>
+
+  <section class="gal-input-panel" data-input-panel hidden>
+    <label for="gushengman-input">你想说些什么？</label>
+    <textarea id="gushengman-input" data-input placeholder="输入你的话"></textarea>
+    <div class="gal-input-actions">
+      <button type="button" data-send>发送</button>
+      <button type="button" data-input-close>关闭</button>
+    </div>
+  </section>
+
+  <p class="gal-feedback" data-feedback role="alert"></p>
+
+  <section class="gal-dialogue" data-dialogue>
+    <div class="gal-speaker" data-speaker hidden></div>
+    <p class="gal-text" data-text aria-live="polite"></p>
+    <span class="gal-page" data-page></span>
+  </section>
+
+  <nav class="gal-controls" aria-label="视觉小说控制栏">
+    <button type="button" data-back title="上一段">◀</button>
+    <button type="button" data-hide>隐藏</button>
+    <button type="button" data-bgm>BGM</button>
+    <button type="button" data-display>显示设置</button>
+    <button type="button" data-status-toggle>状态</button>
+    <button type="button" data-gallery-open>CG</button>
+    <button type="button" data-auto>Auto</button>
+    <button type="button" data-skip>Skip</button>
+    <button type="button" data-input-open>说话</button>
+    <button type="button" data-next title="下一段">▶</button>
+  </nav>
+</section>

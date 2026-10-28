@@ -1,0 +1,240 @@
+import { buildAccountHeaders, type AccountIdHint, type TransportClient } from "../client/transport.js";
+import type {
+  LlmGenerationParams,
+  LlmInstanceCapabilities,
+  LlmInstanceScope,
+  LlmInstanceSlot,
+} from "./llm-shared.js";
+import { buildQueryString, compactObject, readArray, readBoolean, readNullableString, readRecord, readString } from "./utils.js";
+
+export type LlmInstanceConfig = {
+  id: string;
+  scope: LlmInstanceScope;
+  scopeId: string;
+  instanceSlot: LlmInstanceSlot;
+  /**
+   * @deprecated LI11-3：提示词预设覆盖（指向 preset 表，**不是** LLM Profile id）。配方走图后废弃，
+   * 新写入请走楼层模板图 Narrator 节点 `config.presetRef`；选 Profile 走 `/llm-profiles` 绑定。
+   */
+  presetId: string | null;
+  modelIdOverride: string | null;
+  enabled: boolean;
+  params: LlmGenerationParams | null;
+  capabilities: LlmInstanceCapabilities | null;
+  createdAt: number;
+  updatedAt: number;
+};
+
+export type LlmResolvedInstanceSlot = {
+  slot: LlmInstanceSlot;
+  source: "session_config" | "global_config" | "default";
+  scope: LlmInstanceScope | null;
+  configId:string | null;
+  /**
+   * @deprecated LI11-3：提示词预设覆盖（指向preset 表，**不是** LLM Profile id）。配方走图后废弃，
+   * 新写入请走楼层模板图 Narrator 节点 `config.presetRef`；选 Profile 走 `/llm-profiles` 绑定。
+   */
+  presetId: string | null;
+  modelIdOverride: string | null;
+  enabled: boolean;
+  params: LlmGenerationParams | null;
+  capabilities: LlmInstanceCapabilities;
+};
+
+export type LlmInstancesResource = {
+  list(options?: { accountId?: AccountIdHint; scope?: LlmInstanceScope; sessionId?: string }): Promise<LlmInstanceConfig[]>;
+  listBySlot(options: { accountId?: AccountIdHint; scope?: LlmInstanceScope; sessionId?: string; slot: LlmInstanceSlot }): Promise<LlmInstanceConfig[]>;
+  listResolved(options?: { accountId?: AccountIdHint; sessionId?: string }): Promise<LlmResolvedInstanceSlot[]>;
+  remove(options: { accountId?: AccountIdHint; scope?: LlmInstanceScope; sessionId?: string; slot: LlmInstanceSlot }): Promise<boolean>;
+  upsert(options: {
+    accountId?: AccountIdHint;
+    enabled?: boolean;
+    params?: LlmGenerationParams | null;
+    /**
+     * @deprecated LI11-3：提示词预设覆盖（指向 preset 表，**不是** LLM Profile id）。配方走图后废弃，
+     * 新写入请走楼层模板图 Narrator 节点 `config.presetRef`；选 Profile 走 `/llm-profiles` 绑定。
+     */
+    presetId?: string | null;
+    modelIdOverride?: string | null;
+    capabilities?: LlmInstanceCapabilities | null;
+    scope?: LlmInstanceScope;
+    sessionId?: string;
+    slot: LlmInstanceSlot;
+  }): Promise<LlmInstanceConfig>;
+};
+
+const DEFAULT_LLM_INSTANCE_CAPABILITIES: LlmInstanceCapabilities = {
+  supportsFunctionCall: true,
+  supportsToolChoice: false,
+  supportsStreamingToolCall: false,
+  unsupportedGenerationParams: [],
+};
+
+export function createLlmInstancesResource(client: TransportClient): LlmInstancesResource {
+  return {
+    async list(options = {}): Promise<LlmInstanceConfig[]> {
+      const query = buildQueryString({
+        scope: options.scope,
+        session_id: options.sessionId,
+      });
+      const pathname = query ? `/llm-instances?${query}` : "/llm-instances";
+      const response = await client.fetchJson<Record<string, unknown>>(pathname, {
+        headers: buildAccountHeaders(options.accountId),
+        method: "GET",
+      });
+
+      return readArray(readRecord(response.body)?.data)
+        .map((item) => mapLlmInstanceConfig(item, null))
+        .filter((item): item is LlmInstanceConfig => item !== null);
+    },
+    async listBySlot(options): Promise<LlmInstanceConfig[]> {
+      const query = buildQueryString({
+        scope: options.scope,
+        session_id: options.sessionId,
+      });
+      const base = `/llm-instances/${encodeURIComponent(options.slot)}`;
+      const pathname = query ? `${base}?${query}` : base;
+      const response = await client.fetchJson<Record<string, unknown>>(pathname, {
+        headers: buildAccountHeaders(options.accountId),
+        method: "GET",
+      });
+
+      return readArray(readRecord(response.body)?.data)
+        .map((item) => mapLlmInstanceConfig(item, null))
+        .filter((item): item is LlmInstanceConfig => item !== null);
+    },
+    async listResolved(options = {}): Promise<LlmResolvedInstanceSlot[]> {
+      const query = buildQueryString({
+        session_id: options.sessionId,
+      });
+      const pathname = query ? `/llm-instances/resolved?${query}` : "/llm-instances/resolved";
+      const response = await client.fetchJson<Record<string, unknown>>(pathname, {
+        headers: buildAccountHeaders(options.accountId),
+        method: "GET",
+      });
+
+      return readArray(readRecord(readRecord(response.body)?.data)?.slots)
+        .map((item) => mapResolvedSlot(item, null))
+        .filter((item): item is LlmResolvedInstanceSlot => item !== null);
+    },
+    async remove(options): Promise<boolean> {
+      const query = buildQueryString({
+        scope: options.scope,
+        session_id: options.sessionId,
+      });
+      const base = `/llm-instances/${encodeURIComponent(options.slot)}`;
+      const pathname = query ? `${base}?${query}` : base;
+      const response = await client.fetchJson<Record<string, unknown>>(pathname, {
+        headers: buildAccountHeaders(options.accountId),
+        method: "DELETE",
+      });
+
+      return readBoolean(readRecord(readRecord(response.body)?.data)?.deleted);
+    },
+    async upsert(options): Promise<LlmInstanceConfig> {
+      const response = await client.fetchJson<Record<string, unknown>>(`/llm-instances/${encodeURIComponent(options.slot)}`, {
+        body: compactObject({
+          enabled: options.enabled,
+          params: options.params,
+          preset_id: options.presetId,
+          model_id_override: options.modelIdOverride,
+          capabilities: mapLlmInstanceCapabilitiesRequest(options.capabilities),
+          scope: options.scope,
+          session_id: options.sessionId,
+        }),
+        headers: buildAccountHeaders(options.accountId),
+        method: "PUT",
+      });
+
+      const payload = mapLlmInstanceConfig(readRecord(response.body)?.data, "Failed to upsert instance config");
+      if (!payload) {
+        throw new Error("Failed to upsert instance config");
+      }
+
+      return payload;
+    },
+  };
+}
+
+function mapLlmInstanceConfig(value: unknown, errorMessage: string | null): LlmInstanceConfig | null {
+  const record = readRecord(value);
+  if (!record) {
+    if (errorMessage) {
+      throw new Error(errorMessage);
+    }
+    return null;
+  }
+
+  return {
+    createdAt: typeof record.created_at === "number" ? record.created_at : 0,
+    enabled: readBoolean(record.enabled),
+    id: readString(record.id),
+    instanceSlot: readString(record.instance_slot, "*") as LlmInstanceSlot,
+    modelIdOverride: readNullableString(record.model_id_override),
+    params: (readRecord(record.params) as LlmGenerationParams | null) ?? null,
+    presetId: readNullableString(record.preset_id),
+    capabilities: mapLlmInstanceCapabilities(record.capabilities),
+    scope: readString(record.scope, "global") as LlmInstanceScope,
+    scopeId: readString(record.scope_id),
+    updatedAt: typeof record.updated_at === "number" ? record.updated_at : 0,
+  };
+}
+
+function mapResolvedSlot(value: unknown, errorMessage: string | null): LlmResolvedInstanceSlot | null {
+  const record = readRecord(value);
+  if (!record) {
+    if (errorMessage) {
+      throw new Error(errorMessage);
+    }
+    return null;
+  }
+
+  return {
+    configId: readNullableString(record.config_id),
+    enabled: readBoolean(record.enabled),
+    modelIdOverride: readNullableString(record.model_id_override),
+    params: (readRecord(record.params) as LlmGenerationParams | null) ?? null,
+    presetId: readNullableString(record.preset_id),
+    capabilities: mapLlmInstanceCapabilities(record.capabilities) ?? { ...DEFAULT_LLM_INSTANCE_CAPABILITIES },
+    scope: (readNullableString(record.scope) as LlmInstanceScope | null) ?? null,
+    slot: readString(record.slot, "*") as LlmInstanceSlot,
+    source: readString(record.source, "default") as LlmResolvedInstanceSlot["source"],
+  };
+}
+
+function mapLlmInstanceCapabilities(value: unknown): LlmInstanceCapabilities | null {
+  const record = readRecord(value);
+  if (!record) {
+    return null;
+  }
+
+  return {
+    supportsFunctionCall: readBoolean(record.supports_function_call, DEFAULT_LLM_INSTANCE_CAPABILITIES.supportsFunctionCall),
+    supportsToolChoice: readBoolean(record.supports_tool_choice, DEFAULT_LLM_INSTANCE_CAPABILITIES.supportsToolChoice),
+    supportsStreamingToolCall: readBoolean(
+      record.supports_streaming_tool_call,
+      DEFAULT_LLM_INSTANCE_CAPABILITIES.supportsStreamingToolCall,
+    ),
+    unsupportedGenerationParams: readArray(record.unsupported_generation_params)
+      .map((item) => readString(item))
+      .filter((item) => item.length > 0),
+  };
+}
+
+function mapLlmInstanceCapabilitiesRequest(
+  value: LlmInstanceCapabilities | null | undefined,
+): Record<string, unknown> | null | undefined {
+  if (value === undefined) {
+    return undefined;
+  }
+  if (value === null) {
+    return null;
+  }
+
+  return {
+    supports_function_call: value.supportsFunctionCall,
+    supports_tool_choice: value.supportsToolChoice,
+    supports_streaming_tool_call: value.supportsStreamingToolCall,
+    unsupported_generation_params: value.unsupportedGenerationParams,
+  };
+}

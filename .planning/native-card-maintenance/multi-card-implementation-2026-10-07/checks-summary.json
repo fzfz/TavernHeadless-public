@@ -1,0 +1,54 @@
+{
+  "cli": {
+    "status": "passed",
+    "tests": 78,
+    "files": 4,
+    "log": "cli-alias-green.log"
+  },
+  "cliTypes": {
+    "status": "passed",
+    "log": "alias-typecheck.log"
+  },
+  "cliLint": {
+    "status": "passed",
+    "log": "alias-lint.log"
+  },
+  "projectLint": {
+    "status": "passed",
+    "warnings": 4,
+    "log": "project-lint.log"
+  },
+  "projectTypes": {
+    "status": "passed",
+    "log": "project-typecheck.log"
+  },
+  "docsBuild": {
+    "status": "passed",
+    "log": "docs-last.log"
+  },
+  "fullSuite": {
+    "status": "failed",
+    "filesPassed": 594,
+    "filesFailed": 1,
+    "filesSkipped": 3,
+    "testsPassed": 5927,
+    "testsFailed": 1,
+    "testsSkipped": 4,
+    "log": "project-tests.log",
+    "failedFile": "scripts/native-card-conversion/formal.test.ts",
+    "observedErrors": [
+      "5000ms test timeout",
+      "ENOTEMPTY during temporary-directory cleanup"
+    ]
+  },
+  "failedFileIsolatedRerun": {
+    "status": "passed",
+    "tests": 10,
+    "log": "formal-test-rerun.log"
+  },
+  "markdown": {
+    "status": "passed",
+    "files": 10,
+    "log": "markdown-last.log"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "standardsInitial": [
+    "array-specific pointer diagnosis",
+    "filename/indices constants in config"
+  ],
+  "specInitial": [
+    "scope each issue to its selected member"
+  ],
+  "standardsFinal": [
+    "replace stale error assertion with configured message",
+    "cover batch argument-count and trailing-flag branches"
+  ],
+  "specFinal": [
+    "include target file in failed member result"
+  ],
+  "wordingInitial": [
+    "diagnostic path guidance",
+    "single-call wording",
+    "progress actor and explicit behavior",
+    "name earlier commands"
+  ],
+  "wordingCloseout": [
+    "make script the failure-result actor",
+    "centralize check/commit state in status.json"
+  ],
+  "implementation": "All listed fixes implemented; converter regression 733 passed.",
+  "wordingFinal": {
+    "progress": "entry_path_progress_closeout passed",
+    "toolsResultItem": "entry_path_text_final_check passed",
+    "diagnostics": "entry_path_wording_closeout passed"
+  },
+  "finalCodeReview": {
+    "reviewer": "entry_path_code_closeout",
+    "standards": "passed, no remaining findings",
+    "spec": "passed, no remaining findings",
+    "method": "Independent fresh-context static correctness and omission review; main regression retained."
+  }
+}

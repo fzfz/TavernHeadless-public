@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "platform": "desktop",
+      "scenario": "receipt",
+      "status": "passed"
+    },
+    {
+      "platform": "desktop",
+      "scenario": "freshness",
+      "status": "passed"
+    },
+    {
+      "platform": "desktop",
+      "scenario": "cas",
+      "status": "passed"
+    },
+    {
+      "platform": "mobile",
+      "scenario": "receipt",
+      "status": "passed"
+    },
+    {
+      "platform": "mobile",
+      "scenario": "freshness",
+      "status": "passed"
+    },
+    {
+      "platform": "mobile",
+      "scenario": "cas",
+      "status": "passed"
+    }
+  ]
+}

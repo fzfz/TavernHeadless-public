@@ -1,0 +1,160 @@
+{
+  "mode": "openrouter",
+  "turns": [
+    {
+      "floorId": "script-linqian:floor:1",
+      "attemptId": "script-linqian:floor:1:attempt:1",
+      "models": {
+        "narrator": "nex-agi/nex-n2.5-mini:free",
+        "updater": "nex-agi/nex-n2.5-mini:free"
+      },
+      "proposal": {
+        "changes": [
+          {
+            "op": "set",
+            "path": "/林茜/内心想法",
+            "value": "**书终于整理好了。和他待在这里很安稳。今天什么都不用再想，就这样停着。**"
+          },
+          {
+            "op": "set",
+            "path": "/行动选项",
+            "value": [
+              "元指令:细腻演绎5分钟内林茜在杨桃子屋内书架旁整理完书后的反应。",
+              "你陪林茜在杨桃子屋内书架旁坐一会儿，轻声问她最近过得怎么样。",
+              "你追问林茜这些书是谁的，以及她为什么会在杨桃子的屋里。",
+              "元指令:简要收束当前剧情后果后，时间推进到2025-03-11上午8:00,家电城,林茜开始上班并重置当日需重置的变量。"
+            ]
+          }
+        ],
+        "evidenceMessageIds": [
+          "script-linqian:floor:1:user",
+          "script-linqian:floor:1:assistant"
+        ],
+        "facts": {
+          "elapsedMinutes": 5,
+          "finalLocation": "杨桃子屋内书架旁",
+          "completedA1Events": [],
+          "d001Completed": false,
+          "completedOneTimeEvents": [],
+          "relationship": {
+            "positiveDelta": 1,
+            "negativeDelta": 0,
+            "intimacyTier": "ordinary"
+          },
+          "corruptionSettlement": {
+            "settlementTriggered": false,
+            "specialStimulatorOnly": false,
+            "behaviors": [],
+            "resultTier": "none",
+            "materialAnomaly": false
+          },
+          "ending": {
+            "routeRulesLoaded": true,
+            "formedRoute": null,
+            "explicitReselection": false,
+            "divorceFormed": false,
+            "completedStage": null
+          }
+        }
+      },
+      "beforeSnapshotId": "script-linqian:snapshot:0",
+      "afterSnapshotId": "script-linqian:floor:1:attempt:1:snapshot"
+    },
+    {
+      "floorId": "script-linqian:floor:1",
+      "attemptId": "script-linqian:floor:1:attempt:1",
+      "jobId": "script-linqian:floor:1:run:1:job:linqian-followup-door",
+      "sourceMessageIds": [
+        "script-linqian:floor:1:run:1:job:linqian-followup-door:message"
+      ],
+      "models": {
+        "narrator": "nex-agi/nex-n2.5-mini:free",
+        "updater": "nex-agi/nex-n2.5-mini:free"
+      },
+      "proposal": {
+        "changes": [
+          {
+            "op": "set",
+            "path": "/林茜/内心想法",
+            "value": "**书已经整理好了，我也送他到门口。现在能这样安静待一会儿，也挺好。**"
+          },
+          {
+            "op": "set",
+            "path": "/行动选项",
+            "value": [
+              "元指令:细腻演绎5分钟内林茜在杨桃子屋内门口与你道别后的反应。",
+              "你陪林茜从杨桃子屋内走到楼下，并在分别前轻声问她是否安全。",
+              "你追问林茜为什么把书整理在杨桃子的屋里，以及这些书是否与杨桃子有关。",
+              "元指令:简要收束当前剧情后果后，时间推进到2025-03-11上午8:00,家电城,林茜开始上班并重置当日需重置的变量。"
+            ]
+          }
+        ],
+        "evidenceMessageIds": [
+          "script-linqian:floor:1:run:1:job:linqian-followup-door:message"
+        ],
+        "facts": {
+          "elapsedMinutes": 1,
+          "finalLocation": "杨桃子屋内门口",
+          "completedA1Events": [],
+          "d001Completed": false,
+          "completedOneTimeEvents": [],
+          "relationship": {
+            "positiveDelta": 1,
+            "negativeDelta": 0,
+            "intimacyTier": "ordinary"
+          },
+          "corruptionSettlement": {
+            "settlementTriggered": false,
+            "specialStimulatorOnly": false,
+            "behaviors": [],
+            "resultTier": "none",
+            "materialAnomaly": false
+          },
+          "ending": {
+            "routeRulesLoaded": true,
+            "formedRoute": null,
+            "explicitReselection": false,
+            "divorceFormed": false,
+            "completedStage": null
+          }
+        }
+      },
+      "beforeSnapshotId": "script-linqian:floor:1:attempt:1:snapshot",
+      "afterSnapshotId": "script-linqian:floor:1:run:1:job:linqian-followup-door:snapshot"
+    }
+  ],
+  "failure": {
+    "floorId": "script-linqian:floor:1",
+    "attemptId": "script-linqian:floor:1:attempt:1",
+    "code": "STATE_OUTPUT_INVALID_JSON",
+    "rawOutput": "{\"changes\":[{\"op\":\"set\",\"path\":\"\\/林茜\\/内心想法\",\"value\":\"**你陪我走到街口，我们一路没再说话。安静分开也好，可我心里总觉得杨桃子家的事还没有真正结束。**\"},{\"op\":\"set\",\"path\":\"\\ /行动选项\",\"value\":[\"元指令:细腻演绎5分钟内林茜在街口与你道别后的反应。\",\"你陪林茜在街口多站一会儿，轻声问她是否愿意直接回家休息。\",\"你停下脚步，追问林茜为什么要离开杨桃子家，以及她是否打算独自回去。\",\"元指令:简要收束当前剧情后果后，时间推进到2025-03-11上午8:00,家电城,林茜开始上班并重置当日需重置的变量。\"]}],\"evidenceMessageIds\":[\"script-linqian:floor:1:run:1:job:linqian-followup-street:message\"],\"facts\":{\"elapsedMinutes\":1,\"finalLocation\":\"街口\",\"completedA1Events\":[],\"d001Completed\":false,\"completedOneTimeEvents\":[],\"relationship\":{\"positiveDelta\":1,\"negativeDelta\":0,\"intimacyTier\":\"ordinary\"},\"corruptionSettlement\":{\"settlementTriggered\":false,\"specialStimulatorOnly\":false,\"behaviors\":[],\"resultTier\":\"none\",\"materialAnomaly\":false},\"ending\":{\"routeRulesLoaded\":true,\"formedRoute\":null,\"explicitReselection\":false,\"divorceFormed\":false,\"completedStage\":null}}}",
+    "updaterModel": "nex-agi/nex-n2.5-mini:free",
+    "issues": [],
+    "providerError": null
+  },
+  "pendingChain": {
+    "floorId": "script-linqian:floor:1",
+    "index": 1,
+    "jobs": {
+      "linqian-followup-door": {
+        "jobId": "script-linqian:floor:1:run:1:job:linqian-followup-door",
+        "baseSnapshotId": "script-linqian:floor:1:attempt:1:snapshot",
+        "text": "12:30，你合上最后一摞书，拎起装书的纸箱走向门口。林茜也跟着起身，最后确认了一遍整理好的书架，随后来到门边替你拉开门。\n\n最后地点：杨桃子屋内，门口。",
+        "status": "committed",
+        "revision": 53,
+        "model": "nex-agi/nex-n2.5-mini:free",
+        "snapshotId": "script-linqian:floor:1:run:1:job:linqian-followup-door:snapshot"
+      },
+      "linqian-followup-street": {
+        "jobId": "script-linqian:floor:1:run:1:job:linqian-followup-street",
+        "baseSnapshotId": "script-linqian:floor:1:run:1:job:linqian-followup-door:snapshot",
+        "text": "12:31，你陪林茜离开杨桃子家，沿楼梯下到一楼。\n\n她换好鞋，与你一同走出楼道。一路上，你们没有再多说几句，只跟着人流慢慢向街口走去。\n\n走到街角时，林茜停下脚步，回头朝你轻轻点头。\n\n“到了。”\n\n最后地点：街口。",
+        "status": "failed",
+        "revision": 77,
+        "model": "nex-agi/nex-n2.5-mini:free",
+        "error": "STATE_OUTPUT_INVALID_JSON"
+      }
+    }
+  },
+  "completedChains": []
+}

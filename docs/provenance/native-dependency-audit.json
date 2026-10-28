@@ -1,0 +1,809 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-25",
+  "registry": "https://registry.npmjs.org",
+  "baselineCommit": "87d3d2388cb63ddf83fc90d472c0bbf6b74b1747",
+  "baseline": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 26,
+      "moderate": 126,
+      "high": 94,
+      "critical": 9
+    },
+    "dependencies": 1343,
+    "devDependencies": 0,
+    "optionalDependencies": 0,
+    "totalDependencies": 1343
+  },
+  "selected": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "dependencies": 1279,
+    "devDependencies": 0,
+    "optionalDependencies": 0,
+    "totalDependencies": 1279
+  },
+  "overrides": {
+    "defu": "6.1.7",
+    "vitepress@1.6.4>vite": "6.4.5",
+    "@esbuild-kit/core-utils@3.3.2>esbuild": "0.25.12",
+    "tailwindcss@3.4.19>postcss-selector-parser": "7.1.7",
+    "micromark-extension-math@3.1.0>katex": "0.18.10",
+    "postcss-nested@6.2.0>postcss-selector-parser": "7.1.7"
+  },
+  "parentRangeExceptions": [
+    {
+      "package": "esbuild",
+      "severity": "moderate",
+      "advisory": "GHSA-67mh-4wv8-2f99",
+      "url": "https://github.com/advisories/GHSA-67mh-4wv8-2f99",
+      "findings": [
+        {
+          "version": "0.18.20",
+          "paths": [
+            ".>drizzle-kit>@esbuild-kit/esm-loader>@esbuild-kit/core-utils>esbuild"
+          ]
+        },
+        {
+          "version": "0.21.5",
+          "paths": [
+            "vitepress>vitepress>vite>esbuild"
+          ]
+        }
+      ]
+    },
+    {
+      "package": "vite",
+      "severity": "moderate",
+      "advisory": "GHSA-4w7w-66w2-5vf9",
+      "url": "https://github.com/advisories/GHSA-4w7w-66w2-5vf9",
+      "findings": [
+        {
+          "version": "5.4.21",
+          "paths": [
+            "vitepress>vitepress>vite"
+          ]
+        }
+      ]
+    },
+    {
+      "package": "vite",
+      "severity": "moderate",
+      "advisory": "GHSA-v6wh-96g9-6wx3",
+      "url": "https://github.com/advisories/GHSA-v6wh-96g9-6wx3",
+      "findings": [
+        {
+          "version": "5.4.21",
+          "paths": [
+            "vitepress>vitepress>vite"
+          ]
+        }
+      ]
+    },
+    {
+      "package": "vite",
+      "severity": "high",
+      "advisory": "GHSA-fx2h-pf6j-xcff",
+      "url": "https://github.com/advisories/GHSA-fx2h-pf6j-xcff",
+      "findings": [
+        {
+          "version": "5.4.21",
+          "paths": [
+            "vitepress>vitepress>vite"
+          ]
+        }
+      ]
+    },
+    {
+      "package": "katex",
+      "severity": "low",
+      "advisory": "GHSA-238p-pmpm-9mq7",
+      "url": "https://github.com/advisories/GHSA-238p-pmpm-9mq7",
+      "findings": [
+        {
+          "version": "0.16.47",
+          "paths": [
+            ".>markdownlint-cli2>markdownlint>micromark-extension-math>katex"
+          ]
+        }
+      ]
+    },
+    {
+      "package": "postcss-selector-parser",
+      "severity": "moderate",
+      "advisory": "GHSA-rj75-hqrm-r3gf",
+      "url": "https://github.com/advisories/GHSA-rj75-hqrm-r3gf",
+      "findings": [
+        {
+          "version": "6.1.5",
+          "paths": [
+            ".>tailwindcss>postcss-selector-parser"
+          ]
+        }
+      ]
+    },
+    {
+      "package": "vite",
+      "severity": "moderate",
+      "advisory": "GHSA-698v-4r3x-3vcv",
+      "url": "https://github.com/advisories/GHSA-698v-4r3x-3vcv",
+      "findings": [
+        {
+          "version": "5.4.21",
+          "paths": [
+            "vitepress>vitepress>vite"
+          ]
+        }
+      ]
+    },
+    {
+      "package": "vite",
+      "severity": "moderate",
+      "advisory": "GHSA-r825-w8mm-5pxw",
+      "url": "https://github.com/advisories/GHSA-r825-w8mm-5pxw",
+      "findings": [
+        {
+          "version": "5.4.21",
+          "paths": [
+            "vitepress>vitepress>vite"
+          ]
+        }
+      ]
+    },
+    {
+      "package": "vite",
+      "severity": "high",
+      "advisory": "GHSA-587h-7wmj-h5pm",
+      "url": "https://github.com/advisories/GHSA-587h-7wmj-h5pm",
+      "findings": [
+        {
+          "version": "5.4.21",
+          "paths": [
+            "vitepress>vitepress>vite"
+          ]
+        }
+      ]
+    },
+    {
+      "package": "vite",
+      "severity": "low",
+      "advisory": "GHSA-9jrq-w75r-8gcw",
+      "url": "https://github.com/advisories/GHSA-9jrq-w75r-8gcw",
+      "findings": [
+        {
+          "version": "5.4.21",
+          "paths": [
+            "vitepress>vitepress>vite"
+          ]
+        }
+      ]
+    },
+    {
+      "package": "vite",
+      "severity": "moderate",
+      "advisory": "GHSA-rq7h-c2jc-7f22",
+      "url": "https://github.com/advisories/GHSA-rq7h-c2jc-7f22",
+      "findings": [
+        {
+          "version": "5.4.21",
+          "paths": [
+            "vitepress>vitepress>vite"
+          ]
+        }
+      ]
+    }
+  ],
+  "nodeEngine": {
+    "target": "22.23.4",
+    "incompatible": []
+  },
+  "commands": {
+    "lock": "pnpm install --lockfile-only --ignore-scripts --registry=https://registry.npmjs.org",
+    "audit": "pnpm audit --json --registry=https://registry.npmjs.org"
+  },
+  "rawEvidence": {
+    "before": "/tmp/tavern-dependency-audit-before.json",
+    "after": "logs/operations/20261025-dependency-validation/dependency-audit-final.json",
+    "lock": "/tmp/tavern-dependency-candidate-lock-final.log"
+  },
+  "sourceAdaptations": [
+    {
+      "file": "apps/api/src/lib/character-snapshot.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "apps/api/src/routes/chat/schemas.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "apps/api/src/routes/exports.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "apps/api/src/routes/graph-assistant-prompt-config.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "apps/api/src/routes/imports.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "apps/api/src/routes/preset-entries.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "apps/api/src/routes/projects.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "apps/api/src/routes/tool-policy-presets.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "apps/api/src/routes/tooling/mcp.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "apps/api/src/routes/tooling/tools.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "apps/api/src/services/role-character-extension-schema.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "apps/api/src/services/role-mvu-migration.mjs",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "apps/api/src/services/role-runtime/native-module-worker.schema.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "apps/api/src/services/tooling/runtime/tool-runtime-job-definitions.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/adapters-sillytavern/src/parsers/character-parser.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/adapters-sillytavern/src/parsers/chat-parser.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/adapters-sillytavern/src/parsers/worldbook-parser.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/official-integration-kit/sdk/src/resources/role-apps.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/__tests__/native-card-package.test.ts",
+      "responsibility": "Zod 4 validation behavior regression"
+    },
+    {
+      "file": "packages/shared/src/schemas/generation-inspection.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/schemas/json-schema-zod.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/schemas/model-call.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/schemas/native-card-package/schema.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/schemas/role-app.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/schemas/role-import.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/schemas/role-migration.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/schemas/role-model-capabilities.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/schemas/role-state.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/schemas/role-tool-evidence.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/schemas/role-view.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/schemas/state-prompt-preview.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/types/backup-file.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/types/chat-file.ts",
+      "responsibility": "Zod 4 schema API and default-input adaptation"
+    },
+    {
+      "file": "packages/shared/src/schemas/__tests__/json-schema-zod.test.ts",
+      "responsibility": "Zod 4 validation behavior regression"
+    },
+    {
+      "file": "scripts/export-json-schema.ts",
+      "responsibility": "Shared JSON Schema export boundary for installed Zod4 and Fastify"
+    },
+    {
+      "file": "apps/web/src/lib/role-configuration-validation.ts",
+      "responsibility": "Zod4 PropertyKey issue paths"
+    },
+    {
+      "file": "eslint.config.js",
+      "responsibility": "Explicit Node and browser globals with eslint-plugin-vue10"
+    },
+    {
+      "file": "vitest.config.ts",
+      "responsibility": "Exclude compiled test copies under Vitest4"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/scripts/source-format.ts",
+      "responsibility": "Authorized Zod4 source input diagnostics"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/scripts/state-write.ts",
+      "responsibility": "Authorized Zod4 PropertyKey paths"
+    },
+    {
+      "file": ".github/workflows/ci.yml",
+      "responsibility": "Remove unsupported Vitest4 minWorkers option"
+    },
+    {
+      "file": "apps/web/src/test/component-host.ts",
+      "responsibility": "Vue text v-model root lookup and parent-pointer consistency in the memory test host"
+    },
+    {
+      "file": "apps/web/src/test/component-test-environment.ts",
+      "responsibility": "Install missing DOM constructors for each Vitest file and restore original global descriptors after that file"
+    },
+    {
+      "file": "apps/api/src/plugins/openapi-schema.ts",
+      "responsibility": "OpenAPI3.0 schema dialect conversion at the shared document boundary; runtime schema unchanged"
+    }
+  ],
+  "selectedAuditMuted": [],
+  "preInstallationValidation": {
+    "packageDownloads": 0,
+    "packageInstallations": 0,
+    "lifecycleScriptsExecuted": 0,
+    "targetVersionRuntimeTests": "pending explicit installation approval",
+    "existingRuntime": "Node.js 25.8.2; Zod 3.25.76 bundled v4; Vitest 4.1.9",
+    "probes": {
+      "skill": {
+        "passed": 114,
+        "files": 7,
+        "evidence": "/tmp/native-skill-runtime-fix.h1PRyy/result.json"
+      },
+      "zod": {
+        "passed": 272,
+        "files": 33,
+        "evidence": "/tmp/tavern-zod4-migration/final-checks.json",
+        "library": "Zod 3.25.76 bundled v4.0.0"
+      },
+      "vitestConstructors": {
+        "passed": 32,
+        "files": 2,
+        "evidence": "/tmp/tavern-vitest4-mcp-final.log",
+        "library": "Vitest 4.1.9"
+      },
+      "dependencyCompatibility": {
+        "passedBehaviorTests": 10,
+        "targetVersionsInstalled": false,
+        "missingMathDependency": true,
+        "skipped": 0,
+        "evidence": "/tmp/tavern-dependency-compatibility.tap"
+      }
+    },
+    "fullChecks": "pending target dependency installation; current node_modules does not match pnpm-lock.yaml",
+    "frozenLockfile": {
+      "passed": true,
+      "evidence": "/tmp/tavern-dependency-frozen-lock.log"
+    }
+  },
+  "validation": {
+    "runtime": {
+      "node": "22.23.4",
+      "nodePath": "/Users/developer/.nvm/versions/node/v22.23.4/bin/node",
+      "pnpm": "10.34.5",
+      "abi": "127",
+      "sqlite": "3.51.3",
+      "pnpmPath": "/Users/developer/Library/pnpm/store/v11/links/@/pnpm/10.34.5/ed601d0261f313dbfffe35243cb2dc4aae869c28546257994e9ddac425361163/bin/pnpm",
+      "selection": "Final static, type, build, and generated-artifact checks invoke the cached pnpm 10 executable directly through PATH."
+    },
+    "installation": {
+      "status": "passed",
+      "frozenLockfile": true,
+      "workspaceProjects": 11,
+      "installedPackages": 1143,
+      "source": "official Node distribution and npm registry",
+      "nodeChecksum": "matched",
+      "evidence": [
+        "logs/operations/20261025-dependency-validation/installation-authorization.json",
+        "logs/operations/20261025-dependency-validation/node-install.log",
+        "logs/operations/20261025-dependency-validation/dependency-install.log",
+        "logs/operations/20261025-dependency-validation/native-module.log"
+      ],
+      "authorizedLifecycle": {
+        "root": [
+          "postinstall",
+          "prepare"
+        ],
+        "better-sqlite3": [
+          "install"
+        ],
+        "esbuild": [
+          "postinstall"
+        ]
+      },
+      "blockedUnapprovedLifecycle": [
+        "msw",
+        "vue-demi"
+      ],
+      "nginxInstalled": true,
+      "interruptedVerification": {
+        "observation": "The interrupted verify operation log contains another frozen dependency installation after test termination.",
+        "evidence": "/tmp/tavern-native-acceptance-20261025/dev/logs/operations/2026-10-24T16-43-35-517Z-ee7ac992-f5af-4765-917c-cee18ddba53e/verify-6eHCcm/tests.log",
+        "launcher": "The Node 24 bin/pnpm entry contains pnpm 11.16.0 and dispatches to project pnpm 10.34.5.",
+        "cause": "Not established. A minimal dispatch reproduction did not reproduce the installation.",
+        "authorizedScope": "The installation used the previously authorized worktree, lockfile, and lifecycle allowlist."
+      }
+    },
+    "checks": {
+      "dependencyCompatibility": {
+        "status": "passed",
+        "passed": 23,
+        "skipped": 0,
+        "evidence": "logs/operations/20261025-dependency-validation/compatibility.log"
+      },
+      "staticTypesAndBuild": {
+        "status": "passed",
+        "evidence": [
+          "/tmp/tavern-native-acceptance-20261025/dev/logs/operations/2026-10-24T17-42-57-021Z-8953886e-7d78-49f8-95e1-660bfe5b4610/verification.json",
+          "/tmp/tavern-native-acceptance-20261025/dev/logs/operations/2026-10-24T17-54-03-105Z-3e596613-5f5f-462c-9dd4-b3ffc1560fee/verification.json"
+        ]
+      },
+      "docsBuild": {
+        "status": "passed",
+        "evidence": "/tmp/tavern-native-acceptance-20261025/dev/logs/operations/2026-10-24T17-54-03-105Z-3e596613-5f5f-462c-9dd4-b3ffc1560fee/verification.json"
+      },
+      "clientTests": {
+        "status": "passed",
+        "files": 49,
+        "passed": 279,
+        "evidence": "logs/operations/20261025-dependency-validation/client-tests.log"
+      },
+      "studioCoverage": {
+        "status": "passed",
+        "files": 67,
+        "passed": 769,
+        "coveragePercent": {
+          "statements": 88.64,
+          "branches": 74.44,
+          "functions": 91.02,
+          "lines": 88.48
+        },
+        "evidence": "logs/operations/20261025-dependency-validation/studio-coverage.log"
+      },
+      "nativeUnit": {
+        "status": "passed",
+        "passed": 110,
+        "skipped": 0,
+        "evidence": "/tmp/tavern-nginx-acceptance-20261025/dev/logs/operations/2026-10-25T13-59-38-125Z-612c2073-fcb2-4ad4-a463-47a41ffba273/verification.json",
+        "log": "logs/operations/20261025-nginx-validation/native-unit.log"
+      },
+      "dependencyConsumers": {
+        "status": "passed",
+        "evidence": "logs/operations/20261025-dependency-validation/consumers/summary.json"
+      },
+      "mermaidBrowser": {
+        "status": "passed",
+        "evidence": "logs/operations/20261025-dependency-validation/mermaid-browser.json"
+      },
+      "testDiscovery": {
+        "status": "passed",
+        "sourceFiles": 621,
+        "evidence": "logs/operations/20261025-dependency-validation/test-discovery.json",
+        "baselineSourceFiles": 618,
+        "baselineCompiledCopiesExcluded": 64,
+        "finalEvidence": "logs/operations/20261025-dependency-validation/full-tests-delivery.log"
+      },
+      "docsLint": {
+        "status": "failed",
+        "issues": 3922,
+        "files": 197,
+        "sourceDocumentIssues": 3919,
+        "sourceDocumentFiles": 194,
+        "localAcceptanceFixtureIssues": 3,
+        "evidence": "logs/operations/20261025-dependency-validation/docs-lint-final.log",
+        "localAcceptanceFixturePaths": [
+          "logs/operations/20261025-dependency-validation/consumers/vitepress-fixture/index.after.md",
+          "logs/operations/20261025-dependency-validation/consumers/vitepress-fixture/index.md",
+          "logs/operations/20261025-dependency-validation/consumers/vitepress-http-_index.md"
+        ]
+      },
+      "fullTests": {
+        "status": "passed",
+        "command": "pnpm test:ci --maxWorkers=2",
+        "passed": 6411,
+        "failed": 0,
+        "files": 621,
+        "unhandledErrors": 0,
+        "durationSeconds": 707.7,
+        "evidence": "logs/operations/20261025-dependency-validation/full-tests-delivery.log",
+        "previousRun": {
+          "passed": 6364,
+          "failed": 1,
+          "files": 618,
+          "unhandledErrors": 1,
+          "failure": "Vue text v-model required getRootNode and Document/ShadowRoot in the shared memory host",
+          "evidence": "logs/operations/20261025-dependency-validation/full-tests-final.log"
+        },
+        "intermediateRun": {
+          "passed": 6374,
+          "failed": 5,
+          "files": 619,
+          "evidence": "logs/operations/20261025-dependency-validation/full-tests-accepted.log",
+          "scope": "The component-host source and tests changed while this run was active; this run is not final acceptance."
+        }
+      },
+      "skillZod4": {
+        "status": "passed",
+        "passed": 83,
+        "scriptTypeErrors": 0,
+        "remainingBaselineTestTypeErrors": 50,
+        "baselineLocations": {
+          ".agents/skills/native-card-conversion/scripts/page-macro-bindings.test.ts": 49,
+          ".agents/skills/native-card-conversion/scripts/preview.test.ts": 1
+        },
+        "evidence": "logs/operations/20261025-dependency-validation/skill-zod4/verification.json"
+      },
+      "chatMetadata": {
+        "status": "passed",
+        "files": 2,
+        "passed": 21,
+        "evidence": "logs/operations/20261025-dependency-validation/chat-metadata-green.log"
+      },
+      "jsonSchemaUnions": {
+        "status": "passed",
+        "exportAndRouteTests": 16,
+        "previewRegressionTests": 36,
+        "filteredOutPreviewTests": 7,
+        "evidence": "logs/operations/20261025-dependency-validation/json-schema-unions/"
+      },
+      "vueHost": {
+        "status": "passed",
+        "unitTests": 14,
+        "consumerFiles": 13,
+        "consumerTests": 132,
+        "lintErrors": 0,
+        "lintWarnings": 0,
+        "webTypecheck": "passed",
+        "independentReview": "passed for the final four-file implementation",
+        "evidence": [
+          "logs/operations/20261025-dependency-validation/vue-host/file-environment-green.log",
+          "logs/operations/20261025-dependency-validation/vue-host/file-environment-consumers-green.log",
+          "logs/operations/20261025-dependency-validation/vue-host/file-environment-lint.log",
+          "logs/operations/20261025-dependency-validation/vue-host/file-environment-typecheck.log"
+        ]
+      },
+      "sdkGeneration": {
+        "status": "passed",
+        "evidence": [
+          "logs/operations/20261025-dependency-validation/sdk-generate-final.log",
+          "logs/operations/20261025-dependency-validation/sdk-check-final.log"
+        ],
+        "nativeFreshnessEvidence": "/tmp/tavern-native-acceptance-20261025/dev/logs/operations/2026-10-24T17-54-03-105Z-3e596613-5f5f-462c-9dd4-b3ffc1560fee/verification.json"
+      },
+      "plan": {
+        "stc": "passed; two handbook YAML quote warnings retain valid YAML string syntax",
+        "markdownLint": "passed",
+        "independentSemanticAudit": "Whole-document independent audits and changed-section audit completed; findings corrected.",
+        "evidence": [
+          "logs/operations/20261025-nginx-validation/docs-stc.log",
+          "logs/operations/20261025-nginx-validation/docs-markdownlint.log"
+        ]
+      },
+      "openApiDialect": {
+        "status": "passed",
+        "declaredVersion": "3.0.3",
+        "passed": 43,
+        "unitTests": 31,
+        "integrationTests": 12,
+        "propertyNameConstraintsConverted": 101,
+        "headDocumentStructErrors": 2547,
+        "preConversionRuntimeStructErrors": 191,
+        "finalStructErrors": 0,
+        "evidence": [
+          "logs/operations/20261025-dependency-validation/openapi-dialect/targeted-green.log",
+          "logs/operations/20261025-dependency-validation/openapi-dialect/struct-result.json",
+          "logs/operations/20261025-dependency-validation/openapi-dialect/struct-comparison.json",
+          "logs/operations/20261025-dependency-validation/openapi-dialect/conversion-comparison.json"
+        ]
+      },
+      "nginxProtocols": {
+        "status": "passed",
+        "passed": 108,
+        "failed": 0,
+        "modes": [
+          "development",
+          "release"
+        ],
+        "coverage": [
+          "API path, query and authorization forwarding",
+          "SSE first event arrives before upstream completion",
+          "API WebSocket echo",
+          "Three development frontends and WebSocket upgrades",
+          "Three release SPA sites, MIME types and asset 404",
+          "Public configuration no-store and unlisted configuration 404",
+          "Host rejection",
+          "Instance stop and restart isolation"
+        ],
+        "evidence": "logs/operations/20261025-nginx-validation/protocol/summary.json",
+        "allOwnedProcessesStopped": true,
+        "allOwnedPortsReleased": true
+      },
+      "nativeLiveDev": {
+        "status": "passed",
+        "sourceCommit": "c8ed308f8fe2731c21e25f9b9baf6bd4b20aa169",
+        "environmentRoot": "/tmp/tavern-nginx-live-20261025/dev",
+        "data": "New isolated empty database, migrated and seeded by the application; no existing business data copied.",
+        "coverage": [
+          "Unified CLI init, explicit migration, start, status, restart and stop",
+          "Repeated start preserves runner PID and startId",
+          "Repeated stop succeeds; repeated init preserves configuration, secrets and database bytes",
+          "Real API reload on source edit",
+          "Real browser HMR for all three Vite frontends through Nginx with unchanged document identity and received WebSocket update frames",
+          "Frontend page rendering",
+          "Nginx /healthz 204, API /health 200, accounts 401 without credentials and 200 with credentials through all three entrances"
+        ],
+        "evidence": [
+          "logs/operations/20261025-nginx-validation/lifecycle-summary.json",
+          "logs/operations/20261025-nginx-validation/start-repeat.json",
+          "logs/operations/20261025-nginx-validation/restart.json",
+          "logs/operations/20261025-nginx-validation/api-watch.json",
+          "logs/operations/20261025-nginx-validation/browser-hmr.json",
+          "logs/operations/20261025-nginx-validation/browser-pages.json",
+          "logs/operations/20261025-nginx-validation/http-real-api.json",
+          "logs/operations/20261025-nginx-validation/cleanup.json"
+        ],
+        "operationLogs": "logs/operations/20261025-nginx-validation/live-dev-logs/operations",
+        "allOwnedProcessesStopped": true,
+        "allOwnedPortsReleased": true,
+        "temporarySourceEditsRestored": true,
+        "businessAcceptance": "pending",
+        "temporaryWorktreeRemoved": true
+      }
+    },
+    "scopeLimits": [
+      "Real dev, staging and production initialization, deployment and business acceptance have not run.",
+      "SSE and API WebSocket protocol acceptance used deterministic isolated upstream fixtures.",
+      "No real model provider was called."
+    ]
+  },
+  "hostToolInstallation": {
+    "observedAt": "2026-10-25",
+    "status": "passed",
+    "authorization": "logs/operations/20261025-nginx-validation/installation-authorization.json",
+    "versions": {
+      "nginx": "1.31.8",
+      "openssl@4": "4.0.3",
+      "pcre2": "10.49",
+      "ca-certificates": "2026-10-20"
+    },
+    "sourceFormulae": [
+      {
+        "name": "nginx",
+        "source": "https://raw.githubusercontent.com/Homebrew/homebrew-core/f2fa4540ee4fc41c70a3c94df121528a11c17cb6/Formula/n/nginx.rb",
+        "sha256": "8594e6d9ce97f68ddbf901b417cf4328cfe28f112a2c5811daef6430ef4aecb4",
+        "checksumMatched": true
+      },
+      {
+        "name": "openssl@4",
+        "source": "https://raw.githubusercontent.com/Homebrew/homebrew-core/720e112957ff0135ff3aeece1c2bbc3cb2c23477/Formula/o/openssl@4.rb",
+        "sha256": "9e6998cc58157aa31b16144b11b67d686caccd3032d7882a76eccb53ce0730f7",
+        "checksumMatched": true
+      },
+      {
+        "name": "pcre2",
+        "source": "https://raw.githubusercontent.com/Homebrew/homebrew-core/f2fa4540ee4fc41c70a3c94df121528a11c17cb6/Formula/p/pcre2.rb",
+        "sha256": "2dcb74b4bc19dc81ace51feac7bb626b679c7b730eca1d3492d73fe822134fb8",
+        "checksumMatched": true
+      },
+      {
+        "name": "ca-certificates",
+        "source": "https://raw.githubusercontent.com/Homebrew/homebrew-core/f2fa4540ee4fc41c70a3c94df121528a11c17cb6/Formula/c/ca-certificates.rb",
+        "sha256": "535300ac0e99511a36340454bd5287cfff097191de9d7b9675ed924f3a692317",
+        "checksumMatched": true
+      }
+    ],
+    "localTap": {
+      "name": "tavern/native-environments",
+      "formulaDirectory": "/opt/homebrew/Library/Taps/tavern/homebrew-native-environments/Formula",
+      "formulae": [
+        "nginx.rb",
+        "openssl@4.rb"
+      ],
+      "bottleRoot": "https://ghcr.io/v2/homebrew/core",
+      "nginxOpenSSLDependency": "tavern/native-environments/openssl@4",
+      "sourceEdits": [
+        "Set bottle root_url to the official Homebrew core registry.",
+        "Point nginx openssl@4 dependency to the fixed local tap formula."
+      ],
+      "coreFormulae": [
+        "pcre2",
+        "ca-certificates"
+      ]
+    },
+    "commands": {
+      "createTap": {
+        "file": "/opt/homebrew/bin/brew",
+        "args": [
+          "tap-new",
+          "--no-git",
+          "tavern/native-environments"
+        ]
+      },
+      "install": {
+        "file": "/opt/homebrew/bin/brew",
+        "args": [
+          "install",
+          "--no-ask",
+          "--force-bottle",
+          "tavern/native-environments/nginx",
+          "tavern/native-environments/openssl@4",
+          "homebrew/core/pcre2",
+          "homebrew/core/ca-certificates"
+        ],
+        "environment": {
+          "HOMEBREW_NO_AUTO_UPDATE": "1",
+          "HOMEBREW_NO_INSTALL_CLEANUP": "1",
+          "HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK": "1"
+        }
+      }
+    },
+    "versionChecks": [
+      "nginx -V",
+      "/opt/homebrew/opt/openssl@4/bin/openssl version",
+      "pcre2-config --version",
+      "readlink /opt/homebrew/opt/ca-certificates"
+    ],
+    "evidence": [
+      "logs/operations/20261025-nginx-validation/install-dry-run.log",
+      "logs/operations/20261025-nginx-validation/install.log",
+      "logs/operations/20261025-nginx-validation/homebrew-after.json",
+      "logs/operations/20261025-nginx-validation/nginx-build.txt",
+      "logs/operations/20261025-nginx-validation/nginx-linkage.txt",
+      "logs/operations/20261025-nginx-validation/linked-versions.txt"
+    ],
+    "servicesStarted": false
+  }
+}

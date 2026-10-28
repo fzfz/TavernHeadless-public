@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tavern · 用户 Web 视觉样式板</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--color-bg-page);
+        color: var(--color-text-primary);
+        font-family: var(--font-family-en), var(--font-family-zh);
+        font-size: var(--font-size-body);
+        line-height: var(--line-height-body);
+      }
+      main {
+        max-width: var(--size-content-max);
+        margin: auto;
+        padding: var(--space-xxl) var(--space-xl);
+      }
+      header {
+        display: flex;
+        gap: var(--space-xl);
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: var(--space-xxl);
+      }
+      h1 {
+        font-size: var(--font-size-title);
+        line-height: var(--line-height-title);
+        margin: var(--space-sm) 0;
+      }
+      h2 {
+        font-size: var(--font-size-section);
+        line-height: var(--line-height-section);
+        margin: 0;
+      }
+      h3 {
+        font-size: var(--font-size-card);
+        line-height: var(--line-height-card);
+        margin: 0 0 var(--space-md);
+      }
+      p {
+        margin: 0 0 var(--space-lg);
+      }
+      .label,
+      .meta {
+        font-size: var(--font-size-meta);
+        line-height: var(--line-height-meta);
+        color: var(--color-text-secondary);
+      }
+      .label {
+        font-weight: var(--font-weight-emphasis);
+      }
+      .intro {
+        max-width: var(--size-prose-max);
+      }
+      button,
+      .sample-action {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--space-sm);
+        min-height: var(--size-control);
+        padding: var(--space-sm) var(--space-lg);
+        border: var(--border-width) solid var(--color-border);
+        border-radius: var(--radius-control);
+        font: inherit;
+        font-weight: var(--font-weight-emphasis);
+        line-height: var(--line-height-control);
+        background: var(--color-bg-surface);
+        color: var(--color-text-primary);
+      }
+      button {
+        cursor: pointer;
+      }
+      button:hover {
+        background: var(--color-bg-hover);
+      }
+      button:active {
+        background: var(--color-bg-pressed);
+      }
+      button:focus-visible,
+      input:focus-visible {
+        outline: var(--border-focus-width) solid var(--color-focus);
+        outline-offset: var(--space-focus-offset);
+      }
+      .themes {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(min(100%, var(--size-form-max)), 1fr)
+        );
+        gap: var(--space-xl);
+      }
+      .theme {
+        min-width: 0;
+        padding: var(--space-xl);
+        background: var(--color-bg-page);
+        color: var(--color-text-primary);
+        border: var(--border-width) solid var(--color-divider);
+        border-radius: var(--radius-surface);
+      }
+      .theme-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--space-xl);
+      }
+      .section {
+        margin-top: var(--space-xl);
+        padding-top: var(--space-xl);
+        border-top: var(--border-width) solid var(--color-divider);
+      }
+      .surface {
+        padding: var(--space-lg);
+        border: var(--border-width) solid var(--color-divider);
+        border-radius: var(--radius-surface);
+        background: var(--color-bg-surface);
+      }
+      .row {
+        display: flex;
+        gap: var(--space-control-gap);
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .stack {
+        display: grid;
+        gap: var(--space-lg);
+      }
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--space-sm);
+      }
+      .swatch {
+        height: var(--size-control-large);
+        border-radius: var(--radius-control);
+        border: var(--border-width) solid var(--color-divider);
+      }
+      .swatch-item {
+        min-width: 0;
+      }
+      .swatch-item code {
+        font-size: var(--font-size-meta);
+        overflow-wrap: anywhere;
+      }
+      .swatch-item .meta {
+        margin-top: var(--space-xs);
+      }
+      code {
+        font-family: var(--font-family-code);
+      }
+      .type-row {
+        padding: var(--space-sm) 0;
+        border-bottom: var(--border-width) solid var(--color-divider);
+      }
+      .type-row:last-child {
+        border: 0;
+      }
+      .type-title {
+        font-size: var(--font-size-title);
+        line-height: var(--line-height-title);
+        font-weight: var(--font-weight-emphasis);
+      }
+      .type-section {
+        font-size: var(--font-size-section);
+        line-height: var(--line-height-section);
+        font-weight: var(--font-weight-emphasis);
+      }
+      .type-card {
+        font-size: var(--font-size-card);
+        line-height: var(--line-height-card);
+        font-weight: var(--font-weight-emphasis);
+      }
+      .type-control {
+        line-height: var(--line-height-control);
+        font-weight: var(--font-weight-emphasis);
+      }
+      .type-field {
+        font-size: var(--font-size-meta);
+        line-height: var(--line-height-meta);
+        font-weight: var(--font-weight-emphasis);
+      }
+      .type-code {
+        font-size: var(--font-size-meta);
+        line-height: var(--line-height-control);
+        font-variant-numeric: tabular-nums;
+        font-family: var(--font-family-code);
+      }
+      .primary {
+        background: var(--color-primary);
+        color: var(--color-on-primary);
+        border-color: var(--color-primary);
+      }
+      .primary.hover {
+        background: var(--color-primary-hover);
+        border-color: var(--color-primary-hover);
+      }
+      .primary.pressed {
+        background: var(--color-primary-pressed);
+        border-color: var(--color-primary-pressed);
+      }
+      .danger {
+        background: var(--color-danger);
+        color: var(--color-on-danger);
+        border-color: var(--color-danger);
+      }
+      .disabled {
+        background: var(--color-bg-disabled);
+        color: var(--color-text-disabled);
+        border-color: var(--color-bg-disabled);
+      }
+      .focused {
+        outline: var(--border-focus-width) solid var(--color-focus);
+        outline-offset: var(--space-focus-offset);
+      }
+      .selected {
+        background: var(--color-bg-selected);
+        border-color: var(--color-border-selected);
+      }
+      input {
+        width: 100%;
+        min-height: var(--size-control);
+        border: var(--border-width) solid var(--color-border);
+        border-radius: var(--radius-control);
+        padding: var(--space-md);
+        font: inherit;
+        line-height: var(--line-height-control);
+        background: var(--color-bg-surface);
+        color: var(--color-text-primary);
+      }
+      .field {
+        display: grid;
+        gap: var(--space-sm);
+      }
+      .error-field {
+        border-color: var(--color-error);
+      }
+      .error {
+        color: var(--color-error);
+      }
+      .success {
+        color: var(--color-success);
+      }
+      .warning {
+        color: var(--color-warning);
+      }
+      .info {
+        color: var(--color-info);
+      }
+      .message + .message {
+        margin-top: var(--space-xl);
+      }
+      .message p:last-child {
+        margin-bottom: 0;
+      }
+      .identity {
+        font-weight: var(--font-weight-emphasis);
+        margin-bottom: var(--space-sm);
+      }
+      .user-message {
+        padding: var(--space-lg);
+        border-radius: var(--radius-surface);
+        background: var(--color-bg-selected);
+      }
+      .empty {
+        text-align: center;
+        padding: var(--space-xl);
+      }
+      .empty svg {
+        width: var(--size-state-art);
+        height: var(--size-state-art);
+        color: var(--color-text-secondary);
+        margin-bottom: var(--space-lg);
+      }
+      svg {
+        width: var(--size-icon);
+        height: var(--size-icon);
+        fill: none;
+        stroke: currentColor;
+        stroke-width: var(--icon-stroke-width);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+      }
+      svg * {
+        vector-effect: non-scaling-stroke;
+      }
+      .icons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-lg);
+      }
+      .icon-example {
+        display: grid;
+        justify-items: center;
+        gap: var(--space-sm);
+        min-width: var(--size-target-min);
+      }
+      .menu-sample {
+        box-shadow: var(--shadow-surface);
+      }
+      .overlay-sample {
+        box-shadow: var(--shadow-overlay);
+      }
+      .radius-row {
+        display: flex;
+        gap: var(--space-lg);
+        flex-wrap: wrap;
+      }
+      .radius-chip {
+        background: var(--color-bg-selected);
+        border: var(--border-width) solid var(--color-border-selected);
+        padding: var(--space-md);
+      }
+      .space-row {
+        display: flex;
+        align-items: center;
+        gap: var(--space-lg);
+        margin-top: var(--space-sm);
+      }
+      .space-bar {
+        height: var(--space-lg);
+        background: var(--color-primary);
+        flex-shrink: 0;
+      }
+      .catalog {
+        margin-top: var(--space-lg);
+      }
+      summary {
+        cursor: pointer;
+        min-height: var(--size-target-min);
+        padding: var(--space-sm) 0;
+        color: var(--color-primary);
+      }
+      .token-list {
+        display: grid;
+        gap: var(--space-sm);
+        margin-top: var(--space-md);
+      }
+      .token-line {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--space-lg);
+        flex-wrap: wrap;
+        font-size: var(--font-size-meta);
+      }
+      .dot {
+        display: inline-block;
+        width: var(--size-icon);
+        height: var(--size-icon);
+        border: var(--border-width) solid var(--color-border);
+        border-radius: var(--radius-small);
+        vertical-align: middle;
+        margin-right: var(--space-sm);
+      }
+      footer {
+        margin-top: var(--space-xxl);
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-meta);
+      }
+      a {
+        color: var(--color-primary);
+        text-decoration: underline;
+      }
+      #load-status {
+        padding: var(--space-lg);
+      }
+      @media (forced-colors: active) {
+        .theme,
+        .surface,
+        input,
+        button,
+        .sample-action {
+          border-color: CanvasText;
+        }
+        .selected {
+          border-color: Highlight;
+        }
+        .primary,
+        .danger {
+          background: ButtonFace;
+          color: ButtonText;
+        }
+        .focused {
+          outline-color: Highlight;
+        }
+        .menu-sample,
+        .overlay-sample {
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="intro">
+          <div class="label">TAVERN / 用户 WEB / 阶段 6</div>
+          <h1>让故事成为阅读的中心。</h1>
+          <p class="meta">
+            视觉样式板 ·
+            浅色与深色对照。控件用于展示状态，人物与对话为排版示例。
+          </p>
+        </div>
+        <button id="theme-toggle" type="button" aria-pressed="false">
+          预览背景：浅色
+        </button>
+      </header>
+      <p id="load-status" role="status">正在读取设计变量……</p>
+      <div id="themes" class="themes"></div>
+      <footer>
+        变量来源：<a href="phase6-tokens.json">设计变量配置</a> · 规则：<a
+          href="phase6-visual.md"
+          >视觉规范</a
+        >
+        · 计算：<a href="phase6-contrast.json">配色对比度结果</a>
+      </footer>
+    </main>
+    <script type="module">
+      const icons = {
+        book: '<path d="M12 5c-4-3-8-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-3-1-6-2-9 1v15"/>',
+        person:
+          '<circle cx="12" cy="7" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>',
+        search: '<circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/>',
+        history: '<path d="M3 11a9 9 0 1 1 2 7M3 5v6h6M12 7v5l3 2"/>',
+        send: '<path d="m3 3 18 9-18 9 4-9Zm4 9h14"/>',
+        stop: '<rect x="5" y="5" width="14" height="14" rx="2"/>',
+      };
+      const icon = (name) =>
+        `<svg viewBox="0 0 24 24" aria-hidden="true">${icons[name]}</svg>`;
+      const swatchNames = [
+        ["primary", "主操作"],
+        ["bg-page", "页面"],
+        ["bg-surface", "表面"],
+        ["bg-selected", "选中"],
+        ["success", "已保存"],
+        ["warning", "待确认"],
+        ["error", "失败"],
+        ["info", "信息"],
+      ];
+      try {
+        const response = await fetch("./phase6-tokens.json");
+        if (!response.ok) throw new Error("变量读取失败");
+        const tokens = await response.json();
+        const stylesheet = document.createElement("style");
+        stylesheet.textContent =
+          `:root{${Object.entries(tokens.common)
+            .map(([name, value]) => `${name}:${value};`)
+            .join("")}}` +
+          ["light", "dark"]
+            .map(
+              (theme) =>
+                `[data-theme="${theme}"]{color-scheme:${theme};${Object.entries(
+                  tokens.colors,
+                )
+                  .map(([name, values]) => `${name}:${values[theme]};`)
+                  .join("")}}`,
+            )
+            .join("");
+        document.head.append(stylesheet);
+        const render = (
+          theme,
+        ) => `<article class="theme" data-theme="${theme}" aria-label="${theme === "light" ? "浅色" : "深色"}样式"><div class="theme-head"><h2>${theme === "light" ? "日间 · 温暖纸色" : "夜间 · 深灰绿"}</h2><span class="label">${theme === "light" ? "LIGHT" : "DARK"}</span></div>
+<div class="swatches">${swatchNames.map(([name, label]) => `<div class="swatch-item"><div class="swatch" style="background:var(--color-${name})"></div><div class="meta">${label}</div><code>${tokens.colors["--color-" + name][theme]}</code></div>`).join("")}</div>
+<details class="catalog"><summary>查看全部颜色变量</summary><div class="token-list">${Object.entries(
+          tokens.colors,
+        )
+          .map(
+            ([name, values]) =>
+              `<div class="token-line"><span><i class="dot" style="background:var(${name})"></i>${name}</span><code>${values[theme]}</code></div>`,
+          )
+          .join("")}</div></details>
+<section class="section"><h3>01 / 文本层级</h3><div class="type-row type-title">故事，由你续写。</div><div class="type-row type-section">选择本次演绎人格</div><div class="type-row type-card">裴修远</div><div class="type-row">雨停之后，书楼仍留着一盏灯。</div><div class="type-row type-control">保存人格</div><div class="type-row type-field">人格姓名</div><div class="type-row meta">本次演绎使用会话创建时的人格资料。</div><div class="type-row type-code">02 / 03 · session.title</div></section>
+<section class="section"><h3>02 / 控件状态样本</h3><div class="stack"><div class="row"><span class="sample-action primary">默认</span><span class="sample-action primary hover">悬停</span><span class="sample-action primary pressed">按下</span></div><div class="row"><span class="sample-action focused">键盘焦点</span><span class="sample-action selected">✓ 已选中</span><span class="sample-action disabled">不可操作</span></div><div class="row"><span class="sample-action danger">确认删除</span><span class="sample-action">取消</span></div><label class="field"><span class="type-field">人格姓名 · 只读样本</span><input readonly value="裴修远"></label><label class="field"><span class="type-field">错误字段样本</span><input class="error-field" readonly value="" aria-invalid="true" aria-describedby="${theme}-error"><span id="${theme}-error" class="meta error">请填写人格姓名。</span></label><div class="surface"><div class="success">✓ 已保存</div><div class="warning">△ 保存结果待确认</div><div class="error">! 保存失败，请重试</div><div class="info">○ 正在读取会话</div></div></div></section>
+<section class="section"><h3>03 / 通用聊天阅读样本</h3><div class="surface"><div class="message"><div class="identity">沈知微</div><p>她把灯移近了一些，看见信封上的雨痕。</p><p>“信送到了。你一路走来，可曾见过写信的人？”</p></div><div class="message user-message"><div class="identity">裴修远</div><p>“只在渡口见过一面。他说，你认得这封信。”</p></div></div><p class="meta" style="margin-top:var(--space-md)">这是通用聊天组件的样式。角色场景与布局由角色 Runtime 提供。</p></section>
+<section class="section"><h3>04 / 图标与空态</h3><div class="icons">${[
+          ["book", "故事"],
+          ["person", "身份"],
+          ["search", "搜索"],
+          ["history", "历史"],
+          ["send", "发送"],
+          ["stop", "停止"],
+        ]
+          .map(
+            ([name, label]) =>
+              `<div class="icon-example">${icon(name)}<span class="meta">${label}</span></div>`,
+          )
+          .join(
+            "",
+          )}</div><div class="empty">${icon("history")}<h3>还没有演绎记录</h3><p class="meta">选择一个角色，开始你的故事。</p><span class="sample-action primary">浏览角色</span></div></section>
+<section class="section"><h3>05 / 表面与圆角</h3><div class="stack"><div class="surface menu-sample">浮动菜单 · 表面投影</div><div class="surface overlay-sample">宿主覆盖层 · 覆盖层投影</div><div class="radius-row">${["small", "control", "surface"].map((name) => `<div class="radius-chip" style="border-radius:var(--radius-${name})">${tokens.common["--radius-" + name]}</div>`).join("")}</div></div></section>
+<section class="section"><h3>06 / 间距节奏</h3>${["xs", "sm", "md", "lg", "xl", "xxl"].map((name) => `<div class="space-row"><span class="space-bar" style="width:var(--space-${name})"></span><span class="meta">${name} · ${tokens.common["--space-" + name]}</span></div>`).join("")}</section></article>`;
+        document.getElementById("themes").innerHTML =
+          render("light") + render("dark");
+        let dark = matchMedia("(prefers-color-scheme: dark)").matches;
+        const toggle = document.getElementById("theme-toggle");
+        function apply() {
+          document.documentElement.dataset.theme = dark ? "dark" : "light";
+          toggle.textContent = `预览背景：${dark ? "深色" : "浅色"}`;
+          toggle.setAttribute("aria-pressed", String(dark));
+        }
+        apply();
+        toggle.addEventListener("click", () => {
+          dark = !dark;
+          apply();
+        });
+        document.getElementById("load-status").remove();
+      } catch (error) {
+        document.getElementById("load-status").textContent =
+          "设计变量未能读取。请通过本地 HTTP 地址打开此样式板，并确认 phase6-tokens.json 与本页位于同一目录。";
+        console.error(error);
+      }
+    </script>
+  </body>
+</html>

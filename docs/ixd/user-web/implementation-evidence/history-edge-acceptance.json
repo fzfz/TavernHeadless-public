@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "checks": [
+    "first owned-list failure and retry",
+    "read 105 real sessions in six pages",
+    "reload restores all 105 through 100+5 list requests",
+    "105 selected targets delete as 100+5, empty entry receives focus",
+    "cancel delete through Escape sends no write",
+    "unknown write not delivered: real detail200 verifies existence before explicit retry"
+  ],
+  "reloadQueries": [
+    {
+      "limit": 100,
+      "offset": 0
+    },
+    {
+      "limit": 5,
+      "offset": 100
+    },
+    {
+      "limit": 20,
+      "offset": 0
+    }
+  ],
+  "batches": [
+    100,
+    5
+  ],
+  "errors": []
+}

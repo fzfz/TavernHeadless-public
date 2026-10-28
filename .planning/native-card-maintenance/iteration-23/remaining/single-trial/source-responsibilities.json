@@ -1,0 +1,42 @@
+{
+  "checkedBy": "main-agent",
+  "entries": [
+    {
+      "index": 2,
+      "role": "initial data",
+      "sourceScanningEnabled": false
+    },
+    {
+      "index": 104,
+      "role": "body boundary controller"
+    },
+    {
+      "index": 105,
+      "role": "ending route variable rules",
+      "sourceScanningEnabled": false
+    },
+    {
+      "index": 106,
+      "role": "event and ending priority controller",
+      "characters": 33666
+    },
+    {
+      "index": 108,
+      "role": "old variable output protocol"
+    },
+    {
+      "index": 109,
+      "role": "mixed protocol and business constraints"
+    },
+    {
+      "index": 110,
+      "role": "business variable update rules"
+    },
+    {
+      "index": 122,
+      "role": "opening premise controller"
+    }
+  ],
+  "use": "separate deletion, moved rules and translated program checks after child completion",
+  "sentToChild": false
+}

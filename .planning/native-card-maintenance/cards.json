@@ -1,0 +1,1507 @@
+[
+  {
+    "id": "USER002",
+    "inputFile": "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json",
+    "status": "failed",
+    "rounds": [
+      {
+        "iteration": 1,
+        "agent": "/root/user002_round1",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-1/run-MTXWzu",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-1/run-MTXWzu/acceptance.json",
+        "status": "failed",
+        "mainReview": "pending"
+      },
+      {
+        "iteration": 3,
+        "agent": "/root/user002_round3",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-3/run-HG5Bmm",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-3/run-HG5Bmm/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-3/semantic-user002-final.md",
+        "reason": "正式页面根 CSS 变量未迁移，浅色背景上浅色文本；部分后端恢复提示缺少用户可用操作，连续更新仍待正式页面验收。"
+      },
+      {
+        "iteration": 4,
+        "agent": "/root/user002_round4",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-4/run-mwNkgz",
+        "acceptance": null,
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-4/semantic-user002.md",
+        "reason": "UI操作错误提示与PE术语仍需修正；预览端口故障和数组可写路径选择导致本轮正式页面复验未完成。",
+        "executionEnd": "interrupted_after_failure_evidence"
+      },
+      {
+        "iteration": 5,
+        "agent": "/root/user002_round5",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-5/run-QjcGbS",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-5/main-user002-review.json",
+        "reason": "成功与失败反馈均被刷新覆盖，已独立复现；最终包、正式导入及163文件回读通过，源目标对照和部分专项验收待完成。",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 6,
+        "agent": "/root/user002_round6",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-6/run-jXNxNc",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-6/run-jXNxNc/acceptance.json",
+        "status": "pending_review",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-6/main-USER002-review.json",
+        "reason": "Final package/import/66-file readback passed; root semantic/core acceptance incomplete. UI appearance parity excluded by latest user scope.",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 7,
+        "agent": "/root/user002_round7",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-7/run-YPLXkl",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-7/run-YPLXkl/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-7/main-USER002-review.json",
+        "reason": "模块挂载报错导致核心按钮/修复/快照回调未注册；完整语义核对仍待完成。",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 8,
+        "agent": "/root/user002_round8",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-YWUKnK",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-YWUKnK/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/main-USER002-review.json",
+        "executionEnd": "completed",
+        "reason": "Core architectural conversion and99declared JSON locations pass. Generated action-send error branch uses error.message without the operation-specific configured handling action; final handoff copy review requires correction."
+      },
+      {
+        "iteration": 9,
+        "agent": "/root/user002_round9",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-9/run-hytvd2",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-9/run-hytvd2/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-9/main-USER002-review.json",
+        "reason": "Grouped-field role gap plus supplementary-review contamination and latest ZIP/import mismatch.",
+        "executionEnd": "interrupted_after_boundary_failure"
+      },
+      {
+        "iteration": 11,
+        "state": "running",
+        "agent": "/root/user002_round11",
+        "task": "run-1LLDhj",
+        "outputDirectory": ".planning/native-card-maintenance/iteration-11/run-1LLDhj",
+        "status": "passed",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-11/run-1LLDhj/acceptance.json",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-11/main-USER002-review.json",
+        "executionEnd": "completed",
+        "reason": "源初始化、状态规则、四个动态控制器、行动选项及画廊按职责迁入原生格式。83条停用资料保留显式调用、退出扫描；125条资源正文与30个媒体文件核对通过。正文失败后的重试请求只含一次用户输入并完成一次状态提交，核心失败恢复通过。两次发送尝试分别保留可见用户消息，记录为宿主呈现行为。",
+        "skillCoreStatus": "passed",
+        "formalIntegrationStatus": "passed_for_core_conversion"
+      },
+      {
+        "iteration": 12,
+        "agent": "/root/user002_round12",
+        "outputDirectory": "iteration-12/run-nMZG3s",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-12/main-USER002-review.json",
+        "mainReviewScope": "semantic/native core acceptance"
+      },
+      {
+        "iteration": 13,
+        "agent": "/root/user002_round13",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-13/run-wBYkVa",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-13/main-USER002-review.json",
+        "forkTurns": "none",
+        "minimumPromptOnly": true,
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 14,
+        "agent": "/root/user002_round14",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-14/main-USER002-review.json",
+        "forkTurns": "none",
+        "minimumPromptOnly": true,
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-14/run-oQrRw9"
+      },
+      {
+        "iteration": 16,
+        "agent": "/root/user002_round16",
+        "status": "failed",
+        "forkTurns": "none",
+        "minimumPromptOnly": true,
+        "task": "run-vAc9LS",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-16/run-vAc9LS",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-16/run-vAc9LS/acceptance.json",
+        "executionEnd": "completed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-16/main-USER002-review.json",
+        "reason": "实际状态请求中仍包含立即触发剧情命令；正式导入128文件回读通过，UI布局一致排除。"
+      },
+      {
+        "iteration": 17,
+        "agent": "/root/user002_round17",
+        "status": "failed",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-17/run-z9lPzk",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-17/run-z9lPzk/acceptance.json",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-17/main-USER002-review.json",
+        "forkTurns": "none",
+        "minimumPromptOnly": true,
+        "state": "completed",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 18,
+        "agent": "/root/user002_round18",
+        "status": "failed",
+        "outputDirectory": ".planning/native-card-maintenance/iteration-18/run-wrv7G3",
+        "mainReview": ".planning/native-card-maintenance/iteration-18/main-USER002-review.json",
+        "dispatchedAt": "2026-10-01T05:44:43.505479+00:00",
+        "acceptance": ".planning/native-card-maintenance/iteration-18/run-wrv7G3/acceptance.json",
+        "executionEnd": "completed",
+        "additionalGuidance": false
+      },
+      {
+        "iteration": 19,
+        "agent": "/root/user002_round19",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-19/main-USER002-review.json",
+        "outputDirectory": ".planning/native-card-maintenance/iteration-19/run-Dhjesc",
+        "dispatchedAt": "2026-10-01T06:43:36.488090+00:00",
+        "reason": "开场已发生与本轮完成事实未区分；世界书user角色透传API缺口待批准。"
+      },
+      {
+        "iteration": 23,
+        "agent": "/root/linxi_deterministic_tools_single_trial",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-pdG3cp",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-23/remaining/single-trial/main-acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-23/remaining/single-trial/retrospective.md",
+        "reason": "6项通过、3项失败、4项未执行；规则条件、删除遗漏与HTML/CSS改写失败，默认模块资源超限；队员临时修改应用配置后被中止，配置已恢复。",
+        "executionEnd": "terminated_readonly_boundary_violation",
+        "checks": {
+          "passed": 6,
+          "failed": 3,
+          "notExecuted": 4,
+          "formalReadbackFiles": 155
+        }
+      }
+    ],
+    "approvedApiFixEvidence": {
+      "check": "depth_worldbook_role_passthrough",
+      "status": "passed",
+      "evidence": "api-depth-role-fix/formal-card-regression.json",
+      "overallCardResult": "原整卡结果保留；新干净上下文转换与验收等待原任务恢复"
+    }
+  },
+  {
+    "id": "USER001",
+    "inputFile": "/Users/developer/Downloads/林茜_妻心如刀_v1.3.01.json",
+    "status": "failed",
+    "rounds": [
+      {
+        "iteration": 1,
+        "agent": "/root/user001_round1",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-1/run-fzB8Q2",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-1/run-fzB8Q2/acceptance.json",
+        "status": "failed",
+        "mainReview": "pending"
+      },
+      {
+        "iteration": 3,
+        "agent": "/root/user001_round3",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-3/run-9Ok4nW",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-3/run-9Ok4nW/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-3/run-9Ok4nW/page/2026-09-30T08-55-28.728Z/main-review.json",
+        "reason": "正式页面的源 :root CSS 变量在 ShadowRoot 中未生效，连续更新页面仍待验收。"
+      },
+      {
+        "iteration": 4,
+        "agent": "/root/user001_round4",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-4/run-G7bdHM",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-4/run-G7bdHM/acceptance.json",
+        "status": "not_executed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-4/main-user001-review.json",
+        "reason": "源目标同视口截图对照仍未完成；离线正式联调、最终137文件回读、UI文案审阅已有通过证据。",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 5,
+        "agent": "/root/user001_round5",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-5/run-DkRlpl",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-5/main-user001-isolation-failure.json",
+        "reason": "本轮读取并复用上一轮字段决策、行为映射、dry-run和重放响应，干净测试输入要求未通过；校验、正式导入与回读已有成功证据。",
+        "executionEnd": "interrupted_after_isolation_failure_evidence"
+      },
+      {
+        "iteration": 6,
+        "agent": "/root/user001_round6",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-6/run-kDwNCc",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-6/main-user001-isolation-failure.json",
+        "reason": "读取上一轮另一张卡的预览配置，独立输入要求未通过。",
+        "executionEnd": "interrupted_after_isolation_failure_evidence"
+      },
+      {
+        "iteration": 7,
+        "agent": "/root/user001_round7",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-7/run-Mp4CRp",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-7/run-Mp4CRp/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-7/main-USER001-review.json",
+        "reason": "Core outputs and formal import/readback passed; field decisions omit precise per-alternative-opening target mapping. Generated messages need semantic copy correction. UI appearance excluded.",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 8,
+        "agent": "/root/user001_round8",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-FJBuxd",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-FJBuxd/acceptance.json",
+        "status": "passed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/main-USER001-review.json",
+        "executionEnd": "completed",
+        "reason": "Architectural semantic conversion and applicable core gates passed."
+      },
+      {
+        "iteration": 9,
+        "agent": "/root/user001_round9",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-9/run-vJ6Px7",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-9/run-vJ6Px7/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-9/main-USER001-review.json",
+        "reason": "Repeated grouped-field role gap; fresh Skill-only revision required.",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 10,
+        "agent": "/root/user001_round10_clean",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-10/run-m1eiQr",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-10/run-m1eiQr/acceptance.json",
+        "status": "passed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-10/main-USER001-review.json",
+        "state": "completed",
+        "reason": "102条世界书分别迁入静态条目、动态提示控制器、原生状态初值/schema/更新规则/计算；三条旧协议退出。状态栏正则中的HTML与DOM脚本迁入frontend；占位符、placement和来源标识各自用途及退出结果已在功能分组中说明。主代理核对320项源逻辑、10开场与16事件边界，133文件与最终209700字节ZIP、实际请求、回读一致。"
+      },
+      {
+        "iteration": 12,
+        "agent": "/root/user001_round12",
+        "outputDirectory": "iteration-12/run-1zOVNH",
+        "status": "passed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-12/main-USER001-review.json",
+        "mainReviewScope": "semantic/native core acceptance"
+      },
+      {
+        "iteration": 13,
+        "agent": "/root/user001_round13",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-13/run-4PVFl2",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-13/main-USER001-review.json",
+        "executionEnd": "completed"
+      }
+    ],
+    "approvedApiFixEvidence": {
+      "check": "depth_worldbook_role_passthrough",
+      "status": "passed",
+      "evidence": "api-depth-role-fix/formal-card-regression.json",
+      "overallCardResult": "原整卡结果保留；新干净上下文转换与验收等待原任务恢复"
+    }
+  },
+  {
+    "id": "C005",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e1e75326a168c10f2502dcb8353ac6d3a07657b6f519a40046b09208e33741de",
+    "status": "not_executed",
+    "rounds": [
+      {
+        "iteration": 1,
+        "agent": "/root/c005_round1",
+        "status": "failed",
+        "mainReview": "pending",
+        "evidence": "../traces/c005_round1/visible.json",
+        "reason": "输入包装校验失败；子代理另报告源内容无法按原样转换。"
+      },
+      {
+        "iteration": 4,
+        "agent": "/root/c005_round4",
+        "status": "failed",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-4/run-fKZjKz",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-4/run-fKZjKz/acceptance.json",
+        "evidence": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-4/run-fKZjKz/conversion-diagnostics.json",
+        "mainReview": "pending",
+        "reason": "begin/inspect读取成功；子代理未交付源卡转换产物，校验、打包、正式导入和页面未执行。"
+      },
+      {
+        "iteration": 8,
+        "agent": "/root/c005_round8",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-SUHzmM",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-SUHzmM/acceptance.json",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/main-C005-review.json",
+        "status": "not_executed",
+        "reason": "Architectural semantic conversion and applicable core gates passed.",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 15,
+        "agent": "/root/c005_round15",
+        "status": "not_executed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-15/main-C005-review.json",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-15/run-vZdAPD",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-15/run-vZdAPD/acceptance.json"
+      }
+    ]
+  },
+  {
+    "id": "C011",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/5b2bee10d450a23655879484f733b430ea6f9e971fcbe8ba47d28b06372f1b51",
+    "status": "passed",
+    "rounds": [
+      {
+        "iteration": 2,
+        "agent": "/root/c011_round1",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-2/run-T40Rvq",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-2/run-T40Rvq/acceptance.json",
+        "status": "failed",
+        "mainReview": "pending"
+      },
+      {
+        "iteration": 4,
+        "agent": "/root/c011_round4",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-4/run-TLq1PQ",
+        "acceptance": null,
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-4/semantic-c011.md",
+        "reason": "独立文案审阅需修改；最终UI反馈清理复验因端口冲突未完成。",
+        "executionEnd": "interrupted_after_failure_evidence"
+      },
+      {
+        "iteration": 5,
+        "agent": "/root/c011_round5",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-5/run-LH7fg0",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-5/main-c011-isolation-failure.json",
+        "reason": "本轮读取上一轮生成模块、行为映射及验收结论，干净测试输入要求未通过；本轮校验、正式导入及页面测试尚未完成。",
+        "executionEnd": "interrupted_after_isolation_failure_evidence"
+      },
+      {
+        "iteration": 6,
+        "agent": "/root/c011_round6",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-6/run-35bgui",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-6/main-c011-isolation-failure.json",
+        "reason": "旧轮次输入污染；生成初始状态未遵循源消费者。",
+        "executionEnd": "interrupted_after_isolation_failure_evidence"
+      },
+      {
+        "iteration": 7,
+        "agent": "/root/c011_round7",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-7/run-dlHJRH",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-7/run-dlHJRH/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-7/main-C011-review.json",
+        "reason": "有效初始化内容误退役，6开场初值丢失，数组落点记录不全。",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 8,
+        "agent": "/root/c011_round8",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-m5a1X0",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-m5a1X0/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/main-C011-review.json",
+        "executionEnd": "completed",
+        "reason": "29 field decisions declare /extensions in native entry files; native consumers actually use top-level mapped fields and /extra/extensions. This record does not accurately identify the target fields."
+      },
+      {
+        "iteration": 9,
+        "agent": "/root/c011_round9",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-9/run-YQ5MeG",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-9/run-YQ5MeG/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-9/main-C011-review.json",
+        "reason": "Repeated grouped-field role gap; fresh Skill-only revision required.",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 10,
+        "agent": "/root/c011_round10",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-10/run-YyHCti",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-10/run-YyHCti/acceptance.json",
+        "status": "passed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-10/main-C011-review.json",
+        "state": "completed",
+        "reason": "开场正文与初值拆分到openings/*.txt、state/initial/*.json，原MVU有效规则绑定stateUpdate，旧输出/安装协议退出。正则替换内布局、状态读取、页签和折叠由frontend三文件及display.json承担；状态条件世界书由backend/controllers/prompt.js及config.json承担。主代理核对九开场实际初值，并核对正式页面两轮提交、失败重试和重新处理；精确叶路径及原生状态保存正确。"
+      },
+      {
+        "iteration": 12,
+        "agent": "/root/c011_round12",
+        "outputDirectory": "iteration-12/run-U7jgfg",
+        "status": "passed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-12/main-C011-review.json",
+        "blackboxLifecycle": "interrupted_waiting_for_parent_review",
+        "mainReviewScope": "semantic/native core acceptance"
+      },
+      {
+        "iteration": 13,
+        "agent": "/root/c011_round13",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-13/run-2I5JAG",
+        "status": "passed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-13/main-C011-review.json",
+        "executionEnd": "completed"
+      }
+    ]
+  },
+  {
+    "id": "C058",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9714c3532f4839e3c0bcb7706924cc8036b202ddfab0f7504d208ea08f090401",
+    "status": "passed",
+    "rounds": [
+      {
+        "iteration": 2,
+        "agent": "/root/c058_round1",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-2/run-i8Ij1Z",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-2/run-i8Ij1Z/acceptance.json",
+        "status": "failed",
+        "mainReview": "pending"
+      },
+      {
+        "iteration": 7,
+        "agent": "/root/c058_round7",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-7/run-rzQmOl",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-7/run-rzQmOl/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-7/main-C058-review.json",
+        "reason": "公开调用读取旧轮次验收结论，独立输入要求失败；外置世界书及完整核心核对待新轮次。最终包与22文件导入回读通过。",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 8,
+        "agent": "/root/c058_round8",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-ib7hDl",
+        "acceptance": null,
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/main-C058-review.json",
+        "reason": "Core logic/formal storage/page pass. Field decision semantics for regex id/findRegex/disabled use a broad parent description rather than each role; operational input/error guidance also needs correction.",
+        "executionEnd": "interrupted_awaiting_independent_copy_review"
+      },
+      {
+        "iteration": 10,
+        "agent": "/root/c058_round10",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-10/run-IjKGyf",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-10/run-IjKGyf/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-10/main-C058-review.json",
+        "state": "completed",
+        "reason": "已实现的向导、状态守卫、原生页面和28文件保存通过；外置引用资料闭合未完成，完整核心转换不通过。这是Skill执行问题，当前证据不支持API缺口。"
+      },
+      {
+        "iteration": 11,
+        "state": "running",
+        "agent": "/root/c058_round11",
+        "task": "run-M7VE3m",
+        "outputDirectory": ".planning/native-card-maintenance/iteration-11/run-M7VE3m",
+        "status": "failed",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-11/run-M7VE3m/acceptance.json",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-11/main-C058-review.json",
+        "executionEnd": "completed",
+        "reason": "外置资料查找问题已修复。17条世界书的初值、规则、公式、守卫、动态提示和前端分别进入原生文件，288公式组合及19确定性分支通过；混合叙事和变量动作的提示尚未完整拆分，核心语义迁移仍有一项失败。"
+      },
+      {
+        "iteration": 12,
+        "agent": "/root/c058_round12",
+        "outputDirectory": "iteration-12/run-o2ASh4",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-12/main-C058-review.json"
+      },
+      {
+        "iteration": 13,
+        "agent": "/root/c058_round13",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-13/run-gNqH3l",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-13/main-C058-review.json",
+        "forkTurns": "none",
+        "minimumPromptOnly": true,
+        "executionEnd": "interrupted_waiting_for_parent_review"
+      },
+      {
+        "iteration": 14,
+        "agent": "/root/c058_round14",
+        "status": "passed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-14/main-C058-review.json",
+        "forkTurns": "none",
+        "minimumPromptOnly": true,
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-14/run-vLGzf3"
+      }
+    ]
+  },
+  {
+    "id": "C083",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/02dcd558ddda05882ea77a5ef41f3fca67e51868622b73f0085363a9c8136171",
+    "status": "skipped",
+    "rounds": [
+      {
+        "iteration": 2,
+        "agent": "/root/c083_round1",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-2/run-Rvpfdd",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-2/run-Rvpfdd/acceptance.json",
+        "status": "failed",
+        "mainReview": "pending"
+      },
+      {
+        "iteration": 8,
+        "agent": "/root/c083_round8",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-DqMXyx",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-DqMXyx/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/main-C083-review.json",
+        "executionEnd": "completed",
+        "reason": "Independent auxiliary LINE generation/history/prompt injection lacks native consumers; request-time JST guidance requires clock input not supplied by backend controller context. Source HTML display can move to frontend, while the time-dependent narrative instruction remains a core requirement."
+      }
+    ],
+    "previousStatus": "failed",
+    "skipDecision": {
+      "source": "api-depth-role-fix/user-decision.json",
+      "recordedAt": "2026-10-01T10:24:30.399912+00:00",
+      "reason": "整卡跳过，辅助对话与请求时间扩充退出本次实施",
+      "semanticBasis": "内置手机插件负责独立对话生成、历史保存与主提示同步的角色卡",
+      "historicalRoundsPreserved": true
+    }
+  },
+  {
+    "id": "C087",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b7f81e2cdba3c62b2de954bd8035e4807d938de1b4059fd5d16cdcb17920d0d2",
+    "status": "not_executed",
+    "rounds": [
+      {
+        "iteration": 2,
+        "agent": "/root/c087_round1",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-2/run-kk4svV",
+        "status": "failed",
+        "acceptance": ".planning/native-card-maintenance/review-iteration-2/eval-C087/with_skill/run-1/outputs/acceptance.json",
+        "evidence": ".planning/native-card-maintenance/traces/c087_round1/visible.json",
+        "reason": "执行者完成源检查后停止，未交付转换包；校验、正式导入及运行未执行。",
+        "executionEnd": "completed_without_package"
+      },
+      {
+        "iteration": 8,
+        "agent": "/root/c087_round8",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-UOIl0f",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-UOIl0f/acceptance.json",
+        "status": "not_executed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/main-C087-review.json",
+        "executionEnd": "completed",
+        "reason": "Original source could not be converted as requested; fresh child recorded source content blocker. No delivered ZIP or formal import."
+      },
+      {
+        "iteration": 15,
+        "agent": "/root/c087_round15",
+        "status": "not_executed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-15/main-C087-review.json",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-15/run-3hF4uU",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-15/run-3hF4uU/acceptance.json"
+      }
+    ]
+  },
+  {
+    "id": "C091",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ae59599e963ceb4ff336f3e683f88cd84d4ffaaae0e73d3977a9a53805fd577a",
+    "status": "skipped",
+    "rounds": [
+      {
+        "iteration": 3,
+        "agent": "/root/c091_round3",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-3/run-xGgge0",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-3/run-xGgge0/acceptance.json",
+        "status": "failed",
+        "mainReview": "pending"
+      },
+      {
+        "iteration": 8,
+        "agent": "/root/c091_round8",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-nG14Tk",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/run-nG14Tk/acceptance.json",
+        "status": "not_executed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-8/main-C091-review.json",
+        "executionEnd": "completed",
+        "reason": "Original source could not be converted as requested; fresh child recorded source content blocker. Additional archive/resume capability claim requires main architecture review, distinct from read-only history."
+      },
+      {
+        "iteration": 15,
+        "agent": "/root/c091_round15",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-15/main-C091-review.json",
+        "state": "completed",
+        "task": "run-aF6EdN",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-15/run-aF6EdN",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 17,
+        "agent": "/root/c091_round17",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-17/main-C091-review.json",
+        "state": "completed",
+        "task": "run-0YclqW",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-17/run-0YclqW",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-17/run-0YclqW/acceptance.json",
+        "executionEnd": "completed"
+      }
+    ],
+    "previousStatus": "failed",
+    "skipDecision": {
+      "source": "api-depth-role-fix/user-decision.json",
+      "recordedAt": "2026-10-01T10:24:30.399912+00:00",
+      "reason": "整卡跳过，恢复API及架构改动留待以后讨论",
+      "semanticBasis": "存档恢复同时改变剧情进度与完整变量的角色卡",
+      "historicalRoundsPreserved": true
+    }
+  },
+  {
+    "id": "C001",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c532184a7efc8cd37ea5216bdf9e64a81be98054f56c5ae51cab51512d970158",
+    "status": "passed",
+    "rounds": [
+      {
+        "iteration": 10,
+        "agent": "/root/c001_round10",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-10/run-y3ckf2",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-10/run-y3ckf2/acceptance.json",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-10/main-C001-review.json",
+        "state": "completed",
+        "reason": "源世界书状态协议已正确分配到原生state/schema.json、stateUpdate及frontend，58条叙事资料保持实际启用条件；72文件保存及两轮回放通过。但运行指令仍混合旧输出模板和原生值格式，语义改写项失败。固定正确响应回放不能证明矛盾规则已消除。"
+      },
+      {
+        "iteration": 12,
+        "agent": "/root/c001_round12",
+        "outputDirectory": "iteration-12/run-RK5Cnu",
+        "status": "passed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-12/main-C001-review.json"
+      },
+      {
+        "iteration": 13,
+        "agent": "/root/c001_round13",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-13/run-SvJ9Vh",
+        "status": "passed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-13/main-C001-review.json",
+        "forkTurns": "none",
+        "minimumPromptOnly": true,
+        "executionEnd": "completed",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-13/run-SvJ9Vh/acceptance.json"
+      }
+    ]
+  },
+  {
+    "id": "C002",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f6841beb0e5371e7ff66a39308dfaa3adf017bb32798b77306725dead1dd4805",
+    "status": "not_executed",
+    "rounds": [
+      {
+        "iteration": 11,
+        "state": "completed",
+        "agent": "/root/c002_round11",
+        "task": "run-XdNOtP",
+        "outputDirectory": ".planning/native-card-maintenance/iteration-11/run-XdNOtP",
+        "status": "not_executed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-11/main-C002-review.json"
+      }
+    ]
+  },
+  {
+    "id": "C003",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/33d16dc2927290734b1165dc2d10085f2e94f49f2455dc4abb27c01383b0dac9",
+    "status": "passed",
+    "rounds": [
+      {
+        "iteration": 11,
+        "state": "completed",
+        "agent": "/root/c003_round11",
+        "status": "passed",
+        "task": "run-wOXsrg",
+        "outputDirectory": ".planning/native-card-maintenance/iteration-11/run-wOXsrg",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-11/main-C003-review.json"
+      }
+    ]
+  },
+  {
+    "id": "C004",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ed88ceb91ea118871e3d92ded0f92b9d78ca33edb082dac8dccdf4aaae7b1708",
+    "status": "passed",
+    "rounds": [
+      {
+        "iteration": 12,
+        "agent": "/root/c004_round12",
+        "outputDirectory": "iteration-12/run-kDcN70",
+        "status": "passed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-12/main-C004-review.json"
+      }
+    ]
+  },
+  {
+    "id": "C006",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9be4e470d79ca41c0320eccc32c02ec295a9e2bb153d580531468220959d28c7",
+    "status": "failed",
+    "rounds": [
+      {
+        "iteration": 13,
+        "agent": "/root/c006_round13",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-13/run-zuS91Y",
+        "status": "not_executed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-13/main-C006-review.json",
+        "executionEnd": "model_capacity_error"
+      },
+      {
+        "iteration": 14,
+        "agent": "/root/c006_round14",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-14/main-C006-review.json",
+        "forkTurns": "none",
+        "minimumPromptOnly": true,
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-14/run-hPVr25"
+      },
+      {
+        "iteration": 15,
+        "agent": "/root/c006_eval15",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-15/main-C006-review.json",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-15/run-lVDf9w",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-15/run-lVDf9w/acceptance.json",
+        "state": "completed",
+        "task": "run-lVDf9w",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 17,
+        "agent": "/root/c006_round17",
+        "status": "failed",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-17/run-Wi2ZLK",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-17/run-Wi2ZLK/acceptance.json",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-17/main-C006-review.json",
+        "forkTurns": "none",
+        "minimumPromptOnly": true,
+        "state": "completed",
+        "executionEnd": "completed"
+      },
+      {
+        "iteration": 18,
+        "agent": "/root/c006_round18",
+        "status": "failed",
+        "outputDirectory": ".planning/native-card-maintenance/iteration-18/run-Em29jp",
+        "mainReview": ".planning/native-card-maintenance/iteration-18/main-C006-review.json",
+        "dispatchedAt": "2026-10-01T05:39:48.191303+00:00",
+        "acceptance": ".planning/native-card-maintenance/iteration-18/run-Em29jp/acceptance.json",
+        "executionEnd": "completed",
+        "additionalGuidance": false
+      },
+      {
+        "iteration": 19,
+        "agent": "/root/c006_round19",
+        "status": "failed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-19/main-C006-review.json",
+        "outputDirectory": ".planning/native-card-maintenance/iteration-19/run-0Vl0vA",
+        "dispatchedAt": "2026-10-01T06:43:36.488300+00:00",
+        "reason": "源明示结束判据被收紧但没有依据或反例；响应前全部发送入口锁失败。"
+      }
+    ]
+  },
+  {
+    "id": "C007",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/05bcbc04ff85cb9aa7c259382e8e8e5034df80ec320805345fcffeff48f0924d",
+    "status": "not_executed",
+    "rounds": [
+      {
+        "iteration": 16,
+        "agent": "/root/c007_round16",
+        "status": "not_executed",
+        "forkTurns": "none",
+        "minimumPromptOnly": true,
+        "agentType": "Executor",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-16/run-CcRwgp",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-16/run-CcRwgp/acceptance.json",
+        "executionEnd": "completed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-16/main-C007-review.json",
+        "reason": "交付为改变源核心玩法的战后冲突版本；其正式导入5文件回读通过，原卡整体未验收。"
+      }
+    ]
+  },
+  {
+    "id": "C008",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/92441866eb8b77616865703b54f92b60ce48dac5f20bbabb1a3c40c5b45c24f2",
+    "status": "passed",
+    "rounds": [
+      {
+        "iteration": 16,
+        "agent": "/root/c008_round16",
+        "status": "passed",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-16/main-C008-review.json",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-16/run-cOacyD",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-16/run-cOacyD/acceptance.json",
+        "executionEnd": "completed",
+        "delivery": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-16/main-C008-delivery/role.zip",
+        "reason": "空源开场正确映射为空默认开场并初始化空状态；正式交付ZIP导入和4文件回读通过，实际页面对话通过。"
+      }
+    ]
+  },
+  {
+    "id": "C009",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1880e10b2f2dd8dfa4ad2404501defc14bc6268cc42f6770232230b2809c9050",
+    "status": "not_executed",
+    "rounds": [
+      {
+        "iteration": 18,
+        "agent": "/root/c009_round18",
+        "status": "not_executed",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-18/run-rzLilt",
+        "mainReview": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-18/main-C009-review.json",
+        "dispatchedAt": "2026-10-01T05:39:48.191303+00:00",
+        "executionEnd": "completed"
+      }
+    ]
+  },
+  {
+    "id": "C010",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/fe065061fb258f21c41b73a9cc1230e0fd3b444ed49137d8708fbef873dbf656",
+    "status": "not_executed",
+    "rounds": [
+      {
+        "iteration": 18,
+        "agent": "/root/c010_round18",
+        "status": "not_executed",
+        "mainReview": ".planning/native-card-maintenance/iteration-18/main-C010-review.json",
+        "additionalGuidance": false,
+        "outputDirectory": ".planning/native-card-maintenance/iteration-18/run-saPvIW",
+        "acceptance": ".planning/native-card-maintenance/iteration-18/run-saPvIW/acceptance.json",
+        "executionEnd": "completed"
+      }
+    ]
+  },
+  {
+    "id": "C012",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/94ced566cb829e71abbb14e25569ef5dcc5a48873f103cc94ea315cd81d75406",
+    "status": "failed",
+    "rounds": [
+      {
+        "iteration": 19,
+        "agent": "/root/c012_round19",
+        "status": "failed",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-19/run-ZdqGET",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-19/run-ZdqGET/acceptance.json",
+        "mainReview": "iteration-19/main-C012-review.json",
+        "previousStatus": "running",
+        "pausedAt": "2026-10-01T08:20:42.730277+00:00",
+        "executionEnd": "interrupted_by_user_pause",
+        "partialOutputsPreserved": true,
+        "reason": "完整验收中断；已确认辅助脚本写入任务目录外"
+      }
+    ],
+    "previousStatus": "paused",
+    "pauseReason": "用户要求暂停",
+    "pausedAt": "2026-10-01T08:20:42.730277+00:00"
+  },
+  {
+    "id": "C013",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/a3f72a9177e78c42db2c1eba80d3050ae0bc33ed631cd07e950433a778268f73",
+    "status": "not_executed",
+    "rounds": [
+      {
+        "iteration": 19,
+        "agent": "/root/c013_round19",
+        "status": "not_executed",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-19/run-aAI0JC",
+        "acceptance": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-19/run-aAI0JC/acceptance.json",
+        "mainReview": "iteration-19/main-C013-review.json",
+        "previousStatus": "running",
+        "pausedAt": "2026-10-01T08:20:42.730277+00:00",
+        "executionEnd": "interrupted_by_user_pause",
+        "partialOutputsPreserved": true
+      }
+    ],
+    "previousStatus": "paused",
+    "pauseReason": "用户要求暂停",
+    "pausedAt": "2026-10-01T08:20:42.730277+00:00"
+  },
+  {
+    "id": "C014",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ba00a251a3cf31a5b9f0dc4bc5958af73e4b9fec3fe4cedec12463fcb93e032c",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C015",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1438f42b7e61d38b3b1440d4f2fffc4e605a47eccc2688c54a3035231db4a817",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C016",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f0c59917b3e7eef9281fc0d049b28eda6e8b9843052a7efe1d54c792283b17e1",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C017",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/98d77b0c164e6bdb02ad864563f72e2565a65a452692a0c2cdf0bdb93ec4a2e1",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C018",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f37a9e2a927cb13a2afd18df669bec3a384dfa96abae4a3993278866c7537793",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C019",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/2a475c1d6d0821b1986392cf1ba47ab248c5bbc8142728cd75d35a4c5572bb8e",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C020",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/aab5ee383f4159783baeccdd77f7d33d4f1e0f39ee82e3d6dc34fc1298db66f5",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C021",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f55019a3f6ed1cff58bfad0e32a33423791f57de1a1eeebe95a74c6947b17721",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C022",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/581191abc392b34da8f74a41eb5947a85b21a971757b9fb539f5b47bd84800f1",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C023",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/bc590619d559a6313dd48cdf3fb1a035cfe339788841848e5a9f3b271f488098",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C024",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/480d293daedb65aa38298af23ccdb504493ac891c6ee22e3ba763eab3e44063a",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C025",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/93856b88683ef32ea1e7b5243cc7375d9cd27a9aebf8d1e6d3fab83aba5014e1",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C026",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/79e42a67355615e2d2a98d19a7f55fe8c42cd23d62d9cadcffcc450af35f2ba0",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C027",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b1f76e5c6f357942f2cb96fc1551f933f0e1dc1b757bb0705df040376047bde4",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C028",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/36e62f57538df7c0c7d6a48f50cabee25086b8e081678fa69f91b42c1fb7f2b5",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C029",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/d12ae2158fe1b0294376743a4ff63643e8b06f195aa367658d6bf7dfc0bcb3c2",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C030",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/99ad8026b8ddada8021390dc98773eeb3d0765830af4bc58d0dfbecee98a1e52",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C031",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c7d678ece2888452b895b7d872551b4cf51cec0892d7fde3cea4785031762b87",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C032",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/4185eea7f8ff031a321c785b7ec238fa3e73c6db96255b881863acfeae712b77",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C033",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/8d9c5a550cd1e1c0bb8f32472c0e147179be6ad31042dd9498a4b5369ebaf8ca",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C034",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b071d44b0b91e9e2a2b2b296e884a679eebf251720a423f7395731e20fe21d65",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C035",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b8f57d770f4ed67ecffb027910b47c686ace29dc65834402b857f975cbae5da3",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C036",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ec132f5710b0e3d4134c471f39892982c7af4e53cab80486e2cd704673327816",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C037",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/eddb8624ca59c39861808aa92ab1c5cb3949f08bf09720357d6af71176ab0533",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C038",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/6926eb3597c8fe921ebc59e2863633a4f32679a10d16fbbf122034e785ff56fd",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C039",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/47c9d92180616eabaeed16024446fed4bc94f5c71b0539f0e9072be6a85ea841",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C040",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/6d91072aeb5ea245801f610bdcb861396ca46f0f62d25e3254e6048b9cf6df6e",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C041",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c4cae5fe68804ee34bd19d69337af318c98f96a234f9fa2754075728d57b7c39",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C042",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c55f6cc7e172a65946a36ff7c6350c4e86d04cd4d13986773c64d67be3d86e8c",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C043",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9cc300207c3fcab18b5376c300254268d20393653e63d5b62f02bfe97cba9a9d",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C044",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9a52bec2a7fa83b4a42c88c5b5398797b48c85372e9dfe1cc427d305c07e4bfb",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C045",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f916ee3a14006367babab9532962807994cb80bd596443253d6eea3ca3d69fce",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C046",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9336f3d2b2740e6bfc69574bfa432ce1418e53135fd2994172c3539a0f4e1bd3",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C047",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/15e5df433e4aa3cb8d26c5b8fbf30b5a18f8fee0cf64cd857e2a1e0ff12d3cf7",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C048",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/aaf96bf203a1257974cff0a93a943d6f1026a9b2fc84dc913e5744115dd81805",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C049",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/3f0e5f38e46dd8bdf81e94288f4764c851fa3e34b0f9c2e6c48b1c99bc7efae3",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C050",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c6e0baaf75c3e03d4efd224c56827fc9de042779dbd09e7450382ab008755b5b",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C051",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/565aa913633979f7c7bfe1d8086f7c289f8bbc340af7b1441b8b67dc626fee6c",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C052",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/216e2b1001b7835241396a9279e0c7a6aa7e3d0471510f6d0fe1e201f899abd8",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C053",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/3257d0db2b75349bbc43d5af344a1809d8c32ef7daf1654196ea3a3e715bdd8f",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C054",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/8a11d09b492572526b163e2518e874fa3ee0c9b38fb9e7e55cba032f98ebe055",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C055",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c40b95f35ad4c183ecca51f90ac82d5b5bc910a13613bff32fc89331e02b787d",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C056",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e595c6cf18668d867c1af956cd262d83ee3faee5f5e96dfe2de75fee70a5f30a",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C057",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/21b4543d32d464993d51cead04bf09b88c646c1f679a9821938e1e86cc8ae3d6",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C059",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/09f0694b1427a519d55ac306e41498f2545e01bd79d3b810b278ceb4d8cf7a99",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C060",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/01b422a2b9f74a9ed44b2e3b3e4dd87f826fcda641f494db3ace51c6299115e6",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C061",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/258a8a92a8f4df9e61e945c6301d9fd7f6d147cd25cca0c82105548704461b85",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C062",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b6ad238508c3f9f094bce83de554f2480d7ae63a5e183483b0082701af45a2f3",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C063",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1fe9334db64c02ef29bc1db4b71b1dc01c43974ab5eea5485dcc5e6a7af491b8",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C064",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ecb2a53b9751d6f0e35e1765df3ab5e957eca68db6e880d1ed7dae0ce1420cfe",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C065",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/15fba217c2c551e234d621ca985543e9529a3ad6d5505664b2927b43f90733f3",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C066",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1e618eb416d00541084da52c8378dda274fb0e68e805fcaf9b8568d2605ff75b",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C067",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/dfee11c935f9fbaad8d5ed0683246a90361faa4e73c2e43fa57919c00e0298cb",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C068",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ca2cb240ec833242c46028c3ddb1e3325bdaac54f0220e759484eea9b86a8107",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C069",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/a71fd7e2663880828e6e4d5f3a67b3b3977c3360a4ce1db4c2a76af62335eff7",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C070",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/91fec449009d9cd0e3e7e1305567ad96af54a8804eee645978cf34bf722e33f6",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C071",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/790cbfdb93b638de3593ec4a84814476c07cce4c2f37ecb6074fe109cf1617cd",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C072",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ee0d91c68c8346032040e87b6d9b967a3eb04d0d882500c708cc5268b3e3a0c4",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C073",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1cf221843999cef3445db70f065b7845129bea2abc9ff572ce207c6ea8953e2d",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C074",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/57cde6890add0da6bacc17e010c4508a989a220ac3fd6066a685f32e2f45e236",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C075",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/35b8761b8f445920b8db3bce217a4c7c0abb8fc1abe6dbd39c43d4f1cc2b6160",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C076",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e4244b142c975519b2d4a11639a0750733d1e9de9b02118d54c37ec7dd1f3496",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C077",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/d385bfbe04bbf07d66730d37aa8240b3511ba72381a7ad49d349858e66f2c4bc",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C078",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/4eaa12b5100c9cb4cbd56033456e917862c71d079f796adfb2637b182cec9cd3",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C079",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1f9c803f1336d4ddf5d11754885a7ae8d966c2ffd48aea6eff157f137d760de7",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C080",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b8f851c0e620adb2058aa014c363c9b3aa87ff61476d6b43c49bfa55c31b4eeb",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C081",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/4499b9b266bfa183f0977af512427a49f1a6ab7a4f8a71aa5fbad104a91ae78f",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C082",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/3c72adc08c1b943a460ac2aa5c4b5a22f4d4ac38575d85559ad5dca7719305ec",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C084",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/cefd940e007584f9edcf843fd7f585b88962777073a168b2c1930d24c8c58281",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C085",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f4aae151f83e1dd5605020b85d81cfd0c6cecaa28a86147926fe8fec67c992ae",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C086",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c63634d9344438795bbba4182cff9ddb86f388110e07599c28301edd7b3ff2e8",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C088",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/570a3ee8ddfa08db9ca0e54968536d2d63459f0128fdb1c13b188416981acecb",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C089",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/bf212d985dac8e5c6207e38951fc9864baeb8c54bd11aff24a4be180be29468b",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C090",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/8480f29c92057a8c0cb3275a6d08cfbbe26728413fb9c807e2c53e9053c813f8",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C092",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9db719ee23b3594c2d0408d169d65cc13762272a6713c8d4cd3ceeba942d21f2",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C093",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/6d75491d1294785fe4682cc88d37198fc044ef6e6bac355e7be192f7ddfb60f2",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C094",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/27a7a75c6b8f3d304e75fb37ae53c6523ff0c083752b265f8eb1431096350ba2",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C095",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/731b8a778b695cdd2734aa559f79a8b6939ac710b56026020fb04cc79239cef9",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C096",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/86d3707ceba7e3b7c25b8a7899fd73c6f03fc4fc0fc3a213f46c8b2a7bc3462e",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C097",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/3e8f7e643c4e897417f202c73bca8a1c7d2d13ce72c2f8c60bac19098308d67b",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C098",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c0e879337d3d52356ccd708c6e82510c32771b06391ca9df47e82c96a2a1d7d5",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C099",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/cfddc25892f2d8f496eb97842c5087a4e8e549f902f0df6bad667f11959565b2",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C100",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/a9c404353bf37606c385941cae4bd0aca6169430052a9f58717531afa54b7084",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C101",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/055228e2cfcd13d211d9b04307e3ae9eff9d3dde532514ff2808400216d40fc1",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C102",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c8c4c36cdf6733ecaa6867efe228cc274d083c59a4dee85247044d7304229345",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C103",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/140ea6b2c35e888cdd099304c97adcc6aa2ef43a255639027fea9d3313db768d",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C104",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/00c3fbb368e21b5cd8cee5ce30e6872efabb091e71b1fd85969d0716012e3b61",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C105",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b3239bee4f2659ae41d0695edb359687228895c750d12859487be1ddbaa24580",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C106",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/0dbe6e4ce6f81a2e20dc969b80428f753f47135af05709882f077a5fa65e3b0f",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C107",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/713df3b25c6b09abc93836e6212c937f57ccd2b3821637ab5577342fd4fdaf83",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C108",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/46270dec2b4041d01c0f94ae301625bf433f9dbc54fe9b97e9bb6a23ccb6fc16",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C109",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e7651f871efb86d01af356b9232efc117959ae546d98893ff8c82592823fe88b",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C110",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b5437c31b2d11b6866bdd3540d203355abbd726656d4c5938e93477ad1708bd2",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C111",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/97fdcc8a805a5b5a9e952acba435af2647128d597e62ad1d440ae36f4593b069",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C112",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/441bbace0d20026363f10f1f71f18ca5806bdc0cbfa3770d1185f024fadeb277",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C113",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1f20f1e9c1c7b998b313ff0614d7615510f2a542bb7fac8305e1551eefe2d51b",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C114",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/344c1ba04781c337407ad3d67dcfe6bb6272dd42b6af874f6fa1126130337de0",
+    "status": "not_executed",
+    "rounds": []
+  },
+  {
+    "id": "C115",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/205c57f16f0369e87005c3e3624401f18e9ddfcf4d963c81a10c5893084809d8",
+    "status": "not_executed",
+    "rounds": []
+  }
+]

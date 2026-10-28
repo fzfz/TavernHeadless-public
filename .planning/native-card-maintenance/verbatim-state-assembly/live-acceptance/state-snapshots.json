@@ -1,0 +1,82 @@
+[
+  {
+    "id": "6482c3d8-2255-42f2-b250-3484d098e331",
+    "accountId": "default-admin",
+    "sessionId": "5UO2M_AtWwJi3RzpUC1NM",
+    "branchId": "main",
+    "floorId": null,
+    "snapshotNo": 0,
+    "recordJson": "{\"sessionId\":\"5UO2M_AtWwJi3RzpUC1NM\",\"branchId\":\"main\",\"floorId\":null,\"attemptId\":null,\"versionId\":\"1-1MNbxbhNzhmtL9YaVaq\",\"snapshotId\":\"6482c3d8-2255-42f2-b250-3484d098e331\",\"parentSnapshotId\":null,\"variables\":{\"林茜\":{\"感情\":504.85,\"堕落\":80,\"内心想法\":\"**我最近总是腿里燥热，可能是例假快来了。这条狗偷我的照片，我拿老公吓住他，他就不敢反抗。被靴子踩着会硬，射完还会再硬，第二次还射这么多，好玩。我要用旧飞机杯把他精液吸出来喂给他吃完就回家,这会很好玩的,就这一次,以后不来了。他是狗,狗不会反抗,狗可以当玩具。不能让老公知道。**\"},\"行动选项\":[\"元指令:细腻演绎5分钟内林茜的剧情。\",\"裴修远绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。\",\"裴修远绕到门口现身，追问杨桃子从哪里得到林茜的照片。\",\"元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。\"],\"世界\":{\"日期\":\"2025-03-10\",\"星期\":\"周一\",\"小时\":12,\"分钟\":24,\"状态_A1_日期\":\"2025-03-10\",\"时间\":\"中午\",\"地点\":\"拆迁旧楼408室内\",\"开局模式\":\"原始首次撞见\",\"终局路线\":\"未定\",\"终局阶段\":\"Z000\",\"事件_D001记录日期\":\"2025-03-10\",\"已触发事件\":{\"事件_E001\":false,\"事件_E002\":false,\"事件_E003\":false,\"事件_E004\":false,\"事件_E005\":false,\"事件_E006\":false,\"事件_E008\":false,\"事件_E009\":false,\"事件_E010\":false,\"事件_E011\":false,\"事件_E012\":false,\"事件_E013\":false,\"事件_E014\":false,\"事件_E015\":false,\"事件_E016\":false,\"事件_E017\":false,\"事件_E018\":false,\"事件_E019\":false,\"事件_E020\":false,\"事件_E021\":false,\"事件_E022\":false,\"事件_E023\":false,\"事件_E024\":false,\"事件_E025\":false,\"事件_E026\":false,\"事件_E027\":false,\"事件_E028\":false,\"事件_E029\":false,\"事件_E030\":false,\"事件_E031\":false,\"事件_E032\":false,\"事件_E033\":false,\"事件_E034\":false,\"事件_E035\":false,\"事件_E048\":false,\"事件_E049\":false},\"已离婚\":false,\"状态_A1_计数\":1}},\"source\":{\"kind\":\"initial\",\"runId\":null,\"jobId\":null}}",
+    "calculationBeforeJson": null
+  },
+  {
+    "id": "3ba49497-be49-46d8-9298-ced9c64b3fd0",
+    "accountId": "default-admin",
+    "sessionId": "YIzLDqICwTE0El4Guusfa",
+    "branchId": "main",
+    "floorId": null,
+    "snapshotNo": 0,
+    "recordJson": "{\"sessionId\":\"YIzLDqICwTE0El4Guusfa\",\"branchId\":\"main\",\"floorId\":null,\"attemptId\":null,\"versionId\":\"1-1MNbxbhNzhmtL9YaVaq\",\"snapshotId\":\"3ba49497-be49-46d8-9298-ced9c64b3fd0\",\"parentSnapshotId\":null,\"variables\":{\"林茜\":{\"感情\":504.85,\"堕落\":80,\"内心想法\":\"**我最近总是腿里燥热，可能是例假快来了。这条狗偷我的照片，我拿老公吓住他，他就不敢反抗。被靴子踩着会硬，射完还会再硬，第二次还射这么多，好玩。我要用旧飞机杯把他精液吸出来喂给他吃完就回家,这会很好玩的,就这一次,以后不来了。他是狗,狗不会反抗,狗可以当玩具。不能让老公知道。**\"},\"行动选项\":[\"元指令:细腻演绎5分钟内林茜的剧情。\",\"裴修远绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。\",\"裴修远绕到门口现身，追问杨桃子从哪里得到林茜的照片。\",\"元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。\"],\"世界\":{\"日期\":\"2025-03-10\",\"星期\":\"周一\",\"小时\":12,\"分钟\":24,\"状态_A1_日期\":\"2025-03-10\",\"时间\":\"中午\",\"地点\":\"拆迁旧楼408室内\",\"开局模式\":\"原始首次撞见\",\"终局路线\":\"未定\",\"终局阶段\":\"Z000\",\"事件_D001记录日期\":\"2025-03-10\",\"已触发事件\":{\"事件_E001\":false,\"事件_E002\":false,\"事件_E003\":false,\"事件_E004\":false,\"事件_E005\":false,\"事件_E006\":false,\"事件_E008\":false,\"事件_E009\":false,\"事件_E010\":false,\"事件_E011\":false,\"事件_E012\":false,\"事件_E013\":false,\"事件_E014\":false,\"事件_E015\":false,\"事件_E016\":false,\"事件_E017\":false,\"事件_E018\":false,\"事件_E019\":false,\"事件_E020\":false,\"事件_E021\":false,\"事件_E022\":false,\"事件_E023\":false,\"事件_E024\":false,\"事件_E025\":false,\"事件_E026\":false,\"事件_E027\":false,\"事件_E028\":false,\"事件_E029\":false,\"事件_E030\":false,\"事件_E031\":false,\"事件_E032\":false,\"事件_E033\":false,\"事件_E034\":false,\"事件_E035\":false,\"事件_E048\":false,\"事件_E049\":false},\"已离婚\":false,\"状态_A1_计数\":1}},\"source\":{\"kind\":\"initial\",\"runId\":null,\"jobId\":null}}",
+    "calculationBeforeJson": null
+  },
+  {
+    "id": "2b981f81-b0b9-4b53-bcc1-db5e34ff1898",
+    "accountId": "default-admin",
+    "sessionId": "PhMk_rLUARI98_cQ4TNsA",
+    "branchId": "main",
+    "floorId": null,
+    "snapshotNo": 0,
+    "recordJson": "{\"sessionId\":\"PhMk_rLUARI98_cQ4TNsA\",\"branchId\":\"main\",\"floorId\":null,\"attemptId\":null,\"versionId\":\"B0m4texwrhnCwCwxU1b6l\",\"snapshotId\":\"2b981f81-b0b9-4b53-bcc1-db5e34ff1898\",\"parentSnapshotId\":null,\"variables\":{\"世界\":{\"当前地址\":\"轻音社活动室\",\"当前时间\":\"2025年12月15日17:20\",\"事件状态\":\"无\"},\"顾声慢\":{\"情感连结度\":0,\"创作完成度\":0,\"心象映射\":{\"当前心声\":\"唔哇——他不会觉得我是怪人吧！身体比脑子先动了起来......不过只是为了表达，这也是没有办法的！\",\"当前脑内旋律\":\"《前前前世》\"}}},\"source\":{\"kind\":\"initial\",\"runId\":null,\"jobId\":null}}",
+    "calculationBeforeJson": null
+  },
+  {
+    "id": "2c586f98-f19e-48c7-b1c0-54665ef4872c",
+    "accountId": "default-admin",
+    "sessionId": "dCO5go7dFj3A7DCWpgiaA",
+    "branchId": "main",
+    "floorId": null,
+    "snapshotNo": 0,
+    "recordJson": "{\"sessionId\":\"dCO5go7dFj3A7DCWpgiaA\",\"branchId\":\"main\",\"floorId\":null,\"attemptId\":null,\"versionId\":\"B0m4texwrhnCwCwxU1b6l\",\"snapshotId\":\"2c586f98-f19e-48c7-b1c0-54665ef4872c\",\"parentSnapshotId\":null,\"variables\":{\"世界\":{\"当前地址\":\"轻音社活动室\",\"当前时间\":\"2025年12月15日17:20\",\"事件状态\":\"无\"},\"顾声慢\":{\"情感连结度\":0,\"创作完成度\":0,\"心象映射\":{\"当前心声\":\"唔哇——他不会觉得我是怪人吧！身体比脑子先动了起来......不过只是为了表达，这也是没有办法的！\",\"当前脑内旋律\":\"《前前前世》\"}}},\"source\":{\"kind\":\"initial\",\"runId\":null,\"jobId\":null}}",
+    "calculationBeforeJson": null
+  },
+  {
+    "id": "22bad214-5b5c-4a89-af73-0b1533a96dcb",
+    "accountId": "default-admin",
+    "sessionId": "CNtHR86qcThRcSq0tR_f6",
+    "branchId": "main",
+    "floorId": null,
+    "snapshotNo": 0,
+    "recordJson": "{\"sessionId\":\"CNtHR86qcThRcSq0tR_f6\",\"branchId\":\"main\",\"floorId\":null,\"attemptId\":null,\"versionId\":\"1-1MNbxbhNzhmtL9YaVaq\",\"snapshotId\":\"22bad214-5b5c-4a89-af73-0b1533a96dcb\",\"parentSnapshotId\":null,\"variables\":{\"林茜\":{\"感情\":504.85,\"堕落\":80,\"内心想法\":\"**我最近总是腿里燥热，可能是例假快来了。这条狗偷我的照片，我拿老公吓住他，他就不敢反抗。被靴子踩着会硬，射完还会再硬，第二次还射这么多，好玩。我要用旧飞机杯把他精液吸出来喂给他吃完就回家,这会很好玩的,就这一次,以后不来了。他是狗,狗不会反抗,狗可以当玩具。不能让老公知道。**\"},\"行动选项\":[\"元指令:细腻演绎5分钟内林茜的剧情。\",\"裴修远绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。\",\"裴修远绕到门口现身，追问杨桃子从哪里得到林茜的照片。\",\"元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。\"],\"世界\":{\"日期\":\"2025-03-10\",\"星期\":\"周一\",\"小时\":12,\"分钟\":24,\"状态_A1_日期\":\"2025-03-10\",\"时间\":\"中午\",\"地点\":\"拆迁旧楼408室内\",\"开局模式\":\"原始首次撞见\",\"终局路线\":\"未定\",\"终局阶段\":\"Z000\",\"事件_D001记录日期\":\"2025-03-10\",\"已触发事件\":{\"事件_E001\":false,\"事件_E002\":false,\"事件_E003\":false,\"事件_E004\":false,\"事件_E005\":false,\"事件_E006\":false,\"事件_E008\":false,\"事件_E009\":false,\"事件_E010\":false,\"事件_E011\":false,\"事件_E012\":false,\"事件_E013\":false,\"事件_E014\":false,\"事件_E015\":false,\"事件_E016\":false,\"事件_E017\":false,\"事件_E018\":false,\"事件_E019\":false,\"事件_E020\":false,\"事件_E021\":false,\"事件_E022\":false,\"事件_E023\":false,\"事件_E024\":false,\"事件_E025\":false,\"事件_E026\":false,\"事件_E027\":false,\"事件_E028\":false,\"事件_E029\":false,\"事件_E030\":false,\"事件_E031\":false,\"事件_E032\":false,\"事件_E033\":false,\"事件_E034\":false,\"事件_E035\":false,\"事件_E048\":false,\"事件_E049\":false},\"已离婚\":false,\"状态_A1_计数\":1}},\"source\":{\"kind\":\"initial\",\"runId\":null,\"jobId\":null}}",
+    "calculationBeforeJson": null
+  },
+  {
+    "id": "52875c10-ed42-43cd-b74e-d88768c81d69",
+    "accountId": "default-admin",
+    "sessionId": "DKk4Onto5aiyvDgCE-HYU",
+    "branchId": "main",
+    "floorId": null,
+    "snapshotNo": 0,
+    "recordJson": "{\"sessionId\":\"DKk4Onto5aiyvDgCE-HYU\",\"branchId\":\"main\",\"floorId\":null,\"attemptId\":null,\"versionId\":\"1-1MNbxbhNzhmtL9YaVaq\",\"snapshotId\":\"52875c10-ed42-43cd-b74e-d88768c81d69\",\"parentSnapshotId\":null,\"variables\":{\"林茜\":{\"感情\":504.85,\"堕落\":80,\"内心想法\":\"**我最近总是腿里燥热，可能是例假快来了。这条狗偷我的照片，我拿老公吓住他，他就不敢反抗。被靴子踩着会硬，射完还会再硬，第二次还射这么多，好玩。我要用旧飞机杯把他精液吸出来喂给他吃完就回家,这会很好玩的,就这一次,以后不来了。他是狗,狗不会反抗,狗可以当玩具。不能让老公知道。**\"},\"行动选项\":[\"元指令:细腻演绎5分钟内林茜的剧情。\",\"裴修远绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。\",\"裴修远绕到门口现身，追问杨桃子从哪里得到林茜的照片。\",\"元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。\"],\"世界\":{\"日期\":\"2025-03-10\",\"星期\":\"周一\",\"小时\":12,\"分钟\":24,\"状态_A1_日期\":\"2025-03-10\",\"时间\":\"中午\",\"地点\":\"拆迁旧楼408室内\",\"开局模式\":\"原始首次撞见\",\"终局路线\":\"未定\",\"终局阶段\":\"Z000\",\"事件_D001记录日期\":\"2025-03-10\",\"已触发事件\":{\"事件_E001\":false,\"事件_E002\":false,\"事件_E003\":false,\"事件_E004\":false,\"事件_E005\":false,\"事件_E006\":false,\"事件_E008\":false,\"事件_E009\":false,\"事件_E010\":false,\"事件_E011\":false,\"事件_E012\":false,\"事件_E013\":false,\"事件_E014\":false,\"事件_E015\":false,\"事件_E016\":false,\"事件_E017\":false,\"事件_E018\":false,\"事件_E019\":false,\"事件_E020\":false,\"事件_E021\":false,\"事件_E022\":false,\"事件_E023\":false,\"事件_E024\":false,\"事件_E025\":false,\"事件_E026\":false,\"事件_E027\":false,\"事件_E028\":false,\"事件_E029\":false,\"事件_E030\":false,\"事件_E031\":false,\"事件_E032\":false,\"事件_E033\":false,\"事件_E034\":false,\"事件_E035\":false,\"事件_E048\":false,\"事件_E049\":false},\"已离婚\":false,\"状态_A1_计数\":1}},\"source\":{\"kind\":\"initial\",\"runId\":null,\"jobId\":null}}",
+    "calculationBeforeJson": null
+  },
+  {
+    "id": "9a7eae30-31bc-4090-8438-b48413821af6",
+    "accountId": "default-admin",
+    "sessionId": "OBsNd4GrJfWKIwkEVcOBE",
+    "branchId": "main",
+    "floorId": null,
+    "snapshotNo": 0,
+    "recordJson": "{\"sessionId\":\"OBsNd4GrJfWKIwkEVcOBE\",\"branchId\":\"main\",\"floorId\":null,\"attemptId\":null,\"versionId\":\"B0m4texwrhnCwCwxU1b6l\",\"snapshotId\":\"9a7eae30-31bc-4090-8438-b48413821af6\",\"parentSnapshotId\":null,\"variables\":{\"世界\":{\"当前地址\":\"轻音社活动室\",\"当前时间\":\"2025年12月15日17:20\",\"事件状态\":\"无\"},\"顾声慢\":{\"情感连结度\":0,\"创作完成度\":0,\"心象映射\":{\"当前心声\":\"唔哇——他不会觉得我是怪人吧！身体比脑子先动了起来......不过只是为了表达，这也是没有办法的！\",\"当前脑内旋律\":\"《前前前世》\"}}},\"source\":{\"kind\":\"initial\",\"runId\":null,\"jobId\":null}}",
+    "calculationBeforeJson": null
+  },
+  {
+    "id": "ef1bd31c-2638-48be-9941-375626ab9ef6",
+    "accountId": "default-admin",
+    "sessionId": "mO25lOSmBb0jC5xjwzXDA",
+    "branchId": "main",
+    "floorId": null,
+    "snapshotNo": 0,
+    "recordJson": "{\"sessionId\":\"mO25lOSmBb0jC5xjwzXDA\",\"branchId\":\"main\",\"floorId\":null,\"attemptId\":null,\"versionId\":\"B0m4texwrhnCwCwxU1b6l\",\"snapshotId\":\"ef1bd31c-2638-48be-9941-375626ab9ef6\",\"parentSnapshotId\":null,\"variables\":{\"世界\":{\"当前地址\":\"轻音社活动室\",\"当前时间\":\"2025年12月15日17:20\",\"事件状态\":\"无\"},\"顾声慢\":{\"情感连结度\":0,\"创作完成度\":0,\"心象映射\":{\"当前心声\":\"唔哇——他不会觉得我是怪人吧！身体比脑子先动了起来......不过只是为了表达，这也是没有办法的！\",\"当前脑内旋律\":\"《前前前世》\"}}},\"source\":{\"kind\":\"initial\",\"runId\":null,\"jobId\":null}}",
+    "calculationBeforeJson": null
+  }
+]

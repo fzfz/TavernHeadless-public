@@ -1,0 +1,36 @@
+[
+  {
+    "id": "harbor",
+    "name": "林岚 · 灯塔来信",
+    "directory": "characters/harbor"
+  },
+  {
+    "id": "novel",
+    "name": "沈遥 · 琴房的午后",
+    "directory": "characters/novel"
+  },
+  {
+    "id": "expedition",
+    "name": "伊芙 · 雾谷远征",
+    "directory": "characters/expedition"
+  },
+  {
+    "id": "cinema",
+    "name": "沈遥 · 雨后，第二乐章",
+    "directory": "characters/cinema"
+  },
+  {
+    "id": "linqian",
+    "name": "林茜 · 妻心如刀 v1.3.32",
+    "directory": "characters/linqian",
+    "snapshot": "snapshot.json",
+    "openings": "openings.json"
+  },
+  {
+    "id": "gushengman",
+    "name": "顾声慢",
+    "directory": "characters/gushengman",
+    "snapshot": "snapshot.json",
+    "openings": "openings.json"
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "defaultModelSlot": "verifier",
+  "outputInstructions": [
+    "Return one JSON object that matches outputSchema exactly.",
+    "Copy evidence identifiers exactly from sources[].messageId.",
+    "Read toolEvidence as execution results and use sources to determine which actions occurred in the story.",
+    "Copy evidenceExecutionIds exactly from toolEvidence[].executionId when a proposal uses those results. Keep the recorded random results during state calculation."
+  ],
+  "factsEvidenceInstruction": "The required facts object must be supported by evidenceMessageIds, so include at least one exact sources[].messageId.",
+  "changesEvidenceInstruction": "When changes is non-empty, include at least one exact sources[].messageId in evidenceMessageIds.",
+  "changesDescription": "Write each path at most once. For an array path, set the complete array in one operation.",
+  "controllerModulePath": "migrated-prompt-controller.js",
+  "retryHeader": "x-state-update-retry",
+  "eventReconnectDelayMs": 2000,
+  "defaultHistoryTurns": 5,
+  "runtimeConfigurationErrors": {
+    "presetPairRequired": "请同时填写 statePresetId 和 statePresetVersionId，或同时省略这两个字段。"
+  },
+  "releaseFieldNames": {
+    "statePresetId": "state_preset_id",
+    "statePresetVersionId": "state_preset_version_id",
+    "stateHistoryTurns": "state_history_turns"
+  }
+}

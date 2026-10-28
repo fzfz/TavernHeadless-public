@@ -1,0 +1,1719 @@
+import websocket from "@fastify/websocket";
+
+import {
+  loadUserSessionCookieConfig,
+  userSessionCookieConfigSchema,
+  type UserSessionCookieConfig,
+} from "./user-session-cookie-config.js";
+import { FirstPartyStateContextService } from "./services/chat/first-party-state-context-service.js";
+import { NativeCardService } from "./services/native-card/native-card-service.js";
+import { NativeCardRuntimeService } from "./services/native-card-runtime/native-card-runtime-service.js";
+import { createNativeCardRouteService } from "./services/native-card-route-service.js";
+import { registerNativeCardRoutes } from "./routes/native-cards.js";
+import { loadNativeCardConfig } from "./native-card-config.js";
+import { RoleModuleLoader } from "./services/role-runtime/role-module-loader.js";
+import { registerRoleAppRoutes } from "./routes/role-apps.js";
+import { registerRoleViewRoutes } from "./routes/role-view.js";
+import { DisplaySnapshotService } from "./services/role-runtime/display-snapshot-service.js";
+import { StateUpdateService } from "./services/role-runtime/state-update-service.js";
+import { RoleViewService } from "./services/role-runtime/role-view-service.js";
+import {
+  registerRoleReleaseRoutes,
+  type RoleReleaseSessionCreatedInput,
+} from "./routes/role-releases.js";
+import { registerRoleAssetRoutes } from "./routes/role-assets.js";
+import { RoleAssetService } from "./services/role-runtime/role-asset-service.js";
+import { RoleFileStore } from "./services/storage/role-file-store.js";
+import { loadStorageConfig } from "./storage-config.js";
+import type { ResolvedStorageConfig } from "./storage-config.schema.js";
+import { registerModelCallRoutes } from "./routes/model-calls.js";
+import { ModelCallRecordService } from "./services/model-call-record-service.js";
+import { loadModelCallRecordingConfig } from "./model-call-recording-config.js";
+import type { ModelCallRecordingConfig } from "./model-call-recording.schema.js";
+import Fastify, { type FastifyInstance } from "fastify";
+import { eq } from "drizzle-orm";
+import { nanoid } from "nanoid";
+import { ZodError } from "zod";
+import { readFileSync } from "node:fs";
+
+import type { GenerationParams, MemoryInjectionOptions } from "@tavern/core";
+
+import { createDatabase, type DatabaseConnection } from "./db/client.js";
+import { assertDatabaseReady } from "./db/migrations.js";
+import { sendError, zodIssues } from "./lib/http.js";
+import {
+  GENERATION_PARAM_KEYS,
+  mergeGenerationParamInputs,
+  type GenerationParamKey,
+  type GenerationParamsInput,
+} from "./lib/llm-params.js";
+import { registerCrudRoutes } from "./routes/index.js";
+import { isSqliteBusyError, ResourceBusyError } from "./lib/retry.js";
+import { registerChatRoutes } from "./routes/chat.js";
+import { registerPromptRuntimeRoutes } from "./routes/prompt-runtime.js";
+import { registerRegexPreviewRoutes } from "./routes/regex-preview.js";
+import { registerSessionStateRoutes } from "./routes/session-state.js";
+import { registerSessionStateObservationRoutes } from "./routes/session-state-observation.js";
+import { registerTemporaryConversationRoutes } from "./routes/temporary-conversations.js";
+
+import {
+  registerWsPlugin,
+  type WsBridge,
+  type RealtimeRunLog,
+  type RealtimeResumeCoordinator,
+} from "./ws/index.js";
+import {
+  DrizzleFloorRepository,
+  DrizzleMemoryRepository,
+  DrizzleToolExecutionRepository,
+  DrizzleVariableRepository,
+} from "./adapters/index.js";
+import { memoryItems, runtimeScopeStates, sessions } from "./db/schema.js";
+import {
+  MEMORY_RUNTIME_SCOPE_TYPE,
+  parseMemoryRuntimeScopeKey,
+} from "./services/memory-runtime-job-definitions.js";
+import { ChatService } from "./services/chat/chat-service.js";
+import type { ResolvedTurnModels } from "./services/chat/contracts.js";
+import { ChatServiceError } from "./services/chat/errors.js";
+import {
+  InMemoryGenerationCoordinator,
+  type GenerationCoordinator,
+  type GenerationExecutionMode,
+} from "./services/generation-guard-service.js";
+import { TurnCommitService } from "./services/turn-commit-service.js";
+import { FloorRunService } from "./services/floor-run-service.js";
+import {
+  MemoryMaintenanceService,
+  type MemoryMaintenancePolicy,
+} from "./services/memory-maintenance-service.js";
+import {
+  createOrchestrationContext,
+  type OrchestrationConfig,
+  type OrchestrationContext,
+} from "./services/orchestration-factory.js";
+import { ChatMessagePersistence } from "./services/chat-message-persistence.js";
+import { LlmInstanceService } from "./services/llm-instance-service.js";
+import {
+  LlmProfileService,
+  LlmProfileServiceError,
+} from "./services/llm-profile-service.js";
+import { isBranchLocalSnapshotMissingError } from "./services/branch-local-variable-snapshot-service.js";
+import { registerOpenApi } from "./plugins/openapi.js";
+import { registerRequestLogging } from "./plugins/request-logging.js";
+import { registerAuth, type AuthConfig } from "./plugins/auth.js";
+import { registerUserIdentityRoutes } from "./routes/user-identity.js";
+import { registerReplyCandidateRoutes } from "./routes/reply-candidates.js";
+import { findNativePipelineError } from "./lib/native-pipeline-error.js";
+import { ensureDefaultAdminAccount } from "./accounts/service.js";
+import { ensureBuiltinAssets } from "./services/builtin-assets-seed.js";
+import {
+  DEFAULT_ADMIN_ACCOUNT_ID,
+  type AccountMode,
+} from "./accounts/constants.js";
+import { registerCors, type CorsConfig } from "./plugins/cors.js";
+import { McpService } from "./services/tooling/mcp/mcp-service.js";
+import { repairCrossAccountSessionCharacterBindings } from "./services/resource-ownership.js";
+import {
+  McpConnectionManager,
+  McpToolProviderFactory,
+} from "./services/tooling/mcp/index.js";
+import { registerMcpRuntimeRoutes } from "./routes/tooling/mcp.js";
+import { SessionToolRegistryService } from "./services/tooling/session-tool-registry-service.js";
+import { ToolRegistry, BuiltinToolProvider } from "@tavern/core";
+import { ResourceToolProvider, TodoToolProvider } from "./tools/index.js";
+import { MemoryWorker } from "./services/memory-worker.js";
+import { AgentRuntimeWorker } from "./services/agent-runtime-worker.js";
+import { NodeGraphWorker } from "./services/node-graph-worker.js";
+import { MemoryJobScheduler } from "./services/memory-job-scheduler.js";
+import { createDefaultMutationRuntimeComponents } from "./services/default-mutation-runtime.js";
+import { createMutationRuntimeJobBridge } from "./services/mutation-runtime-job-bridge.js";
+import { MutationWorker } from "./services/mutation-worker.js";
+import { createDefaultToolRuntimeComponents } from "./services/tooling/runtime/default-tool-runtime.js";
+import {
+  cleanExpiredClientDataItems,
+  purgeDeletedClientDataDomains,
+} from "./client-data/client-data-maintenance.js";
+
+import {
+  PromptRuntimeControlService,
+  PromptRuntimeControlServiceError,
+} from "./services/prompt-runtime-control-service.js";
+import { PromptRuntimeInjectionService } from "./services/prompt-runtime/injection-service.js";
+import { RuntimeMaintenanceService } from "./services/runtime-maintenance-service.js";
+import { TemporaryConversationService } from "./services/temporary-conversation-service.js";
+import { ToolWorker } from "./services/tooling/runtime/tool-worker.js";
+import { SessionEffectiveToolPolicyProvider } from "./services/tooling/shared/session-effective-tool-policy-provider.js";
+import {
+  FirstPartyGameStateService,
+  SessionStateCustomNamespaceService,
+  SessionStatePublicService,
+  SessionStateService,
+  createDefaultSessionStateSlotRegistry,
+} from "./session-state/index.js";
+import { SessionStateObservationService } from "./session-state/session-state-observation-service.js";
+import { ProjectEventLiveHub } from "./services/project-event-live-hub.js";
+import { ProjectAccessService } from "./services/project-access-service.js";
+import { DerivedOutputService } from "./services/derived-output-service.js";
+import { ProjectInboxService } from "./services/project-inbox-service.js";
+import {
+  AgentExecutorRouter,
+  AgentJobTriggerBackgroundJobEnqueuer,
+  AgentOutputDispatcher,
+  TemporaryConversationAgentExecutor,
+} from "./services/agent-runtime/index.js";
+
+const _pkgJson = JSON.parse(
+  readFileSync(new URL("../package.json", import.meta.url), "utf-8"),
+);
+import { registerPublicRoleRoutes } from "./routes/public-roles.js";
+const API_VERSION: string = _pkgJson.version ?? "unknown";
+
+type FastifyValidationIssue = {
+  instancePath?: string;
+  message?: string;
+  keyword?: string;
+};
+
+function isFastifyRequestValidationError(error: unknown): error is {
+  code: "FST_ERR_VALIDATION";
+  validation?: FastifyValidationIssue[];
+} {
+  if (!error || typeof error !== "object") {
+    return false;
+  }
+
+  return (error as { code?: string }).code === "FST_ERR_VALIDATION";
+}
+
+function toValidationDetails(error: { validation?: FastifyValidationIssue[] }) {
+  return (error.validation ?? []).map((issue) => ({
+    path: issue.instancePath ?? "",
+    message: issue.message ?? "Invalid value",
+    code: issue.keyword ?? "validation",
+  }));
+}
+
+function readOptionalRequestHeader(
+  headers: { [key: string]: string | string[] | undefined },
+  name: string,
+): string | undefined {
+  const value = headers[name];
+  return typeof value === "string" && value.length > 0 ? value : undefined;
+}
+
+function mapSqliteConstraintErrorCode(
+  message: string,
+): { code: string; publicMessage: string } | null {
+  if (
+    message.includes("client_data_domain_owner_name_uq") ||
+    message.includes(
+      "client_data_domain.account_id, client_data_domain.owner_type, client_data_domain.owner_id, client_data_domain.domain_name",
+    )
+  ) {
+    return {
+      code: "client_data_domain_name_conflict",
+      publicMessage: "Client data domain owner/name already exists",
+    };
+  }
+  if (
+    message.includes("client_data_collection_domain_name_uq") ||
+    message.includes(
+      "client_data_collection.domain_id, client_data_collection.collection_name",
+    )
+  ) {
+    return {
+      code: "client_data_collection_name_conflict",
+      publicMessage: "Client data collection name already exists in domain",
+    };
+  }
+  if (
+    message.includes("client_data_domain_grant_unique_uq") ||
+    message.includes(
+      "client_data_domain_grant.domain_id, client_data_domain_grant.grantee_owner_type, client_data_domain_grant.grantee_owner_id",
+    )
+  ) {
+    return {
+      code: "client_data_domain_grant_conflict",
+      publicMessage:
+        "Client data domain grant already exists for grantee owner",
+    };
+  }
+  if (
+    message.includes(
+      "client_data_managed_domain_account_manager_host_namespace_uq",
+    ) ||
+    message.includes(
+      "client_data_managed_domain.account_id, client_data_managed_domain.manager_kind, client_data_managed_domain.host_type, client_data_managed_domain.host_id, client_data_managed_domain.state_namespace",
+    )
+  ) {
+    return {
+      code: "client_data_managed_domain_conflict",
+      publicMessage:
+        "Client data managed domain registry already exists for host namespace",
+    };
+  }
+  if (
+    message.includes(
+      "session_state_namespace_registration_account_session_namespace_uq",
+    ) ||
+    message.includes(
+      "session_state_namespace_registration.account_id, session_state_namespace_registration.session_id, session_state_namespace_registration.namespace",
+    )
+  ) {
+    return {
+      code: "session_state_namespace_already_registered",
+      publicMessage:
+        "Session state namespace is already registered for the session",
+    };
+  }
+
+  return null;
+}
+
+function shouldExposeInternalErrorMessage(): boolean {
+  return process.env.NODE_ENV !== "production";
+}
+
+function buildInternalErrorDetails(input: {
+  requestId: string;
+  errorCode?: string;
+  nativePipelineNodeName?: string;
+}) {
+  const details: Record<string, unknown> = {
+    request_id: input.requestId,
+  };
+
+  if (shouldExposeInternalErrorMessage()) {
+    if (input.errorCode) {
+      details.error_code = input.errorCode;
+    }
+    if (input.nativePipelineNodeName) {
+      details.native_pipeline_node = input.nativePipelineNodeName;
+    }
+  }
+
+  return details;
+}
+
+export type BuildAppOptions = {
+  userSessionCookie?: UserSessionCookieConfig;
+  modelCallRecording?: ModelCallRecordingConfig;
+  storage?: ResolvedStorageConfig;
+  onRoleSessionCreated?: (
+    input: RoleReleaseSessionCreatedInput,
+  ) => void | Promise<void>;
+  databasePath?: string;
+  databaseConnection?: DatabaseConnection;
+  logger?: boolean;
+  orchestration?: OrchestrationConfig;
+  enableWebSocket?: boolean;
+  chatHistoryMaxFloors?: number;
+  enableMemory?: boolean;
+  memoryInjectionDecay?: MemoryInjectionOptions["decay"];
+  memoryMaintenance?: {
+    intervalMs: number;
+    batchSize?: number;
+    policy?: MemoryMaintenancePolicy;
+    dryRun?: boolean;
+  };
+  runtimeMaintenance?: {
+    intervalMs: number;
+    promptRuntimeInjection?: {
+      enabled?: boolean;
+    };
+    temporaryConversation?: {
+      enabled?: boolean;
+      retentionGraceMs?: number;
+    };
+    nodeGraphRun?: {
+      enabled?: boolean;
+      retentionGraceMs?: number;
+    };
+  };
+  enableSseChat?: boolean;
+  enablePromptDryRun?: boolean;
+  enableMemoryConsolidation?: boolean;
+  enableAsyncMemoryIngest?: boolean;
+  enableBackupWorker?: boolean;
+  backupWorker?: {
+    pollIntervalMs?: number;
+    leaseTtlMs?: number;
+    maxConcurrentJobs?: number;
+    retryBaseDelayMs?: number;
+    maxRetryDelayMs?: number;
+    candidateScanLimit?: number;
+  };
+  backupArtifactDir?: string;
+  backupImportMaxBytes?: number;
+  backupExportArtifactTtlMs?: number;
+  enableMacroCompaction?: boolean;
+  enableDualSummaryInjection?: boolean;
+  enableDeferredIrreversibleTools?: boolean;
+  deferredIrreversibleMcpTools?: string[];
+  memoryWorker?: {
+    pollIntervalMs?: number;
+    leaseTtlMs?: number;
+    maxConcurrentJobs?: number;
+    retryBaseDelayMs?: number;
+    maxRetryDelayMs?: number;
+    candidateScanLimit?: number;
+  };
+  /** 是否启用后台 Agent worker（默认关闭，保证可回退）。 */
+  enableAgentRuntimeWorker?: boolean;
+  /** 可选：AgentRuntimeWorker 运行参数。 */
+  agentRuntimeWorker?: {
+    pollIntervalMs?: number;
+    leaseTtlMs?: number;
+    maxConcurrentJobs?: number;
+    retryBaseDelayMs?: number;
+    maxRetryDelayMs?: number;
+    candidateScanLimit?: number;
+  };
+  /** 是否启用 NodeGraph worker（默认关闭，保证可回退）。 */
+  enableNodeGraphWorker?: boolean;
+  /** 可选：NodeGraphWorker 运行参数。 */
+  nodeGraphWorker?: {
+    pollIntervalMs?: number;
+    leaseTtlMs?: number;
+    maxConcurrentJobs?: number;
+    retryBaseDelayMs?: number;
+    maxRetryDelayMs?: number;
+    candidateScanLimit?: number;
+  };
+  llmDefaultTimeoutMs?: number;
+  llmProfileApiMode?: "chat" | "completion" | "responses";
+  chatTransferArtifactDir?: string;
+  chatImportMaxBytes?: number;
+  chatExportSyncMaxMessages?: number;
+  chatExportArtifactTtlMs?: number;
+  generationCoordinator?: GenerationCoordinator;
+  generationQueueMode?: GenerationExecutionMode;
+  generationQueueTimeoutMs?: number;
+  turnCommitMaxRetries?: number;
+  turnCommitRetryBaseDelayMs?: number;
+  auth?: AuthConfig;
+  accountMode?: AccountMode;
+  /**
+   * 是否幂等 seed 内置不可删除资产（SC2-11：两张内置角色卡 + 一本内置世界书）。
+   * 默认 `false`，保证集成测试拿到干净、可确定断言的 fixture；
+   * 生产入口（`index.ts`）显式置为 `true`，让真实部署自带内置资产。
+   */
+  seedBuiltinAssets?: boolean;
+  cors?: CorsConfig;
+  enableMcp?: boolean;
+  enableUnsafeScriptHandler?: boolean;
+  enableClientData?: boolean;
+  clientData?: {
+    expirationIntervalMs: number;
+    domainPurgeGracePeriodMs: number;
+    defaultMaxItemSizeBytes: number;
+    defaultQuotaMaxEntries: number;
+    defaultQuotaMaxBytes: number;
+    maxDomainsPerAccount: number;
+    maxTotalEntriesPerAccount: number;
+    maxTotalBytesPerAccount: number;
+  };
+};
+
+export type BuildAppResult = {
+  app: FastifyInstance;
+  database: DatabaseConnection["db"];
+  orchestrationContext?: OrchestrationContext;
+  wsBridge?: WsBridge;
+  /** RT2：per-run 内存事件日志（实验性，旁路缓冲，供 RT3 缺口补发使用） */
+  realtimeRunLog?: RealtimeRunLog;
+  /** RT3：resume/ack 协调器（实验性，仅当 WS 启用且提供 DB 最终态兜底来源时存在） */
+  realtimeResumeCoordinator?: RealtimeResumeCoordinator;
+  mcpManager?: McpConnectionManager;
+  projectEventLiveHub: ProjectEventLiveHub;
+  temporaryConversationService?: TemporaryConversationService;
+};
+
+export type MemoryMaintenanceScopeRef = {
+  accountId: string;
+  scope: "global" | "chat" | "branch" | "floor";
+  scopeId: string;
+};
+
+export async function listMemoryMaintenanceScopes(
+  db: DatabaseConnection["db"],
+): Promise<MemoryMaintenanceScopeRef[]> {
+  const [itemScopes, scopeStateScopes] = await Promise.all([
+    db
+      .select({
+        accountId: memoryItems.accountId,
+        scope: memoryItems.scope,
+        scopeId: memoryItems.scopeId,
+      })
+      .from(memoryItems)
+      .groupBy(memoryItems.accountId, memoryItems.scope, memoryItems.scopeId),
+    db
+      .select({
+        accountId: runtimeScopeStates.accountId,
+        scopeKey: runtimeScopeStates.scopeKey,
+      })
+      .from(runtimeScopeStates)
+      .where(eq(runtimeScopeStates.scopeType, MEMORY_RUNTIME_SCOPE_TYPE)),
+  ]);
+
+  const uniqueScopes = new Map<string, MemoryMaintenanceScopeRef>();
+  const parsedScopeStateScopes = scopeStateScopes.map((scopeRef) => ({
+    accountId: scopeRef.accountId,
+    ...parseMemoryRuntimeScopeKey(scopeRef.scopeKey),
+  }));
+  for (const scopeRef of [...itemScopes, ...parsedScopeStateScopes]) {
+    const key = [scopeRef.accountId, scopeRef.scope, scopeRef.scopeId].join(
+      "\u0000",
+    );
+    uniqueScopes.set(key, scopeRef);
+  }
+
+  return [...uniqueScopes.values()];
+}
+
+function mergeTurnGenerationParams(
+  base?: GenerationParamsInput | null,
+  override?: GenerationParamsInput | null,
+): {
+  params?: GenerationParamsInput;
+  origins?: Partial<Record<GenerationParamKey, "profile" | "instance">>;
+} {
+  const params = mergeGenerationParamInputs(base, override);
+  const origins: Partial<Record<GenerationParamKey, "profile" | "instance">> =
+    {};
+
+  for (const key of GENERATION_PARAM_KEYS) {
+    if (override && Object.prototype.hasOwnProperty.call(override, key)) {
+      origins[key] = "instance";
+      continue;
+    }
+    if (base && Object.prototype.hasOwnProperty.call(base, key)) {
+      origins[key] = "profile";
+    }
+  }
+
+  return {
+    ...(params ? { params } : {}),
+    ...(Object.keys(origins).length > 0 ? { origins } : {}),
+  };
+}
+
+export async function buildApp(
+  options: BuildAppOptions = {},
+): Promise<BuildAppResult> {
+  let clientDataExpirationTimer: NodeJS.Timeout | undefined;
+  let clientDataDomainPurgeTimer: NodeJS.Timeout | undefined;
+
+  const userSessionCookie = userSessionCookieConfigSchema.parse(
+    options.userSessionCookie ?? loadUserSessionCookieConfig(),
+  );
+  const app = Fastify({ logger: options.logger ?? true });
+  const database = options.databaseConnection ?? createDatabase(options.databasePath);
+  try {
+    assertDatabaseReady(database);
+  } catch (error) {
+    database.close();
+    await app.close();
+    throw error;
+  }
+  const accountMode = options.accountMode ?? "single";
+
+  let memoryMaintenanceTimer: NodeJS.Timeout | undefined;
+  let runtimeMaintenanceTimer: NodeJS.Timeout | undefined;
+  let memoryWorker: MemoryWorker | undefined;
+  let mutationWorker: MutationWorker | undefined;
+  let toolWorker: ToolWorker | undefined;
+  let agentRuntimeWorker: AgentRuntimeWorker | undefined;
+  let nodeGraphWorker: NodeGraphWorker | undefined;
+
+  app.addHook("onClose", async () => {
+    if (memoryMaintenanceTimer) {
+      clearInterval(memoryMaintenanceTimer);
+      memoryMaintenanceTimer = undefined;
+    }
+    if (runtimeMaintenanceTimer) {
+      clearInterval(runtimeMaintenanceTimer);
+      runtimeMaintenanceTimer = undefined;
+    }
+    if (clientDataExpirationTimer) {
+      clearInterval(clientDataExpirationTimer);
+      clientDataExpirationTimer = undefined;
+    }
+    if (clientDataDomainPurgeTimer) {
+      clearInterval(clientDataDomainPurgeTimer);
+      clientDataDomainPurgeTimer = undefined;
+    }
+    if (mutationWorker) {
+      await mutationWorker.stop();
+      mutationWorker = undefined;
+    }
+    if (memoryWorker) {
+      await memoryWorker.stop();
+      memoryWorker = undefined;
+    }
+    if (toolWorker) {
+      await toolWorker.stop();
+      toolWorker = undefined;
+    }
+    if (agentRuntimeWorker) {
+      await agentRuntimeWorker.stop();
+      agentRuntimeWorker = undefined;
+    }
+    if (nodeGraphWorker) {
+      await nodeGraphWorker.stop();
+      nodeGraphWorker = undefined;
+    }
+    database.close();
+  });
+
+  await ensureDefaultAdminAccount(database.db);
+  // SC2-11：内置不可删除资产（两张角色卡 + 一本世界书）幂等 seed。
+  // 仅在显式开启时执行（生产入口置 true）；测试默认关闭以获得干净 fixture。
+  // 失败不阻断启动，仅记日志，避免种子问题影响服务可用性。
+  if (options.seedBuiltinAssets === true) {
+    try {
+      await ensureBuiltinAssets(database.db);
+    } catch (error) {
+      app.log.error({ err: error }, "Failed to seed builtin assets");
+    }
+  }
+  const repairedCrossAccountCharacterBindings =
+    await repairCrossAccountSessionCharacterBindings(database.db);
+  if (repairedCrossAccountCharacterBindings > 0) {
+    app.log.warn(
+      {
+        repaired_session_count: repairedCrossAccountCharacterBindings,
+      },
+      "Repaired cross-account session character bindings",
+    );
+  }
+
+  const auth = options.auth ?? { mode: "off" };
+  const shouldEnableWs =
+    Boolean(options.orchestration) && (options.enableWebSocket ?? true);
+  if (shouldEnableWs) await app.register(websocket);
+
+  await registerCors(
+    app,
+    options.cors ?? { origins: true, credentials: false },
+  );
+
+  await registerOpenApi(app, {
+    authMode: auth.mode,
+    userSessionCookieName: userSessionCookie.name,
+  });
+  await registerRequestLogging(app);
+  await registerAuth(app, auth, {
+    userSessionCookieName: userSessionCookie.name,
+    db: database.db,
+    accountMode,
+    defaultAccountId: DEFAULT_ADMIN_ACCOUNT_ID,
+    browserOrigins: Array.isArray(options.cors?.origins) ? options.cors.origins : [],
+  });
+  await registerUserIdentityRoutes(
+    app,
+    database,
+    userSessionCookie,
+    Array.isArray(options.cors?.origins) ? options.cors.origins : [],
+    accountMode,
+  );
+
+  app.setErrorHandler((error, request, reply) => {
+    if (error instanceof ZodError) {
+      return sendError(
+        reply,
+        400,
+        "validation_error",
+        "Request validation failed",
+        zodIssues(error),
+      );
+    }
+
+    if (isFastifyRequestValidationError(error)) {
+      return sendError(
+        reply,
+        400,
+        "validation_error",
+        "Request validation failed",
+        toValidationDetails(error),
+      );
+    }
+
+    if ((error as { code?: string }).code === "FST_ERR_CTP_INVALID_JSON_BODY") {
+      return sendError(
+        reply,
+        400,
+        "validation_error",
+        "Request body contains invalid JSON. Correct the JSON syntax and retry.",
+      );
+    }
+
+    if ((error as { code?: string }).code === "FST_ERR_CTP_BODY_TOO_LARGE") {
+      const routePath =
+        request.routeOptions.url ?? request.url.split("?")[0] ?? "/";
+      const isBackupRoute = routePath.startsWith("/backup/");
+      return sendError(
+        reply,
+        413,
+        isBackupRoute ? "backup_payload_too_large" : "payload_too_large",
+        isBackupRoute
+          ? "Backup request payload exceeds the configured size limit"
+          : "Request payload exceeds the configured size limit",
+      );
+    }
+
+    const nativePipelineError = findNativePipelineError(error);
+    if (nativePipelineError) {
+      app.log.error(
+        {
+          request_id: request.id,
+          route: request.routeOptions.url ?? request.url.split("?")[0] ?? "/",
+          error_code: "native_pipeline_failed",
+          node_name: nativePipelineError.nodeName,
+          smoke_run_id: readOptionalRequestHeader(
+            request.headers,
+            "x-smoke-run-id",
+          ),
+          smoke_request_id: readOptionalRequestHeader(
+            request.headers,
+            "x-smoke-request-id",
+          ),
+          input_summary: nativePipelineError.inputSummary,
+          state_summary: nativePipelineError.stateSummary,
+          err: error,
+        },
+        "native prompt pipeline failed",
+      );
+    }
+
+    const code = (error as { code?: string }).code;
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+
+    if (isBranchLocalSnapshotMissingError(error)) {
+      return sendError(
+        reply,
+        409,
+        "branch_local_snapshot_missing",
+        error.message,
+      );
+    }
+
+    if (code?.startsWith("SQLITE_CONSTRAINT")) {
+      const mappedConstraint = mapSqliteConstraintErrorCode(errorMessage);
+      if (mappedConstraint) {
+        return sendError(
+          reply,
+          409,
+          mappedConstraint.code,
+          mappedConstraint.publicMessage,
+          {
+            sqlite_code: code,
+            message: errorMessage,
+          },
+        );
+      }
+      return sendError(
+        reply,
+        409,
+        "constraint_error",
+        "Database constraint violation",
+        {
+          sqlite_code: code,
+          message: errorMessage,
+        },
+      );
+    }
+
+    if (error instanceof PromptRuntimeControlServiceError) {
+      return sendError(reply, error.statusCode, error.code, error.message);
+    }
+
+    if (error instanceof ResourceBusyError || isSqliteBusyError(error)) {
+      app.log.warn(
+        {
+          err: error,
+          message: errorMessage,
+        },
+        "resource write is busy",
+      );
+
+      return sendError(
+        reply,
+        503,
+        "resource_busy",
+        "Resource is temporarily busy, please retry",
+        {
+          message: errorMessage,
+          sqlite_code: typeof code === "string" ? code : undefined,
+        },
+      );
+    }
+
+    if (!nativePipelineError) {
+      app.log.error({
+        err: error,
+        request_id: request.id,
+        smoke_run_id: readOptionalRequestHeader(
+          request.headers,
+          "x-smoke-run-id",
+        ),
+        smoke_request_id: readOptionalRequestHeader(
+          request.headers,
+          "x-smoke-request-id",
+        ),
+        message: errorMessage,
+      });
+    }
+
+    return sendError(
+      reply,
+      500,
+      "internal_error",
+      shouldExposeInternalErrorMessage()
+        ? errorMessage
+        : "Unexpected server error",
+      buildInternalErrorDetails({
+        requestId: request.id,
+        errorCode: typeof code === "string" ? code : undefined,
+        nativePipelineNodeName: nativePipelineError?.nodeName,
+      }),
+    );
+  });
+
+  app.get(
+    "/health",
+    {
+      schema: {
+        tags: ["system"],
+        summary: "Health check",
+        security: [],
+        response: {
+          200: {
+            type: "object",
+            required: ["ok", "service", "database"],
+            properties: {
+              ok: { type: "boolean" },
+              service: { type: "string" },
+              database: { type: "string" },
+            },
+          },
+        },
+      },
+    },
+    async () => {
+      return {
+        ok: true,
+        service: "@tavern/api",
+        database: "ready",
+      };
+    },
+  );
+
+  app.get(
+    "/version",
+    {
+      schema: {
+        tags: ["system"],
+        summary: "Get service version",
+        security: [],
+        response: {
+          200: {
+            type: "object",
+            required: ["version", "service", "node_version"],
+            properties: {
+              version: { type: "string" },
+              service: { type: "string" },
+              node_version: { type: "string" },
+            },
+            additionalProperties: false,
+          },
+        },
+      },
+    },
+    async () => {
+      return {
+        version: API_VERSION,
+        service: "@tavern/api",
+        node_version: process.version,
+      };
+    },
+  );
+
+  app.get(
+    "/test",
+    {
+      schema: {
+        tags: ["system"],
+        summary: "Built-in API test page (dev only)",
+        security: [],
+        hide: true,
+      },
+    },
+    async (_request, reply) => {
+      const html = readFileSync(
+        new URL("../../../test.html", import.meta.url),
+        "utf-8",
+      );
+      reply.type("text/html; charset=utf-8").send(html);
+    },
+  );
+
+  let orchestrationContext: OrchestrationContext | undefined;
+  let wsBridge: WsBridge | undefined;
+  let realtimeRunLog: RealtimeRunLog | undefined;
+  let realtimeResumeCoordinator: RealtimeResumeCoordinator | undefined;
+  let baseToolRegistry: ToolRegistry | undefined;
+  let sessionToolRegistryService: SessionToolRegistryService | undefined;
+  let mutationRuntimeComponents:
+    | ReturnType<typeof createDefaultMutationRuntimeComponents>
+    | undefined;
+  let toolRuntimeComponents:
+    | ReturnType<typeof createDefaultToolRuntimeComponents>
+    | undefined;
+  let floorRunService: FloorRunService | undefined;
+  let promptRuntimeReadOnlyService:
+    | Pick<ChatService, "previewPromptRuntimeText" | "inspectPromptRuntime">
+    | undefined;
+  let sessionStateService: SessionStateService | undefined;
+  let firstPartyGameStateService: FirstPartyGameStateService | undefined;
+  let sessionStatePublicService: SessionStatePublicService | undefined;
+  let sessionStateCustomNamespaceService:
+    | SessionStateCustomNamespaceService
+    | undefined;
+  let sessionStateObservationService:
+    | SessionStateObservationService
+    | undefined;
+  let temporaryConversationService: TemporaryConversationService | undefined;
+  const projectEventLiveHub = new ProjectEventLiveHub();
+  const projectAccessService = new ProjectAccessService(database.db);
+
+  const createNodeGraphAgentRouter = () => {
+    const backgroundJobEnqueuer = new AgentJobTriggerBackgroundJobEnqueuer(
+      database.db,
+    );
+    if (!temporaryConversationService) {
+      return new AgentExecutorRouter(undefined, { backgroundJobEnqueuer });
+    }
+    const outputDispatcher = new AgentOutputDispatcher({
+      derivedOutput: new DerivedOutputService(database.db),
+      projectInbox: new ProjectInboxService(database.db),
+    });
+    return new AgentExecutorRouter(
+      new TemporaryConversationAgentExecutor(
+        temporaryConversationService,
+        outputDispatcher,
+      ),
+      { backgroundJobEnqueuer },
+    );
+  };
+
+  if (options.orchestration) {
+    const floorRepo = new DrizzleFloorRepository(database.db);
+    const memoryRepo = new DrizzleMemoryRepository(database.db, {
+      accountMode,
+    });
+    const variableRepo = new DrizzleVariableRepository(database.db, {
+      accountMode,
+    });
+    const toolExecutionRepo = new DrizzleToolExecutionRepository(database.db);
+
+    orchestrationContext = createOrchestrationContext(
+      options.orchestration,
+      floorRepo,
+      memoryRepo,
+      variableRepo,
+      toolExecutionRepo,
+    );
+
+    floorRunService = new FloorRunService(
+      database.db,
+      orchestrationContext.eventBus,
+      {
+        staleRunTimeoutMs: options.llmDefaultTimeoutMs,
+      },
+    );
+  }
+
+  if (options.enableClientData === true && options.clientData) {
+    const sessionStateSlotRegistry = createDefaultSessionStateSlotRegistry();
+    sessionStateCustomNamespaceService = new SessionStateCustomNamespaceService(
+      database.db,
+      {
+        clientData: options.clientData,
+        slotRegistry: sessionStateSlotRegistry,
+      },
+    );
+    sessionStateService = new SessionStateService(database.db, {
+      clientData: options.clientData,
+      slotRegistry: sessionStateSlotRegistry,
+      customNamespaceService: sessionStateCustomNamespaceService,
+    });
+    firstPartyGameStateService = new FirstPartyGameStateService(
+      database.db,
+      sessionStateService,
+    );
+    sessionStatePublicService = new SessionStatePublicService(
+      database.db,
+      sessionStateService,
+      sessionStateCustomNamespaceService,
+    );
+    sessionStateObservationService = new SessionStateObservationService(
+      database.db,
+      sessionStateService,
+    );
+  }
+
+  const mcpService = new McpService(database.db);
+  const mcpBackfill = await mcpService.backfillLegacySecretStorage();
+  if (mcpBackfill.migrated > 0 || mcpBackfill.skipped > 0) {
+    app.log.info(mcpBackfill, "MCP secret storage backfill completed");
+  }
+
+  let mcpManager: McpConnectionManager | undefined;
+
+  if (options.enableMcp) {
+    const resolvedMcpConfigs =
+      await mcpService.resolveAllEnabledConfigsForManager();
+
+    mcpManager = new McpConnectionManager(app.log);
+    await mcpManager.initialize(resolvedMcpConfigs.configs);
+
+    for (const failure of resolvedMcpConfigs.failures) {
+      mcpManager.registerUnavailableServer(
+        {
+          id: failure.serverId,
+          name: failure.serverName,
+          transport: failure.transport,
+        },
+        failure.error,
+      );
+    }
+
+    await registerMcpRuntimeRoutes(app, mcpManager, database);
+
+    app.addHook("onClose", async () => {
+      await mcpManager!.shutdown();
+    });
+
+    app.log.info(
+      {
+        serverCount: resolvedMcpConfigs.configs.length,
+        failedServerCount: resolvedMcpConfigs.failures.length,
+      },
+      "MCP integration enabled",
+    );
+  }
+
+  if (options.orchestration && orchestrationContext) {
+    const mutationBridge = createMutationRuntimeJobBridge(database.db, {
+      eventBus: orchestrationContext.eventBus,
+    });
+    mutationRuntimeComponents = createDefaultMutationRuntimeComponents(
+      database.db,
+      {
+        eventBus: orchestrationContext.eventBus,
+        asyncBridge: mutationBridge,
+        masterKey: process.env.APP_SECRETS_MASTER_KEY,
+      },
+    );
+
+    mutationWorker = new MutationWorker(
+      database.db,
+      mutationRuntimeComponents.registry,
+      {
+        eventBus: orchestrationContext.eventBus,
+        logger: app.log,
+      },
+    );
+    mutationWorker.start();
+
+    toolRuntimeComponents = createDefaultToolRuntimeComponents(database.db, {
+      eventBus: orchestrationContext.eventBus,
+      mcpManager,
+      enableDeferredIrreversibleTools: options.enableDeferredIrreversibleTools,
+      deferredToolAllowlist: options.deferredIrreversibleMcpTools,
+      logger: app.log,
+    });
+
+    toolWorker = toolRuntimeComponents.worker;
+    toolWorker?.start();
+
+    baseToolRegistry = new ToolRegistry();
+    baseToolRegistry.register(
+      new BuiltinToolProvider({
+        variableStore: orchestrationContext.variableStore,
+        memoryStore: options.enableMemory
+          ? orchestrationContext.memoryStore
+          : undefined,
+      }),
+    );
+    baseToolRegistry.register(
+      new ResourceToolProvider(database.db, {
+        mutationRuntime: mutationRuntimeComponents.runtime,
+      }),
+    );
+    // SC2-12（批次四）：待办事项工具与资源工具一样注册进 baseToolRegistry，
+    // 会话级可用性由工具策略预设（enabledTools）控制。
+    baseToolRegistry.register(new TodoToolProvider(database.db));
+
+    const mcpDeferredHandler = mcpManager
+      ? toolRuntimeComponents.handlerRegistry.find("mcp")
+      : undefined;
+    const mcpToolProviderFactory = mcpManager
+      ? new McpToolProviderFactory({
+          connectionManager: mcpManager,
+          toolRuntimePolicy: toolRuntimeComponents.policy,
+          ...(mcpDeferredHandler
+            ? { deferredHandler: mcpDeferredHandler }
+            : {}),
+        })
+      : undefined;
+
+    sessionToolRegistryService = new SessionToolRegistryService(database.db, {
+      baseRegistry: baseToolRegistry,
+      mcpManager,
+      enableUnsafeScriptHandler: options.enableUnsafeScriptHandler,
+      toolRuntimePolicy: toolRuntimeComponents.policy,
+      ...(mcpToolProviderFactory ? { mcpToolProviderFactory } : {}),
+    });
+  }
+
+  if (options.enableAgentRuntimeWorker === true) {
+    agentRuntimeWorker = new AgentRuntimeWorker(database.db, {
+      ...(orchestrationContext?.eventBus
+        ? { eventBus: orchestrationContext.eventBus }
+        : {}),
+      ...(options.agentRuntimeWorker?.pollIntervalMs !== undefined
+        ? { pollIntervalMs: options.agentRuntimeWorker.pollIntervalMs }
+        : {}),
+      ...(options.agentRuntimeWorker?.leaseTtlMs !== undefined
+        ? { leaseTtlMs: options.agentRuntimeWorker.leaseTtlMs }
+        : {}),
+      ...(options.agentRuntimeWorker?.maxConcurrentJobs !== undefined
+        ? { maxConcurrentJobs: options.agentRuntimeWorker.maxConcurrentJobs }
+        : {}),
+      ...(options.agentRuntimeWorker?.retryBaseDelayMs !== undefined
+        ? { retryBaseDelayMs: options.agentRuntimeWorker.retryBaseDelayMs }
+        : {}),
+      ...(options.agentRuntimeWorker?.maxRetryDelayMs !== undefined
+        ? { maxRetryDelayMs: options.agentRuntimeWorker.maxRetryDelayMs }
+        : {}),
+      ...(options.agentRuntimeWorker?.candidateScanLimit !== undefined
+        ? { candidateScanLimit: options.agentRuntimeWorker.candidateScanLimit }
+        : {}),
+      logger: app.log,
+    });
+    agentRuntimeWorker.start();
+  }
+
+  const modelCallRecordService = new ModelCallRecordService(
+    database.db,
+    options.modelCallRecording ?? loadModelCallRecordingConfig(),
+  );
+  await registerModelCallRoutes(app, modelCallRecordService);
+  const storage = options.storage ?? loadStorageConfig();
+  const nativeCardConfig = loadNativeCardConfig(storage.dataRoot);
+  let nativeRuntime: NativeCardRuntimeService;
+  const nativeCards = new NativeCardService(database.db, nativeCardConfig, {
+    commitImportedResources: (tx, snapshot, identity) =>
+      nativeRuntime.commitImportedResources(tx, snapshot, identity),
+  });
+  await nativeCards.recoverInterruptedBuilds();
+  const roleAssetService = new RoleAssetService(
+    database.db,
+    new RoleFileStore(storage),
+    nativeCards,
+  );
+  await registerRoleAssetRoutes(
+    app,
+    roleAssetService,
+    storage.roleAssetMaxUploadBytes,
+  );
+  const displaySnapshots = new DisplaySnapshotService(database.db);
+  const stateUpdates = new StateUpdateService(
+    database.db,
+    displaySnapshots,
+    roleAssetService,
+    modelCallRecordService,
+    {historyMaxFloors: options.chatHistoryMaxFloors, firstPartyStateContextService: new FirstPartyStateContextService(firstPartyGameStateService, (code, message, cause) => new ChatServiceError(code, message, cause))},
+  );
+  await registerRoleViewRoutes(
+    app,
+    database.db,
+    displaySnapshots,
+    stateUpdates,
+    new RoleViewService(displaySnapshots, stateUpdates, roleAssetService),
+    {enablePromptDryRun: options.enablePromptDryRun},
+  );
+  const roleSessionOptions = {
+    onSessionCreated: async (input: RoleReleaseSessionCreatedInput) => {
+      if (input.opening) {
+        const sessionId = String(input.session.id);
+        const row = database.db
+          .select()
+          .from(sessions)
+          .where(eq(sessions.id, sessionId))
+          .get()!;
+        await stateUpdates.initialize(
+          row.accountId,
+          sessionId,
+          input.opening.variables,
+        );
+      }
+      await options.onRoleSessionCreated?.(input);
+    },
+    requireAssetBundle: (accountId: string, versionId: string) =>
+      roleAssetService.requireCompleteBundle(accountId, versionId),
+  };
+  nativeRuntime = new NativeCardRuntimeService(database.db, roleSessionOptions);
+  await registerNativeCardRoutes(
+    app,
+    createNativeCardRouteService(app, database.db, nativeCards, nativeRuntime),
+    nativeCardConfig.maxUploadBytes,
+  );
+  await registerRoleReleaseRoutes(app, database.db, roleSessionOptions);
+  await registerPublicRoleRoutes(app, database.db, roleSessionOptions);
+  await registerRoleAppRoutes(app, database.db, roleSessionOptions);
+
+  await registerCrudRoutes(app, database, {
+    variableEventBus: orchestrationContext?.eventBus,
+    memoryEventBus: orchestrationContext?.eventBus,
+    sessionToolRegistryService,
+    mutationRuntime: mutationRuntimeComponents?.runtime,
+    memoryJobs: {
+      enableBackgroundWorker:
+        options.enableMemory === true &&
+        options.orchestration !== undefined &&
+        (options.enableAsyncMemoryIngest === true ||
+          options.enableMacroCompaction === true ||
+          options.memoryMaintenance !== undefined),
+      eventBus: orchestrationContext?.eventBus,
+    },
+    chatTransferJobs: {
+      artifactDir: options.chatTransferArtifactDir,
+      importMaxBytes: options.chatImportMaxBytes,
+      exportSyncMaxMessages: options.chatExportSyncMaxMessages,
+      exportArtifactTtlMs: options.chatExportArtifactTtlMs,
+      eventBus: orchestrationContext?.eventBus,
+    },
+    backupJobs: {
+      artifactDir: options.backupArtifactDir,
+      importMaxBytes: options.backupImportMaxBytes,
+      exportArtifactTtlMs: options.backupExportArtifactTtlMs,
+      eventBus: orchestrationContext?.eventBus,
+    },
+    mcpManager,
+    enableUnsafeScriptHandler: options.enableUnsafeScriptHandler,
+    accountMode,
+    enableClientData: options.enableClientData,
+    clientData: options.clientData,
+    floorRun: {
+      staleRunTimeoutMs: options.llmDefaultTimeoutMs,
+    },
+    projectEventLiveHub,
+    sessionStateObservationService,
+    nodeGraphWorkerEnabled: options.enableNodeGraphWorker === true,
+  });
+  await registerRegexPreviewRoutes(app);
+
+  const promptRuntimeControlService = new PromptRuntimeControlService(
+    database.db,
+    {
+      enableLiveEndpoints: Boolean(
+        options.orchestration && orchestrationContext,
+      ),
+      enableDryRunEndpoint:
+        Boolean(options.orchestration && orchestrationContext) &&
+        options.enablePromptDryRun === true,
+      enablePreviewEndpoint: Boolean(
+        options.orchestration && orchestrationContext,
+      ),
+      enableStreamEndpoint:
+        Boolean(options.orchestration && orchestrationContext) &&
+        options.enableSseChat === true,
+    },
+  );
+  const promptRuntimeInjectionService = new PromptRuntimeInjectionService(
+    database.db,
+  );
+
+  const effectiveGenerationCoordinator = options.generationCoordinator ?? new InMemoryGenerationCoordinator();
+  await registerReplyCandidateRoutes(app, database.db, effectiveGenerationCoordinator);
+
+  if (options.orchestration && orchestrationContext) {
+    const llmInstanceService = new LlmInstanceService(database.db);
+    const llmProfileService = new LlmProfileService(database.db, {
+      masterKey: process.env.APP_SECRETS_MASTER_KEY,
+    });
+    const chatService = new ChatService(
+      database.db,
+      orchestrationContext.orchestrator,
+      orchestrationContext.tokenCounter,
+      {
+        rolePromptModuleLoader: (accountId, versionId, path) =>
+          new RoleModuleLoader(roleAssetService).loadModule(
+            accountId,
+            versionId,
+            path,
+          ),
+        historyMaxFloors: options.chatHistoryMaxFloors,
+        memoryStore: options.enableMemory
+          ? orchestrationContext.memoryStore
+          : undefined,
+        memoryInjectionDecay: options.memoryInjectionDecay,
+        enableMemoryConsolidationByDefault: options.enableMemoryConsolidation,
+        enableAsyncMemoryIngest: options.enableAsyncMemoryIngest,
+        enableDualSummaryInjection: options.enableDualSummaryInjection,
+        resolveTurnModels: async (sessionId: string, accountId: string) => {
+          try {
+            const resolvedSlots = await llmInstanceService.resolveConfigs(
+              accountId,
+              sessionId,
+            );
+            const activeProfiles =
+              await llmProfileService.resolveActiveProfiles(
+                sessionId,
+                accountId,
+              );
+            const result: Record<string, unknown> = {};
+
+            for (const slot of resolvedSlots) {
+              const activeProfile =
+                activeProfiles[slot.slot as keyof typeof activeProfiles] ??
+                activeProfiles["*" as keyof typeof activeProfiles];
+              if (slot.enabled !== true) {
+                const mergedGenerationParams = mergeTurnGenerationParams(
+                  undefined,
+                  slot.params,
+                );
+                result[slot.slot] = {
+                  enabled: false,
+                  source: slot.source,
+                  presetId: slot.presetId ?? undefined,
+                  capabilities: slot.capabilities,
+                  generationParams: mergedGenerationParams.params,
+                  generationParamOrigins: mergedGenerationParams.origins,
+                };
+                continue;
+              }
+
+              if (!activeProfile) {
+                const mergedGenerationParams = mergeTurnGenerationParams(
+                  undefined,
+                  slot.params,
+                );
+                result[slot.slot] = {
+                  enabled: slot.enabled,
+                  source: "env",
+                  presetId: slot.presetId ?? undefined,
+                  capabilities: slot.capabilities,
+                  generationParams: mergedGenerationParams.params,
+                  generationParamOrigins: mergedGenerationParams.origins,
+                };
+                continue;
+              }
+
+              const effectiveModelId =
+                slot.modelIdOverride ?? activeProfile.modelId;
+              const providerId = `llm-profile-${activeProfile.profileId}-turn-${nanoid(8)}`;
+              const providerConfig = {
+                id: providerId,
+                type: activeProfile.provider,
+                apiMode:
+                  activeProfile.provider === "openai-compatible"
+                    ? options.llmProfileApiMode
+                    : undefined,
+                apiKey: activeProfile.apiKey,
+                baseURL: activeProfile.baseUrl ?? undefined,
+              };
+              const languageModel =
+                orchestrationContext.providerRegistry.createModel(
+                  providerConfig,
+                  effectiveModelId,
+                );
+
+              const mergedGenerationParams = mergeTurnGenerationParams(
+                activeProfile.params,
+                slot.params,
+              );
+
+              result[slot.slot] = {
+                ...activeProfile,
+                modelId: effectiveModelId,
+                enabled: slot.enabled,
+                presetId: slot.presetId ?? undefined,
+                capabilities: slot.capabilities,
+                source:
+                  activeProfile.source === "session"
+                    ? "session_profile"
+                    : "global_profile",
+                generationParams: mergedGenerationParams.params,
+                generationParamOrigins: mergedGenerationParams.origins,
+                providerType: activeProfile.provider,
+                model: {
+                  providerId,
+                  modelId: effectiveModelId,
+                  languageModel,
+                  providerConfig,
+                  // 显式传递 provider 类型：turn 级用 languageModel 句柄，providerId 未注册进 registry，
+                  // core 需要该字段才能按 provider 分流生成参数（例如推理强度 OpenAI/Anthropic 开启方式不同）。
+                  providerType: activeProfile.provider,
+                },
+              };
+            }
+
+            return result as any;
+          } catch (error) {
+            if (error instanceof LlmProfileServiceError) {
+              throw new ChatServiceError(error.code, error.message, error);
+            }
+            throw error;
+          }
+        },
+        onTurnModelUsed: async (model, accountId) => {
+          if (model.profileId) {
+            await llmProfileService.touchLastUsed(model.profileId, accountId);
+          }
+        },
+        floorRunService: floorRunService!,
+        startModelCallRecording: (input) => modelCallRecordService.start(input),
+        finishModelCallTurn: (input) =>
+          modelCallRecordService.finishTurn(input),
+        sessionToolRegistryService,
+        resolveEffectiveToolPolicy: async (
+          sessionId: string,
+          accountId: string,
+        ) => {
+          return await new SessionEffectiveToolPolicyProvider(
+            database.db,
+          ).resolve({
+            sessionId,
+            accountId,
+          });
+        },
+        toolRuntimeJobBridge: toolRuntimeComponents?.bridge,
+        generationCoordinator: effectiveGenerationCoordinator,
+        eventBus: orchestrationContext.eventBus,
+        executionPolicy: {
+          queueMode: options.generationQueueMode,
+          queueTimeoutMs: options.generationQueueTimeoutMs,
+          executionTimeoutMs: options.llmDefaultTimeoutMs,
+          commitRetry: {
+            maxRetries: options.turnCommitMaxRetries,
+            baseDelayMs: options.turnCommitRetryBaseDelayMs,
+          },
+        },
+        accountMode,
+        sessionStateService,
+        firstPartyGameStateService,
+        defaultAccountId: DEFAULT_ADMIN_ACCOUNT_ID,
+        projectEventLiveHub,
+      },
+    );
+
+    promptRuntimeReadOnlyService = chatService;
+    temporaryConversationService = new TemporaryConversationService(
+      database.db,
+      chatService,
+      {
+        tokenCounter: orchestrationContext.tokenCounter,
+      },
+    );
+
+    await registerChatRoutes(app, chatService, {
+      enableSseChat: options.enableSseChat,
+      enablePromptDryRun: options.enablePromptDryRun,
+      enableClientData:
+        options.enableClientData === true && Boolean(options.clientData),
+      cors: options.cors,
+      projectAccessService,
+    });
+
+    if (temporaryConversationService) {
+      await registerTemporaryConversationRoutes(app, database, {
+        temporaryConversationService,
+        cors: options.cors,
+      });
+    }
+
+    if (shouldEnableWs) {
+      const wsPlugin = await registerWsPlugin(app, {
+        eventBus: orchestrationContext.eventBus,
+        db: database.db,
+        // RT3：注入 floor_run 只读查询作为 DB 最终态兜底来源，启用 resume/ack 协议。
+        ...(floorRunService ? { floorRunReader: floorRunService } : {}),
+      });
+      wsBridge = wsPlugin.bridge;
+      realtimeRunLog = wsPlugin.runLog;
+      realtimeResumeCoordinator = wsPlugin.coordinator;
+    }
+  }
+
+  await registerPromptRuntimeRoutes(app, promptRuntimeControlService, {
+    previewService: promptRuntimeReadOnlyService,
+    inspectService: promptRuntimeReadOnlyService,
+    injectionService: promptRuntimeInjectionService,
+    projectAccessService,
+  });
+
+  if (sessionStatePublicService) {
+    await registerSessionStateRoutes(app, {
+      publicService: sessionStatePublicService,
+      customNamespaceService: sessionStateCustomNamespaceService,
+      projectAccessService,
+    });
+  }
+
+  if (sessionStateObservationService) {
+    await registerSessionStateObservationRoutes(app, {
+      observationService: sessionStateObservationService,
+      projectAccessService,
+    });
+  }
+
+  if (options.enableNodeGraphWorker === true) {
+    nodeGraphWorker = new NodeGraphWorker(database.db, {
+      ...(orchestrationContext?.eventBus
+        ? { eventBus: orchestrationContext.eventBus }
+        : {}),
+      ...(options.nodeGraphWorker?.pollIntervalMs !== undefined
+        ? { pollIntervalMs: options.nodeGraphWorker.pollIntervalMs }
+        : {}),
+      ...(options.nodeGraphWorker?.leaseTtlMs !== undefined
+        ? { leaseTtlMs: options.nodeGraphWorker.leaseTtlMs }
+        : {}),
+      ...(options.nodeGraphWorker?.maxConcurrentJobs !== undefined
+        ? { maxConcurrentJobs: options.nodeGraphWorker.maxConcurrentJobs }
+        : {}),
+      ...(options.nodeGraphWorker?.retryBaseDelayMs !== undefined
+        ? { retryBaseDelayMs: options.nodeGraphWorker.retryBaseDelayMs }
+        : {}),
+      ...(options.nodeGraphWorker?.maxRetryDelayMs !== undefined
+        ? { maxRetryDelayMs: options.nodeGraphWorker.maxRetryDelayMs }
+        : {}),
+      ...(options.nodeGraphWorker?.candidateScanLimit !== undefined
+        ? { candidateScanLimit: options.nodeGraphWorker.candidateScanLimit }
+        : {}),
+      agentRouter: createNodeGraphAgentRouter(),
+      logger: app.log,
+    });
+    nodeGraphWorker.start();
+  }
+
+  if (options.runtimeMaintenance) {
+    const runtimeMaintenanceService = new RuntimeMaintenanceService(
+      database.db,
+    );
+    const intervalMs = Math.max(10_000, options.runtimeMaintenance.intervalMs);
+    let maintenanceRunning = false;
+
+    const runRuntimeMaintenance = () => {
+      if (maintenanceRunning) {
+        return;
+      }
+      maintenanceRunning = true;
+      try {
+        const summary = runtimeMaintenanceService.run({
+          promptRuntimeInjection:
+            options.runtimeMaintenance?.promptRuntimeInjection,
+          temporaryConversation:
+            options.runtimeMaintenance?.temporaryConversation,
+          nodeGraphRun: options.runtimeMaintenance?.nodeGraphRun,
+          operationLog: {
+            accountId: DEFAULT_ADMIN_ACCOUNT_ID,
+            actorType: "system",
+            actorId: "runtime_maintenance",
+            sourceType: "maintenance",
+          },
+        });
+        app.log.info(
+          {
+            prompt_runtime_injection_expired_deleted:
+              summary.promptRuntimeInjection.expiredDeleted,
+            temporary_conversation_expired:
+              summary.temporaryConversation.expired,
+            temporary_conversation_cleaned:
+              summary.temporaryConversation.cleaned,
+            temporary_conversation_deleted_messages:
+              summary.temporaryConversation.deletedMessages,
+            node_graph_run_cleaned: summary.nodeGraphRun.cleaned,
+            node_graph_run_redacted_node_runs:
+              summary.nodeGraphRun.redactedNodeRuns,
+            duration_ms: summary.durationMs,
+          },
+          "runtime maintenance completed",
+        );
+      } catch (error) {
+        app.log.error({ err: error }, "runtime maintenance failed");
+      } finally {
+        maintenanceRunning = false;
+      }
+    };
+
+    runRuntimeMaintenance();
+    runtimeMaintenanceTimer = setInterval(runRuntimeMaintenance, intervalMs);
+  }
+
+  if (options.enableMemory === true && options.memoryMaintenance) {
+    const maintenanceService = new MemoryMaintenanceService(database.db, {
+      eventBus: orchestrationContext?.eventBus,
+    });
+    const intervalMs = Math.max(10_000, options.memoryMaintenance.intervalMs);
+    const batchSize = options.memoryMaintenance.batchSize ?? 500;
+    const dryRun = options.memoryMaintenance.dryRun ?? false;
+    let maintenanceRunning = false;
+
+    const runMaintenance = async () => {
+      if (maintenanceRunning) {
+        return;
+      }
+      maintenanceRunning = true;
+      try {
+        const scopes = await listMemoryMaintenanceScopes(database.db);
+        if (scopes.length === 0) {
+          return;
+        }
+        let totalDeprecated = 0;
+        let totalPurged = 0;
+        let touchedScopeCount = 0;
+        for (const scope of scopes) {
+          const summary = await maintenanceService.run({
+            batchSize,
+            dryRun,
+            policy: options.memoryMaintenance?.policy,
+            scope,
+          });
+          totalDeprecated += summary.deprecated.total;
+          totalPurged += summary.purged;
+          if (summary.deprecated.total > 0 || summary.purged > 0) {
+            touchedScopeCount += 1;
+          }
+        }
+        app.log.info(
+          {
+            dry_run: dryRun,
+            scope_count: scopes.length,
+            deprecated: totalDeprecated,
+            purged: totalPurged,
+            touched_scope_count: touchedScopeCount,
+          },
+          "memory maintenance completed",
+        );
+      } catch (error) {
+        app.log.error({ err: error }, "memory maintenance failed");
+      } finally {
+        maintenanceRunning = false;
+      }
+    };
+
+    void runMaintenance();
+    memoryMaintenanceTimer = setInterval(() => {
+      void runMaintenance();
+    }, intervalMs);
+  }
+
+  if (options.enableClientData === true && options.clientData) {
+    const clientDataConfig = options.clientData;
+    const expirationIntervalMs = Math.max(
+      10_000,
+      clientDataConfig.expirationIntervalMs,
+    );
+    const domainPurgeGracePeriodMs = clientDataConfig.domainPurgeGracePeriodMs;
+    let expirationRunning = false;
+    let purgeRunning = false;
+
+    const runExpirationCleanup = async () => {
+      if (expirationRunning) {
+        app.log.debug(
+          { feature: "client-data", task: "expiration-cleanup" },
+          "client data expiration cleanup skipped because previous run is still active",
+        );
+        return;
+      }
+      expirationRunning = true;
+      try {
+        const result = await cleanExpiredClientDataItems(
+          database.db,
+          clientDataConfig,
+          { batchSize: 500 },
+        );
+        app.log.info(
+          {
+            feature: "client-data",
+            task: "expiration-cleanup",
+            scanned: result.scanned,
+            deleted: result.deleted,
+            skipped: result.skipped,
+          },
+          "client data expiration cleanup completed",
+        );
+      } catch (error) {
+        app.log.error(
+          { err: error, feature: "client-data", task: "expiration-cleanup" },
+          "client data expiration cleanup failed",
+        );
+      } finally {
+        expirationRunning = false;
+      }
+    };
+
+    const runDeletedDomainPurge = async () => {
+      if (purgeRunning) {
+        app.log.debug(
+          { feature: "client-data", task: "domain-purge" },
+          "client data domain purge skipped because previous run is still active",
+        );
+        return;
+      }
+      purgeRunning = true;
+      try {
+        const result = await purgeDeletedClientDataDomains(database.db, {
+          gracePeriodMs: domainPurgeGracePeriodMs,
+        });
+        app.log.info(
+          {
+            feature: "client-data",
+            task: "domain-purge",
+            scanned: result.scanned,
+            deleted: result.deleted,
+            skipped: result.skipped,
+            grace_period_ms: domainPurgeGracePeriodMs,
+          },
+          "client data deleted domain purge completed",
+        );
+      } catch (error) {
+        app.log.error(
+          { err: error, feature: "client-data", task: "domain-purge" },
+          "client data deleted domain purge failed",
+        );
+      } finally {
+        purgeRunning = false;
+      }
+    };
+
+    void runExpirationCleanup();
+    void runDeletedDomainPurge();
+
+    clientDataExpirationTimer = setInterval(() => {
+      void runExpirationCleanup();
+    }, expirationIntervalMs);
+
+    clientDataDomainPurgeTimer = setInterval(() => {
+      void runDeletedDomainPurge();
+    }, expirationIntervalMs);
+  }
+
+  return {
+    app,
+    database: database.db,
+    orchestrationContext,
+    wsBridge,
+    realtimeRunLog,
+    realtimeResumeCoordinator,
+    mcpManager,
+    projectEventLiveHub,
+    temporaryConversationService,
+  };
+}

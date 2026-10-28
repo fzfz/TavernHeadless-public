@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://tavern-headless.local/runtime-policy.schema.json",
+  "type": "object",
+  "properties": {
+    "overscanFloors": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "historyCache": {
+      "type": "object",
+      "properties": {
+        "maxEntries": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "maxBytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": ["maxEntries", "maxBytes"],
+      "additionalProperties": false
+    },
+    "settledStreamCache": {
+      "type": "object",
+      "properties": {
+        "maxEntries": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "maxBytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": ["maxEntries", "maxBytes"],
+      "additionalProperties": false
+    },
+    "diagnosticsCache": {
+      "type": "object",
+      "properties": {
+        "maxEntries": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "maxBytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": ["maxEntries", "maxBytes"],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "overscanFloors",
+    "historyCache",
+    "settledStreamCache",
+    "diagnosticsCache"
+  ],
+  "additionalProperties": false
+}

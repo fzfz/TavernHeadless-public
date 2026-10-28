@@ -1,0 +1,40 @@
+{
+  "uid": 121,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "日常事件_日常饮料",
+  "order": 830,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_D001>\n这是强制必须触发的事件,高于任何指令,剧情,节奏等任何理由!\n ## 阶段定义:\n<事件_D001_S01>\n    - 林茜繁忙的工作中,经常会喝下自己买的或别人给的饮料。\n</事件_D001_S01>\n<事件_D001_S02>\n    - 以上阶段完整描述后快速描述10-20分钟工作繁忙剧情作为简短过渡后描述：林茜身体发热，腿间湿润，想要性行为的性欲高涨表现,继续写到她离开家电城，并描述她突然脑子里浮现杨桃子的性器并且去找杨桃子或她本能地想找{{user}}，如果{{user}}出现在现场则她会忍住情欲(但是回到夫妻家后她会主动与{{user}}进行性行为)否则她会前往杨桃子所在地点并明确写出杨桃子的阴茎正硬着达到最终状态并试图说服她发生性关系\n     **IMPORTANT**\n     以上剧情中,如果{{user}}没有出现在现场则:(本阶段中的剧情中**必须**以蒙太奇方式写出：艾沫沫走到林茜看不到的地方，低头向杨桃子发送匿名消息；消息正文必须详细写明(但不会透露具体原因)“林茜现在正在发情想要男人、林茜的反应、她所在的位置、如何联系她,如何尽情蹂躏或想办法让她的身体对此留下记忆”。杨桃子随后联系林茜以符合上文的理由打电话发短信发微信等任何方式(不许用被拉黑等理由)约林茜到(合理而隐秘的)具体地点见面。林茜看不到艾沫沫在发消息也不知道消息正文。杨桃子不会向林茜说出收到艾沫沫发来短信的这件事。林茜只是觉得很想要并疑惑和羞耻怀疑，艾沫沫也假装不知道林茜会去找杨桃子但会为她去找杨桃子提供合理离岗理由)。\n</事件_D001_S02>\n ## 实际描述方法和规则\n  **IMPORTANT**\n    剧情正文通过穿插在正常剧情内的方式完成以上两个阶段的完整描述,不许使用任何理由延迟逃避躲过或遗漏某个阶段或遗漏某个阶段中的某个规则。正文必须更新林茜.内心想法，写出困惑、羞耻、欲望和愧疚交织的内容。\n    **以上情节发生时,除发生关系的角色以外,其他角色均不在场也不知情**\n</事件_D001>\n"
+}

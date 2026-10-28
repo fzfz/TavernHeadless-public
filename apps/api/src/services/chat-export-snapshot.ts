@@ -1,0 +1,443 @@
+import { and, asc, count, eq, inArray } from "drizzle-orm";
+import {
+  buildBranchMemoryScopeId,
+  buildBranchVariableScopeId,
+  parseBranchMemoryScopeId,
+  type BranchMemoryScopeRef,
+  type BranchVariableScopeRef,
+} from "@tavern/shared";
+
+import type { AccountContextOptions } from "../accounts/account-context.js";
+import { resolveAccountIdOrThrow } from "../accounts/account-context.js";
+import type { AppDb } from "../db/client.js";
+import {
+  floors,
+  memoryEdges,
+  memoryItems,
+  messagePages,
+  messages,
+  presets,
+  sessions,
+} from "../db/schema.js";
+import { parseJsonField } from "../lib/http.js";
+import { VariableService } from "./variables/variable-service.js";
+import {
+  BranchLocalVariableSnapshotService,
+  type BranchLocalVariableProvenanceMap,
+  type BranchLocalSnapshotSchemaVersion,
+} from "./branch-local-variable-snapshot-service.js";
+
+export interface ChatExportSnapshotOptions extends AccountContextOptions {
+  accountId?: string;
+  includeVariables?: boolean;
+  includeMemories?: boolean;
+}
+
+type ChatExportAccountContext = Pick<
+  ChatExportSnapshotOptions,
+  "accountId" | "accountMode" | "defaultAccountId"
+>;
+
+function resolveExportAccountId(options: ChatExportAccountContext): string {
+  return resolveAccountIdOrThrow(options.accountId, options);
+}
+
+export interface ExportSnapshotMessage {
+  id: string;
+  seq: number;
+  role: "user" | "assistant" | "system" | "narrator";
+  content: string;
+  contentFormat: "text" | "markdown" | "json";
+  tokenCount: number;
+  isHidden: boolean;
+  source: string | null;
+  createdAt: number;
+}
+
+export interface ExportSnapshotPage {
+  id: string;
+  pageNo: number;
+  pageKind: "input" | "output" | "mixed";
+  isActive: boolean;
+  version: number;
+  checksum: string | null;
+  createdAt: number;
+  updatedAt: number;
+  messages: ExportSnapshotMessage[];
+}
+
+export interface ExportSnapshotFloor {
+  id: string;
+  floorNo: number;
+  branchId: string;
+  parentFloorId: string | null;
+  state: "draft" | "generating" | "committed" | "failed";
+  tokenIn: number;
+  tokenOut: number;
+  metadata: unknown;
+  supersededAt: number | null;
+  supersededByFloorId: string | null;
+  createdAt: number;
+  updatedAt: number;
+  pages: ExportSnapshotPage[];
+}
+
+export interface ExportSnapshotVariable {
+  scope: "chat" | "floor" | "branch" | "page";
+  scopeId: string;
+  key: string;
+  value: unknown;
+  scopeRef?: BranchVariableScopeRef;
+  updatedAt: number;
+}
+
+export interface ExportSnapshotMemoryItem {
+  id: string;
+  scope: "chat" | "branch" | "floor";
+  scopeId: string;
+  type: "fact" | "summary" | "open_loop";
+  scopeRef?: BranchMemoryScopeRef;
+  summaryTier: "micro" | "macro" | null;
+  content: unknown;
+  importance: number;
+  confidence: number;
+  sourceFloorId: string | null;
+  sourceMessageId: string | null;
+  status: "active" | "deprecated";
+  lifecycleStatus: "active" | "compacted" | "deprecated";
+  sourceJobId: string | null;
+  tokenCountEstimate: number | null;
+  lastUsedAt: number | null;
+  coverageStartFloorNo: number | null;
+  coverageEndFloorNo: number | null;
+  derivedFromCount: number | null;
+  createdAt: number;
+  updatedAt: number;
+}
+
+export interface ExportSnapshotMemoryEdge {
+  fromId: string;
+  toId: string;
+  relation: "supports" | "contradicts" | "updates" | "derived_from" | "compacts" | "resolves";
+  createdAt: number;
+}
+
+/**
+ * 导出侧对 branch_local_variable_snapshot 的行级视图。
+ *
+ * Phase 3：additive 携带在导出文件里，import 时可据此恢复精确 runtime
+ * local truth，旧文件/未携带时继续按旧语义（缺省将触发
+ * branch_local_snapshot_missing）。
+ */
+export interface ExportSnapshotBranchLocalVariableSnapshot {
+  floorId: string;
+  branchId: string;
+  schemaVersion: BranchLocalSnapshotSchemaVersion;
+  values: Record<string, unknown>;
+  provenance: BranchLocalVariableProvenanceMap;
+  createdAt: number;
+}
+
+export interface SessionExportSnapshot {
+  sessionId: string;
+  accountId: string;
+  title: string | null;
+  status: typeof sessions.$inferSelect["status"];
+  createdAt: number;
+  updatedAt: number;
+  characterSnapshot: Record<string, unknown> | null;
+  userSnapshot: Record<string, unknown> | null;
+  characterSyncPolicy: "pin" | "manual" | "force";
+  promptMode: "compat_strict" | "compat_plus" | "native" | null;
+  modelProvider: string | null;
+  modelName: string | null;
+  metadata: unknown;
+  presetName: string | null;
+  floors: ExportSnapshotFloor[];
+  variables?: ExportSnapshotVariable[];
+  branchLocalVariableSnapshots?: ExportSnapshotBranchLocalVariableSnapshot[];
+  memories?: {
+    items: ExportSnapshotMemoryItem[];
+    edges: ExportSnapshotMemoryEdge[];
+  };
+  messageCount: number;
+}
+
+export function countSessionExportMessages(
+  db: AppDb,
+  sessionId: string,
+  options: ChatExportAccountContext,
+): number {
+  const accountId = resolveExportAccountId(options);
+
+  const session = db
+    .select({ id: sessions.id })
+    .from(sessions)
+    .where(and(eq(sessions.id, sessionId), eq(sessions.accountId, accountId)))
+    .get();
+
+  if (!session) {
+    throw new Error(`Session not found: ${sessionId}`);
+  }
+
+  const row = db
+    .select({ total: count() })
+    .from(messages)
+    .innerJoin(messagePages, eq(messages.pageId, messagePages.id))
+    .innerJoin(floors, eq(messagePages.floorId, floors.id))
+    .innerJoin(sessions, eq(floors.sessionId, sessions.id))
+    .where(and(eq(sessions.id, sessionId), eq(sessions.accountId, accountId)))
+    .get();
+
+  return Number(row?.total ?? 0);
+}
+
+export function captureSessionExportSnapshot(
+  db: AppDb,
+  sessionId: string,
+  options: ChatExportSnapshotOptions,
+): SessionExportSnapshot {
+  const includeVariables = options.includeVariables ?? true;
+  const includeMemories = options.includeMemories ?? true;
+  const accountId = resolveExportAccountId(options);
+
+  return db.transaction((tx) => {
+    const session = tx
+      .select()
+      .from(sessions)
+      .where(and(eq(sessions.id, sessionId), eq(sessions.accountId, accountId)))
+      .get();
+
+    if (!session) {
+      throw new Error(`Session not found: ${sessionId}`);
+    }
+
+    const presetName = session.presetId
+      ? tx
+          .select({ name: presets.name })
+          .from(presets)
+          .where(and(eq(presets.id, session.presetId), eq(presets.accountId, accountId)))
+          .get()?.name ?? null
+      : null;
+
+    const floorRows = tx
+      .select()
+      .from(floors)
+      .where(eq(floors.sessionId, sessionId))
+      .orderBy(asc(floors.floorNo), asc(floors.branchId), asc(floors.createdAt), asc(floors.updatedAt))
+      .all();
+
+    const floorIds = floorRows.map((row) => row.id);
+    const pageRows = floorIds.length > 0
+      ? tx
+          .select()
+          .from(messagePages)
+          .where(inArray(messagePages.floorId, floorIds))
+          .orderBy(asc(messagePages.pageNo), asc(messagePages.version))
+          .all()
+      : [];
+    const pageIds = pageRows.map((row) => row.id);
+    const messageRows = pageIds.length > 0
+      ? tx
+          .select()
+          .from(messages)
+          .where(inArray(messages.pageId, pageIds))
+          .orderBy(asc(messages.seq))
+          .all()
+      : [];
+
+    const messagesByPage = new Map<string, ExportSnapshotMessage[]>();
+    for (const row of messageRows) {
+      const list = messagesByPage.get(row.pageId);
+      const message: ExportSnapshotMessage = {
+        id: row.id,
+        seq: row.seq,
+        role: row.role,
+        content: row.content,
+        contentFormat: row.contentFormat,
+        tokenCount: row.tokenCount,
+        isHidden: row.isHidden,
+        source: row.source,
+        createdAt: row.createdAt,
+      };
+      if (list) {
+        list.push(message);
+      } else {
+        messagesByPage.set(row.pageId, [message]);
+      }
+    }
+
+    const pagesByFloor = new Map<string, ExportSnapshotPage[]>();
+    for (const row of pageRows) {
+      const list = pagesByFloor.get(row.floorId);
+      const page: ExportSnapshotPage = {
+        id: row.id,
+        pageNo: row.pageNo,
+        pageKind: row.pageKind,
+        isActive: row.isActive,
+        version: row.version,
+        checksum: row.checksum,
+        createdAt: row.createdAt,
+        updatedAt: row.updatedAt,
+        messages: messagesByPage.get(row.id) ?? [],
+      };
+      if (list) {
+        list.push(page);
+      } else {
+        pagesByFloor.set(row.floorId, [page]);
+      }
+    }
+
+    const snapshotFloors: ExportSnapshotFloor[] = floorRows.map((row) => ({
+      id: row.id,
+      floorNo: row.floorNo,
+      branchId: row.branchId,
+      parentFloorId: row.parentFloorId,
+      state: row.state,
+      tokenIn: row.tokenIn,
+      tokenOut: row.tokenOut,
+      metadata: parseJsonField(row.metadataJson ?? null),
+      supersededAt: row.supersededAt,
+      supersededByFloorId: row.supersededByFloorId,
+      createdAt: row.createdAt,
+      updatedAt: row.updatedAt,
+      pages: pagesByFloor.get(row.id) ?? [],
+    }));
+
+    let snapshotVariables: ExportSnapshotVariable[] | undefined;
+    if (includeVariables) {
+      const branchTargets = Array.from(new Set(floorRows.map((row) => row.branchId))).map((branchId) => ({
+        scope: "branch" as const,
+        scopeId: buildBranchVariableScopeId(sessionId, branchId),
+      }));
+
+      const variableService = new VariableService(tx);
+      const rows = variableService.listByTargets({
+        accountId,
+        targets: [
+          { scope: "chat", scopeId: sessionId },
+          ...branchTargets,
+          ...floorIds.map((floorId) => ({ scope: "floor" as const, scopeId: floorId })),
+          ...pageIds.map((pageId) => ({ scope: "page" as const, scopeId: pageId })),
+        ],
+      });
+
+      snapshotVariables = rows.map((row) => ({
+        scope: row.scope as "chat" | "floor" | "branch" | "page",
+        scopeId: row.scopeId,
+        ...(row.scopeRef ? { scopeRef: row.scopeRef } : {}),
+        key: row.key,
+        value: row.value,
+        updatedAt: row.updatedAt,
+      }));
+    }
+
+    let snapshotMemories: SessionExportSnapshot["memories"] | undefined;
+    if (includeMemories) {
+      const branchScopeIds = Array.from(new Set(floorRows.map((row) => row.branchId))).map((branchId) =>
+        buildBranchMemoryScopeId(sessionId, branchId),
+      );
+      const memoryScopeIds = [sessionId, ...branchScopeIds, ...floorIds];
+      const itemRows = memoryScopeIds.length > 0
+        ? tx
+            .select()
+            .from(memoryItems)
+            .where(and(
+              eq(memoryItems.accountId, accountId),
+              inArray(memoryItems.scope, ["chat", "branch", "floor"]),
+              inArray(memoryItems.scopeId, memoryScopeIds),
+            ))
+            .all()
+        : [];
+      const itemIds = itemRows.map((row) => row.id);
+      const edgeRows = itemIds.length > 0
+        ? tx
+            .select()
+            .from(memoryEdges)
+            .where(and(eq(memoryEdges.accountId, accountId), inArray(memoryEdges.fromId, itemIds)))
+            .all()
+        : [];
+
+      snapshotMemories = {
+        items: itemRows.map((row) => ({
+          id: row.id,
+          scope: row.scope as "chat" | "branch" | "floor",
+          scopeId: row.scopeId,
+          type: row.type,
+          summaryTier: row.summaryTier,
+          ...(row.scope === "branch" && parseBranchMemoryScopeId(row.scopeId)
+            ? { scopeRef: parseBranchMemoryScopeId(row.scopeId)! }
+            : {}),
+          content: parseJsonField(row.contentJson),
+          importance: row.importance,
+          confidence: row.confidence,
+          sourceFloorId: row.sourceFloorId,
+          sourceMessageId: row.sourceMessageId,
+          status: row.status,
+          lifecycleStatus: row.lifecycleStatus,
+          sourceJobId: row.sourceJobId,
+          tokenCountEstimate: row.tokenCountEstimate,
+          lastUsedAt: row.lastUsedAt,
+          coverageStartFloorNo: row.coverageStartFloorNo,
+          coverageEndFloorNo: row.coverageEndFloorNo,
+          derivedFromCount: row.derivedFromCount,
+          createdAt: row.createdAt,
+          updatedAt: row.updatedAt,
+        })),
+        edges: edgeRows.map((row) => ({
+          fromId: row.fromId,
+          toId: row.toId,
+          relation: row.relation,
+          createdAt: row.createdAt,
+        })),
+      };
+    }
+
+    // Phase 3: 拉取当前 session 下全部 floor 的 branch_local_variable_snapshot，
+    // 与其余导出内容走同一事务，保证一致性快照。
+    // 仅在有 floor 时才查询，空会话直接跳过。
+    const branchLocalSnapshotService = new BranchLocalVariableSnapshotService(tx);
+    const branchLocalSnapshotList: ExportSnapshotBranchLocalVariableSnapshot[] = [];
+    for (const floorId of floorIds) {
+      const record = branchLocalSnapshotService.getFloorLocalSnapshot({
+        accountId,
+        floorId,
+      });
+      if (!record) {
+        continue;
+      }
+      branchLocalSnapshotList.push({
+        floorId: record.floorId,
+        branchId: record.branchId,
+        schemaVersion: record.schemaVersion,
+        values: record.values,
+        provenance: record.provenance,
+        createdAt: record.createdAt,
+      });
+    }
+
+    return {
+      sessionId: session.id,
+      accountId,
+      title: session.title,
+      status: session.status,
+      createdAt: session.createdAt,
+      updatedAt: session.updatedAt,
+      characterSnapshot: parseJsonField(session.characterSnapshotJson ?? null) as Record<string, unknown> | null,
+      userSnapshot: parseJsonField(session.userSnapshotJson ?? null) as Record<string, unknown> | null,
+      characterSyncPolicy: session.characterSyncPolicy,
+      promptMode: session.promptMode,
+      modelProvider: session.modelProvider,
+      modelName: session.modelName,
+      metadata: parseJsonField(session.metadataJson ?? null),
+      presetName,
+      floors: snapshotFloors,
+      ...(snapshotVariables ? { variables: snapshotVariables } : {}),
+      ...(branchLocalSnapshotList.length > 0
+        ? { branchLocalVariableSnapshots: branchLocalSnapshotList }
+        : {}),
+      ...(snapshotMemories ? { memories: snapshotMemories } : {}),
+      messageCount: messageRows.length,
+    };
+  });
+}

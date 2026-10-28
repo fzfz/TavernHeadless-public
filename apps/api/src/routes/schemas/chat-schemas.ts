@@ -1,0 +1,2321 @@
+/**
+ * Chat route JSON Schema & example constants.
+ *
+ * Extracted from chat.ts to reduce file size (F012).
+ */
+
+import { PROMPT_RUNTIME_INJECTION_LIMITS } from "../../services/prompt-runtime/injection-governance.js";
+import { roleModelCapabilityLimitsJsonSchema, promptIntentValues, worldbookDecisionOutcomeValues, worldbookDecisionStageValues } from "@tavern/shared";
+import {
+  SESSION_STATE_NAMESPACE_PATTERN,
+} from "../../session-state/session-state-types.js";
+
+export { promptIntentValues };
+export const promptStructureModeValues = ["default", "strict_alternating", "no_assistant", "flattened"] as const;
+export const promptStructureAssistantRewriteStrategyValues = ["to_system", "to_user_transcript"] as const;
+export const promptSnapshotModeValues = ["compat_strict", "compat_plus", "native"] as const;
+export const promptNamesBehaviorValues = ["off", "always"] as const;
+export const promptAssistantPrefillStrategyValues = ["provider_native", "assistant_message_fallback", "transcript_append", "unsupported", "none"] as const;
+export const promptMessageRoleValues = ["system", "user", "assistant"] as const;
+export const promptDeliveryDegradeReasonValues = ["assistant_prefill_disabled", "assistant_prefill_unsupported", "require_last_user", "no_assistant_override"] as const;
+export const dryRunVisibilityModeValues = ["allow_all_except_hidden", "deny_all_except_visible"] as const;
+export const promptBudgetFieldValues = ["maxInputTokens", "reservedCompletionTokens"] as const;
+export const promptSourceSelectionHistoryModeValues = ["full", "windowed"] as const;
+export const promptTrimReasonCodeValues = ["budget_exceeded", "group_limit_exceeded", "provider_constraint", "policy_disabled"] as const;
+export const promptSourceExclusionReasonValues = ["disabled_by_policy", "budget_trimmed", "provider_constraint", "visibility_filtered", "not_triggered"] as const;
+export const promptSourceKindValues = ["history", "memory", "worldbook", "examples"] as const;
+export const memoryRuntimeModeValues = ["disabled", "legacy_sync", "async_primary"] as const;
+export const promptRuntimeMemoryStrategyValues = ["none", "single_summary", "dual_summary", "direct_items"] as const;
+export const promptRuntimeMemorySelectedKindValues = ["fact", "micro_summary", "macro_summary", "summary", "open_loop"] as const;
+export const promptRuntimeMemorySelectedSourceValues = ["store", "summary", "open_loop", "fallback"] as const;
+export const promptRuntimeMemoryProposalStatusValues = ["not_requested", "skipped_by_request", "proposed", "promoted", "rejected", "superseded"] as const;
+export const promptRuntimeMemoryPromotionStatusValues = ["not_requested", "promoted", "rejected", "superseded"] as const;
+
+// ── Example constants ─────────────────────────────────
+
+export const turnConfigExample = {
+  enableTools: true,
+  enableDirector: true,
+  enableVerifier: true,
+  enableMemoryConsolidation: true,
+  toolMode: "inline",
+  verifierFailStrategy: "warn",
+  maxRetries: 1,
+} as const;
+
+export const generationParamsExample = {
+  temperature: 0.7,
+  max_output_tokens: 256,
+  top_p: 0.9,
+  seed: 42,
+  repetition_penalty: 1.1,
+  min_p: 0.05,
+  logit_bias: { "42": -5 },
+  response_format: {
+    type: "json_schema",
+    json_schema: { type: "object" },
+  },
+  reasoning_effort: "low",
+} as const;
+
+export const liveDebugOptionsExample = {
+  include_prompt_snapshot: true,
+  include_runtime_trace: true,
+  include_worldbook_matches: false,
+} as const;
+
+export const livePromptSnapshotExample = {
+  preset_id: "preset-1",
+  preset_updated_at: 1710000000000,
+  preset_version: 3,
+  preset_version_id: "preset-ver-3",
+  preset_content_hash: "sha256:preset-v3",
+  worldbook_id: "worldbook-1",
+  worldbook_updated_at: 1710000001000,
+  worldbook_version: 5,
+  worldbook_version_id: "worldbook-ver-5",
+  worldbook_content_hash: "sha256:worldbook-v5",
+  regex_profile_id: "regex-1",
+  regex_profile_updated_at: 1710000002000,
+  regex_profile_version: 2,
+  regex_profile_version_id: "regex-ver-2",
+  regex_profile_content_hash: "sha256:regex-v2",
+  character_id: "char-hero",
+  character_version_id: "char-hero-v3",
+  character_imported_format: "tavern_card_v2",
+  character_content_hash: "9fe9ab675c6f2df7f9c9a96ef0c0f7797cf20cf8d88bbbd2361f6750e4b7dd1b",
+  worldbook_activated_entry_uids: [7, 7],
+  worldbook_activated_entries: [
+    {
+      uid: 7,
+      activation_key: "worldbook:worldbook-1:5:entry:7",
+      source: {
+        kind: "session_worldbook",
+        worldbook_id: "worldbook-1",
+        worldbook_name: "Campfire Worldbook",
+        asset_scope_id: "worldbook:worldbook-1:5",
+      },
+      insertion: {
+        position: "before",
+      },
+    },
+    {
+      uid: 7,
+      activation_key: "worldbook:character:char-hero:char-hero-v3:book:entry:7",
+      source: {
+        kind: "character_book",
+        worldbook_id: null,
+        worldbook_name: "Hero Character Book",
+        asset_scope_id: "worldbook:character:char-hero:char-hero-v3:book",
+      },
+      insertion: {
+        position: "after",
+      },
+    },
+  ],
+  regex_pre_rule_names: ["trim_whitespace"],
+  regex_post_rule_names: [],
+  prompt_mode: "compat_strict",
+  asset_manifest_digest: "2c015f48f52d19ce879f19eeebc67ad3e7470d3d1f95e2eb1f5f3c1d8d8fdc47",
+  prompt_digest: "0d9bc89c6130435ab870f63d0a4d45f95b9764a4b91c91f8d1c2c5a1f7d4f20c",
+  token_estimate: 512,
+} as const;
+
+export const liveRuntimeTraceMacroExample = {
+  warnings: [
+    {
+      code: "macro_preview_side_effect_suppressed",
+      message: "Macro setvar side effect was previewed but not committed.",
+      macro_name: "setvar",
+    },
+  ],
+  used_names: ["if", "lastGenerationType", "setvar"],
+  mutation_preview: [{ kind: "set", scope: "branch", key: "mood", value: "steady" }],
+  staged_mutations: [{ kind: "set", scope: "branch", key: "mood", value: "steady", source_macro: "setvar" }],
+  traces: [
+    { macro_name: "lastGenerationType", raw_text: "{{lastGenerationType}}", resolved_text: "respond", phase: "assemble", source_kind: "macro" },
+    { macro_name: "if", raw_text: "{{if {{lastGenerationType}} == respond}}YES{{else}}NO{{/if}}", resolved_text: "YES", phase: "assemble", source_kind: "if", selected_branch: "then" },
+  ],
+} as const;
+
+export const dryRunRuntimeTraceMacroExample = {
+  warnings: [
+    {
+      code: "macro_preview_side_effect_suppressed",
+      message: "Macro setvar side effect was previewed but not committed.",
+      macro_name: "setvar",
+    },
+  ],
+  used_names: ["getvar", "setvar"],
+  mutation_preview: [{ kind: "set", scope: "branch", key: "资产", value: '{"金币":3,"银币":"5"}' }],
+  staged_mutations: [{ kind: "set", scope: "branch", key: "资产", value: '{"金币":3,"银币":"5"}', source_macro: "setvar" }],
+  traces: [
+    { macro_name: "getvar", raw_text: "{{getvar::资产.金币}}", resolved_text: "3", phase: "dry_run", source_kind: "macro" },
+    { macro_name: "setvar", raw_text: "{{setvar::资产.银币::5}}", resolved_text: "", phase: "dry_run", source_kind: "macro" },
+  ],
+} as const;
+
+export const historyNormalizationExample = {
+  raw_entry_count: 4,
+  effective_turn_count: 2,
+  selected_turn_count: 2,
+  trailing_user_source_floor_ids: ["floor_11", "floor_12"],
+  merged_user_groups: [
+    {
+      effective_role: "user",
+      source_floor_ids: ["floor_11", "floor_12"],
+      source_message_ids: ["msg_19", "msg_21"],
+      includes_current_input: true,
+    },
+  ],
+  violations: [],
+} as const;
+
+export const liveRuntimeTraceExample = {
+  preset: {
+    selected_prompt_order_character_id: 100000,
+    ignored_prompt_order_character_ids: [],
+    unsupported_fields: [],
+    ignored_fields: [],
+    unresolved_markers: [],
+    warnings: [],
+    trigger_filtered_entry_ids: [],
+    in_chat_inserted_entry_ids: [],
+    continue_nudge_applied: false,
+    continue_nudge_text: null,
+    names_behavior_applied: "off",
+  },
+  worldbook: {
+    hit_count: 1,
+  },
+  regex: {
+    user_input_rules: ["trim_whitespace"],
+    ai_output_rules: [],
+    preprocessed_user_message: "Please continue the campfire scene.",
+    phases: [
+      {
+        phase_id: "prompt.user_input",
+        placement: 1,
+        channel: "prompt",
+        status: "executed",
+        changed: true,
+        depth: 3,
+        input_text_hash: "sha256:regex-live-input-before",
+        output_text_hash: "sha256:regex-live-input-after",
+        candidate_rule_names: ["trim_whitespace"],
+        matched_rule_names: ["trim_whitespace"],
+        skipped_rules: [],
+      },
+      {
+        phase_id: "prompt.world_info.reserved",
+        placement: 5,
+        channel: "prompt",
+        status: "reserved",
+        changed: false,
+        depth: null,
+        input_text_hash: null,
+        output_text_hash: null,
+        candidate_rule_names: ["world_info_rule"],
+        matched_rule_names: [],
+        skipped_rules: [{ rule_name: "world_info_rule", reason: "reserved_non_executable" }],
+      },
+    ],
+    reserved_placements: [5],
+    substitution_mode: "bare_variable_only",
+  },
+  budgets: {
+    by_group: [
+      { group: "history", token_count: 256, estimated_token_count: 320, allocated_token_count: 256, pruned_token_count: 64 },
+      { group: "worldbook", token_count: 64 },
+    ],
+  },
+  structure: {
+    mode: "no_assistant",
+    merge_adjacent_same_role: false,
+    assistant_rewrite_count: 1,
+    assistant_rewrite_strategy: "to_system",
+    tail_assistant_detected: false,
+  },
+  memory: {
+    summary_injected: true,
+    runtime_mode: "async_primary",
+    requested_write: true,
+    effective_write: true,
+    strategy: "dual_summary",
+    summary_text: "[Memory]\n- Bob still holds the vault key.\n- Alice had started to distrust Bob.",
+    summary_text_hash: "sha256:8b210f3247804d17f0e22171db253f411f4ca9bb9da6c69b75837b086d11c2fa",
+    selected_items: [
+      {
+        memory_id: "memory-branch-fact-1",
+        scope: "branch",
+        scope_id: "memscope:session-1:main",
+        branch_id: "main",
+        kind: "fact",
+        source: "store",
+        score: 0.82,
+        token_count: 18,
+        selected_reason: null,
+      },
+      {
+        memory_id: "memory-branch-summary-1",
+        scope: "branch",
+        scope_id: "memscope:session-1:main",
+        branch_id: "main",
+        kind: "micro_summary",
+        source: "summary",
+        score: 0.64,
+        token_count: 14,
+      },
+    ],
+    token_stats: { budget: 500, used: 64, micro_summary: 14, macro_summary: 0, direct_items: 50 },
+    scope_resolution: { mode: "branch_aware", requested_scopes: ["global", "branch"], resolved_scopes: ["global", "branch"], requested_branch_id: "main", resolved_branch_id: "main", fallback_reason: null },
+  },
+  macro: liveRuntimeTraceMacroExample,
+  delivery: {
+    assistant_prefill_requested: true,
+    assistant_prefill_applied: false,
+    assistant_prefill_strategy: "assistant_message_fallback",
+    allow_assistant_prefill: true,
+    require_last_user: true,
+    no_assistant: false,
+    last_message_role: "user",
+    ends_with_user: true,
+    degraded: true,
+    degrade_reasons: ["require_last_user"],
+  },
+  history_normalization: historyNormalizationExample,
+  tool_transport: {
+    selection: {
+      transport: "text_protocol",
+      reason_code: "explicit_override",
+      reason_detail: "Tool transport was explicitly overridden to 'text_protocol'.",
+    },
+    tool_list: {
+      injected: true,
+      contributor_id: "builtin:tool_list",
+      placement_mode: "contributor_chain",
+      tool_count: 2,
+      token_count: 96,
+      budget_group: "tool_list",
+    },
+    parsing: {
+      block_count: 1,
+      accepted_count: 1,
+      rejected_count: 0,
+      diagnostics: [],
+      diagnostics_by_reason: {},
+    },
+    tool_result: {
+      written_back: true,
+      block_count: 1,
+      token_count: 128,
+      budget_group: "tool_result",
+    },
+  },
+  generation_params_resolution: [
+    {
+      name: "temperature",
+      final_state: "sent",
+      origin: "default",
+      value_from: "default",
+    },
+    {
+      name: "maxOutputTokens",
+      final_state: "sent",
+      origin: "request",
+      value_from: "request",
+    },
+    {
+      name: "topP",
+      final_state: "cancelled",
+      origin: "request",
+      cancelled_at: "request",
+    },
+    {
+      name: "responseFormat",
+      final_state: "filtered",
+      origin: "instance",
+      filter_reason: "field_not_supported_by_provider",
+    },
+  ],
+} as const;
+
+export const respondBodyExample = {
+  message: "Please continue the campfire scene.",
+  branch_id: "main",
+  session_state_writes: [
+    {
+      namespace: "quest_flags",
+      slot: "companion",
+      value: { mood: "ally" },
+    },
+    {
+      namespace: "quest_flags",
+      slot: "expired_hint",
+      delete: true,
+    },
+  ],
+  prompt_intent: "normal",
+  delivery: {
+    allow_assistant_prefill: true,
+    require_last_user: false,
+    no_assistant: false,
+  },
+  structure: {
+    mode: "no_assistant",
+    merge_adjacent_same_role: false,
+    assistant_rewrite_strategy: "to_system",
+    preserve_system_messages: true,
+  },
+  debug_options: liveDebugOptionsExample,
+  config: turnConfigExample,
+  generation_params: generationParamsExample,
+} as const;
+
+export const dryRunBodyExample = {
+  message: "Please continue the campfire scene.",
+  branch_id: "main",
+  prompt_intent: "normal",
+  debug_options: {
+    include_worldbook_matches: true,
+  },
+  visibility: {
+    hidden_floor_ranges: [
+      {
+        start_floor_no: 1,
+        end_floor_no: 2,
+      },
+    ],
+    mode: "allow_all_except_hidden",
+  },
+  structure: {
+    mode: "no_assistant",
+    merge_adjacent_same_role: false,
+    assistant_rewrite_strategy: "to_system",
+    preserve_system_messages: true,
+  },
+  delivery: {
+    allow_assistant_prefill: false,
+    require_last_user: true,
+    no_assistant: false,
+  },
+  budget: {
+    max_input_tokens: 4096,
+    reserved_completion_tokens: 1024,
+  },
+  source_selection: {
+    history: { mode: "windowed", max_messages: 24 },
+    memory: { enabled: true },
+    worldbook: { enabled: true },
+    examples: { enabled: false },
+  },
+} as const;
+
+export const regenerateBodyExample = {
+  delivery: {
+    allow_assistant_prefill: false,
+    require_last_user: true,
+    no_assistant: false,
+  },
+  session_state_writes: [
+    {
+      namespace: "quest_flags",
+      slot: "companion",
+      value: { mood: "ally" },
+    },
+    {
+      namespace: "quest_flags",
+      slot: "expired_hint",
+      delete: true,
+    },
+  ],
+  structure: {
+    mode: "no_assistant",
+    merge_adjacent_same_role: false,
+    assistant_rewrite_strategy: "to_system",
+    preserve_system_messages: true,
+  },
+  config: {
+    enableDirector: true,
+  },
+  debug_options: liveDebugOptionsExample,
+  generation_params: generationParamsExample,
+} as const;
+
+export const editAndRegenerateBodyExample = {
+  content: "I step closer to the fire and lower my voice.",
+  branch_id: "alt-branch",
+  session_state_writes: [
+    {
+      namespace: "quest_flags",
+      slot: "companion",
+      value: { mood: "ally" },
+    },
+    {
+      namespace: "quest_flags",
+      slot: "expired_hint",
+      delete: true,
+    },
+  ],
+  delivery: {
+    allow_assistant_prefill: false,
+    require_last_user: true,
+    no_assistant: false,
+  },
+  structure: {
+    mode: "no_assistant",
+    merge_adjacent_same_role: false,
+    assistant_rewrite_strategy: "to_system",
+    preserve_system_messages: true,
+  },
+  config: {
+    enableDirector: false,
+  },
+  debug_options: liveDebugOptionsExample,
+  generation_params: generationParamsExample,
+} as const;
+
+export const usageExample = {
+  prompt_tokens: 320,
+  completion_tokens: 128,
+  total_tokens: 448,
+} as const;
+
+export const memoryReceiptExample = {
+  mode: "sync",
+  status: "applied",
+  job_id: null,
+} as const;
+
+export const respondDataExample = {
+  floor_id: "floor_12",
+  floor_no: 12,
+  branch_id: "main",
+  generated_text: "The firelight wavers as the next part of the story begins.",
+  summaries: ["The group resumes the campfire planning scene."],
+  total_usage: usageExample,
+  memory: memoryReceiptExample,
+  final_state: "committed",
+  prompt_snapshot: livePromptSnapshotExample,
+  runtime_trace: liveRuntimeTraceExample,
+} as const;
+
+export const respondSuccessResponseExample = {
+  data: respondDataExample,
+} as const;
+
+export const regenerateSuccessResponseExample = {
+  data: {
+    floor_id: "floor_13",
+    floor_no: 13,
+    previous_floor_id: "floor_12",
+    generated_text: "The assistant retries the last turn with a different phrasing.",
+    summaries: ["The last assistant turn was regenerated."],
+    total_usage: usageExample,
+    memory: memoryReceiptExample,
+    final_state: "committed",
+    prompt_snapshot: livePromptSnapshotExample,
+    runtime_trace: liveRuntimeTraceExample,
+  },
+} as const;
+
+export const editAndRegenerateSuccessResponseExample = {
+  data: {
+    ...respondDataExample,
+    branch_id: "alt-branch",
+    source_floor_id: "floor_11",
+    source_message_id: "msg_21",
+  },
+} as const;
+
+export const dryRunSuccessResponseExample = {
+  data: {
+    messages: [
+      { role: "system", content: "Stay in character and keep the tone warm." },
+      { role: "user", content: "Please continue the campfire scene." },
+    ],
+    token_estimate: 512,
+    available_for_reply: 1536,
+    memory: {
+      summary_injected: true,
+      runtime_mode: "async_primary",
+      requested_write: false,
+      effective_write: false,
+      strategy: "dual_summary",
+      summary_text: "[Memory]\n- The party recently agreed to search the northern pass.",
+      summary_text_hash: "sha256:6bf5658e833e81fb6fe5061ab9197d2e9c2e0e2c76a9e813d08f74de33e5bea5",
+      selected_items: [
+        {
+          memory_id: "memory-branch-summary-2",
+          scope: "branch",
+          scope_id: "memscope:session-1:main",
+          branch_id: "main",
+          kind: "macro_summary",
+          source: "summary",
+          score: 0.71,
+          token_count: 22,
+        },
+        {
+          memory_id: "memory-branch-loop-1",
+          scope: "branch",
+          scope_id: "memscope:session-1:main",
+          branch_id: "main",
+          kind: "open_loop",
+          source: "open_loop",
+          score: 0.55,
+          token_count: 26,
+        },
+      ],
+      token_stats: { budget: 500, used: 48, micro_summary: 0, macro_summary: 22, direct_items: 26 },
+      scope_resolution: { mode: "branch_aware", requested_scopes: ["global", "branch"], resolved_scopes: ["global", "branch"], requested_branch_id: "main", resolved_branch_id: "main", fallback_reason: null },
+    },
+    memory_summary: "The party recently agreed to search the northern pass.",
+    prompt_snapshot: livePromptSnapshotExample,
+    assembly: {
+      mode: "preset",
+      prompt_intent: "continue",
+      assistant_prefill_applied: true,
+      assistant_prefill_strategy: "assistant_message_fallback",
+      preset_used: true,
+      selected_prompt_order_character_id: 100000,
+      ignored_prompt_order_character_ids: [200001],
+      continue_nudge_applied: true,
+      continue_nudge_text: "[Continue your last message without repeating its original content.]",
+      names_behavior_applied: "always",
+      trigger_filtered_entry_ids: ["quietPrompt"],
+      in_chat_inserted_entry_ids: ["continueHint"],
+      worldbook_hits: 1,
+      regex_pre_rules: ["trim_whitespace"],
+      regex_post_rules: [],
+      memory_summary_injected: true,
+      reserved_variable_collisions: [],
+      unsupported_preset_fields: [],
+      ignored_preset_fields: [],
+      unresolved_preset_markers: [],
+      preset_warnings: [
+        "检测到 2 条 prompt_order 上下文轨道；当前运行时只会使用 character_id=100000 的 active 轨道。",
+      ],
+      preprocessed_user_message: "Please continue the campfire scene.",
+      worldbook_matches: [
+        {
+          uid: 7,
+          activation_key: "worldbook:worldbook-1:5:entry:7",
+          asset_scope_id: "worldbook:worldbook-1:5",
+          comment: "Campfire Lore",
+          content_preview: "The northern pass is watched by old sentries.",
+          order: 100,
+          source: {
+            kind: "session_worldbook",
+            worldbook_id: "worldbook-1",
+            worldbook_name: "Campfire Worldbook",
+            asset_scope_id: "worldbook:worldbook-1:5",
+          },
+          insertion: {
+            position: "before",
+          },
+          activation: {
+            mode: "triggered",
+            recursion_level: 0,
+            first_match: {
+              source_kind: "message",
+              message_index_from_latest: 0,
+              matched_key: "campfire",
+              matched_key_scope: "primary",
+              matched_key_type: "plain",
+              char_start: 20,
+              char_end: 28,
+              excerpt: "Please continue the campfire scene.",
+            },
+          },
+        },
+      ],
+    },
+    runtime_trace: {
+      preset: {
+        selected_prompt_order_character_id: 100000,
+        ignored_prompt_order_character_ids: [200001],
+        unsupported_fields: [],
+        ignored_fields: [],
+        unresolved_markers: [],
+        warnings: [
+          "检测到 2 条 prompt_order 上下文轨道；当前运行时只会使用 character_id=100000 的 active 轨道。",
+        ],
+        trigger_filtered_entry_ids: ["quietPrompt"],
+        in_chat_inserted_entry_ids: ["continueHint"],
+        continue_nudge_applied: true,
+        continue_nudge_text: "[Continue your last message without repeating its original content.]",
+        names_behavior_applied: "always",
+      },
+      worldbook: {
+        hit_count: 1,
+        matches: [],
+      },
+      regex: {
+        user_input_rules: ["trim_whitespace"],
+        ai_output_rules: [],
+        preprocessed_user_message: "Please continue the campfire scene.",
+        phases: [
+          {
+            phase_id: "prompt.user_input",
+            placement: 1,
+            channel: "prompt",
+            status: "executed",
+            changed: true,
+            depth: 3,
+            input_text_hash: "sha256:regex-dry-run-input-before",
+            output_text_hash: "sha256:regex-dry-run-input-after",
+            candidate_rule_names: ["trim_whitespace"],
+            matched_rule_names: ["trim_whitespace"],
+            skipped_rules: [],
+          },
+          {
+            phase_id: "prompt.world_info.reserved",
+            placement: 5,
+            channel: "prompt",
+            status: "reserved",
+            changed: false,
+            depth: null,
+            input_text_hash: null,
+            output_text_hash: null,
+            candidate_rule_names: ["world_info_rule"],
+            matched_rule_names: [],
+            skipped_rules: [{ rule_name: "world_info_rule", reason: "reserved_non_executable" }],
+          },
+        ],
+        reserved_placements: [5],
+        substitution_mode: "bare_variable_only",
+      },
+      budgets: {
+        by_group: [
+          { group: "history", token_count: 96, estimated_token_count: 128, allocated_token_count: 96, pruned_token_count: 32 },
+          { group: "memory", token_count: 48 },
+          { group: "worldbook", token_count: 64 },
+          { group: "section:main", token_count: 80 },
+        ],
+      },
+      structure: {
+        mode: "no_assistant",
+        merge_adjacent_same_role: false,
+        assistant_rewrite_count: 1,
+        assistant_rewrite_strategy: "to_system",
+        tail_assistant_detected: false,
+      },
+      memory: {
+        summary_injected: true,
+        runtime_mode: "async_primary",
+        requested_write: false,
+        effective_write: false,
+        strategy: "dual_summary",
+        summary_text: "[Memory]\n- The party recently agreed to search the northern pass.",
+        summary_text_hash: "sha256:6bf5658e833e81fb6fe5061ab9197d2e9c2e0e2c76a9e813d08f74de33e5bea5",
+        selected_items: [
+          {
+            memory_id: "memory-branch-summary-2",
+            scope: "branch",
+            scope_id: "memscope:session-1:main",
+            branch_id: "main",
+            kind: "macro_summary",
+            source: "summary",
+            score: 0.71,
+            token_count: 22,
+          },
+          {
+            memory_id: "memory-branch-loop-1",
+            scope: "branch",
+            scope_id: "memscope:session-1:main",
+            branch_id: "main",
+            kind: "open_loop",
+            source: "open_loop",
+            score: 0.55,
+            token_count: 26,
+          },
+        ],
+        token_stats: { budget: 500, used: 48, micro_summary: 0, macro_summary: 22, direct_items: 26 },
+        scope_resolution: { mode: "branch_aware", requested_scopes: ["global", "branch"], resolved_scopes: ["global", "branch"], requested_branch_id: "main", resolved_branch_id: "main", fallback_reason: null },
+      },
+      macro: dryRunRuntimeTraceMacroExample,
+      delivery: {
+        assistant_prefill_requested: true,
+        assistant_prefill_applied: true,
+        assistant_prefill_strategy: "assistant_message_fallback",
+        allow_assistant_prefill: true,
+        require_last_user: false,
+        no_assistant: false,
+        last_message_role: "user",
+        ends_with_user: true,
+        degraded: false,
+        degrade_reasons: [],
+      },
+      visibility: {
+        hidden_floor_ranges: [
+          { start_floor_no: 1, end_floor_no: 2 },
+        ],
+        filtered_floor_nos: [1, 2],
+      },
+      history_normalization: historyNormalizationExample,
+    },
+  },
+} as const;
+
+export const streamResponseExample = [
+  "event: start",
+  'data: {"floor_id":"floor_12","floor_no":12,"branch_id":"main"}',
+  "",
+  "event: run",
+  'data: {"floor_id":"floor_12","run_id":"run_12","run_type":"respond","status":"running","phase":"page_generating","public_phase":"generating","phase_seq":5,"attempt_no":1,"started_at":1735689720000,"updated_at":1735689720300,"completed_at":null,"pending_output":{"temp_id":"temp_12","attempt_no":1,"state":"streaming","text":"The firelight wavers...","started_at":1735689720100,"updated_at":1735689720300,"error":null},"verifier":null,"error":null}',
+  "",
+  "event: chunk",
+  'data: {"chunk":"The firelight wavers..."}',
+  "",
+  "event: done",
+  `data: ${JSON.stringify({
+    floor_id: "floor_12",
+    floor_no: 12,
+    branch_id: "main",
+    generated_text: "The firelight wavers as the next part of the story begins.",
+    summaries: ["The group resumes the campfire planning scene."],
+    total_usage: { prompt_tokens: 320, completion_tokens: 128, total_tokens: 448 },
+    memory: { mode: "sync", status: "applied", job_id: null },
+    final_state: "committed",
+    prompt_snapshot: livePromptSnapshotExample,
+    runtime_trace: {
+      worldbook: { hit_count: 1 },
+      macro: {
+        warnings: [{ code: "macro_preview_side_effect_suppressed", message: "Macro setvar side effect was previewed but not committed.", macro_name: "setvar" }],
+        used_names: ["if", "lastGenerationType", "setvar"],
+        mutation_preview: [{ kind: "set", scope: "branch", key: "mood", value: "steady" }],
+        staged_mutations: [{ kind: "set", scope: "branch", key: "mood", value: "steady", source_macro: "setvar" }],
+        traces: [
+          { macro_name: "lastGenerationType", raw_text: "{{lastGenerationType}}", resolved_text: "respond", phase: "assemble", source_kind: "macro" },
+          { macro_name: "if", raw_text: "{{if {{lastGenerationType}} == respond}}YES{{else}}NO{{/if}}", resolved_text: "YES", phase: "assemble", source_kind: "if", selected_branch: "then" },
+        ],
+      },
+      delivery: {
+        assistant_prefill_requested: true,
+        assistant_prefill_applied: false,
+        assistant_prefill_strategy: "assistant_message_fallback",
+        allow_assistant_prefill: true,
+        require_last_user: true,
+        no_assistant: false,
+        last_message_role: "user",
+        ends_with_user: true,
+        degraded: true,
+        degrade_reasons: ["require_last_user"],
+      },
+    },
+  })}`,
+].join("\n");
+
+// ── JSON Schema constants ─────────────────────────────
+
+export const sessionIdParamsJsonSchema = {
+  type: "object",
+  required: ["id"],
+  properties: {
+    id: { type: "string", minLength: 1 },
+  },
+  additionalProperties: false,
+} as const;
+
+export const turnConfigJsonSchema = {
+  type: "object",
+  properties: {
+    modelCapabilityLimits: roleModelCapabilityLimitsJsonSchema,
+    enableTools: { type: "boolean" },
+    enableDirector: { type: "boolean" },
+    enableVerifier: { type: "boolean" },
+    enableMemoryConsolidation: { type: "boolean" },
+    toolMode: { type: "string", enum: ["inline", "standalone", "both"] },
+    verifierFailStrategy: { type: "string", enum: ["warn", "block", "retry"] },
+    maxRetries: { type: "integer", minimum: 0, maximum: 5 },
+  },
+  examples: [turnConfigExample],
+  additionalProperties: false,
+} as const;
+
+export const generationParamsJsonSchema = {
+  type: "object",
+  properties: {
+    temperature: { type: ["number", "null"], minimum: 0, maximum: 2 },
+    max_output_tokens: { type: ["integer", "null"], minimum: 1 },
+    top_p: { type: ["number", "null"], minimum: 0, maximum: 1 },
+    top_k: { type: ["integer", "null"], minimum: 1 },
+    frequency_penalty: { type: ["number", "null"] },
+    presence_penalty: { type: ["number", "null"] },
+    stop_sequences: {
+      type: ["array", "null"],
+      items: { type: "string", minLength: 1 },
+      maxItems: 16,
+    },
+    seed: { type: ["integer", "null"] },
+    repetition_penalty: { type: ["number", "null"], exclusiveMinimum: 0, maximum: 2 },
+    min_p: { type: ["number", "null"], minimum: 0, maximum: 1 },
+    logit_bias: {
+      anyOf: [
+        {
+          type: "object",
+          additionalProperties: { type: "number", minimum: -100, maximum: 100 },
+          maxProperties: 256,
+        },
+        { type: "null" },
+      ],
+    },
+    response_format: {
+      anyOf: [
+        {
+          type: "object",
+          required: ["type"],
+          properties: {
+            type: { type: "string", enum: ["text", "json_object", "json_schema"] },
+            json_schema: {
+              type: "object",
+              additionalProperties: true,
+            },
+          },
+          additionalProperties: false,
+        },
+        { type: "null" },
+      ],
+    },
+    stream: { type: ["boolean", "null"] },
+    reasoning_effort: { type: ["string", "null"], enum: ["low", "medium", "high", null] },
+  },
+  examples: [generationParamsExample],
+  additionalProperties: false,
+} as const;
+
+const liveDebugOptionsProperties = {
+  include_prompt_snapshot: { type: "boolean" },
+  include_runtime_trace: { type: "boolean" },
+  include_worldbook_matches: { type: "boolean" },
+} as const;
+
+export const liveDebugOptionsJsonSchema = {
+  type: "object",
+  properties: liveDebugOptionsProperties,
+  examples: [liveDebugOptionsExample],
+  additionalProperties: false,
+} as const;
+
+const promptDeliveryProperties = {
+  allow_assistant_prefill: { type: "boolean" },
+  require_last_user: { type: "boolean" },
+  no_assistant: { type: "boolean" },
+} as const;
+
+const promptStructureProperties = {
+  mode: { type: "string", enum: promptStructureModeValues },
+  merge_adjacent_same_role: { type: "boolean" },
+  assistant_rewrite_strategy: { type: "string", enum: promptStructureAssistantRewriteStrategyValues },
+  preserve_system_messages: { type: "boolean" },
+} as const;
+
+const dryRunDebugOptionsProperties = {
+  include_worldbook_matches: { type: "boolean" },
+} as const;
+
+export const promptDeliveryJsonSchema = {
+  type: "object",
+  properties: promptDeliveryProperties,
+  additionalProperties: false,
+} as const;
+
+export const promptStructureJsonSchema = {
+  type: "object",
+  required: ["mode"],
+  properties: promptStructureProperties,
+  additionalProperties: false,
+} as const;
+
+export const promptBudgetJsonSchema = {
+  type: "object",
+  properties: {
+    max_input_tokens: { type: "integer", minimum: 1 },
+    reserved_completion_tokens: { type: "integer", minimum: 1 },
+  },
+  additionalProperties: false,
+} as const;
+
+export const promptSourceSelectionJsonSchema = {
+  type: "object",
+  properties: {
+    history: {
+      type: "object",
+      properties: {
+        mode: { type: "string", enum: promptSourceSelectionHistoryModeValues },
+        max_messages: { type: "integer", minimum: 1 },
+      },
+      additionalProperties: false,
+    },
+    memory: { type: "object", properties: { enabled: { type: "boolean" } }, additionalProperties: false },
+    worldbook: { type: "object", properties: { enabled: { type: "boolean" } }, additionalProperties: false },
+    examples: { type: "object", properties: { enabled: { type: "boolean" } }, additionalProperties: false },
+  },
+  additionalProperties: false,
+} as const;
+
+export const dryRunDebugOptionsJsonSchema = {
+  type: "object",
+  properties: dryRunDebugOptionsProperties,
+  additionalProperties: false,
+} as const;
+
+export const floorVisibilityRangeJsonSchema = {
+  type: "object",
+  required: ["start_floor_no", "end_floor_no"],
+  properties: { start_floor_no: { type: "integer" }, end_floor_no: { type: "integer" } },
+  additionalProperties: false,
+} as const;
+
+const promptSnapshotWorldbookSourceJsonSchema = {
+  type: "object",
+  required: ["kind", "worldbook_id", "worldbook_name", "asset_scope_id"],
+  properties: {
+    kind: { type: "string", enum: ["session_worldbook", "character_book"] },
+    worldbook_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    worldbook_name: { type: "string" },
+    asset_scope_id: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptSnapshotWorldbookInsertionJsonSchema = {
+  type: "object",
+  required: ["position"],
+  properties: {
+    position: { type: "string", enum: ["before", "after", "an_top", "an_bottom", "em_top", "em_bottom", "at_depth", "outlet"] },
+    depth: { type: "integer" },
+    role: { type: "string", enum: promptMessageRoleValues },
+    outlet_name: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptSnapshotWorldbookActivationJsonSchema = {
+  type: "object",
+  required: ["uid", "activation_key", "source", "insertion"],
+  properties: {
+    uid: { type: "integer" },
+    activation_key: { type: "string" },
+    source: promptSnapshotWorldbookSourceJsonSchema,
+    insertion: promptSnapshotWorldbookInsertionJsonSchema,
+  },
+  additionalProperties: false,
+} as const;
+
+export const livePromptSnapshotJsonSchema = {
+  type: "object",
+  required: [
+    "preset_id",
+    "preset_updated_at",
+    "preset_version",
+    "preset_version_id",
+    "preset_content_hash",
+    "worldbook_id",
+    "worldbook_updated_at",
+    "worldbook_version",
+    "worldbook_version_id",
+    "worldbook_content_hash",
+    "regex_profile_id",
+    "regex_profile_updated_at",
+    "regex_profile_version",
+    "regex_profile_version_id",
+    "regex_profile_content_hash",
+    "character_id",
+    "character_version_id",
+    "character_imported_format",
+    "character_content_hash",
+    "worldbook_activated_entry_uids",
+    "worldbook_activated_entries",
+    "regex_pre_rule_names",
+    "regex_post_rule_names",
+    "prompt_mode",
+    "asset_manifest_digest",
+    "prompt_digest",
+    "token_estimate",
+  ],
+  properties: {
+    preset_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    preset_updated_at: { anyOf: [{ type: "integer" }, { type: "null" }] },
+    preset_version: { anyOf: [{ type: "integer", minimum: 1 }, { type: "null" }] },
+    preset_version_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    preset_content_hash: { anyOf: [{ type: "string" }, { type: "null" }] },
+    worldbook_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    worldbook_updated_at: { anyOf: [{ type: "integer" }, { type: "null" }] },
+    worldbook_version: { anyOf: [{ type: "integer", minimum: 1 }, { type: "null" }] },
+    worldbook_version_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    worldbook_content_hash: { anyOf: [{ type: "string" }, { type: "null" }] },
+    regex_profile_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    regex_profile_updated_at: { anyOf: [{ type: "integer" }, { type: "null" }] },
+    regex_profile_version: { anyOf: [{ type: "integer", minimum: 1 }, { type: "null" }] },
+    regex_profile_version_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    regex_profile_content_hash: { anyOf: [{ type: "string" }, { type: "null" }] },
+    character_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    character_version_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    character_imported_format: { anyOf: [{ type: "string" }, { type: "null" }] },
+    character_content_hash: { anyOf: [{ type: "string" }, { type: "null" }] },
+    worldbook_activated_entry_uids: { type: "array", items: { type: "integer" } },
+    worldbook_activated_entries: { type: "array", items: promptSnapshotWorldbookActivationJsonSchema },
+    regex_pre_rule_names: { type: "array", items: { type: "string" } },
+    regex_post_rule_names: { type: "array", items: { type: "string" } },
+    prompt_mode: { type: "string", enum: promptSnapshotModeValues },
+    asset_manifest_digest: { anyOf: [{ type: "string" }, { type: "null" }] },
+    prompt_digest: { type: "string" },
+    token_estimate: { type: "integer", minimum: 0 },
+  },
+  examples: [livePromptSnapshotExample],
+  additionalProperties: false,
+} as const;
+
+export const dryRunVisibilityJsonSchema = {
+  type: "object",
+  properties: {
+    hidden_floor_ranges: {
+      type: "array",
+      items: floorVisibilityRangeJsonSchema,
+    },
+    visible_floor_ranges: {
+      type: "array",
+      items: floorVisibilityRangeJsonSchema,
+    },
+    hidden_floor_ids: { type: "array", items: { type: "string", minLength: 1 } },
+    mode: { type: "string", enum: dryRunVisibilityModeValues },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceWorldbookFirstMatchJsonSchema = {
+  type: "object",
+  required: ["source_kind", "matched_key", "matched_key_scope", "matched_key_type", "char_start", "char_end", "excerpt"],
+  properties: {
+    source_kind: {
+      type: "string",
+      enum: ["message", "persona_description", "character_description", "character_personality", "character_depth_prompt", "scenario", "creator_notes", "injection", "recursion_buffer"],
+    },
+    message_index_from_latest: { type: "integer", minimum: 0 },
+    injection_index: { type: "integer", minimum: 0 },
+    matched_key: { type: "string" },
+    matched_key_scope: { type: "string", enum: ["primary", "secondary"] },
+    matched_key_type: { type: "string", enum: ["plain", "regex"] },
+    char_start: { type: "integer", minimum: 0 },
+    char_end: { type: "integer", minimum: 0 },
+    excerpt: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceWorldbookActivationJsonSchema = {
+  type: "object",
+  required: ["mode", "recursion_level", "first_match"],
+  properties: {
+    mode: { type: "string", enum: ["constant", "triggered"] },
+    recursion_level: { type: "integer", minimum: 0 },
+    first_match: { anyOf: [runtimeTraceWorldbookFirstMatchJsonSchema, { type: "null" }] },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceWorldbookInsertionJsonSchema = {
+  type: "object",
+  required: ["position"],
+  properties: {
+    position: { type: "string", enum: ["before", "after", "an_top", "an_bottom", "em_top", "em_bottom", "at_depth", "outlet"] },
+    depth: { type: "integer" },
+    role: { type: "string", enum: promptMessageRoleValues },
+    outlet_name: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceWorldbookSourceJsonSchema = {
+  type: "object",
+  required: ["kind", "worldbook_id", "worldbook_name", "asset_scope_id"],
+  properties: {
+    kind: { type: "string", enum: ["session_worldbook", "character_book"] },
+    worldbook_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    worldbook_name: { type: "string" },
+    asset_scope_id: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceWorldbookMatchJsonSchema = {
+  type: "object",
+  required: ["uid", "activation_key", "asset_scope_id", "comment", "content_preview", "order", "source", "insertion", "activation"],
+  properties: {
+    uid: { type: "integer" },
+    activation_key: { type: "string" },
+    asset_scope_id: { type: "string" },
+    comment: { type: "string" },
+    content_preview: { type: "string" },
+    order: { type: "integer" },
+    source: runtimeTraceWorldbookSourceJsonSchema,
+    insertion: runtimeTraceWorldbookInsertionJsonSchema,
+    activation: runtimeTraceWorldbookActivationJsonSchema,
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceWorldbookDecisionJsonSchema = {
+  type: "object",
+  required: ["uid", "activation_key", "asset_scope_id", "source", "stage", "outcome"],
+  properties: {
+    uid: { type: "integer" },
+    activation_key: { type: "string" },
+    asset_scope_id: { type: "string" },
+    source: runtimeTraceWorldbookSourceJsonSchema,
+    stage: { type: "string", enum: worldbookDecisionStageValues },
+    outcome: { type: "string", enum: worldbookDecisionOutcomeValues },
+    intent: { type: "string", enum: promptIntentValues },
+    message_count: { type: "integer", minimum: 0 },
+    delay: { type: "integer", minimum: 0 },
+    group: { type: "string" },
+    probability: { type: "number", minimum: 0, maximum: 100 },
+    random_draw: { type: "number", minimum: 0, exclusiveMaximum: 1 },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTracePresetJsonSchema = {
+  type: "object",
+  required: ["selected_prompt_order_character_id", "ignored_prompt_order_character_ids", "unsupported_fields", "ignored_fields", "unresolved_markers", "warnings", "trigger_filtered_entry_ids", "in_chat_inserted_entry_ids", "continue_nudge_applied", "continue_nudge_text", "names_behavior_applied"],
+  properties: {
+    selected_prompt_order_character_id: { anyOf: [{ type: "integer" }, { type: "null" }] },
+    ignored_prompt_order_character_ids: { type: "array", items: { type: "integer" } },
+    unsupported_fields: { type: "array", items: { type: "string" } },
+    ignored_fields: { type: "array", items: { type: "string" } },
+    unresolved_markers: { type: "array", items: { type: "string" } },
+    warnings: { type: "array", items: { type: "string" } },
+    trigger_filtered_entry_ids: { type: "array", items: { type: "string" } },
+    in_chat_inserted_entry_ids: { type: "array", items: { type: "string" } },
+    continue_nudge_applied: { type: "boolean" },
+    continue_nudge_text: { anyOf: [{ type: "string" }, { type: "null" }] },
+    names_behavior_applied: { anyOf: [{ type: "string", enum: promptNamesBehaviorValues }, { type: "null" }] },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceWorldbookJsonSchema = {
+  type: "object",
+  required: ["hit_count"],
+  properties: {
+    hit_count: { type: "integer", minimum: 0 },
+    matches: {
+      type: "array",
+      items: runtimeTraceWorldbookMatchJsonSchema,
+    },
+    decision_traces: {
+      type: "array",
+      items: runtimeTraceWorldbookDecisionJsonSchema,
+    },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceRegexSkippedRuleJsonSchema = {
+  type: "object",
+  required: ["rule_name", "reason"],
+  properties: {
+    rule_name: { type: "string" },
+    reason: {
+      type: "string",
+      enum: ["channel_filtered", "depth_filtered", "invalid_regex", "no_match", "reserved_non_executable"],
+    },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceRegexPhaseJsonSchema = {
+  type: "object",
+  required: [
+    "phase_id",
+    "placement",
+    "channel",
+    "status",
+    "changed",
+    "depth",
+    "input_text_hash",
+    "output_text_hash",
+    "candidate_rule_names",
+    "matched_rule_names",
+    "skipped_rules",
+  ],
+  properties: {
+    phase_id: { type: "string", enum: ["persist.user_input", "prompt.user_input", "persist.ai_output", "prompt.world_info.reserved"] },
+    placement: { type: "integer" },
+    channel: { anyOf: [{ type: "string", enum: ["persist", "prompt", "display", "edit"] }, { type: "null" }] },
+    status: { type: "string", enum: ["executed", "reserved"] },
+    changed: { type: "boolean" },
+    depth: { anyOf: [{ type: "integer" }, { type: "null" }] },
+    input_text_hash: { anyOf: [{ type: "string" }, { type: "null" }] },
+    output_text_hash: { anyOf: [{ type: "string" }, { type: "null" }] },
+    candidate_rule_names: { type: "array", items: { type: "string" } },
+    matched_rule_names: { type: "array", items: { type: "string" } },
+    skipped_rules: { type: "array", items: runtimeTraceRegexSkippedRuleJsonSchema },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceRegexJsonSchema = {
+  type: "object",
+  required: ["user_input_rules", "ai_output_rules", "preprocessed_user_message"],
+  properties: {
+    user_input_rules: { type: "array", items: { type: "string" } },
+    ai_output_rules: { type: "array", items: { type: "string" } },
+    preprocessed_user_message: { anyOf: [{ type: "string" }, { type: "null" }] },
+    phases: { type: "array", items: runtimeTraceRegexPhaseJsonSchema },
+    reserved_placements: { type: "array", items: { type: "integer" } },
+    substitution_mode: { type: "string", enum: ["bare_variable_only"] },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceBudgetGroupJsonSchema = {
+  type: "object",
+  required: ["group", "token_count"],
+  properties: {
+    group: {
+      type: "string",
+      description: "Budget group label. This may include concrete section groups such as `section:main`.",
+    },
+    token_count: { type: "integer", minimum: 0 },
+    estimated_token_count: { type: "integer", minimum: 0 },
+    allocated_token_count: { type: "integer", minimum: 0 },
+    pruned_token_count: { type: "integer", minimum: 0 },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceTrimReasonJsonSchema = {
+  type: "object",
+  required: ["group", "reason"],
+  properties: {
+    group: {
+      type: "string",
+      description: "Budget group label. This may include concrete section groups such as `section:main`.",
+    },
+    reason: { type: "string", enum: promptTrimReasonCodeValues },
+    detail: { type: "string" },
+    pruned_token_count: { type: "integer", minimum: 0 },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceBudgetsJsonSchema = {
+  type: "object",
+  required: ["by_group"],
+  properties: {
+    by_group: {
+      type: "array",
+      items: runtimeTraceBudgetGroupJsonSchema,
+    },
+    trim_reasons: {
+      type: "array",
+      items: runtimeTraceTrimReasonJsonSchema,
+    },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceSourceExclusionReasonJsonSchema = {
+  type: "object",
+  required: ["source", "reason"],
+  properties: {
+    source: {
+      type: "string",
+      enum: promptSourceKindValues,
+      description: "Public source kind. Internal budget groups such as `section:*` do not appear here.",
+    },
+    reason: { type: "string", enum: promptSourceExclusionReasonValues },
+    detail: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceSourceSelectionJsonSchema = {
+  type: "object",
+  required: ["excluded_sources"],
+  properties: {
+    excluded_sources: { type: "array", items: runtimeTraceSourceExclusionReasonJsonSchema },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceStructureJsonSchema = {
+  type: "object",
+  required: ["mode", "merge_adjacent_same_role", "assistant_rewrite_count", "assistant_rewrite_strategy", "tail_assistant_detected"],
+  properties: {
+    mode: { type: "string", enum: promptStructureModeValues },
+    merge_adjacent_same_role: { type: "boolean" },
+    assistant_rewrite_count: { type: "integer", minimum: 0 },
+    assistant_rewrite_strategy: {
+      anyOf: [{ type: "string", enum: promptStructureAssistantRewriteStrategyValues }, { type: "null" }],
+    },
+    tail_assistant_detected: { type: "boolean" },
+    transcriptized: { type: "boolean" },
+    transcript_message_count: { type: "integer", minimum: 0 },
+    assistant_prefill_transcriptized: { type: "boolean" },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceMemorySelectedItemJsonSchema = {
+  type: "object",
+  required: ["memory_id", "scope", "scope_id", "kind"],
+  properties: {
+    memory_id: { type: "string" },
+    scope: { type: "string", enum: ["global", "chat", "branch", "floor"] },
+    scope_id: { type: "string" },
+    branch_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    kind: { type: "string", enum: promptRuntimeMemorySelectedKindValues },
+    source: { type: "string", enum: promptRuntimeMemorySelectedSourceValues },
+    score: { anyOf: [{ type: "number" }, { type: "null" }] },
+    token_count: { anyOf: [{ type: "integer", minimum: 0 }, { type: "null" }] },
+    selected_reason: { anyOf: [{ type: "string" }, { type: "null" }] },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceMemoryTokenStatsJsonSchema = {
+  type: "object",
+  required: ["budget", "used", "micro_summary", "macro_summary", "direct_items"],
+  properties: {
+    budget: { anyOf: [{ type: "integer", minimum: 0 }, { type: "null" }] },
+    used: { type: "integer", minimum: 0 },
+    micro_summary: { type: "integer", minimum: 0 },
+    macro_summary: { type: "integer", minimum: 0 },
+    direct_items: { type: "integer", minimum: 0 },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceMemoryScopeResolutionJsonSchema = {
+  type: "object",
+  required: ["mode", "requested_scopes", "resolved_scopes", "requested_branch_id", "resolved_branch_id", "fallback_reason"],
+  properties: {
+    mode: { type: "string" },
+    strict: { type: "boolean" },
+    requested_scopes: { type: "array", items: { type: "string", enum: ["global", "chat", "branch", "floor"] } },
+    resolved_scopes: { type: "array", items: { type: "string", enum: ["global", "chat", "branch", "floor"] } },
+    requested_branch_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    resolved_branch_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    fallback_reason: { anyOf: [{ type: "string" }, { type: "null" }] },
+  },
+  additionalProperties: false,
+} as const;
+
+export const runtimeTraceMemoryJsonSchema = {
+  type: "object",
+  required: ["summary_injected"],
+  properties: {
+    summary_injected: { type: "boolean" },
+    runtime_mode: { type: "string", enum: memoryRuntimeModeValues },
+    requested_write: { type: "boolean" },
+    effective_write: { type: "boolean" },
+    strategy: { type: "string", enum: promptRuntimeMemoryStrategyValues },
+    summary_text: { type: "string" },
+    summary_text_hash: { anyOf: [{ type: "string" }, { type: "null" }] },
+    selected_items: { type: "array", items: runtimeTraceMemorySelectedItemJsonSchema },
+    token_stats: runtimeTraceMemoryTokenStatsJsonSchema,
+    scope_resolution: runtimeTraceMemoryScopeResolutionJsonSchema,
+    page_id: { type: "string" },
+    proposal_batch_id: { type: "string" },
+    proposal_status: { type: "string", enum: promptRuntimeMemoryProposalStatusValues },
+    promotion_status: { type: "string", enum: promptRuntimeMemoryPromotionStatusValues },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceHistoryNormalizationViolationJsonSchema = {
+  type: "object",
+  required: ["code", "message", "source_floor_ids", "source_message_ids"],
+  properties: {
+    code: { type: "string", enum: ["adjacent_assistant_floors"] },
+    message: { type: "string" },
+    source_floor_ids: { type: "array", items: { type: "string" } },
+    source_message_ids: { type: "array", items: { type: "string" } },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceMergedUserGroupJsonSchema = {
+  type: "object",
+  required: ["effective_role", "source_floor_ids", "source_message_ids", "includes_current_input"],
+  properties: {
+    effective_role: { type: "string", enum: ["user"] },
+    source_floor_ids: { type: "array", items: { type: "string" } },
+    source_message_ids: { type: "array", items: { type: "string" } },
+    includes_current_input: { type: "boolean" },
+  },
+  additionalProperties: false,
+} as const;
+
+export const runtimeTraceHistoryNormalizationJsonSchema = {
+  type: "object",
+  required: ["raw_entry_count", "effective_turn_count", "selected_turn_count", "trailing_user_source_floor_ids", "merged_user_groups", "violations"],
+  properties: {
+    raw_entry_count: { type: "integer", minimum: 0 },
+    effective_turn_count: { type: "integer", minimum: 0 },
+    selected_turn_count: { type: "integer", minimum: 0 },
+    trailing_user_source_floor_ids: { type: "array", items: { type: "string" } },
+    merged_user_groups: { type: "array", items: runtimeTraceMergedUserGroupJsonSchema },
+    violations: { type: "array", items: runtimeTraceHistoryNormalizationViolationJsonSchema },
+  },
+  examples: [historyNormalizationExample],
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceMacroWarningJsonSchema = {
+  type: "object",
+  required: ["code", "message"],
+  properties: {
+    code: { type: "string" },
+    message: { type: "string" },
+    macro_name: { type: "string" },
+    raw_text: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceMacroMutationPreviewJsonSchema = {
+  type: "object",
+  required: ["kind", "scope", "key"],
+  properties: {
+    kind: { type: "string", enum: ["set", "delete"] },
+    scope: { type: "string", enum: ["branch", "global"] },
+    key: { type: "string" },
+    value: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceMacroStagedMutationJsonSchema = {
+  type: "object",
+  required: ["kind", "scope", "key", "source_macro"],
+  properties: {
+    kind: { type: "string", enum: ["set", "delete"] },
+    scope: { type: "string", enum: ["branch", "global"] },
+    key: { type: "string" },
+    value: { type: "string" },
+    source_macro: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceMacroTraceEntryJsonSchema = {
+  type: "object",
+  required: ["macro_name", "raw_text", "resolved_text"],
+  properties: {
+    macro_name: { type: "string" },
+    raw_text: { type: "string" },
+    resolved_text: { type: "string" },
+    phase: { type: "string" },
+    source_kind: { type: "string", enum: ["text", "raw", "macro", "if"] },
+    selected_branch: { type: "string", enum: ["then", "else", "raw"] },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceMacroJsonSchema = {
+  type: "object",
+  required: ["warnings", "used_names", "mutation_preview", "staged_mutations", "traces"],
+  properties: {
+    warnings: { type: "array", items: runtimeTraceMacroWarningJsonSchema },
+    used_names: { type: "array", items: { type: "string" } },
+    mutation_preview: { type: "array", items: runtimeTraceMacroMutationPreviewJsonSchema },
+    staged_mutations: { type: "array", items: runtimeTraceMacroStagedMutationJsonSchema },
+    traces: { type: "array", items: runtimeTraceMacroTraceEntryJsonSchema },
+  },
+  examples: [liveRuntimeTraceMacroExample],
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceDeliveryJsonSchema = {
+  type: "object",
+  required: ["assistant_prefill_requested", "assistant_prefill_applied", "assistant_prefill_strategy", "allow_assistant_prefill", "require_last_user", "no_assistant", "last_message_role", "ends_with_user", "degraded", "degrade_reasons"],
+  properties: {
+    assistant_prefill_requested: { type: "boolean" },
+    assistant_prefill_applied: { type: "boolean" },
+    assistant_prefill_strategy: {
+      anyOf: [
+        { type: "string", enum: promptAssistantPrefillStrategyValues },
+        { type: "null" },
+      ],
+    },
+    allow_assistant_prefill: { type: "boolean" },
+    require_last_user: { type: "boolean" },
+    no_assistant: { type: "boolean" },
+    last_message_role: {
+      anyOf: [
+        { type: "string", enum: promptMessageRoleValues },
+        { type: "null" },
+      ],
+    },
+    ends_with_user: { type: "boolean" },
+    degraded: { type: "boolean" },
+    degrade_reasons: {
+      type: "array",
+      items: { type: "string", enum: promptDeliveryDegradeReasonValues },
+    },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceVisibilityJsonSchema = {
+  type: "object",
+  required: ["filtered_floor_nos"],
+  properties: {
+    hidden_floor_ranges: {
+      type: "array",
+      items: floorVisibilityRangeJsonSchema,
+    },
+    filtered_floor_nos: { type: "array", items: { type: "integer" } },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceToolTransportSelectionJsonSchema = {
+  type: "object",
+  required: ["transport", "reason_code"],
+  properties: {
+    transport: {
+      type: "string",
+      enum: ["native_function_call", "text_protocol", "none"],
+    },
+    reason_code: {
+      type: "string",
+      enum: [
+        "explicit_override",
+        "tools_disabled",
+        "instance_not_supports_function_call",
+        "default_native_function_call",
+        "mode_disallows_transport",
+        "override_rejected_by_mode",
+      ],
+    },
+    reason_detail: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceToolTransportToolListJsonSchema = {
+  type: "object",
+  required: ["injected", "tool_count"],
+  properties: {
+    injected: { type: "boolean" },
+    contributor_id: { type: "string" },
+    placement_mode: { type: "string", enum: ["strict_fixed", "contributor_chain"] },
+    tool_count: { type: "integer", minimum: 0 },
+    token_count: { type: "integer", minimum: 0 },
+    budget_group: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceToolTransportDiagnosticJsonSchema = {
+  type: "object",
+  required: ["call_id", "tool_name", "reason", "excerpt"],
+  properties: {
+    call_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    tool_name: { anyOf: [{ type: "string" }, { type: "null" }] },
+    reason: {
+      type: "string",
+      enum: [
+        "tool_not_registered",
+        "json_parse_failed",
+        "missing_args_field",
+        "missing_call_id",
+        "missing_tool_name",
+        "duplicate_call_id",
+        "malformed_block",
+        "malformed_attributes",
+        "invalid_tool_name",
+      ],
+    },
+    excerpt: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceToolTransportParsingJsonSchema = {
+  type: "object",
+  required: ["block_count", "accepted_count", "rejected_count", "diagnostics"],
+  properties: {
+    block_count: { type: "integer", minimum: 0 },
+    accepted_count: { type: "integer", minimum: 0 },
+    rejected_count: { type: "integer", minimum: 0 },
+    diagnostics: {
+      type: "array",
+      items: runtimeTraceToolTransportDiagnosticJsonSchema,
+    },
+    diagnostics_by_reason: {
+      type: "object",
+      additionalProperties: { type: "integer", minimum: 0 },
+    },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceToolTransportToolResultJsonSchema = {
+  type: "object",
+  required: ["written_back", "block_count", "token_count", "budget_group"],
+  properties: {
+    written_back: { type: "boolean" },
+    block_count: { type: "integer", minimum: 0 },
+    token_count: { type: "integer", minimum: 0 },
+    budget_group: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceToolTransportJsonSchema = {
+  type: "object",
+  required: ["selection"],
+  properties: {
+    selection: runtimeTraceToolTransportSelectionJsonSchema,
+    tool_list: runtimeTraceToolTransportToolListJsonSchema,
+    tool_choice_applied: { type: "boolean" },
+    streaming_tool_call_unsupported: { type: "boolean" },
+    parsing: runtimeTraceToolTransportParsingJsonSchema,
+    tool_result: runtimeTraceToolTransportToolResultJsonSchema,
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceGenerationParamResolutionJsonSchema = {
+  type: "object",
+  required: ["name", "final_state", "origin"],
+  properties: {
+    name: {
+      type: "string",
+      enum: [
+        "maxContextTokens",
+        "maxOutputTokens",
+        "temperature",
+        "topP",
+        "topK",
+        "frequencyPenalty",
+        "presencePenalty",
+        "stopSequences",
+        "seed",
+        "repetitionPenalty",
+        "minP",
+        "logitBias",
+        "responseFormat",
+        "stream",
+        "timeoutMs",
+        "maxRetries",
+        "reasoningEffort",
+      ],
+    },
+    final_state: { type: "string", enum: ["sent", "absent", "cancelled", "filtered"] },
+    origin: { type: "string", enum: ["profile", "instance", "request", "default", "absent"] },
+    cancelled_at: { type: "string", enum: ["profile", "instance", "request"] },
+    value_from: { type: "string", enum: ["profile", "instance", "request", "default"] },
+    filter_reason: { type: "string", enum: ["field_not_supported_by_provider"] },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeInjectionPlacementParamsTraceJsonSchema = {
+  type: "object",
+  properties: {
+    floor_no: { type: "integer", minimum: 0 },
+    offset: { type: "integer", minimum: 0 },
+    depth: { type: "integer", minimum: 0 },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeInjectionAnchorTraceJsonSchema = {
+  type: "object",
+  required: ["kind"],
+  properties: {
+    kind: {
+      type: "string",
+      enum: [
+        "section",
+        "floor_by_no",
+        "floor_from_end",
+        "worldbook_depth",
+        "worldbook_edge",
+        "worldbook_author_note_top",
+        "contributor_block",
+      ],
+    },
+    internal_key: { type: "string" },
+    floor_no: { type: "integer", minimum: 0 },
+    offset: { type: "integer", minimum: 0 },
+    depth: { type: "integer", minimum: 0 },
+    edge: { type: "string",enum: ["before", "after"] },
+    resolved_depth: { type: "integer", minimum: 0 },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeInjectionSourceChainTraceJsonSchema = {
+  type: "object",
+  properties: {
+    agent_type_id: { type: "string" },
+    agent_run_id: { type: "string" },
+    temporary_conversation_id: { type: "string" },
+    debug_session_tag: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeInjectionTraceItemJsonSchema = {
+  type: "object",
+  required: [
+    "request_index",
+    "source_kind",
+    "visibility",
+    "injection_id",
+    "enabled",
+    "scope",
+    "placement_requested",
+    "placement_params_requested",
+    "order_requested",
+    "title",
+    "content_length",
+    "token_count",
+    "budget_group",
+    "budget_status",
+    "applied",
+    "placement_resolved",
+    "anchor_resolved",
+    "source_chain",
+    "not_applied_reason",
+    "restricted",
+  ],
+  properties: {
+    request_index: { type: "integer", minimum: 0 },
+    source_kind: { type: "string" },
+    visibility: { type: "string", enum: ["client", "agent_private", "debug", "system"] },
+    injection_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    enabled: { anyOf: [{ type: "boolean" }, { type: "null" }] },
+    scope: { type: "string", enum: ["request", "session", "branch"] },
+    placement_requested: { type: "string" },
+    placement_params_requested: {
+      anyOf: [promptRuntimeInjectionPlacementParamsTraceJsonSchema, { type: "null" }],
+    },
+    order_requested: { type: "integer" },
+    title: { anyOf: [{ type: "string" }, { type: "null" }] },
+    content_length: { type: "integer", minimum: 0 },
+    token_count: { anyOf: [{ type: "integer", minimum: 0 }, { type: "null" }] },
+    budget_group: { anyOf: [{ type: "string" }, { type: "null" }] },
+    budget_status: {
+      anyOf: [
+        {
+          type: "string",
+          enum: ["within_budget", "rejected_by_item_limit", "rejected_by_total_limit"],
+        },
+        { type: "null" },
+      ],
+    },
+    applied: { type: "boolean" },
+    placement_resolved: { anyOf: [{ type: "string" }, { type: "null" }] },
+    anchor_resolved: {
+      anyOf: [promptRuntimeInjectionAnchorTraceJsonSchema, { type: "null" }],
+    },
+    source_chain: {
+      anyOf: [promptRuntimeInjectionSourceChainTraceJsonSchema, { type: "null" }],
+ },
+    restricted: { type: "boolean" },
+    not_applied_reason: {
+      anyOf: [
+        {
+          type: "string",
+          enum: [
+            "placement_not_available_in_mode",
+            "unknown_placement",
+            "empty_title_or_content",
+            "prompt_section_absent",
+            "disabled",
+            "expired",
+            "mode_scope_mismatch",
+            "scope_quota_exceeded",
+            "content_length_exceeded",
+            "content_token_limit_exceeded",
+            "total_token_limit_exceeded",
+            "missing_placement_params",
+            "invalid_placement_params",
+            "floor_no_out_of_history_window",
+            "floor_offset_out_of_history_window",
+          ],
+        },
+        { type: "null" },
+      ],
+    },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeInjectionJsonSchema = {
+  type: "object",
+  required: ["source_kind", "title", "content", "placement"],
+  properties: {
+    source_kind: { type: "string", enum: ["client_injection"] },
+    title: { type: "string", maxLength: PROMPT_RUNTIME_INJECTION_LIMITS.titleMaxLength },
+    content: { type: "string", maxLength: PROMPT_RUNTIME_INJECTION_LIMITS.contentMaxLength },
+    placement: { type: "string", minLength: 1 },
+    order: { type: "integer" },
+    scope: { type: "string", enum: ["request"] },
+  },
+  additionalProperties: false,
+} as const;
+
+const runtimeTraceBaseProperties = {
+  preset: runtimeTracePresetJsonSchema,
+  worldbook: runtimeTraceWorldbookJsonSchema,
+  regex: runtimeTraceRegexJsonSchema,
+  budgets: runtimeTraceBudgetsJsonSchema,
+  structure: runtimeTraceStructureJsonSchema,
+  source_selection: runtimeTraceSourceSelectionJsonSchema,
+  memory: runtimeTraceMemoryJsonSchema,
+  macro: runtimeTraceMacroJsonSchema,
+  delivery: runtimeTraceDeliveryJsonSchema,
+  history_normalization: runtimeTraceHistoryNormalizationJsonSchema,
+  tool_transport: runtimeTraceToolTransportJsonSchema,
+  injection: {
+    type: "object",
+    required: ["items"],
+    properties: {
+      items: { type: "array", items: promptRuntimeInjectionTraceItemJsonSchema },
+      requested_count: { type: "integer", minimum: 0 },
+      applied_count: { type: "integer", minimum: 0 },
+      rejected_count: { type: "integer", minimum: 0 },
+      token_count: { type: "integer", minimum: 0 },
+      budget_group: { anyOf: [{ type: "string" }, { type: "null" }] },
+    },
+    additionalProperties: false,
+  },
+  generation_params_resolution: {
+    type: "array",
+    items: runtimeTraceGenerationParamResolutionJsonSchema,
+  },
+} as const;
+
+const dryRunRuntimeTraceProperties = {
+  ...runtimeTraceBaseProperties,
+  visibility: runtimeTraceVisibilityJsonSchema,
+} as const;
+
+const liveRuntimeTraceJsonSchema = {
+  type: "object",
+  properties: runtimeTraceBaseProperties,
+  examples: [liveRuntimeTraceExample],
+  additionalProperties: false,
+} as const;
+
+export const dryRunRuntimeTraceJsonSchema = {
+  type: "object",
+  properties: dryRunRuntimeTraceProperties,
+  additionalProperties: false,
+} as const;
+
+const turnSessionStateWriteBaseProperties = {
+  namespace: {
+    type: "string",
+    minLength: 1,
+    maxLength: 128,
+    pattern: SESSION_STATE_NAMESPACE_PATTERN.source,
+  },
+  slot: { type: "string", minLength: 1, maxLength: 256 },
+} as const;
+
+const turnSessionStateWriteValueJsonSchema = {
+  type: "object",
+  required: ["namespace", "slot", "value"],
+  properties: {
+    ...turnSessionStateWriteBaseProperties,
+    value: {},
+  },
+  additionalProperties: false,
+} as const;
+
+const turnSessionStateWriteDeleteJsonSchema = {
+  type: "object",
+  required: ["namespace", "slot", "delete"],
+  properties: {
+    ...turnSessionStateWriteBaseProperties,
+    delete: { type: "boolean", enum: [true] },
+  },
+  additionalProperties: false,
+} as const;
+
+export const turnSessionStateWriteJsonSchema = {
+  oneOf: [turnSessionStateWriteValueJsonSchema, turnSessionStateWriteDeleteJsonSchema],
+} as const;
+
+export const turnSessionStateWritesJsonSchema = {
+  type: "array",
+  items: turnSessionStateWriteJsonSchema,
+  examples: [[
+    { namespace: "quest_flags", slot: "companion", value: { mood: "ally" } },
+    { namespace: "quest_flags", slot: "expired_hint", delete: true },
+  ]],
+} as const;
+
+export const editAndRegenerateBodyJsonSchema = {
+  type: "object",
+  required: ["content"],
+  properties: {
+    content: { type: "string", minLength: 1 },
+    branch_id: { type: "string", minLength: 1 },
+    delivery: promptDeliveryJsonSchema,
+    structure: promptStructureJsonSchema,
+    config: turnConfigJsonSchema,
+    generation_params: generationParamsJsonSchema,
+    debug_options: liveDebugOptionsJsonSchema,
+    confirmed_execution_ids: {
+      type: "array",
+      items: { type: "string", minLength: 1 },
+    },
+    confirmed_session_state_mutation_ids: {
+      type: "array",
+      items: { type: "string", minLength: 1 },
+    },
+    session_state_writes: turnSessionStateWritesJsonSchema,
+    prompt_runtime_injections: { type: "array", maxItems: PROMPT_RUNTIME_INJECTION_LIMITS.requestMaxCount, items: promptRuntimeInjectionJsonSchema },
+  },
+  examples: [editAndRegenerateBodyExample],
+  additionalProperties: false,
+} as const;
+
+export const respondBodyJsonSchema = {
+  type: "object",
+  required: ["message"],
+  allOf: [{ if: { properties: { prompt_intent: { const: "continue" } }, required: ["prompt_intent"] }, then: { properties: { message: { type: "string", maxLength: 0 } } }, else: { properties: { message: { type: "string", minLength: 1 } } } }],
+  properties: {
+    client_operation_id: { type: "string", minLength: 1, maxLength: 200 },
+    message: { type: "string" },
+    prompt_intent: { type: "string", enum: promptIntentValues },
+    delivery: promptDeliveryJsonSchema,
+    structure: promptStructureJsonSchema,
+    config: turnConfigJsonSchema,
+    generation_params: generationParamsJsonSchema,
+    branch_id: { type: "string", minLength: 1 },
+    debug_options: liveDebugOptionsJsonSchema,
+    source_floor_id: { type: "string", minLength: 1 },
+    session_state_writes: turnSessionStateWritesJsonSchema,
+    prompt_runtime_injections: { type: "array", maxItems: PROMPT_RUNTIME_INJECTION_LIMITS.requestMaxCount, items: promptRuntimeInjectionJsonSchema },
+  },
+  examples: [respondBodyExample],
+  additionalProperties: false,
+} as const;
+
+export const dryRunBodyJsonSchema = {
+  type: "object",
+  required: ["message"],
+  properties: {
+    config: turnConfigJsonSchema,
+    message: { type: "string", minLength: 1 },
+    branch_id: { type: "string", minLength: 1 },
+    prompt_intent: { type: "string", enum: promptIntentValues },
+    debug_options: dryRunDebugOptionsJsonSchema,
+    visibility: dryRunVisibilityJsonSchema,
+    structure: promptStructureJsonSchema,
+    delivery: promptDeliveryJsonSchema,
+    budget: promptBudgetJsonSchema,
+    source_selection: promptSourceSelectionJsonSchema,
+    prompt_runtime_injections: { type: "array", maxItems: PROMPT_RUNTIME_INJECTION_LIMITS.requestMaxCount, items: promptRuntimeInjectionJsonSchema },
+  },
+  examples: [dryRunBodyExample],
+  additionalProperties: false,
+} as const;
+
+export const regenerateBodyJsonSchema = {
+  type: "object",
+  properties: {
+    branch_id: { type: "string", minLength: 1 },
+    client_operation_id: { type: "string", minLength: 1, maxLength: 200 },
+    delivery: promptDeliveryJsonSchema,
+    structure: promptStructureJsonSchema,
+    config: turnConfigJsonSchema,
+    generation_params: generationParamsJsonSchema,
+    debug_options: liveDebugOptionsJsonSchema,
+    confirmed_execution_ids: {
+      type: "array",
+      items: { type: "string", minLength: 1 },
+    },
+    confirmed_session_state_mutation_ids: {
+      type: "array",
+      items: { type: "string", minLength: 1 },
+    },
+    session_state_writes: turnSessionStateWritesJsonSchema,
+    prompt_runtime_injections: { type: "array", maxItems: PROMPT_RUNTIME_INJECTION_LIMITS.requestMaxCount, items: promptRuntimeInjectionJsonSchema },
+  },
+  examples: [regenerateBodyExample],
+  additionalProperties: false,
+} as const;
+
+export const retryFloorBodyJsonSchema = {
+  type: "object",
+  properties: {
+    delivery: regenerateBodyJsonSchema.properties.delivery,
+    structure: regenerateBodyJsonSchema.properties.structure,
+    config: turnConfigJsonSchema,
+    generation_params: generationParamsJsonSchema,
+    debug_options: liveDebugOptionsJsonSchema,
+    confirmed_execution_ids: regenerateBodyJsonSchema.properties.confirmed_execution_ids,
+    confirmed_session_state_mutation_ids: regenerateBodyJsonSchema.properties.confirmed_session_state_mutation_ids,
+    session_state_writes: turnSessionStateWritesJsonSchema,
+    prompt_runtime_injections: { type: "array", maxItems: PROMPT_RUNTIME_INJECTION_LIMITS.requestMaxCount, items: promptRuntimeInjectionJsonSchema },
+  },
+  examples: [regenerateBodyExample],
+  additionalProperties: false,
+} as const;
+
+export const usageJsonSchema = {
+  type: "object",
+  required: ["prompt_tokens", "completion_tokens", "total_tokens"],
+  properties: {
+    prompt_tokens: { type: "integer", minimum: 0 },
+    completion_tokens: { type: "integer", minimum: 0 },
+    total_tokens: { type: "integer", minimum: 0 },
+  },
+  examples: [usageExample],
+  additionalProperties: false,
+} as const;
+
+export const memoryReceiptJsonSchema = {
+  type: "object",
+  required: ["mode", "status", "job_id"],
+  properties: {
+    mode: { type: "string", enum: ["sync", "async"] },
+    status: { type: "string", enum: ["applied", "queued"] },
+    job_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+  },
+  examples: [memoryReceiptExample],
+  additionalProperties: false,
+} as const;
+
+export const respondDataJsonSchema = {
+  type: "object",
+  required: ["floor_id", "floor_no", "branch_id", "generated_text", "summaries", "total_usage", "final_state"],
+  properties: {
+    floor_id: { type: "string" },
+    floor_no: { type: "integer", minimum: 0 },
+    branch_id: { type: "string" },
+    generated_text: { type: "string" },
+    summaries: { type: "array", items: { type: "string" } },
+    total_usage: usageJsonSchema,
+    memory: memoryReceiptJsonSchema,
+    final_state: { type: "string" },
+    prompt_snapshot: livePromptSnapshotJsonSchema,
+    runtime_trace: liveRuntimeTraceJsonSchema,
+  },
+  examples: [respondDataExample],
+  additionalProperties: false,
+} as const;
+
+export const editAndRegenerateDataJsonSchema = {
+  ...respondDataJsonSchema,
+  required: [...respondDataJsonSchema.required, "source_floor_id", "source_message_id"],
+  properties: {
+    ...respondDataJsonSchema.properties,
+    source_floor_id: { type: "string" },
+    source_message_id: { type: "string" },
+  },
+  examples: [editAndRegenerateSuccessResponseExample.data],
+} as const;
+
+export const editAndRegenerateSuccessResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: { data: editAndRegenerateDataJsonSchema },
+  examples: [editAndRegenerateSuccessResponseExample],
+  additionalProperties: false,
+} as const;
+
+export const regenerateDataJsonSchema = {
+  type: "object",
+  required: ["floor_id", "floor_no", "previous_floor_id", "generated_text", "summaries", "total_usage", "final_state"],
+  properties: {
+    floor_id: { type: "string" },
+    floor_no: { type: "integer", minimum: 0 },
+    previous_floor_id: { type: "string" },
+    generated_text: { type: "string" },
+    summaries: { type: "array", items: { type: "string" } },
+    total_usage: usageJsonSchema,
+    memory: memoryReceiptJsonSchema,
+    final_state: { type: "string" },
+    prompt_snapshot: livePromptSnapshotJsonSchema,
+    runtime_trace: liveRuntimeTraceJsonSchema,
+  },
+  examples: [regenerateSuccessResponseExample.data],
+  additionalProperties: false,
+} as const;
+
+const dryRunWorldbookFirstMatchJsonSchema = runtimeTraceWorldbookFirstMatchJsonSchema;
+const dryRunWorldbookActivationJsonSchema = runtimeTraceWorldbookActivationJsonSchema;
+const dryRunWorldbookInsertionJsonSchema = runtimeTraceWorldbookInsertionJsonSchema;
+const dryRunWorldbookSourceJsonSchema = runtimeTraceWorldbookSourceJsonSchema;
+const dryRunWorldbookMatchJsonSchema = runtimeTraceWorldbookMatchJsonSchema;
+
+export const dryRunDataJsonSchema = {
+  type: "object",
+  required: [
+    "messages",
+    "token_estimate",
+    "available_for_reply",
+    "memory",
+    "memory_summary",
+    "prompt_snapshot",
+    "assembly",
+  ],
+  properties: {
+    messages: {
+      type: "array",
+      items: {
+        type: "object",
+        required: ["role", "content"],
+        properties: {
+          role: { type: "string", enum: promptMessageRoleValues },
+          content: { type: "string" },
+        },
+        additionalProperties: false,
+      },
+    },
+    token_estimate: { type: "integer", minimum: 0 },
+    available_for_reply: { type: "integer", minimum: 0 },
+    memory: runtimeTraceMemoryJsonSchema,
+    memory_summary: { anyOf: [{ type: "string" }, { type: "null" }] },
+    prompt_snapshot: livePromptSnapshotJsonSchema,
+    runtime_trace: dryRunRuntimeTraceJsonSchema,
+    assembly: {
+      type: "object",
+      required: [
+        "mode",
+        "preset_used",
+        "assistant_prefill_applied",
+        "assistant_prefill_strategy",
+        "prompt_intent",
+        "worldbook_hits",
+        "regex_pre_rules",
+        "regex_post_rules",
+        "memory_summary_injected",
+        "reserved_variable_collisions",
+        "selected_prompt_order_character_id",
+        "ignored_prompt_order_character_ids",
+        "unsupported_preset_fields",
+        "ignored_preset_fields",
+        "unresolved_preset_markers",
+        "preset_warnings",
+        "continue_nudge_applied",
+        "continue_nudge_text",
+        "names_behavior_applied",
+        "trigger_filtered_entry_ids",
+        "in_chat_inserted_entry_ids",
+        "preprocessed_user_message",
+      ],
+      properties: {
+        mode: { type: "string", enum: ["preset", "fallback"] },
+        prompt_intent: { type: "string", enum: promptIntentValues },
+        assistant_prefill_applied: { type: "boolean" },
+        assistant_prefill_strategy: { type: "string", enum: promptAssistantPrefillStrategyValues },
+        preset_used: { type: "boolean" },
+        worldbook_hits: { type: "integer", minimum: 0 },
+        selected_prompt_order_character_id: { anyOf: [{ type: "integer" }, { type: "null" }] },
+        ignored_prompt_order_character_ids: { type: "array", items: { type: "integer" } },
+        regex_pre_rules: { type: "array", items: { type: "string" } },
+        regex_post_rules: { type: "array", items: { type: "string" } },
+        memory_summary_injected: { type: "boolean" },
+        reserved_variable_collisions: { type: "array", items: { type: "string", enum: ["char", "user"] } },
+        unsupported_preset_fields: { type: "array", items: { type: "string" } },
+        ignored_preset_fields: { type: "array", items: { type: "string" } },
+        unresolved_preset_markers: { type: "array", items: { type: "string" } },
+        preset_warnings: { type: "array", items: { type: "string" } },
+        continue_nudge_applied: { type: "boolean" },
+        continue_nudge_text: { anyOf: [{ type: "string" }, { type: "null" }] },
+        names_behavior_applied: { type: "string", enum: promptNamesBehaviorValues },
+        trigger_filtered_entry_ids: { type: "array", items: { type: "string" } },
+        in_chat_inserted_entry_ids: { type: "array", items: { type: "string" } },
+        preprocessed_user_message: { anyOf: [{ type: "string" }, { type: "null" }] },
+        worldbook_matches: {
+          type: "array",
+          items: dryRunWorldbookMatchJsonSchema,
+        },
+      },
+      additionalProperties: false,
+    },
+  },
+  examples: [dryRunSuccessResponseExample.data],
+  additionalProperties: false,
+} as const;
+
+export const respondSuccessResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: respondDataJsonSchema,
+  },
+  examples: [respondSuccessResponseExample],
+  additionalProperties: false,
+} as const;
+
+// step 级重试：复用 retryFloor 的请求体，额外必传 from_step_index（1-based，从哪一步重生成）。
+export const retryStepBodyJsonSchema = {
+  type: "object",
+  required: ["from_step_index"],
+  properties: {
+    ...retryFloorBodyJsonSchema.properties,
+    from_step_index: { type: "integer", minimum: 1 },
+  },
+  additionalProperties: false,
+} as const;
+
+// 起点之前已产生、不会回滚的写类副作用条目（脱敏后只暴露摘要字段）。
+export const irreversibleSideEffectJsonSchema = {
+  type: "object",
+  required: ["execution_id", "tool_name", "side_effect_level", "started_at"],
+  properties: {
+    execution_id: { type: "string" },
+    tool_name: { type: "string" },
+side_effect_level: { type: "string" },
+    started_at: { type: "integer" },
+    generation_step_no: { anyOf:[{ type: "integer" }, { type: "null" }] },
+  },
+  additionalProperties: false,
+} as const;
+
+export const retryStepDataJsonSchema = {
+  ...respondDataJsonSchema,
+  required: [...respondDataJsonSchema.required, "discarded_from_step_index", "irreversible_side_effects"],
+  properties: {
+    ...respondDataJsonSchema.properties,
+    discarded_from_step_index: { type: "integer", minimum: 1 },
+    irreversible_side_effects: { type: "array", items: irreversibleSideEffectJsonSchema },
+  },
+} as const;
+
+export const retryStepSuccessResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: retryStepDataJsonSchema,
+  },
+  additionalProperties: false,
+} as const;
+
+
+export const regenerateSuccessResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: regenerateDataJsonSchema,
+  },
+  examples: [regenerateSuccessResponseExample],
+  additionalProperties: false,
+} as const;
+
+export const dryRunSuccessResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: dryRunDataJsonSchema,
+  },
+  examples: [dryRunSuccessResponseExample],
+  additionalProperties: false,
+} as const;

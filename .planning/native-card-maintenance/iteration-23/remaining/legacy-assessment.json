@@ -1,0 +1,185 @@
+{
+  "scope": "tool command integration with actual source content; not full semantic conversion acceptance",
+  "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/task.json",
+  "results": [
+    {
+      "command": "index",
+      "exitCode": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/package/manifest.json",
+        "files": 11,
+        "issues": []
+      },
+      "stderr": ""
+    },
+    {
+      "command": "validate",
+      "exitCode": 0,
+      "result": {
+        "passed": true,
+        "record": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/validation-OAPMZ7/result.json",
+        "issues": [],
+        "issueSummary": {
+          "totalCount": 0,
+          "displayedCount": 0,
+          "truncated": false,
+          "completeResult": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/validation-OAPMZ7/result.json"
+        }
+      },
+      "stderr": ""
+    },
+    {
+      "command": "pack",
+      "exitCode": 0,
+      "result": {
+        "archive": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/pack-95bnll/role.zip",
+        "zip": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/role.zip",
+        "bytes": 103136,
+        "validation": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/validation-sVJmn0/result.json",
+        "packRecord": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/pack-95bnll/result.json"
+      },
+      "stderr": ""
+    },
+    {
+      "command": "formal",
+      "exitCode": 0,
+      "result": {
+        "passed": true,
+        "status": "passed",
+        "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/formal/formal-runs/2026-10-06T02-36-25-040Z-272465bb-4484-4413-a8b5-65623df19b42",
+        "readbackPath": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/formal/formal-runs/2026-10-06T02-36-25-040Z-272465bb-4484-4413-a8b5-65623df19b42/readback.json",
+        "importedCardId": "nbZ1c9GI_sGU6FUKDd9-M",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/native-cards/imports?fileName=role.zip",
+            "headers": {
+              "content-type": "application/zip"
+            },
+            "bodyReference": "request-bodies/000.bin",
+            "bodyByteLength": 103136,
+            "statusCode": 200
+          },
+          {
+            "method": "POST",
+            "path": "/native-cards/imports/nzx9dfa_CLCJzbT7_SBwj/confirm",
+            "headers": {},
+            "statusCode": 201
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/nbZ1c9GI_sGU6FUKDd9-M/file?path=character.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/nbZ1c9GI_sGU6FUKDd9-M/file?path=data%2Fparse.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/nbZ1c9GI_sGU6FUKDd9-M/file?path=data%2Fsource.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/nbZ1c9GI_sGU6FUKDd9-M/file?path=manifest.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/nbZ1c9GI_sGU6FUKDd9-M/file?path=openings.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/nbZ1c9GI_sGU6FUKDd9-M/file?path=openings%2Ffragment.txt",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/nbZ1c9GI_sGU6FUKDd9-M/file?path=openings%2Fsource.txt",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/nbZ1c9GI_sGU6FUKDd9-M/file?path=regex%2Ftest.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/nbZ1c9GI_sGU6FUKDd9-M/file?path=state%2Finitial%2Fsource.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/nbZ1c9GI_sGU6FUKDd9-M/file?path=state%2Fschema.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/nbZ1c9GI_sGU6FUKDd9-M/file?path=worldbooks%2Ftest%2Fbook.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/nbZ1c9GI_sGU6FUKDd9-M/file?path=worldbooks%2Ftest%2Fentries%2F0.json",
+            "headers": {},
+            "statusCode": 200
+          }
+        ],
+        "zipRead": {
+          "status": "passed",
+          "fileCount": 12
+        },
+        "schemaValidation": {
+          "status": "passed",
+          "valid": true,
+          "issues": []
+        },
+        "diagnostics": [],
+        "readback": {
+          "status": "passed",
+          "fileCount": 12,
+          "failedPaths": []
+        }
+      },
+      "stderr": ""
+    },
+    {
+      "command": "resume",
+      "exitCode": 0,
+      "result": {
+        "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/task.json",
+        "sourceFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/source.json",
+        "originalSourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/IVORY_七色光_v1.6.51.png",
+        "packageDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/package",
+        "outputDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB",
+        "artifacts": [
+          "formal",
+          "pack-95bnll",
+          "package",
+          "read-content.txt",
+          "read-lines.json",
+          "role.zip",
+          "source.json",
+          "task.json",
+          "validation-OAPMZ7",
+          "validation-sVJmn0"
+        ]
+      },
+      "stderr": ""
+    }
+  ]
+}

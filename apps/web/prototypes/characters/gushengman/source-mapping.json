@@ -1,0 +1,51 @@
+{
+  "source": {
+    "card": "source-card.json",
+    "galScript": "source-card.json#/data/extensions/tavern_helper/scripts/2",
+    "variableSchema": "source-card.json#/data/extensions/tavern_helper/scripts/0",
+    "assetDictionary": "source-card.json#/data/character_book/entries/19"
+  },
+  "counts": {
+    "sprites": 15,
+    "backgrounds": 116,
+    "cgs": 14,
+    "bgms": 4
+  },
+  "supportedCommands": [
+    "bg",
+    "show",
+    "alter",
+    "hide",
+    "leave",
+    "hide_all",
+    "cg",
+    "hide_cg",
+    "bgm",
+    "stop_bgm",
+    "action",
+    "choice",
+    "effect",
+    "wait"
+  ],
+  "supportedActions": [
+    "shake",
+    "jump_up",
+    "jump_down",
+    "near",
+    "away"
+  ],
+  "runtimeAdaptations": [
+    "Saved floor text is read through api.messages.getFloor and its display record through api.variables.getFloor.",
+    "Active main-run text is rendered from api.messages.onTextStream; job streams do not replace the scene.",
+    "Choices and the custom input submit through api.chat.send after api.history.latest.",
+    "Runtime media channels replace the source script global Audio element.",
+    "Cancellable Runtime timers implement the source typewriter interaction and allow a stage click to reveal the current paragraph; Skip jumps to the last paragraph and reveals its complete text.",
+    "The 14 source CG aliases use fixed Runtime-registered gallery slots and unlock when their CG command is rendered.",
+    "The source display sliders map to fixed CSS size classes for the current Runtime instance."
+  ],
+  "differences": [
+    "CG gallery unlocks and display slider values last for the current Runtime instance because the package API does not expose package-owned persistent UI storage.",
+    "The source BGM progress scrubber is omitted because the media API exposes play, pause, and stop but no seek or duration interface.",
+    "Unknown aliases remain hidden and produce a user-facing message; the package maps every alias declared by the source asset dictionary."
+  ]
+}

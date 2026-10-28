@@ -1,0 +1,3773 @@
+import { sql } from "drizzle-orm";
+import {
+  index,
+  integer,
+  real,
+  sqliteTable,
+  text,
+  uniqueIndex,
+  type AnySQLiteColumn,
+} from "drizzle-orm/sqlite-core";
+
+export const accounts = sqliteTable("account", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  role: text("role", { enum: ["admin", "user"] })
+    .notNull()
+    .default("user"),
+  status: text("status", { enum: ["active", "disabled"] })
+    .notNull()
+    .default("active"),
+  isDefault: integer("is_default", { mode: "boolean" })
+    .notNull()
+    .default(false),
+  createdAt: integer("created_at").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+});
+
+export const workspaces = sqliteTable(
+  "workspace",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    name: text("name").notNull(),
+    kind: text("kind", { enum: ["default", "manual"] })
+      .notNull()
+      .default("default"),
+    isDefault: integer("is_default", { mode: "boolean" })
+      .notNull()
+      .default(false),
+    status: text("status", { enum: ["active", "archived"] })
+      .notNull()
+      .default("active"),
+    settingsJson: text("settings_json").notNull().default("{}"),
+    archivedAt: integer("archived_at"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountUpdatedIdx: index("workspace_account_updated_idx").on(
+      table.accountId,
+      table.updatedAt,
+    ),
+    accountDefaultUnique: uniqueIndex("workspace_account_default_uq")
+      .on(table.accountId)
+      .where(sql`${table.isDefault} = 1`),
+  }),
+);
+
+export const projects = sqliteTable(
+  "project",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "restrict" }),
+    name: text("name").notNull(),
+    description: text("description"),
+    kind: text("kind", { enum: ["session_default", "manual"] })
+      .notNull()
+      .default("session_default"),
+    status: text("status", { enum: ["active", "archived"] })
+      .notNull()
+      .default("active"),
+    settingsOverrideJson: text("settings_override_json")
+      .notNull()
+      .default("{}"),
+    archivedAt: integer("archived_at"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountWorkspaceUpdatedIdx: index(
+      "project_account_workspace_updated_idx",
+    ).on(table.accountId, table.workspaceId, table.updatedAt),
+    workspaceUpdatedIdx: index("project_workspace_updated_idx").on(
+      table.workspaceId,
+      table.updatedAt,
+    ),
+    accountStatusUpdatedIdx: index("project_account_status_updated_idx").on(
+      table.accountId,
+      table.status,
+      table.updatedAt,
+    ),
+  }),
+);
+
+export const projectEventSequences = sqliteTable("project_event_sequence", {
+  projectId: text("project_id")
+    .primaryKey()
+    .references(() => projects.id, { onDelete: "restrict" }),
+  currentSequence: integer("current_sequence").notNull().default(0),
+  updatedAt: integer("updated_at").notNull(),
+});
+
+export const clients = sqliteTable(
+  "client",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    name: text("name").notNull(),
+    kind: text("kind", {
+      enum: ["basic", "advanced", "deriver", "worker", "custom"],
+    })
+      .notNull()
+      .default("custom"),
+    status: text("status", { enum: ["active", "disabled"] })
+      .notNull()
+      .default("active"),
+    isDefault: integer("is_default", { mode: "boolean" })
+      .notNull()
+      .default(false),
+    metadataJson: text("metadata_json").notNull().default("{}"),
+    // WP-B2：显式 capability override（JSON array）。NULL 表示按 client kind 默认模板解析。
+    capabilitiesJson: text("capabilities_json"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountStatusIdx: index("client_account_status_idx").on(
+      table.accountId,
+      table.status,
+      table.createdAt,
+    ),
+    accountKindIdx: index("client_account_kind_idx").on(
+      table.accountId,
+      table.kind,
+      table.createdAt,
+    ),
+    accountDefaultUnique: uniqueIndex("client_account_default_uq")
+      .on(table.accountId)
+      .where(sql`${table.isDefault} = 1`),
+  }),
+);
+
+export const clientApiKeys = sqliteTable(
+  "client_api_key",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    clientId: text("client_id")
+      .notNull()
+      .references(() => clients.id, { onDelete: "cascade" }),
+    name: text("name"),
+    keyPrefix: text("key_prefix").notNull(),
+    keyHash: text("key_hash").notNull(),
+    status: text("status", { enum: ["active", "revoked"] })
+      .notNull()
+      .default("active"),
+    lastUsedAt: integer("last_used_at"),
+    expiresAt: integer("expires_at"),
+    // WP-B2：API Key 的最小 scope 声明（JSON array）。NULL 表示继承所属 Client 的全部有效能力。
+    scopesJson: text("scopes_json"),
+    // WP-B2：rotation 溯源。记录本 key 由哪个旧 key 轮换而来。
+    rotatedFromId: text("rotated_from_id"),
+    rotatedAt: integer("rotated_at"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    keyHashUnique: uniqueIndex("client_api_key_hash_uq").on(table.keyHash),
+    clientStatusIdx: index("client_api_key_client_status_idx").on(
+      table.clientId,
+      table.status,
+      table.createdAt,
+    ),
+    accountStatusIdx: index("client_api_key_account_status_idx").on(
+      table.accountId,
+      table.status,
+      table.createdAt,
+    ),
+  }),
+);
+
+export const projectMemberships = sqliteTable(
+  "project_membership",
+  {
+    id: text("id").primaryKey(),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "restrict" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "restrict" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    role: text("role", { enum: ["owner", "observer", "deriver"] }).notNull(),
+    status: text("status", { enum: ["active", "removed"] })
+      .notNull()
+      .default("active"),
+    createdByAccountId: text("created_by_account_id").references(
+      () => accounts.id,
+      { onDelete: "set null" },
+    ),
+    subjectType: text("subject_type", { enum: ["account", "client"] }),
+    subjectId: text("subject_id"),
+    clientId: text("client_id").references(() => clients.id, {
+      onDelete: "set null",
+    }),
+    createdByClientId: text("created_by_client_id").references(
+      () => clients.id,
+      { onDelete: "set null" },
+    ),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    projectSubjectUnique: uniqueIndex(
+      "project_membership_project_subject_uq",
+    ).on(table.projectId, table.subjectType, table.subjectId),
+    accountStatusIdx: index("project_membership_account_status_idx").on(
+      table.accountId,
+      table.status,
+    ),
+    projectRoleStatusIdx: index(
+      "project_membership_project_role_status_idx",
+    ).on(table.projectId, table.role, table.status),
+    workspaceAccountIdx: index("project_membership_workspace_account_idx").on(
+      table.workspaceId,
+      table.accountId,
+    ),
+    projectSubjectStatusIdx: index(
+      "project_membership_project_subject_status_idx",
+    ).on(table.projectId, table.subjectType, table.subjectId, table.status),
+    clientProjectStatusIdx: index(
+      "project_membership_client_project_status_idx",
+    ).on(table.clientId, table.projectId, table.status),
+  }),
+);
+
+export const accountUsers = sqliteTable(
+  "account_user",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "restrict",
+    }),
+    name: text("name").notNull(),
+    snapshotJson: text("snapshot_json").notNull(),
+    status: text("status", { enum: ["active", "disabled", "deleted"] })
+      .notNull()
+      .default("active"),
+    revision: integer("revision").notNull().default(0),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountUpdatedIdx: index("account_user_account_updated_idx").on(
+      table.accountId,
+      table.updatedAt,
+    ),
+    accountWorkspaceUpdatedIdx: index(
+      "account_user_account_workspace_updated_idx",
+    ).on(table.accountId, table.workspaceId, table.updatedAt),
+    accountNameUnique: uniqueIndex("account_user_account_name_uq").on(
+      table.accountId,
+      table.name,
+    ),
+  }),
+);
+
+export const characters = sqliteTable(
+  "character",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    source: text("source").notNull().default("sillytavern"),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "restrict",
+    }),
+    status: text("status", { enum: ["active", "deleted"] })
+      .notNull()
+      .default("active"),
+    deletedAt: integer("deleted_at"),
+    revision: integer("revision").notNull().default(0),
+    latestVersionNo: integer("latest_version_no").notNull().default(0),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountUpdatedIdx: index("character_account_updated_idx").on(
+      table.accountId,
+      table.updatedAt,
+    ),
+    accountWorkspaceUpdatedIdx: index(
+      "character_account_workspace_updated_idx",
+    ).on(table.accountId, table.workspaceId, table.updatedAt),
+  }),
+);
+
+export const characterVersions = sqliteTable(
+  "character_version",
+  {
+    id: text("id").primaryKey(),
+    characterId: text("character_id")
+      .notNull()
+      .references(() => characters.id, { onDelete: "cascade" }),
+    versionNo: integer("version_no").notNull(),
+    dataJson: text("data_json").notNull(),
+    contentHash: text("content_hash").notNull(),
+    sourceArtifactJson: text("source_artifact_json"),
+    sourceArtifactFormat: text("source_artifact_format"),
+    sourceArtifactDigest: text("source_artifact_digest"),
+    createdByOperationId: text("created_by_operation_id"),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    characterVersionUnique: uniqueIndex("character_version_character_no_uq").on(
+      table.characterId,
+      table.versionNo,
+    ),
+    characterCreatedAtIdx: index("character_version_character_created_idx").on(
+      table.characterId,
+      table.createdAt,
+    ),
+  }),
+);
+
+export const sessions = sqliteTable(
+  "session",
+  {
+    id: text("id").primaryKey(),
+    title: text("title"),
+    characterId: text("character_id").references(() => characters.id, {
+      onDelete: "set null",
+    }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "restrict",
+    }),
+    projectId: text("project_id").references(() => projects.id, {
+      onDelete: "restrict",
+    }),
+    characterVersionId: text("character_version_id").references(
+      () => characterVersions.id,
+      { onDelete: "set null" },
+    ),
+    characterSnapshotJson: text("character_snapshot_json"),
+    characterSyncPolicy: text("character_sync_policy", {
+      enum: ["pin", "manual", "force"],
+    })
+      .notNull()
+      .default("pin"),
+    userId: text("user_id").references(() => accountUsers.id, {
+      onDelete: "set null",
+    }),
+    userSnapshotJson: text("user_snapshot_json"),
+    status: text("status", {
+      enum: [
+        "active",
+        "archived",
+        "finalized",
+        "discarded",
+        "expired",
+        "cancelled",
+      ],
+    })
+      .notNull()
+      .default("active"),
+    kind: text("kind", { enum: ["default", "temporary"] })
+      .notNull()
+      .default("default"),
+    purpose: text("purpose"),
+    temporarySourceSessionId: text("temporary_source_session_id"),
+    temporarySnapshotDigest: text("temporary_snapshot_digest"),
+    retentionPolicy: text("retention_policy", {
+      enum: ["delete_on_finalize", "ttl", "keep_for_debug"],
+    }),
+    visibility: text("visibility", { enum: ["internal", "client_visible"] }),
+    expiresAt: integer("expires_at"),
+    finalizedAt: integer("finalized_at"),
+    discardedAt: integer("discarded_at"),
+    cancelledAt: integer("cancelled_at"),
+    cleanedAt: integer("cleaned_at"),
+    lastActivityAt: integer("last_activity_at").notNull().default(0),
+    presetId: text("preset_id"),
+    regexProfileId: text("regex_profile_id"),
+    worldbookProfileId: text("worldbook_profile_id"),
+    deepBinding: integer("deep_binding", { mode: "boolean" })
+      .notNull()
+      .default(false),
+    presetVersionId: text("preset_version_id"),
+    worldbookVersionId: text("worldbook_version_id"),
+    regexProfileVersionId: text("regex_profile_version_id"),
+    modelProvider: text("model_provider"),
+    modelName: text("model_name"),
+    modelParamsJson: text("model_params_json"),
+    promptMode: text("prompt_mode", {
+      enum: ["compat_strict", "compat_plus", "native"],
+    }),
+    metadataJson: text("metadata_json"),
+    roleModelCapabilitiesSnapshotJson: text(
+      "role_model_capabilities_snapshot_json",
+    ),
+    // SC2-10（批次四）：会话绑定的工具策略预设 key（project 级预设）。
+    // nullable —— 为 NULL 时沿用原有工具策略解析，不启用预设 overlay（存量会话完全惰性）。
+    toolPresetKey: text("tool_preset_key"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountWorkspaceUpdatedIdx: index(
+      "session_account_workspace_updated_idx",
+    ).on(table.accountId, table.workspaceId, table.updatedAt),
+    accountProjectUpdatedIdx: index("session_account_project_updated_idx").on(
+      table.accountId,
+      table.projectId,
+      table.updatedAt,
+    ),
+    projectUpdatedIdx: index("session_project_updated_idx").on(
+      table.projectId,
+      table.updatedAt,
+    ),
+    accountKindUpdatedIdx: index("session_account_kind_updated_idx").on(
+      table.accountId,
+      table.kind,
+      table.updatedAt,
+    ),
+    sourceSessionIdx: index("session_temporary_source_session_idx").on(
+      table.temporarySourceSessionId,
+    ),
+  }),
+);
+
+export const sessionBranches = sqliteTable(
+  "session_branch",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    branchId: text("branch_id").notNull(),
+    sourceFloorId: text("source_floor_id").references(() => floors.id, {
+      onDelete: "set null",
+    }),
+    sourceBranchId: text("source_branch_id"),
+    assetBindingDeepBinding: integer("asset_binding_deep_binding", {
+      mode: "boolean",
+    }),
+    assetBindingPresetId: text("asset_binding_preset_id").references(
+      () => presets.id,
+      { onDelete: "set null" },
+    ),
+    assetBindingPresetVersionId: text(
+      "asset_binding_preset_version_id",
+    ).references(() => presetVersions.id, { onDelete: "set null" }),
+    assetBindingWorldbookProfileId: text(
+      "asset_binding_worldbook_profile_id",
+    ).references(() => worldbooks.id, { onDelete: "set null" }),
+    assetBindingWorldbookVersionId: text(
+      "asset_binding_worldbook_version_id",
+    ).references(() => worldbookVersions.id, { onDelete: "set null" }),
+    assetBindingRegexProfileId: text(
+      "asset_binding_regex_profile_id",
+    ).references(() => regexProfiles.id, { onDelete: "set null" }),
+    assetBindingRegexProfileVersionId: text(
+      "asset_binding_regex_profile_version_id",
+    ).references(() => regexProfileVersions.id, { onDelete: "set null" }),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountSessionBranchUnique: uniqueIndex(
+      "session_branch_account_session_branch_uq",
+    ).on(table.accountId, table.sessionId, table.branchId),
+    accountSessionCreatedIdx: index(
+      "session_branch_account_session_created_idx",
+    ).on(table.accountId, table.sessionId, table.createdAt),
+    accountSessionBranchCreatedIdx: index(
+      "session_branch_account_session_branch_created_idx",
+    ).on(table.accountId, table.sessionId, table.branchId, table.createdAt),
+  }),
+);
+
+export const floors = sqliteTable(
+  "floor",
+  {
+    id: text("id").primaryKey(),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    floorNo: integer("floor_no").notNull(),
+    branchId: text("branch_id").notNull().default("main"),
+    parentFloorId: text("parent_floor_id"),
+    supersededAt: integer("superseded_at"),
+    supersededByFloorId: text("superseded_by_floor_id"),
+    state: text("state", {
+      enum: ["draft", "generating", "committed", "failed"],
+    })
+      .notNull()
+      .default("draft"),
+    metadataJson: text("metadata_json"),
+    tokenIn: integer("token_in").notNull().default(0),
+    tokenOut: integer("token_out").notNull().default(0),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    sessionFloorBranchLiveUnique: uniqueIndex("floor_session_no_branch_live_uq")
+      .on(table.sessionId, table.floorNo, table.branchId)
+      .where(sql`${table.supersededAt} IS NULL`),
+    floorHistoryLookupIdx: index("floor_session_branch_state_no_idx").on(
+      table.sessionId,
+      table.branchId,
+      table.state,
+      table.floorNo,
+    ),
+    floorLiveHistoryLookupIdx: index("floor_session_branch_live_state_no_idx")
+      .on(table.sessionId, table.branchId, table.state, table.floorNo)
+      .where(sql`${table.supersededAt} IS NULL`),
+  }),
+);
+
+export const floorRunStates = sqliteTable(
+  "floor_run_state",
+  {
+    floorId: text("floor_id")
+      .primaryKey()
+      .references(() => floors.id, { onDelete: "cascade" }),
+    runId: text("run_id").notNull(),
+    runType: text("run_type", {
+      enum: [
+        "respond",
+        "regenerate_page",
+        "retry_turn",
+        "retry_step",
+        "edit_and_regenerate",
+      ],
+    }).notNull(),
+    status: text("status", {
+      enum: ["running", "completed", "failed", "cancelled"],
+    }).notNull(),
+    phase: text("phase", {
+      enum: [
+        "input_recorded",
+        "semantic_resolved",
+        "prechecked",
+        "prompt_assembled",
+        "page_generating",
+        "candidate_generated",
+        "verifier_checked",
+        "transaction_prepared",
+        "transaction_committed",
+        "post_commit_scheduled",
+      ],
+    }).notNull(),
+    publicPhase: text("public_phase", {
+      enum: [
+        "preparing",
+        "generating",
+        "verifying",
+        "committing",
+        "post_processing",
+      ],
+    }).notNull(),
+    phaseSeq: integer("phase_seq").notNull().default(0),
+    attemptNo: integer("attempt_no").notNull().default(1),
+    pendingOutputJson: text("pending_output_json"),
+    verifierJson: text("verifier_json"),
+    errorJson: text("error_json"),
+    startedAt: integer("started_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+    completedAt: integer("completed_at"),
+  },
+  (table) => ({
+    statusUpdatedIdx: index("floor_run_state_status_updated_idx").on(
+      table.status,
+      table.updatedAt,
+    ),
+    runIdIdx: index("floor_run_state_run_id_idx").on(table.runId),
+  }),
+);
+
+export const messagePages = sqliteTable(
+  "message_page",
+  {
+    id: text("id").primaryKey(),
+    floorId: text("floor_id")
+      .notNull()
+      .references(() => floors.id, { onDelete: "cascade" }),
+    pageNo: integer("page_no").notNull(),
+    pageKind: text("page_kind", {
+      enum: ["input", "output", "mixed"],
+    }).notNull(),
+    isActive: integer("is_active", { mode: "boolean" }).notNull().default(true),
+    version: integer("version").notNull().default(1),
+    checksum: text("checksum"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    floorPageVersionUnique: uniqueIndex("message_page_floor_no_version_uq").on(
+      table.floorId,
+      table.pageNo,
+      table.version,
+    ),
+    floorActivePageIdx: index("message_page_floor_active_no_idx").on(
+      table.floorId,
+      table.isActive,
+      table.pageNo,
+    ),
+    floorActiveSlotUnique: uniqueIndex("message_page_floor_no_active_uq")
+      .on(table.floorId, table.pageNo)
+      .where(sql`${table.isActive} = 1`),
+  }),
+);
+
+export const messages = sqliteTable(
+  "message",
+  {
+    id: text("id").primaryKey(),
+    pageId: text("page_id")
+      .notNull()
+      .references(() => messagePages.id, { onDelete: "cascade" }),
+    seq: integer("seq").notNull(),
+    role: text("role", {
+      enum: ["user", "assistant", "system", "narrator"],
+    }).notNull(),
+    content: text("content").notNull(),
+    contentFormat: text("content_format", {
+      enum: ["text", "markdown", "json"],
+    })
+      .notNull()
+      .default("text"),
+    tokenCount: integer("token_count").notNull().default(0),
+    isHidden: integer("is_hidden", { mode: "boolean" })
+      .notNull()
+      .default(false),
+    source: text("source"),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    pageSeqUnique: uniqueIndex("message_page_seq_uq").on(
+      table.pageId,
+      table.seq,
+    ),
+    pageVisibleSeqIdx: index("message_page_hidden_seq_idx").on(
+      table.pageId,
+      table.isHidden,
+      table.seq,
+    ),
+  }),
+);
+
+export const variables = sqliteTable(
+  "variable",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    scope: text("scope", {
+      enum: ["global", "chat", "floor", "branch", "page"],
+    }).notNull(),
+    scopeId: text("scope_id").notNull(),
+    key: text("key").notNull(),
+    valueJson: text("value_json").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountScopeScopeIdKeyUnique: uniqueIndex(
+      "variable_account_scope_scope_id_key_uq",
+    ).on(table.accountId, table.scope, table.scopeId, table.key),
+    accountScopeScopeIdUpdatedIdx: index(
+      "variable_account_scope_scope_id_updated_idx",
+    ).on(table.accountId, table.scope, table.scopeId, table.updatedAt),
+    accountScopeUpdatedIdx: index("variable_account_scope_updated_idx").on(
+      table.accountId,
+      table.scope,
+      table.updatedAt,
+    ),
+  }),
+);
+
+export const pageStagedWrites = sqliteTable(
+  "page_staged_write",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    branchId: text("branch_id").notNull(),
+    floorId: text("floor_id")
+      .notNull()
+      .references(() => floors.id, { onDelete: "cascade" }),
+    pageId: text("page_id")
+      .notNull()
+      .references(() => messagePages.id, { onDelete: "cascade" }),
+    sourceKind: text("source_kind").notNull().default("temporary_conversation"),
+    sourceSessionId: text("source_session_id").references(() => sessions.id, {
+      onDelete: "set null",
+    }),
+    sourcePageId: text("source_page_id").references(() => messagePages.id, {
+      onDelete: "set null",
+    }),
+    actorClientId: text("actor_client_id").references(() => clients.id, {
+      onDelete: "set null",
+    }),
+    content: text("content").notNull(),
+    contentFormat: text("content_format", {
+      enum: ["text", "markdown", "json"],
+    })
+      .notNull()
+      .default("text"),
+    reason: text("reason").notNull(),
+    status: text("status", {
+      enum: ["staged", "accepted", "applied", "discarded"],
+    })
+      .notNull()
+      .default("staged"),
+    metadataJson: text("metadata_json").notNull().default("{}"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+    appliedAt: integer("applied_at"),
+    discardedAt: integer("discarded_at"),
+  },
+  (table) => ({
+    pageStatusCreatedIdx: index("page_staged_write_page_status_created_idx").on(
+      table.pageId,
+      table.status,
+      table.createdAt,
+    ),
+    floorCreatedIdx: index("page_staged_write_floor_created_idx").on(
+      table.floorId,
+      table.createdAt,
+    ),
+    sourceSessionCreatedIdx: index(
+      "page_staged_write_source_session_created_idx",
+    ).on(table.sourceSessionId, table.createdAt),
+    accountSessionBranchCreatedIdx: index(
+      "page_staged_write_account_session_branch_created_idx",
+    ).on(table.accountId, table.sessionId, table.branchId, table.createdAt),
+  }),
+);
+
+export const pageStagedVariableWrites = sqliteTable(
+  "page_staged_variable_write",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    branchId: text("branch_id").notNull(),
+    floorId: text("floor_id")
+      .notNull()
+      .references(() => floors.id, { onDelete: "cascade" }),
+    pageId: text("page_id")
+      .notNull()
+      .references(() => messagePages.id, { onDelete: "cascade" }),
+    key: text("key").notNull(),
+    op: text("op", { enum: ["set", "delete"] }).notNull(),
+    valueJson: text("value_json"),
+    intent: text("intent", {
+      enum: ["page_only", "promote_to_floor_on_accept"],
+    }).notNull(),
+    conflictPolicy: text("conflict_policy", {
+      enum: ["replace", "if_absent"],
+    }).notNull(),
+    sourceKind: text("source_kind").notNull().default("unknown"),
+    actorClientId: text("actor_client_id").references(() => clients.id, {
+      onDelete: "set null",
+    }),
+    sourceJson: text("source_json").notNull().default("{}"),
+    evidenceJson: text("evidence_json").notNull().default("{}"),
+    reason: text("reason").notNull(),
+    status: text("status", {
+      enum: [
+        "staged",
+        "accepted_page_only",
+        "promoted",
+        "rejected",
+        "discarded",
+        "rerouted_to_session_state",
+      ],
+    }).notNull(),
+    decisionCode: text("decision_code", {
+      enum: [
+        "source_page_missing",
+        "source_page_not_output",
+        "source_page_not_active",
+        "source_page_superseded",
+        "source_page_scope_mismatch",
+        "rerouted_to_session_state",
+        "policy_forbidden",
+        "promotion_allowed",
+      ],
+    }),
+    decisionReason: text("decision_reason"),
+    linkedSessionStateMutationId: text(
+      "linked_session_state_mutation_id",
+    ).references((): AnySQLiteColumn => sessionStateMutations.id, {
+      onDelete: "set null",
+    }),
+    createdAt: integer("created_at").notNull(),
+    resolvedAt: integer("resolved_at"),
+  },
+  (table) => ({
+    pageStatusCreatedIdx: index(
+      "page_staged_variable_write_page_status_created_idx",
+    ).on(table.pageId, table.status, table.createdAt),
+    floorCreatedIdx: index("page_staged_variable_write_floor_created_idx").on(
+      table.floorId,
+      table.createdAt,
+    ),
+    accountSessionBranchCreatedIdx: index(
+      "page_staged_variable_write_account_session_branch_created_idx",
+    ).on(table.accountId, table.sessionId, table.branchId, table.createdAt),
+  }),
+);
+
+export const variablePromotionTraces = sqliteTable(
+  "variable_promotion_trace",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    branchId: text("branch_id").notNull(),
+    floorId: text("floor_id")
+      .notNull()
+      .references(() => floors.id, { onDelete: "cascade" }),
+    pageId: text("page_id").references(() => messagePages.id, {
+      onDelete: "cascade",
+    }),
+    stagedWriteId: text("staged_write_id").references(
+      () => pageStagedVariableWrites.id,
+      { onDelete: "set null" },
+    ),
+    key: text("key").notNull(),
+    fromScope: text("from_scope", {
+      enum: ["page", "floor", "branch", "chat"],
+    }).notNull(),
+    fromScopeId: text("from_scope_id").notNull(),
+    toScope: text("to_scope", {
+      enum: ["floor", "branch", "chat", "global", "session_state"],
+    }).notNull(),
+    toScopeId: text("to_scope_id").notNull(),
+    conflictPolicy: text("conflict_policy", {
+      enum: ["replace", "if_absent"],
+    }).notNull(),
+    sourceVariableId: text("source_variable_id"),
+    targetVariableId: text("target_variable_id"),
+    sourceKind: text("source_kind").notNull().default("unknown"),
+    actorClientId: text("actor_client_id").references(() => clients.id, {
+      onDelete: "set null",
+    }),
+    sourceJson: text("source_json").notNull().default("{}"),
+    evidenceJson: text("evidence_json").notNull().default("{}"),
+    decisionCode: text("decision_code", {
+      enum: [
+        "source_page_missing",
+        "source_page_not_output",
+        "source_page_not_active",
+        "source_page_superseded",
+        "source_page_scope_mismatch",
+        "rerouted_to_session_state",
+        "policy_forbidden",
+        "promotion_allowed",
+      ],
+    }),
+    decisionReason: text("decision_reason"),
+    linkedSessionStateMutationId: text(
+      "linked_session_state_mutation_id",
+    ).references(() => sessionStateMutations.id, { onDelete: "set null" }),
+    valueJson: text("value_json").notNull(),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    pageCreatedIdx: index("variable_promotion_trace_page_created_idx").on(
+      table.pageId,
+      table.createdAt,
+    ),
+    floorCreatedIdx: index("variable_promotion_trace_floor_created_idx").on(
+      table.floorId,
+      table.createdAt,
+    ),
+    accountSessionBranchCreatedIdx: index(
+      "variable_promotion_trace_account_session_branch_created_idx",
+    ).on(table.accountId, table.sessionId, table.branchId, table.createdAt),
+    stagedWriteIdx: index("variable_promotion_trace_staged_write_idx").on(
+      table.stagedWriteId,
+    ),
+  }),
+);
+
+export const pageStagedMemoryProposalBatches = sqliteTable(
+  "page_staged_memory_proposal_batch",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    proposalBatchId: text("proposal_batch_id").notNull(),
+    pageId: text("page_id")
+      .notNull()
+      .references(() => messagePages.id, { onDelete: "cascade" }),
+    floorId: text("floor_id")
+      .notNull()
+      .references(() => floors.id, { onDelete: "cascade" }),
+    branchId: text("branch_id"),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    runtimeMode: text("runtime_mode", {
+      enum: ["legacy_sync", "async_primary"],
+    }).notNull(),
+    strategy: text("strategy", {
+      enum: ["none", "single_summary", "dual_summary", "direct_items"],
+    }),
+    sourceKind: text("source_kind").notNull().default("memory_runtime"),
+    actorClientId: text("actor_client_id").references(() => clients.id, {
+      onDelete: "set null",
+    }),
+    sourceJson: text("source_json").notNull().default("{}"),
+    evidenceJson: text("evidence_json").notNull().default("{}"),
+    proposalStatus: text("proposal_status", {
+      enum: ["proposed", "promoted", "rejected", "superseded"],
+    }).notNull(),
+    promotionStatus: text("promotion_status", {
+      enum: ["promoted", "rejected", "superseded"],
+    }),
+    decisionReason: text("decision_reason"),
+    decisionCode: text("decision_code", {
+      enum: [
+        "source_page_missing",
+        "source_page_not_output",
+        "source_page_not_active",
+        "source_page_superseded",
+        "source_page_scope_mismatch",
+        "rerouted_to_session_state",
+        "policy_forbidden",
+        "promotion_allowed",
+      ],
+    }),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+    decidedAt: integer("decided_at"),
+  },
+  (table) => ({
+    proposalBatchUnique: uniqueIndex(
+      "page_staged_memory_proposal_batch_batch_uq",
+    ).on(table.proposalBatchId),
+    pageCreatedIdx: index(
+      "page_staged_memory_proposal_batch_page_created_idx",
+    ).on(table.pageId, table.createdAt),
+    floorCreatedIdx: index(
+      "page_staged_memory_proposal_batch_floor_created_idx",
+    ).on(table.floorId, table.createdAt),
+    promotionCreatedIdx: index(
+      "page_staged_memory_proposal_batch_promotion_created_idx",
+    ).on(table.promotionStatus, table.createdAt),
+  }),
+);
+
+export const pageStagedMemoryProposalItems = sqliteTable(
+  "page_staged_memory_proposal_item",
+  {
+    id: text("id").primaryKey(),
+    batchId: text("batch_id")
+      .notNull()
+      .references(() => pageStagedMemoryProposalBatches.id, {
+        onDelete: "cascade",
+      }),
+    memoryKind: text("memory_kind", {
+      enum: ["fact", "summary", "open_loop"],
+    }).notNull(),
+    operationKind: text("operation_kind", {
+      enum: [
+        "add_fact",
+        "update_fact",
+        "deprecate_fact",
+        "add_open_loop",
+        "resolve_open_loop",
+        "refresh_summary",
+      ],
+    }).notNull(),
+    targetScope: text("target_scope", {
+      enum: ["global", "chat", "branch", "floor"],
+    }).notNull(),
+    payloadJson: text("payload_json").notNull(),
+    importance: real("importance"),
+    reason: text("reason"),
+    evidenceJson: text("evidence_json").notNull().default("{}"),
+    status: text("status", {
+      enum: ["proposed", "promoted", "rejected", "superseded"],
+    }).notNull(),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    batchCreatedIdx: index(
+      "page_staged_memory_proposal_item_batch_created_idx",
+    ).on(table.batchId, table.createdAt),
+    batchStatusCreatedIdx: index(
+      "page_staged_memory_proposal_item_batch_status_created_idx",
+    ).on(table.batchId, table.status, table.createdAt),
+  }),
+);
+
+export const clientDataDomains = sqliteTable(
+  "client_data_domain",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    ownerType: text("owner_type", { enum: ["application", "plugin"] })
+      .notNull()
+      .default("application"),
+    ownerId: text("owner_id").notNull(),
+    domainName: text("domain_name").notNull(),
+    displayName: text("display_name"),
+    description: text("description"),
+    status: text("status", { enum: ["active", "suspended", "deleted"] })
+      .notNull()
+      .default("active"),
+    version: integer("version").notNull().default(1),
+    quotaMaxEntries: integer("quota_max_entries").notNull().default(10_000),
+    quotaMaxBytes: integer("quota_max_bytes").notNull().default(10_485_760),
+    currentEntryCount: integer("current_entry_count").notNull().default(0),
+    currentByteCount: integer("current_byte_count").notNull().default(0),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+    deletedAt: integer("deleted_at"),
+  },
+  (table) => ({
+    ownerNameUnique: uniqueIndex("client_data_domain_owner_name_uq")
+      .on(table.accountId, table.ownerType, table.ownerId, table.domainName)
+      .where(sql`${table.deletedAt} IS NULL`),
+    accountOwnerStatusIdx: index(
+      "client_data_domain_account_owner_status_idx",
+    ).on(table.accountId, table.ownerType, table.ownerId, table.status),
+  }),
+);
+
+export const clientDataCollections = sqliteTable(
+  "client_data_collection",
+  {
+    id: text("id").primaryKey(),
+    domainId: text("domain_id")
+      .notNull()
+      .references(() => clientDataDomains.id, { onDelete: "cascade" }),
+    collectionName: text("collection_name").notNull(),
+    description: text("description"),
+    defaultExpiresTtlMs: integer("default_expires_ttl_ms"),
+    maxItemSizeBytes: integer("max_item_size_bytes"),
+    version: integer("version").notNull().default(1),
+    metadataJson: text("metadata_json"),
+    itemCount: integer("item_count").notNull().default(0),
+    byteCount: integer("byte_count").notNull().default(0),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    domainNameUnique: uniqueIndex("client_data_collection_domain_name_uq").on(
+      table.domainId,
+      table.collectionName,
+    ),
+    domainUpdatedIdx: index("client_data_collection_domain_updated_idx").on(
+      table.domainId,
+      table.updatedAt,
+    ),
+  }),
+);
+
+export const clientDataItems = sqliteTable(
+  "client_data_item",
+  {
+    id: text("id").primaryKey(),
+    domainId: text("domain_id")
+      .notNull()
+      .references(() => clientDataDomains.id, { onDelete: "cascade" }),
+    collectionId: text("collection_id")
+      .notNull()
+      .references(() => clientDataCollections.id, { onDelete: "cascade" }),
+    itemKey: text("item_key").notNull(),
+    valueJson: text("value_json").notNull(),
+    byteSize: integer("byte_size").notNull(),
+    version: integer("version").notNull().default(1),
+    expiresAt: integer("expires_at"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    collectionKeyUnique: uniqueIndex("client_data_item_collection_key_uq").on(
+      table.collectionId,
+      table.itemKey,
+    ),
+    domainCollectionUpdatedIdx: index(
+      "client_data_item_domain_collection_updated_idx",
+    ).on(table.domainId, table.collectionId, table.updatedAt),
+    expiresIdx: index("client_data_item_expires_idx")
+      .on(table.expiresAt)
+      .where(sql`${table.expiresAt} IS NOT NULL`),
+  }),
+);
+
+export const clientDataDomainGrants = sqliteTable(
+  "client_data_domain_grant",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    domainId: text("domain_id")
+      .notNull()
+      .references(() => clientDataDomains.id, { onDelete: "cascade" }),
+    granteeOwnerType: text("grantee_owner_type", {
+      enum: ["application", "plugin"],
+    }).notNull(),
+    granteeOwnerId: text("grantee_owner_id").notNull(),
+    canRead: integer("can_read", { mode: "boolean" }).notNull().default(false),
+    canWrite: integer("can_write", { mode: "boolean" })
+      .notNull()
+      .default(false),
+    canDelete: integer("can_delete", { mode: "boolean" })
+      .notNull()
+      .default(false),
+    canList: integer("can_list", { mode: "boolean" }).notNull().default(false),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+    expiresAt: integer("expires_at"),
+  },
+  (table) => ({
+    domainGranteeUnique: uniqueIndex("client_data_domain_grant_unique_uq").on(
+      table.domainId,
+      table.granteeOwnerType,
+      table.granteeOwnerId,
+    ),
+    accountGranteeIdx: index("client_data_domain_grant_account_grantee_idx").on(
+      table.accountId,
+      table.granteeOwnerType,
+      table.granteeOwnerId,
+    ),
+  }),
+);
+
+export const clientDataAuditLogs = sqliteTable(
+  "client_data_audit_log",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    domainId: text("domain_id").references(() => clientDataDomains.id, {
+      onDelete: "set null",
+    }),
+    ownerType: text("owner_type", { enum: ["application", "plugin"] }),
+    ownerId: text("owner_id"),
+    actorType: text("actor_type").notNull(),
+    actorId: text("actor_id"),
+    action: text("action").notNull(),
+    targetType: text("target_type").notNull(),
+    targetId: text("target_id"),
+    requestId: text("request_id"),
+    metadataJson: text("metadata_json"),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    accountCreatedIdx: index("client_data_audit_log_account_created_idx").on(
+      table.accountId,
+      table.createdAt,
+    ),
+    domainCreatedIdx: index("client_data_audit_log_domain_created_idx").on(
+      table.domainId,
+      table.createdAt,
+    ),
+  }),
+);
+
+export const operationLogs = sqliteTable(
+  "operation_log",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    actorType: text("actor_type").notNull(),
+    actorId: text("actor_id"),
+    operationGroupId: text("operation_group_id"),
+    requestId: text("request_id"),
+    sourceType: text("source_type").notNull(),
+    action: text("action").notNull(),
+    status: text("status", {
+      enum: ["succeeded", "failed", "denied", "cancelled"],
+    }).notNull(),
+    sessionId: text("session_id"),
+    branchId: text("branch_id"),
+    floorId: text("floor_id"),
+    runId: text("run_id"),
+    targetType: text("target_type").notNull(),
+    targetId: text("target_id"),
+    beforeRefJson: text("before_ref_json"),
+    afterRefJson: text("after_ref_json"),
+    diffJson: text("diff_json"),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "set null",
+    }),
+    projectId: text("project_id").references(() => projects.id, {
+      onDelete: "set null",
+    }),
+    actorAccountId: text("actor_account_id").references(() => accounts.id, {
+      onDelete: "set null",
+    }),
+    actorClientId: text("actor_client_id").references(() => clients.id, {
+      onDelete: "set null",
+    }),
+    permissionAction: text("permission_action"),
+    result: text("result"),
+    reason: text("reason"),
+    metadataJson: text("metadata_json"),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    accountCreatedIdx: index("operation_log_account_created_idx").on(
+      table.accountId,
+      table.createdAt,
+    ),
+    sessionCreatedIdx: index("operation_log_session_created_idx").on(
+      table.sessionId,
+      table.createdAt,
+    ),
+    accountTargetCreatedIdx: index(
+      "operation_log_account_target_created_idx",
+    ).on(table.accountId, table.targetType, table.targetId, table.createdAt),
+    groupIdx: index("operation_log_group_idx").on(table.operationGroupId),
+    requestIdx: index("operation_log_request_idx").on(table.requestId),
+    floorCreatedIdx: index("operation_log_floor_created_idx").on(
+      table.floorId,
+      table.createdAt,
+    ),
+    runCreatedIdx: index("operation_log_run_created_idx").on(
+      table.runId,
+      table.createdAt,
+    ),
+    workspaceCreatedIdx: index("operation_log_workspace_created_idx").on(
+      table.workspaceId,
+      table.createdAt,
+    ),
+    projectCreatedIdx: index("operation_log_project_created_idx").on(
+      table.projectId,
+      table.createdAt,
+    ),
+    actorAccountCreatedIdx: index("operation_log_actor_account_created_idx").on(
+      table.actorAccountId,
+      table.createdAt,
+    ),
+    actorClientCreatedIdx: index("operation_log_actor_client_created_idx").on(
+      table.actorClientId,
+      table.createdAt,
+    ),
+    permissionActionCreatedIdx: index(
+      "operation_log_permission_action_created_idx",
+    ).on(table.permissionAction, table.createdAt),
+    resultCreatedIdx: index("operation_log_result_created_idx").on(
+      table.result,
+      table.createdAt,
+    ),
+  }),
+);
+
+export const committedContentManualRevisions = sqliteTable(
+  "committed_content_manual_revision",
+  {
+    id: text("id").primaryKey(),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    branchId: text("branch_id").notNull(),
+    floorId: text("floor_id")
+      .notNull()
+      .references(() => floors.id, { onDelete: "cascade" }),
+    pageId: text("page_id")
+      .notNull()
+      .references(() => messagePages.id, { onDelete: "cascade" }),
+    messageId: text("message_id")
+      .notNull()
+      .references(() => messages.id, { onDelete: "cascade" }),
+    requestedTargetKind: text("requested_target_kind", {
+      enum: ["message", "page"],
+    }).notNull(),
+    requestedTargetId: text("requested_target_id").notNull(),
+    action: text("action", { enum: ["edit", "delete"] }).notNull().default("edit"),
+    revisionNo: integer("revision_no").notNull(),
+    originalContent: text("original_content").notNull(),
+    previousContent: text("previous_content").notNull(),
+    editedContent: text("edited_content").notNull(),
+    reason: text("reason"),
+    actorType: text("actor_type", { enum: ["account", "client"] }).notNull(),
+    actorId: text("actor_id").notNull(),
+    actorAccountId: text("actor_account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    actorClientId: text("actor_client_id").references(() => clients.id, {
+      onDelete: "set null",
+    }),
+    operationLogId: text("operation_log_id").references(
+      () => operationLogs.id,
+      { onDelete: "cascade" },
+    ),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    messageRevisionUnique: uniqueIndex(
+      "committed_content_manual_revision_message_no_uq",
+    ).on(table.messageId, table.revisionNo),
+    operationLogUnique: uniqueIndex(
+      "committed_content_manual_revision_operation_log_uq",
+    ).on(table.operationLogId),
+    floorCreatedIdx: index(
+      "committed_content_manual_revision_floor_created_idx",
+    ).on(table.floorId, table.createdAt),
+    pageCreatedIdx: index(
+      "committed_content_manual_revision_page_created_idx",
+    ).on(table.pageId, table.createdAt),
+    sessionBranchCreatedIdx: index(
+      "committed_content_manual_revision_session_branch_created_idx",
+    ).on(table.sessionId, table.branchId, table.createdAt),
+  }),
+);
+
+export const projectEvents = sqliteTable(
+  "project_event",
+  {
+    id: text("id").primaryKey(),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "restrict" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "restrict" }),
+    sequence: integer("sequence").notNull(),
+    type: text("type").notNull(),
+    visibility: text("visibility", { enum: ["project", "owner", "internal"] })
+      .notNull()
+      .default("project"),
+    source: text("source", {
+      enum: ["api", "runtime_job", "migration", "system"],
+    })
+      .notNull()
+      .default("api"),
+    actorAccountId: text("actor_account_id").references(() => accounts.id, {
+      onDelete: "set null",
+    }),
+    actorClientId: text("actor_client_id").references(() => clients.id, {
+      onDelete: "set null",
+    }),
+    sessionId: text("session_id").references(() => sessions.id, {
+      onDelete: "set null",
+    }),
+    branchId: text("branch_id"),
+    floorId: text("floor_id").references(() => floors.id, {
+      onDelete: "set null",
+    }),
+    pageId: text("page_id").references(() => messagePages.id, {
+      onDelete: "set null",
+    }),
+    messageId: text("message_id").references(() => messages.id, {
+      onDelete: "set null",
+    }),
+    operationLogId: text("operation_log_id").references(
+      () => operationLogs.id,
+      { onDelete: "set null" },
+    ),
+    correlationId: text("correlation_id"),
+    causationEventId: text("causation_event_id").references(
+      (): AnySQLiteColumn => projectEvents.id,
+      { onDelete: "set null" },
+    ),
+    payloadJson: text("payload_json").notNull().default("{}"),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    projectSequenceIdx: index("project_event_project_sequence_idx").on(
+      table.projectId,
+      table.sequence,
+    ),
+    workspaceCreatedIdx: index("project_event_workspace_created_idx").on(
+      table.workspaceId,
+      table.createdAt,
+    ),
+    projectCreatedIdx: index("project_event_project_created_idx").on(
+      table.projectId,
+      table.createdAt,
+    ),
+    sessionSequenceIdx: index("project_event_session_sequence_idx").on(
+      table.sessionId,
+      table.sequence,
+    ),
+    projectTypeSequenceIdx: index("project_event_project_type_sequence_idx").on(
+      table.projectId,
+      table.type,
+      table.sequence,
+    ),
+    operationLogIdx: index("project_event_operation_log_idx").on(
+      table.operationLogId,
+    ),
+    projectSequenceUnique: uniqueIndex("project_event_project_sequence_uq").on(
+      table.projectId,
+      table.sequence,
+    ),
+    actorClientIdx: index("project_event_actor_client_idx").on(
+      table.actorClientId,
+      table.createdAt,
+    ),
+  }),
+);
+
+export const derivedOutputs = sqliteTable(
+  "derived_output",
+  {
+    id: text("id").primaryKey(),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "restrict" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "restrict" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    ownerAccountId: text("owner_account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    ownerClientId: text("owner_client_id").references(() => clients.id, {
+      onDelete: "set null",
+    }),
+    sourceSessionId: text("source_session_id").references(() => sessions.id, {
+      onDelete: "set null",
+    }),
+    sourceFloorId: text("source_floor_id").references(() => floors.id, {
+      onDelete: "set null",
+    }),
+    sourcePageId: text("source_page_id").references(() => messagePages.id, {
+      onDelete: "set null",
+    }),
+    domain: text("domain").notNull(),
+    valueJson: text("value_json").notNull().default("{}"),
+    status: text("status", { enum: ["draft", "published", "archived"] })
+      .notNull()
+      .default("draft"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    projectCreatedIdx: index("derived_output_project_created_idx").on(
+      table.projectId,
+      table.createdAt,
+    ),
+    projectDomainIdx: index("derived_output_project_domain_idx").on(
+      table.projectId,
+      table.domain,
+      table.createdAt,
+    ),
+    ownerProjectIdx: index("derived_output_owner_project_idx").on(
+      table.ownerAccountId,
+      table.projectId,
+      table.createdAt,
+    ),
+    sourceSessionIdx: index("derived_output_source_session_idx").on(
+      table.sourceSessionId,
+      table.createdAt,
+    ),
+    workspaceCreatedIdx: index("derived_output_workspace_created_idx").on(
+      table.workspaceId,
+      table.createdAt,
+    ),
+    ownerClientProjectIdx: index("derived_output_owner_client_project_idx").on(
+      table.ownerClientId,
+      table.projectId,
+      table.createdAt,
+    ),
+  }),
+);
+
+export const projectInboxItems = sqliteTable(
+  "project_inbox_item",
+  {
+    id: text("id").primaryKey(),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "restrict" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "restrict" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    senderAccountId: text("sender_account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    senderClientId: text("sender_client_id").references(() => clients.id, {
+      onDelete: "set null",
+    }),
+    type: text("type").notNull(),
+    title: text("title"),
+    payloadJson: text("payload_json").notNull().default("{}"),
+    sourceEventId: text("source_event_id").references(() => projectEvents.id, {
+      onDelete: "set null",
+    }),
+    sourceSessionId: text("source_session_id").references(() => sessions.id, {
+      onDelete: "set null",
+    }),
+    sourceFloorId: text("source_floor_id").references(() => floors.id, {
+      onDelete: "set null",
+    }),
+    sourcePageId: text("source_page_id").references(() => messagePages.id, {
+      onDelete: "set null",
+    }),
+    status: text("status", {
+      enum: ["pending", "accepted", "rejected", "archived"],
+    })
+      .notNull()
+      .default("pending"),
+    decidedByAccountId: text("decided_by_account_id").references(
+      () => accounts.id,
+      { onDelete: "set null" },
+    ),
+    decidedByClientId: text("decided_by_client_id").references(
+      () => clients.id,
+      { onDelete: "set null" },
+    ),
+    decidedAt: integer("decided_at"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    projectStatusCreatedIdx: index(
+      "project_inbox_project_status_created_idx",
+    ).on(table.projectId, table.status, table.createdAt),
+    projectCreatedIdx: index("project_inbox_project_created_idx").on(
+      table.projectId,
+      table.createdAt,
+    ),
+    senderProjectIdx: index("project_inbox_sender_project_idx").on(
+      table.senderAccountId,
+      table.projectId,
+      table.createdAt,
+    ),
+    workspaceCreatedIdx: index("project_inbox_workspace_created_idx").on(
+      table.workspaceId,
+      table.createdAt,
+    ),
+    senderClientProjectIdx: index("project_inbox_sender_client_project_idx").on(
+      table.senderClientId,
+      table.projectId,
+      table.createdAt,
+    ),
+    decidedClientIdx: index("project_inbox_decided_client_idx").on(
+      table.decidedByClientId,
+      table.decidedAt,
+    ),
+  }),
+);
+
+export const vcTags = sqliteTable(
+  "vc_tag",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    name: text("name").notNull(),
+    targetType: text("target_type", {
+      enum: ["floor", "asset_version"],
+    }).notNull(),
+    targetId: text("target_id").notNull(),
+    sessionId: text("session_id").references(() => sessions.id, {
+      onDelete: "set null",
+    }),
+    metadataJson: text("metadata_json"),
+    createdByOperationId: text("created_by_operation_id").references(
+      () => operationLogs.id,
+      { onDelete: "set null" },
+    ),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    accountNameUnique: uniqueIndex("vc_tag_account_name_uq").on(
+      table.accountId,
+      table.name,
+    ),
+    accountTargetIdx: index("vc_tag_account_target_idx").on(
+      table.accountId,
+      table.targetType,
+      table.targetId,
+    ),
+    accountSessionCreatedIdx: index("vc_tag_account_session_created_idx").on(
+      table.accountId,
+      table.sessionId,
+      table.createdAt,
+    ),
+    operationIdx: index("vc_tag_operation_idx").on(table.createdByOperationId),
+  }),
+);
+
+export const clientDataManagedDomains = sqliteTable(
+  "client_data_managed_domain",
+  {
+    domainId: text("domain_id")
+      .primaryKey()
+      .references(() => clientDataDomains.id, { onDelete: "cascade" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    managerKind: text("manager_kind", { enum: ["session_state"] }).notNull(),
+    hostType: text("host_type", { enum: ["session"] }).notNull(),
+    hostId: text("host_id").notNull(),
+    stateNamespace: text("state_namespace").notNull(),
+    requireCallerOwner: integer("require_caller_owner", { mode: "boolean" })
+      .notNull()
+      .default(true),
+    allowAutoCreateCollection: integer("allow_auto_create_collection", {
+      mode: "boolean",
+    })
+      .notNull()
+      .default(false),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountManagerHostNamespaceUnique: uniqueIndex(
+      "client_data_managed_domain_account_manager_host_namespace_uq",
+    ).on(
+      table.accountId,
+      table.managerKind,
+      table.hostType,
+      table.hostId,
+      table.stateNamespace,
+    ),
+    accountHostIdx: index("client_data_managed_domain_account_host_idx").on(
+      table.accountId,
+      table.hostType,
+      table.hostId,
+      table.stateNamespace,
+    ),
+  }),
+);
+
+export const sessionStateNamespaceRegistrations = sqliteTable(
+  "session_state_namespace_registration",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    domainId: text("domain_id")
+      .notNull()
+      .references(() => clientDataDomains.id, { onDelete: "cascade" }),
+    namespace: text("namespace").notNull(),
+    logicalOwnerType: text("logical_owner_type").notNull(),
+    logicalOwnerId: text("logical_owner_id").notNull(),
+    defaultVisibilityMode: text("default_visibility_mode", {
+      enum: ["session_shared", "branch_local", "fork_on_branch"],
+    }).notNull(),
+    defaultWriteMode: text("default_write_mode", {
+      enum: ["direct", "commit_bound"],
+    }).notNull(),
+    defaultReplaySafety: text("default_replay_safety", {
+      enum: ["safe", "confirm_on_replay", "never_auto_replay", "uncertain"],
+    }).notNull(),
+    clientWritable: integer("client_writable", { mode: "boolean" })
+      .notNull()
+      .default(true),
+    allowedWriteModesJson: text("allowed_write_modes_json")
+      .notNull()
+      .default("[]"),
+    supportsSnapshot: integer("supports_snapshot", { mode: "boolean" })
+      .notNull()
+      .default(true),
+    supportsDiff: integer("supports_diff", { mode: "boolean" })
+      .notNull()
+      .default(true),
+    replayPolicySource: text("replay_policy_source").notNull(),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountSessionNamespaceUnique: uniqueIndex(
+      "session_state_namespace_registration_account_session_namespace_uq",
+    ).on(table.accountId, table.sessionId, table.namespace),
+    accountSessionCreatedIdx: index(
+      "session_state_namespace_registration_account_session_created_idx",
+    ).on(table.accountId, table.sessionId, table.createdAt),
+    domainUnique: uniqueIndex(
+      "session_state_namespace_registration_domain_id_uq",
+    ).on(table.domainId),
+  }),
+);
+
+export const sessionStateMutations = sqliteTable(
+  "session_state_mutation",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    domainId: text("domain_id")
+      .notNull()
+      .references(() => clientDataDomains.id, { onDelete: "cascade" }),
+    stateNamespace: text("state_namespace").notNull(),
+    sourceKind: text("source_kind"),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    branchId: text("branch_id").notNull(),
+    sourceBranchId: text("source_branch_id"),
+    sourceFloorId: text("source_floor_id").references(() => floors.id, {
+      onDelete: "set null",
+    }),
+    sourcePageId: text("source_page_id").references(() => messagePages.id, {
+      onDelete: "set null",
+    }),
+    targetSlot: text("target_slot").notNull(),
+    actorClientId: text("actor_client_id").references(() => clients.id, {
+      onDelete: "set null",
+    }),
+    visibilityMode: text("visibility_mode", {
+      enum: ["session_shared", "branch_local", "fork_on_branch"],
+    }).notNull(),
+    writeMode: text("write_mode", {
+      enum: ["direct", "commit_bound"],
+    }).notNull(),
+    commitMode: text("commit_mode", {
+      enum: ["direct_public", "turn_bound", "variable_reroute"],
+    })
+      .notNull()
+      .default("turn_bound"),
+    replaySafety: text("replay_safety", {
+      enum: ["safe", "confirm_on_replay", "never_auto_replay", "uncertain"],
+    }).notNull(),
+    status: text("status", {
+      enum: ["staged", "applied", "discarded", "blocked", "uncertain"],
+    })
+      .notNull()
+      .default("staged"),
+    decisionStatus: text("decision_status", {
+      enum: ["accepted", "discarded", "blocked", "rerouted_to_session_state"],
+    })
+      .notNull()
+      .default("accepted"),
+    decisionReason: text("decision_reason"),
+    decisionCode: text("decision_code"),
+    requestId: text("request_id"),
+    runId: text("run_id"),
+    payloadJson: text("payload_json").notNull().default("{}"),
+    sourceSnapshotFloorId: text("source_snapshot_floor_id").references(
+      () => floors.id,
+      { onDelete: "set null" },
+    ),
+    liveHeadKey: text("live_head_key"),
+    linkedVariableStageId: text("linked_variable_stage_id").references(
+      (): AnySQLiteColumn => pageStagedVariableWrites.id,
+      { onDelete: "set null" },
+    ),
+    discardReason: text("discard_reason"),
+    blockedReason: text("blocked_reason"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+    appliedAt: integer("applied_at"),
+  },
+  (table) => ({
+    sessionBranchStatusCreatedIdx: index(
+      "session_state_mutation_session_branch_status_created_idx",
+    ).on(table.sessionId, table.branchId, table.status, table.createdAt),
+    sourceFloorIdx: index("session_state_mutation_source_floor_idx").on(
+      table.sourceFloorId,
+      table.status,
+      table.createdAt,
+    ),
+    sourcePageIdx: index("session_state_mutation_source_page_idx").on(
+      table.sourcePageId,
+      table.status,
+      table.createdAt,
+    ),
+    linkedVariableStageIdx: index(
+      "session_state_mutation_linked_variable_stage_idx",
+    ).on(table.linkedVariableStageId),
+    runIdx: index("session_state_mutation_run_idx").on(
+      table.runId,
+      table.createdAt,
+    ),
+  }),
+);
+
+export const memoryItems = sqliteTable(
+  "memory_item",
+  {
+    id: text("id").primaryKey(),
+    scope: text("scope", {
+      enum: ["global", "chat", "branch", "floor"],
+    }).notNull(),
+    scopeId: text("scope_id").notNull(),
+    type: text("type", { enum: ["fact", "summary", "open_loop"] }).notNull(),
+    summaryTier: text("summary_tier", { enum: ["micro", "macro"] }),
+    contentJson: text("content_json").notNull(),
+    factKey: text("fact_key"),
+    importance: real("importance").notNull().default(0.5),
+    confidence: real("confidence").notNull().default(1),
+    sourceFloorId: text("source_floor_id"),
+    sourceMessageId: text("source_message_id"),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    status: text("status", { enum: ["active", "deprecated"] })
+      .notNull()
+      .default("active"),
+    lifecycleStatus: text("lifecycle_status", {
+      enum: ["active", "compacted", "deprecated"],
+    })
+      .notNull()
+      .default("active"),
+    sourceJobId: text("source_job_id"),
+    tokenCountEstimate: integer("token_count_estimate"),
+    lastUsedAt: integer("last_used_at"),
+    coverageStartFloorNo: integer("coverage_start_floor_no"),
+    coverageEndFloorNo: integer("coverage_end_floor_no"),
+    derivedFromCount: integer("derived_from_count"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountScopeIdx: index("memory_item_account_scope_idx").on(
+      table.accountId,
+      table.scope,
+      table.scopeId,
+    ),
+    factLookupIdx: index("memory_item_fact_lookup_idx").on(
+      table.accountId,
+      table.scope,
+      table.scopeId,
+      table.type,
+      table.status,
+      table.factKey,
+    ),
+    accountScopeLifecycleTypeUpdatedIdx: index(
+      "memory_item_account_scope_lifecycle_type_updated_idx",
+    ).on(
+      table.accountId,
+      table.scope,
+      table.scopeId,
+      table.lifecycleStatus,
+      table.type,
+      table.updatedAt,
+    ),
+    accountScopeSummaryTierLifecycleIdx: index(
+      "memory_item_account_scope_summary_tier_lifecycle_idx",
+    ).on(
+      table.accountId,
+      table.scope,
+      table.scopeId,
+      table.summaryTier,
+      table.lifecycleStatus,
+      table.updatedAt,
+    ),
+  }),
+);
+
+export const memoryEdges = sqliteTable(
+  "memory_edge",
+  {
+    id: text("id").primaryKey(),
+    fromId: text("from_id")
+      .notNull()
+      .references(() => memoryItems.id, { onDelete: "cascade" }),
+    toId: text("to_id")
+      .notNull()
+      .references(() => memoryItems.id, { onDelete: "cascade" }),
+    relation: text("relation", {
+      enum: [
+        "supports",
+        "contradicts",
+        "updates",
+        "derived_from",
+        "compacts",
+        "resolves",
+      ],
+    }).notNull(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    accountIdx: index("memory_edge_account_idx").on(table.accountId),
+    accountFromToRelationUnique: uniqueIndex(
+      "memory_edge_account_from_to_relation_uq",
+    ).on(table.accountId, table.fromId, table.toId, table.relation),
+  }),
+);
+
+export const memoryScopeStates = sqliteTable(
+  "memory_scope_state",
+  {
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    scope: text("scope", { enum: ["global", "chat", "floor"] }).notNull(),
+    scopeId: text("scope_id").notNull(),
+    revision: integer("revision").notNull().default(0),
+    leaseOwner: text("lease_owner"),
+    leaseUntil: integer("lease_until"),
+    lastProcessedFloorNo: integer("last_processed_floor_no"),
+    lastCompactionAt: integer("last_compaction_at"),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountScopeScopeIdUnique: uniqueIndex(
+      "memory_scope_state_account_scope_scope_id_uq",
+    ).on(table.accountId, table.scope, table.scopeId),
+    leaseIdx: index("memory_scope_state_lease_idx").on(table.leaseUntil),
+  }),
+);
+
+export const memoryJobs = sqliteTable(
+  "memory_job",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    scope: text("scope", { enum: ["global", "chat", "floor"] }).notNull(),
+    scopeId: text("scope_id").notNull(),
+    jobType: text("job_type", {
+      enum: ["ingest_turn", "compact_macro", "maintenance", "rebuild_scope"],
+    }).notNull(),
+    status: text("status", {
+      enum: [
+        "pending",
+        "leased",
+        "running",
+        "retry_waiting",
+        "succeeded",
+        "dead_letter",
+        "cancelled",
+      ],
+    })
+      .notNull()
+      .default("pending"),
+    floorId: text("floor_id").references(() => floors.id, {
+      onDelete: "set null",
+    }),
+    basedOnRevision: integer("based_on_revision"),
+    payloadJson: text("payload_json").notNull().default("{}"),
+    attemptCount: integer("attempt_count").notNull().default(0),
+    maxAttempts: integer("max_attempts").notNull().default(5),
+    availableAt: integer("available_at").notNull(),
+    leaseOwner: text("lease_owner"),
+    leaseUntil: integer("lease_until"),
+    lastError: text("last_error"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+    finishedAt: integer("finished_at"),
+  },
+  (table) => ({
+    statusAvailableIdx: index("memory_job_status_available_idx").on(
+      table.status,
+      table.availableAt,
+    ),
+    accountScopeStatusAvailableIdx: index(
+      "memory_job_account_scope_status_available_idx",
+    ).on(
+      table.accountId,
+      table.scope,
+      table.scopeId,
+      table.status,
+      table.availableAt,
+    ),
+    accountScopeCreatedIdx: index("memory_job_account_scope_created_idx").on(
+      table.accountId,
+      table.scope,
+      table.scopeId,
+      table.createdAt,
+    ),
+  }),
+);
+
+export const chatTransferJobs = sqliteTable(
+  "chat_transfer_job",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    jobKind: text("job_kind", {
+      enum: ["import_chat", "export_chat"],
+    }).notNull(),
+    format: text("format", {
+      enum: ["thchat", "sillytavern_jsonl", "st_jsonl"],
+    }),
+    status: text("status", {
+      enum: [
+        "pending",
+        "leased",
+        "running",
+        "retry_waiting",
+        "succeeded",
+        "dead_letter",
+        "cancelled",
+      ],
+    })
+      .notNull()
+      .default("pending"),
+    phase: text("phase", {
+      enum: [
+        "queued",
+        "parsing",
+        "normalizing",
+        "publishing",
+        "snapshotting",
+        "rendering",
+        "writing_artifact",
+        "finalizing",
+        "completed",
+      ],
+    })
+      .notNull()
+      .default("queued"),
+    requestedSessionId: text("requested_session_id").references(
+      () => sessions.id,
+      { onDelete: "set null" },
+    ),
+    resultSessionId: text("result_session_id").references(() => sessions.id, {
+      onDelete: "set null",
+    }),
+    requestJson: text("request_json").notNull().default("{}"),
+    resultJson: text("result_json"),
+    inputArtifactPath: text("input_artifact_path"),
+    normalizedArtifactPath: text("normalized_artifact_path"),
+    outputArtifactPath: text("output_artifact_path"),
+    outputExpiresAt: integer("output_expires_at"),
+    progressCurrent: integer("progress_current").notNull().default(0),
+    progressTotal: integer("progress_total"),
+    progressMessage: text("progress_message"),
+    attemptCount: integer("attempt_count").notNull().default(0),
+    maxAttempts: integer("max_attempts").notNull().default(5),
+    availableAt: integer("available_at").notNull(),
+    leaseOwner: text("lease_owner"),
+    leaseUntil: integer("lease_until"),
+    lastError: text("last_error"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+    finishedAt: integer("finished_at"),
+  },
+  (table) => ({
+    statusAvailableIdx: index("chat_transfer_job_status_available_idx").on(
+      table.status,
+      table.availableAt,
+    ),
+    accountStatusAvailableIdx: index(
+      "chat_transfer_job_account_status_available_idx",
+    ).on(table.accountId, table.status, table.availableAt),
+    accountJobKindCreatedIdx: index(
+      "chat_transfer_job_account_kind_created_idx",
+    ).on(table.accountId, table.jobKind, table.createdAt),
+    accountRequestedSessionCreatedIdx: index(
+      "chat_transfer_job_account_requested_session_created_idx",
+    ).on(table.accountId, table.requestedSessionId, table.createdAt),
+    outputExpiresIdx: index("chat_transfer_job_output_expires_idx").on(
+      table.outputExpiresAt,
+    ),
+  }),
+);
+
+export const runtimeScopeStates = sqliteTable(
+  "runtime_scope_state",
+  {
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    scopeType: text("scope_type").notNull(),
+    scopeKey: text("scope_key").notNull(),
+    revision: integer("revision").notNull().default(0),
+    leaseOwner: text("lease_owner"),
+    leaseUntil: integer("lease_until"),
+    lastProcessedAt: integer("last_processed_at"),
+    lastSuccessJobId: text("last_success_job_id"),
+    metadataJson: text("metadata_json").notNull().default("{}"),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountScopeUnique: uniqueIndex("runtime_scope_state_account_scope_uq").on(
+      table.accountId,
+      table.scopeType,
+      table.scopeKey,
+    ),
+    leaseIdx: index("runtime_scope_state_lease_idx").on(table.leaseUntil),
+  }),
+);
+
+export const runtimeJobs = sqliteTable(
+  "runtime_job",
+  {
+    id: text("id").primaryKey(),
+    jobType: text("job_type").notNull(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    scopeType: text("scope_type").notNull(),
+    scopeKey: text("scope_key").notNull(),
+    sessionId: text("session_id").references(() => sessions.id, {
+      onDelete: "set null",
+    }),
+    floorId: text("floor_id").references(() => floors.id, {
+      onDelete: "set null",
+    }),
+    pageId: text("page_id").references(() => messagePages.id, {
+      onDelete: "set null",
+    }),
+    status: text("status", {
+      enum: [
+        "pending",
+        "leased",
+        "running",
+        "retry_waiting",
+        "succeeded",
+        "dead_letter",
+        "cancelled",
+      ],
+    })
+      .notNull()
+      .default("pending"),
+    phase: text("phase"),
+    payloadJson: text("payload_json").notNull().default("{}"),
+    stateJson: text("state_json"),
+    resultJson: text("result_json"),
+    attemptCount: integer("attempt_count").notNull().default(0),
+    maxAttempts: integer("max_attempts").notNull().default(5),
+    availableAt: integer("available_at").notNull(),
+    startedAt: integer("started_at"),
+    finishedAt: integer("finished_at"),
+    leaseOwner: text("lease_owner"),
+    leaseUntil: integer("lease_until"),
+    basedOnRevision: integer("based_on_revision"),
+    dedupeKey: text("dedupe_key"),
+    progressCurrent: integer("progress_current").notNull().default(0),
+    progressTotal: integer("progress_total"),
+    progressMessage: text("progress_message"),
+    lastError: text("last_error"),
+    lastErrorCode: text("last_error_code"),
+    lastErrorClass: text("last_error_class"),
+    workspaceId: text("workspace_id"),
+    projectId: text("project_id"),
+    actorClientId: text("actor_client_id"),
+    sourceEventId: text("source_event_id"),
+    agentTypeId: text("agent_type_id"),
+    agentBindingId: text("agent_binding_id"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    dueIdx: index("runtime_job_due_idx").on(table.status, table.availableAt),
+    scopeIdx: index("runtime_job_scope_idx").on(
+      table.accountId,
+      table.scopeType,
+      table.scopeKey,
+      table.createdAt,
+    ),
+    sessionIdx: index("runtime_job_session_idx").on(
+      table.accountId,
+      table.sessionId,
+      table.createdAt,
+    ),
+    dedupeUnique: uniqueIndex("runtime_job_account_type_dedupe_uq").on(
+      table.accountId,
+      table.jobType,
+      table.dedupeKey,
+    ),
+    agentTypeStatusIdx: index("runtime_job_agent_type_status_idx").on(
+      table.agentTypeId,
+      table.status,
+      table.availableAt,
+    ),
+    agentBindingStatusIdx: index("runtime_job_agent_binding_status_idx").on(
+      table.agentBindingId,
+      table.status,
+      table.availableAt,
+    ),
+    projectStatusIdx: index("runtime_job_project_status_idx").on(
+      table.projectId,
+      table.status,
+      table.availableAt,
+    ),
+    sourceEventIdx: index("runtime_job_source_event_idx").on(
+      table.sourceEventId,
+    ),
+  }),
+);
+
+export const nodeGraphDefinitions = sqliteTable(
+  "node_graph_definition",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "restrict" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "restrict" }),
+    name: text("name").notNull(),
+    status: text("status", { enum: ["active", "archived"] })
+      .notNull()
+      .default("active"),
+    currentVersionId: text("current_version_id"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    projectStatusUpdatedIdx: index(
+      "node_graph_definition_project_status_updated_idx",
+    ).on(table.projectId, table.status, table.updatedAt),
+    workspaceUpdatedIdx: index(
+      "node_graph_definition_workspace_updated_idx",
+    ).on(table.workspaceId, table.updatedAt),
+  }),
+);
+
+export const nodeGraphVersions = sqliteTable(
+  "node_graph_version",
+  {
+    id: text("id").primaryKey(),
+    graphId: text("graph_id")
+      .notNull()
+      .references(() => nodeGraphDefinitions.id, { onDelete: "cascade" }),
+    versionNo: integer("version_no").notNull(),
+    documentJson: text("document_json").notNull(),
+    documentHash: text("document_hash").notNull(),
+    parentVersionId: text("parent_version_id").references(
+      (): AnySQLiteColumn => nodeGraphVersions.id,
+      { onDelete: "set null" },
+    ),
+    operationLogId: text("operation_log_id").references(
+      () => operationLogs.id,
+      { onDelete: "set null" },
+    ),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    graphNoUnique: uniqueIndex("node_graph_version_graph_no_uq").on(
+      table.graphId,
+      table.versionNo,
+    ),
+    graphCreatedIdx: index("node_graph_version_graph_created_idx").on(
+      table.graphId,
+      table.createdAt,
+    ),
+  }),
+);
+
+export const projectFloorGraphBindings = sqliteTable(
+  "project_floor_graph_binding",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "cascade" }),
+    kind: text("kind", { enum: ["native", "compat"] }).notNull(),
+    graphId: text("graph_id")
+      .notNull()
+      .references(() => nodeGraphDefinitions.id, { onDelete: "restrict" }),
+    graphVersionId: text("graph_version_id")
+      .notNull()
+      .references(() => nodeGraphVersions.id, { onDelete: "restrict" }),
+    status: text("status", { enum: ["active", "archived"] })
+      .notNull()
+      .default("active"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    activeKindUnique: uniqueIndex("project_floor_graph_binding_active_kind_uq")
+      .on(table.accountId, table.projectId, table.kind)
+      .where(sql`${table.status} = 'active'`),
+    projectKindStatusIdx: index(
+      "project_floor_graph_binding_project_kind_status_idx",
+    ).on(table.projectId, table.kind, table.status),
+    graphIdx: index("project_floor_graph_binding_graph_idx").on(
+      table.graphId,
+      table.graphVersionId,
+    ),
+  }),
+);
+
+export const nodeGraphRuns = sqliteTable(
+  "node_graph_run",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "set null",
+    }),
+    projectId: text("project_id").references(() => projects.id, {
+      onDelete: "set null",
+    }),
+    sessionId: text("session_id").references(() => sessions.id, {
+      onDelete: "set null",
+    }),
+    floorId: text("floor_id").references(() => floors.id, {
+      onDelete: "set null",
+    }),
+    pageId: text("page_id").references(() => messagePages.id, {
+      onDelete: "set null",
+    }),
+    graphId: text("graph_id")
+      .notNull()
+      .references(() => nodeGraphDefinitions.id, { onDelete: "restrict" }),
+    graphVersionId: text("graph_version_id")
+      .notNull()
+      .references(() => nodeGraphVersions.id, { onDelete: "restrict" }),
+    intent: text("intent", {
+      enum: ["normal", "dry_run", "regenerate", "preview"],
+    }).notNull(),
+    status: text("status", {
+      enum: ["running", "succeeded", "failed", "cancelled"],
+    }).notNull(),
+    traceJson: text("trace_json"),
+    /** R6-3（缺口 5）：终态 run 正文清理时间戳；null 表示尚未清理，非 null 表示 node run 正文已裁剪。 */
+    cleanedAt: integer("cleaned_at"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    projectStatusCreatedIdx: index(
+      "node_graph_run_project_status_created_idx",
+    ).on(table.projectId, table.status, table.createdAt),
+    graphCreatedIdx: index("node_graph_run_graph_created_idx").on(
+      table.graphId,
+      table.createdAt,
+    ),
+    statusCleanedCreatedIdx: index(
+      "node_graph_run_status_cleaned_created_idx",
+    ).on(table.status, table.cleanedAt, table.createdAt),
+  }),
+);
+
+export const nodeGraphNodeRuns = sqliteTable(
+  "node_graph_node_run",
+  {
+    id: text("id").primaryKey(),
+    graphRunId: text("graph_run_id")
+      .notNull()
+      .references(() => nodeGraphRuns.id, { onDelete: "cascade" }),
+    nodeId: text("node_id").notNull(),
+    phase: text("phase").notNull(),
+    status: text("status", {
+      enum: ["skipped", "running", "succeeded", "failed", "reused"],
+    }).notNull(),
+    inputHash: text("input_hash"),
+    outputHash: text("output_hash"),
+    previewJson: text("preview_json"),
+    diagnosticsJson: text("diagnostics_json"),
+    startedAt: integer("started_at"),
+    finishedAt: integer("finished_at"),
+  },
+  (table) => ({
+    graphNodeIdx: index("node_graph_node_run_graph_node_idx").on(
+      table.graphRunId,
+      table.nodeId,
+    ),
+  }),
+);
+
+// NG2-CORE（批次 9）：floor 级持久 checkpoint。PageRun 重试时复用 floor-stable /
+// pre-response deterministic 节点输出，避免重跑。终态宽限期后由 retention 裁剪 output_json 正文。
+export const nodeGraphCheckpoints = sqliteTable(
+  "node_graph_checkpoint",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "set null",
+    }),
+    projectId: text("project_id").references(() => projects.id, {
+      onDelete: "set null",
+    }),
+    sessionId: text("session_id").references(() => sessions.id, {
+      onDelete: "set null",
+    }),
+    floorId: text("floor_id")
+      .notNull()
+      .references(() => floors.id, { onDelete: "cascade" }),
+    graphId: text("graph_id")
+      .notNull()
+      .references(() => nodeGraphDefinitions.id, { onDelete: "cascade" }),
+    graphVersionId: text("graph_version_id")
+      .notNull()
+      .references(() => nodeGraphVersions.id, { onDelete: "cascade" }),
+    nodeId: text("node_id").notNull(),
+    phase: text("phase").notNull(),
+    scope: text("scope"),
+    inputHash: text("input_hash").notNull(),
+    configHash: text("config_hash").notNull(),
+    outputJson: text("output_json"),
+    /** 终态宽限期后正文清理时间戳；null 表示尚未清理。 */
+    cleanedAt: integer("cleaned_at"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    floorVersionNodeUnique: uniqueIndex(
+      "node_graph_checkpoint_floor_version_node_uq",
+    ).on(table.floorId, table.graphVersionId, table.nodeId),
+    floorVersionIdx: index("node_graph_checkpoint_floor_version_idx").on(
+      table.floorId,
+      table.graphVersionId,
+    ),
+    cleanedCreatedIdx: index("node_graph_checkpoint_cleaned_created_idx").on(
+      table.cleanedAt,
+      table.createdAt,
+    ),
+  }),
+);
+
+export const agentTypes = sqliteTable(
+  "agent_type",
+  {
+    id: text("id").primaryKey(),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    key: text("key").notNull(),
+    name: text("name").notNull(),
+    scopeKind: text("scope_kind", {
+      enum: ["floor", "session", "project", "workspace"],
+    }).notNull(),
+    status: text("status", { enum: ["active", "disabled"] })
+      .notNull()
+      .default("active"),
+    defaultLlmProfileId: text("default_llm_profile_id"),
+    defaultToolPolicyId: text("default_tool_policy_id"),
+    defaultMcpBindingJson: text("default_mcp_binding_json")
+      .notNull()
+      .default("{}"),
+    defaultEventSubscriptionsJson: text("default_event_subscriptions_json")
+      .notNull()
+      .default("[]"),
+    defaultGrantsJson: text("default_grants_json").notNull().default("{}"),
+    metadataJson: text("metadata_json").notNull().default("{}"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    workspaceKeyUnique: uniqueIndex("agent_type_workspace_key_uq").on(
+      table.workspaceId,
+      table.key,
+    ),
+    workspaceStatusIdx: index("agent_type_workspace_status_idx").on(
+      table.workspaceId,
+      table.status,
+      table.createdAt,
+    ),
+    accountStatusIdx: index("agent_type_account_status_idx").on(
+      table.accountId,
+      table.status,
+      table.createdAt,
+    ),
+  }),
+);
+
+export const projectAgentBindings = sqliteTable(
+  "project_agent_binding",
+  {
+    id: text("id").primaryKey(),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "cascade" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    agentTypeId: text("agent_type_id")
+      .notNull()
+      .references(() => agentTypes.id, { onDelete: "restrict" }),
+    status: text("status", { enum: ["enabled", "disabled", "error"] })
+      .notNull()
+      .default("enabled"),
+    scopeKind: text("scope_kind", {
+      enum: ["floor", "session", "project", "workspace"],
+    }).notNull(),
+    llmProfileId: text("llm_profile_id"),
+    toolPolicyId: text("tool_policy_id"),
+    mcpBindingJson: text("mcp_binding_json").notNull().default("{}"),
+    eventSubscriptionsJson: text("event_subscriptions_json")
+      .notNull()
+      .default("[]"),
+    grantsJson: text("grants_json").notNull().default("{}"),
+    metadataJson: text("metadata_json").notNull().default("{}"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    projectAgentUnique: uniqueIndex(
+      "project_agent_binding_project_agent_uq",
+    ).on(table.projectId, table.agentTypeId),
+    projectStatusIdx: index("project_agent_binding_project_status_idx").on(
+      table.projectId,
+      table.status,
+      table.createdAt,
+    ),
+    workspaceIdx: index("project_agent_binding_workspace_idx").on(
+      table.workspaceId,
+      table.status,
+      table.createdAt,
+    ),
+    agentTypeIdx: index("project_agent_binding_agent_type_idx").on(
+      table.agentTypeId,
+      table.status,
+    ),
+  }),
+);
+
+export const projectLlmProfileOverrides = sqliteTable(
+  "project_llm_profile_override",
+  {
+    id: text("id").primaryKey(),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "cascade" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    baseProfileId: text("base_profile_id").notNull(),
+    overrideJson: text("override_json").notNull().default("{}"),
+    status: text("status", { enum: ["active", "archived"] })
+      .notNull()
+      .default("active"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    projectActiveUnique: uniqueIndex("project_llm_profile_override_project_uq")
+      .on(table.projectId)
+      .where(sql`${table.status} = 'active'`),
+    workspaceIdx: index("project_llm_profile_override_workspace_idx").on(
+      table.workspaceId,
+      table.status,
+      table.createdAt,
+    ),
+  }),
+);
+
+export const projectMcpBindings = sqliteTable(
+  "project_mcp_binding",
+  {
+    id: text("id").primaryKey(),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "cascade" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    mcpServerId: text("mcp_server_id").notNull(),
+    status: text("status", { enum: ["enabled", "disabled"] })
+      .notNull()
+      .default("enabled"),
+    allowedToolsJson: text("allowed_tools_json").notNull().default("[]"),
+    configOverrideJson: text("config_override_json").notNull().default("{}"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    projectServerUnique: uniqueIndex(
+      "project_mcp_binding_project_server_uq",
+    ).on(table.projectId, table.mcpServerId),
+    workspaceIdx: index("project_mcp_binding_workspace_idx").on(
+      table.workspaceId,
+      table.status,
+      table.createdAt,
+    ),
+  }),
+);
+
+export const projectToolPolicyOverrides = sqliteTable(
+  "project_tool_policy_override",
+  {
+    id: text("id").primaryKey(),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "cascade" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    basePolicyId: text("base_policy_id").notNull(),
+    overrideJson: text("override_json").notNull().default("{}"),
+    status: text("status", { enum: ["active", "archived"] })
+      .notNull()
+      .default("active"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    projectBaseUnique: uniqueIndex(
+      "project_tool_policy_override_project_base_uq",
+    ).on(table.projectId, table.basePolicyId),
+    workspaceIdx: index("project_tool_policy_override_workspace_idx").on(
+      table.workspaceId,
+      table.status,
+      table.createdAt,
+    ),
+  }),
+);
+
+/**
+ * 工具策略预设表（SC2-10 / 批次四）。
+ *
+ * 一个「工具策略预设」= 一组命名的「哪些工具可用 + 每个工具 auto/confirm」配置，供不同用途的
+ * 会话套用（如 `regular-chat` 常规聊天、`asset-management` 资产管理）。
+ *
+ * 内置预设（`regular-chat` / `asset-management`）的**默认值定义在代码中**（`tool-policy-preset-service.ts`），
+ * 因此新项目天然可用、无需 seed 行；本表仅存两类持久数据：
+ * - `kind="builtin"`：用户对内置预设的**覆盖**（编辑后落一行，reset 即删除该行回到代码默认）；
+ * - `kind="custom"`：用户自定义预设（完整配置）。
+ *
+ * `config_json` 存 { enabledTools: string[], decisions: Record<toolName, "auto"|"confirm">,
+ * maxCallsPerTurn?: number, allowIrreversible?: boolean }。项目级作用域（决策 A）。
+ */
+export const toolPolicyPresets = sqliteTable(
+  "tool_policy_preset",
+  {
+    id: text("id").primaryKey(),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "cascade" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    presetKey: text("preset_key").notNull(),
+    kind: text("kind", { enum: ["builtin", "custom"] })
+      .notNull()
+      .default("custom"),
+    displayName: text("display_name").notNull().default(""),
+    configJson: text("config_json").notNull().default("{}"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    projectPresetUnique: uniqueIndex("tool_policy_preset_project_key_uq").on(
+      table.projectId,
+      table.presetKey,
+    ),
+    workspaceIdx: index("tool_policy_preset_workspace_idx").on(
+      table.workspaceId,
+      table.createdAt,
+    ),
+  }),
+);
+
+/**
+ * `session_todo_list` — 会话级待办事项清单（SC2-12 / 批次四）。
+ *
+ * 每个会话最多一行（`session_id` 唯一）。TODO 由「待办事项工具」（TodoToolProvider）
+ * 读写，也在会话详情响应中回显，供主聊天顶部的待办摘要卡渲染。决策 E：TODO 落会话
+ * 状态命名空间，不进入变量 page/floor 沙盒生命周期——直接持久化，随会话删除级联清理。
+ */
+export const sessionTodoLists = sqliteTable(
+  "session_todo_list",
+  {
+    id: text("id").primaryKey(),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    itemsJson: text("items_json").notNull().default("[]"),
+    revision: integer("revision").notNull().default(0),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    sessionUnique: uniqueIndex("session_todo_list_session_uq").on(
+      table.sessionId,
+    ),
+    accountUpdatedIdx: index("session_todo_list_account_updated_idx").on(
+      table.accountId,
+      table.updatedAt,
+    ),
+  }),
+);
+
+/**
+ * 图助手逐工具「自动执行 / 需要确认」策略表。
+ *
+ * 项目级存储，跨临时对话持久。仅覆盖 NodeGraph 工具；mode=auto 表示可自动执行，
+ * mode=confirm 表示需要人工确认（阶段 2 后端实际会将 confirm 工具完全扣住不暴露给 LLM，
+ * 直到阶段 3 human-in-the-loop 门控实现）。未显式配置的工具由默认值（按 sideEffectLevel 推导）决定。
+ */
+export const graphAssistantToolPolicies = sqliteTable(
+  "graph_assistant_tool_policy",
+  {
+    id: text("id").primaryKey(),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "cascade" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    toolName: text("tool_name").notNull(),
+    decision: text("decision", { enum: ["auto", "confirm"] }).notNull(),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    projectToolUnique: uniqueIndex(
+      "graph_assistant_tool_policy_project_tool_uq",
+    ).on(table.projectId, table.toolName),
+    workspaceIdx: index("graph_assistant_tool_policy_workspace_idx").on(
+      table.workspaceId,
+      table.createdAt,
+    ),
+  }),
+);
+
+/**
+ * 图助手「执行前确认闸」待确认工具调用表（阶段 3 human-in-the-loop）。
+ *
+ * 图助手 text_protocol 多轮 agent 循环遇到 confirm 工具时，不执行该工具，
+ * 而是登记一条 pending 记录并暂停，等待用户批准/拒绝。批准后据
+ * `conversation_messages_json` 重建上下文续跑多轮，直到 agent 自然停止。
+ *
+ * 命名遵循协作指南：图助手专用、聊天主链路之外的状态，不使用 runtime 命名，
+ * 与 graph_assistant_tool_policy 风格一致。`expires_at` 预留，本阶段不设硬过期。
+ */
+export const graphAssistantPendingToolCalls = sqliteTable(
+  "graph_assistant_pending_tool_call",
+  {
+    id: text("id").primaryKey(),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "cascade" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    conversationId: text("conversation_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    branchId: text("branch_id").notNull(),
+    floorId: text("floor_id").notNull(),
+    callId: text("call_id").notNull(),
+    toolName: text("tool_name").notNull(),
+    argsJson: text("args_json").notNull(),
+    sideEffectLevel: text("side_effect_level"),
+    status: text("status", {
+      enum: [
+        "pending",
+        "approved",
+        "rejected",
+        "executed",
+        "expired",
+        "cancelled",
+      ],
+    })
+      .notNull()
+      .default("pending"),
+    conversationMessagesJson: text("conversation_messages_json").notNull(),
+    agentSteps: integer("agent_steps").notNull().default(0),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+    expiresAt: integer("expires_at"),
+  },
+  (table) => ({
+    conversationStatusIdx: index(
+      "graph_assistant_pending_tool_call_conversation_status_idx",
+    ).on(table.conversationId, table.status),
+    floorIdx: index("graph_assistant_pending_tool_call_floor_idx").on(
+      table.floorId,
+    ),
+  }),
+);
+
+/**
+ * 图助手「上下文与提示词」项目级配置表。
+ *
+ * 一个项目一条记录，跨临时对话持久。承载图助手设置页两块配置：
+ * - 静态提示词：`static_mode`（append 追加 / override 覆盖内置默认）+ `static_text`。
+ * - 上下文与动态提示词：`context_config`（数据块开关与预算 JSON）+ `dynamic_template`。
+ *
+ * 命名遵循协作指南：图助手专用、聊天主链路之外的状态，不使用 runtime 命名，
+graph_assistant_tool_policy 风格一致。无记录时由服务回退内置默认。
+ */
+export const graphAssistantPromptConfig = sqliteTable(
+  "graph_assistant_prompt_config",
+  {
+    id: text("id").primaryKey(),
+    workspaceId: text("workspace_id")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    projectId: text("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "cascade" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    staticMode: text("static_mode", { enum: ["append", "override"] })
+      .notNull()
+      .default("append"),
+    staticText: text("static_text").notNull().default(""),
+    dynamicTemplate: text("dynamic_template").notNull().default(""),
+    /** 上下文数据块配置 JSON 字符串（阶段二起使用）；为空表示用内置默认。 */
+    contextConfig: text("context_config"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    projectUnique: uniqueIndex("graph_assistant_prompt_config_project_uq").on(
+      table.projectId,
+    ),
+    workspaceIdx: index("graph_assistant_prompt_config_workspace_idx").on(
+      table.workspaceId,
+      table.createdAt,
+    ),
+  }),
+);
+
+// ── 导入资源表 ────────────────────────────────────────
+
+export const presets = sqliteTable(
+  "preset",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    source: text("source").notNull().default("sillytavern"),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "restrict",
+    }),
+    dataJson: text("data_json").notNull(),
+    version: integer("version").notNull().default(1),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountUpdatedIdx: index("preset_account_updated_idx").on(
+      table.accountId,
+      table.updatedAt,
+    ),
+    accountWorkspaceUpdatedIdx: index(
+      "preset_account_workspace_updated_idx",
+    ).on(table.accountId, table.workspaceId, table.updatedAt),
+  }),
+);
+
+export const worldbooks = sqliteTable(
+  "worldbook",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    source: text("source").notNull().default("sillytavern"),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "restrict",
+    }),
+    dataJson: text("data_json").notNull(),
+    version: integer("version").notNull().default(1),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountUpdatedIdx: index("worldbook_account_updated_idx").on(
+      table.accountId,
+      table.updatedAt,
+    ),
+    accountWorkspaceUpdatedIdx: index(
+      "worldbook_account_workspace_updated_idx",
+    ).on(table.accountId, table.workspaceId, table.updatedAt),
+  }),
+);
+
+export const worldbookEntries = sqliteTable(
+  "worldbook_entry",
+  {
+    id: text("id").primaryKey(),
+    worldbookId: text("worldbook_id")
+      .notNull()
+      .references(() => worldbooks.id, { onDelete: "cascade" }),
+    uid: integer("uid").notNull(),
+    comment: text("comment").notNull().default(""),
+    content: text("content").notNull().default(""),
+    keysJson: text("keys_json").notNull().default("[]"),
+    keysSecondaryJson: text("keys_secondary_json").notNull().default("[]"),
+    selective: integer("selective", { mode: "boolean" })
+      .notNull()
+      .default(true),
+    selectiveLogic: integer("selective_logic").notNull().default(0),
+    constant: integer("constant", { mode: "boolean" }).notNull().default(false),
+    position: integer("position").notNull().default(0),
+    order: integer("order").notNull().default(100),
+    depth: integer("depth").notNull().default(4),
+    role: integer("role").notNull().default(0),
+    disable: integer("disable", { mode: "boolean" }).notNull().default(false),
+    scanDepth: integer("scan_depth"),
+    caseSensitive: integer("case_sensitive", { mode: "boolean" }),
+    matchWholeWords: integer("match_whole_words", { mode: "boolean" }),
+    excludeRecursion: integer("exclude_recursion", { mode: "boolean" })
+      .notNull()
+      .default(false),
+    preventRecursion: integer("prevent_recursion", { mode: "boolean" })
+      .notNull()
+      .default(false),
+    delayUntilRecursion: integer("delay_until_recursion"),
+    outletName: text("outlet_name").notNull().default(""),
+    extraJson: text("extra_json").notNull().default("{}"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    worldbookOrderIdx: index("wb_entry_worldbook_order_idx").on(
+      table.worldbookId,
+      table.order,
+    ),
+    worldbookUpdatedIdx: index("wb_entry_worldbook_updated_idx").on(
+      table.worldbookId,
+      table.updatedAt,
+    ),
+  }),
+);
+
+export const regexProfiles = sqliteTable(
+  "regex_profile",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    source: text("source").notNull().default("sillytavern"),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "restrict",
+    }),
+    dataJson: text("data_json").notNull(),
+    version: integer("version").notNull().default(1),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountUpdatedIdx: index("regex_profile_account_updated_idx").on(
+      table.accountId,
+      table.updatedAt,
+    ),
+    accountWorkspaceUpdatedIdx: index(
+      "regex_profile_account_workspace_updated_idx",
+    ).on(table.accountId, table.workspaceId, table.updatedAt),
+  }),
+);
+
+export const presetVersions = sqliteTable(
+  "preset_version",
+  {
+    id: text("id").primaryKey(),
+    presetId: text("preset_id")
+      .notNull()
+      .references(() => presets.id, { onDelete: "cascade" }),
+    parentVersionId: text("parent_version_id").references(
+      (): AnySQLiteColumn => presetVersions.id,
+      { onDelete: "set null" },
+    ),
+    versionNo: integer("version_no").notNull(),
+    dataJson: text("data_json").notNull(),
+    contentHash: text("content_hash").notNull(),
+    createdByOperationId: text("created_by_operation_id"),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    presetVersionUnique: uniqueIndex("preset_version_preset_no_uq").on(
+      table.presetId,
+      table.versionNo,
+    ),
+    presetCreatedAtIdx: index("preset_version_preset_created_idx").on(
+      table.presetId,
+      table.createdAt,
+    ),
+    presetContentHashIdx: index("preset_version_content_hash_idx").on(
+      table.contentHash,
+    ),
+  }),
+);
+
+export const worldbookVersions = sqliteTable(
+  "worldbook_version",
+  {
+    id: text("id").primaryKey(),
+    worldbookId: text("worldbook_id")
+      .notNull()
+      .references(() => worldbooks.id, { onDelete: "cascade" }),
+    parentVersionId: text("parent_version_id").references(
+      (): AnySQLiteColumn => worldbookVersions.id,
+      { onDelete: "set null" },
+    ),
+    versionNo: integer("version_no").notNull(),
+    dataJson: text("data_json").notNull(),
+    contentHash: text("content_hash").notNull(),
+    createdByOperationId: text("created_by_operation_id"),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    worldbookVersionUnique: uniqueIndex("worldbook_version_worldbook_no_uq").on(
+      table.worldbookId,
+      table.versionNo,
+    ),
+    worldbookCreatedAtIdx: index("worldbook_version_worldbook_created_idx").on(
+      table.worldbookId,
+      table.createdAt,
+    ),
+    worldbookContentHashIdx: index("worldbook_version_content_hash_idx").on(
+      table.contentHash,
+    ),
+  }),
+);
+
+export const regexProfileVersions = sqliteTable(
+  "regex_profile_version",
+  {
+    id: text("id").primaryKey(),
+    regexProfileId: text("regex_profile_id")
+      .notNull()
+      .references(() => regexProfiles.id, { onDelete: "cascade" }),
+    parentVersionId: text("parent_version_id").references(
+      (): AnySQLiteColumn => regexProfileVersions.id,
+      { onDelete: "set null" },
+    ),
+    versionNo: integer("version_no").notNull(),
+    dataJson: text("data_json").notNull(),
+    contentHash: text("content_hash").notNull(),
+    createdByOperationId: text("created_by_operation_id"),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    regexProfileVersionUnique: uniqueIndex(
+      "regex_profile_version_profile_no_uq",
+    ).on(table.regexProfileId, table.versionNo),
+    regexProfileCreatedAtIdx: index(
+      "regex_profile_version_profile_created_idx",
+    ).on(table.regexProfileId, table.createdAt),
+    regexProfileContentHashIdx: index(
+      "regex_profile_version_content_hash_idx",
+    ).on(table.contentHash),
+  }),
+);
+
+/**
+ * Assembly-phase prompt snapshot.
+ *
+ * One row per committed floor. Records what actually entered prompt assembly: preset /
+ * worldbook / regex provenance, activated worldbook entries, regex rule names applied,
+ * prompt mode, digest, and token estimate.
+ *
+ * Phase: `assembly` — describes what went INTO prompt assembly, not what was delivered
+ * to the provider. Delivery-phase truth (materialized send messages, structure merges,
+ * assistant prefill) is kept separately and is not reconstructed from this row.
+ */
+export const promptSnapshots = sqliteTable(
+  "prompt_snapshot",
+  {
+    floorId: text("floor_id")
+      .primaryKey()
+      .references(() => floors.id, { onDelete: "cascade" }),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    presetId: text("preset_id").references(() => presets.id, {
+      onDelete: "set null",
+    }),
+    presetUpdatedAt: integer("preset_updated_at"),
+    presetVersion: integer("preset_version"),
+    presetVersionId: text("preset_version_id").references(
+      () => presetVersions.id,
+      { onDelete: "set null" },
+    ),
+    presetContentHash: text("preset_content_hash"),
+    worldbookId: text("worldbook_id").references(() => worldbooks.id, {
+      onDelete: "set null",
+    }),
+    worldbookUpdatedAt: integer("worldbook_updated_at"),
+    worldbookVersion: integer("worldbook_version"),
+    worldbookVersionId: text("worldbook_version_id").references(
+      () => worldbookVersions.id,
+      { onDelete: "set null" },
+    ),
+    worldbookContentHash: text("worldbook_content_hash"),
+    regexProfileId: text("regex_profile_id").references(
+      () => regexProfiles.id,
+      { onDelete: "set null" },
+    ),
+    regexProfileUpdatedAt: integer("regex_profile_updated_at"),
+    regexProfileVersion: integer("regex_profile_version"),
+    regexProfileVersionId: text("regex_profile_version_id").references(
+      () => regexProfileVersions.id,
+      { onDelete: "set null" },
+    ),
+    regexProfileContentHash: text("regex_profile_content_hash"),
+    characterId: text("character_id").references(() => characters.id, {
+      onDelete: "set null",
+    }),
+    characterVersionId: text("character_version_id").references(
+      () => characterVersions.id,
+      { onDelete: "set null" },
+    ),
+    characterImportedFormat: text("character_imported_format"),
+    characterContentHash: text("character_content_hash"),
+    worldbookActivatedEntryUidsJson: text("worldbook_activated_entry_uids_json")
+      .notNull()
+      .default("[]"),
+    worldbookActivatedEntriesJson: text("worldbook_activated_entries_json")
+      .notNull()
+      .default("[]"),
+    regexPreRuleNamesJson: text("regex_pre_rule_names_json")
+      .notNull()
+      .default("[]"),
+    regexPostRuleNamesJson: text("regex_post_rule_names_json")
+      .notNull()
+      .default("[]"),
+    promptMode: text("prompt_mode", {
+      enum: ["compat_strict", "compat_plus", "native"],
+    }).notNull(),
+    assetManifestDigest: text("asset_manifest_digest"),
+    promptDigest: text("prompt_digest").notNull(),
+    tokenEstimate: integer("token_estimate").notNull().default(0),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    sessionCreatedIdx: index("prompt_snapshot_session_created_idx").on(
+      table.sessionId,
+      table.createdAt,
+    ),
+    digestIdx: index("prompt_snapshot_digest_idx").on(table.promptDigest),
+  }),
+);
+
+export const floorResultSnapshots = sqliteTable(
+  "floor_result_snapshot",
+  {
+    floorId: text("floor_id")
+      .primaryKey()
+      .references(() => floors.id, { onDelete: "cascade" }),
+    outputPageId: text("output_page_id")
+      .notNull()
+      .references(() => messagePages.id, { onDelete: "cascade" }),
+    assistantMessageId: text("assistant_message_id")
+      .notNull()
+      .references(() => messages.id, { onDelete: "cascade" }),
+    generatedText: text("generated_text").notNull(),
+    summariesJson: text("summaries_json").notNull().default("[]"),
+    usageJson: text("usage_json").notNull().default("{}"),
+    verifierJson: text("verifier_json"),
+    // 推理（思维链）文本，可空。模型未返回 reasoning时为 null。
+    reasoningText: text("reasoning_text"),
+    // native 多步循环的中间叙述（JSON 数组，可空）。旁路展示用，不进 prompt、不进 message 正文。
+    // 元素形状 { stepIndex, text, createdAt }；无中间叙述时为 null。
+    stepNarrationsJson: text("step_narrations_json"),
+    promptContextJson: text("prompt_context_json"),
+    committedAt: integer("committed_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    committedAtIdx: index("floor_result_snapshot_committed_at_idx").on(
+      table.committedAt,
+    ),
+    outputPageIdx: index("floor_result_snapshot_output_page_idx").on(
+      table.outputPageId,
+    ),
+  }),
+);
+
+export const promptRuntimeInjections = sqliteTable(
+  "prompt_runtime_injection",
+  {
+    id: text("id").primaryKey(),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    branchId: text("branch_id"),
+    sourceKind: text("source_kind", {
+      enum: ["client_injection", "agent_injection"],
+    })
+      .notNull()
+      .default("client_injection"),
+    title: text("title").notNull(),
+    content: text("content").notNull(),
+    placement: text("placement").notNull(),
+    order: integer("order").notNull().default(100),
+    enabled: integer("enabled", { mode: "boolean" }).notNull().default(true),
+    modeScope: text("mode_scope", {
+      enum: ["compat_strict", "compat_plus", "native"],
+    }),
+    ttlMs: integer("ttl_ms"),
+    // I3 高级位置参数（floor_no / offset / depth）以JSON 持久化；null 表示无参数。
+    placementParamsJson: text("placement_params_json"),
+    createdBy: text("created_by").references(() => accounts.id, {
+      onDelete: "set null",
+    }),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    sessionBranchOrderCreatedIdx: index(
+      "prompt_runtime_injection_session_branch_order_created_idx",
+    ).on(table.sessionId, table.branchId, table.order, table.createdAt),
+    sessionUpdatedIdx: index("prompt_runtime_injection_session_updated_idx").on(
+      table.sessionId,
+      table.updatedAt,
+    ),
+  }),
+);
+
+/**
+ * Explain-phase prompt runtime snapshot.
+ *
+ * One row per committed floor. Records control-plane / observability truth: resolved policy,
+ * policy source map, trim reasons, excluded sources, section stats, diagnostics, and the
+ * historical source branch / mode. Historical explain and compare routes read from here.
+ *
+ * Phase: `explain` — persisted at commit time alongside the assembly-phase `prompt_snapshot`
+ * row. `snapshot_version` keeps future payload revisions backward compatible; readers must
+ * tolerate older versions and must not assume newly-added fields are always present.
+ */
+export const promptRuntimeExplainSnapshots = sqliteTable(
+  "prompt_runtime_explain_snapshot",
+  {
+    id: text("id").primaryKey(),
+    floorId: text("floor_id")
+      .notNull()
+      .references(() => floors.id, { onDelete: "cascade" }),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    targetBranchId: text("target_branch_id"),
+    sourceFloorId: text("source_floor_id").references(() => floors.id, {
+      onDelete: "set null",
+    }),
+    historySourceBranchId: text("history_source_branch_id"),
+    historySourceMode: text("history_source_mode", {
+      enum: ["existing_branch", "source_floor_branch", "main_fallback"],
+    })
+      .notNull()
+      .default("existing_branch"),
+    snapshotVersion: integer("snapshot_version").notNull().default(1),
+    assetsJson: text("assets_json").notNull().default("{}"),
+    memoryJson: text("memory_json"),
+    resolvedPolicyJson: text("resolved_policy_json").notNull().default("{}"),
+    sourceMapJson: text("source_map_json").notNull().default("{}"),
+    diagnosticsJson: text("diagnostics_json").notNull().default("[]"),
+    trimReasonsJson: text("trim_reasons_json").notNull().default("[]"),
+    excludedSourcesJson: text("excluded_sources_json").notNull().default("[]"),
+    sectionStatsJson: text("section_stats_json").notNull().default("[]"),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    floorIdUnique: uniqueIndex(
+      "prompt_runtime_explain_snapshot_floor_id_uq",
+    ).on(table.floorId),
+    sessionCreatedIdx: index(
+      "prompt_runtime_explain_snapshot_session_created_idx",
+    ).on(table.sessionId, table.createdAt),
+    sessionBranchCreatedIdx: index(
+      "prompt_runtime_explain_snapshot_session_branch_created_idx",
+    ).on(table.sessionId, table.targetBranchId, table.createdAt),
+  }),
+);
+
+export const branchLocalVariableSnapshots = sqliteTable(
+  "branch_local_variable_snapshot",
+  {
+    floorId: text("floor_id")
+      .primaryKey()
+      .references(() => floors.id, { onDelete: "cascade" }),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    sessionId: text("session_id")
+      .notNull()
+      .references(() => sessions.id, { onDelete: "cascade" }),
+    branchId: text("branch_id").notNull(),
+    valuesJson: text("values_json").notNull().default("{}"),
+    // Phase 2 additive 字段：保留旧 v1 读取路径的同时引入 provenance 元数据。
+    // - snapshotVersion：当前 payload 的结构版本，v1 仅有 valuesJson，v2 起附带 provenanceJson。
+    // - provenanceJson：按 key 记录来源 scope / scopeId / sourceVariableId /
+    //   sourceUpdatedAt / inheritedFromFloorId / inheritedFromBranchId / originKind。
+    //   旧数据无 provenance 时 column 为 NULL，视为 v1。
+    snapshotVersion: integer("snapshot_version").notNull().default(1),
+    provenanceJson: text("provenance_json"),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    accountSessionCreatedIdx: index(
+      "branch_local_var_snapshot_account_session_created_idx",
+    ).on(table.accountId, table.sessionId, table.createdAt),
+    accountSessionBranchCreatedIdx: index(
+      "branch_local_var_snapshot_account_session_branch_created_idx",
+    ).on(table.accountId, table.sessionId, table.branchId, table.createdAt),
+  }),
+);
+
+// ── LLM Profile Vault ──────────────────────────────────
+
+export const llmProfiles = sqliteTable(
+  "llm_profile",
+  {
+    id: text("id").primaryKey(),
+    presetName: text("preset_name").notNull(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "restrict",
+    }),
+    provider: text("provider", {
+      enum: [
+        "openai",
+        "anthropic",
+        "google",
+        "deepseek",
+        "xai",
+        "openai-compatible",
+      ],
+    }).notNull(),
+    modelId: text("model_id").notNull(),
+    baseUrl: text("base_url"),
+    apiKeyName: text("api_key_name"),
+    apiKeyEncrypted: text("api_key_encrypted").notNull(),
+    apiKeyMasked: text("api_key_masked").notNull(),
+    status: text("status", { enum: ["active", "disabled", "deleted"] })
+      .notNull()
+      .default("active"),
+    lastUsedAt: integer("last_used_at"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    presetNameUnique: uniqueIndex("llm_profile_account_preset_name_uq").on(
+      table.accountId,
+      table.presetName,
+    ),
+    statusUpdatedIdx: index("llm_profile_status_updated_idx").on(
+      table.status,
+      table.updatedAt,
+    ),
+    accountWorkspaceUpdatedIdx: index(
+      "llm_profile_account_workspace_updated_idx",
+    ).on(table.accountId, table.workspaceId, table.updatedAt),
+  }),
+);
+
+export const llmProfileBindings = sqliteTable(
+  "llm_profile_binding",
+  {
+    id: text("id").primaryKey(),
+    scope: text("scope", { enum: ["global", "session"] }).notNull(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "restrict",
+    }),
+    scopeId: text("scope_id").notNull(),
+    instanceSlot: text("instance_slot").notNull().default("*"),
+    paramsJson: text("params_json"),
+    profileSnapshotJson: text("profile_snapshot_json"),
+    profileId: text("profile_id")
+      .notNull()
+      .references(() => llmProfiles.id, { onDelete: "restrict" }),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    scopeSlotUnique: uniqueIndex(
+      "llm_profile_binding_account_scope_scope_id_slot_uq",
+    ).on(table.accountId, table.scope, table.scopeId, table.instanceSlot),
+    profileScopeIdx: index("llm_profile_binding_profile_account_scope_idx").on(
+      table.profileId,
+      table.accountId,
+      table.scope,
+      table.scopeId,
+      table.instanceSlot,
+    ),
+    accountWorkspaceScopeIdx: index(
+      "llm_profile_binding_account_workspace_scope_idx",
+    ).on(table.accountId, table.workspaceId, table.scope, table.scopeId),
+  }),
+);
+
+export const llmInstanceConfigs = sqliteTable(
+  "llm_instance_config",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "restrict",
+    }),
+    scope: text("scope", { enum: ["global", "session"] }).notNull(),
+    scopeId: text("scope_id").notNull(),
+    instanceSlot: text("instance_slot", {
+      enum: ["*", "narrator", "director", "verifier", "memory", "state_updater"],
+    }).notNull(),
+    // LI11（批次11）命名坑澄清：`preset_id` 的真实语义是「提示词预设覆盖」（指向 `preset` 表），
+    // 在 narrator Prompt 组装阶段优先于 `session.preset_id`——它**不是** LLM Profile id。
+    // 选 Profile（连接/模型）走独立的 `llm_profile_binding`（见 /llm-profiles 的 activate / runtime）。
+    // 这是**过渡字段**：方案 A 下提示词配方将由图节点装配承载，该覆盖职责图化后进入废弃流程，不再扩展其用途。
+    // @deprecated LI11-3：配方走图后废弃。新写入请走楼层模板图 Narrator 节点 `config.presetRef`；
+    //   兼容窗口内回退链「节点 config.presetRef → narrator slot preset_id → session.preset_id」三路等价，
+    //   其中 slot→session 由 turn-model-service.buildSessionPromptInfo 解析进 sessionInfo.presetId。
+    //   仅新建生效，不做全量存量迁移；列保留不删，避免破坏存量数据与外部集成。
+    presetId: text("preset_id"),
+    modelIdOverride: text("model_id_override"),
+    enabled: integer("enabled").notNull().default(1),
+    paramsJson: text("params_json"),
+    capabilitiesJson: text("capabilities_json"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    scopeSlotUnique: uniqueIndex(
+      "llm_instance_config_account_scope_slot_uq",
+    ).on(table.accountId, table.scope, table.scopeId, table.instanceSlot),
+    scopeIdx: index("llm_instance_config_account_scope_idx").on(
+      table.accountId,
+      table.scope,
+      table.scopeId,
+    ),
+    accountWorkspaceScopeIdx: index(
+      "llm_instance_config_account_workspace_scope_idx",
+    ).on(table.accountId, table.workspaceId, table.scope, table.scopeId),
+  }),
+);
+
+// ── Tool Calling ────────────────────────────────────────
+
+/**
+ * `tool_call_record` — **legacy-compatible projection** of tool executions.
+ *
+ * 这张表只作为兼容读面保留：
+ * - 旧 UI / 旧集成通过 `GET /tools/call-records` 按 page 读取
+ * - 状态只保留 `success | error | denied | queued | running` 的兼容枚举
+ * - 不承载 timeout / uncertain / blocked / commit outcome / delivery mode / runtime_job 绑定等新语义
+ *
+ * 新业务语义一律进入 `tool_execution_record`（主审计真相源）。
+ */
+export const toolCallRecords = sqliteTable(
+  "tool_call_record",
+  {
+    id: text("id").primaryKey(),
+    pageId: text("page_id")
+      .notNull()
+      .references(() => messagePages.id, { onDelete: "cascade" }),
+    seq: integer("seq").notNull(),
+    callerSlot: text("caller_slot").notNull(),
+    toolName: text("tool_name").notNull(),
+    argsJson: text("args_json").notNull().default("{}"),
+    resultJson: text("result_json").notNull().default("{}"),
+    status: text("status", {
+      enum: ["success", "error", "denied", "queued", "running"],
+    })
+      .notNull()
+      .default("success"),
+    durationMs: integer("duration_ms").notNull().default(0),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    pageSeqIdx: index("tool_call_record_page_seq_idx").on(
+      table.pageId,
+      table.seq,
+    ),
+    toolNameIdx: index("tool_call_record_tool_name_idx").on(table.toolName),
+  }),
+);
+
+/**
+ * `tool_execution_record` — **primary tool execution journal**.
+ *
+ * 工具执行的主审计真相源。所有新增语义（timeout / uncertain / blocked、
+ * lifecycle_state、commit_outcome、delivery_mode、runtime_job 绑定、
+ * attempt_no、replay_parent_execution_id、side_effect_level、provider_type 等）
+ * 均以此表为准。
+ *
+ * 对外接口：
+ * - `GET /tool-executions` 主查询接口（source of truth）
+ * - `GET /floors/:id/tool-executions` 按 floor 查询
+ *
+ * `tool_call_record` 为兼容读面，不参与新语义扩展。
+ */
+export const toolExecutionRecords = sqliteTable(
+  "tool_execution_record",
+  {
+    id: text("id").primaryKey(),
+    runId: text("run_id").notNull(),
+    floorId: text("floor_id")
+      .notNull()
+      .references(() => floors.id, { onDelete: "cascade" }),
+    pageId: text("page_id").references(() => messagePages.id, {
+      onDelete: "set null",
+    }),
+    callerSlot: text("caller_slot").notNull(),
+    providerId: text("provider_id").notNull(),
+    toolName: text("tool_name").notNull(),
+    providerType: text("provider_type", {
+      enum: ["builtin", "preset", "mcp", "unknown"],
+    })
+      .notNull()
+      .default("unknown"),
+    argsJson: text("args_json").notNull().default("{}"),
+    resultJson: text("result_json").notNull().default("{}"),
+    status: text("status", {
+      enum: [
+        "running",
+        "queued",
+        "success",
+        "error",
+        "denied",
+        "timeout",
+        "uncertain",
+        "blocked",
+      ],
+    })
+      .notNull()
+      .default("running"),
+    lifecycleState: text("lifecycle_state", { enum: ["opened", "finished"] })
+      .notNull()
+      .default("finished"),
+    commitOutcome: text("commit_outcome", {
+      enum: [
+        "pending",
+        "committed",
+        "discarded",
+        "replay_blocked",
+        "uncertain",
+      ],
+    })
+      .notNull()
+      .default("pending"),
+    deliveryMode: text("delivery_mode", { enum: ["inline", "async_job"] })
+      .notNull()
+      .default("inline"),
+    runtimeJobId: text("runtime_job_id"),
+    sideEffectLevel: text("side_effect_level", {
+      enum: ["none", "sandbox", "irreversible"],
+    }),
+    errorMessage: text("error_message"),
+    durationMs: integer("duration_ms").notNull().default(0),
+    startedAt: integer("started_at").notNull().default(0),
+    finishedAt: integer("finished_at"),
+    attemptNo: integer("attempt_no").notNull().default(1),
+    replayParentExecutionId: text("replay_parent_execution_id"),
+    // step 级重试：该执行所属的 LLM 生成步号（1-based，可空，旧数据为 null）。
+    // 供「从第 N 步重试」按生成步精确截断前缀往返；拿不到时退化为按 started_at 序。
+    generationStepNo: integer("generation_step_no"),
+    callId: text("call_id"),
+    generationAttemptNo: integer("generation_attempt_no"),
+    acceptedPageId: text("accepted_page_id").references(() => messagePages.id, { onDelete: "set null" }),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    floorCreatedIdx: index("tool_execution_record_floor_created_idx").on(
+      table.floorId,
+      table.startedAt,
+    ),
+    runIdx: index("tool_execution_record_run_idx").on(
+      table.runId,
+      table.startedAt,
+    ),
+    pageCreatedIdx: index("tool_execution_record_page_created_idx").on(
+      table.pageId,
+      table.startedAt,
+    ),
+    runtimeJobIdx: index("tool_execution_record_runtime_job_idx").on(
+      table.runtimeJobId,
+    ),
+    toolNameIdx: index("tool_execution_record_tool_name_idx").on(
+      table.toolName,
+    ),
+  }),
+);
+
+export const toolDefinitions = sqliteTable(
+  "tool_definition",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    description: text("description").notNull().default(""),
+    parametersJson: text("parameters_json")
+      .notNull()
+      .default('{"type":"object","properties":{}}'),
+    sideEffectLevel: text("side_effect_level", {
+      enum: ["none", "sandbox", "irreversible"],
+    })
+      .notNull()
+      .default("none"),
+    allowedSlotsJson: text("allowed_slots_json").notNull().default("[]"),
+    source: text("source", { enum: ["preset", "character", "custom"] })
+      .notNull()
+      .default("preset"),
+    sourceId: text("source_id"),
+    enabled: integer("enabled", { mode: "boolean" }).notNull().default(true),
+    handlerType: text("handler_type", {
+      enum: ["script", "prompt", "delegate"],
+    })
+      .notNull()
+      .default("script"),
+    handlerJson: text("handler_json").notNull().default("{}"),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "restrict",
+    }),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    nameSourceWithSourceIdUnique: uniqueIndex(
+      "tool_definition_account_name_source_source_id_not_null_uq",
+    )
+      .on(table.accountId, table.name, table.source, table.sourceId)
+      .where(sql`${table.sourceId} IS NOT NULL`),
+    nameSourceWithoutSourceIdUnique: uniqueIndex(
+      "tool_definition_account_name_source_null_source_id_uq",
+    )
+      .on(table.accountId, table.name, table.source)
+      .where(sql`${table.sourceId} IS NULL`),
+    accountWorkspaceSourceIdx: index(
+      "tool_definition_account_workspace_source_idx",
+    ).on(table.accountId, table.workspaceId, table.source),
+    accountSourceIdx: index("tool_definition_account_source_idx").on(
+      table.accountId,
+      table.source,
+    ),
+  }),
+);
+
+// ── MCP Server Configuration ────────────────────────────
+
+export const mcpServerConfigs = sqliteTable(
+  "mcp_server_config",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    accountId: text("account_id")
+      .notNull()
+      .references(() => accounts.id, { onDelete: "restrict" }),
+    workspaceId: text("workspace_id").references(() => workspaces.id, {
+      onDelete: "restrict",
+    }),
+    transport: text("transport", { enum: ["stdio", "http"] }).notNull(),
+    configJson: text("config_json").notNull(),
+    secretConfigEncrypted: text("secret_config_encrypted"),
+    secretConfigMaskedJson: text("secret_config_masked_json"),
+    toolPrefix: text("tool_prefix"),
+    enabled: integer("enabled").notNull().default(1),
+    connectTimeoutMs: integer("connect_timeout_ms").notNull().default(30000),
+    callTimeoutMs: integer("call_timeout_ms").notNull().default(60000),
+    toolRefreshIntervalMs: integer("tool_refresh_interval_ms")
+      .notNull()
+      .default(300000),
+    defaultSideEffectLevel: text("default_side_effect_level", {
+      enum: ["none", "sandbox", "irreversible"],
+    })
+      .notNull()
+      .default("irreversible"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    accountNameUnique: uniqueIndex("mcp_server_config_account_name_uq").on(
+      table.accountId,
+      table.name,
+    ),
+    accountUpdatedIdx: index("mcp_server_config_account_updated_idx").on(
+      table.accountId,
+      table.updatedAt,
+    ),
+    accountWorkspaceUpdatedIdx: index(
+      "mcp_server_config_account_workspace_updated_idx",
+    ).on(table.accountId, table.workspaceId, table.updatedAt),
+  }),
+);
+
+export { modelCallRecords } from "./model-call-schema.js";
+
+export { roleAssetBundles, roleAssets } from "./role-asset-schema.js";
+
+export { accountCredentials, accountLoginSessions, accountPreferences, registrationOperations } from "./user-identity-schema.js";
+export { roleReleases } from "./role-release-schema.js";
+export { publicRoleSessions } from "./public-role-session-schema.js";
+
+export { roleDisplaySnapshots, roleStateOperations } from "./role-display-schema.js";
+
+export { roleAppDrafts } from "./role-app-schema.js";
+
+export { nativeCards, nativeCardRevisions, nativeCardImports, nativeCardBuilds } from "./native-card-schema.js";
+
+export { nativeCardResourceBindings, nativeCardPublications, nativeCardVersionBindings } from "./native-card-runtime-schema.js";

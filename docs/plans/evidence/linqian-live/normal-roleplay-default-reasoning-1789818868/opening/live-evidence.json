@@ -1,0 +1,18 @@
+{
+  "mode": "openrouter",
+  "turns": [],
+  "failure": {
+    "floorId": "script-linqian:floor:1",
+    "attemptId": "script-linqian:floor:1:attempt:3",
+    "code": "OPENROUTER_INCOMPLETE",
+    "rawOutput": null,
+    "updaterModel": "nex-agi/nex-n2.5-mini:free",
+    "issues": [],
+    "providerError": {
+      "finishReason": "length",
+      "usage": null
+    }
+  },
+  "pendingChain": null,
+  "completedChains": []
+}

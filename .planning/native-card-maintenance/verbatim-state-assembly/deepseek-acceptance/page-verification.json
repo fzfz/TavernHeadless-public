@@ -1,0 +1,30 @@
+{
+  "linqian-primary-state-update": {
+    "expectedSnapshotId": "7718401e-ada9-424f-9587-9927059972e1",
+    "actualSnapshotId": "7718401e-ada9-424f-9587-9927059972e1",
+    "snapshotIdentityMatches": true,
+    "runtimeExceptionCount": 0,
+    "feedbackVisible": false
+  },
+  "linqian-backup-mvu-state-update": {
+    "expectedSnapshotId": "e0d96014-eb36-4ad3-8261-93acd09a7d20",
+    "actualSnapshotId": "e0d96014-eb36-4ad3-8261-93acd09a7d20",
+    "snapshotIdentityMatches": true,
+    "runtimeExceptionCount": 0,
+    "feedbackVisible": false
+  },
+  "gushengman-primary-state-update": {
+    "expectedSnapshotId": "db0b5123-2e78-4401-b9f6-6ff288afc7c8",
+    "actualSnapshotId": "db0b5123-2e78-4401-b9f6-6ff288afc7c8",
+    "snapshotIdentityMatches": true,
+    "runtimeExceptionCount": 0,
+    "feedbackVisible": true
+  },
+  "gushengman-backup-mvu-state-update": {
+    "expectedSnapshotId": "045d81b5-015f-40b8-945f-eb130b5f1b74",
+    "actualSnapshotId": "045d81b5-015f-40b8-945f-eb130b5f1b74",
+    "snapshotIdentityMatches": true,
+    "runtimeExceptionCount": 0,
+    "feedbackVisible": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "tsBuildInfoFile": "node_modules/.tmp/web.tsbuildinfo",
+    "types": ["vite/client"],
+    "customConditions": ["development"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "vite.config.ts",
+    "tailwind.config.ts"
+  ]
+}

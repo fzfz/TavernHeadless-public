@@ -1,0 +1,111 @@
+import { fileURLToPath } from "node:url";
+
+import tailwindcss from "@tailwindcss/vite";
+import vue from "@vitejs/plugin-vue";
+import { defineConfig } from "vitest/config";
+
+const fromHere = (path: string): string =>
+  fileURLToPath(new URL(path, import.meta.url));
+
+export default defineConfig(({ command }) => ({
+  appType: "mpa",
+  envDir: false,
+  envPrefix: [],
+  resolve: {
+    conditions:
+      command === "serve"
+        ? ["development", "module", "browser"]
+        : ["production", "module", "browser"],
+  },
+  plugins: [vue(), tailwindcss()],
+  server: {
+    host: process.env.TAVERN_VITE_HOST,
+    port: process.env.TAVERN_VITE_PORT
+      ? Number(process.env.TAVERN_VITE_PORT)
+      : undefined,
+    strictPort: true,
+    allowedHosts: JSON.parse(
+      process.env.TAVERN_ALLOWED_HOSTS ?? "[]",
+    ) as string[],
+    hmr: {
+      host: process.env.TAVERN_HMR_HOST,
+      clientPort: process.env.TAVERN_HMR_PORT
+        ? Number(process.env.TAVERN_HMR_PORT)
+        : undefined,
+    },
+  },
+  preview: {
+    port: 4174,
+    host: "0.0.0.0",
+  },
+  test: {
+    // 测试态把 workspace 包解析到源码（与根 vitest.config 一致、顺序敏感：子路径在前）。
+    // 使 studio 测试无需预先构建依赖 dist 即可运行——CI 的 studio-test job 不跑 build。
+    alias: [
+      {
+        find: "@tavern/core/node-graph",
+        replacement: fromHere("../../packages/core/src/node-graph/browser.ts"),
+      },
+      {
+        find: "@tavern/core",
+        replacement: fromHere("../../packages/core/src/index.ts"),
+      },
+      {
+        find: "@tavern/sdk",
+        replacement: fromHere(
+          "../../packages/official-integration-kit/sdk/src/index.ts",
+        ),
+      },
+      {
+        find: "@tavern/client-helpers",
+        replacement: fromHere(
+          "../../packages/official-integration-kit/client-helpers/src/index.ts",
+        ),
+      },
+      {
+        find: "@tavern/shared",
+        replacement: fromHere("../../packages/shared/src/index.ts"),
+      },
+    ],
+    coverage: {
+      provider: "v8",
+      reporter: ["text-summary", "text"],
+      // 覆盖率聚焦**单元/集成测试覆盖的纯逻辑与 store / 客户端层**；
+      // .vue 组件、shell（router/i18n/layout/ui）、薄 re-export 与 DOM composable
+      // 按前端分层（参考 docs/testing-and-ci.md：前端覆盖率按 app 设定）走人工/后续 e2e，不计入门槛。
+      include: [
+        "src/stores/graph-editor.ts",
+        "src/stores/chat.ts",
+        "src/stores/graph-assistant.ts",
+        "src/stores/graph-assistant-tool-policy.ts",
+        "src/modules/graph/assistant/tool-policy-grouping.ts",
+        "src/modules/graph/assistant/pending-tool-call-view.ts",
+        "src/modules/graph/assistant/floor-view-model.ts",
+        "src/modules/graph/assistant/assistant-markdown.ts",
+        "src/stores/backend-connection.ts",
+        "src/stores/models.ts",
+        "src/stores/assets.ts",
+        "src/lib/backend/connection.ts",
+        "src/lib/assets/validate-import.ts",
+        "src/lib/assets/imports.ts",
+        "src/modules/settings/backend/use-connection-test.ts",
+        "src/modules/settings/instances/map-resolved.ts",
+        "src/lib/nodegraph-api/client.ts",
+        "src/lib/chat/stream.ts",
+        "src/lib/temp-conversation/index.ts",
+        "src/lib/temp-conversation/stream.ts",
+        "src/modules/graph/canvas/map-document.ts",
+        "src/modules/graph/layout/elk-adapter.ts",
+        "src/modules/graph/validate/local-validation.ts",
+        "src/modules/graph/package/map-preflight.ts",
+        "src/modules/chat/trace/map-trace.ts",
+      ],
+      thresholds: {
+        lines: 80,
+        functions: 80,
+        statements: 80,
+        branches: 70,
+      },
+    },
+  },
+}));

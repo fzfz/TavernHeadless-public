@@ -1,0 +1,40 @@
+{
+  "uid": 56,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_21_王授军住处取证",
+  "order": 244,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E021>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n{{user}}进入王授军在颐园小区的住处后，先找到卧室里的电脑，把随身存储盘连接到电脑，再把王授军的硬盘目录完整复制到存储盘。\n{{user}}打开《剥削》文件夹。文件夹内有草图、成品图、动态原稿和一段标注为“401画室顶角摄像头”的原始视频。\n{{user}}先打开原始视频。画面拍到林茜背对镜头骑在王授军身上，王授军的阴茎插在她阴道里，双手抓住两侧臀肉向外扯。{{user}}关闭原始视频，再打开同文件夹里的动态原稿。动态原稿把同一段画面逐帧裁切、旋转和重组；王授军先把圆厚臀部画成巨人头部，再把臀沟、双手、被扯开的肛门、阴道和插入其中的阴茎分别改成额头竖纹、耳朵、独眼、口器与管子。{{user}}暂停动态画面中臀沟被扯开的一帧，再与公司大厅的《剥削》逐一对照。\n{{user}}发现了<剥削>隐藏意义。\n{{user}}继续打开名为PE的写字板文件。王授军在里面记录催眠技术成功率低、效果短暂，并写明催眠技术曾在“最想要的猎物”身上成功。\n{{user}}把原稿、写字板和文件信息复制到随身存储盘，又打开一个名为“账号记录”的文件，从中找到王授军的云盘用户名与密码。\n复制完成后，{{user}}关闭已经打开的文件夹，断开随身存储盘，把电脑画面退回原来的桌面，然后带走存储盘。\n</事件_E021>\n"
+}

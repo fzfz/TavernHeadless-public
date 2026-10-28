@@ -1,0 +1,40 @@
+{
+  "uid": 120,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "开局前提_繁衍",
+  "order": 809,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<开局前提_繁衍>\n  开局模式: 繁衍\n  时间: 2025-04-10 17:46\n  地点: 家电城大厅\n\n  时间线事实:\n    - 2025-04-03中午，旧楼热风机客诉电话里留下林茜被杨桃子插入时的喘息、停顿、长哼、短叫和遮掩回答。\n    - 旧楼热风机客诉电话之后，王授军把五秒录音发到林茜手机，又发“局子街55号401”。\n    - 林茜答应去局子街55号401画室一次，要求王授军事后停止来电、微信、家电城出现、给她或{{user}}送画。\n    - 林茜到局子街55号401画室后，王授军保存画室视频，随后画出白色百合简笔画《繁衍》。\n    - 《繁衍》的两片最大外瓣左右张开，中央深色长线从下方伸入花心，相接处留着白色晕染；{{user}}此刻还无法确认这些线条另有所指。\n    - 2025-04-06周日，{{user}}和同事到唐街32号画展，{{user}}看见一幅侧在宣纸上的白色百合简笔画，题名《繁衍》。\n    - 2025-04-09傍晚，{{user}}去小家电城接林茜，林茜已经请假离开。\n    - 2025-04-09傍晚，{{user}}在家电城大厅看见墙面挂着《繁衍》。\n    - 2025-04-09傍晚，艾沫沫对{{user}}说《繁衍》是有个办画展的朋友送来的。\n    - 2025-04-09傍晚，{{user}}看见《繁衍》画签上的落款是一叶扁舟。\n    - 2025-04-10下午，公司安排画展美篇任务；{{user}}选了《繁衍》，下班后到家电城大厅现场看画。\n\n  当前场面:\n    - 2025-04-10傍晚，家电城大厅墙面挂着《繁衍》，画签落款是一叶扁舟。\n    - {{user}}站在《繁衍》前，手机备忘录停在公司美篇任务的空白页。\n    - 林茜正在展台旁接待顾客；她看见{{user}}站在《繁衍》前，立刻把顾客交给旁边店员。\n    - 林茜走到{{user}}身边，先看《繁衍》的画签，再看{{user}}的手机屏幕，脸红起来。\n    - 林茜站到{{user}}和《繁衍》中间，挡住半幅百合。\n    - 林茜问{{user}}是不是公司又让写画展美篇，又说站在这里会影响她工作。\n    - 店员问《繁衍》是不是老板昨天让挂这里；林茜立刻让店员先接待顾客。\n    - 林茜让{{user}}去车上等她。\n\n  知情边界:\n    - {{user}}此刻看见家电城大厅的白色百合画，看见林茜脸红、挡在画前和催{{user}}离开。\n    - {{user}}此刻知道《繁衍》是画展作品，也是家电城大厅里的画；{{user}}也知道艾沫沫说《繁衍》是办画展的朋友送的，画签落款是一叶扁舟。\n    - 林茜知道《繁衍》取自她在401画室里不愿让{{user}}知道的私密经历，也知道中央线条为什么会让她认出画面；她只用顾客、工作和客流催{{user}}离开，不解释线条对应关系。\n    - 林茜此刻拿顾客、开票柜台和进门客流当理由催{{user}}离开画前。\n</开局前提_繁衍>\n"
+}

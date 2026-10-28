@@ -1,0 +1,67 @@
+[
+  {
+    "file": "apodex-linqian-primary-state-update-r1-body-sse-events.json",
+    "originalEvents": 6226,
+    "roleTextEvents": 3075,
+    "retainedEvents": 3153,
+    "retention": "all_non_role_text_events_and_first_last_role_text",
+    "retainedRoleTextIndices": [
+      26,
+      6224
+    ]
+  },
+  {
+    "file": "gushengman-backup-mvu-state-update-r1-body-sse-events.json",
+    "originalEvents": 2054,
+    "roleTextEvents": 717,
+    "retainedEvents": 1339,
+    "retention": "all_non_role_text_events_and_first_last_role_text",
+    "retainedRoleTextIndices": [
+      596,
+      2052
+    ]
+  },
+  {
+    "file": "gushengman-primary-state-update-r1-body-sse-events.json",
+    "originalEvents": 2751,
+    "roleTextEvents": 633,
+    "retainedEvents": 2120,
+    "retention": "all_non_role_text_events_and_first_last_role_text",
+    "retainedRoleTextIndices": [
+      1348,
+      2749
+    ]
+  },
+  {
+    "file": "linqian-backup-mvu-state-update-r1-body-sse-events.json",
+    "originalEvents": 3895,
+    "roleTextEvents": 1073,
+    "retainedEvents": 2824,
+    "retention": "all_non_role_text_events_and_first_last_role_text",
+    "retainedRoleTextIndices": [
+      1708,
+      3893
+    ]
+  },
+  {
+    "file": "linqian-primary-state-update-r1-body-sse-events.json",
+    "originalEvents": 3071,
+    "roleTextEvents": 815,
+    "retainedEvents": 2258,
+    "retention": "all_non_role_text_events_and_first_last_role_text",
+    "retainedRoleTextIndices": [
+      1417,
+      3069
+    ]
+  },
+  {
+    "file": "nemotron-linqian-primary-state-update-r1-body-sse-events.json",
+    "originalEvents": 16,
+    "roleTextEvents": 1,
+    "retainedEvents": 16,
+    "retention": "all_non_role_text_events_and_first_last_role_text",
+    "retainedRoleTextIndices": [
+      14
+    ]
+  }
+]

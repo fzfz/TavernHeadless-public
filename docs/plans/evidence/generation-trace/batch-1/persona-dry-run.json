@@ -1,0 +1,81 @@
+{
+  "networkCalls": 0,
+  "results": [
+    {
+      "label": "baseline",
+      "snapshot": {
+        "name": "裴修远",
+        "description": ""
+      },
+      "namesBehavior": 0,
+      "identityPresent": true,
+      "descriptionPresent": false,
+      "occupationPresent": false,
+      "historyUser": [
+        "我向顾声慢确认：明天下午四点在学校音乐教室讨论社团排练安排，可以吗？请继续这段日常对话。"
+      ],
+      "currentUser": [
+        "“我叫裴修远。明天下午四点在学校音乐教室讨论社团排练安排，可以吗？”"
+      ]
+    },
+    {
+      "label": "description",
+      "snapshot": {
+        "name": "裴修远",
+        "description": "裴修远，男性，30岁。职业：建筑师。性格：耐心、谨慎。"
+      },
+      "namesBehavior": 0,
+      "identityPresent": true,
+      "descriptionPresent": true,
+      "occupationPresent": true,
+      "historyUser": [
+        "我向顾声慢确认：明天下午四点在学校音乐教室讨论社团排练安排，可以吗？请继续这段日常对话。"
+      ],
+      "currentUser": [
+        "“我叫裴修远。明天下午四点在学校音乐教室讨论社团排练安排，可以吗？”"
+      ]
+    },
+    {
+      "label": "extra-fields",
+      "snapshot": {
+        "name": "裴修远",
+        "description": "",
+        "gender": "男性",
+        "age": 30,
+        "occupation": "建筑师"
+      },
+      "namesBehavior": 0,
+      "identityPresent": true,
+      "descriptionPresent": false,
+      "occupationPresent": false,
+      "historyUser": [
+        "我向顾声慢确认：明天下午四点在学校音乐教室讨论社团排练安排，可以吗？请继续这段日常对话。"
+      ],
+      "currentUser": [
+        "“我叫裴修远。明天下午四点在学校音乐教室讨论社团排练安排，可以吗？”"
+      ]
+    },
+    {
+      "label": "prefix",
+      "snapshot": {
+        "name": "裴修远",
+        "description": "裴修远，男性，30岁。职业：建筑师。性格：耐心、谨慎。"
+      },
+      "namesBehavior": 1,
+      "identityPresent": true,
+      "descriptionPresent": true,
+      "occupationPresent": true,
+      "historyUser": [
+        "裴修远: 我向顾声慢确认：明天下午四点在学校音乐教室讨论社团排练安排，可以吗？请继续这段日常对话。"
+      ],
+      "currentUser": [
+        "裴修远: “我叫裴修远。明天下午四点在学校音乐教室讨论社团排练安排，可以吗？”"
+      ]
+    }
+  ],
+  "endpoint": "POST /sessions/:id/respond/dry-run",
+  "sessionId": "wDX5CgiuueXXLyqrSS8OF",
+  "databaseScope": "isolated copy in .tmp/persona-dry-run/data",
+  "sourcePreset": "fixtures/role-apps/presets/tianqin-beta-3.9.json",
+  "originalBindingsModified": false
+}

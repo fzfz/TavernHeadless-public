@@ -1,0 +1,43 @@
+{
+  "uid": 23,
+  "key": [
+    "嗜血之花画作",
+    "《嗜血之花》"
+  ],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "物品_画作嗜血之花",
+  "order": 73,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": 2,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_item_bloodflower>\n物品名: 画作《嗜血之花》\n\n王授军在血友病医院捐赠会上公开这幅画。画面中央是年轻女人斜对观众的下身局部，一根只露出少部分的阴茎嵌在阴道里，血液顺着结合处向下流，周围散落白色花瓣。构图没有女人的脸、饰物或其他可辨认身份的部位。\n</qrxd_item_bloodflower>\n"
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "presetName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "presetFile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variableRoot": {
+      "type": "string",
+      "minLength": 1
+    },
+    "promptMode": {
+      "enum": [
+        "compat_strict",
+        "compat_plus",
+        "native"
+      ]
+    },
+    "performer": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "controllerModule": {
+      "type": "string",
+      "minLength": 1
+    },
+    "controllerEntryIds": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "uniqueItems": true
+    },
+    "updaterEntryIds": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "uniqueItems": true
+    },
+    "variableMacros": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "target"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "presetImport": {
+      "type": "object",
+      "properties": {
+        "roleAliases": {
+          "type": "object",
+          "additionalProperties": {
+            "enum": [
+              "system",
+              "user",
+              "assistant"
+            ]
+          }
+        },
+        "trimMacro": {
+          "type": "boolean"
+        },
+        "commentMacros": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "roleAliases",
+        "trimMacro",
+        "commentMacros"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "presetName",
+    "presetFile",
+    "variableRoot",
+    "promptMode",
+    "performer",
+    "controllerModule",
+    "controllerEntryIds",
+    "updaterEntryIds",
+    "variableMacros",
+    "presetImport"
+  ]
+}

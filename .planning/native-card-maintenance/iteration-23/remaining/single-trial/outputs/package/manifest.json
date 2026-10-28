@@ -1,0 +1,780 @@
+{
+  "format": "tavern_headless_role_package",
+  "formatVersion": "1.0.0",
+  "packageId": "run-pdG3cp",
+  "character": "character.json",
+  "openings": "openings.json",
+  "frontend": "frontend/manifest.json",
+  "files": [
+    {
+      "path": "agents/state-update/event-evidence.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "agents/state-update/profile.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "agents/state-update/source-variable-rules.txt",
+      "mediaType": "text/plain",
+      "purpose": "data"
+    },
+    {
+      "path": "backend/controllers/config.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "backend/controllers/linxi.js",
+      "mediaType": "text/javascript",
+      "purpose": "server_script"
+    },
+    {
+      "path": "backend/validators/validate.js",
+      "mediaType": "text/javascript",
+      "purpose": "server_script"
+    },
+    {
+      "path": "backend/variable-tools/derive.js",
+      "mediaType": "text/javascript",
+      "purpose": "server_script"
+    },
+    {
+      "path": "character.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "data/role-ui.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "data/state-rules.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "frontend/index.html",
+      "mediaType": "text/html",
+      "purpose": "template"
+    },
+    {
+      "path": "frontend/main.js",
+      "mediaType": "text/javascript",
+      "purpose": "browser_script"
+    },
+    {
+      "path": "frontend/manifest.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "frontend/style.css",
+      "mediaType": "text/css",
+      "purpose": "template"
+    },
+    {
+      "path": "openings/alternate-1.txt",
+      "mediaType": "text/plain",
+      "purpose": "data"
+    },
+    {
+      "path": "openings/first.txt",
+      "mediaType": "text/plain",
+      "purpose": "data"
+    },
+    {
+      "path": "openings.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "state/initial/alternate-1.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "state/initial/first.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "state/schema.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/book.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e000.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e001.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e002.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e003.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e004.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e005.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e006.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e007.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e008.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e009.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e010.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e011.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e012.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e013.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e014.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e015.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e016.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e017.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e018.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e019.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e020.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e021.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e022.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e023.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e024.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e025.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e026.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e027.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e028.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e029.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e030.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e031.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e032.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e033.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e034.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e035.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e036.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e037.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e038.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e039.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e040.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e041.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e042.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e043.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e044.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e045.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e046.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e047.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e048.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e049.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e050.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e051.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e052.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e053.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e054.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e055.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e056.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e057.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e058.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e059.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e060.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e061.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e062.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e063.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e064.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e065.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e066.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e067.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e068.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e069.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e070.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e071.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e072.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e073.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e074.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e075.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e076.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e077.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e078.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e079.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e080.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e081.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e082.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e083.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e084.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e085.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e086.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e087.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e088.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e089.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e090.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e091.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e092.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e093.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e094.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e095.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e096.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e097.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e098.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e099.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e100.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e101.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e102.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e103.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e104.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e105.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e106.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e107.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e108.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e109.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e110.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e111.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e112.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e113.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e114.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e115.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e116.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e117.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e118.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e119.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e120.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e121.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e122.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e123.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e124.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e125.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e126.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e127.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e128.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e129.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e130.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e131.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    },
+    {
+      "path": "worldbooks/linxi/entries/e132.json",
+      "mediaType": "application/json",
+      "purpose": "data"
+    }
+  ]
+}

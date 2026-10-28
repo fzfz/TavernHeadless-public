@@ -1,0 +1,271 @@
+{
+  "spec": "tavern_headless_card",
+  "specVersion": "1.0.0",
+  "identity": {
+    "id": "lighthouse-letter",
+    "cardVersion": "1.0.0",
+    "createdAt": "2026-09-28T00:00:00Z",
+    "modifiedAt": "2026-09-28T00:00:00Z"
+  },
+  "character": {
+    "name": "沈遥",
+    "promptName": "沈遥",
+    "description": "沈遥，30岁，灯塔管理员，认真守约。",
+    "personality": "谨慎而坦率。",
+    "scenario": "傍晚，来访者带来一封旧信。",
+    "dialogueExamples": "沈遥：“你可以先坐下，我去把灯打开。”",
+    "creator": "设计示例",
+    "creatorNotes": {
+      "zh": "自有卡契约示例，供结构审阅，不作为可运行角色发布。"
+    },
+    "tags": ["设计示例"],
+    "sources": []
+  },
+  "worldbooks": [
+    {
+      "id": "coast",
+      "name": "海岸",
+      "scanDepth": 4,
+      "tokenBudget": 1000,
+      "recursive": false,
+      "entries": [
+        {
+          "id": "lighthouse-location",
+          "name": "灯塔",
+          "content": "灯塔位于港口东岸，底层设有接待室。",
+          "enabled": true,
+          "keys": ["灯塔"],
+          "secondaryKeys": [],
+          "constant": false,
+          "caseSensitive": false,
+          "matchMode": "keyword",
+          "secondaryMode": "none",
+          "insertion": {
+            "slot": "after_character",
+            "depth": 0,
+            "role": "system",
+            "order": 10,
+            "priority": 10,
+            "outlet": null
+          },
+          "scanDepth": null,
+          "matchWholeWords": null,
+          "excludeRecursion": false,
+          "preventRecursion": false,
+          "delayUntilRecursion": null,
+          "metadata": {}
+        }
+      ],
+      "caseSensitive": false,
+      "matchWholeWords": false,
+      "maxRecursionSteps": 4,
+      "metadata": {}
+    }
+  ],
+  "openings": [
+    {
+      "id": "arrival",
+      "title": "来访",
+      "kind": "story",
+      "default": true,
+      "text": "沈遥打开接待室的门，问来访者的姓名。",
+      "initialState": {
+        "world": {
+          "location": "灯塔接待室"
+        },
+        "character": {
+          "trust": 20
+        }
+      }
+    }
+  ],
+  "state": {
+    "schemaFile": "state/schema.json",
+    "ownership": [
+      {
+        "path": "/character/trust",
+        "owner": "agent:state-updater"
+      },
+      {
+        "path": "/world/location",
+        "owner": "agent:state-updater"
+      }
+    ],
+    "deriveFiles": [],
+    "validateFiles": []
+  },
+  "agents": [
+    {
+      "id": "state-updater",
+      "kind": "state_update",
+      "enabled": true,
+      "promptFile": "agents/state-update/prompt.txt",
+      "ruleFiles": ["agents/state-update/rules.json"],
+      "inputSchemaFile": "agents/state-update/input.schema.json",
+      "outputSchemaFile": "agents/state-update/output.schema.json",
+      "modelSlot": "state_update",
+      "requiredCapabilities": ["structured-output"],
+      "generationParamsFile": "agents/state-update/generation.json"
+    }
+  ],
+  "controllers": [],
+  "prompting": {
+    "presetFile": "prompting/preset.json",
+    "regexFiles": ["prompting/regex.json"],
+    "deliverySchemaFile": "prompting/delivery.schema.json",
+    "narrativePerson": "third",
+    "macroBindings": {
+      "char": "character.promptName",
+      "user": "local.persona.name",
+      "persona": "local.persona.description"
+    },
+    "characterSystemPrompt": "",
+    "postHistoryInstructions": "",
+    "generationParamsFile": "prompting/generation.json"
+  },
+  "presentation": {
+    "manifestFile": "view/manifest.json",
+    "dependencyFiles": ["view/index.html", "view/style.css", "view/main.js"]
+  },
+  "files": [
+    {
+      "path": "state/schema.json",
+      "purpose": "schema",
+      "mime": "application/json",
+      "encoding": "utf8",
+      "content": "{\"type\": \"object\", \"properties\": {\"world\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\"}}, \"required\": [\"location\"], \"additionalProperties\": false}, \"character\": {\"type\": \"object\", \"properties\": {\"trust\": {\"type\": \"number\", \"minimum\": 0, \"maximum\": 100}}, \"required\": [\"trust\"], \"additionalProperties\": false}}, \"required\": [\"world\", \"character\"], \"additionalProperties\": false}"
+    },
+    {
+      "path": "agents/state-update/prompt.txt",
+      "purpose": "prompt",
+      "mime": "text/plain",
+      "encoding": "utf8",
+      "content": "根据来源正文和已有状态提出变量变更，信任变化必须具有正文依据。"
+    },
+    {
+      "path": "agents/state-update/rules.json",
+      "purpose": "rule",
+      "mime": "application/json",
+      "encoding": "utf8",
+      "content": "{\"rules\": [{\"id\": \"trust\", \"text\": \"双方完成约定后提高信任；没有发生相应事件时保持不变。\"}]}"
+    },
+    {
+      "path": "agents/state-update/input.schema.json",
+      "purpose": "schema",
+      "mime": "application/json",
+      "encoding": "utf8",
+      "content": "{\"type\": \"object\", \"properties\": {\"before\": {\"type\": \"object\", \"additionalProperties\": true}, \"sourceMessages\": {\"type\": \"array\", \"items\": {\"type\": \"object\", \"properties\": {\"id\": {\"type\": \"string\", \"minLength\": 1}, \"text\": {\"type\": \"string\"}}, \"required\": [\"id\", \"text\"], \"additionalProperties\": false}}}, \"required\": [\"before\", \"sourceMessages\"], \"additionalProperties\": false}"
+    },
+    {
+      "path": "agents/state-update/output.schema.json",
+      "purpose": "schema",
+      "mime": "application/json",
+      "encoding": "utf8",
+      "content": "{\"type\": \"object\", \"properties\": {\"changes\": {\"type\": \"array\", \"items\": {\"type\": \"object\", \"properties\": {\"op\": {\"enum\": [\"set\", \"remove\"]}, \"path\": {\"type\": \"string\", \"minLength\": 1}, \"value\": {}}, \"required\": [\"op\", \"path\"], \"additionalProperties\": false}}, \"evidenceMessageIds\": {\"type\": \"array\", \"items\": {\"type\": \"string\", \"minLength\": 1}}}, \"required\": [\"changes\", \"evidenceMessageIds\"], \"additionalProperties\": false}"
+    },
+    {
+      "path": "prompting/preset.json",
+      "purpose": "preset",
+      "mime": "application/json",
+      "encoding": "utf8",
+      "content": "{\"contract\": \"native-preset/1\", \"messages\": [{\"id\": \"system\", \"role\": \"system\", \"text\": \"使用第三人称叙述。角色是{{char}}；演绎者姓名为{{user}}，其完整人设为{{persona}}。\"}, {\"id\": \"history\", \"source\": \"history\"}, {\"id\": \"current\", \"source\": \"current_input\"}]}"
+    },
+    {
+      "path": "prompting/regex.json",
+      "purpose": "regex",
+      "mime": "application/json",
+      "encoding": "utf8",
+      "content": "{\"contract\": \"native-regex/1\", \"rules\": []}"
+    },
+    {
+      "path": "prompting/delivery.schema.json",
+      "purpose": "schema",
+      "mime": "application/json",
+      "encoding": "utf8",
+      "content": "{\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\"}}, \"required\": [\"text\"], \"additionalProperties\": false}"
+    },
+    {
+      "path": "view/manifest.json",
+      "purpose": "data",
+      "mime": "application/json",
+      "encoding": "utf8",
+      "content": "{\"apiVersion\": 1, \"html\": \"view/index.html\", \"css\": \"view/style.css\", \"script\": \"view/main.js\", \"assets\": {}, \"data\": {}}"
+    },
+    {
+      "path": "view/index.html",
+      "purpose": "template",
+      "mime": "text/html",
+      "encoding": "utf8",
+      "content": "<main><h1>灯塔来信</h1><p id=\"story\"></p></main>"
+    },
+    {
+      "path": "view/style.css",
+      "purpose": "style",
+      "mime": "text/css",
+      "encoding": "utf8",
+      "content": "body { color: #eee; background: #101820; }"
+    },
+    {
+      "path": "view/main.js",
+      "purpose": "browser_script",
+      "mime": "text/javascript",
+      "encoding": "utf8",
+      "content": "// 设计样本：正式渲染器协议在实施阶段绑定。"
+    },
+    {
+      "path": "prompting/generation.json",
+      "purpose": "data",
+      "mime": "application/json",
+      "encoding": "utf8",
+      "content": "{\"contract\": \"native-generation-params/1\", \"params\": {\"max_output_tokens\": 2048, \"stream\": true}}"
+    },
+    {
+      "path": "agents/state-update/generation.json",
+      "purpose": "data",
+      "mime": "application/json",
+      "encoding": "utf8",
+      "content": "{\"contract\": \"native-generation-params/1\", \"params\": {\"max_output_tokens\": 1024, \"reasoning_effort\": \"none\"}}"
+    }
+  ],
+  "requirements": {
+    "runtime": [
+      {
+        "id": "native-card",
+        "version": "1.0.0",
+        "required": true,
+        "usedBy": ["/character"]
+      }
+    ],
+    "modelSlots": [
+      {
+        "id": "narrator",
+        "capabilities": ["text-generation"]
+      },
+      {
+        "id": "state_update",
+        "capabilities": ["structured-output"]
+      }
+    ],
+    "persona": {
+      "required": true,
+      "templateFile": null
+    }
+  },
+  "provenance": {
+    "origin": "authored",
+    "converterVersion": null,
+    "ruleSetVersion": null,
+    "sources": [],
+    "mappings": [],
+    "differences": []
+  },
+  "extensions": {
+    "tavern_headless.design": {
+      "purpose": "metadata",
+      "data": {
+        "status": "proposal"
+      }
+    }
+  },
+  "kind": "complete"
+}

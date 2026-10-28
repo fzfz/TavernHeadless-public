@@ -1,0 +1,102 @@
+{
+  "apiVersion": 1,
+  "html": "view.html",
+  "css": "view.css",
+  "script": "main.js",
+  "floorHtml": "floor.html",
+  "assets": {
+    "portrait": {
+      "kind": "image",
+      "file": "assets/portrait.svg",
+      "label": "林岚",
+      "tags": ["portrait", "avatar"]
+    },
+    "visitor": {
+      "kind": "image",
+      "file": "assets/visitor.svg",
+      "label": "演绎者",
+      "tags": ["avatar"]
+    },
+    "interior": {
+      "kind": "image",
+      "file": "assets/interior.svg",
+      "label": "室内",
+      "tags": ["background"]
+    },
+    "exterior": {
+      "kind": "image",
+      "file": "assets/exterior.svg",
+      "label": "室外",
+      "tags": ["background"]
+    },
+    "scene-0": {
+      "kind": "image",
+      "file": "assets/scene-0.svg",
+      "label": "山谷",
+      "tags": ["background"]
+    },
+    "scene-1": {
+      "kind": "image",
+      "file": "assets/scene-1.svg",
+      "label": "月色",
+      "tags": ["background"]
+    },
+    "scene-2": {
+      "kind": "image",
+      "file": "assets/scene-2.svg",
+      "label": "林地",
+      "tags": ["background"]
+    },
+    "music-0": {
+      "kind": "audio",
+      "file": "assets/theme.wav",
+      "label": "环境音 1",
+      "tags": ["bgm"]
+    },
+    "music-1": {
+      "kind": "audio",
+      "file": "assets/theme.wav",
+      "label": "环境音 2",
+      "tags": ["bgm"]
+    },
+    "music-2": {
+      "kind": "audio",
+      "file": "assets/theme.wav",
+      "label": "环境音 3",
+      "tags": ["bgm"]
+    },
+    "music-3": {
+      "kind": "audio",
+      "file": "assets/theme.wav",
+      "label": "环境音 4",
+      "tags": ["bgm"]
+    }
+  },
+  "data": {
+    "title": "灯塔来信",
+    "characterName": "林岚",
+    "characterAvatar": "portrait",
+    "performerName": "旅人",
+    "performerAvatar": "visitor",
+    "scenes": {
+      "inside": {
+        "background": "interior",
+        "label": "港口书店 · 柜台"
+      },
+      "outside": {
+        "background": "exterior",
+        "label": "旧灯塔 · 露台"
+      },
+      "valley": {
+        "background": "scene-0",
+        "label": "雾谷 · 石桥"
+      },
+      "moon": {
+        "background": "scene-1",
+        "label": "山脊 · 月色"
+      }
+    },
+    "choices": ["问起那封信", "一起去灯塔"],
+    "music": "music-0"
+  }
+}

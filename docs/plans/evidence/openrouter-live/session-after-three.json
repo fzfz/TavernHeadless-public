@@ -1,0 +1,62 @@
+{
+  "sessionId": "script-gushengman",
+  "versionId": "Z0DLBhTcQ6Hd9b-BT85Pl",
+  "initial": {
+    "sessionId": "script-gushengman",
+    "branchId": "branch-gushengman",
+    "floorId": null,
+    "attemptId": null,
+    "versionId": "Z0DLBhTcQ6Hd9b-BT85Pl",
+    "snapshotId": "script-gushengman:snapshot:0",
+    "parentSnapshotId": null,
+    "variables": {
+      "世界": {
+        "当前地址": "轻音社活动室",
+        "当前时间": "2025年12月15日17:20",
+        "事件状态": "无"
+      },
+      "顾声慢": {
+        "情感连结度": 0,
+        "创作完成度": 10,
+        "心象映射": {
+          "当前心声": "唔哇——他不会觉得我是怪人吧！",
+          "当前脑内旋律": "《前前前世》"
+        }
+      }
+    },
+    "source": {
+      "kind": "initial",
+      "runId": null,
+      "jobId": null
+    }
+  },
+  "current": {
+    "sessionId": "script-gushengman",
+    "branchId": "branch-gushengman",
+    "floorId": "script-gushengman:floor:3",
+    "attemptId": "script-gushengman:floor:3:attempt:4",
+    "versionId": "Z0DLBhTcQ6Hd9b-BT85Pl",
+    "snapshotId": "script-gushengman:floor:3:attempt:4:snapshot",
+    "parentSnapshotId": "script-gushengman:floor:2:attempt:3:snapshot",
+    "variables": {
+      "世界": {
+        "当前地址": "旧教学楼走廊",
+        "当前时间": "2025年12月15日17:37",
+        "事件状态": "与访客道别，约定明天再听琴"
+      },
+      "顾声慢": {
+        "情感连结度": 4,
+        "创作完成度": 10,
+        "心象映射": {
+          "当前心声": "明天见……等我把那段整理好，再一起听《白羽》。",
+          "当前脑内旋律": "《白羽》"
+        }
+      }
+    },
+    "source": {
+      "kind": "floor",
+      "runId": "script-gushengman:floor:3:run:4",
+      "jobId": null
+    }
+  }
+}

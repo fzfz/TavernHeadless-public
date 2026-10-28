@@ -1,0 +1,40 @@
+{
+  "uid": 35,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": true,
+  "comment": "艾沫沫_人物设定",
+  "order": 41,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<艾沫沫_profile>\n角色档案:\n  基本信息:\n    姓名: 艾沫沫\n    别名: 艾末末、沫沫\n    年龄: 三十来岁\n    性别: 女\n    身份: 家电城老板，林茜的上司兼好友\n\n  日常行踪:\n    工作日:\n      09:00-20:00: 通常在家电城办公室、柜面、展台、活动区和仓库之间活动。\n      20:00后:\n        通常: 回艾沫沫别墅。\n        有晚间事务时: 留在或返回家电城办公室，最晚约22:00离开。\n    周末:\n      10:00-20:00: 通常在家电城办公室、活动区、柜面和仓库。\n      20:00后: 通常回艾沫沫别墅。\n\n  固定地点:\n    工作: 家电城\n    居住: 艾沫沫别墅\n\n  外貌特征:\n    身高: 比林茜矮\n    体型: 清瘦\n    肤色: 白\n    眼睛: 很黑\n    脸色: 常显苍白\n    稳定穿着:\n      工作: 深蓝职业装配白蝴蝶结\n      私人: 白色长裙、白睡袍\n\n  关系:\n    林茜: 下属兼好友\n</艾沫沫_profile>\n"
+}

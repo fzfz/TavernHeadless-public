@@ -1,0 +1,10 @@
+{
+  "localImportReport": "commit-imports.json",
+  "sourceComparison": "api-source-comparison.json",
+  "apiDocuments": 20,
+  "apiDocumentsMatch": 20,
+  "bundledToolExample": "bundled-tools-example.json",
+  "schemaGatesAdded": false,
+  "hashingAdded": false,
+  "canonicalDocumentSelection": "Canonical provenance paths are not loaded by commands; bundled API copies are included. Existing canonical-document changes remain unstaged."
+}

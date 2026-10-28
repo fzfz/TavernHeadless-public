@@ -1,0 +1,122 @@
+:host {
+  --ink: #25211f;
+  --ink-soft: #69605a;
+  --paper: #fbf8f2;
+  --paper-deep: #f0e8dc;
+  --line: #dfd2c3;
+  --accent: #9b513d;
+  --accent-dark: #713a2d;
+  --gold: #ba945c;
+  display: block;
+  color: var(--ink);
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; }
+button { font: inherit; }
+.linxi-app {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(270px, 330px);
+  align-items: start;
+  gap: 18px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 16px;
+}
+.linxi-chat, .linxi-panel {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  box-shadow: 0 8px 24px rgb(48 34 24 / 8%);
+}
+.linxi-chat { min-width: 0; overflow: hidden; }
+.linxi-chat__header {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(120deg, #f5eadb, #fcf8f1);
+}
+.linxi-chat__eyebrow, .linxi-panel__eyebrow {
+  margin: 0 0 5px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+.linxi-chat h1 { margin: 0; font-size: 20px; line-height: 1.3; }
+.linxi-chat__body { min-height: 450px; }
+.linxi-sidebar { display: grid; gap: 14px; }
+.linxi-panel { padding: 16px; }
+.linxi-panel__header { display: flex; align-items: center; gap: 12px; }
+.linxi-panel__header h2 { margin: 0; font-size: 16px; }
+.linxi-panel__header--compact { margin-bottom: 12px; }
+.linxi-avatar {
+  display: grid;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid #d7b6a0;
+  border-radius: 50%;
+  background: #f1dfcf;
+  color: var(--accent-dark);
+  font-family: serif;
+  font-size: 20px;
+}
+.linxi-place {
+  margin: 14px 0 12px;
+  padding: 9px 11px;
+  border-left: 3px solid var(--accent);
+  background: var(--paper-deep);
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.linxi-status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+}
+.linxi-status-grid > div { min-width: 0; padding: 10px; background: #fffdf9; }
+.linxi-status-grid dt { margin-bottom: 4px; color: var(--ink-soft); font-size: 11px; }
+.linxi-status-grid dd { min-height: 20px; margin: 0; font-size: 13px; font-weight: 700; overflow-wrap: anywhere; }
+progress { display: block; width: 100%; height: 5px; margin-top: 7px; accent-color: var(--accent); }
+.linxi-thought { margin-top: 12px; }
+.linxi-thought h3 { margin: 0 0 6px; color: var(--ink-soft); font-size: 11px; font-weight: 600; }
+.linxi-thought p { margin: 0; max-height: 140px; overflow: auto; color: var(--ink); font-size: 12px; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
+.linxi-actions__list { display: grid; gap: 8px; }
+.linxi-actions__list button {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffdf9;
+  color: var(--ink);
+  line-height: 1.5;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.linxi-actions__list button:hover:not(:disabled) { border-color: var(--gold); background: #f7eee2; }
+.linxi-actions__list button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.linxi-actions__list button:disabled { cursor: not-allowed; opacity: .55; }
+.linxi-feedback { min-height: 1.4em; margin: 9px 0 0; color: var(--accent-dark); font-size: 12px; }
+@media (max-width: 760px) {
+  .linxi-app { grid-template-columns: minmax(0, 1fr); padding: 8px; gap: 10px; }
+  .linxi-sidebar { grid-row: 1; }
+  .linxi-chat__body { min-height: 340px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}
+
+.linxi-repair { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+.linxi-repair h3 { margin: 0 0 8px; color: var(--ink-soft); font-size: 12px; font-weight: 600; }
+.linxi-repair__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.linxi-repair__actions button { border: 1px solid var(--line); border-radius: 7px; padding: 7px 9px; background: var(--paper-deep); color: var(--ink); font-size: 11px; cursor: pointer; }
+.linxi-repair__actions button:hover:not(:disabled) { border-color: var(--gold); }
+.linxi-repair__actions button:disabled { cursor: not-allowed; opacity: .55; }

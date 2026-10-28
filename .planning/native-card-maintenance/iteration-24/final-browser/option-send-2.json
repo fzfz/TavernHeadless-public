@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-06T11:09:05.876Z",
+  "expression": "(async()=>{const s=Array.from(document.querySelectorAll('*')).find(e=>e.shadowRoot).shadowRoot;s.querySelector('#option-0').click();s.querySelector('#option-0').click();const locked=[0,1,2,3].map(i=>s.querySelector('#option-'+i).disabled);await new Promise(r=>setTimeout(r,2200));const c=s.querySelector('#system-chat').firstElementChild.shadowRoot;return {locked,after:[0,1,2,3].map(i=>s.querySelector('#option-'+i).disabled),feedback:s.querySelector('[data-option-feedback]').textContent,error:c.querySelector('.error').innerText,historyTail:c.querySelector('.history').innerText.slice(-250)}})()",
+  "result": {
+    "locked": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "after": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "feedback": "",
+    "error": "",
+    "historyTail": "东西，脸色一下变了。\n\n“别……别用那个……”\n\n林茜没有理他。她蹲到他面前，一只手抓住他的阴茎，似乎带着狞笑的表情,用另一只手把旧飞机杯的入口抵上龟头。\n\n~~裴修远:她要用那个东西套他。林茜，你到底还想干什么？~~\n\n窗外很静。裴修远贴在后窗外，手指扣着窗沿，指腹上全是墙灰。\n\n\n\n裴修远\n\n“我继续观察。”\n\n裴修远仍握着窗沿，没有进屋，也没有出声。屋内的两人继续留在原处。\n\n裴修远\n\n元指令:细腻演绎5分钟内林茜的剧情。\n\n裴修远仍握着窗沿，没有进屋，也没有出声。屋内的两人继续留在原处。"
+  },
+  "errors": []
+}

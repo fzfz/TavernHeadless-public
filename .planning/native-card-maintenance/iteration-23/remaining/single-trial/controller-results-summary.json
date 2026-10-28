@@ -1,0 +1,427 @@
+[
+  {
+    "kind": "isolation-route",
+    "stage": "Z000",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      10,
+      12,
+      13,
+      132,
+      105,
+      82
+    ],
+    "selectedComments": [
+      "地点_林茜家_监控布局",
+      "地点状态_用户公司_剥削已拆除",
+      "地点状态_家电城_繁衍挂墙",
+      "终局阶段_Z001_林茜清空硬盘",
+      "终局路线变量规则",
+      "刺激作用_画作繁衍"
+    ]
+  },
+  {
+    "kind": "isolation-route",
+    "stage": "Z001",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      10,
+      12,
+      13,
+      132,
+      105,
+      83
+    ],
+    "selectedComments": [
+      "地点_林茜家_监控布局",
+      "地点状态_用户公司_剥削已拆除",
+      "地点状态_家电城_繁衍挂墙",
+      "终局阶段_Z003_骨折隔离",
+      "终局路线变量规则",
+      "刺激作用_画作繁衍"
+    ]
+  },
+  {
+    "kind": "isolation-route",
+    "stage": "Z003",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      10,
+      12,
+      13,
+      132,
+      105,
+      84
+    ],
+    "selectedComments": [
+      "地点_林茜家_监控布局",
+      "地点状态_用户公司_剥削已拆除",
+      "地点状态_家电城_繁衍挂墙",
+      "终局阶段_Z004_艾沫沫告别信",
+      "终局路线变量规则",
+      "刺激作用_画作繁衍"
+    ]
+  },
+  {
+    "kind": "isolation-route",
+    "stage": "Z004",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      10,
+      12,
+      13,
+      132,
+      105,
+      65
+    ],
+    "selectedComments": [
+      "地点_林茜家_监控布局",
+      "地点状态_用户公司_剥削已拆除",
+      "地点状态_家电城_繁衍挂墙",
+      "事件_48_AM_证据成立",
+      "终局路线变量规则",
+      "刺激作用_画作繁衍"
+    ]
+  },
+  {
+    "kind": "body-boundary",
+    "feeling": 299,
+    "fall": 80,
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      89,
+      90,
+      93,
+      94,
+      98,
+      103
+    ],
+    "selectedComments": [
+      "林茜_身体边界_用户共同",
+      "林茜_身体边界_用户_299以下",
+      "林茜_身体边界_杨桃子共同",
+      "杨桃子_称呼阶段_0_199",
+      "林茜_身体边界_杨桃子_0_80",
+      "林茜_身体边界_王授军"
+    ]
+  },
+  {
+    "kind": "body-boundary",
+    "feeling": 300,
+    "fall": 81,
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      89,
+      91,
+      93,
+      94,
+      99,
+      103
+    ],
+    "selectedComments": [
+      "林茜_身体边界_用户共同",
+      "林茜_身体边界_用户_300_449",
+      "林茜_身体边界_杨桃子共同",
+      "杨桃子_称呼阶段_0_199",
+      "林茜_身体边界_杨桃子_81_219",
+      "林茜_身体边界_王授军"
+    ]
+  },
+  {
+    "kind": "body-boundary",
+    "feeling": 449,
+    "fall": 199,
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      89,
+      91,
+      93,
+      94,
+      99,
+      103
+    ],
+    "selectedComments": [
+      "林茜_身体边界_用户共同",
+      "林茜_身体边界_用户_300_449",
+      "林茜_身体边界_杨桃子共同",
+      "杨桃子_称呼阶段_0_199",
+      "林茜_身体边界_杨桃子_81_219",
+      "林茜_身体边界_王授军"
+    ]
+  },
+  {
+    "kind": "body-boundary",
+    "feeling": 450,
+    "fall": 200,
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      89,
+      92,
+      93,
+      95,
+      99,
+      103
+    ],
+    "selectedComments": [
+      "林茜_身体边界_用户共同",
+      "林茜_身体边界_用户_450以上",
+      "林茜_身体边界_杨桃子共同",
+      "杨桃子_称呼阶段_200_379",
+      "林茜_身体边界_杨桃子_81_219",
+      "林茜_身体边界_王授军"
+    ]
+  },
+  {
+    "kind": "body-boundary",
+    "feeling": 450,
+    "fall": 219,
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      89,
+      92,
+      93,
+      95,
+      99,
+      103
+    ],
+    "selectedComments": [
+      "林茜_身体边界_用户共同",
+      "林茜_身体边界_用户_450以上",
+      "林茜_身体边界_杨桃子共同",
+      "杨桃子_称呼阶段_200_379",
+      "林茜_身体边界_杨桃子_81_219",
+      "林茜_身体边界_王授军"
+    ]
+  },
+  {
+    "kind": "body-boundary",
+    "feeling": 450,
+    "fall": 220,
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      89,
+      92,
+      93,
+      95,
+      100,
+      103
+    ],
+    "selectedComments": [
+      "林茜_身体边界_用户共同",
+      "林茜_身体边界_用户_450以上",
+      "林茜_身体边界_杨桃子共同",
+      "杨桃子_称呼阶段_200_379",
+      "林茜_身体边界_杨桃子_220_379",
+      "林茜_身体边界_王授军"
+    ]
+  },
+  {
+    "kind": "body-boundary",
+    "feeling": 450,
+    "fall": 379,
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      89,
+      92,
+      93,
+      95,
+      100,
+      103
+    ],
+    "selectedComments": [
+      "林茜_身体边界_用户共同",
+      "林茜_身体边界_用户_450以上",
+      "林茜_身体边界_杨桃子共同",
+      "杨桃子_称呼阶段_200_379",
+      "林茜_身体边界_杨桃子_220_379",
+      "林茜_身体边界_王授军"
+    ]
+  },
+  {
+    "kind": "body-boundary",
+    "feeling": 450,
+    "fall": 380,
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      89,
+      92,
+      93,
+      96,
+      101,
+      103
+    ],
+    "selectedComments": [
+      "林茜_身体边界_用户共同",
+      "林茜_身体边界_用户_450以上",
+      "林茜_身体边界_杨桃子共同",
+      "杨桃子_称呼阶段_380_619",
+      "林茜_身体边界_杨桃子_380_619",
+      "林茜_身体边界_王授军"
+    ]
+  },
+  {
+    "kind": "body-boundary",
+    "feeling": 450,
+    "fall": 619,
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      89,
+      92,
+      93,
+      96,
+      101,
+      103
+    ],
+    "selectedComments": [
+      "林茜_身体边界_用户共同",
+      "林茜_身体边界_用户_450以上",
+      "林茜_身体边界_杨桃子共同",
+      "杨桃子_称呼阶段_380_619",
+      "林茜_身体边界_杨桃子_380_619",
+      "林茜_身体边界_王授军"
+    ]
+  },
+  {
+    "kind": "body-boundary",
+    "feeling": 450,
+    "fall": 620,
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      89,
+      92,
+      93,
+      97,
+      102,
+      103
+    ],
+    "selectedComments": [
+      "林茜_身体边界_用户共同",
+      "林茜_身体边界_用户_450以上",
+      "林茜_身体边界_杨桃子共同",
+      "杨桃子_称呼阶段_620以上",
+      "林茜_身体边界_杨桃子_620以上",
+      "林茜_身体边界_王授军"
+    ]
+  },
+  {
+    "kind": "opening-premise",
+    "mode": "默认拆迁旧楼",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      111
+    ],
+    "selectedComments": [
+      "开局前提_默认拆迁旧楼"
+    ]
+  },
+  {
+    "kind": "opening-premise",
+    "mode": "旧楼电话纠缠",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      118
+    ],
+    "selectedComments": [
+      "开局前提_旧楼电话纠缠"
+    ]
+  },
+  {
+    "kind": "opening-premise",
+    "mode": "原始首次撞见",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      112
+    ],
+    "selectedComments": [
+      "开局前提_原始首次撞见"
+    ]
+  },
+  {
+    "kind": "opening-premise",
+    "mode": "远程监控",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      113
+    ],
+    "selectedComments": [
+      "开局前提_远程监控"
+    ]
+  },
+  {
+    "kind": "opening-premise",
+    "mode": "画室监控",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      114
+    ],
+    "selectedComments": [
+      "开局前提_画室监控"
+    ]
+  },
+  {
+    "kind": "opening-premise",
+    "mode": "302监控",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      115
+    ],
+    "selectedComments": [
+      "开局前提_302监控"
+    ]
+  },
+  {
+    "kind": "opening-premise",
+    "mode": "王授军私宅3P",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      116
+    ],
+    "selectedComments": [
+      "开局前提_王授军私宅3P"
+    ]
+  },
+  {
+    "kind": "opening-premise",
+    "mode": "黑哥逃脱",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      117
+    ],
+    "selectedComments": [
+      "开局前提_黑哥逃脱"
+    ]
+  },
+  {
+    "kind": "opening-premise",
+    "mode": "跪倒屈服",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      119
+    ],
+    "selectedComments": [
+      "开局前提_跪倒屈服"
+    ]
+  },
+  {
+    "kind": "opening-premise",
+    "mode": "繁衍",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      120
+    ],
+    "selectedComments": [
+      "开局前提_繁衍"
+    ]
+  },
+  {
+    "kind": "opening-premise",
+    "mode": "画室赴约",
+    "sourceEqual": true,
+    "referencedEntryIds": [
+      131
+    ],
+    "selectedComments": [
+      "开局前提_画室赴约"
+    ]
+  }
+]

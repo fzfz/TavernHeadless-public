@@ -1,0 +1,312 @@
+[
+  {
+    "id": "cli-dry-run",
+    "request": {
+      "message": "“港口还有其他信件吗？”"
+    },
+    "status": 200,
+    "response": {
+      "data": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "角色设定：雾港来信。用户姓名：裴修远；完整用户人设：裴修远是成年男性港务职员，谨慎、坦率，正在港口询问信件。。叙述使用第三人称。\n\n你在雾港经营一家深夜邮局。来往旅人留下信件与秘密；值夜的向导沈知夏会陪你追查一封没有收件人的信。\n\nPersonality: 沈知夏，29 岁，雾港的夜间向导。说话温和直接，擅长观察街道的细微变化。她会说明自己知道的事情，也会坦承不确定之处。\n\nScenario: 秋夜，邮局即将关门。一封潮湿的信被塞进门缝，信封上只有灯塔的素描。\n\nThe user is 裴修远: 裴修远是成年男性港务职员，谨慎、坦率，正在港口询问信件。\n\n当前地点：夜间邮局。\n\n旧灯塔位于北岬。通往灯塔的石阶在涨潮时会被海水淹没。\n\n守灯人每晚会到码头买一份报纸。他认识沈知夏，但从不主动谈起灯塔的旧事。"
+          },
+          {
+            "role": "assistant",
+            "content": "雾港来信: 钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”"
+          },
+          {
+            "role": "user",
+            "content": "裴修远: “港口还有其他信件吗？”"
+          }
+        ],
+        "token_estimate": 112,
+        "available_for_reply": 16272,
+        "memory": {
+          "summary_injected": false,
+          "runtime_mode": "disabled",
+          "requested_write": false,
+          "effective_write": false,
+          "strategy": "none"
+        },
+        "memory_summary": null,
+        "prompt_snapshot": {
+          "preset_id": "preview-preset-19bf8abe-f544-4ba5-8173-de8c02c532cc",
+          "preset_updated_at": 1791312288987,
+          "preset_version": 1,
+          "preset_version_id": "preview-preset-version-e30ac8aa-aae5-491e-85da-e80acb5d01d2",
+          "preset_content_hash": "isolated-preview-preset",
+          "worldbook_id": null,
+          "worldbook_updated_at": null,
+          "worldbook_version": null,
+          "worldbook_version_id": null,
+          "worldbook_content_hash": null,
+          "regex_profile_id": null,
+          "regex_profile_updated_at": null,
+          "regex_profile_version": null,
+          "regex_profile_version_id": null,
+          "regex_profile_content_hash": null,
+          "character_id": "AuXcX-7TwgwOuDn7zveyr",
+          "character_version_id": "XN5DuQpgCdV9ZuJgMq9Eu",
+          "character_imported_format": null,
+          "character_content_hash": "b6df7e4ae2c3289c4a4333c2b0ef0b2e7bfcfc2c3c36fa38dae4494d2861803d",
+          "worldbook_activated_entry_uids": [
+            110,
+            120,
+            110
+          ],
+          "worldbook_activated_entries": [
+            {
+              "uid": 110,
+              "activation_key": "worldbook:bc0p6WzlqS8FjE405oWhe:1:entry:110",
+              "source": {
+                "kind": "session_worldbook",
+                "worldbook_id": "bc0p6WzlqS8FjE405oWhe",
+                "worldbook_name": "雾港地理",
+                "asset_scope_id": "worldbook:bc0p6WzlqS8FjE405oWhe:1"
+              },
+              "insertion": {
+                "position": "before"
+              }
+            },
+            {
+              "uid": 120,
+              "activation_key": "worldbook:bc0p6WzlqS8FjE405oWhe:1:entry:120",
+              "source": {
+                "kind": "session_worldbook",
+                "worldbook_id": "bc0p6WzlqS8FjE405oWhe",
+                "worldbook_name": "雾港地理",
+                "asset_scope_id": "worldbook:bc0p6WzlqS8FjE405oWhe:1"
+              },
+              "insertion": {
+                "position": "before"
+              }
+            },
+            {
+              "uid": 110,
+              "activation_key": "worldbook:pxE1l1hAZDEv6WL77ccAX:1:entry:110",
+              "source": {
+                "kind": "session_worldbook",
+                "worldbook_id": "pxE1l1hAZDEv6WL77ccAX",
+                "worldbook_name": "雾港人物",
+                "asset_scope_id": "worldbook:pxE1l1hAZDEv6WL77ccAX:1"
+              },
+              "insertion": {
+                "position": "before"
+              }
+            }
+          ],
+          "regex_pre_rule_names": [],
+          "regex_post_rule_names": [
+            "first",
+            "second"
+          ],
+          "prompt_mode": "native",
+          "asset_manifest_digest": "9c824a96d72fcd2c6af36ad1e41bd5014ba34af40b67b254a342a3af34e9fbda",
+          "prompt_digest": "5027ccc2ab8dc55793201fadf3568ab6f2106368d0b74123157b8e75df50dc0b",
+          "token_estimate": 112
+        },
+        "assembly": {
+          "mode": "preset",
+          "prompt_intent": "normal",
+          "assistant_prefill_applied": false,
+          "assistant_prefill_strategy": "none",
+          "preset_used": true,
+          "worldbook_hits": 3,
+          "selected_prompt_order_character_id": 100000,
+          "ignored_prompt_order_character_ids": [],
+          "regex_pre_rules": [],
+          "regex_post_rules": [
+            "first",
+            "second"
+          ],
+          "memory_summary_injected": false,
+          "reserved_variable_collisions": [],
+          "unsupported_preset_fields": [],
+          "ignored_preset_fields": [],
+          "unresolved_preset_markers": [],
+          "preset_warnings": [],
+          "continue_nudge_applied": false,
+          "continue_nudge_text": null,
+          "names_behavior_applied": "always",
+          "trigger_filtered_entry_ids": [],
+          "in_chat_inserted_entry_ids": [],
+          "preprocessed_user_message": "“港口还有其他信件吗？”"
+        },
+        "runtime_trace": {
+          "preset": {
+            "selected_prompt_order_character_id": 100000,
+            "ignored_prompt_order_character_ids": [],
+            "unsupported_fields": [],
+            "ignored_fields": [],
+            "unresolved_markers": [],
+            "warnings": [],
+            "trigger_filtered_entry_ids": [],
+            "in_chat_inserted_entry_ids": [],
+            "continue_nudge_applied": false,
+            "continue_nudge_text": null,
+            "names_behavior_applied": "always"
+          },
+          "worldbook": {
+            "hit_count": 3
+          },
+          "regex": {
+            "user_input_rules": [],
+            "ai_output_rules": [
+              "first",
+              "second"
+            ],
+            "preprocessed_user_message": "“港口还有其他信件吗？”",
+            "phases": [
+              {
+                "phase_id": "persist.user_input",
+                "placement": 1,
+                "channel": "persist",
+                "status": "executed",
+                "changed": false,
+                "depth": 0,
+                "input_text_hash": "951fcdada9812f67db97972da069562099938c078e1e7dd0eecfeb82655c9b48",
+                "output_text_hash": "951fcdada9812f67db97972da069562099938c078e1e7dd0eecfeb82655c9b48",
+                "candidate_rule_names": [],
+                "matched_rule_names": [],
+                "skipped_rules": []
+              },
+              {
+                "phase_id": "prompt.user_input",
+                "placement": 1,
+                "channel": "prompt",
+                "status": "executed",
+                "changed": false,
+                "depth": 0,
+                "input_text_hash": "951fcdada9812f67db97972da069562099938c078e1e7dd0eecfeb82655c9b48",
+                "output_text_hash": "951fcdada9812f67db97972da069562099938c078e1e7dd0eecfeb82655c9b48",
+                "candidate_rule_names": [],
+                "matched_rule_names": [],
+                "skipped_rules": []
+              }
+            ],
+            "substitution_mode": "bare_variable_only"
+          },
+          "budgets": {
+            "by_group": [
+              {
+                "group": "history",
+                "token_count": 23
+              },
+              {
+                "group": "section:character",
+                "token_count": 41
+              },
+              {
+                "group": "section:用户人设",
+                "token_count": 12
+              },
+              {
+                "group": "section:角色、用户与测试状态",
+                "token_count": 16
+              },
+              {
+                "group": "worldbook",
+                "token_count": 19
+              }
+            ]
+          },
+          "memory": {
+            "summary_injected": false,
+            "runtime_mode": "disabled",
+            "requested_write": false,
+            "effective_write": false,
+            "strategy": "none"
+          },
+          "macro": {
+            "warnings": [
+              {
+                "code": "macro_value_missing",
+                "message": "Macro authorsNote has no resolved value and fell back to empty string.",
+                "macro_name": "authorsNote"
+              },
+              {
+                "code": "macro_value_missing",
+                "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+                "macro_name": "defaultAuthorsNote"
+              },
+              {
+                "code": "macro_value_missing",
+                "message": "Macro model has no resolved value and fell back to empty string.",
+                "macro_name": "model"
+              }
+            ],
+            "used_names": [
+              "char",
+              "user",
+              "persona"
+            ],
+            "mutation_preview": [],
+            "staged_mutations": [],
+            "traces": [
+              {
+                "macro_name": "char",
+                "raw_text": "{{char}}",
+                "resolved_text": "雾港来信",
+                "phase": "dry_run",
+                "source_kind": "macro"
+              },
+              {
+                "macro_name": "user",
+                "raw_text": "{{user}}",
+                "resolved_text": "裴修远",
+                "phase": "dry_run",
+                "source_kind": "macro"
+              },
+              {
+                "macro_name": "persona",
+                "raw_text": "{{persona}}",
+                "resolved_text": "裴修远是成年男性港务职员，谨慎、坦率，正在港口询问信件。",
+                "phase": "dry_run",
+                "source_kind": "macro"
+              }
+            ]
+          },
+          "delivery": {
+            "assistant_prefill_requested": false,
+            "assistant_prefill_applied": false,
+            "assistant_prefill_strategy": "none",
+            "allow_assistant_prefill": true,
+            "require_last_user": false,
+            "no_assistant": false,
+            "last_message_role": "user",
+            "ends_with_user": true,
+            "degraded": false,
+            "degrade_reasons": []
+          },
+          "history_normalization": {
+            "raw_entry_count": 2,
+            "effective_turn_count": 2,
+            "selected_turn_count": 2,
+            "trailing_user_source_floor_ids": [],
+            "merged_user_groups": [],
+            "violations": []
+          },
+          "tool_transport": {
+            "selection": {
+              "transport": "none",
+              "reason_code": "tools_disabled",
+              "reason_detail": "No callable tools are enabled for the current turn."
+            },
+            "tool_list": {
+              "injected": false,
+              "tool_count": 0
+            }
+          }
+        }
+      }
+    },
+    "passed": true,
+    "checks": {
+      "assembledMessageCount": 3,
+      "personaDescriptionIncluded": true,
+      "personaNameInRoleView": true
+    }
+  }
+]

@@ -1,0 +1,200 @@
+{
+  "version": 1,
+  "persona": {
+    "name": "梁嘉禾",
+    "description": "梁嘉禾是31岁的成年女性，是临江档案馆的夜班修复员。她谨慎、直率，熟悉纸本文献修复，正在核对一把从交接台移入馆藏的铜钥匙。预设要求第三人称叙述；直接引语中的“我”和“你”按说话者与听话者解释。"
+  },
+  "preset": {
+    "name": "示例：角色身份、历史与状态更新",
+    "data": {
+      "prompts": [
+        {
+          "identifier": "main",
+          "name": "角色、用户与测试状态",
+          "role": "system",
+          "content": "你扮演顾星澜。顾星澜是34岁的成年男性，临江档案馆的夜班值守员，谨慎、坦率，遵守登记流程。开始状态：stash.key_location=交接台；stash.registered_pages=0；stash.pending_transfer=true；trust=20。用户姓名：{{user}}；完整用户人设：{{persona}}。叙述使用第三人称。"
+        },
+        {
+          "identifier": "charDescription",
+          "name": "角色设定",
+          "marker": true
+        },
+        {
+          "identifier": "charPersonality",
+          "name": "角色性格",
+          "marker": true
+        },
+        {
+          "identifier": "scenario",
+          "name": "当前场景",
+          "marker": true
+        },
+        {
+          "identifier": "personaDescription",
+          "name": "用户人设",
+          "marker": true
+        },
+        {
+          "identifier": "chatHistory",
+          "name": "对话历史",
+          "marker": true
+        }
+      ],
+      "prompt_order": [
+        {
+          "character_id": 100000,
+          "order": [
+            {
+              "identifier": "main",
+              "enabled": true
+            },
+            {
+              "identifier": "charDescription",
+              "enabled": true
+            },
+            {
+              "identifier": "charPersonality",
+              "enabled": true
+            },
+            {
+              "identifier": "scenario",
+              "enabled": true
+            },
+            {
+              "identifier": "personaDescription",
+              "enabled": true
+            },
+            {
+              "identifier": "chatHistory",
+              "enabled": true
+            }
+          ]
+        }
+      ],
+      "default_character_id": 100000,
+      "openai_max_context": 16384,
+      "openai_max_tokens": 512,
+      "temperature": 0.3,
+      "top_p": 0.9,
+      "top_k": 40,
+      "min_p": 0.05,
+      "frequency_penalty": 0,
+      "presence_penalty": 0,
+      "repetition_penalty": 1.05,
+      "new_chat_prompt": "[开始当前角色测试]",
+      "new_example_chat_prompt": "",
+      "continue_nudge_prompt": "请自然接续当前对话，不要重复既有内容。",
+      "assistant_prefill": "",
+      "wi_format": "{0}",
+      "names_behavior": 1,
+      "stream_openai": true
+    }
+  },
+  "modelParams": {
+    "max_context_tokens": 16384,
+    "max_output_tokens": 512,
+    "temperature": 0.3,
+    "top_p": 0.9,
+    "top_k": 40,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "stop_sequences": null,
+    "seed": 20260930,
+    "repetition_penalty": 1.05,
+    "min_p": 0.05,
+    "logit_bias": null,
+    "response_format": {
+      "type": "text"
+    },
+    "stream": true,
+    "timeout_ms": 30000,
+    "max_retries": 0,
+    "reasoning_effort": "none"
+  },
+  "modelCapabilities": {
+    "enabled": true,
+    "allowed": ["random", "calculate"],
+    "slot": "narrator",
+    "transport": "text_protocol",
+    "limits": {
+      "maxCallsPerTurn": 8,
+      "maxRandomSamples": 16
+    }
+  },
+  "sessionType": "individual",
+  "openingId": "archive-handoff",
+  "testMessages": [
+    {
+      "id": "key-handoff",
+      "message": "我把铜钥匙放在交接台，请登记钥匙所在位置和当前页码。",
+      "branch_id": "main",
+      "prompt_intent": "normal"
+    },
+    {
+      "id": "continue-with-history",
+      "message": "【写作者元指令】接续上一条历史，说明铜钥匙当前的位置、登记页码和状态更新证据。叙述使用第三人称；引号中的“我”仍指梁嘉禾。",
+      "branch_id": "main",
+      "prompt_intent": "normal",
+      "debug_options": {
+        "include_worldbook_matches": true
+      }
+    }
+  ],
+  "offlineReplay": {
+    "steps": [
+      {
+        "purpose": "narrator",
+        "model": "offline-example-narrator",
+        "text": "顾星澜接过铜钥匙，将位置记为一层暂存柜，并在登记簿填入第1页。"
+      },
+      {
+        "purpose": "state_updater",
+        "model": "offline-example-state-updater",
+        "agentOutput": {
+          "changes": [
+            {
+              "op": "set",
+              "path": "/stash/key_location",
+              "value": "一层暂存柜"
+            },
+            {
+              "op": "set",
+              "path": "/stash/registered_pages",
+              "value": 1
+            },
+            {
+              "op": "set",
+              "path": "/stash/pending_transfer",
+              "value": false
+            }
+          ],
+          "evidenceMessageIds": ["$sourceMessageId[0]"]
+        }
+      },
+      {
+        "purpose": "narrator",
+        "model": "offline-example-narrator",
+        "text": "顾星澜翻到登记簿第2页，复核梁嘉禾刚刚提到的交接记录。"
+      },
+      {
+        "purpose": "state_updater",
+        "model": "offline-example-state-updater",
+        "agentOutput": {
+          "changes": [
+            {
+              "op": "set",
+              "path": "/stash/registered_pages",
+              "value": 2
+            },
+            {
+              "op": "set",
+              "path": "/trust",
+              "value": 21
+            }
+          ],
+          "evidenceMessageIds": ["$sourceMessageId[0]"]
+        }
+      }
+    ]
+  }
+}

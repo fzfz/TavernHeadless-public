@@ -1,0 +1,37 @@
+{
+  "taskId": "REPLACE_WITH_TASK_ID",
+  "checks": [
+    {
+      "name": "source_coverage",
+      "status": "not_executed",
+      "evidence": [],
+      "conclusion": "填写本任务已核对的来源文件、来源指针和对应证据文件。"
+    },
+    {
+      "name": "conversion_mapping",
+      "status": "not_executed",
+      "evidence": [],
+      "conclusion": "填写本任务已核对的目标文件、字段或行为及其证据文件。"
+    },
+    {
+      "name": "package_validation",
+      "status": "not_executed",
+      "evidence": [],
+      "conclusion": "填写本任务的包结构校验方式、实际结果和证据文件。"
+    },
+    {
+      "name": "formal_import",
+      "status": "not_executed",
+      "evidence": [],
+      "conclusion": "填写本任务的正式导入结果和可复核证据文件。"
+    },
+    {
+      "name": "preview_and_offline_replay",
+      "status": "not_executed",
+      "evidence": [],
+      "conclusion": "填写本任务的页面预览与离线重放结果及证据文件。"
+    }
+  ],
+  "zip": null,
+  "overall": "not_executed"
+}

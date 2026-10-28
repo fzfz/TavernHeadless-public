@@ -1,0 +1,29 @@
+{
+  "sessionId": "5ZoCR0MnbCwCCgPS7iQa9",
+  "branchId": "main",
+  "floorId": "hZ7sBJAhpda70xUNLrROc",
+  "attemptId": "UJAcw7kodDfzRUA7Bkj0S:1",
+  "versionId": "HkdRM1AnnRgadXaEkJ4fT",
+  "snapshotId": "9811ceea-c424-45ed-a575-b3d8d7fd44a6",
+  "parentSnapshotId": "e62ea4b4-6bae-46e2-a47e-7762055687cc",
+  "variables": {
+    "世界": {
+      "当前地址": "旧教学楼三楼活动室",
+      "当前时间": "2025年12月15日18:05",
+      "事件状态": "无"
+    },
+    "顾声慢": {
+      "情感连结度": 4,
+      "创作完成度": 11,
+      "心象映射": {
+        "当前心声": "他坐下了，还说自己平时听动画里的歌……这什么啊，简直像定点投放。可他把《白羽》说成“你这首曲子”的时候，我居然有点高兴。",
+        "当前脑内旋律": "《God knows...》"
+      }
+    }
+  },
+  "source": {
+    "kind": "floor",
+    "runId": "UJAcw7kodDfzRUA7Bkj0S",
+    "jobId": null
+  }
+}

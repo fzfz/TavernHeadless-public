@@ -1,0 +1,30 @@
+{
+  "targeted": {
+    "files": 26,
+    "passed": 645,
+    "log": "directed-final.log"
+  },
+  "entryAfterSimplify": {
+    "passed": 9,
+    "log": "entry-simplified.log"
+  },
+  "types": {
+    "exitCode": 0,
+    "log": "full-types.log"
+  },
+  "lint": {
+    "exitCode": 0,
+    "warnings": 4,
+    "log": "full-lint.log"
+  },
+  "fullTests": {
+    "exitCode": 0,
+    "passedFiles": 595,
+    "skippedFiles": 3,
+    "passedTests": 5932,
+    "skippedTests": 4,
+    "durationSeconds": 637.71,
+    "log": "full-tests.log"
+  },
+  "generation": "offline replay only"
+}

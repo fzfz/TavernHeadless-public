@@ -1,0 +1,61 @@
+{
+  "records": [
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "change": "purpose/read timing YAML only",
+      "bodyUnchanged": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/api/script-api.md",
+      "change": "purpose/read timing YAML only",
+      "bodyUnchanged": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/api/script-template-api.md",
+      "change": "purpose/read timing YAML only",
+      "bodyUnchanged": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/api/backend-api.md",
+      "change": "purpose/read timing YAML only",
+      "bodyUnchanged": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/api/agent-tools-api.md",
+      "change": "purpose/read timing YAML only",
+      "bodyUnchanged": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/api/model-capabilities.md",
+      "change": "purpose/read timing YAML only",
+      "bodyUnchanged": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/api/native-card-api.md",
+      "change": "purpose/read timing YAML only",
+      "bodyUnchanged": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/api/http/chat.md",
+      "change": "purpose/timing moved to YAML; remove redundant reader boilerplate and site outline metadata",
+      "apiSectionsUnchanged": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/api/http/tools.md",
+      "change": "purpose/timing moved to YAML; remove redundant reader boilerplate and site outline metadata",
+      "apiSectionsUnchanged": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/api/http/worldbooks.md",
+      "change": "purpose/timing moved to YAML; remove redundant reader boilerplate and site outline metadata",
+      "apiSectionsUnchanged": true
+    }
+  ],
+  "apiBodies": "API sections unchanged; ten files received purpose/read timing metadata; three HTTP files removed duplicate reading introductions",
+  "httpApiSections": "unchanged; reading metadata moved to YAML",
+  "finalAudit": {
+    "agent": "remaining_reference_metadata_final",
+    "files": 10,
+    "result": "passed"
+  }
+}

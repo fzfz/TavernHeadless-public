@@ -1,0 +1,59 @@
+{
+  "success": true,
+  "sessionId": "BZ9LzNQvC9xe6XWiFN17v",
+  "snapshotId": "07b2aac1-6026-479f-8065-752d9004c8ef",
+  "source": {
+    "kind": "floor",
+    "runId": "e7sJkCqJKJphpj4QmQj3t",
+    "jobId": null
+  },
+  "requests": [
+    {
+      "method": "GET",
+      "url": "/sessions/BZ9LzNQvC9xe6XWiFN17v"
+    },
+    {
+      "method": "GET",
+      "url": "/sessions/BZ9LzNQvC9xe6XWiFN17v/role-view"
+    },
+    {
+      "method": "GET",
+      "url": "/pages?floor_id=jam2NibTUL6wt260OrWmB&is_active=true&sort_by=page_no&sort_order=asc&limit=100"
+    },
+    {
+      "method": "GET",
+      "url": "/variables/resolve?session_id=BZ9LzNQvC9xe6XWiFN17v&branch_id=main&floor_id=jam2NibTUL6wt260OrWmB&page_id=enxnceYDMwm-s-Pb-pMlm"
+    },
+    {
+      "method": "GET",
+      "url": "/variables/resolve?session_id=BZ9LzNQvC9xe6XWiFN17v&branch_id=main"
+    },
+    {
+      "method": "GET",
+      "url": "/sessions/BZ9LzNQvC9xe6XWiFN17v/role-view/floors/jam2NibTUL6wt260OrWmB"
+    },
+    {
+      "method": "GET",
+      "url": "/pages?floor_id=jam2NibTUL6wt260OrWmB&is_active=true&sort_by=page_no&sort_order=asc&limit=100"
+    },
+    {
+      "method": "GET",
+      "url": "/variables/resolve?session_id=BZ9LzNQvC9xe6XWiFN17v&branch_id=main&floor_id=jam2NibTUL6wt260OrWmB&page_id=enxnceYDMwm-s-Pb-pMlm"
+    },
+    {
+      "method": "GET",
+      "url": "/sessions/BZ9LzNQvC9xe6XWiFN17v/role-view/snapshots/ee1d51dd-1813-4d65-bf88-1035c11354f1"
+    },
+    {
+      "method": "GET",
+      "url": "/variables/resolve?session_id=BZ9LzNQvC9xe6XWiFN17v&branch_id=main"
+    }
+  ],
+  "state": {
+    "beforePlace": "拆迁旧楼408室内",
+    "afterPlace": "拆迁旧楼408室门口",
+    "beforeMinute": 24,
+    "afterMinute": 26
+  },
+  "verifiedAt": "2026-09-19T13:57:16.322Z"
+}

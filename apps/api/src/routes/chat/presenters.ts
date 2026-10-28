@@ -1,0 +1,1157 @@
+import { apiErrorMessages } from "@tavern/shared";
+import { WorldbookTriggerError } from "@tavern/adapters-sillytavern";
+import {
+  findModelCallPersistenceError,
+  modelCallPersistenceDetails,
+} from "@tavern/core";
+import type { FastifyReply, FastifyRequest } from "fastify";
+import type { MemoryInjectionResult } from "@tavern/core";
+
+import type {
+  PromptRuntimeTrace,
+  PromptSnapshotPreview,
+  WorldbookDecisionDetail,
+  WorldbookMatchDetail,
+} from "../../services/prompt-assembler.js";
+import { ChatServiceError } from "../../services/chat/errors.js";
+import { SessionStateServiceError } from "../../session-state/session-state-service.js";
+import { sendError } from "../../lib/http.js";
+import { findNativePipelineError } from "../../lib/native-pipeline-error.js";
+import { shouldRedactInjectionContent } from "../../services/prompt-runtime/injection-governance.js";
+
+/**
+ * I4 injection trace 呈现选项。
+ *
+ * `includeRestrictedInjectionContent` 为 true 时，受限来源（agent_private / debug / system）的
+ * 正文 title 与内部 source_chain 完整返回；默认（false / 未传）裁剪这些字段并标记 restricted。
+ */
+export interface RuntimeTracePresentationOptions {
+  includeRestrictedInjectionContent?: boolean;
+}
+
+export function mapUsageToSnakeCase(usage: {
+  promptTokens: number;
+  completionTokens: number;
+  totalTokens: number;
+}) {
+  return {
+    prompt_tokens: usage.promptTokens,
+    completion_tokens: usage.completionTokens,
+    total_tokens: usage.totalTokens,
+  };
+}
+
+export function mapMemoryToSnakeCase(
+  memory:
+    | { mode: "sync" | "async"; status: "applied" | "queued"; jobId?: string }
+    | undefined,
+) {
+  if (!memory) {
+    return undefined;
+  }
+
+  return {
+    mode: memory.mode,
+    status: memory.status,
+    job_id: memory.jobId ?? null,
+  };
+}
+
+export function mapPromptRuntimeHistoryNormalizationToSnakeCase(
+  historyNormalization: NonNullable<PromptRuntimeTrace["historyNormalization"]>,
+): Record<string, unknown> {
+  return {
+    raw_entry_count: historyNormalization.rawEntryCount,
+    effective_turn_count: historyNormalization.effectiveTurnCount,
+    selected_turn_count: historyNormalization.selectedTurnCount,
+    trailing_user_source_floor_ids:
+      historyNormalization.trailingUserSourceFloorIds,
+    merged_user_groups: historyNormalization.mergedUserGroups.map((group) => ({
+      effective_role: group.effectiveRole,
+      source_floor_ids: group.sourceFloorIds,
+      source_message_ids: group.sourceMessageIds,
+      includes_current_input: group.includesCurrentInput,
+    })),
+    violations: historyNormalization.violations.map((violation) => ({
+      code: violation.code,
+      message: violation.message,
+      source_floor_ids: violation.sourceFloorIds,
+      source_message_ids: violation.sourceMessageIds,
+    })),
+  };
+}
+
+export function mapRunToSnakeCase(run: {
+  floorId: string;
+  runId: string;
+  runType: string;
+  status: string;
+  phase: string;
+  publicPhase: string;
+  phaseSeq: number;
+  attemptNo: number;
+  startedAt: number;
+  updatedAt: number;
+  completedAt?: number | null;
+  pendingOutput?: {
+    tempId: string;
+    attemptNo: number;
+    state: string;
+    text: string;
+    startedAt: number;
+    updatedAt: number;
+    error?: string;
+  } | null;
+  verifier?: {
+    status: string;
+    suggestion?: string;
+    issues?: Array<{ description: string; severity: string }>;
+  } | null;
+  error?: { code: string; message: string } | null;
+}) {
+  return {
+    floor_id: run.floorId,
+    run_id: run.runId,
+    run_type: run.runType,
+    status: run.status,
+    phase: run.phase,
+    public_phase: run.publicPhase,
+    phase_seq: run.phaseSeq,
+    attempt_no: run.attemptNo,
+    started_at: run.startedAt,
+    updated_at: run.updatedAt,
+    completed_at: run.completedAt ?? null,
+    pending_output: run.pendingOutput
+      ? {
+          temp_id: run.pendingOutput.tempId,
+          attempt_no: run.pendingOutput.attemptNo,
+          state: run.pendingOutput.state,
+          text: run.pendingOutput.text,
+          started_at: run.pendingOutput.startedAt,
+          updated_at: run.pendingOutput.updatedAt,
+          error: run.pendingOutput.error ?? null,
+        }
+      : null,
+    verifier: run.verifier
+      ? {
+          status: run.verifier.status,
+          suggestion: run.verifier.suggestion ?? null,
+          issues: run.verifier.issues ?? null,
+        }
+      : null,
+    error: run.error
+      ? { code: run.error.code, message: run.error.message }
+      : null,
+  };
+}
+
+export function mapPromptSnapshotToSnakeCase(
+  promptSnapshot: PromptSnapshotPreview,
+): Record<string, unknown> {
+  return {
+    preset_id: promptSnapshot.presetId,
+    preset_updated_at: promptSnapshot.presetUpdatedAt,
+    preset_version: promptSnapshot.presetVersion,
+    preset_version_id: promptSnapshot.presetVersionId ?? null,
+    preset_content_hash: promptSnapshot.presetContentHash ?? null,
+    worldbook_id: promptSnapshot.worldbookId,
+    worldbook_updated_at: promptSnapshot.worldbookUpdatedAt,
+    worldbook_version: promptSnapshot.worldbookVersion,
+    worldbook_version_id: promptSnapshot.worldbookVersionId ?? null,
+    worldbook_content_hash: promptSnapshot.worldbookContentHash ?? null,
+    regex_profile_id: promptSnapshot.regexProfileId,
+    regex_profile_updated_at: promptSnapshot.regexProfileUpdatedAt,
+    regex_profile_version: promptSnapshot.regexProfileVersion,
+    regex_profile_version_id: promptSnapshot.regexProfileVersionId ?? null,
+    regex_profile_content_hash: promptSnapshot.regexProfileContentHash ?? null,
+    character_id: promptSnapshot.characterId ?? null,
+    character_version_id: promptSnapshot.characterVersionId ?? null,
+    character_imported_format: promptSnapshot.characterImportedFormat ?? null,
+    character_content_hash: promptSnapshot.characterContentHash ?? null,
+    worldbook_activated_entry_uids: promptSnapshot.worldbookActivatedEntryUids,
+    worldbook_activated_entries: (
+      promptSnapshot.worldbookActivatedEntries ?? []
+    ).map(mapPromptSnapshotWorldbookActivationToSnakeCase),
+    regex_pre_rule_names: promptSnapshot.regexPreRuleNames,
+    regex_post_rule_names: promptSnapshot.regexPostRuleNames,
+    prompt_mode: promptSnapshot.promptMode,
+    asset_manifest_digest: promptSnapshot.assetManifestDigest ?? null,
+    prompt_digest: promptSnapshot.promptDigest,
+    token_estimate: promptSnapshot.tokenEstimate,
+  };
+}
+
+export function mapPromptRuntimeMemoryTraceToSnakeCase(
+  memory: NonNullable<PromptRuntimeTrace["memory"]>,
+): Record<string, unknown> {
+  return {
+    summary_injected: memory.summaryInjected,
+    ...(memory.runtimeMode !== undefined
+      ? { runtime_mode: memory.runtimeMode }
+      : {}),
+    ...(memory.requestedWrite !== undefined
+      ? { requested_write: memory.requestedWrite }
+      : {}),
+    ...(memory.effectiveWrite !== undefined
+      ? { effective_write: memory.effectiveWrite }
+      : {}),
+    ...(memory.strategy !== undefined ? { strategy: memory.strategy } : {}),
+    ...(memory.summaryText !== undefined
+      ? { summary_text: memory.summaryText }
+      : {}),
+    ...(memory.summaryTextHash !== undefined
+      ? { summary_text_hash: memory.summaryTextHash }
+      : {}),
+    ...(memory.selectedItems
+      ? {
+          selected_items: memory.selectedItems.map((item) => ({
+            memory_id: item.memoryId,
+            scope: item.scope,
+            scope_id: item.scopeId,
+            branch_id: item.branchId ?? null,
+            kind: item.kind,
+            ...(item.source !== undefined ? { source: item.source } : {}),
+            ...(item.score !== undefined ? { score: item.score } : {}),
+            ...(item.tokenCount !== undefined
+              ? { token_count: item.tokenCount }
+              : {}),
+            ...(item.selectedReason !== undefined
+              ? { selected_reason: item.selectedReason }
+              : {}),
+          })),
+        }
+      : {}),
+    ...(memory.tokenStats
+      ? {
+          token_stats: {
+            budget: memory.tokenStats.budget ?? null,
+            used: memory.tokenStats.used,
+            micro_summary: memory.tokenStats.microSummary,
+            macro_summary: memory.tokenStats.macroSummary,
+            direct_items: memory.tokenStats.directItems,
+          },
+        }
+      : {}),
+    ...(memory.scopeResolution
+      ? {
+          scope_resolution: {
+            mode: memory.scopeResolution.mode,
+            ...(memory.scopeResolution.strict !== undefined
+              ? { strict: memory.scopeResolution.strict }
+              : {}),
+            requested_scopes: memory.scopeResolution.requestedScopes,
+            resolved_scopes: memory.scopeResolution.resolvedScopes,
+            requested_branch_id:
+              memory.scopeResolution.requestedBranchId ?? null,
+            resolved_branch_id: memory.scopeResolution.resolvedBranchId ?? null,
+            fallback_reason: memory.scopeResolution.fallbackReason ?? null,
+          },
+        }
+      : {}),
+    ...(memory.pageId ? { page_id: memory.pageId } : {}),
+    ...(memory.proposalBatchId
+      ? { proposal_batch_id: memory.proposalBatchId }
+      : {}),
+    ...(memory.proposalStatus
+      ? { proposal_status: memory.proposalStatus }
+      : {}),
+    ...(memory.promotionStatus
+      ? { promotion_status: memory.promotionStatus }
+      : {}),
+  };
+}
+
+export function mapPromptRuntimeToolTransportToSnakeCase(
+  toolTransport: NonNullable<PromptRuntimeTrace["toolTransport"]>,
+): Record<string, unknown> {
+  return {
+    selection: {
+      transport: toolTransport.selection.transport,
+      reason_code: toolTransport.selection.reasonCode,
+      ...(toolTransport.selection.reasonDetail !== undefined
+        ? { reason_detail: toolTransport.selection.reasonDetail }
+        : {}),
+    },
+    ...(toolTransport.toolList
+      ? {
+          tool_list: {
+            injected: toolTransport.toolList.injected,
+            ...(toolTransport.toolList.contributorId !== undefined
+              ? { contributor_id: toolTransport.toolList.contributorId }
+              : {}),
+            ...(toolTransport.toolList.placementMode !== undefined
+              ? { placement_mode: toolTransport.toolList.placementMode }
+              : {}),
+            tool_count: toolTransport.toolList.toolCount,
+            ...(toolTransport.toolList.tokenCount !== undefined
+              ? { token_count: toolTransport.toolList.tokenCount }
+              : {}),
+            ...(toolTransport.toolList.budgetGroup !== undefined
+              ? { budget_group: toolTransport.toolList.budgetGroup }
+              : {}),
+          },
+        }
+      : {}),
+    ...(toolTransport.toolChoiceApplied !== undefined
+      ? { tool_choice_applied: toolTransport.toolChoiceApplied }
+      : {}),
+    ...(toolTransport.streamingToolCallUnsupported !== undefined
+      ? {
+          streaming_tool_call_unsupported:
+            toolTransport.streamingToolCallUnsupported,
+        }
+      : {}),
+    ...(toolTransport.parsing
+      ? {
+          parsing: {
+            block_count: toolTransport.parsing.blockCount,
+            accepted_count: toolTransport.parsing.acceptedCount,
+            rejected_count: toolTransport.parsing.rejectedCount,
+            diagnostics: toolTransport.parsing.diagnostics.map(
+              (diagnostic) => ({
+                call_id: diagnostic.callId,
+                tool_name: diagnostic.toolName,
+                reason: diagnostic.reason,
+                excerpt: diagnostic.excerpt,
+              }),
+            ),
+            ...(toolTransport.parsing.diagnosticsByReason !== undefined
+              ? {
+                  diagnostics_by_reason:
+                    toolTransport.parsing.diagnosticsByReason,
+                }
+              : {}),
+          },
+        }
+      : {}),
+    ...(toolTransport.toolResult
+      ? {
+          tool_result: {
+            written_back: toolTransport.toolResult.writtenBack,
+            block_count: toolTransport.toolResult.blockCount,
+            token_count: toolTransport.toolResult.tokenCount,
+            budget_group: toolTransport.toolResult.budgetGroup,
+          },
+        }
+      : {}),
+  };
+}
+
+type PromptRuntimeInjectionTraceItemShape = NonNullable<
+  PromptRuntimeTrace["injection"]
+>["items"][number];
+
+/**
+ * I3 placement_params trace 转换：camelCase -> snake_case，不输出未声明字段。
+ */
+function mapInjectionPlacementParamsToSnakeCase(
+  params:
+    | PromptRuntimeInjectionTraceItemShape["placementParamsRequested"]
+    | undefined,
+): Record<string, unknown> | null {
+  if (!params) {
+    return null;
+  }
+  return {
+    ...(params.floorNo !== undefined ? { floor_no: params.floorNo } : {}),
+    ...(params.offset !== undefined ? { offset: params.offset } : {}),
+    ...(params.depth !== undefined ? { depth: params.depth } : {}),
+  };
+}
+
+/**
+ * I3 锚点 trace 转换：camelCase -> snake_case，不暴露内部数字 order。
+ */
+function mapInjectionAnchorToSnakeCase(
+  anchor: PromptRuntimeInjectionTraceItemShape["anchorResolved"] | undefined,
+): Record<string, unknown> | null {
+  if (!anchor) {
+    return null;
+  }
+  switch (anchor.kind) {
+    case "section":
+      return { kind: anchor.kind, internal_key: anchor.internalKey };
+    case "floor_by_no":
+      return {
+        kind: anchor.kind,
+        floor_no: anchor.floorNo,
+        edge: anchor.edge,
+        ...(anchor.resolvedDepth !== undefined
+          ? { resolved_depth: anchor.resolvedDepth }
+          : {}),
+      };
+    case "floor_from_end":
+      return { kind: anchor.kind, offset: anchor.offset, edge: anchor.edge };
+    case "worldbook_depth":
+      return { kind: anchor.kind, depth: anchor.depth };
+    case "worldbook_edge":
+      return { kind: anchor.kind, edge: anchor.edge };
+    case "worldbook_author_note_top":
+      return { kind: anchor.kind };
+    case "contributor_block":
+      return { kind: anchor.kind, edge: anchor.edge };
+    default:
+      return null;
+  }
+}
+
+/**
+ * I3 来源链 trace 转换：camelCase -> snake_case。
+ */
+function mapInjectionSourceChainToSnakeCase(
+  sourceChain: PromptRuntimeInjectionTraceItemShape["sourceChain"] | undefined,
+): Record<string, unknown> | null {
+  if (!sourceChain) {
+    return null;
+  }
+  return {
+    ...(sourceChain.agentTypeId !== undefined
+      ? { agent_type_id: sourceChain.agentTypeId }
+      : {}),
+    ...(sourceChain.agentRunId !== undefined
+      ? { agent_run_id: sourceChain.agentRunId }
+      : {}),
+    ...(sourceChain.temporaryConversationId !== undefined
+      ? { temporary_conversation_id: sourceChain.temporaryConversationId }
+      : {}),
+    ...(sourceChain.debugSessionTag !== undefined
+      ? { debug_session_tag: sourceChain.debugSessionTag }
+      : {}),
+  };
+}
+
+export function mapPromptRuntimeInjectionTraceToSnakeCase(
+  injection: NonNullable<PromptRuntimeTrace["injection"]>,
+  options?: RuntimeTracePresentationOptions,
+): Record<string, unknown> {
+  return {
+    items: injection.items.map((item: PromptRuntimeInjectionTraceItemShape) =>
+      mapInjectionTraceItemToSnakeCase(item, options),
+    ),
+    requested_count: injection.requestedCount ?? injection.items.length,
+    applied_count:
+      injection.appliedCount ??
+      injection.items.filter((item) => item.applied).length,
+    rejected_count:
+      injection.rejectedCount ??
+      injection.items.filter((item) => !item.applied).length,
+    token_count:
+      injection.tokenCount ??
+      injection.items
+        .filter((item) => item.applied)
+        .reduce((sum, item) => sum + (item.tokenCount ?? 0), 0),
+    budget_group: injection.budgetGroup ?? null,
+  };
+}
+
+/**
+ * I4 单条 injection trace 呈现：按可见性矩阵裁剪受限来源的正文与来源链。
+ *
+ * 结构性字段（位置、是否生效、不生效原因、预算状态、token、可见性）始终保留；
+ * 仅 title 与 source_chain 在受限且未授权时被裁剪，并通过 `restricted: true` 透明标注。
+ */
+function mapInjectionTraceItemToSnakeCase(
+  item: PromptRuntimeInjectionTraceItemShape,
+  options?: RuntimeTracePresentationOptions,
+): Record<string, unknown> {
+  const redacted = shouldRedactInjectionContent(item.visibility, {
+    includeRestrictedContent:
+      options?.includeRestrictedInjectionContent === true,
+  });
+  return {
+    request_index: item.requestIndex,
+    source_kind: item.sourceKind,
+    visibility: item.visibility,
+    injection_id: item.injectionId ?? null,
+    enabled: item.enabled ?? null,
+    scope: item.scope,
+    placement_requested: item.placementRequested,
+    placement_params_requested: mapInjectionPlacementParamsToSnakeCase(
+      item.placementParamsRequested,
+    ),
+    order_requested: item.orderRequested,
+    title: redacted ? null : item.title,
+    content_length: item.contentLength,
+    token_count: item.tokenCount ?? null,
+    budget_group: item.budgetGroup ?? null,
+    budget_status: item.budgetStatus ?? null,
+    applied: item.applied,
+    placement_resolved: item.placementResolved ?? null,
+    anchor_resolved: mapInjectionAnchorToSnakeCase(item.anchorResolved),
+    source_chain: redacted
+      ? null
+      : mapInjectionSourceChainToSnakeCase(item.sourceChain),
+    not_applied_reason: item.notAppliedReason ?? null,
+    restricted: redacted,
+  };
+}
+
+export function mapRuntimeTraceToSnakeCase(
+  runtimeTrace: PromptRuntimeTrace,
+  options?: RuntimeTracePresentationOptions,
+): Record<string, unknown> {
+  return {
+    ...(runtimeTrace.preset
+      ? {
+          preset: {
+            selected_prompt_order_character_id:
+              runtimeTrace.preset.selectedPromptOrderCharacterId,
+            ignored_prompt_order_character_ids:
+              runtimeTrace.preset.ignoredPromptOrderCharacterIds,
+            unsupported_fields: runtimeTrace.preset.unsupportedFields,
+            ignored_fields: runtimeTrace.preset.ignoredFields,
+            unresolved_markers: runtimeTrace.preset.unresolvedMarkers,
+            warnings: runtimeTrace.preset.warnings,
+            trigger_filtered_entry_ids:
+              runtimeTrace.preset.triggerFilteredEntryIds,
+            in_chat_inserted_entry_ids:
+              runtimeTrace.preset.inChatInsertedEntryIds,
+            continue_nudge_applied: runtimeTrace.preset.continueNudgeApplied,
+            continue_nudge_text: runtimeTrace.preset.continueNudgeText ?? null,
+            names_behavior_applied:
+              runtimeTrace.preset.namesBehaviorApplied ?? null,
+          },
+        }
+      : {}),
+    ...(runtimeTrace.worldbook
+      ? {
+          worldbook: {
+            hit_count: runtimeTrace.worldbook.hitCount,
+            ...(runtimeTrace.worldbook.matches
+              ? {
+                  matches: runtimeTrace.worldbook.matches.map(
+                    mapWorldbookMatchDetail,
+                  ),
+                }
+              : {}),
+            ...(runtimeTrace.worldbook.decisionTraces
+              ? {
+                  decision_traces: runtimeTrace.worldbook.decisionTraces.map(
+                    mapWorldbookDecisionDetail,
+                  ),
+                }
+              : {}),
+          },
+        }
+      : {}),
+    ...(runtimeTrace.regex
+      ? {
+          regex: {
+            user_input_rules: runtimeTrace.regex.userInputRules,
+            ai_output_rules: runtimeTrace.regex.aiOutputRules,
+            preprocessed_user_message:
+              runtimeTrace.regex.preprocessedUserMessage ?? null,
+            ...(runtimeTrace.regex.phases
+              ? {
+                  phases: runtimeTrace.regex.phases.map((phase) =>
+                    mapRegexPhaseTraceToSnakeCase(phase),
+                  ),
+                }
+              : {}),
+            ...(runtimeTrace.regex.reservedPlacements
+              ? {
+                  reserved_placements: runtimeTrace.regex.reservedPlacements,
+                }
+              : {}),
+            ...(runtimeTrace.regex.substitutionMode
+              ? {
+                  substitution_mode: runtimeTrace.regex.substitutionMode,
+                }
+              : {}),
+          },
+        }
+      : {}),
+    ...(runtimeTrace.budgets
+      ? {
+          budgets: {
+            by_group: runtimeTrace.budgets.byGroup.map((item) => ({
+              group: item.group,
+              token_count: item.tokenCount,
+              ...(item.estimatedTokenCount !== undefined
+                ? { estimated_token_count: item.estimatedTokenCount }
+                : {}),
+              ...(item.allocatedTokenCount !== undefined
+                ? { allocated_token_count: item.allocatedTokenCount }
+                : {}),
+              ...(item.prunedTokenCount !== undefined
+                ? { pruned_token_count: item.prunedTokenCount }
+                : {}),
+            })),
+            ...(runtimeTrace.budgets.trimReasons
+              ? {
+                  trim_reasons: runtimeTrace.budgets.trimReasons.map((item) =>
+                    mapTrimReasonToSnakeCase(item),
+                  ),
+                }
+              : {}),
+          },
+        }
+      : {}),
+    ...(runtimeTrace.structure
+      ? {
+          structure: {
+            mode: runtimeTrace.structure.mode,
+            merge_adjacent_same_role:
+              runtimeTrace.structure.mergeAdjacentSameRole,
+            assistant_rewrite_count:
+              runtimeTrace.structure.assistantRewriteCount,
+            assistant_rewrite_strategy:
+              runtimeTrace.structure.assistantRewriteStrategy ?? null,
+            tail_assistant_detected:
+              runtimeTrace.structure.tailAssistantDetected,
+            ...(runtimeTrace.structure.transcriptized !== undefined
+              ? { transcriptized: runtimeTrace.structure.transcriptized }
+              : {}),
+            ...(runtimeTrace.structure.transcriptMessageCount !== undefined
+              ? {
+                  transcript_message_count:
+                    runtimeTrace.structure.transcriptMessageCount,
+                }
+              : {}),
+            ...(runtimeTrace.structure.assistantPrefillTranscriptized !==
+            undefined
+              ? {
+                  assistant_prefill_transcriptized:
+                    runtimeTrace.structure.assistantPrefillTranscriptized,
+                }
+              : {}),
+          },
+        }
+      : {}),
+    ...(runtimeTrace.memory
+      ? { memory: mapPromptRuntimeMemoryTraceToSnakeCase(runtimeTrace.memory) }
+      : {}),
+    ...(runtimeTrace.macro
+      ? {
+          macro: {
+            warnings: runtimeTrace.macro.warnings.map((warning) => ({
+              code: warning.code,
+              message: warning.message,
+              ...(warning.macroName ? { macro_name: warning.macroName } : {}),
+              ...(warning.rawText ? { raw_text: warning.rawText } : {}),
+            })),
+            used_names: runtimeTrace.macro.usedNames,
+            mutation_preview: runtimeTrace.macro.mutationPreview.map(
+              (preview) => ({
+                kind: preview.kind,
+                scope: preview.scope,
+                key: preview.key,
+                ...(preview.value !== undefined
+                  ? { value: preview.value }
+                  : {}),
+              }),
+            ),
+            staged_mutations: runtimeTrace.macro.stagedMutations.map(
+              (mutation) => ({
+                kind: mutation.kind,
+                scope: mutation.scope,
+                key: mutation.key,
+                ...(mutation.value !== undefined
+                  ? { value: mutation.value }
+                  : {}),
+                source_macro: mutation.sourceMacro,
+              }),
+            ),
+            traces: runtimeTrace.macro.traces.map((trace) =>
+              mapMacroTraceEntryToSnakeCase(trace),
+            ),
+          },
+        }
+      : {}),
+    ...(runtimeTrace.sourceSelection
+      ? {
+          source_selection: {
+            excluded_sources: runtimeTrace.sourceSelection.excludedSources.map(
+              (item) => ({
+                source: item.source,
+                reason: item.reason,
+                ...(item.detail ? { detail: item.detail } : {}),
+              }),
+            ),
+          },
+        }
+      : {}),
+    ...(runtimeTrace.delivery
+      ? {
+          delivery: {
+            assistant_prefill_requested:
+              runtimeTrace.delivery.assistantPrefillRequested,
+            assistant_prefill_applied:
+              runtimeTrace.delivery.assistantPrefillApplied,
+            assistant_prefill_strategy:
+              runtimeTrace.delivery.assistantPrefillStrategy ?? null,
+            allow_assistant_prefill:
+              runtimeTrace.delivery.allowAssistantPrefill,
+            require_last_user: runtimeTrace.delivery.requireLastUser,
+            no_assistant: runtimeTrace.delivery.noAssistant,
+            last_message_role: runtimeTrace.delivery.lastMessageRole ?? null,
+            ends_with_user: runtimeTrace.delivery.endsWithUser,
+            degraded: runtimeTrace.delivery.degraded,
+            degrade_reasons: runtimeTrace.delivery.degradeReasons,
+          },
+        }
+      : {}),
+    ...(runtimeTrace.visibility
+      ? {
+          visibility: {
+            hidden_floor_ranges: runtimeTrace.visibility.hiddenFloorRanges?.map(
+              (range) => ({
+                start_floor_no: range.startFloorNo,
+                end_floor_no: range.endFloorNo,
+              }),
+            ),
+            filtered_floor_nos: runtimeTrace.visibility.filteredFloorNos,
+          },
+        }
+      : {}),
+    ...(runtimeTrace.historyNormalization
+      ? {
+          history_normalization:
+            mapPromptRuntimeHistoryNormalizationToSnakeCase(
+              runtimeTrace.historyNormalization,
+            ),
+        }
+      : {}),
+    ...(runtimeTrace.injection
+      ? {
+          injection: mapPromptRuntimeInjectionTraceToSnakeCase(
+            runtimeTrace.injection,
+            options,
+          ),
+        }
+      : {}),
+    ...(runtimeTrace.toolTransport
+      ? {
+          tool_transport: mapPromptRuntimeToolTransportToSnakeCase(
+            runtimeTrace.toolTransport,
+          ),
+        }
+      : {}),
+    ...(runtimeTrace.generationParamsResolution
+      ? {
+          generation_params_resolution:
+            runtimeTrace.generationParamsResolution.map((item) => ({
+              name: item.name,
+              final_state: item.finalState,
+              origin: item.origin,
+              ...(item.cancelledAt ? { cancelled_at: item.cancelledAt } : {}),
+              ...(item.valueFrom ? { value_from: item.valueFrom } : {}),
+              ...("filterReason" in item && item.filterReason
+                ? { filter_reason: item.filterReason }
+                : {}),
+            })),
+        }
+      : {}),
+  };
+}
+
+export function mapOptionalRuntimeTraceResponseField(
+  runtimeTrace?: PromptRuntimeTrace,
+  options?: RuntimeTracePresentationOptions,
+): Record<string, unknown> {
+  return runtimeTrace
+    ? { runtime_trace: mapRuntimeTraceToSnakeCase(runtimeTrace, options) }
+    : {};
+}
+
+function mapMemoryInjectionScopeRefToSnakeCase(scopeRef: {
+  scope: string;
+  scopeId: string;
+}): Record<string, unknown> {
+  return {
+    scope: scopeRef.scope,
+    scopeId: scopeRef.scopeId,
+  };
+}
+
+export function mapMemoryInjectionResultToSnakeCase(
+  memoryInjection: MemoryInjectionResult,
+): Record<string, unknown> {
+  return {
+    items: memoryInjection.items.map((item) => ({
+      id: item.id,
+      scope: item.scope,
+      scope_id: item.scopeId,
+      type: item.type,
+      summary_tier: item.summaryTier ?? null,
+      content: item.content,
+      fact_key: item.factKey ?? null,
+      importance: item.importance,
+      confidence: item.confidence,
+      source_floor_id: item.sourceFloorId ?? null,
+      source_message_id: item.sourceMessageId ?? null,
+      status: item.status,
+      token_count_estimate: item.tokenCountEstimate ?? null,
+      created_at: item.createdAt,
+      updated_at: item.updatedAt,
+    })),
+    formatted_text: memoryInjection.formattedText,
+    token_count: memoryInjection.tokenCount,
+    scope_resolution: memoryInjection.scopeResolution
+      ? {
+          mode: memoryInjection.scopeResolution.mode,
+          strict: memoryInjection.scopeResolution.strict,
+          ...(memoryInjection.scopeResolution.scopeRefs
+            ? {
+                scope_refs: memoryInjection.scopeResolution.scopeRefs.map(
+                  (scopeRef) => mapMemoryInjectionScopeRefToSnakeCase(scopeRef),
+                ),
+              }
+            : {}),
+          ...(memoryInjection.scopeResolution.explicitScope
+            ? {
+                explicit_scope: mapMemoryInjectionScopeRefToSnakeCase(
+                  memoryInjection.scopeResolution.explicitScope,
+                ),
+              }
+            : {}),
+          ...(memoryInjection.scopeResolution.fallbackScopeId !== undefined
+            ? {
+                fallback_scope_id:
+                  memoryInjection.scopeResolution.fallbackScopeId,
+              }
+            : {}),
+          ...(memoryInjection.scopeResolution.error
+            ? {
+                error: {
+                  name: memoryInjection.scopeResolution.error.name,
+                  message: memoryInjection.scopeResolution.error.message,
+                },
+              }
+            : {}),
+        }
+      : null,
+  };
+}
+
+export function mapOptionalPromptDebugResponseFields(payload: {
+  promptSnapshot?: PromptSnapshotPreview;
+  runtimeTrace?: PromptRuntimeTrace;
+}): Record<string, unknown> {
+  return {
+    ...(payload.promptSnapshot
+      ? {
+          prompt_snapshot: mapPromptSnapshotToSnakeCase(payload.promptSnapshot),
+        }
+      : {}),
+    ...mapOptionalRuntimeTraceResponseField(payload.runtimeTrace),
+  };
+}
+
+function mapTrimReasonToSnakeCase(
+  reason: NonNullable<
+    NonNullable<PromptRuntimeTrace["budgets"]>["trimReasons"]
+  >[number],
+): Record<string, unknown> {
+  return {
+    group: reason.group,
+    reason: reason.reason,
+    ...(reason.detail ? { detail: reason.detail } : {}),
+    ...(reason.prunedTokenCount !== undefined
+      ? { pruned_token_count: reason.prunedTokenCount }
+      : {}),
+  };
+}
+
+function mapRegexPhaseTraceToSnakeCase(
+  phase: NonNullable<
+    NonNullable<PromptRuntimeTrace["regex"]>["phases"]
+  >[number],
+): Record<string, unknown> {
+  return {
+    phase_id: phase.phaseId,
+    placement: phase.placement,
+    channel: phase.channel,
+    status: phase.status,
+    changed: phase.changed,
+    depth: phase.depth,
+    input_text_hash: phase.inputTextHash,
+    output_text_hash: phase.outputTextHash,
+    candidate_rule_names: phase.candidateRuleNames,
+    matched_rule_names: phase.matchedRuleNames,
+    skipped_rules: phase.skippedRules.map((rule) => ({
+      rule_name: rule.ruleName,
+      reason: rule.reason,
+    })),
+  };
+}
+
+function mapMacroTraceEntryToSnakeCase(
+  trace: NonNullable<PromptRuntimeTrace["macro"]>["traces"][number],
+): Record<string, unknown> {
+  return {
+    macro_name: trace.macroName,
+    raw_text: trace.rawText,
+    resolved_text: trace.resolvedText,
+    ...(trace.phase ? { phase: trace.phase } : {}),
+    ...(trace.sourceKind ? { source_kind: trace.sourceKind } : {}),
+    ...(trace.selectedBranch ? { selected_branch: trace.selectedBranch } : {}),
+  };
+}
+
+function mapPromptSnapshotWorldbookActivationToSnakeCase(
+  activation: NonNullable<
+    PromptSnapshotPreview["worldbookActivatedEntries"]
+  >[number],
+): Record<string, unknown> {
+  return {
+    uid: activation.uid,
+    activation_key: activation.activationKey,
+    source: {
+      kind: activation.source.kind,
+      worldbook_id: activation.source.worldbookId,
+      worldbook_name: activation.source.worldbookName,
+      asset_scope_id: activation.source.assetScopeId,
+    },
+    insertion: {
+      position: activation.insertion.position,
+      ...(activation.insertion.depth !== undefined
+        ? { depth: activation.insertion.depth }
+        : {}),
+      ...(activation.insertion.role ? { role: activation.insertion.role } : {}),
+      ...(activation.insertion.outletName
+        ? { outlet_name: activation.insertion.outletName }
+        : {}),
+    },
+  };
+}
+
+export function mapWorldbookMatchDetail(
+  match: WorldbookMatchDetail,
+): Record<string, unknown> {
+  return {
+    uid: match.uid,
+    activation_key: match.activationKey,
+    asset_scope_id: match.assetScopeId,
+    comment: match.comment,
+    content_preview: match.contentPreview,
+    order: match.order,
+    source: {
+      kind: match.source.kind,
+      worldbook_id: match.source.worldbookId,
+      worldbook_name: match.source.worldbookName,
+      asset_scope_id: match.source.assetScopeId,
+    },
+    insertion: {
+      position: match.insertion.position,
+      ...(match.insertion.depth !== undefined
+        ? { depth: match.insertion.depth }
+        : {}),
+      ...(match.insertion.role ? { role: match.insertion.role } : {}),
+      ...(match.insertion.outletName
+        ? { outlet_name: match.insertion.outletName }
+        : {}),
+    },
+    activation: {
+      mode: match.activation.mode,
+      recursion_level: match.activation.recursionLevel,
+      first_match: match.activation.firstMatch
+        ? {
+            source_kind: match.activation.firstMatch.sourceKind,
+            ...(match.activation.firstMatch.messageIndexFromLatest !== undefined
+              ? {
+                  message_index_from_latest:
+                    match.activation.firstMatch.messageIndexFromLatest,
+                }
+              : {}),
+            ...(match.activation.firstMatch.injectionIndex !== undefined
+              ? { injection_index: match.activation.firstMatch.injectionIndex }
+              : {}),
+            matched_key: match.activation.firstMatch.matchedKey,
+            matched_key_scope: match.activation.firstMatch.matchedKeyScope,
+            matched_key_type: match.activation.firstMatch.matchedKeyType,
+            char_start: match.activation.firstMatch.charStart,
+            char_end: match.activation.firstMatch.charEnd,
+            excerpt: match.activation.firstMatch.excerpt,
+          }
+        : null,
+    },
+  };
+}
+
+export function mapWorldbookDecisionDetail(
+  decision: WorldbookDecisionDetail,
+): Record<string, unknown> {
+  return {
+    uid: decision.uid,
+    activation_key: decision.activationKey,
+    asset_scope_id: decision.assetScopeId,
+    source: {
+      kind: decision.source.kind,
+      worldbook_id: decision.source.worldbookId,
+      worldbook_name: decision.source.worldbookName,
+      asset_scope_id: decision.source.assetScopeId,
+    },
+    stage: decision.stage,
+    outcome: decision.outcome,
+    ...(decision.intent !== undefined ? { intent: decision.intent } : {}),
+    ...(decision.messageCount !== undefined ? { message_count: decision.messageCount } : {}),
+    ...(decision.delay !== undefined ? { delay: decision.delay } : {}),
+    ...(decision.group !== undefined ? { group: decision.group } : {}),
+    ...(decision.probability !== undefined ? { probability: decision.probability } : {}),
+    ...(decision.randomDraw !== undefined ? { random_draw: decision.randomDraw } : {}),
+  };
+}
+
+export function mapChatServiceError(error: ChatServiceError): {
+  statusCode: number;
+  code: string;
+  message: string;
+} {
+  if (findModelCallPersistenceError(error)) {
+    return {
+      statusCode: 503,
+      code: "MODEL_CALL_SAVE_FAILED",
+      message: apiErrorMessages.MODEL_CALL_SAVE_FAILED,
+    };
+  }
+  if (error.cause instanceof SessionStateServiceError) {
+    return {
+      statusCode: error.cause.statusCode,
+      code: error.code,
+      message: error.message,
+    };
+  }
+
+  switch (error.code) {
+    case "ROLE_MODEL_TOOL_PROTOCOL_UNSUPPORTED":
+    case "ROLE_MODEL_CAPABILITY_LIMIT_INVALID":
+      return { statusCode: 422, code: error.code, message: error.message };
+    case "session_not_found":
+      return { statusCode: 404, code: "not_found", message: error.message };
+    case "session_archived":
+      return {
+        statusCode: 409,
+        code: "session_archived",
+        message: error.message,
+      };
+    case "message_not_found":
+    case "branch_not_found":
+    case "response_operation_not_found":
+    case "floor_not_found":
+    case "source_floor_not_found":
+    case "floor_graph_binding_not_found":
+    case "floor_graph_binding_graph_not_found":
+    case "floor_graph_binding_version_not_found":
+      return { statusCode: 404, code: error.code, message: error.message };
+    case "no_floor_to_regenerate":
+    case "no_user_message":
+      return { statusCode: 404, code: error.code, message: error.message };
+    case "invalid_message_role":
+    case "invalid_message_scope":
+    case "invalid_tool_mode":
+    case "invalid_from_step_index":
+    case "floor_graph_binding_invalid_kind":
+    case "floor_graph_binding_invalid_document":
+    case "prompt_recipe_preset_ref_invalid":
+      return { statusCode: 400, code: error.code, message: error.message };
+    case "invalid_state":
+    case "response_already_started":
+    case "generation_target_stale":
+    case "branch_exists":
+    case "branch_local_snapshot_missing":
+      return { statusCode: 409, code: error.code, message: error.message };
+    case "generation_cancelled":
+      return { statusCode: 499, code: error.code, message: error.message };
+    case "generation_conflict":
+    case "commit_conflict":
+      return { statusCode: 409, code: error.code, message: error.message };
+    case "tool_replay_blocked":
+    case "tool_replay_confirmation_required":
+    case "replay_confirmation_required":
+    case "session_state_replay_blocked":
+    case "session_state_replay_confirmation_required":
+    case "profile_not_found":
+    case "tool_catalog_conflict":
+    case "instance_slot_disabled_required":
+    case "adjacent_assistant_floors":
+    case "missing_effective_user_tail":
+    case "profile_disabled":
+    case "step_retry_blocked_side_effect":
+    case "floor_graph_binding_graph_archived":
+      return { statusCode: 409, code: error.code, message: error.message };
+    case "secret_unavailable":
+    case "feature_unavailable":
+    case "commit_busy":
+    case "generation_queue_timeout":
+      return { statusCode: 503, code: error.code, message: error.message };
+    case "generation_timeout":
+      return { statusCode: 504, code: error.code, message: error.message };
+    case "secret_invalid_format":
+    case "orchestration_failed":
+    case "turn_commit_failed":
+    case "session_state_stage_failed":
+    case "retry_step_failed":
+      return { statusCode: 500, code: error.code, message: error.message };
+    default:
+      return {
+        statusCode: 500,
+        code: "internal_error",
+        message: error.message,
+      };
+  }
+}
+
+export function handleChatError(
+  error: unknown,
+  request: FastifyRequest,
+  reply: FastifyReply,
+) {
+  logNativePipelineError(error, request, "chat_route");
+
+  if (findModelCallPersistenceError(error)) {
+    return sendError(
+      reply,
+      503,
+      "MODEL_CALL_SAVE_FAILED",
+      apiErrorMessages.MODEL_CALL_SAVE_FAILED,
+      modelCallPersistenceDetails(error),
+    );
+  }
+  if (error instanceof WorldbookTriggerError) {
+    return sendError(
+      reply,
+      error.code === "WORLDBOOK_TRIGGER_INPUT_INVALID" ? 400 : 500,
+      error.code,
+      error.message,
+      { path: error.path },
+    );
+  }
+  if (!(error instanceof ChatServiceError)) {
+    throw error;
+  }
+
+  const mapped = mapChatServiceError(error);
+  return sendError(
+    reply,
+    mapped.statusCode,
+    mapped.code,
+    mapped.message,
+    error.details,
+  );
+}
+
+export function logNativePipelineError(
+  error: unknown,
+  request: FastifyRequest,
+  stage: "chat_route" | "respond_stream",
+): void {
+  const nativePipelineError = findNativePipelineError(error);
+  if (!nativePipelineError) {
+    return;
+  }
+
+  request.log.error(
+    {
+      request_id: request.id,
+      route: request.routeOptions.url ?? request.url.split("?")[0] ?? "/",
+      stage,
+      error_code: "native_pipeline_failed",
+      node_name: nativePipelineError.nodeName,
+      input_summary: nativePipelineError.inputSummary,
+      state_summary: nativePipelineError.stateSummary,
+      err: error,
+    },
+    "native prompt pipeline failed",
+  );
+}

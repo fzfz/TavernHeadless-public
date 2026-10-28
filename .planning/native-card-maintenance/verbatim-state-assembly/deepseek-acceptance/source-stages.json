@@ -1,0 +1,23 @@
+{
+  "baseline": {
+    "commit": "79e6206",
+    "requestNumbers": [
+      1,
+      28
+    ],
+    "worldbookActivationRecordsPersisted": false
+  },
+  "corrected": {
+    "baseCommit": "79e6206",
+    "patch": "source-patch.diff",
+    "requestNumbers": [
+      29,
+      34
+    ],
+    "worldbookActivationRecordsPersisted": true,
+    "requiredCases": [
+      "gushengman-primary-state-update-r8",
+      "linqian-primary-state-update-r3"
+    ]
+  }
+}

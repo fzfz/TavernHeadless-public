@@ -1,0 +1,40 @@
+{
+  "uid": 65,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_48_AM_证据成立",
+  "order": 305,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E048>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n艾沫沫离开夫妻家后，半瓶醒酒饮仍放在茶几上。{{user}}把瓶盖拧紧，将瓶子单独收起。\n\n之后，{{user}}在林茜带回家的物品里找到拆开的维生素盒，又把她平时带去家电城的保温杯留下。醒酒饮、维生素盒和保温杯被放到同一处；三件物品分别对应林茜晚归、身体失常和艾沫沫替她圆场的经过。\n\n{{user}}保存这三件物品，准备当面要求艾沫沫说明它们怎样进入林茜的日常。\n</事件_E048>\n"
+}

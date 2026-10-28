@@ -1,0 +1,70 @@
+# Dependencies
+node_modules
+.pnpm-store/
+
+# Build outputs
+dist/
+coverage/
+.turbo/
+.nyc_output/
+*.tsbuildinfo
+test.html
+
+# Runtime / local databases
+apps/api/data/*
+!apps/api/data/.gitkeep
+*.sqlite
+*.sqlite3
+*.db
+*.db-*
+*.db-wal
+*.db-shm
+*.db-journal
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files and caches
+.cache/
+.tmp/
+tmp/
+.VSCodeCounter/
+
+# Generated SDK check temps
+packages/shared/src/generated/.openapi.check.json
+packages/shared/src/generated/.openapi-types.check.ts
+
+# Tooling metadata
+.limcode/
+
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.cursor/
+notes/
+
+# Native environments
+/config/environments.json
+/config/application.env
+/config/secrets.env
+/config/public/
+/config/nginx/
+/data/
+/logs/
+/run/
+/backups/
+/releases/
+/current
+/build/
+.serena/

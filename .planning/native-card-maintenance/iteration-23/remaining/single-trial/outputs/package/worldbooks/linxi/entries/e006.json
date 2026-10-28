@@ -1,0 +1,44 @@
+{
+  "uid": 6,
+  "key": [
+    "白色蕾丝公主裙",
+    "公主裙",
+    "蕾丝公主裙"
+  ],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "物品_白色蕾丝公主裙",
+  "order": 68,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": 2,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_item_dress>\n物品名: 洁白开衫蕾丝花边公主裙\n\n外观: 洁白开衫、高领、白色蕾丝花边、公主裙式样，裙摆有白色裙瓣。{{user}}在林茜生日时购于韩城国际。\n\n隐喻: 高领，林茜试穿时说它让她\"像女皇\"，高领包裹喉咙，既是端庄也是束缚，把身体从脖子开始封在一个被观看的位置。蕾丝花边和公主裙式样，公主裙的\"公主\"是一个被赠予的身份，这条裙子是丈夫选的礼物，穿上它就是穿上\"被丈夫定义的好女人\"。脱裙子的动作就是脱下这个身份，她自己解开的是\"好妻子\"这层壳。\n</qrxd_item_dress>\n"
+}

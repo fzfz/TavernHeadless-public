@@ -1,0 +1,179 @@
+{
+  "reviewType": "独立语义复审",
+  "scope": ".agents/skills/native-card-conversion/",
+  "auditedFiles": [
+    "SKILL.md",
+    "references/semantic-experience.md",
+    "references/conversion-map.md",
+    "references/character-fields.md",
+    "references/extension-fields.md",
+    "references/conversion-records.md",
+    "references/acceptance.md",
+    "references/architecture.md"
+  ],
+  "rulesSource": ".planning/native-card-maintenance/document-restructure-closeout/audit-rules.txt",
+  "overall": "通过",
+  "method": "重新阅读指定8份当前待审文档和同一审计规则，逐句检查用途、读者、标题、结构、引用、职责、执行顺序、表达、重复及内容边界。待审文档保持原样，仅写入本报告。未读取其他背景、计划、代码或参考资料，未验证引用API及schema与实际实现的一致性。",
+  "findings": [],
+  "resolvedFindings": [
+    {
+      "id": "S1",
+      "status": "通过",
+      "file": "SKILL.md",
+      "lines": [
+        78,
+        78
+      ],
+      "conclusion": "末句明确限定为仅含手机样式展示或历史状态回看且不具备两类排除逻辑的卡，与前句整卡跳过条件形成明确分界。"
+    },
+    {
+      "id": "S2",
+      "status": "通过",
+      "file": "SKILL.md",
+      "lines": [
+        70,
+        70
+      ],
+      "conclusion": "入口只保留按核心验收制定并执行正常、异常和边界检查的流程引用，分支样本、请求对照和页面执行的详细要求由acceptance.md集中定义。"
+    }
+  ],
+  "fileChecklist": [
+    {
+      "file": "SKILL.md",
+      "status": "通过",
+      "conclusion": "转换角色、目标、原文承接原则、五章执行流程、完成条件、排除项与能力缺口处理清楚。第70行采用验收引用，第78行明确整卡排除和继续转换的分界。"
+    },
+    {
+      "file": "references/semantic-experience.md",
+      "status": "通过",
+      "conclusion": "六章分别承担内容归属、计算时点、冲突与删除判断；表格包含源现象、目标文件、消费者及处理决定。剧情、初值、变化规则、公式、显示和交互职责一致。"
+    },
+    {
+      "file": "references/conversion-map.md",
+      "status": "通过",
+      "conclusion": "目录、命名、文件格式、组件引用和创建责任可定位，包内文件与包外记录区分明确；详细表格符合执行者查阅契约的用途。"
+    },
+    {
+      "file": "references/character-fields.md",
+      "status": "通过",
+      "conclusion": "格式、人物提示、元数据资源及平台扩展各章用途明确。字段用途、处理动作、宏展开、资源取得和实际注入验收可以逐项对应。"
+    },
+    {
+      "file": "references/extension-fields.md",
+      "status": "通过",
+      "conclusion": "正则、助手与MVU初始化分别说明字段、消费者和执行入口；初始化顺序用于推导各开场实际状态，源旧机制说明服务于迁移判断。"
+    },
+    {
+      "file": "references/conversion-records.md",
+      "status": "通过",
+      "conclusion": "字段决策和行为映射的文件、字段含义、填写条件、目标定位、覆盖完成条件及验证状态明确；未决字段与覆盖检查未通过的关系一致。"
+    },
+    {
+      "file": "references/acceptance.md",
+      "status": "通过",
+      "conclusion": "验收记录、预览配置、离线重放、实际请求、页面操作、发送状态和等价核对分别说明动作及证据。模型语义判断与确定性运行链路验证分开验收。"
+    },
+    {
+      "file": "references/architecture.md",
+      "status": "通过",
+      "conclusion": "源与目标架构按组件说明职责和消费关系；正文、状态Agent、计算、守卫、显示与同轮工具回传顺序清楚，标题与正文对应。"
+    }
+  ],
+  "ruleChecklist": [
+    {
+      "rule": "规则使用正向句式，写清执行者、动作、对象和条件",
+      "status": "通过",
+      "evidence": "SKILL.md:16-18、24-80给出转换动作、对象及完成条件；第78行已限定继续转换的适用范围。"
+    },
+    {
+      "rule": "内容审核步骤和规范排除",
+      "status": "通过",
+      "evidence": "8份文档均未加入成年内容、NSFW、政治正确或道德审查前提。"
+    },
+    {
+      "rule": "完整表达成果要求的指定内容",
+      "status": "通过",
+      "evidence": "当前成果是角色卡转换规范，没有遗漏待审成果明确要求表达的成年内容、NSFW或性关系；原文承接原则覆盖源卡仍有效的语义内容。"
+    },
+    {
+      "rule": "语句通顺、主谓宾明确、结果清楚",
+      "status": "通过",
+      "evidence": "动作说明能够定位执行者与结果；表格列名为字段说明提供语义上下文，完成条件明确执行后的状态。"
+    },
+    {
+      "rule": "使用常用词和专业术语，专用名称先定义",
+      "status": "通过",
+      "evidence": "SKILL.md:10定义两种Agent；semantic-experience.md:7定义表格简写；acceptance.md:26定义两个模型任务名称。"
+    },
+    {
+      "rule": "写清对象所属文件、字段、接口或模块",
+      "status": "通过",
+      "evidence": "conversion-map.md:11-50、76-89集中列出文件与消费绑定；conversion-records.md:13-32、44-55给出记录结构及定位方法。"
+    },
+    {
+      "rule": "章节用途、读者、结构、层次、标题和执行顺序明确",
+      "status": "通过",
+      "evidence": "SKILL.md按读取、判断、生成、验收及排除处理组织；参考文件首段说明转换Agent的查阅用途，章节内容符合标题。"
+    },
+    {
+      "rule": "每条要求完整定义一次，其他位置引用；删除抽象、重复与无关说明",
+      "status": "通过",
+      "evidence": "SKILL.md:70改为核心验收流程入口；各参考按主题集中定义细则，通过链接引用原文承接、初始化、删除判断和API契约。另有两处非阻断精简建议，见removableText。"
+    },
+    {
+      "rule": "UI与接口错误文案写清情况和操作",
+      "status": "通过",
+      "evidence": "acceptance.md:71明确要求失败操作、状态或输入、修正或重试动作及具体范围；本组文档未提供需要另行审阅的具体错误文案。"
+    },
+    {
+      "rule": "执行资源符合用途，自身资源使用相对路径",
+      "status": "通过",
+      "evidence": "待审文档引用自身文件和脚本使用相对路径；包内路径及begin返回的任务路径说明清楚。引用资源实际可访问性未通过范围外读取验证。"
+    },
+    {
+      "rule": "内容限定为执行所需规范、步骤、资源、工具用法及契约",
+      "status": "通过",
+      "evidence": "8份文档面向转换执行者；源旧协议、初始化和工具时序说明用于判断迁移结果及验收，未出现创建者开发要求、升级过程或宿主内部组织流程。"
+    },
+    {
+      "rule": "针对错误动作的限制按需要使用正向句式",
+      "status": "通过",
+      "evidence": "拆分、删除、只读、发送锁和排除条件均规定具体允许动作或执行条件；未加入无条件的泛化限制。"
+    },
+    {
+      "rule": "逐句检查并列出可删文字",
+      "status": "通过",
+      "evidence": "已重新阅读8份完整文档；保留契约细节与完成条件，非阻断删减建议列在removableText中。"
+    }
+  ],
+  "removableText": [
+    {
+      "file": "references/conversion-map.md",
+      "lines": [
+        66,
+        66
+      ],
+      "status": "通过",
+      "optional": true,
+      "text": "人物、开场、世界书、状态规则、公式、操作的职责归属 | 转换 Agent | 阅读源卡及消费者，根据源业务条件和目标架构判断各项内容的职责归属。",
+      "suggestion": "可删除此表格行。第65行已规定Agent依据语义判断决定全部包文件，SKILL.md第2章提供职责判定流程；删除后仍能理解Agent与工具的分工。本行目前作为责任摘要，不阻断验收。"
+    },
+    {
+      "file": "references/semantic-experience.md",
+      "lines": [
+        72,
+        72
+      ],
+      "status": "通过",
+      "optional": true,
+      "text": "转换 Agent 将删除对象、理由及拆出内容的目标位置写入[转换记录](conversion-records.md)。",
+      "suggestion": "可缩为“删除决定的记录格式见[转换记录](conversion-records.md)。”SKILL.md第52行和conversion-records.md已定义记录职责；保留简短引用即可定位格式。本句目前作为删除章节的收束提示，不阻断验收。"
+    }
+  ],
+  "retainedDetails": [
+    "保留原文承接原则、消费者定义、ruleFiles全文消费说明和实际请求检查，它们决定内容在目标中是否生效。",
+    "保留源字段枚举、MVU初始化入口、模型工具回传和记录格式等执行者按需查阅的契约细节。",
+    "保留各步骤完成条件，供执行者判断转换进度和交付状态。"
+  ],
+  "changedReviewedDocuments": false
+}

@@ -1,0 +1,39 @@
+{
+  "environment": "isolated copy of original data",
+  "checks": {
+    "role_switch_unsaved_cancel_and_discard": "passed",
+    "stop_publication_removes_user_catalog_entry": "passed",
+    "activate_historical_release_restores_catalog_entry": "passed",
+    "agent_type_create_edit_disable_enable": "passed",
+    "project_binding_create_edit_disable_enable": "passed",
+    "manual_agent_run": "Agent 任务已提交。",
+    "regex_unsaved_rule": "[验收]测试输入",
+    "regex_invalid_variables": "validation message displayed",
+    "dry_run": "14 messages and assembly/prompt_snapshot/runtime_trace displayed",
+    "model_discovery_saved_credential": "model list displayed",
+    "model_connection_saved_free_profile": "Hello! How can I help you today?"
+  },
+  "existing_data_issue": {
+    "sessionId": "EVrhU386SubosiY3LASJZ",
+    "dry_run": "controller references missing worldbook entry 顾声慢_阶段01_晨光与影的初遇"
+  },
+  "delivery": {
+    "originalDataRestored": true,
+    "originalDatabaseContainsAcceptanceAgent": false,
+    "apiHealth": 200,
+    "admin": 200,
+    "user": 200,
+    "prototype": 200,
+    "fullSuite": {
+      "passed": 4330,
+      "timeoutFailures": 2,
+      "timedOutFileRecheck": "6 passed"
+    },
+    "reviewFixes": [
+      "preserve binding toolPolicyId",
+      "derive binding scope from Agent type",
+      "derive WorkspaceRecord from OpenAPI",
+      "sync SDK and public integration docs"
+    ]
+  }
+}

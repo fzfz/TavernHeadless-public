@@ -1,0 +1,42 @@
+{
+  "uid": 128,
+  "key": [
+    "<嗜血之花>隐藏意义"
+  ],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "隐藏含义_画作嗜血之花",
+  "order": 82,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": 2,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": false,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_reveal_bloodflower>\n{{user}}在捐赠会上已经确认《嗜血之花》画的是性交，并把画里的血迹与林茜两天前让他购买护垫一事联系起来。画面只保留下身局部，{{user}}当场找不到能够辨认女人身份的脸、手链或其他特征，暂时把她当成王授军另找的年轻模特。\n\n医院病房里的新AI样机拍到棉花巷对面三楼落地窗内的性交。女人面对落地窗，双手被按在落地窗玻璃上，脸被窗帘遮住。{{user}}根据男人的身体特征认出杨桃子；杨桃子的阴茎插入女人阴道，血液和白色液体从结合处流出，床边花瓶里的白色大丽花被震落花瓣。\n\n{{user}}随后用护垫购买记录、样机录像、王授军云盘里的近距离原稿视频和写字板完成核对，确认女人是林茜，男人是杨桃子，王授军负责拍摄和记录。《嗜血之花》的阴道、阴茎、血迹与白花分别取自这段录像。\n\n通讯截图和王授军写字板显示，王授军先把熊猫人动图与棉花巷门牌交给杨桃子，再让杨桃子把林茜约进房间。王授军把杨桃子称为容易控制的执行者，并在棉花巷三楼房间内手持摄像机拍下性交过程。\n</qrxd_reveal_bloodflower>\n"
+}

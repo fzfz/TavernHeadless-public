@@ -1,0 +1,131 @@
+{
+  "mode": "openrouter",
+  "turns": [
+    {
+      "floorId": "script-gushengman:floor:1",
+      "attemptId": "script-gushengman:floor:1:attempt:1",
+      "models": {
+        "narrator": "nvidia/nemotron-3-super-120b-a12b:free",
+        "updater": "nex-agi/nex-n2.5-mini:free"
+      },
+      "proposal": {
+        "changes": [
+          {
+            "op": "set",
+            "path": "/世界/当前时间",
+            "value": "2025年12月15日17:25"
+          },
+          {
+            "op": "set",
+            "path": "/世界/事件状态",
+            "value": "与访客听琴交流中"
+          },
+          {
+            "op": "set",
+            "path": "/顾声慢/情感连结度",
+            "value": 1
+          },
+          {
+            "op": "set",
+            "path": "/顾声慢/心象映射/当前心声",
+            "value": "他愿意听我弹琴，这种感觉意外地安心。"
+          }
+        ],
+        "evidenceMessageIds": [
+          "script-gushengman:floor:1:user",
+          "script-gushengman:floor:1:assistant"
+        ]
+      },
+      "beforeSnapshotId": "script-gushengman:snapshot:0",
+      "afterSnapshotId": "script-gushengman:floor:1:attempt:1:snapshot"
+    },
+    {
+      "floorId": "script-gushengman:floor:2",
+      "attemptId": "script-gushengman:floor:2:attempt:3",
+      "models": {
+        "narrator": "inclusionai/ling-3.0-flash-sante:free",
+        "updater": "deepseek/deepseek-v4-flash-0731:free"
+      },
+      "proposal": {
+        "changes": [
+          {
+            "op": "set",
+            "path": "/世界/当前时间",
+            "value": "2025年12月15日17:35"
+          },
+          {
+            "op": "set",
+            "path": "/顾声慢/情感连结度",
+            "value": 3
+          },
+          {
+            "op": "set",
+            "path": "/顾声慢/心象映射/当前心声",
+            "value": "他听得出来……原来真的有人能听懂我想表达的东西。"
+          },
+          {
+            "op": "set",
+            "path": "/顾声慢/心象映射/当前脑内旋律",
+            "value": "《白羽》"
+          }
+        ],
+        "evidenceMessageIds": [
+          "script-gushengman:floor:2:user",
+          "script-gushengman:floor:2:assistant"
+        ]
+      },
+      "beforeSnapshotId": "script-gushengman:floor:1:attempt:1:snapshot",
+      "afterSnapshotId": "script-gushengman:floor:2:attempt:3:snapshot"
+    },
+    {
+      "floorId": "script-gushengman:floor:3",
+      "attemptId": "script-gushengman:floor:3:attempt:4",
+      "models": {
+        "narrator": "nex-agi/nex-n2.5-pro:free",
+        "updater": "nex-agi/nex-n2.5-mini:free"
+      },
+      "proposal": {
+        "changes": [
+          {
+            "op": "set",
+            "path": "/世界/当前地址",
+            "value": "旧教学楼走廊"
+          },
+          {
+            "op": "set",
+            "path": "/世界/当前时间",
+            "value": "2025年12月15日17:37"
+          },
+          {
+            "op": "set",
+            "path": "/世界/事件状态",
+            "value": "与访客道别，约定明天再听琴"
+          },
+          {
+            "op": "set",
+            "path": "/顾声慢/情感连结度",
+            "value": 4
+          },
+          {
+            "op": "set",
+            "path": "/顾声慢/心象映射/当前心声",
+            "value": "明天见……等我把那段整理好，再一起听《白羽》。"
+          }
+        ],
+        "evidenceMessageIds": [
+          "script-gushengman:floor:3:user",
+          "script-gushengman:floor:3:assistant"
+        ]
+      },
+      "beforeSnapshotId": "script-gushengman:floor:2:attempt:3:snapshot",
+      "afterSnapshotId": "script-gushengman:floor:3:attempt:4:snapshot"
+    }
+  ],
+  "failure": {
+    "floorId": "script-gushengman:floor:2",
+    "attemptId": "script-gushengman:floor:2:attempt:2",
+    "code": "OPENROUTER_STREAM_ERROR",
+    "rawOutput": null,
+    "updaterModel": null
+  }
+}

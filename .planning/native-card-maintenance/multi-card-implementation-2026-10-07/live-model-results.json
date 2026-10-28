@@ -1,0 +1,109 @@
+{
+  "attempts": [
+    {
+      "card": "C011",
+      "directory": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal/acceptance-pzJzBZ",
+      "requestFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal/acceptance-pzJzBZ/preview-runs/2026-10-07T13-49-16-327Z-795964e9-3230-43ff-a297-357c3e5c8e86/live-openrouter/request-01-request.json",
+      "responseFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal/acceptance-pzJzBZ/preview-runs/2026-10-07T13-49-16-327Z-795964e9-3230-43ff-a297-357c3e5c8e86/live-openrouter/request-01-response.json",
+      "model": "apodex/apodex-1.1-mini:free",
+      "stage": "narrative",
+      "httpStatus": 200,
+      "transportError": null,
+      "contentCharacters": 887,
+      "embeddedError": false,
+      "result": "response_received"
+    },
+    {
+      "card": "C011",
+      "directory": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r2/acceptance-V5yyMh",
+      "requestFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r2/acceptance-V5yyMh/preview-runs/2026-10-07T13-53-35-062Z-d4c813a0-4847-4383-8349-6011a51a95f2/live-openrouter/request-01-request.json",
+      "responseFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r2/acceptance-V5yyMh/preview-runs/2026-10-07T13-53-35-062Z-d4c813a0-4847-4383-8349-6011a51a95f2/live-openrouter/request-01-response.json",
+      "model": "apodex/apodex-1.1-mini:free",
+      "stage": "narrative",
+      "httpStatus": 200,
+      "transportError": null,
+      "contentCharacters": 849,
+      "embeddedError": false,
+      "result": "response_received"
+    },
+    {
+      "card": "C011",
+      "directory": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r2/acceptance-V5yyMh",
+      "requestFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r2/acceptance-V5yyMh/preview-runs/2026-10-07T13-53-35-062Z-d4c813a0-4847-4383-8349-6011a51a95f2/live-openrouter/request-02-request.json",
+      "responseFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r2/acceptance-V5yyMh/preview-runs/2026-10-07T13-53-35-062Z-d4c813a0-4847-4383-8349-6011a51a95f2/live-openrouter/request-02-response.json",
+      "model": "apodex/apodex-1.1-mini:free",
+      "stage": "state",
+      "httpStatus": 400,
+      "transportError": null,
+      "contentCharacters": 0,
+      "embeddedError": true,
+      "result": "response_received"
+    },
+    {
+      "card": "C011",
+      "directory": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2",
+      "requestFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/live-openrouter/request-01-request.json",
+      "responseFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/live-openrouter/request-01-response.json",
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "stage": "narrative",
+      "httpStatus": 200,
+      "transportError": null,
+      "contentCharacters": 2208,
+      "embeddedError": false,
+      "result": "response_received"
+    },
+    {
+      "card": "C011",
+      "directory": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2",
+      "requestFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/live-openrouter/request-02-request.json",
+      "responseFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/live-openrouter/request-02-response.json",
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "stage": "state",
+      "httpStatus": 200,
+      "transportError": null,
+      "contentCharacters": 0,
+      "embeddedError": true,
+      "result": "response_received"
+    },
+    {
+      "card": "C011",
+      "directory": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r4/acceptance-1YumIc",
+      "requestFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r4/acceptance-1YumIc/preview-runs/2026-10-07T14-05-50-939Z-52914081-254c-42b7-a50d-14906817a09d/live-openrouter/request-01-request.json",
+      "responseFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r4/acceptance-1YumIc/preview-runs/2026-10-07T14-05-50-939Z-52914081-254c-42b7-a50d-14906817a09d/live-openrouter/request-01-response.json",
+      "model": "dots-studio/dots-3-note-preview:free",
+      "stage": "narrative",
+      "httpStatus": 200,
+      "transportError": null,
+      "contentCharacters": 2451,
+      "embeddedError": false,
+      "result": "response_received"
+    },
+    {
+      "card": "C011",
+      "directory": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r4/acceptance-1YumIc",
+      "requestFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r4/acceptance-1YumIc/preview-runs/2026-10-07T14-05-50-939Z-52914081-254c-42b7-a50d-14906817a09d/live-openrouter/request-02-request.json",
+      "responseFile": null,
+      "model": "dots-studio/dots-3-note-preview:free",
+      "stage": "state",
+      "httpStatus": null,
+      "transportError": null,
+      "contentCharacters": 0,
+      "embeddedError": false,
+      "result": "terminated_without_response"
+    },
+    {
+      "card": "USER002",
+      "directory": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/USER002/formal-r2/acceptance-3xW1JD",
+      "requestFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/USER002/formal-r2/acceptance-3xW1JD/preview-runs/2026-10-07T14-22-26-683Z-b3067929-fdad-4aa6-8957-0d79f77b8850/live-openrouter/request-01-request.json",
+      "responseFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/multi-card-implementation-2026-10-07/USER002/formal-r2/acceptance-3xW1JD/preview-runs/2026-10-07T14-22-26-683Z-b3067929-fdad-4aa6-8957-0d79f77b8850/live-openrouter/request-01-response.json",
+      "model": "dots-studio/dots-3-note-preview:free",
+      "stage": "narrative",
+      "httpStatus": 400,
+      "transportError": null,
+      "contentCharacters": 0,
+      "embeddedError": true,
+      "result": "response_received"
+    }
+  ],
+  "conclusion": "两张卡均已实际请求免费模型；C011取得正文但状态未通过；USER002供应商拒绝正文请求。未降级输出契约，未请求收费模型。"
+}

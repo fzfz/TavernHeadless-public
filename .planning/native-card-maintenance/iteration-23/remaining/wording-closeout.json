@@ -1,0 +1,31 @@
+{
+  "audits": [
+    {
+      "agent": "/root/single_trial_retrospective_wording",
+      "findings": 8,
+      "disposition": "applied"
+    },
+    {
+      "agent": "/root/next_iteration_plan_wording",
+      "findings": 9,
+      "disposition": "applied"
+    },
+    {
+      "agent": "/root/remaining_report_text_closeout",
+      "findings": 15,
+      "disposition": "applied"
+    },
+    {
+      "agent": "/root/remaining_status_text_audit",
+      "findings": 3,
+      "disposition": "applied with actual restoration actor (child process EXIT handler)"
+    },
+    {
+      "agent": "/root/committed_progress_text_audit",
+      "findings": 2,
+      "disposition": "applied exact wording"
+    }
+  ],
+  "inputScope": "Assigned text and markdown norms only; no other references or main-agent guidance.",
+  "freshContext": true
+}

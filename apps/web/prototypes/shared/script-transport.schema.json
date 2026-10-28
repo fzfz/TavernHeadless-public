@@ -1,0 +1,1027 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://tavern-headless.local/script-transport.schema.json",
+  "title": "Script prototype transport",
+  "$ref": "#/definitions/envelope",
+  "definitions": {
+    "characterRegistry": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "directory": {
+            "type": "string",
+            "minLength": 1
+          },
+          "snapshot": {
+            "type": "string",
+            "minLength": 1
+          },
+          "openings": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "directory"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "properties": {
+        "initial": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "turns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "variables": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "agentText": {
+                "type": "string"
+              },
+              "jobVariables": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "input": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "text",
+              "variables"
+            ],
+            "additionalProperties": false,
+            "dependencies": {
+              "agentText": [
+                "jobVariables"
+              ],
+              "jobVariables": [
+                "agentText"
+              ]
+            }
+          }
+        },
+        "failureText": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "initial",
+        "turns",
+        "failureText"
+      ],
+      "additionalProperties": false
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "snapshotSource": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "initial"
+            },
+            "runId": {
+              "type": "null"
+            },
+            "jobId": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "kind",
+            "runId",
+            "jobId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "floor"
+            },
+            "runId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "jobId": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "kind",
+            "runId",
+            "jobId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "job"
+            },
+            "runId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "jobId": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "runId",
+            "jobId"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "record": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branchId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "floorId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "attemptId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "versionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "snapshotId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parentSnapshotId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "source": {
+          "$ref": "#/definitions/snapshotSource"
+        }
+      },
+      "required": [
+        "sessionId",
+        "branchId",
+        "floorId",
+        "attemptId",
+        "versionId",
+        "snapshotId",
+        "parentSnapshotId",
+        "variables",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "textStreamEvent": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branchId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "floorId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attemptId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "streamId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "jobId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "messageId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "type": {
+          "enum": [
+            "snapshot",
+            "start",
+            "update",
+            "end",
+            "error",
+            "cancelled"
+          ]
+        },
+        "status": {
+          "enum": [
+            "streaming",
+            "completed",
+            "failed",
+            "cancelled"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/runtimeError"
+            }
+          ]
+        }
+      },
+      "required": [
+        "sessionId",
+        "branchId",
+        "floorId",
+        "attemptId",
+        "streamId",
+        "runId",
+        "jobId",
+        "messageId",
+        "revision",
+        "type",
+        "status",
+        "text",
+        "error"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "anyOf": [
+            {
+              "properties": {
+                "runId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "jobId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "oneOf": [
+            {
+              "properties": {
+                "type": {
+                  "const": "snapshot"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "enum": [
+                    "start",
+                    "update"
+                  ]
+                },
+                "status": {
+                  "const": "streaming"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "end"
+                },
+                "status": {
+                  "const": "completed"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "error"
+                },
+                "status": {
+                  "const": "failed"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "cancelled"
+                },
+                "status": {
+                  "const": "cancelled"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "failed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "error": {
+                "$ref": "#/definitions/runtimeError"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "error": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "turnCommit": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branchId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "generated",
+            "retried",
+            "regenerated"
+          ]
+        },
+        "previousCurrentSnapshotId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "before": {
+          "$ref": "#/definitions/record"
+        },
+        "after": {
+          "$ref": "#/definitions/record"
+        }
+      },
+      "required": [
+        "eventId",
+        "sessionId",
+        "branchId",
+        "kind",
+        "previousCurrentSnapshotId",
+        "before",
+        "after"
+      ],
+      "additionalProperties": false
+    },
+    "floorPage": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "floorId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "attemptId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "snapshotId": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "floorId",
+              "attemptId",
+              "snapshotId"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "nextCursor": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "required": [
+        "items",
+        "nextCursor"
+      ],
+      "additionalProperties": false
+    },
+    "message": {
+      "$ref": "https://tavern-headless.local/script-runtime.schema.json#/definitions/message"
+    },
+    "assetDelivery": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "image",
+            "audio"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "kind",
+        "url",
+        "label",
+        "tags"
+      ],
+      "additionalProperties": false
+    },
+    "delivery": {
+      "type": "object",
+      "properties": {
+        "html": {
+          "type": "string"
+        },
+        "css": {
+          "type": "string"
+        },
+        "scriptUrl": {
+          "type": "string",
+          "minLength": 1
+        },
+        "floorHtml": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/assetDelivery"
+          }
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "html",
+        "css",
+        "scriptUrl",
+        "floorHtml",
+        "assets",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "send": {
+          "const": true
+        },
+        "history": {
+          "const": true
+        },
+        "customFloors": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "send",
+        "history",
+        "customFloors"
+      ],
+      "additionalProperties": false
+    },
+    "catalogItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "versionId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "sessionId",
+        "versionId"
+      ],
+      "additionalProperties": false
+    },
+    "catalog": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/catalogItem"
+      }
+    },
+    "session": {
+      "type": "object",
+      "properties": {
+        "processing": {
+          "type": "object",
+          "properties": {
+            "pendingMain": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "input": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "input",
+                    "text"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "pendingFollowups": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "pendingMain",
+            "pendingFollowups"
+          ],
+          "additionalProperties": false
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branchId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "versionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "initial": {
+          "$ref": "#/definitions/record"
+        },
+        "current": {
+          "$ref": "#/definitions/record"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/message"
+          }
+        },
+        "delivery": {
+          "$ref": "#/definitions/delivery"
+        },
+        "capabilities": {
+          "$ref": "#/definitions/capabilities"
+        },
+        "characterId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "opening": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/opening"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "openings": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/openings"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "sessionId",
+        "branchId",
+        "versionId",
+        "name",
+        "initial",
+        "current",
+        "messages",
+        "delivery",
+        "capabilities",
+        "characterId",
+        "opening",
+        "openings"
+      ],
+      "additionalProperties": false
+    },
+    "messageList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/message"
+      }
+    },
+    "completed": {
+      "type": "object",
+      "properties": {
+        "snapshotId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "snapshotId"
+      ],
+      "additionalProperties": false
+    },
+    "textEnvelope": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "text"
+        },
+        "data": {
+          "$ref": "#/definitions/textStreamEvent"
+        }
+      },
+      "required": [
+        "type",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    "commitEnvelope": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "commit"
+        },
+        "data": {
+          "$ref": "#/definitions/turnCommit"
+        }
+      },
+      "required": [
+        "type",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    "currentEnvelope": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "current"
+        },
+        "data": {
+          "$ref": "#/definitions/record"
+        }
+      },
+      "required": [
+        "type",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    "completedEnvelope": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "completed"
+        },
+        "data": {
+          "$ref": "#/definitions/completed"
+        }
+      },
+      "required": [
+        "type",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    "errorEnvelope": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "error"
+        },
+        "data": {
+          "$ref": "#/definitions/runtimeError"
+        }
+      },
+      "required": [
+        "type",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    "envelope": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/textEnvelope"
+        },
+        {
+          "$ref": "#/definitions/commitEnvelope"
+        },
+        {
+          "$ref": "#/definitions/currentEnvelope"
+        },
+        {
+          "$ref": "#/definitions/completedEnvelope"
+        },
+        {
+          "$ref": "#/definitions/errorEnvelope"
+        }
+      ]
+    },
+    "opening": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "story",
+            "introduction"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "variables": {
+          "type": "object"
+        },
+        "displayText": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "kind",
+        "summary",
+        "text",
+        "variables",
+        "displayText"
+      ],
+      "additionalProperties": false
+    },
+    "openings": {
+      "type": "object",
+      "properties": {
+        "defaultOpeningId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/opening"
+          }
+        }
+      },
+      "required": [
+        "defaultOpeningId",
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "sessionCreate": {
+      "type": "object",
+      "properties": {
+        "characterId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "versionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "openingId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "characterId",
+        "versionId",
+        "openingId"
+      ],
+      "additionalProperties": false
+    },
+    "openingImport": {
+      "type": "object",
+      "properties": {
+        "defaultOpeningId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entries": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^(first|alternate-[1-9][0-9]*)$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "enum": [
+                  "story",
+                  "introduction"
+                ]
+              },
+              "variables": {
+                "type": "object"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "defaultOpeningId",
+        "entries"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

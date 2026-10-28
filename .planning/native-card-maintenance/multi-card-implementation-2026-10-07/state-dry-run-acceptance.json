@@ -1,0 +1,456 @@
+{
+  "reviewType": "independent_state_prompt_assembly_acceptance",
+  "reviewedAt": "2026-10-07T15:50:16.776203+00:00",
+  "scope": "独立只读核对两份离线合成楼层的正式状态 dry-run、对应场景、本次原生包和当前正式文档及 schema。",
+  "overallStatus": "failed_with_assembly_content_findings",
+  "contractSources": [
+    "docs/character-authoring/state-prompt-assembly.md#2-状态预设绑定与会话固定",
+    "docs/character-authoring/state-prompt-assembly.md#3-请求上下文与状态变量历史",
+    "docs/character-authoring/state-prompt-assembly.md#4-六个状态数据源",
+    "docs/character-authoring/backend-api.md#42-模型输出",
+    "packages/shared/src/schemas/state-prompt-preview.ts",
+    "packages/shared/src/schemas/native-card-package/state-update-profile.schema.json",
+    "packages/shared/src/config/state-prompt-sources.json"
+  ],
+  "validation": {
+    "method": "使用当前 statePromptDryRunRequestSchema 和 statePromptPreviewResponseSchema 对原始请求及响应执行 safeParse；按 JSON 数据结构比较消息中的状态定义、前值、来源身份和输出 schema；直接阅读实际消息和规则条件。",
+    "command": "pnpm exec tsx -e：导入 packages/shared/src/schemas/state-prompt-preview.ts，读取两份 response.json，并分别执行两个 schema 的 safeParse。",
+    "requestAndResponseSchemasPassed": [
+      "USER002",
+      "C024"
+    ],
+    "modelCalled": false,
+    "filesChanged": [
+      ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/state-dry-run-acceptance.json"
+    ]
+  },
+  "cards": [
+    {
+      "card": "USER002",
+      "status": "failed",
+      "responseFile": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/USER002/state-dry-run-r2/response.json",
+      "scenarioFile": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/USER002/scenario-r3.json",
+      "packageDirectory": ".tmp/native-card-conversion/run-0H4RDx/package",
+      "fixture": {
+        "kind": "isolated_synthetic_completed_floor",
+        "floorId": "offline-state-assembly-floor",
+        "assistantFixture": "离线提示词组装测试：本轮正文占位，不用于剧情或模型验收。",
+        "modelCalled": false,
+        "verificationScope": "仅验证状态提示词组装；不代表实际生成或提交。"
+      },
+      "preset": {
+        "presetId": "preview-state-preset-f710485c-8744-4303-a061-70485ba1addf",
+        "presetVersionId": "preview-state-preset-version-4a88e947-5a21-42d3-9d9e-c852b39a6ee1"
+      },
+      "messageCount": 6,
+      "messageRoles": [
+        "system",
+        "assistant",
+        "user",
+        "assistant",
+        "user",
+        "system"
+      ],
+      "dialogueHistoryCount": 1,
+      "currentSourceMessageCount": 2,
+      "variableHistoryCount": 0,
+      "checks": [
+        {
+          "id": "PACKAGE",
+          "status": "passed",
+          "conclusion": "当前package的全部文件与dry-run存储的固定修订逐字节一致。",
+          "evidence": [
+            ".tmp/native-card-conversion/run-0H4RDx/package",
+            ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/USER002/state-dry-run-r2/storage/native-cards/mRg-PkZSkgGXdgs-PcqU5/revisions/1-4003fc53-3d81-4fa9-b3bb-31edb909f484"
+          ]
+        },
+        {
+          "id": "PRESET",
+          "status": "passed",
+          "conclusion": "最终messages包含scenario.statePreset的完整main和jailbreak文本；预设标识与prompt_snapshot一致；独立状态任务顺序编号为100001。",
+          "evidence": [
+            "response.data.preset",
+            "response.data.prompt_snapshot",
+            "response.data.messages[0]",
+            "response.data.messages[-1]",
+            "response.data.runtime_trace.preset.selectedPromptOrderCharacterId",
+            ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/USER002/scenario-r3.json#/statePreset"
+          ]
+        },
+        {
+          "id": "PERSONA",
+          "status": "passed",
+          "conclusion": "scenario.persona.description完整进入messages[0]，姓名宏展开为韩峥，最终消息没有残留{{user}}。",
+          "evidence": [
+            "response.data.messages[0].content",
+            "response.data.runtime_trace.macro",
+            ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/USER002/scenario-r3.json#/persona"
+          ]
+        },
+        {
+          "id": "SPEAKERS",
+          "status": "passed",
+          "conclusion": "状态预设names_behavior=0；messages[0]明确The user is 韩峥。历史开场中的动作和直接引语仍有具体人物归属；本轮来源按user、assistant分别保存。USER002本轮消息以【写作者元指令】标识，指向开场正在进行的录音核对。",
+          "evidence": [
+            "response.data.sources",
+            "response.data.messages[1].content",
+            "response.data.messages[2].content",
+            ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/USER002/scenario-r3.json#/statePreset/data/names_behavior"
+          ]
+        },
+        {
+          "id": "HISTORY",
+          "status": "passed",
+          "conclusion": "对话历史只有1条开场消息，rawEntryCount、effectiveTurnCount和selectedTurnCount均为1，violations为空；其后本轮有1条用户消息与1条占位助手消息。其他system或user消息为提示注入。开场与包内文本在首尾空白及换行归一化后完全一致。",
+          "evidence": [
+            "response.data.runtime_trace.historyNormalization",
+            "response.data.messages[1]",
+            ".tmp/native-card-conversion/run-0H4RDx/package/openings/opening-studio.txt"
+          ]
+        },
+        {
+          "id": "SOURCE",
+          "status": "passed",
+          "conclusion": "messages中的stateEvidence与response.sources/sourceIdentity逐字段一致；用户文本等于scenario.testMessages[0].message，助手文本等于fixture.assistantFixture。floor/outputPage/message/revision/seq身份一致；无真实调用的runId、attemptNo均为null。",
+          "evidence": [
+            "response.data.messages[0].content",
+            "response.data.sources",
+            "response.data.sourceIdentity",
+            "fixture",
+            "request.payload"
+          ]
+        },
+        {
+          "id": "BEFORE",
+          "status": "passed",
+          "conclusion": "stateBefore中的before和floorBefore相等，均等于response.before；previousSnapshotId等于request.expected_snapshot_id；before等于所选开场initial经姓名宏展开后的状态。",
+          "evidence": [
+            "response.data.messages[0].content",
+            "response.data.before",
+            "response.data.previousSnapshotId",
+            ".tmp/native-card-conversion/run-0H4RDx/package/state/initial/opening-studio.json"
+          ]
+        },
+        {
+          "id": "DEFINITION",
+          "status": "passed",
+          "conclusion": "messages内的stateSchema、writablePaths、derivedPaths及可选factsSchema与当前package完全一致。C024未配置factsSchema时该键省略，与当前正式实现一致。",
+          "evidence": [
+            "response.data.messages[0].content",
+            ".tmp/native-card-conversion/run-0H4RDx/package/agents/state-update/profile.json",
+            ".tmp/native-card-conversion/run-0H4RDx/package/state/schema.json",
+            "apps/api/src/services/role-runtime/state-prompt-service.ts:359-365"
+          ]
+        },
+        {
+          "id": "RULES",
+          "status": "passed",
+          "conclusion": "全部ruleFiles的全文按profile声明顺序进入messages，姓名宏正确展开；规则的范围、触发条件、更新条件、证据要求均可直接阅读。",
+          "evidence": [
+            "response.data.messages[0].content",
+            ".tmp/native-card-conversion/run-0H4RDx/package/agents/state-update/profile.json"
+          ]
+        },
+        {
+          "id": "VARIABLE_HISTORY",
+          "status": "passed",
+          "conclusion": "response.variableHistory为空数组；messages在stateBefore与stateEvidence之间包含同样的[]。",
+          "evidence": [
+            "response.data.variableHistory",
+            "response.data.messages[0].content"
+          ]
+        },
+        {
+          "id": "OUTPUT",
+          "status": "passed",
+          "conclusion": "最终消息中的outputSchema与response.outputSchema完全相等；changes路径集合精确匹配47项writablePaths；消息证据枚举仅含本轮两条来源；空工具证据使evidenceExecutionIds.items=false。USER002要求facts及至少一个消息证据；facts内要求四项行动选项候选值。",
+          "evidence": [
+            "response.data.messages[-1].content",
+            "response.data.outputSchema",
+            ".tmp/native-card-conversion/run-0H4RDx/package/agents/state-update/profile.json"
+          ]
+        },
+        {
+          "id": "BUDGET",
+          "status": "passed",
+          "conclusion": "最终消息数量为6；prunedByGroup为空，六个状态来源均有token计数。",
+          "evidence": [
+            "response.data.token_usage"
+          ]
+        },
+        {
+          "id": "CONDITIONS",
+          "status": "passed",
+          "conclusion": "694感情、477.5堕落、画室赴约、E001至E011中已定义键完成且E012未完成的前值，使实际请求加载450以上用户边界、380至619杨桃子称呼及边界、画室开局前提、E012剧情要求；其他阈值分支未覆盖。",
+          "evidence": [
+            "response.data.before",
+            "response.data.messages[0].content",
+            "response.data.messages[4].content",
+            ".tmp/native-card-conversion/run-0H4RDx/package/backend/controllers/index.js"
+          ]
+        }
+      ],
+      "findingIds": [
+        "STATE-01",
+        "STATE-03"
+      ]
+    },
+    {
+      "card": "C024",
+      "status": "failed",
+      "responseFile": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/state-dry-run-r2/response.json",
+      "scenarioFile": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/scenario-corrected.json",
+      "packageDirectory": ".tmp/native-card-conversion/run-9kPLPr/package",
+      "fixture": {
+        "kind": "isolated_synthetic_completed_floor",
+        "floorId": "offline-state-assembly-floor",
+        "assistantFixture": "离线提示词组装测试：本轮正文占位，不用于剧情或模型验收。",
+        "modelCalled": false,
+        "verificationScope": "仅验证状态提示词组装；不代表实际生成或提交。"
+      },
+      "preset": {
+        "presetId": "preview-state-preset-5bc5c3ea-5c15-41d2-a5b2-9044c698aaf4",
+        "presetVersionId": "preview-state-preset-version-0d58367d-c657-489c-8898-9d22cee6afdd"
+      },
+      "messageCount": 7,
+      "messageRoles": [
+        "system",
+        "assistant",
+        "system",
+        "user",
+        "system",
+        "assistant",
+        "system"
+      ],
+      "dialogueHistoryCount": 1,
+      "currentSourceMessageCount": 2,
+      "variableHistoryCount": 0,
+      "checks": [
+        {
+          "id": "PACKAGE",
+          "status": "passed",
+          "conclusion": "当前package的全部文件与dry-run存储的固定修订逐字节一致。",
+          "evidence": [
+            ".tmp/native-card-conversion/run-9kPLPr/package",
+            ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/state-dry-run-r2/storage/native-cards/_E_v_N6Qjjryf5P5U_xhW/revisions/1-9a4239ed-c679-4094-940f-35b49d46607f"
+          ]
+        },
+        {
+          "id": "PRESET",
+          "status": "passed",
+          "conclusion": "最终messages包含scenario.statePreset的完整main和jailbreak文本；预设标识与prompt_snapshot一致；独立状态任务顺序编号为100001。",
+          "evidence": [
+            "response.data.preset",
+            "response.data.prompt_snapshot",
+            "response.data.messages[0]",
+            "response.data.messages[-1]",
+            "response.data.runtime_trace.preset.selectedPromptOrderCharacterId",
+            ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/scenario-corrected.json#/statePreset"
+          ]
+        },
+        {
+          "id": "PERSONA",
+          "status": "passed",
+          "conclusion": "scenario.persona.description完整进入messages[0]，姓名宏展开为李明远，最终消息没有残留{{user}}。",
+          "evidence": [
+            "response.data.messages[0].content",
+            "response.data.runtime_trace.macro",
+            ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/scenario-corrected.json#/persona"
+          ]
+        },
+        {
+          "id": "SPEAKERS",
+          "status": "passed",
+          "conclusion": "状态预设names_behavior=0；messages[0]明确The user is 李明远。历史开场中的动作和直接引语仍有具体人物归属；本轮来源按user、assistant分别保存。C024本轮动作显式使用李明远姓名，接续苏雨欣已经离开咖啡馆的历史。",
+          "evidence": [
+            "response.data.sources",
+            "response.data.messages[1].content",
+            "response.data.messages[3].content",
+            ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/scenario-corrected.json#/statePreset/data/names_behavior"
+          ]
+        },
+        {
+          "id": "HISTORY",
+          "status": "passed",
+          "conclusion": "对话历史只有1条开场消息，rawEntryCount、effectiveTurnCount和selectedTurnCount均为1，violations为空；其后本轮有1条用户消息与1条占位助手消息。其他system或user消息为提示注入。开场与包内文本在首尾空白及换行归一化后完全一致。",
+          "evidence": [
+            "response.data.runtime_trace.historyNormalization",
+            "response.data.messages[1]",
+            ".tmp/native-card-conversion/run-9kPLPr/package/openings/default.txt"
+          ]
+        },
+        {
+          "id": "SOURCE",
+          "status": "passed",
+          "conclusion": "messages中的stateEvidence与response.sources/sourceIdentity逐字段一致；用户文本等于scenario.testMessages[0].message，助手文本等于fixture.assistantFixture。floor/outputPage/message/revision/seq身份一致；无真实调用的runId、attemptNo均为null。",
+          "evidence": [
+            "response.data.messages[0].content",
+            "response.data.sources",
+            "response.data.sourceIdentity",
+            "fixture",
+            "request.payload"
+          ]
+        },
+        {
+          "id": "BEFORE",
+          "status": "passed",
+          "conclusion": "stateBefore中的before和floorBefore相等，均等于response.before；previousSnapshotId等于request.expected_snapshot_id；before等于所选开场initial经姓名宏展开后的状态。",
+          "evidence": [
+            "response.data.messages[0].content",
+            "response.data.before",
+            "response.data.previousSnapshotId",
+            ".tmp/native-card-conversion/run-9kPLPr/package/state/initial/default.json"
+          ]
+        },
+        {
+          "id": "DEFINITION",
+          "status": "passed",
+          "conclusion": "messages内的stateSchema、writablePaths、derivedPaths及可选factsSchema与当前package完全一致。C024未配置factsSchema时该键省略，与当前正式实现一致。",
+          "evidence": [
+            "response.data.messages[0].content",
+            ".tmp/native-card-conversion/run-9kPLPr/package/agents/state-update/profile.json",
+            ".tmp/native-card-conversion/run-9kPLPr/package/state/schema.json",
+            "apps/api/src/services/role-runtime/state-prompt-service.ts:359-365"
+          ]
+        },
+        {
+          "id": "RULES",
+          "status": "passed",
+          "conclusion": "全部ruleFiles的全文按profile声明顺序进入messages，姓名宏正确展开；规则的范围、触发条件、更新条件、证据要求均可直接阅读。",
+          "evidence": [
+            "response.data.messages[0].content",
+            ".tmp/native-card-conversion/run-9kPLPr/package/agents/state-update/profile.json"
+          ]
+        },
+        {
+          "id": "VARIABLE_HISTORY",
+          "status": "passed",
+          "conclusion": "response.variableHistory为空数组；messages在stateBefore与stateEvidence之间包含同样的[]。",
+          "evidence": [
+            "response.data.variableHistory",
+            "response.data.messages[0].content"
+          ]
+        },
+        {
+          "id": "OUTPUT",
+          "status": "passed",
+          "conclusion": "最终消息中的outputSchema与response.outputSchema完全相等；changes路径集合精确匹配21项writablePaths；消息证据枚举仅含本轮两条来源；空工具证据使evidenceExecutionIds.items=false。C024要求changes和evidenceMessageIds，未声明facts字段。",
+          "evidence": [
+            "response.data.messages[-1].content",
+            "response.data.outputSchema",
+            ".tmp/native-card-conversion/run-9kPLPr/package/agents/state-update/profile.json"
+          ]
+        },
+        {
+          "id": "BUDGET",
+          "status": "passed",
+          "conclusion": "最终消息数量为7；prunedByGroup为空，六个状态来源均有token计数。",
+          "evidence": [
+            "response.data.token_usage"
+          ]
+        },
+        {
+          "id": "CONDITIONS",
+          "status": "passed",
+          "conclusion": "状态规则包含0至100范围、各堕落阶段阈值、身份已揭晓及双重身份隔离条件；before身份已揭晓=false且对合一身份亲密度=null。控制器输出的苏雨欣当前状态JSON与before一致。",
+          "evidence": [
+            "response.data.before",
+            "response.data.messages[0].content",
+            "response.data.messages[4].content",
+            ".tmp/native-card-conversion/run-9kPLPr/package/agents/state-update/status.txt",
+            ".tmp/native-card-conversion/run-9kPLPr/package/agents/state-update/relationships.txt"
+          ]
+        }
+      ],
+      "findingIds": [
+        "STATE-02",
+        "STATE-03"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "STATE-01",
+      "priority": "P2",
+      "status": "failed",
+      "card": "USER002",
+      "title": "状态列表把36个事件前值写成函数调用字面量",
+      "location": ".tmp/native-card-conversion/run-0H4RDx/package/backend/controllers/index.js:35-70",
+      "evidenceLocation": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/USER002/state-dry-run-r2/response.json#/response/data/messages/4/content",
+      "actual": "事件_E001: yamlScalar(world['已触发事件']?.[\"事件_E001\"]),；事件_E012等36项均为同类字面量。",
+      "expected": "状态列表为事件键提供当前布尔值；本轮事件_E001至E011中已有键为true，事件_E012及后续键为false。",
+      "impact": "模型同时收到正确的 stateBefore JSON 和包含函数表达式的“当前变量列表”。规则指定当前变量列表作为字段前值依据，36项事件完成标记无法从该列表直接读取，前值输入相互不一致。",
+      "qualification": "正确的 before JSON 已进入 messages[0]；此项证明状态列表损坏，没有证明模型会因此产出错误提案。"
+    },
+    {
+      "id": "STATE-02",
+      "priority": "P2",
+      "status": "failed",
+      "card": "C024",
+      "title": "三组状态规则在最终请求中各完整出现两次",
+      "location": ".tmp/native-card-conversion/run-9kPLPr/package/agents/state-update/profile.json:4",
+      "additionalLocations": [
+        ".tmp/native-card-conversion/run-9kPLPr/package/worldbooks/book-0/entries/e3.json:39",
+        ".tmp/native-card-conversion/run-9kPLPr/package/worldbooks/book-0/entries/e4.json",
+        ".tmp/native-card-conversion/run-9kPLPr/package/worldbooks/book-0/entries/e6.json"
+      ],
+      "evidenceLocation": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/state-dry-run-r2/response.json#/response/data/messages/0/content 与 /response/data/messages/4/content",
+      "actual": "堕落值与亲密度互动规则、NTR特化规则、苏雨欣性格调色盘规则分别通过 stateRules 和常驻世界书再次进入请求；姓名宏展开后每组完整文本的出现次数均为2。",
+      "impact": "最终状态请求重复定义相同规则，增加约5189个字符的输入，并违反本次项目规则对同一规范只定义一次的要求。",
+      "qualification": "两份副本当前一致；此项没有证明模型会双倍计算数值。"
+    },
+    {
+      "id": "STATE-03",
+      "priority": "P3",
+      "status": "failed",
+      "cards": [
+        "USER002",
+        "C024"
+      ],
+      "title": "追踪把已经进入最终消息的六个状态marker标为未解析",
+      "location": "packages/adapters-sillytavern/src/parsers/preset-parser.ts:456-466",
+      "additionalLocations": [
+        "apps/api/src/services/prompt-assembler.ts:1458"
+      ],
+      "evidenceLocations": [
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/USER002/state-dry-run-r2/response.json#/response/data/assembly/unresolvedPresetMarkers",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/state-dry-run-r2/response.json#/response/data/runtime_trace/preset/unresolvedMarkers"
+      ],
+      "actual": "stateDefinition、stateRules、stateBefore、stateHistory、stateEvidence、stateOutputContract均出现在未解析数组，warning称运行时无法映射；实际消息、token_usage.bySection和结构比较确认六个来源已经展开。",
+      "impact": "正式预览的追踪与实际请求内容不一致，消费者不能用该数组判断状态来源是否缺失。",
+      "qualification": "此项属于追踪准确性问题；六个来源的实际组装通过。"
+    }
+  ],
+  "fixtureCannotProve": [
+    {
+      "id": "LIMIT-01",
+      "scope": "实际模型与变量提交",
+      "reason": "两个fixture都声明modelCalled=false，助手来源正文都是28字符的占位说明。没有状态模型响应、提案、计算结果、提交快照、供应商传输或页面结果。"
+    },
+    {
+      "id": "LIMIT-02",
+      "scope": "实际正文来源复用",
+      "reason": "sourceIdentity.runId和attemptNo为null；worldbookSelection为null；toolEvidence、priorFacts、consumedSources及agentResults为空。不能证明真实正文输出页、调用记录、非空工具证据、Agent、记忆及一次性注入复用。"
+    },
+    {
+      "id": "LIMIT-03",
+      "scope": "非空变量历史与历史轮数",
+      "reason": "variableHistory=[]，只有开场历史。不能证明historyTurns的实际数值、截断、多次同楼层提交的合并、分支祖先、可见性过滤和非空历史排序。"
+    },
+    {
+      "id": "LIMIT-04",
+      "scope": "状态预设持久化与覆盖",
+      "reason": "实际预览证实独立状态预设生效；两包profile没有presetRef，response不包含会话statePrompt元数据或发布覆盖记录。不能据此证明发布配置覆盖、默认包绑定、会话固定后资源变化隔离以及缺失绑定错误分支。"
+    },
+    {
+      "id": "LIMIT-05",
+      "scope": "跨条件分支与预算裁剪",
+      "reason": "每包只核对一个初始状态，prunedByGroup为空。不能证明其他开场、事件阈值、身份已揭晓分支或预算不足时的裁剪。"
+    },
+    {
+      "id": "LIMIT-06",
+      "scope": "叙述人称、说话者和剧情连续性生成",
+      "reason": "已读开场和实际用户输入，身份与接续关系可以核对；占位助手正文不能证明新正文按第三人称叙述、正确分配台词说话者或执行剧情条件。C024“在场”前值仍为true，后续实际更新到false的结果须另行验收。"
+    }
+  ]
+}

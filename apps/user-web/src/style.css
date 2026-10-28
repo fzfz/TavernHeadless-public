@@ -1,0 +1,305 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+  background: #101b22;
+  color: #eef2ed;
+  --panel: #15262d;
+  --surface: #203238;
+  --line: #ffffff35;
+  --muted: #b6cbbf;
+  --accent: #b6cbbf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #101b22;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  color: inherit;
+}
+
+button {
+  background: #203238;
+  color: #e5edeb;
+  border: 1px solid #ffffff35;
+  border-radius: 5px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2b424a;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+button[aria-pressed="true"] {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+a {
+  color: #b6cbbf;
+  text-underline-offset: 4px;
+}
+
+.topbar {
+  min-height: 66px;
+  padding: 12px 24px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ffffff20;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.toolbar-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.toolbar-control select {
+  max-width: min(280px, 45vw);
+  padding: 7px 10px;
+  background: var(--surface);
+  color: #e5edeb;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+
+.toolbar-status {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.toolbar-error {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: #fda4af;
+}
+
+.library {
+  max-width: 1080px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+.library h1 {
+  font-size: 25px;
+  font-weight: 550;
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.role-card {
+  text-align: left;
+  min-height: 180px;
+  padding: 26px;
+  background: var(--panel);
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 550;
+  margin: 0 0 14px;
+}
+
+p,
+time {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.role-card span,
+.preview {
+  color: var(--accent);
+}
+
+.history-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.history-row > div {
+  flex: 1;
+}
+
+.chatting {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat {
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+}
+
+.error {
+  padding: 14px 24px;
+  background: #35171b;
+  color: #fda4af;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #0009;
+  z-index: 10;
+}
+
+.opening-dialog {
+  box-sizing: content-box;
+  width: calc(100% - 64px);
+  max-width: 620px;
+  max-height: 85dvh;
+  overflow: auto;
+  background: #15262d;
+  color: #eef2ed;
+  border: 1px solid #ffffff35;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.opening-dialog:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.opening-dialog h2 {
+  margin-bottom: 20px;
+}
+
+.opening-option {
+  display: block;
+  padding: 14px;
+  border: 1px solid #ffffff35;
+  border-radius: 8px;
+}
+
+.opening-option + .opening-option {
+  margin-top: 12px;
+}
+
+.opening-option input {
+  accent-color: var(--accent);
+}
+
+.opening-option p {
+  margin: 8px 0 0;
+  color: #b6cbbf;
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.primary {
+  background: var(--accent);
+  color: #042f2e;
+  border-color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    padding: 12px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .topbar nav {
+    width: 100%;
+  }
+
+  .toolbar-control {
+    min-width: 0;
+    max-width: 100%;
+    flex: 1 1 100%;
+    justify-content: space-between;
+  }
+
+  .toolbar-control select {
+    min-width: 0;
+    flex: 1;
+    max-width: none;
+  }
+
+  .toolbar-error {
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+
+  .library {
+    padding: 0 16px;
+    margin: 24px auto;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .history-row {
+    flex-wrap: wrap;
+  }
+
+  .history-row > div {
+    flex-basis: 100%;
+  }
+
+  .preview {
+    font-size: 12px;
+  }
+}

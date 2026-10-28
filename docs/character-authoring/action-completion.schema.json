@@ -1,0 +1,190 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Role action completion contract",
+  "$ref": "#/definitions/completion",
+  "definitions": {
+    "effect": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "ui.set"
+            },
+            "target": {
+              "type": "string",
+              "minLength": 1
+            },
+            "value": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "type",
+            "target",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "audio.play",
+                "audio.stop"
+              ]
+            },
+            "asset": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "type",
+            "asset"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "completion": {
+      "type": "object",
+      "properties": {
+        "onSuccess": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/effect"
+          }
+        },
+        "onError": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/effect"
+          }
+        },
+        "onCancel": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/effect"
+          }
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "result": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "invocationId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "actionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "const": "success"
+            }
+          },
+          "required": [
+            "invocationId",
+            "actionId",
+            "status"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "invocationId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "actionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "const": "error"
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "outcome": {
+                  "enum": [
+                    "not-applied",
+                    "unknown"
+                  ]
+                },
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "code",
+                "outcome"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "invocationId",
+            "actionId",
+            "status",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "invocationId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "actionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "const": "cancelled"
+            }
+          },
+          "required": [
+            "invocationId",
+            "actionId",
+            "status"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "invocation": {
+      "type": "object",
+      "properties": {
+        "invocationId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actionId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "invocationId",
+        "actionId"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

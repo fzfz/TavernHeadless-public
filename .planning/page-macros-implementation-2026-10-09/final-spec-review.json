@@ -1,0 +1,60 @@
+{
+  "baseline": "ebd909ed49fa1c0c7b142bc0cc9758e097e309c9",
+  "scope": "git diff --cached；产品文件保持原状。",
+  "verdict": "存在两项语义缺陷。",
+  "findings": [
+    {
+      "id": "SPEC-1",
+      "priority": "P2",
+      "category": "c",
+      "title": "恢复成对注释及空注释的源语义",
+      "requirement": {
+        "file": ".planning/native-card-maintenance/root-cause-research-2026-10-08/page-macro-support.md",
+        "line": 20,
+        "quote": "公共模块支持这些写法及嵌套参数。……别名comment与//使用同一实现。"
+      },
+      "locations": [
+        {
+          "file": ".agents/skills/native-card-conversion/scripts/page-macros.ts",
+          "start_line": 241,
+          "end_line": 244
+        },
+        {
+          "file": ".agents/skills/native-card-conversion/scripts/page-macros.ts",
+          "start_line": 313,
+          "end_line": 320
+        }
+      ],
+      "detail": "{{//}}隐藏文本{{///}} 与 {{comment}}隐藏文本{{/comment}} 均应输出空串，实际返回 INVALID_SYNTAX；{{//}} 返回 INVALID_ARGUMENTS。header 未识别 /// 为结束宏，canScope 排除了 list 宏，参数校验也未保留源注释 strictArgs=false。validatePageMacroBindings 同样拒绝这些输入，因此合法页面无法完成绑定。源依据为 source-inventory.json 中 // 的 registration_source。"
+    },
+    {
+      "id": "SPEC-2",
+      "priority": "P2",
+      "category": "b,c",
+      "title": "按原值输出角色版本文字",
+      "requirement": {
+        "file": ".planning/native-card-maintenance/root-cause-research-2026-10-08/page-macro-support.md",
+        "line": 47,
+        "quote": "版本文字按原值保存；其他资料按源getCharacterCardFieldsLazy()的trim及基础姓名替换规则处理。"
+      },
+      "locations": [
+        {
+          "file": ".agents/skills/native-card-conversion/scripts/page-macros.ts",
+          "start_line": 917,
+          "end_line": 924
+        },
+        {
+          "file": ".agents/skills/native-card-conversion/scripts/page-macros.ts",
+          "start_line": 664,
+          "end_line": 665
+        }
+      ],
+      "detail": "card 分支及静态分析递归解析所有字段，包括 character_version。版本 v{{user}} 实际变为 vAlice；版本 v{{revision}} 使绑定命令返回 UNKNOWN_MACRO。两者都应作为版本文字原样显示。源 getCharacterCardFieldsLazy 的 version getter 直接返回 character_version。"
+    }
+  ],
+  "acceptance_limits": [
+    "五张随机卡均有执行记录，但真实整卡 ZIP 仅 C072、C025 完成联调；C005、C063 结束转换，C013 在未知插件宏处停止。五份宏专项包的通过结果不能代表五张整卡验收通过。",
+    "preview-stream-acceptance.json 仍为 passed=false、status=incomplete；实际保存消息后的状态更新链尚未完成验收，不能由受控浏览器通知测试推定。"
+  ],
+  "evidence": "final-spec-review-probes.json 保存独立执行的分析、绑定校验及实际输出。另已阅读生成入口、Scope 生命周期与消息 API 消费者。"
+}

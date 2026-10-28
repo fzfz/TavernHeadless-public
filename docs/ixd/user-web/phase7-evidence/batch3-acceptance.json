@@ -1,0 +1,32 @@
+[
+  {
+    "platform": "mobile",
+    "check": "人格读取与默认读取局部失败、默认保存失败、刷新后核对默认选择",
+    "result": "pass"
+  },
+  {
+    "platform": "mobile",
+    "check": "创建校验、输入法、草稿保留与放弃、刷新恢复、唯一创建核对、完整描述、跨标签页冲突与快捷键保存",
+    "result": "pass"
+  },
+  {
+    "platform": "mobile",
+    "check": "会话人格快照、删除结果核对、删除默认与最后一个人格、开始任务来源和开场保留、资源失效",
+    "result": "pass"
+  },
+  {
+    "platform": "desktop",
+    "check": "人格读取与默认读取局部失败、默认保存失败、刷新后核对默认选择",
+    "result": "pass"
+  },
+  {
+    "platform": "desktop",
+    "check": "创建校验、输入法、草稿保留与放弃、刷新恢复、唯一创建核对、完整描述、跨标签页冲突与快捷键保存",
+    "result": "pass"
+  },
+  {
+    "platform": "desktop",
+    "check": "会话人格快照、删除结果核对、删除默认与最后一个人格、开始任务来源和开场保留、资源失效",
+    "result": "pass"
+  }
+]

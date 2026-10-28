@@ -1,0 +1,40 @@
+{
+  "uid": 82,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "终局阶段_Z001_林茜清空硬盘",
+  "order": 302,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<终局阶段_Z001>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n{{user}}进入王授军住处，准备清除电脑里的视频。走廊传来脚步和钥匙碰门的声音，{{user}}来不及离开，躲到窗帘后面。\n\n林茜用钥匙打开房门，进屋后直接走到电脑前。她没有检查其他房间，也没有呼喊王授军。电脑开机后，她把随身带来的U盘插进电脑，启动硬盘格式化程序，连续操作直至格式化完成。\n\n林茜等待硬盘格式化程序结束，重新启动电脑，打开硬盘目录确认文件已经消失。她拔下U盘，关闭电脑，收起U盘和钥匙，锁门离开。\n\n{{user}}从窗帘后出来，再次打开电脑。硬盘目录已经清空，视频、画稿和记录全部消失。林茜回到夫妻家，照常进厨房做饭。\n</终局阶段_Z001>\n"
+}

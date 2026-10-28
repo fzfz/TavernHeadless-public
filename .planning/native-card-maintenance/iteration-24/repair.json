@@ -1,0 +1,23 @@
+{
+  "originalArchive": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-CuL1xq/role.zip",
+  "repairedPackage": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-maintenance-24/repaired/package",
+  "changes": [
+    {
+      "file": "state/schema.json",
+      "reason": "源页面发送前的格式检查被提前用于初始状态schema；schema恢复源Zod类型，前端继续保留源发送检查。"
+    },
+    {
+      "file": "state/initial/studio-audio.json",
+      "reason": "按源备用开场初始化后的四个replace操作覆写四项选项；保留原文。"
+    },
+    {
+      "file": "agents/state-update/linxi-update.txt",
+      "reason": "恢复源110选项用途与条件原文，适配操作名和路径，移除无条件加入的105摘要；105原文继续由源控制器按E032条件读取。"
+    },
+    {
+      "file": "frontend/index.html, frontend/main.js",
+      "reason": "追加正式系统聊天组件，显示正文、输入和失败恢复；保留源局部状态栏HTML/CSS。"
+    }
+  ],
+  "secondConversionAgent": false
+}

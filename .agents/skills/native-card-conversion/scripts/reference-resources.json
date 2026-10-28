@@ -1,0 +1,52 @@
+{
+  "resources": [
+    {
+      "source": "docs/character-authoring/script-template-api.md",
+      "file": "references/api/script-template-api.md"
+    },
+    {
+      "source": "docs/character-authoring/native-card-api.md",
+      "file": "references/api/native-card-api.md"
+    },
+    {
+      "source": "vitepress/reference/api/tools.md",
+      "file": "references/api/http/tools.md"
+    },
+    {
+      "source": "vitepress/reference/api/worldbooks.md",
+      "file": "references/api/http/worldbooks.md"
+    },
+    {
+      "source": "vitepress/reference/api/chat.md",
+      "file": "references/api/http/chat.md"
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/backend-input.json",
+      "file": "references/api/examples/api-usage/backend-input.json"
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/backend-hooks.mjs",
+      "file": "references/api/examples/api-usage/backend-hooks.mjs"
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/run-backend.mjs",
+      "file": "references/api/examples/api-usage/run-backend.mjs"
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/run-tools.ts",
+      "file": "references/api/examples/api-usage/run-tools.ts"
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/tool-roundtrips.json",
+      "file": "references/api/examples/api-usage/tool-roundtrips.json"
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/commit-panel.html",
+      "file": "references/api/examples/api-usage/commit-panel.html"
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/commit-panel.mjs",
+      "file": "references/api/examples/api-usage/commit-panel.mjs"
+    }
+  ]
+}

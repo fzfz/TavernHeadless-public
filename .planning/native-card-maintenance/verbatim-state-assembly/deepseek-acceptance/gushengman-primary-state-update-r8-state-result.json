@@ -1,0 +1,29 @@
+{
+  "sessionId": "5ZoCR0MnbCwCCgPS7iQa9",
+  "branchId": "main",
+  "floorId": "ITwc8q-dytH38ayAahGNb",
+  "attemptId": "AeJ0f8XoyRDnfw3ooFkcu:1",
+  "versionId": "HkdRM1AnnRgadXaEkJ4fT",
+  "snapshotId": "db0b5123-2e78-4401-b9f6-6ff288afc7c8",
+  "parentSnapshotId": "a4f9f68c-8172-4a2a-b5c6-2c057872248b",
+  "variables": {
+    "世界": {
+      "当前地址": "旧教学楼三楼活动室",
+      "当前时间": "2025年12月15日19:20",
+      "事件状态": "无"
+    },
+    "顾声慢": {
+      "情感连结度": 14,
+      "创作完成度": 30,
+      "心象映射": {
+        "当前心声": "他说想听我觉得最舒服的那一遍。没人问过我舒不舒服……他好像总能看见我脑子里的画面。刚才那段单音是我第一次弹，手指比想象中更知道该怎么走。",
+        "当前脑内旋律": "《One Summer's Day》"
+      }
+    }
+  },
+  "source": {
+    "kind": "floor",
+    "runId": "AeJ0f8XoyRDnfw3ooFkcu",
+    "jobId": null
+  }
+}

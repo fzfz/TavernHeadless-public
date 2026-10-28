@@ -1,0 +1,334 @@
+{
+  "temperature": 1,
+  "frequency_penalty": 0,
+  "presence_penalty": 0,
+  "top_p": 0.95,
+  "top_k": 0,
+  "top_a": 1,
+  "min_p": 0,
+  "repetition_penalty": 1,
+  "max_context_unlocked": true,
+  "tool_reasoning_mode": "disabled",
+  "openai_max_context": 2000000,
+  "openai_max_tokens": 65535,
+  "names_behavior": 0,
+  "send_if_empty": "",
+  "impersonation_prompt": "",
+  "new_chat_prompt": "",
+  "new_group_chat_prompt": "",
+  "new_example_chat_prompt": "",
+  "continue_nudge_prompt": "",
+  "bias_preset_selected": "Default (none)",
+  "wi_format": "{0}",
+  "scenario_format": "",
+  "personality_format": "",
+  "group_nudge_prompt": "",
+  "stream_openai": true,
+  "prompts": [
+    {
+      "name": "变量状态更新任务",
+      "system_prompt": true,
+      "role": "system",
+      "content": "你负责根据已经成功保存的剧情消息判断变量变化。读取人物资料、世界书、更新规则、本次计算开始前的变量值和变量历史，区分人物行为、直接引语与叙述。依据实际发生的事件应用更新规则，并引用所提供的消息和工具执行证据。",
+      "identifier": "main",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": true,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "marker": false,
+      "enabled": true
+    },
+    {
+      "identifier": "personaDescription",
+      "name": "Persona Description",
+      "system_prompt": true,
+      "marker": true,
+      "role": "user",
+      "content": "",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": false,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "enabled": true
+    },
+    {
+      "identifier": "worldInfoBefore",
+      "name": "World Info (before)",
+      "system_prompt": true,
+      "marker": true,
+      "role": "user",
+      "content": "",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": false,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "enabled": true
+    },
+    {
+      "identifier": "charDescription",
+      "name": "Char Description",
+      "system_prompt": true,
+      "marker": true,
+      "role": "user",
+      "content": "",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": false,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "enabled": true
+    },
+    {
+      "identifier": "charPersonality",
+      "name": "Char Personality",
+      "system_prompt": true,
+      "marker": true,
+      "role": "user",
+      "content": "",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": false,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "enabled": true
+    },
+    {
+      "identifier": "worldInfoAfter",
+      "name": "World Info (after)",
+      "system_prompt": true,
+      "marker": true,
+      "role": "user",
+      "content": "",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": false,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "enabled": true
+    },
+    {
+      "identifier": "scenario",
+      "name": "Scenario",
+      "system_prompt": true,
+      "marker": true,
+      "role": "user",
+      "content": "",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": false,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "enabled": true
+    },
+    {
+      "identifier": "dialogueExamples",
+      "name": "Chat Examples",
+      "system_prompt": true,
+      "marker": true,
+      "role": "user",
+      "injection_position": 0,
+      "enabled": true
+    },
+    {
+      "identifier": "chatHistory",
+      "name": "Chat History",
+      "system_prompt": true,
+      "marker": true,
+      "role": "user",
+      "injection_position": 0,
+      "enabled": true
+    },
+    {
+      "name": "状态提案输出",
+      "system_prompt": true,
+      "role": "system",
+      "content": "你必须返回一个完全符合 outputSchema 的 JSON 对象。\n你引用的消息标识必须逐字复制自 sources[].messageId。\n你必须将 toolEvidence 作为工具执行结果，并根据 sources 判断剧情中已经发生的行为。\n提案使用工具执行结果时，你必须将对应的 toolEvidence[].executionId 逐字复制到 evidenceExecutionIds。计算状态时，你必须使用工具记录的随机结果。\n每个 path 最多写入一次。更新数组时，你必须通过一次操作设置该 path 的完整数组。",
+      "identifier": "jailbreak",
+      "injection_position": 0,
+      "injection_depth": 4,
+      "forbid_overrides": true,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "marker": false,
+      "enabled": true
+    },
+    {
+      "identifier": "stateDefinition",
+      "name": "stateDefinition",
+      "role": "system",
+      "system_prompt": true,
+      "marker": true,
+      "content": "",
+      "enabled": true,
+      "injection_position": 0,
+      "injection_depth": 0,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "forbid_overrides": false
+    },
+    {
+      "identifier": "stateRules",
+      "name": "stateRules",
+      "role": "system",
+      "system_prompt": true,
+      "marker": true,
+      "content": "",
+      "enabled": true,
+      "injection_position": 0,
+      "injection_depth": 0,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "forbid_overrides": false
+    },
+    {
+      "identifier": "stateBefore",
+      "name": "stateBefore",
+      "role": "system",
+      "system_prompt": true,
+      "marker": true,
+      "content": "",
+      "enabled": true,
+      "injection_position": 0,
+      "injection_depth": 0,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "forbid_overrides": false
+    },
+    {
+      "identifier": "stateHistory",
+      "name": "stateHistory",
+      "role": "system",
+      "system_prompt": true,
+      "marker": true,
+      "content": "",
+      "enabled": true,
+      "injection_position": 0,
+      "injection_depth": 0,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "forbid_overrides": false
+    },
+    {
+      "identifier": "stateEvidence",
+      "name": "stateEvidence",
+      "role": "system",
+      "system_prompt": true,
+      "marker": true,
+      "content": "",
+      "enabled": true,
+      "injection_position": 0,
+      "injection_depth": 0,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "forbid_overrides": false
+    },
+    {
+      "identifier": "stateOutputContract",
+      "name": "stateOutputContract",
+      "role": "system",
+      "system_prompt": true,
+      "marker": true,
+      "content": "",
+      "enabled": true,
+      "injection_position": 0,
+      "injection_depth": 0,
+      "injection_order": 100,
+      "injection_trigger": [],
+      "forbid_overrides": false
+    }
+  ],
+  "prompt_order": [
+    {
+      "character_id": 100001,
+      "order": [
+        {
+          "identifier": "main",
+          "enabled": true
+        },
+        {
+          "identifier": "personaDescription",
+          "enabled": true
+        },
+        {
+          "identifier": "worldInfoBefore",
+          "enabled": true
+        },
+        {
+          "identifier": "charDescription",
+          "enabled": true
+        },
+        {
+          "identifier": "charPersonality",
+          "enabled": true
+        },
+        {
+          "identifier": "worldInfoAfter",
+          "enabled": true
+        },
+        {
+          "identifier": "scenario",
+          "enabled": true
+        },
+        {
+          "identifier": "dialogueExamples",
+          "enabled": true
+        },
+        {
+          "identifier": "stateDefinition",
+          "enabled": true
+        },
+        {
+          "identifier": "stateRules",
+          "enabled": true
+        },
+        {
+          "identifier": "stateBefore",
+          "enabled": true
+        },
+        {
+          "identifier": "stateHistory",
+          "enabled": true
+        },
+        {
+          "identifier": "stateEvidence",
+          "enabled": true
+        },
+        {
+          "identifier": "chatHistory",
+          "enabled": true
+        },
+        {
+          "identifier": "jailbreak",
+          "enabled": true
+        },
+        {
+          "identifier": "stateOutputContract",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "assistant_prefill": "",
+  "assistant_impersonation": "",
+  "use_sysprompt": true,
+  "squash_system_messages": false,
+  "media_inlining": false,
+  "inline_image_quality": "low",
+  "continue_prefill": false,
+  "continue_postfix": " ",
+  "function_calling": false,
+  "tool_call_recurse_limit": 5,
+  "show_thoughts": true,
+  "reasoning_effort": "high",
+  "verbosity": "auto",
+  "enable_web_search": false,
+  "seed": -1,
+  "n": 1,
+  "request_images": false,
+  "request_image_aspect_ratio": "",
+  "request_image_resolution": "",
+  "extensions": {}
+}

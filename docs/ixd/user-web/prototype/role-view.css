@@ -1,0 +1,284 @@
+:host {
+  display: block;
+  height: 100%;
+  min-height: 0;
+  color: #4b493c;
+  font-family: "PingFang SC", sans-serif;
+  font-size: 14px;
+}
+* {
+  box-sizing: border-box;
+}
+h2,
+h3,
+p {
+  margin: 0;
+}
+.role-surface {
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 268px minmax(0, 1fr);
+  gap: 20px;
+  padding: 28px 20px 20px;
+  background: #eee8db;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+.ownership-label {
+  position: absolute;
+  top: 0;
+  left: 18px;
+  padding: 4px 10px;
+  font-size: 11px;
+  line-height: 18px;
+  border-radius: 0 0 5px 5px;
+  background: #e6d8b9;
+  color: #856633;
+  z-index: 2;
+}
+:host([data-boundaries="off"]) .ownership-label {
+  display: none;
+}
+:host([data-boundaries="off"]) .role-surface {
+  padding-top: 20px;
+  border-color: transparent;
+}
+.scene {
+  min-height: 0;
+  overflow: auto;
+  padding: 12px 10px;
+}
+.scene-art {
+  height: 170px;
+  border: 1px solid #c8bc9d;
+  border-radius: 100px 100px 4px 4px;
+  background: #e3dac5;
+  display: grid;
+  place-items: center;
+  font-family: "Songti SC", serif;
+  font-size: 80px;
+  color: #9b9678;
+  margin-bottom: 24px;
+}
+.eyebrow {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #9a9279;
+}
+h2 {
+  font-family: "Songti SC", serif;
+  font-size: 24px;
+  line-height: 34px;
+  letter-spacing: 2px;
+  margin: 12px 0 6px;
+}
+.character-name {
+  font-size: 14px;
+  color: #89866e;
+}
+.scene-meta {
+  display: grid;
+  gap: 18px;
+  margin: 24px 0;
+  padding: 22px 0;
+  border-top: 1px solid #d5cbb3;
+  border-bottom: 1px solid #d5cbb3;
+}
+.scene-meta span {
+  display: block;
+  font-size: 11px;
+  color: #9a9279;
+  margin-bottom: 7px;
+}
+.scene-meta strong {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+}
+#message-count {
+  font-size: 12px;
+  color: #918770;
+  margin-bottom: 24px;
+}
+.scene-options h3 {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+.scene-options button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cfc4a9;
+  background: #f6f1e4;
+  border-radius: 6px;
+  margin-top: 8px;
+  color: #796a49;
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+.scene-options button:hover {
+  background: #e8ddc2;
+}
+.scene-options button:active {
+  transform: translateY(1px);
+}
+button:focus-visible {
+  outline: 2px solid #8b774a;
+  outline-offset: 2px;
+}
+.chat-slot {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #fffefa;
+}
+.deck {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 16px;
+  background: #142d37;
+  color: #d2e3e3;
+  border-color: #456778;
+}
+.deck .scene {
+  display: grid;
+  grid-template-columns: 100px 1fr 180px;
+  gap: 24px;
+  align-items: center;
+  padding: 10px 6px;
+  overflow: visible;
+}
+.deck .scene-art {
+  margin: 0;
+  height: 100px;
+  border: 1px solid #5f818b;
+  border-radius: 50%;
+  background: #1c3945;
+  color: #8aabb5;
+  font-size: 50px;
+}
+.deck h2 {
+  font-family: inherit;
+  letter-spacing: 1px;
+  font-size: 22px;
+  margin: 7px 0 3px;
+}
+.deck .character-name {
+  display: none;
+}
+.deck .eyebrow,
+.deck .scene-meta span,
+.deck #message-count {
+  color: #84a4ae;
+}
+.deck .scene-meta {
+  display: flex;
+  gap: 30px;
+  border: 0;
+  padding: 0;
+  margin: 16px 0 0;
+}
+.deck .scene-meta strong {
+  font-size: 13px;
+}
+.deck #message-count {
+  margin: 10px 0 0;
+  font-size: 11px;
+}
+.deck .scene-options h3 {
+  display: none;
+}
+.deck .scene-options button {
+  background: #24434e;
+  color: #b1d1d9;
+  border-color: #4a6c77;
+}
+.deck .scene-options button:hover {
+  background: #315663;
+}
+.deck .chat-slot {
+  border: 1px solid #4a6c77;
+}
+@media (max-width: 1000px) {
+  .role-surface {
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .scene {
+    padding: 8px;
+  }
+  .scene-art {
+    height: 120px;
+    font-size: 65px;
+  }
+  .deck {
+    grid-template-columns: 1fr;
+  }
+  .deck .scene {
+    grid-template-columns: 1fr 150px;
+  }
+  .deck .scene-art {
+    display: none;
+  }
+  .deck .scene-meta {
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 650px) {
+  .role-surface {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 10px;
+    padding: 28px 8px 8px;
+  }
+  .scene {
+    display: grid;
+    grid-template-columns: 1fr 130px;
+    gap: 12px;
+    padding: 4px 8px;
+    overflow: visible;
+  }
+  .scene-art,
+  .scene-meta,
+  #message-count,
+  .character-name {
+    display: none;
+  }
+  .scene-options h3 {
+    display: none;
+  }
+  .scene-options button {
+    padding: 7px;
+    font-size: 11px;
+    margin-top: 5px;
+  }
+  h2 {
+    font-size: 19px;
+    margin: 6px 0;
+  }
+  .eyebrow {
+    font-size: 8px;
+  }
+  .deck .scene {
+    grid-template-columns: 1fr 130px;
+    gap: 10px;
+    padding: 4px 8px;
+  }
+  .deck h2 {
+    font-size: 17px;
+  }
+  .deck .scene-meta,
+  .deck #message-count {
+    display: none;
+  }
+}

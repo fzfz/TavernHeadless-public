@@ -1,0 +1,385 @@
+{
+  "totalMs": 25249.990250000003,
+  "previewStartupMs": 3649.291,
+  "browserMs": 15013.18325,
+  "closeMs": 74.81629200000316,
+  "steps": [
+    {
+      "args": [
+        "begin",
+        "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/cli-implementation/acceptance/source.json"
+      ],
+      "durationMs": 245.46079200000003,
+      "stdoutBytes": 167,
+      "stderrBytes": 0,
+      "reference": {
+        "resultFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/calls/call-nUNvp2/result.json",
+        "bytes": 497,
+        "partCount": 0
+      },
+      "passed": true
+    },
+    {
+      "args": [
+        "index",
+        "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/task.json",
+        "--frontend",
+        "frontend/manifest.json"
+      ],
+      "durationMs": 242.62550000000005,
+      "stdoutBytes": 178,
+      "stderrBytes": 0,
+      "reference": {
+        "resultFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/calls/call-udySG8/result.json",
+        "bytes": 390,
+        "partCount": 0
+      },
+      "passed": true
+    },
+    {
+      "args": [
+        "validate",
+        "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/task.json"
+      ],
+      "durationMs": 599.9185000000001,
+      "stdoutBytes": 178,
+      "stderrBytes": 0,
+      "reference": {
+        "resultFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/calls/call-hg7FUQ/result.json",
+        "bytes": 386,
+        "partCount": 0
+      },
+      "passed": true
+    },
+    {
+      "args": [
+        "pack",
+        "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/task.json"
+      ],
+      "durationMs": 615.1943749999998,
+      "stdoutBytes": 178,
+      "stderrBytes": 0,
+      "reference": {
+        "resultFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/calls/call-BMftvi/result.json",
+        "bytes": 850,
+        "partCount": 0
+      },
+      "passed": true
+    },
+    {
+      "args": [
+        "index",
+        "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/task.json",
+        "--frontend",
+        "frontend/manifest.json"
+      ],
+      "durationMs": 239.77029100000004,
+      "stdoutBytes": 178,
+      "stderrBytes": 0,
+      "reference": {
+        "resultFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/calls/call-SIavVU/result.json",
+        "bytes": 390,
+        "partCount": 0
+      },
+      "passed": true
+    },
+    {
+      "args": [
+        "pack",
+        "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/task.json"
+      ],
+      "durationMs": 653.2205420000003,
+      "stdoutBytes": 178,
+      "stderrBytes": 0,
+      "reference": {
+        "resultFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/calls/call-xNSube/result.json",
+        "bytes": 850,
+        "partCount": 0
+      },
+      "passed": true
+    },
+    {
+      "args": [
+        "formal",
+        "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/task.json",
+        "--archive",
+        "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/pack-4OecrY/role.zip"
+      ],
+      "durationMs": 3391.7706249999997,
+      "stdoutBytes": 179,
+      "stderrBytes": 0,
+      "reference": {
+        "resultFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/calls/call-6OGa3A/result.json",
+        "bytes": 6815,
+        "partCount": 0
+      },
+      "passed": true
+    },
+    {
+      "args": [
+        "preview",
+        "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/task.json",
+        "--archive",
+        "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/pack-4OecrY/role.zip",
+        "--request-id",
+        "310f33d2-eba0-4f7e-91a7-cacadc9c62c3"
+      ],
+      "durationMs": 219.77637499999946,
+      "stdoutBytes": 178,
+      "stderrBytes": 0,
+      "reference": {
+        "resultFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/calls/call-Bgau1U/result.json",
+        "bytes": 928,
+        "partCount": 0
+      },
+      "passed": true
+    }
+  ],
+  "task": {
+    "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/task.json",
+    "packageDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/package",
+    "workFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/review/work.json",
+    "pendingCount": 0
+  },
+  "a": {
+    "archive": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/pack-4OecrY/role.zip",
+    "bytes": 9452,
+    "packageValidation": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/validation-3ROLXy/result.json",
+    "validation": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/pack-4OecrY/archive-validation.json",
+    "packRecord": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/pack-4OecrY/result.json",
+    "passed": true,
+    "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/task.json"
+  },
+  "b": {
+    "archive": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/pack-nNWavR/role.zip",
+    "bytes": 9435,
+    "packageValidation": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/validation-tZBbQb/result.json",
+    "validation": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/pack-nNWavR/archive-validation.json",
+    "packRecord": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/pack-nNWavR/result.json",
+    "passed": true,
+    "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/task.json"
+  },
+  "formal": {
+    "passed": true,
+    "status": "passed",
+    "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/formal/formal-runs/2026-10-06T18-44-44-339Z-d17cb7b5-4c12-4abd-bff4-ac6261be6f2e",
+    "readbackPath": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/formal/formal-runs/2026-10-06T18-44-44-339Z-d17cb7b5-4c12-4abd-bff4-ac6261be6f2e/readback.json",
+    "importedCardId": "OG-8jpIM6G-5g8JQCVSf3",
+    "requests": [
+      {
+        "method": "POST",
+        "path": "/native-cards/imports?fileName=role.zip",
+        "headers": {
+          "content-type": "application/zip"
+        },
+        "bodyReference": "request-bodies/000.bin",
+        "bodyByteLength": 9452,
+        "statusCode": 200
+      },
+      {
+        "method": "POST",
+        "path": "/native-cards/imports/56XimoMBYIOwVjR7iYtVn/confirm",
+        "headers": {},
+        "statusCode": 201
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=agents%2Fstate-update%2Fprofile.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=agents%2Fstate-update%2Frules.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=assets%2Fportrait.svg",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=backend%2Fcontrollers%2Fconfig.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=backend%2Fcontrollers%2Fprompt.js",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=backend%2Fvalidators%2Fvalidate.js",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=backend%2Fvariable-tools%2Fderive.js",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=character.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=data%2Fcase.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=frontend%2Findex.html",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=frontend%2Fmain.js",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=frontend%2Fmanifest.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=frontend%2Fstyle.css",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=manifest.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=openings.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=openings%2Ffirst.txt",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=openings%2Fsecond.txt",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=regex%2Ffirst.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=regex%2Fsecond.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=state%2Finitial%2Ffirst.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=state%2Finitial%2Fsecond.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=state%2Fschema.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fbook-0%2Fbook.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fbook-0%2Fentries%2Fe0.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fharbor%2Fbook.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fharbor%2Fentries%2F110.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fharbor%2Fentries%2F120.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fpeople%2Fbook.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fpeople%2Fentries%2F110.json",
+        "headers": {},
+        "statusCode": 200
+      }
+    ],
+    "zipRead": {
+      "status": "passed",
+      "fileCount": 29
+    },
+    "schemaValidation": {
+      "status": "passed",
+      "valid": true,
+      "issues": []
+    },
+    "diagnostics": [],
+    "readback": {
+      "status": "passed",
+      "fileCount": 29,
+      "failedPaths": []
+    },
+    "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/task.json"
+  },
+  "pageStatus": 200,
+  "roleStatus": 200,
+  "roleName": "雾港来信",
+  "previewExit": [
+    0,
+    null
+  ],
+  "previewStderrBytes": 0
+}

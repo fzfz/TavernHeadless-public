@@ -1,0 +1,34 @@
+{
+  "success": {
+    "ok": true,
+    "data": {
+      "samples": [
+        1,
+        1
+      ],
+      "indices": null
+    }
+  },
+  "failure": {
+    "status": "error",
+    "error": "除数为 0，请修改 expression 中的除数。"
+  },
+  "denied": "disabled",
+  "completed": [
+    "random"
+  ],
+  "records": [
+    {
+      "toolName": "random",
+      "status": "success"
+    },
+    {
+      "toolName": "calculate",
+      "status": "error"
+    },
+    {
+      "toolName": "random",
+      "status": "denied"
+    }
+  ]
+}

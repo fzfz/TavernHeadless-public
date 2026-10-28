@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Native card conversion issue summary",
+  "description": "Summary added to a command result when its diagnostics are limited for display. The issues property on the command result contains the displayed prefix; completeResult points to the saved full result.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["totalCount", "displayedCount", "truncated", "completeResult"],
+  "properties": {
+    "totalCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of diagnostics in the complete command result."
+    },
+    "displayedCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of diagnostics retained in the command result issues array."
+    },
+    "truncated": {
+      "type": "boolean",
+      "description": "Whether the command result issues array omits diagnostics present in the saved complete result."
+    },
+    "completeResult": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The unchanged record path returned by the command and containing its complete diagnostics."
+    }
+  }
+}

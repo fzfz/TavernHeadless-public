@@ -1,0 +1,26 @@
+[
+  { "key": "overview", "label": "运行概览", "sections": [] },
+  { "key": "prompt", "label": "历史提示词", "sections": ["prompt"] },
+  { "key": "stages", "label": "各阶段模型与执行结果", "sections": [] },
+  { "key": "tools", "label": "工具调用", "sections": ["tools", "calls"] },
+  { "key": "processing", "label": "正则与显示结果", "sections": ["roleState"] },
+  {
+    "key": "state",
+    "label": "变量与记忆",
+    "sections": [
+      "state",
+      "memoryJobs",
+      "staged",
+      "promotions",
+      "memoryProposals",
+      "memoryPromotions",
+      "mutations"
+    ]
+  },
+  {
+    "key": "history",
+    "label": "分支与日志",
+    "sections": ["operations", "messageRevisions"]
+  },
+  { "key": "raw", "label": "接口原始响应", "sections": [] }
+]

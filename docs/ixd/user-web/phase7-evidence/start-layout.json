@@ -1,0 +1,48 @@
+[
+  {
+    "platform": "mobile",
+    "dimensions": [
+      [
+        320,
+        740
+      ],
+      [
+        390,
+        1000
+      ],
+      [
+        844,
+        390
+      ]
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "textScale": 200,
+    "overflow": false,
+    "controlsReachable": true,
+    "result": "passed"
+  },
+  {
+    "platform": "desktop",
+    "dimensions": [
+      [
+        1024,
+        768
+      ],
+      [
+        1440,
+        1000
+      ]
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "textScale": 200,
+    "overflow": false,
+    "controlsReachable": true,
+    "result": "passed"
+  }
+]

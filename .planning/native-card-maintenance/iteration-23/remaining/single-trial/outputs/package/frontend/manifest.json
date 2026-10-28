@@ -1,0 +1,10 @@
+{
+  "apiVersion": 1,
+  "html": "frontend/index.html",
+  "css": "frontend/style.css",
+  "script": "frontend/main.js",
+  "assets": {},
+  "data": {
+    "ui": "data/role-ui.json"
+  }
+}

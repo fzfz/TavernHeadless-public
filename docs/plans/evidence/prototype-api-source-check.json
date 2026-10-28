@@ -1,0 +1,80 @@
+{
+  "origin": "http://127.0.0.1:43875",
+  "checkedAt": "2026-09-19",
+  "reads": {
+    "/script-api/catalog": {
+      "status": 200,
+      "count": 6,
+      "responseFields": null
+    },
+    "/users": {
+      "status": 200,
+      "count": 0,
+      "responseFields": [
+        "data",
+        "meta"
+      ]
+    },
+    "/sessions": {
+      "status": 200,
+      "count": 1,
+      "responseFields": [
+        "data",
+        "meta"
+      ]
+    },
+    "/llm-profiles": {
+      "status": 200,
+      "count": 0,
+      "responseFields": [
+        "data"
+      ]
+    },
+    "/presets": {
+      "status": 200,
+      "count": 1,
+      "responseFields": [
+        "data"
+      ]
+    },
+    "/worldbooks": {
+      "status": 200,
+      "count": 0,
+      "responseFields": [
+        "data"
+      ]
+    },
+    "/regex-profiles": {
+      "status": 200,
+      "count": 1,
+      "responseFields": [
+        "data"
+      ]
+    },
+    "/script-api/sessions/script-linqian": {
+      "status": 200,
+      "sessionId": "script-linqian",
+      "performerName": "你",
+      "capabilities": {
+        "send": true,
+        "history": true,
+        "customFloors": false
+      },
+      "responseFields": [
+        "characterId",
+        "opening",
+        "openings",
+        "sessionId",
+        "branchId",
+        "versionId",
+        "name",
+        "initial",
+        "current",
+        "messages",
+        "processing",
+        "delivery",
+        "capabilities"
+      ]
+    }
+  }
+}

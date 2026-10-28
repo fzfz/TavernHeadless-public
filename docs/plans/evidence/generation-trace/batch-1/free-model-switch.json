@@ -1,0 +1,89 @@
+{
+  "source": "https://openrouter.ai/api/v1/models",
+  "checkedAt": "2026-09-25T04:44:03.208Z",
+  "slots": [
+    "narrator",
+    "state_update"
+  ],
+  "status": "switched_semantic_acceptance_incomplete",
+  "candidates": [
+    {
+      "id": "qwen/qwen3.8-27b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "result": "429 upstream rate limit"
+    },
+    {
+      "id": "inclusionai/ling-3.0-flash-fin:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "result": "Basic JSON passed; actual state update rejected: structured outputs unsupported"
+    },
+    {
+      "id": "dots-studio/dots-3-note-preview:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "result": "JSON schema probe passed; actual stream request rejected HTTP 400"
+    },
+    {
+      "id": "z-ai/glm-5.2:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "result": "429 upstream rate limit"
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "result": "503 upstream overloaded"
+    },
+    {
+      "id": "google/gemma-4-31b-it:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "result": "429 upstream rate limit"
+    },
+    {
+      "id": "nex-agi/nex-n2.5-pro:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "result": "Actual first narration returned only a format preface; run stopped after semantic inspection"
+    },
+    {
+      "id": "thinkingmachines/inkling:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "result": "403: restricted to eligible agentic harnesses"
+    },
+    {
+      "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "result": "Full narration succeeded; full state update returned upstream 502 twice. Selected for narration."
+    }
+  ],
+  "selectedModels": {
+    "narrator": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "state_update": "nex-agi/nex-n2.5-mini:free"
+  },
+  "selectionReason": "Use Nemotron Ultra for narration; retain the free Mini model for state updates, which passed previous actual state-update flows.",
+  "result": "Gushengman formal and preview: two rounds plus one round after app restart structurally passed. Semantic review found thought-only formal round 2 and repeated preview round 3. Linqian formal: two rounds completed; story date differs from saved state."
+}

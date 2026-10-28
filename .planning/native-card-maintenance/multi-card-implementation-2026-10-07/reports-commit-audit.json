@@ -1,0 +1,35 @@
+{
+  "audit_type": "independent_line_by_line_text_audit",
+  "status": "needs_changes",
+  "scope": [
+    ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/acceptance-report.md",
+    ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/next-improvement-plan.md",
+    ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/progress.md",
+    ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/task_plan.md",
+    "docs/character-authoring/script-api.md 第1章",
+    ".agents/skills/native-card-conversion/references/api/script-api.md 第1章"
+  ],
+  "findings": [
+    {
+      "id": "R1",
+      "file": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/next-improvement-plan.md",
+      "lines": [38, 117],
+      "issue": "第4.1节要求转换 Agent 将选定规则原文写入状态规则文件，但没有限定选定规则的使用对象。第4.9节又要求正文模型与状态 Agent 共用的规则保留为世界书条目。计划执行者将第4.1节的指令写入 Skill 后，未来转换 Agent 可能将共享规则也复制到状态规则文件，重新产生本计划要修复的重复注入。",
+      "minimal_suggestion": "将第38行首句改为：转换 Agent 使用 copy 将仅供状态 Agent 使用的选定规则原文写入状态规则文件。其余句子保留；第4.9节继续规定共享规则的承载位置。"
+    },
+    {
+      "id": "R2",
+      "file": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/acceptance-report.md",
+      "lines": [58],
+      "issue": "末句已经明确全量测试记录为失败，后接的“未改写成全量通过”重复说明同一结论。删除该尾句不影响消费者理解测试结果和隔离复跑的范围。",
+      "minimal_suggestion": "将末句改为：全量测试记录为失败。"
+    }
+  ],
+  "passed_files": [
+    ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/progress.md",
+    ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/task_plan.md",
+    "docs/character-authoring/script-api.md 第1章",
+    ".agents/skills/native-card-conversion/references/api/script-api.md 第1章"
+  ],
+  "review_boundary": "仅审计指定文档的文字内容；未读取引用文件、链接目标或代码，未修改受审文档。"
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "check": "Markdownlint",
+    "result": "failed",
+    "cause": "新维护记录五行超过80字符",
+    "action": "采用现有维护文档的MD013说明后复查"
+  },
+  {
+    "check": "入口测试",
+    "result": "9目标用例通过，命令整体失败",
+    "cause": "相对测试路径误收集iteration-22/23的只读证据副本，四个副本缺少根tsconfig",
+    "action": "使用完整绝对测试路径重跑，保持旧证据和测试配置原样"
+  },
+  {
+    "check": "入口测试绝对路径重跑",
+    "result": "9目标用例通过，命令整体失败",
+    "cause": "Vitest将参数归一化后仍按子串收集旧证据副本",
+    "action": "通过CLI exclude排除.planning证据目录，不修改项目配置"
+  },
+  {
+    "check": "Markdown解析器定位",
+    "result": "MODULE_NOT_FOUND",
+    "cause": "根目录未注册vitepress依赖，格式检查本身通过",
+    "action": "从现有node_modules/.pnpm定位已经安装的Markdown解析依赖"
+  },
+  {
+    "check": "精确暂存",
+    "result": "日志文件被gitignore排除",
+    "action": "只将本次最终测试日志显式暂存，其他忽略规则保持原样"
+  },
+  {
+    "check": "git diff --cached --check",
+    "result": "patch证据中的空白上下文被作为尾部空格报告，日志尾部多一个空行",
+    "action": "patch留在本地记录目录；测试日志移除末尾多余空行，交付文档内容保持原样"
+  }
+]

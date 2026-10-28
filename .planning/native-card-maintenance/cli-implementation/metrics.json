@@ -1,0 +1,81 @@
+{
+  "corpus": {
+    "inputs": 117,
+    "failed": 0,
+    "copiedFields": 1236,
+    "pendingCount": 3425,
+    "totalMs": 3757.3685030000006,
+    "medianMs": 23.768290999999863,
+    "maximumMs": 354.1980410000001
+  },
+  "largeInput": {
+    "durationMs": 1905.2191249999996,
+    "stdoutBytes": 167,
+    "stderrBytes": 0,
+    "oldStdoutBytes": 501402,
+    "reference": {
+      "resultFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/calls/call-DoXBN8/result.json",
+      "bytes": 500,
+      "partCount": 0
+    },
+    "result": {
+      "command": "begin",
+      "passed": true,
+      "data": {
+        "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nfUrMm/task.json",
+        "packageDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nfUrMm/package",
+        "workFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nfUrMm/review/work.json",
+        "pendingCount": 7082
+      }
+    }
+  },
+  "formal": {
+    "totalMs": 25249.990250000003,
+    "previewStartupMs": 3649.291,
+    "browserMs": 15013.18325,
+    "closeMs": 74.81629200000316,
+    "steps": [
+      {
+        "command": "begin",
+        "ms": 245.46079200000003
+      },
+      {
+        "command": "index",
+        "ms": 242.62550000000005
+      },
+      {
+        "command": "validate",
+        "ms": 599.9185000000001
+      },
+      {
+        "command": "pack",
+        "ms": 615.1943749999998
+      },
+      {
+        "command": "index",
+        "ms": 239.77029100000004
+      },
+      {
+        "command": "pack",
+        "ms": 653.2205420000003
+      },
+      {
+        "command": "formal",
+        "ms": 3391.7706249999997
+      },
+      {
+        "command": "preview",
+        "ms": 219.77637499999946
+      }
+    ]
+  },
+  "tests": {
+    "passedFiles": 595,
+    "skippedFiles": 3,
+    "passedTests": 5903,
+    "skippedTests": 4,
+    "durationSeconds": 207.94,
+    "log": "project-tests-final-delivery.log"
+  },
+  "scope": "CLI与离线正式联调；未测量完整转换Agent，未执行117卡语义验收"
+}

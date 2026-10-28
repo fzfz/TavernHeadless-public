@@ -1,0 +1,1336 @@
+{
+  "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/task.json",
+  "elapsedMs": 32242.570375,
+  "results": [
+    {
+      "index": 0,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e0.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 1,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e1.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 2,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e2.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 3,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e3.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 4,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e4.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 5,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e5.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 6,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e6.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 7,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e7.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 8,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e8.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 9,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e9.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 10,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e10.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 11,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e11.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 12,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e12.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 13,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e13.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 14,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e14.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 15,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e15.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 16,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e16.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 17,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e17.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 18,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e18.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 19,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e19.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 20,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e20.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 21,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e21.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 22,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e22.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 23,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e23.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 24,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e24.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 25,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e25.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 26,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e26.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 27,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e27.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 28,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e28.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 29,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e29.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 30,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e30.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 31,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e31.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 32,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e32.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 33,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e33.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 34,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e34.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 35,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e35.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 36,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e36.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 37,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e37.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 38,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e38.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 39,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e39.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 40,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e40.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 41,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e41.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 42,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e42.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 43,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e43.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 44,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e44.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 45,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e45.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 46,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e46.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 47,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e47.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 48,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e48.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 49,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e49.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 50,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e50.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 51,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e51.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 52,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e52.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 53,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e53.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 54,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e54.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 55,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e55.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 56,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e56.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 57,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e57.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 58,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e58.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 59,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e59.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 60,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e60.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 61,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e61.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 62,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e62.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 63,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e63.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 64,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e64.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 65,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e65.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 66,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e66.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 67,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e67.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 68,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e68.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 69,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e69.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 70,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e70.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 71,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e71.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 72,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e72.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 73,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e73.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 74,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e74.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 75,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e75.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 76,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e76.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 77,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e77.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 78,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e78.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 79,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e79.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 80,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e80.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 81,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e81.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 82,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e82.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 83,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e83.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 84,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e84.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 85,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e85.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 86,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e86.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 87,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e87.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 88,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e88.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 89,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e89.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 90,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e90.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 91,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e91.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 92,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e92.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 93,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e93.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 94,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e94.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 95,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e95.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 96,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e96.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 97,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e97.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 98,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e98.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 99,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e99.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 100,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e100.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 101,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e101.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 102,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e102.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 103,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e103.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 104,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e104.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 105,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e105.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 106,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e106.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 107,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e107.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 108,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e108.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 109,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e109.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 110,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e110.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 111,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e111.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 112,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e112.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 113,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e113.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 114,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e114.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 115,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e115.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 116,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e116.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 117,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e117.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 118,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e118.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 119,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e119.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 120,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e120.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 121,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e121.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 122,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e122.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 123,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e123.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 124,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e124.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 125,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e125.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 126,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e126.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 127,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e127.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 128,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e128.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 129,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e129.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 130,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e130.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 131,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e131.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    },
+    {
+      "index": 132,
+      "code": 0,
+      "result": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZQRqkG/package/worldbooks/test/entries/e132.json",
+        "issues": [],
+        "remaining": [],
+        "passed": true
+      }
+    }
+  ]
+}

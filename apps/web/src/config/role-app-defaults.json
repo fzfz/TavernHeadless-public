@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "character_id": "",
+  "character_version_id": "",
+  "preset_id": "",
+  "preset_version_id": "",
+  "regex_profile_id": null,
+  "regex_profile_version_id": null,
+  "worldbook_id": null,
+  "worldbook_version_id": null,
+  "prompt_mode": "compat_plus",
+  "default_user_id": "",
+  "model_slots": [
+    {
+      "slot": "narrator",
+      "profile_id": "",
+      "params": {
+        "temperature": 0.8,
+        "max_output_tokens": 8192,
+        "reasoning_effort": "none"
+      }
+    },
+    {
+      "slot": "verifier",
+      "profile_id": "",
+      "params": {
+        "temperature": 0.2,
+        "max_output_tokens": 8192,
+        "reasoning_effort": "none"
+      }
+    }
+  ]
+}

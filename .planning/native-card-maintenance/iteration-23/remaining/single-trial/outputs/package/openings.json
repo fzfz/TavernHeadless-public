@@ -1,0 +1,26 @@
+{
+  "defaultOpeningIds": {
+    "individual": "first",
+    "group": "first"
+  },
+  "items": [
+    {
+      "id": "first",
+      "title": "午间的拆迁楼",
+      "summary": "午休回家时，周明在拆迁楼二楼隔窗看见林茜进入杨桃子的房间。",
+      "kind": "story",
+      "audience": "both",
+      "textFile": "openings/first.txt",
+      "initialStateFile": "state/initial/first.json"
+    },
+    {
+      "id": "alternate-1",
+      "title": "401画室赴约",
+      "summary": "4月4日晚，周明发现林茜赴约前往局子街55号401画室。",
+      "kind": "story",
+      "audience": "both",
+      "textFile": "openings/alternate-1.txt",
+      "initialStateFile": "state/initial/alternate-1.json"
+    }
+  ]
+}

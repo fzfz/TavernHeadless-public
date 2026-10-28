@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "branch": "codex/state-assembly-implementation",
+  "baseCommit": "254f70b623ddd2ddf11aa9e8b0ceda497227b3c5",
+  "verificationDate": "2026-10-06",
+  "proposal": "architecture-proposal.md",
+  "decisions": {
+    "D1": "role_default_with_release_override_and_fixed_session_binding",
+    "D2": "reuse_successful_body_prompt_context_by_active_output_page",
+    "D3": "dedicated_role_state_updates_dry_run"
+  },
+  "presetMatrix": {
+    "directory": "acceptance",
+    "recordCount": 30,
+    "presetFiles": [
+      "presets/primary-state-update.json",
+      "presets/backup-mvu-state-update.json"
+    ],
+    "modes": [
+      "compat_strict",
+      "compat_plus",
+      "native"
+    ],
+    "historyCases": [
+      "first_update",
+      "zero_rounds",
+      "less_than_n",
+      "exactly_n",
+      "more_than_n"
+    ],
+    "formalImport": "passed",
+    "dryRun": "passed",
+    "deterministicCommit": "passed"
+  },
+  "sourceContext": {
+    "active_page_reuse": "passed",
+    "page_switch_exclusion": "passed",
+    "source_call_identity_present_and_absent": "passed",
+    "saved_agent_results_and_contributors": "passed",
+    "saved_memory_summary_and_trace": "passed",
+    "saved_request_injections": "passed",
+    "worldbook_selection_matching_page_and_other_page": "passed",
+    "compat_plus_summary_without_structured_items": "passed",
+    "memory_injection_placement": "passed"
+  },
+  "checks": {
+    "pnpm test:ci": {
+      "status": "passed",
+      "files": 562,
+      "tests": 5176
+    },
+    "pnpm typecheck": {
+      "status": "passed"
+    },
+    "pnpm lint": {
+      "status": "passed",
+      "errors": 0,
+      "existingWarnings": 4
+    },
+    "pnpm sdk:generate": {
+      "status": "passed"
+    },
+    "pnpm sdk:check": {
+      "status": "passed"
+    },
+    "pnpm docs:build": {
+      "status": "passed"
+    },
+    "changed_document_markdownlint": {
+      "status": "passed",
+      "errors": 0
+    },
+    "git diff --check": {
+      "status": "passed"
+    },
+    "live_acceptance_api_typecheck": {
+      "status": "passed"
+    },
+    "live_acceptance_changed_code_lint": {
+      "status": "passed"
+    },
+    "live_acceptance_user_web_source_build": {
+      "status": "passed",
+      "existingLargeChunkWarning": true
+    }
+  },
+  "independentReviews": {
+    "standards": "passed",
+    "spec": "passed",
+    "code_simplification": "passed",
+    "source_context_and_memory_assembly": "passed",
+    "memory_placement_tests": "passed",
+    "document_semantics": "passed",
+    "live_acceptance_cors_code": "passed",
+    "live_acceptance_document_semantics": "passed",
+    "paidAcceptance": "standards_spec_harness_and_manual_card_review_completed"
+  },
+  "realProviderModelOutput": {
+    "status": "completed_with_failures",
+    "authorization": "user_authorized_deepseek_v4_1_flash_maximum_1_usd",
+    "model": "deepseek/deepseek-v4.1-flash",
+    "maximumUsd": 1,
+    "report": "deepseek-acceptance/acceptance.md",
+    "requestIndex": "deepseek-acceptance/request-index.json",
+    "requestCount": 34,
+    "bodyRequests": 17,
+    "stateRequests": 17,
+    "nonemptyCommittedBodyResponses": 15,
+    "stateCommits": 15,
+    "cards": [
+      "linqian",
+      "gushengman"
+    ],
+    "statePresets": [
+      "primary-state-update",
+      "backup-mvu-state-update"
+    ],
+    "formalDryRun": "passed",
+    "providerRequestMatchesDryRun": "passed",
+    "realMultiRoundStateHistory": "passed_n_5_clipping_and_failed_floor_exclusion",
+    "worldbookActivationRecordPersistence": "fixed_and_verified_two_actual_samples",
+    "semanticAcceptance": "failures_detected",
+    "pageDisplay": {
+      "linqian": "generated_body_and_state_verified",
+      "gushengman": "failed_card_runtime_contract_mismatch"
+    },
+    "billing": {
+      "maximumUsd": 1,
+      "confirmedGenerationCostsUsd": 0.06129465329999999,
+      "unresolvedReservationsUsd": 0.13876589999999994,
+      "conservativeTotalUsd": 0.20006055329999994,
+      "keyUsageBefore": 0.040084413,
+      "keyUsageAfter": 0.101379054,
+      "keyUsageChangeUsd": 0.061294641,
+      "unresolvedRequestNumbers": [
+        2,
+        3,
+        29,
+        30
+      ]
+    }
+  },
+  "previousFreeModelOutput": {
+    "status": "completed_with_failures",
+    "authorization": "user_requested_openrouter_free_and_real_cards",
+    "report": "live-acceptance/acceptance.md",
+    "requestIndex": "live-acceptance/request-index.json",
+    "requestCount": 21,
+    "modelCount": 6,
+    "cards": [
+      "linqian",
+      "gushengman"
+    ],
+    "statePresets": [
+      "primary-state-update",
+      "backup-mvu-state-update"
+    ],
+    "formalDryRun": "passed_four_combinations",
+    "providerRequestMatchesDryRun": "passed_four_combinations",
+    "nonemptyBodyResponses": 5,
+    "qwenBodySamples": 4,
+    "qwenBodySamplesFullyPassingSemanticAcceptance": 0,
+    "stateRequests": 12,
+    "stateCommits": 0,
+    "realMultiRoundStateHistory": "not_verified_no_successful_state_commit",
+    "pageDisplay": {
+      "linqian": "opening_and_generated_body_verified",
+      "gushengman": "opening_verified_generated_body_not_verified"
+    },
+    "billing": {
+      "generationsFound": 6,
+      "allFoundGenerationsZeroCost": true,
+      "usageBefore": 0.040084413,
+      "usageAfter": 0.040084413,
+      "usageChange": 0
+    }
+  }
+}

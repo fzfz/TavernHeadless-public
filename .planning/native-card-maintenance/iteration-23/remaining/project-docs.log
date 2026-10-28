@@ -1,0 +1,35 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> tavern-headless@0.1.0 docs:build /srv/tavern/TavernHeadless-remove-preview-credentials
+> pnpm docs:generate-agent && pnpm docs:generate-skills && pnpm --filter @tavern/docs build
+
+
+> tavern-headless@0.1.0 docs:generate-agent /srv/tavern/TavernHeadless-remove-preview-credentials
+> tsx scripts/generate-agent-artifacts.ts
+
+[agent-artifacts] history: existing-publication
+[agent-artifacts] generated snapshot for b51bff45a5e143c080e46b20ba77ea215f0c8a53
+
+> tavern-headless@0.1.0 docs:generate-skills /srv/tavern/TavernHeadless-remove-preview-credentials
+> tsx scripts/generate-skill-artifacts.ts
+
+[skill-artifacts] generated 2 skills from repository workflows
+
+> @tavern/docs@0.1.0 build /srv/tavern/TavernHeadless-remove-preview-credentials/vitepress
+> vitepress build
+
+
+  vitepress v1.6.4
+
+- building client + server bundles...
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[32m✓[0m building client + server bundles...
+- rendering pages...
+[32m✓[0m rendering pages...
+- generating sitemap...
+[32m✓[0m generating sitemap...
+build complete in 5.76s.

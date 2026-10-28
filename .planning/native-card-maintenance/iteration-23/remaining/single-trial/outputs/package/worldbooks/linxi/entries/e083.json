@@ -1,0 +1,40 @@
+{
+  "uid": 83,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "终局阶段_Z003_骨折隔离",
+  "order": 303,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<终局阶段_Z003>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n林茜向家电城请假。她反复到菜市场买菜，回到夫妻家做饭，尽量和{{user}}待在一起。她还在手机日历上留下提醒。\n\n同住期间，林茜频繁主动与{{user}}性交。她很少需要前戏，身体长期湿润。每次性交结束后，她只休息一会儿，便再次拉住{{user}}要求继续。\n\n休假日，林茜站上人字梯取高处物品，从梯子上摔下。{{user}}把她送到医院，急诊医生拍片后确认她的小腿胫骨骨折。医生要求她长期卧床，林茜随后向家电城提交辞职申请。\n\n住院期间，林茜在QQ空间写：“问题并没有消除。”她又写：“情况还在加重，腿痛能让我清醒。”随后，她通过QQ给杨桃子发送消息，说警方怀疑她与王授军的事情有关，要求他停止联系。杨桃子看过消息后，没有回复。\n</终局阶段_Z003>\n"
+}

@@ -1,0 +1,76 @@
+{
+  "initial": {
+    "scene.id": "valley",
+    "actor.trust": 20,
+    "actor.fatigue": 10,
+    "story.time": "14:10",
+    "story.clue": "尚未展开的旅程",
+    "actor.present": true
+  },
+  "turns": [
+    {
+      "text": "石桥尽头亮起一盏灯，地图上的道路逐渐清晰。",
+      "variables": {
+        "scene.id": "valley",
+        "actor.trust": 35,
+        "actor.fatigue": 30,
+        "story.time": "22:12",
+        "story.clue": "发现印记",
+        "actor.present": true
+      },
+      "agentText": "她补充道：“把这个细节也记下来。”",
+      "jobVariables": {
+        "scene.id": "valley",
+        "actor.trust": 35,
+        "actor.fatigue": 30,
+        "story.time": "22:12",
+        "story.clue": "发现印记 · 已记录",
+        "actor.present": true
+      },
+      "input": "前往石桥"
+    },
+    {
+      "text": "伊芙留在营地，你独自沿山路登上月下山脊，雾谷在脚下展开。",
+      "variables": {
+        "scene.id": "moon",
+        "actor.trust": 60,
+        "actor.fatigue": 85,
+        "story.time": "22:20",
+        "story.clue": "确定方向",
+        "actor.present": false
+      },
+      "agentText": "通讯器里传来伊芙的声音：“把山路上的标记也记下来。”",
+      "jobVariables": {
+        "scene.id": "moon",
+        "actor.trust": 60,
+        "actor.fatigue": 85,
+        "story.time": "22:20",
+        "story.clue": "确定方向 · 已记录",
+        "actor.present": false
+      },
+      "input": "前往月下山脊"
+    },
+    {
+      "text": "你们穿过薄雾，远处的营地升起炊烟。",
+      "variables": {
+        "scene.id": "inside",
+        "actor.trust": 85,
+        "actor.fatigue": 20,
+        "story.time": "22:30",
+        "story.clue": "抵达目的地",
+        "actor.present": true
+      },
+      "agentText": "她补充道：“把这个细节也记下来。”",
+      "jobVariables": {
+        "scene.id": "inside",
+        "actor.trust": 85,
+        "actor.fatigue": 20,
+        "story.time": "22:30",
+        "story.clue": "抵达目的地 · 已记录",
+        "actor.present": true
+      },
+      "input": "前往营地"
+    }
+  ],
+  "failureText": "生成失败，请重试。"
+}

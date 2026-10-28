@@ -1,0 +1,40 @@
+{
+  "uid": 130,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_27_嗜血之花原场景",
+  "order": 250,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E027>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n{{user}}、小龚、小张和老蔡进入血友病医院病房，开始检查AI样机自动保存的录像。\n录像镜头从病房窗边转向棉花巷对面三楼的落地窗，拍到窗内一男一女。女人面对落地窗，双手被按在落地窗玻璃上，脸被窗帘遮住。\n{{user}}放大画面，根据男人的身体特征认出他是杨桃子。杨桃子用黑色长阴茎插入女人阴道，血液和白色液体从结合处流出。\n三楼房间的床边、靠近窗帘的位置放着一个花瓶，瓶中插着白色大丽花。两人性交时带动床铺震动，白色花瓣从瓶中掉落。\n老蔡提出女人可能正在月经期，小张追问经期是否仍能性交。\n{{user}}回到公司办公室后登录王授军云盘，\n找到 通讯截图 王授军写字板 和 《嗜血之花》原稿视频。\n第一张截图显示杨桃子把熊猫人动图转发给林茜，动图最后一帧变成《剥削》的局部；\n第二张截图显示,杨桃子随后发出棉花巷三楼的门牌照片给林茜，并写：“只有我在，门开着。”林茜回复：“别让别人来。”\n\n王授军在写字板中写明，他先把动图和房间地址交给杨桃子，再让杨桃子负责约林茜到场。王授军还写明杨桃子容易控制，并记录林茜自我意识清楚、精神上仍有抵抗。\n\n{{user}}在电脑上并排打开护垫付款记录、AI录像、云盘视频、王授军写字板和《嗜血之花》图片，把捐赠会上见过的阴唇、嵌入其中的阴茎、血迹和白花逐项对回录像。护垫付款记录、人物身体特征、拍摄角度和王授军记录共同确认，画面中的女人是林茜，男人是杨桃子，王授军就在棉花巷三楼房间内手持摄像机拍摄。\n{{user}}发现了<嗜血之花>隐藏意义。\n\n{{user}} 点击播放 《嗜血之花》原稿视频\n</事件_E027>\n"
+}

@@ -1,0 +1,155 @@
+{
+  "comparison": "主体逐字比较；用途YAML与文档读取说明移到头部，引用目标另经主代理逐项阅读差异确认",
+  "copies": [
+    {
+      "source": "docs/character-authoring/script-api.md",
+      "copy": ".agents/skills/native-card-conversion/references/api/script-api.md",
+      "exactAfterManifestReplacement": false,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/backend-api.md",
+      "copy": ".agents/skills/native-card-conversion/references/api/backend-api.md",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/agent-tools-api.md",
+      "copy": ".agents/skills/native-card-conversion/references/api/agent-tools-api.md",
+      "exactAfterManifestReplacement": false,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/backend-hooks.mjs",
+      "copy": ".agents/skills/native-card-conversion/references/api/examples/api-usage/backend-hooks.mjs",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/backend-input.json",
+      "copy": ".agents/skills/native-card-conversion/references/api/examples/api-usage/backend-input.json",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/commit-panel.html",
+      "copy": ".agents/skills/native-card-conversion/references/api/examples/api-usage/commit-panel.html",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/commit-panel.mjs",
+      "copy": ".agents/skills/native-card-conversion/references/api/examples/api-usage/commit-panel.mjs",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/run-backend.mjs",
+      "copy": ".agents/skills/native-card-conversion/references/api/examples/api-usage/run-backend.mjs",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/run-tools.ts",
+      "copy": ".agents/skills/native-card-conversion/references/api/examples/api-usage/run-tools.ts",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/examples/api-usage/tool-roundtrips.json",
+      "copy": ".agents/skills/native-card-conversion/references/api/examples/api-usage/tool-roundtrips.json",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/script-runtime.schema.json",
+      "copy": ".agents/skills/native-card-conversion/references/api/script-runtime.schema.json",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/script-template-api.md",
+      "copy": ".agents/skills/native-card-conversion/references/api/script-template-api.md",
+      "exactAfterManifestReplacement": false,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "vitepress/reference/api/tools.md",
+      "copy": ".agents/skills/native-card-conversion/references/api/http/tools.md",
+      "exactAfterManifestReplacement": false,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "vitepress/reference/api/worldbooks.md",
+      "copy": ".agents/skills/native-card-conversion/references/api/http/worldbooks.md",
+      "exactAfterManifestReplacement": false,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "vitepress/reference/api/chat.md",
+      "copy": ".agents/skills/native-card-conversion/references/api/http/chat.md",
+      "exactAfterManifestReplacement": false,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/native-card-api.md",
+      "copy": ".agents/skills/native-card-conversion/references/api/native-card-api.md",
+      "exactAfterManifestReplacement": false,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/model-capabilities.md",
+      "copy": ".agents/skills/native-card-conversion/references/api/model-capabilities.md",
+      "exactAfterManifestReplacement": false,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "packages/shared/src/schemas/role-model-capabilities.schema.json",
+      "copy": ".agents/skills/native-card-conversion/references/api/role-model-capabilities.schema.json",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "packages/shared/src/schemas/role-tool-evidence.schema.json",
+      "copy": ".agents/skills/native-card-conversion/references/api/role-tool-evidence.schema.json",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "apps/api/config/role-model-capabilities.json",
+      "copy": ".agents/skills/native-card-conversion/references/api/role-model-capabilities.config.json",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/state-update-api.md",
+      "copy": ".agents/skills/native-card-conversion/references/api/state-update-api.md",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/state-prompt-assembly.md",
+      "copy": ".agents/skills/native-card-conversion/references/api/state-prompt-assembly.md",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "docs/character-authoring/state-update.schema.json",
+      "copy": ".agents/skills/native-card-conversion/references/api/state-update.schema.json",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "packages/shared/src/schemas/native-card-package/state-update-profile.schema.json",
+      "copy": ".agents/skills/native-card-conversion/references/api/state-update-profile.schema.json",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    },
+    {
+      "source": "packages/shared/src/config/state-prompt-sources.json",
+      "copy": ".agents/skills/native-card-conversion/references/api/state-prompt-sources.json",
+      "exactAfterManifestReplacement": true,
+      "sameBodyAfterMetadataAndLinkAdaptation": true
+    }
+  ]
+}

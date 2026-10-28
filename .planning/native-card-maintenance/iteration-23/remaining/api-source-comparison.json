@@ -1,0 +1,122 @@
+[
+  {
+    "file": "references/api/script-api.md",
+    "source": "docs/character-authoring/script-api.md",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/backend-api.md",
+    "source": "docs/character-authoring/backend-api.md",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/agent-tools-api.md",
+    "source": "docs/character-authoring/agent-tools-api.md",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/examples/api-usage/backend-hooks.mjs",
+    "source": "docs/character-authoring/examples/api-usage/backend-hooks.mjs",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/examples/api-usage/backend-input.json",
+    "source": "docs/character-authoring/examples/api-usage/backend-input.json",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/examples/api-usage/commit-panel.html",
+    "source": "docs/character-authoring/examples/api-usage/commit-panel.html",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/examples/api-usage/commit-panel.mjs",
+    "source": "docs/character-authoring/examples/api-usage/commit-panel.mjs",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/examples/api-usage/run-backend.mjs",
+    "source": "docs/character-authoring/examples/api-usage/run-backend.mjs",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/examples/api-usage/run-tools.ts",
+    "source": "docs/character-authoring/examples/api-usage/run-tools.ts",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/examples/api-usage/tool-roundtrips.json",
+    "source": "docs/character-authoring/examples/api-usage/tool-roundtrips.json",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/script-runtime.schema.json",
+    "source": "docs/character-authoring/script-runtime.schema.json",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/script-template-api.md",
+    "source": "docs/character-authoring/script-template-api.md",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/http/tools.md",
+    "source": "vitepress/reference/api/tools.md",
+    "comparison": "API sections",
+    "equal": true
+  },
+  {
+    "file": "references/api/http/worldbooks.md",
+    "source": "vitepress/reference/api/worldbooks.md",
+    "comparison": "API sections",
+    "equal": true
+  },
+  {
+    "file": "references/api/http/chat.md",
+    "source": "vitepress/reference/api/chat.md",
+    "comparison": "API sections",
+    "equal": true
+  },
+  {
+    "file": "references/api/native-card-api.md",
+    "source": "docs/character-authoring/native-card-api.md",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/model-capabilities.md",
+    "source": "docs/character-authoring/model-capabilities.md",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/role-model-capabilities.schema.json",
+    "source": "packages/shared/src/schemas/role-model-capabilities.schema.json",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/role-tool-evidence.schema.json",
+    "source": "packages/shared/src/schemas/role-tool-evidence.schema.json",
+    "comparison": "content except reading metadata",
+    "equal": true
+  },
+  {
+    "file": "references/api/role-model-capabilities.config.json",
+    "source": "apps/api/config/role-model-capabilities.json",
+    "comparison": "content except reading metadata",
+    "equal": true
+  }
+]

@@ -1,0 +1,5 @@
+{
+  "integrationTimeoutMs": 30000,
+  "cleanupTimeoutMs": 30000,
+  "processTimeoutMs": 30000
+}

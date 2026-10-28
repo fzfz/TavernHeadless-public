@@ -1,0 +1,143 @@
+{
+  "status": "passed",
+  "scope": "Intermediate compiled API acceptance before moving prompt-controller modules into version resource files; not final browser or final-build acceptance.",
+  "restarted": true,
+  "flows": [
+    {
+      "role": "linqian",
+      "mode": "formal",
+      "sessionId": "y6cgLvRxkXbV5TcFoJDQi",
+      "turns": [
+        {
+          "turn": 1,
+          "floorId": "FEkAxc-3LLryQvj_NM_RU",
+          "snapshotId": "d1ba7474-00fd-4869-bb3b-f6f1d202da68",
+          "callIds": [
+            "7BCObJNFrlQ4JZZ0O8y76",
+            "2BpUxK47NpIRRyRyz1seU"
+          ]
+        },
+        {
+          "turn": 2,
+          "floorId": "mZhPL-kGq7BI9JFCUueiI",
+          "snapshotId": "2a583c28-0498-4a5b-9d23-bf106b211241",
+          "callIds": [
+            "4PZlP9Mb4iYa095gyg0mc",
+            "4Bwfw8ay6DUtWOkekkYo7"
+          ]
+        },
+        {
+          "turn": 3,
+          "floorId": "u9Xt2L8KflnHuQIQwil0C",
+          "snapshotId": "79966aac-1d1b-4747-ac4b-10cac7b7728f",
+          "callIds": [
+            "rg4lx6kXdh8kQ7oaxyI8G",
+            "V23P_HR-lIjp_lntwCbgH"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "linqian",
+      "mode": "preview",
+      "sessionId": "FaKqlM7w7PnnXLRopOK-I",
+      "turns": [
+        {
+          "turn": 1,
+          "floorId": "otdexlE06UGvMo_oLbnIM",
+          "snapshotId": "42475a69-32d4-4f7c-bf79-9819568444b3",
+          "callIds": [
+            "DpkuN54YSHHih3kKNAtua",
+            "ehZ7NcHebREbbfgpNPr8F"
+          ]
+        },
+        {
+          "turn": 2,
+          "floorId": "HrBNAIeHw9wxR92Gst5vY",
+          "snapshotId": "3393020f-38f4-4294-af52-97c2c0c65af6",
+          "callIds": [
+            "clugUV1Gp9Y8i-6Q9OBY6",
+            "5jPisJSYtLRlU7JcM4jyn"
+          ]
+        },
+        {
+          "turn": 3,
+          "floorId": "un0F4p_IIwNyhpRFp1iIC",
+          "snapshotId": "f1772698-5c97-4170-9a28-a22c1749e3d7",
+          "callIds": [
+            "xSw6clxcZ6FQSXe8waUc2",
+            "ZgTP_mnCxerkZYUr0KMSR"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "gushengman",
+      "mode": "formal",
+      "sessionId": "w0hMtGMaQg7m-UKZWS9M4",
+      "turns": [
+        {
+          "turn": 1,
+          "floorId": "FzqgX33S4wlDNU4qCLIip",
+          "snapshotId": "06b75302-46d6-4bb0-aa2c-315c75a5188d",
+          "callIds": [
+            "xkLb_HuWA5P6vUWppzlX7",
+            "pyZNHjrHfcVTHelzj4mD1"
+          ]
+        },
+        {
+          "turn": 2,
+          "floorId": "rup9jjfAw4mrwTNiDOcuW",
+          "snapshotId": "37ff0cd9-158f-4f78-aa09-d074014eee9f",
+          "callIds": [
+            "MmpQQTulH9BJOX_e5J9Tu",
+            "VEY0me5Uc7XSqf227cJFI"
+          ]
+        },
+        {
+          "turn": 3,
+          "floorId": "6XLBdtwGktc8dziEpcSrI",
+          "snapshotId": "0d1bd894-6a95-4af1-bad9-8493e8368006",
+          "callIds": [
+            "3f50xII_uXSOhAKtHbmxt",
+            "shIJYud1K41dUE_3fe6uz"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "gushengman",
+      "mode": "preview",
+      "sessionId": "bojpweLMq6s4V8NTDTT1W",
+      "turns": [
+        {
+          "turn": 1,
+          "floorId": "bPMz1XM-SLPV9CWku8b_Q",
+          "snapshotId": "b3027517-a297-4e5c-9f56-bf9bc65db66c",
+          "callIds": [
+            "JUSUXEpR2dKm2AlBbC6xD",
+            "FI62QadBsC_i6eaNJIisj"
+          ]
+        },
+        {
+          "turn": 2,
+          "floorId": "o08CTBNZSjTV1PMDezhQ0",
+          "snapshotId": "eb2fb563-205e-41d2-b04d-1c65521d6e5e",
+          "callIds": [
+            "DW8y6xjk27WQRKDC0f-5d",
+            "wQvYHZrYXHfBI5YUXQ4KW"
+          ]
+        },
+        {
+          "turn": 3,
+          "floorId": "oc0bnzuqCk7dSchZ2Urkb",
+          "snapshotId": "299683cb-8973-4a8f-bd32-3f490ccb4f8f",
+          "callIds": [
+            "1HUCWSEzRmKATRkjOofnw",
+            "9-b_w2n5T8nb9iGztXbSF"
+          ]
+        }
+      ]
+    }
+  ]
+}

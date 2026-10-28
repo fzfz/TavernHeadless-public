@@ -1,0 +1,77 @@
+{
+  "checks": [
+    {
+      "name": "source portrait loaded",
+      "passed": true
+    },
+    {
+      "name": "system chat overlay starts hidden",
+      "passed": true
+    },
+    {
+      "name": "source nested affection rendered",
+      "passed": true
+    },
+    {
+      "name": "source option persisted by backend",
+      "passed": true
+    },
+    {
+      "name": "committed nested clock rendered",
+      "passed": true
+    },
+    {
+      "name": "historical status reads original clock",
+      "passed": true
+    },
+    {
+      "name": "current remains committed while history shown",
+      "passed": true
+    },
+    {
+      "name": "GAL card has own text container",
+      "passed": true
+    },
+    {
+      "name": "GAL card does not embed system chat list",
+      "passed": true
+    },
+    {
+      "name": "original GAL background loaded",
+      "passed": true
+    },
+    {
+      "name": "original center portrait loaded",
+      "passed": true
+    },
+    {
+      "name": "source dialogue advances",
+      "passed": true
+    },
+    {
+      "name": "GAL custom input reaches backend",
+      "passed": true
+    },
+    {
+      "name": "first reply continues story instead of introduction",
+      "passed": true
+    },
+    {
+      "name": "second story choice commits a new floor",
+      "passed": true
+    },
+    {
+      "name": "second reply advances story",
+      "passed": true
+    },
+    {
+      "name": "no uncaught browser errors",
+      "passed": true
+    },
+    {
+      "name": "no runtime diagnostics",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

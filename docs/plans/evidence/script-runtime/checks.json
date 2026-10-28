@@ -1,0 +1,318 @@
+{
+  "checks": [
+    {
+      "name": "page mounted http://127.0.0.1:43872/prototype/apps/user-web/prototypes/script-roleplay.prototype.html",
+      "passed": true
+    },
+    {
+      "name": "page mounted http://127.0.0.1:43872/prototype/apps/user-web/prototypes/script-roleplay.prototype.html?session=script-harbor",
+      "passed": true
+    },
+    {
+      "name": "harbor script mounted",
+      "passed": true
+    },
+    {
+      "name": "harbor no rendering errors",
+      "passed": true
+    },
+    {
+      "name": "harbor state expanded",
+      "passed": true
+    },
+    {
+      "name": "harbor commit before send resolve",
+      "passed": true
+    },
+    {
+      "name": "harbor stream before commit",
+      "passed": true
+    },
+    {
+      "name": "harbor immutable main snapshot and job snapshot",
+      "passed": true
+    },
+    {
+      "name": "harbor historical state selected",
+      "passed": true
+    },
+    {
+      "name": "harbor history pinned while new current arrives",
+      "passed": true
+    },
+    {
+      "name": "harbor persisted floor messages",
+      "passed": true
+    },
+    {
+      "name": "harbor view returns latest",
+      "passed": true
+    },
+    {
+      "name": "page mounted http://127.0.0.1:43872/prototype/apps/user-web/prototypes/script-roleplay.prototype.html?session=script-novel",
+      "passed": true
+    },
+    {
+      "name": "novel script mounted",
+      "passed": true
+    },
+    {
+      "name": "novel no rendering errors",
+      "passed": true
+    },
+    {
+      "name": "novel state expanded",
+      "passed": true
+    },
+    {
+      "name": "novel commit before send resolve",
+      "passed": true
+    },
+    {
+      "name": "novel stream before commit",
+      "passed": true
+    },
+    {
+      "name": "novel immutable main snapshot and job snapshot",
+      "passed": true
+    },
+    {
+      "name": "novel historical state selected",
+      "passed": true
+    },
+    {
+      "name": "novel history pinned while new current arrives",
+      "passed": true
+    },
+    {
+      "name": "novel persisted floor messages",
+      "passed": true
+    },
+    {
+      "name": "novel view returns latest",
+      "passed": true
+    },
+    {
+      "name": "page mounted http://127.0.0.1:43872/prototype/apps/user-web/prototypes/script-roleplay.prototype.html?session=script-expedition",
+      "passed": true
+    },
+    {
+      "name": "expedition script mounted",
+      "passed": true
+    },
+    {
+      "name": "expedition no rendering errors",
+      "passed": true
+    },
+    {
+      "name": "expedition state expanded",
+      "passed": true
+    },
+    {
+      "name": "expedition commit before send resolve",
+      "passed": true
+    },
+    {
+      "name": "expedition stream before commit",
+      "passed": true
+    },
+    {
+      "name": "expedition immutable main snapshot and job snapshot",
+      "passed": true
+    },
+    {
+      "name": "expedition historical state selected",
+      "passed": true
+    },
+    {
+      "name": "expedition history pinned while new current arrives",
+      "passed": true
+    },
+    {
+      "name": "expedition persisted floor messages",
+      "passed": true
+    },
+    {
+      "name": "expedition view returns latest",
+      "passed": true
+    },
+    {
+      "name": "map camp commits backend location",
+      "passed": true
+    },
+    {
+      "name": "map camp saves destination message",
+      "passed": true
+    },
+    {
+      "name": "map bridge commits backend location",
+      "passed": true
+    },
+    {
+      "name": "map bridge saves destination message",
+      "passed": true
+    },
+    {
+      "name": "map ridge commits backend location",
+      "passed": true
+    },
+    {
+      "name": "map ridge saves destination message",
+      "passed": true
+    },
+    {
+      "name": "page mounted http://127.0.0.1:43872/prototype/apps/user-web/prototypes/script-roleplay.prototype.html?session=script-cinema",
+      "passed": true
+    },
+    {
+      "name": "cinema owns narrative container without chat or floor slots",
+      "passed": true
+    },
+    {
+      "name": "cinema receives stream into author DOM",
+      "passed": true
+    },
+    {
+      "name": "cinema displays only one narrative block",
+      "passed": true
+    },
+    {
+      "name": "cinema paragraph navigation",
+      "passed": true
+    },
+    {
+      "name": "cinema hides its own text container",
+      "passed": true
+    },
+    {
+      "name": "cinema toggles own status panel",
+      "passed": true
+    },
+    {
+      "name": "page mounted http://127.0.0.1:43872/prototype/apps/user-web/prototypes/script-roleplay.prototype.html?session=script-cinema",
+      "passed": true
+    },
+    {
+      "name": "cinema restores persisted text after full reload",
+      "passed": true
+    },
+    {
+      "name": "page mounted http://127.0.0.1:43872/prototype/apps/user-web/prototypes/script-roleplay.prototype.html?session=script-harbor",
+      "passed": true
+    },
+    {
+      "name": "failed generation rejects",
+      "passed": true
+    },
+    {
+      "name": "failed generation leaves committed variables",
+      "passed": true
+    },
+    {
+      "name": "double send uses shared busy gate",
+      "passed": true
+    },
+    {
+      "name": "100 floor scroll reaches final page",
+      "passed": true
+    },
+    {
+      "name": "virtualized chat keeps mounted rows bounded",
+      "passed": true
+    },
+    {
+      "name": "scroll back restores first floor",
+      "passed": true
+    },
+    {
+      "name": "custom floor template mounts on expansion",
+      "passed": true
+    },
+    {
+      "name": "collapsed floor list releases scopes",
+      "passed": true
+    },
+    {
+      "name": "history cache bounded",
+      "passed": true
+    },
+    {
+      "name": "streams released",
+      "passed": true
+    },
+    {
+      "name": "chat virtual list exists",
+      "passed": true
+    },
+    {
+      "name": "mobile no document overflow",
+      "passed": true
+    },
+    {
+      "name": "no reported runtime errors",
+      "passed": true
+    },
+    {
+      "name": "no uncaught browser exceptions",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "resources": {
+    "runtime": {
+      "scopes": 1,
+      "floorScopes": 0,
+      "pendingOperations": 0,
+      "layouts": 2,
+      "subscriptions": 5,
+      "eventListeners": 4,
+      "timers": 0,
+      "media": 0,
+      "widgets": 1,
+      "floorLists": 1,
+      "historyCacheEntries": 4,
+      "historyCacheBytes": 2199,
+      "settledStreamCacheEntries": 1,
+      "settledStreamCacheBytes": 438,
+      "diagnosticEntries": 0,
+      "diagnosticBytes": 0
+    },
+    "host": {
+      "busy": false,
+      "chatWidgets": 1,
+      "activeStreams": 0,
+      "listeners": {
+        "current": 2,
+        "view": 1,
+        "commit": 3,
+        "text": 2
+      },
+      "history": {
+        "entries": 24,
+        "bytes": 13726
+      },
+      "settled": {
+        "entries": 1,
+        "bytes": 438
+      },
+      "diagnostics": {
+        "entries": 0,
+        "bytes": 0
+      },
+      "lists": [
+        {
+          "items": 103,
+          "mounted": 3,
+          "visibleStart": 0,
+          "visibleEnd": 0,
+          "firstVisibleFloorId": "script-harbor:floor:1",
+          "lastVisibleFloorId": "script-harbor:floor:1",
+          "followTail": true,
+          "cached": 0,
+          "cacheBytes": 0,
+          "hasNextPage": false
+        }
+      ]
+    }
+  }
+}

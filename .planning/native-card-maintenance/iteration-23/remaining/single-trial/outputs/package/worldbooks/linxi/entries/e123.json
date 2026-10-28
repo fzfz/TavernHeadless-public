@@ -1,0 +1,43 @@
+{
+  "uid": 123,
+  "key": [
+    "《面壁者》",
+    "面壁者画作"
+  ],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "物品_画作面壁者",
+  "order": 76,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": 2,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_item_wallfacer>\n物品名: 画作《面壁者》\n\n公开画面是三角头外星人，脸上伸出极长的鼻子，周围布满乱线。长寿宫拍卖会宣传区摆出画作与王授军等身立牌，公开信息写着拍价两百七十万、暂缓出售和以后义拍。\n</qrxd_item_wallfacer>\n"
+}

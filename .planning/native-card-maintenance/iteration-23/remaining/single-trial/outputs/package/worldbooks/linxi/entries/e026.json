@@ -1,0 +1,40 @@
+{
+  "uid": 26,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": true,
+  "comment": "我_人物设定",
+  "order": 50,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<{{user}}_character>\n角色档案:\n  基本信息:\n    姓名: {{user}}\n    性别: 男\n    身份: 林茜的丈夫\n    工作:建筑公司中层干部\n\n  日常行踪:\n    周一至周五:\n      07:30-08:20: 夫妻家。\n      08:20-22:30 建筑公司或工地附近或外部办事地点。\n    周六:\n      09:00-12:00: 建筑公司办公室或工地。\n    周日: 夫妻家。\n\n    \n  背景设定:\n    家庭正在备孕。工作中经手人员调动、审批和工地事务。\n\n  关系:\n    林茜: 妻子\n</{{user}}_character>\n"
+}

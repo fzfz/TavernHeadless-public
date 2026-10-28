@@ -1,0 +1,558 @@
+{
+  "checks": [
+    {
+      "name": "saved live result matches server",
+      "passed": true
+    },
+    {
+      "name": "actual streaming",
+      "passed": true
+    },
+    {
+      "name": "one main commit",
+      "passed": true
+    },
+    {
+      "name": "two followup streams",
+      "passed": true
+    },
+    {
+      "name": "three committed updates",
+      "passed": true
+    },
+    {
+      "name": "historical selection remains stable",
+      "passed": true
+    },
+    {
+      "name": "no generation errors",
+      "passed": true
+    },
+    {
+      "name": "latest variables rendered",
+      "passed": true
+    },
+    {
+      "name": "no browser runtime exceptions",
+      "passed": true
+    }
+  ],
+  "before": {
+    "sessionId": "script-linqian",
+    "branchId": "branch-linqian",
+    "floorId": null,
+    "attemptId": null,
+    "versionId": "6BFc05m652IgQ2_ofEkEE",
+    "snapshotId": "script-linqian:snapshot:0",
+    "parentSnapshotId": null,
+    "variables": {
+      "林茜": {
+        "感情": 504.85,
+        "堕落": 80,
+        "内心想法": "**我最近总是腿里燥热，可能是例假快来了。这条狗偷我的照片，我拿老公吓住他，他就不敢反抗。被靴子踩着会硬，射完还会再硬，第二次还射这么多，好玩。我要用旧飞机杯把他精液吸出来喂给他吃完就回家,这会很好玩的,就这一次,以后不来了。他是狗,狗不会反抗,狗可以当玩具。不能让老公知道。**"
+      },
+      "行动选项": [
+        "元指令:细腻演绎5分钟内林茜的剧情。",
+        "你绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。",
+        "你绕到门口现身，追问杨桃子从哪里得到林茜的照片。",
+        "元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+      ],
+      "世界": {
+        "日期": "2025-03-10",
+        "星期": "周一",
+        "小时": 12,
+        "分钟": 24,
+        "状态_A1_日期": "2025-03-10",
+        "时间": "中午",
+        "地点": "拆迁旧楼408室内",
+        "开局模式": "原始首次撞见",
+        "终局路线": "未定",
+        "终局阶段": "Z000",
+        "事件_D001记录日期": "2025-03-10",
+        "已触发事件": {
+          "事件_E001": false,
+          "事件_E002": false,
+          "事件_E003": false,
+          "事件_E004": false,
+          "事件_E005": false,
+          "事件_E006": false,
+          "事件_E008": false,
+          "事件_E009": false,
+          "事件_E010": false,
+          "事件_E011": false,
+          "事件_E012": false,
+          "事件_E013": false,
+          "事件_E014": false,
+          "事件_E015": false,
+          "事件_E016": false,
+          "事件_E017": false,
+          "事件_E018": false,
+          "事件_E019": false,
+          "事件_E020": false,
+          "事件_E021": false,
+          "事件_E022": false,
+          "事件_E023": false,
+          "事件_E024": false,
+          "事件_E025": false,
+          "事件_E026": false,
+          "事件_E027": false,
+          "事件_E028": false,
+          "事件_E029": false,
+          "事件_E030": false,
+          "事件_E031": false,
+          "事件_E032": false,
+          "事件_E033": false,
+          "事件_E034": false,
+          "事件_E035": false,
+          "事件_E048": false,
+          "事件_E049": false
+        },
+        "已离婚": false,
+        "状态_A1_计数": 1
+      }
+    },
+    "source": {
+      "kind": "initial",
+      "runId": null,
+      "jobId": null
+    }
+  },
+  "after": {
+    "checks": {
+      "updates": 391,
+      "ends": 3,
+      "commits": 1,
+      "jobs": [
+        "script-linqian:floor:1:run:1:job:linqian-followup-door",
+        "script-linqian:floor:1:run:1:job:linqian-followup-street"
+      ],
+      "snapshots": [
+        "script-linqian:snapshot:0",
+        "script-linqian:floor:1:attempt:1:snapshot",
+        "script-linqian:floor:1:run:1:job:linqian-followup-door:snapshot",
+        "script-linqian:floor:1:run:1:job:linqian-followup-street:snapshot"
+      ],
+      "historicalStable": true
+    },
+    "current": {
+      "sessionId": "script-linqian",
+      "branchId": "branch-linqian",
+      "floorId": "script-linqian:floor:1",
+      "attemptId": "script-linqian:floor:1:attempt:1",
+      "versionId": "6BFc05m652IgQ2_ofEkEE",
+      "snapshotId": "script-linqian:floor:1:run:1:job:linqian-followup-street:snapshot",
+      "parentSnapshotId": "script-linqian:floor:1:run:1:job:linqian-followup-door:snapshot",
+      "variables": {
+        "林茜": {
+          "感情": 504.85,
+          "堕落": 80,
+          "内心想法": "**书整理完了，门口也难得清静。先离开这里吧，我不想再被杨桃子和外面的那些事拉扯。**"
+        },
+        "行动选项": [
+          "元指令:细腻演绎5分钟内林茜与你从拆迁旧楼外街口走到夫妻家的短暂对话。",
+          "你握住林茜的手，陪她慢慢走回家，告诉她今晚不谈那些事，只想让她好好休息。",
+          "你陪林茜走到安全处后，追问杨桃子为什么会掌握那些照片，以及照片究竟从何而来。",
+          "元指令:简要收束林茜与你离开408室后的剧情，时间推进到当天傍晚18:00，夫妻家，你们回到家中并结束当天日常，重置当日需重置的变量。"
+        ],
+        "世界": {
+          "日期": "2025-03-10",
+          "星期": "周一",
+          "小时": 12,
+          "分钟": 31,
+          "状态_A1_日期": "2025-03-10",
+          "时间": "中午",
+          "地点": "拆迁旧楼外街口",
+          "开局模式": "原始首次撞见",
+          "终局路线": "未定",
+          "终局阶段": "Z000",
+          "事件_D001记录日期": "2025-03-10",
+          "已触发事件": {
+            "事件_E001": false,
+            "事件_E002": false,
+            "事件_E003": false,
+            "事件_E004": false,
+            "事件_E005": false,
+            "事件_E006": false,
+            "事件_E008": false,
+            "事件_E009": false,
+            "事件_E010": false,
+            "事件_E011": false,
+            "事件_E012": false,
+            "事件_E013": false,
+            "事件_E014": false,
+            "事件_E015": false,
+            "事件_E016": false,
+            "事件_E017": false,
+            "事件_E018": false,
+            "事件_E019": false,
+            "事件_E020": false,
+            "事件_E021": false,
+            "事件_E022": false,
+            "事件_E023": false,
+            "事件_E024": false,
+            "事件_E025": false,
+            "事件_E026": false,
+            "事件_E027": false,
+            "事件_E028": false,
+            "事件_E029": false,
+            "事件_E030": false,
+            "事件_E031": false,
+            "事件_E032": false,
+            "事件_E033": false,
+            "事件_E034": false,
+            "事件_E035": false,
+            "事件_E048": false,
+            "事件_E049": false
+          },
+          "已离婚": false,
+          "状态_A1_计数": 1
+        }
+      },
+      "source": {
+        "kind": "job",
+        "runId": "script-linqian:floor:1:run:1",
+        "jobId": "script-linqian:floor:1:run:1:job:linqian-followup-street"
+      }
+    },
+    "view": {
+      "sessionId": "script-linqian",
+      "branchId": "branch-linqian",
+      "floorId": null,
+      "attemptId": null,
+      "versionId": "6BFc05m652IgQ2_ofEkEE",
+      "snapshotId": "script-linqian:snapshot:0",
+      "parentSnapshotId": null,
+      "variables": {
+        "林茜": {
+          "感情": 504.85,
+          "堕落": 80,
+          "内心想法": "**我最近总是腿里燥热，可能是例假快来了。这条狗偷我的照片，我拿老公吓住他，他就不敢反抗。被靴子踩着会硬，射完还会再硬，第二次还射这么多，好玩。我要用旧飞机杯把他精液吸出来喂给他吃完就回家,这会很好玩的,就这一次,以后不来了。他是狗,狗不会反抗,狗可以当玩具。不能让老公知道。**"
+        },
+        "行动选项": [
+          "元指令:细腻演绎5分钟内林茜的剧情。",
+          "你绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。",
+          "你绕到门口现身，追问杨桃子从哪里得到林茜的照片。",
+          "元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+        ],
+        "世界": {
+          "日期": "2025-03-10",
+          "星期": "周一",
+          "小时": 12,
+          "分钟": 24,
+          "状态_A1_日期": "2025-03-10",
+          "时间": "中午",
+          "地点": "拆迁旧楼408室内",
+          "开局模式": "原始首次撞见",
+          "终局路线": "未定",
+          "终局阶段": "Z000",
+          "事件_D001记录日期": "2025-03-10",
+          "已触发事件": {
+            "事件_E001": false,
+            "事件_E002": false,
+            "事件_E003": false,
+            "事件_E004": false,
+            "事件_E005": false,
+            "事件_E006": false,
+            "事件_E008": false,
+            "事件_E009": false,
+            "事件_E010": false,
+            "事件_E011": false,
+            "事件_E012": false,
+            "事件_E013": false,
+            "事件_E014": false,
+            "事件_E015": false,
+            "事件_E016": false,
+            "事件_E017": false,
+            "事件_E018": false,
+            "事件_E019": false,
+            "事件_E020": false,
+            "事件_E021": false,
+            "事件_E022": false,
+            "事件_E023": false,
+            "事件_E024": false,
+            "事件_E025": false,
+            "事件_E026": false,
+            "事件_E027": false,
+            "事件_E028": false,
+            "事件_E029": false,
+            "事件_E030": false,
+            "事件_E031": false,
+            "事件_E032": false,
+            "事件_E033": false,
+            "事件_E034": false,
+            "事件_E035": false,
+            "事件_E048": false,
+            "事件_E049": false
+          },
+          "已离婚": false,
+          "状态_A1_计数": 1
+        }
+      },
+      "source": {
+        "kind": "initial",
+        "runId": null,
+        "jobId": null
+      }
+    },
+    "error": "",
+    "diagnostics": {
+      "busy": false,
+      "chatWidgets": 1,
+      "activeStreams": 0,
+      "listeners": {
+        "current": 2,
+        "view": 1,
+        "commit": 2,
+        "text": 2
+      },
+      "history": {
+        "entries": 3,
+        "bytes": 7211
+      },
+      "settled": {
+        "entries": 0,
+        "bytes": 0
+      },
+      "diagnostics": {
+        "entries": 0,
+        "bytes": 0
+      },
+      "lists": [
+        {
+          "items": 1,
+          "mounted": 1,
+          "visibleStart": 0,
+          "visibleEnd": 0,
+          "firstVisibleFloorId": "script-linqian:floor:1",
+          "lastVisibleFloorId": "script-linqian:floor:1",
+          "followTail": true,
+          "cached": 0,
+          "cacheBytes": 0,
+          "hasNextPage": false
+        }
+      ]
+    }
+  },
+  "rendered": {
+    "time": "12:31 · 中午",
+    "place": "拆迁旧楼外街口",
+    "affection": "505"
+  },
+  "evidence": {
+    "mode": "openrouter",
+    "turns": [
+      {
+        "floorId": "script-linqian:floor:1",
+        "attemptId": "script-linqian:floor:1:attempt:1",
+        "models": {
+          "narrator": "nex-agi/nex-n2.5-mini:free",
+          "updater": "nex-agi/nex-n2.5-mini:free"
+        },
+        "proposal": {
+          "changes": [
+            {
+              "op": "set",
+              "path": "/林茜/内心想法",
+              "value": "**书终于整理好了。你陪我在屋里待了五分钟，我暂时不想再被外面那些人和事拉扯，只想安静待在这里。**"
+            },
+            {
+              "op": "set",
+              "path": "/行动选项",
+              "value": [
+                "元指令:细腻演绎5分钟内林茜整理完书后仍留在杨桃子屋内的对话。",
+                "你留在杨桃子屋内，陪林茜整理好的书架，轻声问她最近是否一直这么不安。",
+                "你留在屋内，直接追问林茜，杨桃子从哪里得到那些照片。",
+                "元指令:简要收束当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+              ]
+            }
+          ],
+          "evidenceMessageIds": [
+            "script-linqian:floor:1:user",
+            "script-linqian:floor:1:assistant"
+          ],
+          "facts": {
+            "elapsedMinutes": 5,
+            "finalLocation": "拆迁旧楼408室内",
+            "completedA1Events": [],
+            "d001Completed": false,
+            "completedOneTimeEvents": [],
+            "relationship": {
+              "positiveDelta": 0,
+              "negativeDelta": 0,
+              "intimacyTier": "none"
+            },
+            "corruptionSettlement": {
+              "settlementTriggered": false,
+              "specialStimulatorOnly": false,
+              "behaviors": [],
+              "resultTier": "none",
+              "materialAnomaly": false
+            },
+            "ending": {
+              "routeRulesLoaded": true,
+              "formedRoute": null,
+              "explicitReselection": false,
+              "divorceFormed": false,
+              "completedStage": null
+            }
+          }
+        },
+        "beforeSnapshotId": "script-linqian:snapshot:0",
+        "afterSnapshotId": "script-linqian:floor:1:attempt:1:snapshot"
+      },
+      {
+        "floorId": "script-linqian:floor:1",
+        "attemptId": "script-linqian:floor:1:attempt:1",
+        "jobId": "script-linqian:floor:1:run:1:job:linqian-followup-door",
+        "sourceMessageIds": [
+          "script-linqian:floor:1:run:1:job:linqian-followup-door:message"
+        ],
+        "models": {
+          "narrator": "nex-agi/nex-n2.5-mini:free",
+          "updater": "nex-agi/nex-n2.5-mini:free"
+        },
+        "proposal": {
+          "changes": [
+            {
+              "op": "set",
+              "path": "/林茜/内心想法",
+              "value": "**书终于整理完了。你陪我沉默了一会儿，门口也难得清静。先离开这里吧，我不想再被杨桃子和外面的那些事拉扯。**"
+            },
+            {
+              "op": "set",
+              "path": "/行动选项",
+              "value": [
+                "元指令:细腻演绎5分钟内林茜与你走出408室后的短暂对话。",
+                "你握住林茜的手，陪她走出408室，告诉她会先送她回家休息。",
+                "你陪林茜走到408室门外后，追问她杨桃子从哪里得到那些照片。",
+                "元指令:简要收束林茜与你离开408室后的剧情，时间推进到当天傍晚18:00,夫妻家,你们回到家中并结束当天日常,重置当日需重置的变量。"
+              ]
+            }
+          ],
+          "evidenceMessageIds": [
+            "script-linqian:floor:1:run:1:job:linqian-followup-door:message"
+          ],
+          "facts": {
+            "elapsedMinutes": 1,
+            "finalLocation": "拆迁旧楼408室门口门槛处",
+            "completedA1Events": [],
+            "d001Completed": false,
+            "completedOneTimeEvents": [],
+            "relationship": {
+              "positiveDelta": 0,
+              "negativeDelta": 0,
+              "intimacyTier": "none"
+            },
+            "corruptionSettlement": {
+              "settlementTriggered": false,
+              "specialStimulatorOnly": false,
+              "behaviors": [],
+              "resultTier": "none",
+              "materialAnomaly": false
+            },
+            "ending": {
+              "routeRulesLoaded": true,
+              "formedRoute": null,
+              "explicitReselection": false,
+              "divorceFormed": false,
+              "completedStage": null
+            }
+          }
+        },
+        "beforeSnapshotId": "script-linqian:floor:1:attempt:1:snapshot",
+        "afterSnapshotId": "script-linqian:floor:1:run:1:job:linqian-followup-door:snapshot"
+      },
+      {
+        "floorId": "script-linqian:floor:1",
+        "attemptId": "script-linqian:floor:1:attempt:1",
+        "jobId": "script-linqian:floor:1:run:1:job:linqian-followup-street",
+        "sourceMessageIds": [
+          "script-linqian:floor:1:run:1:job:linqian-followup-street:message"
+        ],
+        "models": {
+          "narrator": "nex-agi/nex-n2.5-mini:free",
+          "updater": "nex-agi/nex-n2.5-mini:free"
+        },
+        "proposal": {
+          "changes": [
+            {
+              "op": "set",
+              "path": "/林茜/内心想法",
+              "value": "**书整理完了，门口也难得清静。先离开这里吧，我不想再被杨桃子和外面的那些事拉扯。**"
+            },
+            {
+              "op": "set",
+              "path": "/行动选项",
+              "value": [
+                "元指令:细腻演绎5分钟内林茜与你从拆迁旧楼外街口走到夫妻家的短暂对话。",
+                "你握住林茜的手，陪她慢慢走回家，告诉她今晚不谈那些事，只想让她好好休息。",
+                "你陪林茜走到安全处后，追问杨桃子为什么会掌握那些照片，以及照片究竟从何而来。",
+                "元指令:简要收束林茜与你离开408室后的剧情，时间推进到当天傍晚18:00，夫妻家，你们回到家中并结束当天日常，重置当日需重置的变量。"
+              ]
+            }
+          ],
+          "evidenceMessageIds": [
+            "script-linqian:floor:1:run:1:job:linqian-followup-street:message"
+          ],
+          "facts": {
+            "elapsedMinutes": 1,
+            "finalLocation": "拆迁旧楼外街口",
+            "completedA1Events": [],
+            "d001Completed": false,
+            "completedOneTimeEvents": [],
+            "relationship": {
+              "positiveDelta": 0,
+              "negativeDelta": 0,
+              "intimacyTier": "none"
+            },
+            "corruptionSettlement": {
+              "settlementTriggered": false,
+              "specialStimulatorOnly": false,
+              "behaviors": [],
+              "resultTier": "none",
+              "materialAnomaly": false
+            },
+            "ending": {
+              "routeRulesLoaded": true,
+              "formedRoute": null,
+              "explicitReselection": false,
+              "divorceFormed": false,
+              "completedStage": null
+            }
+          }
+        },
+        "beforeSnapshotId": "script-linqian:floor:1:run:1:job:linqian-followup-door:snapshot",
+        "afterSnapshotId": "script-linqian:floor:1:run:1:job:linqian-followup-street:snapshot"
+      }
+    ],
+    "failure": null,
+    "pendingChain": null,
+    "completedChains": [
+      {
+        "floorId": "script-linqian:floor:1",
+        "attemptId": "script-linqian:floor:1:attempt:1",
+        "jobs": {
+          "linqian-followup-door": {
+            "jobId": "script-linqian:floor:1:run:1:job:linqian-followup-door",
+            "baseSnapshotId": "script-linqian:floor:1:attempt:1:snapshot",
+            "text": "12:30，杨桃子屋内。\n\n林茜站在整理好的书架前，指尖轻轻抚过整齐的書脊。片刻后，她转头看向你：“刚才那几分钟，是最近少有的清静。”\n\n你没有接话，只陪她沉默了一会儿。她拿起桌上的折凳，朝门口走去：“书整理完了。送我出去吧。”\n\n你们并肩来到门边，在门槛前停下。",
+            "status": "committed",
+            "revision": 88,
+            "model": "nex-agi/nex-n2.5-mini:free",
+            "snapshotId": "script-linqian:floor:1:run:1:job:linqian-followup-door:snapshot"
+          },
+          "linqian-followup-street": {
+            "jobId": "script-linqian:floor:1:run:1:job:linqian-followup-street",
+            "baseSnapshotId": "script-linqian:floor:1:run:1:job:linqian-followup-door:snapshot",
+            "text": "12:31，拆迁楼外的街口。\n\n你们沿狭窄的巷道往下走。林茜把折凳夹在臂弯里，步子不快，经过楼道口时又回头看了一眼那扇关着的408房门。\n\n“走吧。”她轻声说，“今天先到这儿。”\n\n你陪她穿过巷口，在红灯即将转绿时停在街角。远处传来自行车驶过路面的声响，风吹起她鬓边的碎发。\n\n林茜望了望通往家的方向，又看向你：“先送我回去休息。等晚些时候，我再把照片的事好好想想。”\n\n你们在街口停下，没有立刻分开。",
+            "status": "committed",
+            "revision": 140,
+            "model": "nex-agi/nex-n2.5-mini:free",
+            "snapshotId": "script-linqian:floor:1:run:1:job:linqian-followup-street:snapshot"
+          }
+        }
+      }
+    ]
+  },
+  "errors": []
+}

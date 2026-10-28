@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tavern · 演绎</title>
+    <style>
+      body {
+        margin: 0;
+        background: #101b22;
+        color: #eef2ed;
+        font: 14px system-ui;
+      }
+      header.shell {
+        min-height: 66px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 24px;
+        border-bottom: 1px solid #ffffff20;
+        box-sizing: border-box;
+      }
+      .brand {
+        font-size: 19px;
+        letter-spacing: 2px;
+      }
+      .tools {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      select,
+      button {
+        font: inherit;
+        background: #203238;
+        color: #e5edeb;
+        border: 1px solid #ffffff35;
+        border-radius: 5px;
+        padding: 7px 10px;
+      }
+      button {
+        cursor: pointer;
+      }
+      a {
+        color: #b6cbbf;
+      }
+      dialog {
+        max-width: 620px;
+        width: calc(100% - 64px);
+        background: #15262d;
+        color: #eef2ed;
+        border: 1px solid #ffffff35;
+        border-radius: 12px;
+        padding: 24px;
+      }
+      dialog::backdrop {
+        background: #0009;
+      }
+      #openingOptions {
+        display: grid;
+        gap: 12px;
+        margin: 20px 0;
+      }
+      .opening-option {
+        display: block;
+        padding: 14px;
+        border: 1px solid #ffffff35;
+        border-radius: 8px;
+      }
+      .opening-option p {
+        margin: 8px 0 0;
+        color: #b6cbbf;
+      }
+      #openingPreview {
+        white-space: pre-wrap;
+        max-height: 40vh;
+        overflow: auto;
+      }
+      .profile-copy {
+        white-space: pre-wrap;
+        max-height: 22vh;
+        overflow: auto;
+        color: #c8d5d0;
+      }
+      .performer-field {
+        display: grid;
+        gap: 8px;
+        margin: 18px 0;
+      }
+      .notice {
+        color: #ffb7b1;
+        margin: 0;
+        padding: 0 24px;
+      }
+      .notice:empty {
+        display: none;
+      }
+      @media (max-width: 700px) {
+        header.shell {
+          align-items: flex-start;
+          padding: 12px;
+          flex-direction: column;
+        }
+        .tools {
+          width: 100%;
+        }
+        .brand {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="shell">
+      <span class="brand">◇ Tavern</span>
+      <div class="tools">
+        <label
+          >角色
+          <select id="characters" aria-label="选择角色"></select></label
+        ><label
+          >查看
+          <select id="history" aria-label="查看历史状态">
+            <option value="latest">当前状态</option>
+          </select></label
+        ><button id="chooseOpening" hidden>选择开场</button
+        ><button id="mySessions">我的演绎</button
+        ><a
+          id="admin"
+          href="../../web/prototypes/admin-workspace.prototype.html?source=backend"
+          >管理端</a
+        >
+      </div>
+    </header>
+    <dialog id="openingDialog" aria-labelledby="openingTitle">
+      <h2 id="openingTitle">选择开场</h2>
+      <p id="characterProfile" class="profile-copy"></p>
+      <label class="performer-field"
+        >演绎人设
+        <select id="performer" aria-label="选择演绎人设"></select>
+      </label>
+      <p id="performerProfile" class="profile-copy"></p>
+      <div id="openingOptions"></div>
+      <p id="openingError" role="alert"></p>
+      <button id="openingCancel">取消</button>
+      <button id="openingStart">开始新会话</button>
+    </dialog>
+    <dialog id="sessionsDialog" aria-labelledby="sessionsTitle">
+      <h2 id="sessionsTitle">我的演绎</h2>
+      <label>会话状态 <select id="sessionsStatus"><option value="">全部会话</option><option value="active">进行中</option><option value="archived">已归档</option></select></label>
+      <button id="sessionsRefresh">刷新记录</button>
+      <div id="sessionsItems" style="display:grid;gap:12px;margin:20px 0"></div>
+      <p id="sessionsError" role="alert"></p>
+      <button id="sessionsClose">关闭</button>
+    </dialog>
+    <p id="notice" class="notice" role="alert"></p>
+    <main id="role"></main>
+    <script
+      type="module"
+      src="../../web/prototypes/shared/script-page.prototype.js"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+{
+  "model": "deepseek/deepseek-v4.1-flash",
+  "maximumUsd": 1,
+  "maximumRequests": 40,
+  "narrator": {
+    "max_context_tokens": 128000,
+    "max_output_tokens": 6144,
+    "temperature": 0.7,
+    "timeout_ms": 180000,
+    "max_retries": 0,
+    "reasoning_effort": "none"
+  },
+  "verifier": {
+    "max_context_tokens": 128000,
+    "max_output_tokens": 4096,
+    "temperature": 0.2,
+    "timeout_ms": 180000,
+    "max_retries": 0,
+    "reasoning_effort": "none"
+  },
+  "stateHistoryTurns": 5,
+  "billingTimeoutMs": 10000,
+  "providers": {
+    "body": {
+      "only": [
+        "deepinfra/fp8"
+      ],
+      "allow_fallbacks": false,
+      "require_parameters": true,
+      "max_price": {
+        "prompt": 0.3,
+        "completion": 1.2
+      }
+    },
+    "state": {
+      "only": [
+        "morph/fp8"
+      ],
+      "allow_fallbacks": false,
+      "require_parameters": true,
+      "max_price": {
+        "prompt": 0.3,
+        "completion": 1.2
+      }
+    }
+  },
+  "requestDeadlineMs": 180000
+}

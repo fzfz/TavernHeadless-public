@@ -1,0 +1,18 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+ RUN  v2.1.9 /srv/tavern/TavernHeadless-remove-preview-credentials
+
+ ✓ scripts/native-card-conversion/tool.test.ts (18 tests) 306ms
+ ✓ scripts/native-card-conversion/pack-publish.test.ts (6 tests) 567ms
+ ✓ scripts/native-card-conversion/skill-entry.test.ts (10 tests) 7363ms
+   ✓ native card conversion CLI entry > begins from JSON and continues through index, validate, pack and resume 2241ms
+   ✓ native card conversion CLI entry > begins from PNG and continues through index, validate, pack and resume 2205ms
+   ✓ native card conversion CLI entry > preserves a failing CLI status and actionable diagnostics for %j 582ms
+   ✓ native card conversion CLI entry > preserves a failing CLI status and actionable diagnostics for "unknown" 568ms
+   ✓ native card conversion CLI entry > preserves a failing CLI status and actionable diagnostics for "inspect" 573ms
+
+ Test Files  3 passed (3)
+      Tests  34 passed (34)
+   Start at  10:46:44
+   Duration  8.74s (transform 667ms, setup 0ms, collect 2.82s, tests 8.24s, environment 0ms, prepare 197ms)
+

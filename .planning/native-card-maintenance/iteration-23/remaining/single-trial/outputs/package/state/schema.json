@@ -1,0 +1,337 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "林茜角色变量",
+  "type": "object",
+  "properties": {
+    "林茜": {
+      "type": "object",
+      "properties": {
+        "感情": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 999
+        },
+        "堕落": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 999
+        },
+        "内心想法": {
+          "type": "string",
+          "minLength": 5,
+          "pattern": "^\\*\\*[\\s\\S]+\\*\\*$"
+        }
+      },
+      "required": [
+        "感情",
+        "堕落",
+        "内心想法"
+      ],
+      "additionalProperties": false
+    },
+    "行动选项": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^元指令:"
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^元指令:"
+        }
+      ],
+      "items": false
+    },
+    "世界": {
+      "type": "object",
+      "properties": {
+        "日期": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "星期": {
+          "enum": [
+            "周一",
+            "周二",
+            "周三",
+            "周四",
+            "周五",
+            "周六",
+            "周日"
+          ]
+        },
+        "小时": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 23
+        },
+        "分钟": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 59
+        },
+        "状态_A1_日期": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "时间": {
+          "enum": [
+            "早",
+            "上午",
+            "中午",
+            "下午",
+            "傍晚",
+            "晚上",
+            "深夜"
+          ]
+        },
+        "地点": {
+          "type": "string",
+          "minLength": 1
+        },
+        "开局模式": {
+          "enum": [
+            "默认拆迁旧楼",
+            "旧楼电话纠缠",
+            "原始首次撞见",
+            "远程监控",
+            "画室监控",
+            "302监控",
+            "王授军私宅3P",
+            "黑哥逃脱",
+            "跪倒屈服",
+            "繁衍",
+            "画室赴约"
+          ]
+        },
+        "终局路线": {
+          "enum": [
+            "未定",
+            "结局一_离婚",
+            "结局二_三人共处",
+            "结局三_隔离守婚",
+            "双向出轨"
+          ]
+        },
+        "终局阶段": {
+          "enum": [
+            "Z000",
+            "Z001",
+            "Z002",
+            "Z003",
+            "Z004",
+            "Z005",
+            "Z006",
+            "Z007",
+            "Z008",
+            "Z009",
+            "Z010",
+            "Z011",
+            "Z012",
+            "Z013"
+          ]
+        },
+        "事件_D001记录日期": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "已触发事件": {
+          "type": "object",
+          "properties": {
+            "事件_E001": {
+              "type": "boolean"
+            },
+            "事件_E002": {
+              "type": "boolean"
+            },
+            "事件_E003": {
+              "type": "boolean"
+            },
+            "事件_E004": {
+              "type": "boolean"
+            },
+            "事件_E005": {
+              "type": "boolean"
+            },
+            "事件_E006": {
+              "type": "boolean"
+            },
+            "事件_E008": {
+              "type": "boolean"
+            },
+            "事件_E009": {
+              "type": "boolean"
+            },
+            "事件_E010": {
+              "type": "boolean"
+            },
+            "事件_E011": {
+              "type": "boolean"
+            },
+            "事件_E012": {
+              "type": "boolean"
+            },
+            "事件_E013": {
+              "type": "boolean"
+            },
+            "事件_E014": {
+              "type": "boolean"
+            },
+            "事件_E015": {
+              "type": "boolean"
+            },
+            "事件_E016": {
+              "type": "boolean"
+            },
+            "事件_E017": {
+              "type": "boolean"
+            },
+            "事件_E018": {
+              "type": "boolean"
+            },
+            "事件_E019": {
+              "type": "boolean"
+            },
+            "事件_E020": {
+              "type": "boolean"
+            },
+            "事件_E021": {
+              "type": "boolean"
+            },
+            "事件_E022": {
+              "type": "boolean"
+            },
+            "事件_E023": {
+              "type": "boolean"
+            },
+            "事件_E024": {
+              "type": "boolean"
+            },
+            "事件_E025": {
+              "type": "boolean"
+            },
+            "事件_E026": {
+              "type": "boolean"
+            },
+            "事件_E027": {
+              "type": "boolean"
+            },
+            "事件_E028": {
+              "type": "boolean"
+            },
+            "事件_E029": {
+              "type": "boolean"
+            },
+            "事件_E030": {
+              "type": "boolean"
+            },
+            "事件_E031": {
+              "type": "boolean"
+            },
+            "事件_E032": {
+              "type": "boolean"
+            },
+            "事件_E033": {
+              "type": "boolean"
+            },
+            "事件_E034": {
+              "type": "boolean"
+            },
+            "事件_E035": {
+              "type": "boolean"
+            },
+            "事件_E048": {
+              "type": "boolean"
+            },
+            "事件_E049": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "事件_E001",
+            "事件_E002",
+            "事件_E003",
+            "事件_E004",
+            "事件_E005",
+            "事件_E006",
+            "事件_E008",
+            "事件_E009",
+            "事件_E010",
+            "事件_E011",
+            "事件_E012",
+            "事件_E013",
+            "事件_E014",
+            "事件_E015",
+            "事件_E016",
+            "事件_E017",
+            "事件_E018",
+            "事件_E019",
+            "事件_E020",
+            "事件_E021",
+            "事件_E022",
+            "事件_E023",
+            "事件_E024",
+            "事件_E025",
+            "事件_E026",
+            "事件_E027",
+            "事件_E028",
+            "事件_E029",
+            "事件_E030",
+            "事件_E031",
+            "事件_E032",
+            "事件_E033",
+            "事件_E034",
+            "事件_E035",
+            "事件_E048",
+            "事件_E049"
+          ],
+          "additionalProperties": false
+        },
+        "已离婚": {
+          "type": "boolean"
+        },
+        "状态_A1_计数": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9
+        }
+      },
+      "required": [
+        "日期",
+        "星期",
+        "小时",
+        "分钟",
+        "状态_A1_日期",
+        "时间",
+        "地点",
+        "开局模式",
+        "终局路线",
+        "终局阶段",
+        "事件_D001记录日期",
+        "已触发事件",
+        "已离婚",
+        "状态_A1_计数"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "林茜",
+    "行动选项",
+    "世界"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,1836 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import {
+  TurnOrchestrator,
+  TurnError,
+  ToolReplayBlockedError,
+  UnsupportedToolModeError,
+} from '../turn-orchestrator.js';
+import type { TurnOrchestratorDeps } from '../turn-orchestrator.js';
+import type { TurnInput } from '../types.js';
+import type { GenerationOutput } from '../../generation/types.js';
+import type { ToolDefinition, ToolProvider, ToolPermissions } from '../../tools/types.js';
+import { ToolRegistry } from '../../tools/tool-registry.js';
+import type { InstanceSlot } from '../../llm/types.js';
+import type { DirectorResult } from '../director.js';
+import type { VerifierResult } from '../verifier.js';
+import type { ConsolidationResult } from '../../memory/memory-consolidator.js';
+import type { MemoryInjectionResult } from '../../memory/types.js';
+
+// ── MemoryItem 工厂 ──────────────────────────────────
+
+import type { MemoryItem } from '../../memory/types.js';
+import { InvalidStateTransitionError } from '../../errors.js';
+
+function makeMemoryItem(content: string, overrides: Partial<MemoryItem> = {}): MemoryItem {
+  return {
+    id: `mem-${content.replace(/\s/g, '-').toLowerCase()}`,
+    scope: 'chat',
+    scopeId: 'session-1',
+    type: 'fact',
+    content,
+    importance: 0.5,
+    confidence: 1.0,
+    status: 'active',
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+    ...overrides,
+  };
+}
+
+// ── Mock 工厂 ─────────────────────────────────────────
+
+function makeGenOutput(overrides: Partial<GenerationOutput> = {}): GenerationOutput {
+  return {
+    text: 'Generated text',
+    rawText: 'Generated text',
+    summaries: [],
+    usage: { promptTokens: 100, completionTokens: 50, totalTokens: 150 },
+    finishReason: 'stop',
+    ...overrides,
+  };
+}
+
+function makeDirectorResult(overrides: Partial<DirectorResult> = {}): DirectorResult {
+  return {
+    output: {
+      directive: 'Focus on emotion',
+      tone: 'melancholic',
+      focusElements: ['character feelings'],
+    },
+    usage: { promptTokens: 30, completionTokens: 20, totalTokens: 50 },
+    ...overrides,
+  };
+}
+
+function makeVerifierResult(passed: boolean, overrides: Partial<VerifierResult> = {}): VerifierResult {
+  return {
+    output: {
+      passed,
+      issues: passed ? [] : [{ description: 'Inconsistency found', severity: 'error' }],
+      suggestion: passed ? undefined : 'Please fix the inconsistency',
+    },
+    usage: { promptTokens: 40, completionTokens: 30, totalTokens: 70 },
+    ...overrides,
+  };
+}
+
+function makeConsolidationResult(overrides: Partial<ConsolidationResult> = {}): ConsolidationResult {
+  return {
+    output: {
+      turnSummary: 'Summary of the turn',
+      factsAdd: [],
+      factsUpdate: [],
+      factsDeprecate: [],
+    },
+    usage: { promptTokens: 50, completionTokens: 40, totalTokens: 90 },
+    ...overrides,
+  };
+}
+
+function makeMemoryInjection(): MemoryInjectionResult {
+  return {
+    items: [],
+    formattedText: '[Memory]\n- (fact) Some fact',
+    tokenCount: 10,
+  };
+}
+
+function makeDeps(overrides: Partial<TurnOrchestratorDeps> = {}): TurnOrchestratorDeps {
+  return {
+    floorStateMachine: {
+      canTransition: vi.fn().mockReturnValue(true),
+      transition: vi.fn().mockResolvedValue({
+        id: 'floor-1',
+        sessionId: 'session-1',
+        floorNo: 1,
+        branchId: 'main',
+        parentFloorId: null,
+        state: 'generating',
+        tokenIn: 0,
+        tokenOut: 0,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      }),
+      ensureGenerating: vi.fn().mockResolvedValue({
+        id: 'floor-1',
+        sessionId: 'session-1',
+        floorNo: 1,
+        branchId: 'main',
+        parentFloorId: null,
+        state: 'generating',
+        tokenIn: 0,
+        tokenOut: 0,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      }),
+      fail: vi.fn().mockResolvedValue({
+        id: 'floor-1',
+        sessionId: 'session-1',
+        floorNo: 1,
+        branchId: 'main',
+        parentFloorId: null,
+        state: 'failed',
+        tokenIn: 0,
+        tokenOut: 0,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      }),
+    } as any,
+    generationPipeline: {
+      run: vi.fn().mockResolvedValue(makeGenOutput()),
+    } as any,
+    memoryStore: {
+      prepareInjection: vi.fn().mockResolvedValue(makeMemoryInjection()),
+      ingestSummaries: vi.fn().mockResolvedValue([]),
+      applyConsolidation: vi.fn().mockResolvedValue(undefined),
+    } as any,
+    memoryConsolidator: {
+      consolidate: vi.fn().mockResolvedValue(makeConsolidationResult()),
+    } as any,
+    director: {
+      direct: vi.fn().mockResolvedValue(makeDirectorResult()),
+    } as any,
+    verifier: {
+      verify: vi.fn().mockResolvedValue(makeVerifierResult(true)),
+    } as any,
+    eventBus: {
+      emit: vi.fn().mockResolvedValue(undefined),
+    } as any,
+    tokenCounter: {
+      name: 'test',
+      count: vi.fn((text: string) => Math.ceil(text.length / 10)),
+    },
+    ...overrides,
+  };
+}
+
+function makeInput(overrides: Partial<TurnInput> = {}): TurnInput {
+  return {
+    sessionId: 'session-1',
+    floorId: 'floor-1',
+    messages: [
+      { role: 'system', content: 'You are a narrator.' },
+      { role: 'user', content: 'Hello!' },
+    ],
+    generationParams: { temperature: 0.7, maxOutputTokens: 500 },
+    ...overrides,
+  };
+}
+
+// ── Tests ─────────────────────────────────────────────
+
+describe('TurnOrchestrator', () => {
+  let deps: TurnOrchestratorDeps;
+  let orchestrator: TurnOrchestrator;
+
+  beforeEach(() => {
+    deps = makeDeps();
+    orchestrator = new TurnOrchestrator(deps);
+  });
+
+  // ── 最简路径 ────────────────────────────────────────
+
+  it('executes minimal turn (narrator only)', async () => {
+    const result = await orchestrator.executeTurn(makeInput());
+
+    expect(result.floorId).toBe('floor-1');
+    expect(result.generatedText).toBe('Generated text');
+    expect(result.rawText).toBe('Generated text');
+    expect(result.finalState).toBe('generating');
+    expect(result.directorResult).toBeUndefined();
+    expect(result.verifierResult).toBeUndefined();
+    expect(result.consolidationResult).toBeUndefined();
+    expect(result.memoryInjection).toBeUndefined();
+
+    // 状态转移：draft → generating（幂等推进）
+    expect(deps.floorStateMachine.ensureGenerating).toHaveBeenCalledTimes(1);
+    expect(deps.floorStateMachine.ensureGenerating).toHaveBeenNthCalledWith(1, 'floor-1');
+  });
+
+  it('emits generation events', async () => {
+    await orchestrator.executeTurn(makeInput());
+
+    const emitCalls = (deps.eventBus.emit as any).mock.calls;
+    const eventNames = emitCalls.map((c: any[]) => c[0]);
+
+    expect(eventNames).toContain('generation.started');
+    expect(eventNames).toContain('generation.completed');
+  });
+
+  it('emits regular-path generation events carrying sessionId (RT1)', async () => {
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async (_params: any, callbacks: any) => {
+          callbacks?.onChunk?.('Hello ');
+          return makeGenOutput();
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    await orchestrator.executeTurn(makeInput({ sessionId: 'session-rt1' }));
+
+    const emitCalls = (deps.eventBus.emit as any).mock.calls;
+    const payloadsOf = (name: string) =>
+      emitCalls.filter((c: any[]) => c[0] === name).map((c: any[]) => c[1]);
+
+    const started = payloadsOf('generation.started');
+    const chunk = payloadsOf('generation.chunk');
+    const completed = payloadsOf('generation.completed');
+
+    expect(started).toHaveLength(1);
+    expect(started[0].sessionId).toBe('session-rt1');
+    expect(chunk.length).toBeGreaterThan(0);
+    expect(chunk[0].sessionId).toBe('session-rt1');
+    expect(completed).toHaveLength(1);
+    expect(completed[0].sessionId).toBe('session-rt1');
+  });
+
+  it('accumulates token usage', async () => {
+    const result = await orchestrator.executeTurn(makeInput());
+
+    expect(result.totalUsage.promptTokens).toBe(100);
+    expect(result.totalUsage.completionTokens).toBe(50);
+    expect(result.totalUsage.totalTokens).toBe(150);
+  });
+  // ── 推理（思维链）透传 ──────────────────────────────
+
+  it('passes through reasoning text from the generation output', async () => {
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn().mockResolvedValue(
+          makeGenOutput({ reasoningText: 'Step-by-step thinking' }),
+        ),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const result = await orchestrator.executeTurn(makeInput());
+
+    expect(result.reasoningText).toBe('Step-by-step thinking');
+  });
+
+  it('omits reasoning text when the model returns none', async () => {
+    const result = await orchestrator.executeTurn(makeInput());
+
+    expect(result.reasoningText).toBeUndefined();
+  });
+
+  it('streams reasoning deltas through the run observer', async () => {
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async (_params: any, callbacks: any) => {
+          callbacks?.onReasoning?.('Think');
+          callbacks?.onReasoning?.('ing');
+          return makeGenOutput({ reasoningText: 'Thinking' });
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const reasoningUpdates: Array<{ delta: string; text: string; attemptNo: number }> = [];
+    const result = await orchestrator.executeTurn(
+      makeInput({
+        runObserver: {
+          onReasoningUpdate: (payload) => {
+            reasoningUpdates.push(payload);
+          },
+        },
+      }),
+    );
+
+    expect(reasoningUpdates.map((u) => u.delta)).toEqual(['Think', 'ing']);
+    expect(reasoningUpdates[reasoningUpdates.length - 1]?.text).toBe('Thinking');
+    expect(result.reasoningText).toBe('Thinking');
+  });
+
+
+
+  // ── 完整路径 ────────────────────────────────────────
+
+  it('executes full turn with all components', async () => {
+    const input = makeInput({
+      config: {
+        enableDirector: true,
+        enableVerifier: true,
+        enableMemoryConsolidation: true,
+      },
+      directorInput: {
+        recentContext: 'Recent events...',
+        activeFacts: [makeMemoryItem('Fact 1')],
+      },
+      verifierInput: {
+        characterRules: 'Must stay in character',
+        activeFacts: [makeMemoryItem('Fact 1')],
+      },
+      memoryOptions: {
+        maxTokens: 200,
+      },
+      consolidationContext: {
+        currentFloorContent: 'Current content...',
+        recentSummaries: ['Summary 1'],
+        existingFacts: [],
+      },
+    });
+
+    const result = await orchestrator.executeTurn(input);
+
+    expect(result.directorResult).toBeDefined();
+    expect(result.verifierResult).toBeDefined();
+    expect(result.memoryInjection).toBeDefined();
+    expect(result.consolidationResult).toBeDefined();
+    expect(result.finalState).toBe('generating');
+
+    // Token usage = generation (150) + director (50) + verifier (70) + consolidation (90)
+    expect(result.totalUsage.totalTokens).toBe(150 + 50 + 70 + 90);
+  });
+
+  it('propagates slot generation params overrides to each component', async () => {
+    const input = makeInput({
+      config: {
+        enableDirector: true,
+        enableVerifier: true,
+        enableMemoryConsolidation: true,
+      },
+      directorInput: {
+        recentContext: 'Recent events...',
+        activeFacts: [makeMemoryItem('Fact 1')],
+      },
+      verifierInput: {
+        characterRules: 'Must stay in character',
+        activeFacts: [makeMemoryItem('Fact 1')],
+      },
+      consolidationContext: {
+        currentFloorContent: 'Current content...',
+        recentSummaries: ['Summary 1'],
+        existingFacts: [],
+      },
+      generationParamsOverrides: {
+        narrator: { temperature: 0.95, topP: 0.88 },
+        director: { temperature: 0.15, maxOutputTokens: 120 },
+        verifier: { temperature: 0.25, maxOutputTokens: 80 },
+        memory: { temperature: 0.35, maxOutputTokens: 160 },
+      },
+    });
+
+    await orchestrator.executeTurn(input);
+
+    expect(deps.generationPipeline.run).toHaveBeenCalledWith(
+      expect.objectContaining({ params: expect.objectContaining({ temperature: 0.95, topP: 0.88 }) }),
+      expect.anything(),
+    );
+    expect(deps.director.direct).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ temperature: 0.15, maxOutputTokens: 120 }), undefined);
+    expect(deps.verifier.verify).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ temperature: 0.25, maxOutputTokens: 80 }), undefined);
+    expect((deps.memoryConsolidator.consolidate as any).mock.calls[0][0].params).toEqual(expect.objectContaining({ temperature: 0.35, maxOutputTokens: 160 }));
+  });
+
+  // ── Director ────────────────────────────────────────
+
+  it('calls director when enabled', async () => {
+    const directorInput = { recentContext: 'Events', activeFacts: [makeMemoryItem('Fact')] };
+    const input = makeInput({
+      config: { enableDirector: true },
+      directorInput,
+    });
+
+    const result = await orchestrator.executeTurn(input);
+
+    expect(deps.director.direct).toHaveBeenCalledWith(directorInput, undefined, undefined);
+    expect(result.directorResult).toBeDefined();
+    expect(result.directorResult!.output.directive).toBe('Focus on emotion');
+  });
+
+  it('fails turn when director fails', async () => {
+    deps = makeDeps({
+      director: { direct: vi.fn().mockRejectedValue(new Error('Director LLM timeout')) } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const input = makeInput({
+      config: { enableDirector: true },
+      directorInput: { recentContext: 'Events', activeFacts: [] },
+    });
+
+    await expect(orchestrator.executeTurn(input)).rejects.toThrow(TurnError);
+    await expect(orchestrator.executeTurn(input)).rejects.toThrow('Director failed');
+
+    // Should try to mark floor as failed
+    expect(deps.floorStateMachine.fail).toHaveBeenCalled();
+  });
+
+  // ── Memory Retrieval ────────────────────────────────
+
+  it('retrieves memory when options provided', async () => {
+    const input = makeInput({
+      memoryOptions: { maxTokens: 200, minImportance: 0.3 },
+    });
+
+    const result = await orchestrator.executeTurn(input);
+
+    expect(deps.memoryStore.prepareInjection).toHaveBeenCalledWith('session-1', expect.objectContaining({
+      maxTokens: 200,
+      minImportance: 0.3,
+      scopeContext: {
+        sessionId: 'session-1',
+        floorId: 'floor-1',
+      },
+    }));
+    expect(result.memoryInjection).toBeDefined();
+  });
+
+  // ── Verifier: warn strategy ─────────────────────────
+
+  it('warns but continues when verifier fails with warn strategy', async () => {
+    deps = makeDeps({
+      verifier: { verify: vi.fn().mockResolvedValue(makeVerifierResult(false)) } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const input = makeInput({
+      config: { enableVerifier: true, verifierFailStrategy: 'warn' },
+      verifierInput: { characterRules: 'Rules', activeFacts: [] },
+    });
+
+    const result = await orchestrator.executeTurn(input);
+
+    expect(result.finalState).toBe('generating');
+    expect(result.verifierResult).toBeDefined();
+    expect(result.verifierResult!.output.passed).toBe(false);
+  });
+
+  // ── Verifier: block strategy ────────────────────────
+
+  it('blocks turn when verifier fails with block strategy', async () => {
+    deps = makeDeps({
+      verifier: { verify: vi.fn().mockResolvedValue(makeVerifierResult(false)) } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const input = makeInput({
+      config: { enableVerifier: true, verifierFailStrategy: 'block' },
+      verifierInput: { characterRules: 'Rules', activeFacts: [] },
+    });
+
+    await expect(orchestrator.executeTurn(input)).rejects.toThrow(TurnError);
+    await expect(orchestrator.executeTurn(input)).rejects.toThrow('Verifier blocked');
+  });
+
+  // ── Verifier: retry strategy ────────────────────────
+
+  it('retries and succeeds when verifier passes on second attempt', async () => {
+    const verifyMock = vi.fn()
+      .mockResolvedValueOnce(makeVerifierResult(false))
+      .mockResolvedValueOnce(makeVerifierResult(true));
+
+    deps = makeDeps({
+      verifier: { verify: verifyMock } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const input = makeInput({
+      config: { enableVerifier: true, verifierFailStrategy: 'retry', maxRetries: 1 },
+      verifierInput: { characterRules: 'Rules', activeFacts: [] },
+    });
+
+    const result = await orchestrator.executeTurn(input);
+
+    expect(result.finalState).toBe('generating');
+    expect(verifyMock).toHaveBeenCalledTimes(2);
+    expect(deps.generationPipeline.run).toHaveBeenCalledTimes(2);
+    expect(result.verifierResult!.output.passed).toBe(true);
+  });
+
+  it('fails after exhausting retries', async () => {
+    deps = makeDeps({
+      verifier: { verify: vi.fn().mockResolvedValue(makeVerifierResult(false)) } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const input = makeInput({
+      config: { enableVerifier: true, verifierFailStrategy: 'retry', maxRetries: 2 },
+      verifierInput: { characterRules: 'Rules', activeFacts: [] },
+    });
+
+    await expect(orchestrator.executeTurn(input)).rejects.toThrow(TurnError);
+    await expect(orchestrator.executeTurn(input)).rejects.toThrow(/after \d+ attempts/);
+
+    // 1 initial + 2 retries = 3 attempts
+    // But since we're calling executeTurn twice (one for toThrow, one for message check),
+    // check the first call's generation count
+  });
+
+  // ── Memory Consolidation ────────────────────────────
+
+  it('runs consolidation when enabled with context', async () => {
+    const consolidationContext = {
+      currentFloorContent: 'Floor content...',
+      recentSummaries: ['Summary'],
+      existingFacts: [],
+    };
+
+    const input = makeInput({
+      config: { enableMemoryConsolidation: true },
+      consolidationContext,
+    });
+
+    const result = await orchestrator.executeTurn(input);
+
+    expect(deps.memoryConsolidator.consolidate).toHaveBeenCalledTimes(1);
+    expect(result.consolidationResult).toBeDefined();
+    expect(result.consolidationResult!.output.turnSummary).toBe('Summary of the turn');
+  });
+
+  it('merges generation summaries into consolidation', async () => {
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn().mockResolvedValue(makeGenOutput({ summaries: ['New summary'] })),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const input = makeInput({
+      config: { enableMemoryConsolidation: true },
+      consolidationContext: {
+        currentFloorContent: 'Content',
+        recentSummaries: ['Old summary'],
+        existingFacts: [],
+      },
+    });
+
+    await orchestrator.executeTurn(input);
+
+    const consolidateCall = (deps.memoryConsolidator.consolidate as any).mock.calls[0][0];
+    expect(consolidateCall.recentSummaries).toEqual(['Old summary', 'New summary']);
+  });
+
+  it('emits memory.consolidation_json_parse_failed when consolidation degrades on JSON parsing', async () => {
+    deps = makeDeps({
+      memoryConsolidator: {
+        consolidate: vi.fn().mockResolvedValue({
+          output: {
+            turnSummary: 'raw fallback summary',
+            factsAdd: [],
+            factsUpdate: [],
+            factsDeprecate: [],
+          },
+          usage: { promptTokens: 5, completionTokens: 3, totalTokens: 8 },
+          degraded: {
+            reason: 'json_parse_failed',
+            rawText: 'not-json',
+            error: new Error('Unexpected token n in JSON at position 0'),
+          },
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    await orchestrator.executeTurn(makeInput({
+      config: { enableMemoryConsolidation: true },
+      consolidationContext: { currentFloorContent: 'Content', recentSummaries: [], existingFacts: [] },
+    }));
+
+    expect(deps.eventBus.emit).toHaveBeenCalledWith('memory.consolidation_json_parse_failed', expect.objectContaining({
+      floorId: 'floor-1',
+      rawText: 'not-json',
+      error: expect.any(Error),
+    }));
+  });
+
+  // ── 错误处理 ────────────────────────────────────────
+
+  it('marks floor as failed on generation error', async () => {
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn().mockRejectedValue(new Error('LLM timeout')),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    await expect(orchestrator.executeTurn(makeInput())).rejects.toThrow(TurnError);
+
+    // Should emit generation.failed event
+    const emitCalls = (deps.eventBus.emit as any).mock.calls;
+    const failedEvents = emitCalls.filter((c: any[]) => c[0] === 'generation.failed');
+    expect(failedEvents.length).toBeGreaterThan(0);
+    // RT1: generation.failed must carry the session id for ws routing.
+    expect(failedEvents[0]![1].sessionId).toBe('session-1');
+  });
+
+  it('does not mask the original generation error when fail compensation cannot overwrite a committed floor', async () => {
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn().mockRejectedValue(new Error('LLM timeout')),
+      } as any,
+      floorStateMachine: {
+        transition: vi.fn().mockResolvedValue(undefined),
+        ensureGenerating: vi.fn().mockResolvedValue(undefined),
+        canTransition: vi.fn().mockReturnValue(true),
+        fail: vi.fn().mockRejectedValue(new InvalidStateTransitionError('committed', 'failed')),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    await expect(orchestrator.executeTurn(makeInput())).rejects.toMatchObject({
+      name: 'TurnError',
+      phase: 'generation',
+      message: 'Generation failed: LLM timeout',
+    });
+
+    expect(deps.floorStateMachine.fail).toHaveBeenCalledWith('floor-1', expect.any(Error));
+  });
+
+  it('marks floor as failed on state transition error', async () => {
+    deps = makeDeps({
+      floorStateMachine: {
+        transition: vi.fn().mockRejectedValue(new Error('Invalid transition')),
+        ensureGenerating: vi.fn().mockRejectedValue(new Error('Invalid transition')),
+        canTransition: vi.fn(),
+        fail: vi.fn().mockResolvedValue(undefined),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    await expect(orchestrator.executeTurn(makeInput())).rejects.toThrow(TurnError);
+    await expect(orchestrator.executeTurn(makeInput())).rejects.toThrow('State transition');
+  });
+
+  it('includes phase info in TurnError', async () => {
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn().mockRejectedValue(new Error('LLM error')),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    try {
+      await orchestrator.executeTurn(makeInput());
+      expect.unreachable('Should have thrown');
+    } catch (error) {
+      expect(error).toBeInstanceOf(TurnError);
+      expect((error as TurnError).phase).toBe('generation');
+    }
+  });
+
+  it('forwards chunk callback', async () => {
+    // Make generationPipeline.run invoke the onChunk callback
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn().mockImplementation(async (_input: any, callbacks: any) => {
+          callbacks?.onChunk?.('Hello ');
+          callbacks?.onChunk?.('World');
+          return makeGenOutput();
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const chunks: string[] = [];
+    await orchestrator.executeTurn(makeInput({
+      onChunk: (chunk) => chunks.push(chunk),
+    }));
+
+    expect(chunks).toEqual(['Hello ', 'World']);
+  });
+
+  it('skips director when not enabled even if input provided', async () => {
+    const input = makeInput({
+      config: { enableDirector: false },
+      directorInput: { recentContext: 'Events', activeFacts: [] },
+    });
+
+    const result = await orchestrator.executeTurn(input);
+
+    expect(deps.director.direct).not.toHaveBeenCalled();
+    expect(result.directorResult).toBeUndefined();
+  });
+
+  it('skips consolidation when no context provided even if enabled', async () => {
+    const input = makeInput({
+      config: { enableMemoryConsolidation: true },
+      // no consolidationContext
+    });
+
+    const result = await orchestrator.executeTurn(input);
+
+    expect(deps.memoryConsolidator.consolidate).not.toHaveBeenCalled();
+    expect(result.consolidationResult).toBeUndefined();
+  });
+
+  it('consolidation failure degrades gracefully without failing the turn', async () => {
+    deps = makeDeps({
+      memoryConsolidator: {
+        consolidate: vi.fn().mockRejectedValue(new Error('Consolidation error')),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const input = makeInput({
+      config: { enableMemoryConsolidation: true },
+      consolidationContext: {
+        currentFloorContent: 'Content',
+        recentSummaries: [],
+        existingFacts: [],
+      },
+    });
+
+    const result = await orchestrator.executeTurn(input);
+
+    // Turn should succeed with consolidationResult undefined
+    expect(result.finalState).toBe('generating');
+    expect(result.consolidationResult).toBeUndefined();
+
+    // memory.consolidation_failed event should have been emitted
+    const emitCalls = (deps.eventBus.emit as any).mock.calls;
+    const failedEvents = emitCalls.filter((c: any[]) => c[0] === 'memory.consolidation_failed');
+    expect(failedEvents).toHaveLength(1);
+    expect(failedEvents[0][1]).toEqual(
+      expect.objectContaining({
+        floorId: input.floorId,
+        error: expect.any(Error),
+      }),
+    );
+  });
+});
+
+
+// ── Tool Integration Tests ────────────────────────────
+
+describe('TurnOrchestrator — Tool Integration', () => {
+  // 工具测试专用工厂
+  function makeTestToolProvider(): ToolProvider {
+    const tools: ToolDefinition[] = [
+      {
+        name: 'random',
+        description: 'Roll a dice',
+        parameters: { type: 'object', properties: { sides: { type: 'number' } }, required: ['sides'] },
+        sideEffectLevel: 'none',
+        allowedSlots: [],
+        source: 'builtin',
+      },
+      {
+        name: 'get_variable',
+        description: 'Get a variable',
+        parameters: { type: 'object', properties: { key: { type: 'string' } }, required: ['key'] },
+        sideEffectLevel: 'none',
+        allowedSlots: [],
+        source: 'builtin',
+      },
+    ];
+
+    return {
+      id: 'test-builtin',
+      type: 'builtin',
+      listTools: vi.fn().mockResolvedValue(tools),
+      executeTool: vi.fn().mockResolvedValue({ data: { result: 42 } }),
+    };
+  }
+
+  function makeToolPermissions(overrides: Partial<ToolPermissions> = {}): ToolPermissions {
+    return {
+      enabled: true,
+      maxCallsPerTurn: 10,
+      maxStepsPerGeneration: 3,
+      ...overrides,
+    };
+  }
+
+  let deps: TurnOrchestratorDeps;
+  let orchestrator: TurnOrchestrator;
+
+  beforeEach(() => {
+    deps = makeDeps();
+    orchestrator = new TurnOrchestrator(deps);
+  });
+
+  it('passes tools to generation pipeline when enableTools is true (inline mode)', async () => {
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    const input = makeInput({
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+    });
+
+    await orchestrator.executeTurn(input);
+
+    // generationPipeline.run 应该收到 tools 和 maxSteps
+    const runCall = (deps.generationPipeline.run as any).mock.calls[0][0];
+    expect(runCall.tools).toBeDefined();
+    expect(typeof runCall.tools).toBe('object');
+    expect(runCall.tools['random']).toBeDefined();
+    expect(runCall.tools['get_variable']).toBeDefined();
+    expect(runCall.maxSteps).toBe(3);
+  });
+
+  it('passes toolChoice auto only when native transport explicitly enables it', async () => {
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    await orchestrator.executeTurn(makeInput({
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+      toolTransport: {
+        selection: {
+          transport: 'native_function_call',
+          reasonCode: 'default_native_function_call',
+        },
+        toolChoiceApplied: true,
+      },
+    }));
+
+    const runCall = (deps.generationPipeline.run as any).mock.calls[0][0];
+    expect(runCall.toolChoice).toBe('auto');
+  });
+
+  it('does not pass tools when enableTools is false', async () => {
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    const input = makeInput({
+      config: { enableTools: false },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+    });
+
+    await orchestrator.executeTurn(input);
+
+    const runCall = (deps.generationPipeline.run as any).mock.calls[0][0];
+    expect(runCall.tools).toBeUndefined();
+    expect(runCall.maxSteps).toBeUndefined();
+  });
+
+  it('does not pass tools when toolRegistry is not provided', async () => {
+    const input = makeInput({
+      config: { enableTools: true },
+      // no toolRegistry
+      toolPermissions: makeToolPermissions(),
+    });
+
+    await orchestrator.executeTurn(input);
+
+    const runCall = (deps.generationPipeline.run as any).mock.calls[0][0];
+    expect(runCall.tools).toBeUndefined();
+  });
+
+  it('does not pass tools when toolPermissions is not provided', async () => {
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    const input = makeInput({
+      config: { enableTools: true },
+      toolRegistry: registry,
+      // no toolPermissions
+    });
+
+    await orchestrator.executeTurn(input);
+
+    const runCall = (deps.generationPipeline.run as any).mock.calls[0][0];
+    expect(runCall.tools).toBeUndefined();
+  });
+
+  it('rejects standalone mode because only inline is supported', async () => {
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    await expect(orchestrator.executeTurn(makeInput({
+      config: { enableTools: true, toolMode: 'standalone' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+    }))).rejects.toBeInstanceOf(UnsupportedToolModeError);
+
+    expect(deps.generationPipeline.run).not.toHaveBeenCalled();
+    expect(deps.floorStateMachine.ensureGenerating).not.toHaveBeenCalled();
+  });
+
+  it('rejects both mode because only inline is supported', async () => {
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    await expect(orchestrator.executeTurn(makeInput({
+      config: { enableTools: true, toolMode: 'both' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+    }))).rejects.toBeInstanceOf(UnsupportedToolModeError);
+
+    expect(deps.generationPipeline.run).not.toHaveBeenCalled();
+    expect(deps.floorStateMachine.ensureGenerating).not.toHaveBeenCalled();
+  });
+
+  it('uses text_protocol transport without passing native tools and writes back tool results', async () => {
+    const provider = makeTestToolProvider();
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async (runInput) => {
+          expect(runInput.tools).toBeUndefined();
+          expect(runInput.maxSteps).toBeUndefined();
+          return makeGenOutput({
+            text: [
+              'Narration before call.',
+              '<tool_call id="call-1" name="random">',
+              '{"args":{"sides":20}}',
+              '</tool_call>',
+              'Narration after call.',
+            ].join('\n'),
+            rawText: [
+              'Narration before call.',
+              '<tool_call id="call-1" name="random">',
+              '{"args":{"sides":20}}',
+              '</tool_call>',
+              'Narration after call.',
+            ].join('\n'),
+          });
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(provider);
+
+    const result = await orchestrator.executeTurn(makeInput({
+      pageId: 'input-page-1',
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+      toolTransport: {
+        selection: {
+          transport: 'text_protocol',
+          reasonCode: 'explicit_override',
+        },
+        toolList: {
+          injected: true,
+          contributorId: 'builtin:tool_list',
+          toolCount: 2,
+        },
+      },
+    }));
+
+    expect(result.generatedText).toBe('Narration before call.\n\nNarration after call.');
+    expect(result.toolResultWritebackText).toContain('<tool_result id="call-1" name="random" status="success">');
+    expect(result.toolTransport?.parsing).toEqual({
+      blockCount: 1,
+      acceptedCount: 1,
+      rejectedCount: 0,
+      diagnostics: [],
+      diagnosticsByReason: {},
+    });
+    expect(result.toolTransport?.toolResult).toEqual({
+      writtenBack: true,
+      blockCount: 1,
+      tokenCount: Math.ceil((result.toolResultWritebackText?.length ?? 0) / 10),
+      budgetGroup: 'tool_result',
+    });
+    expect(result.toolExecutionRecords).toHaveLength(1);
+    expect((provider.executeTool as any).mock.calls[0][0]).toBe('random');
+  });
+
+  it('coerces quoted numeric text_protocol args before executing the tool', async () => {
+    const provider = makeTestToolProvider();
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async () => {
+          const text = [
+            'Narration before call.',
+            '<tool_call id="call-1" name="random">',
+            '{"args":{"sides":"20"}}',
+            '</tool_call>',
+            'Narration after call.',
+          ].join('\n');
+          return makeGenOutput({ text, rawText: text });
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(provider);
+
+    const result = await orchestrator.executeTurn(makeInput({
+      pageId: 'input-page-coerce',
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+      toolTransport: {
+        selection: {
+          transport: 'text_protocol',
+          reasonCode: 'explicit_override',
+        },
+        toolList: {
+          injected: true,
+          contributorId: 'builtin:tool_list',
+          toolCount: 2,
+        },
+      },
+    }));
+
+    expect(result.toolExecutionRecords).toHaveLength(1);
+    // 带引号的 "20" 应按 number schema 被还原为数字 20 再交给工具。
+    expect((provider.executeTool as any).mock.calls[0][0]).toBe('random');
+    expect((provider.executeTool as any).mock.calls[0][1]).toEqual({ sides: 20 });
+  });
+
+  it('emits text_protocol agent-loop generation events carrying sessionId (RT1)', async () => {
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async (_runInput: any, callbacks: any) => {
+          callbacks?.onChunk?.('Hello ');
+          // No <tool_call> block → the agent loop stops naturally after one step.
+          return makeGenOutput({ text: 'Hello world', rawText: 'Hello world' });
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    await orchestrator.executeTurn(makeInput({
+      sessionId: 'session-loop',
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+      toolTransport: {
+        selection: {
+          transport: 'text_protocol',
+          reasonCode: 'explicit_override',
+        },
+        toolList: {
+          injected: true,
+          contributorId: 'builtin:tool_list',
+          toolCount: 2,
+        },
+      },
+      graphAssistantAgentLoop: {
+        decideConfirmation: () => 'auto' as const,
+      },
+    }));
+
+    const emitCalls = (deps.eventBus.emit as any).mock.calls;
+    const payloadsOf = (name: string) =>
+      emitCalls.filter((c: any[]) => c[0] === name).map((c: any[]) => c[1]);
+
+    const started = payloadsOf('generation.started');
+    const chunk = payloadsOf('generation.chunk');
+    const completed = payloadsOf('generation.completed');
+
+    expect(started).toHaveLength(1);
+    expect(started[0].sessionId).toBe('session-loop');
+    expect(chunk.length).toBeGreaterThan(0);
+    expect(chunk[0].sessionId).toBe('session-loop');
+    expect(completed).toHaveLength(1);
+    expect(completed[0].sessionId).toBe('session-loop');
+  });
+  it('strips tool round-trip text blocks from native-path visible output and stream when the model emits them as text (native leak regression)', async () => {
+    const streamedChunks: string[] = [];
+    const fullText = [
+   'Here is my answer head.',
+      '<tool_call id="c1" name="random">{"args":{"sides":6}}</tool_call>',
+      '<tool_response>{"data":{"value":4}}</tool_response>',
+      'Here is my answer tail.',
+    ].join('');
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async (_runInput: any, callbacks: any) => {
+          callbacks?.onChunk?.('Here is my answer head.');
+          callbacks?.onChunk?.('<tool_call id="c1" name="random">{"args":{"sides":6}}</tool_call>');
+          callbacks?.onChunk?.('<tool_response>{"data":{"value":4}}</tool_response>');
+          callbacks?.onChunk?.('Here is my answer tail.');
+          // 模型把工具往返写成文本，未发起结构化调用 → toolCalls 为空。
+          return makeGenOutput({ text: fullText, rawText: fullText });
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    const result = await orchestrator.executeTurn(makeInput({
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+      toolTransport: {
+        selection: {
+          transport: 'native_function_call',
+          reasonCode: 'default_native_function_call',
+        },
+        toolChoiceApplied: true,
+      },
+      graphAssistantAgentLoop: {
+        decideConfirmation: () => 'auto' as const,
+      },
+      onChunk: (chunk) => streamedChunks.push(chunk),
+    }));
+
+    expect(result.generatedText).toBe('Here is my answer head.Here is my answer tail.');
+    expect(result.generatedText).not.toContain('<tool_call');
+    expect(result.generatedText).not.toContain('<tool_response');
+
+    const streamed = streamedChunks.join('');
+    expect(streamed).toBe('Here is my answer head.Here is my answer tail.');
+    expect(streamed).not.toContain('<tool_call');
+    expect(streamed).not.toContain('<tool_response');
+  });
+  it('emits step narration through the run observer for intermediate native steps that call tools', async () => {
+    let runCount = 0;
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async (_runInput: any, _callbacks: any) => {
+          runCount += 1;
+          if (runCount === 1) {
+            // 第一步：产出中间叙述 + 结构化工具调用。
+            return makeGenOutput({
+              text: 'Let me roll the dice first.',
+              rawText: 'Let me roll the dice first.',
+              finishReason: 'tool-calls',
+              toolCalls: [{ callId: 'call-1', toolName: 'random', args: { sides: 6 } }],
+            } as any);
+          }
+          // 末步：纯结论，无工具调用。
+          return makeGenOutput({ text: 'The dice shows 42.', rawText: 'The dice shows 42.' });
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    const narrations: Array<{ stepIndex: number; text: string; createdAt: number }> = [];
+    await orchestrator.executeTurn(
+      makeInput({
+        config: { enableTools: true, toolMode: 'inline' },
+        toolRegistry: registry,
+        toolPermissions: makeToolPermissions(),
+        toolTransport: {
+          selection: {
+            transport: 'native_function_call',
+            reasonCode: 'default_native_function_call',
+          },
+          toolChoiceApplied: true,
+        },
+        graphAssistantAgentLoop: {
+          decideConfirmation: () => 'auto' as const,
+        },
+        runObserver: {
+          onStepNarration: (payload) => {
+            narrations.push(payload);
+          },
+        },
+      }),
+    );
+
+    // 第一步有工具调用且有可见文本 → 触发一次中间叙述；末步纯结论不触发。
+    expect(narrations).toHaveLength(1);
+    expect(narrations[0]?.stepIndex).toBe(1);
+    expect(narrations[0]?.text).toBe('Let me roll the dice first.');
+  });
+
+
+  it('normalizes legacy tool round-trip text blocks out of assistant history before the native request (history normalization)', async () => {
+    const runSpy = vi.fn(async (_runInput: any, _callbacks?: any) => makeGenOutput({ text: 'Final answer.', rawText: 'Final answer.' }));
+    deps = makeDeps({
+      generationPipeline: { run: runSpy } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    await orchestrator.executeTurn(makeInput({
+      messages: [
+        { role: 'system', content: 'You are a narrator.' },
+        { role: 'user', content: 'find the node' },
+        {
+          role: 'assistant',
+          content:
+            'Sure.<tool_call id="c1" name="random">{"args":{"sides":6}}</tool_call>' +
+            '<tool_response>{"data":{"value":4}}</tool_response> Done.',
+        },
+        { role: 'user', content: 'continue' },
+      ],
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+      toolTransport: {
+        selection: {
+          transport: 'native_function_call',
+          reasonCode: 'default_native_function_call',
+        },
+        toolChoiceApplied: true,
+      },
+      graphAssistantAgentLoop: {
+        decideConfirmation: () => 'auto' as const,
+      },
+    }));
+
+    const firstRunMessages = (runSpy.mock.calls[0]![0] as any).messages as Array<{
+      role: string;
+      content: string;
+    }>;
+    const assistantHistory = firstRunMessages.find((message) => message.role === 'assistant');
+    expect(assistantHistory?.content).toBe('Sure. Done.');
+    // 请求上下文里不再含任何工具往返文本块。
+    for (const message of firstRunMessages) {
+      expect(message.content).not.toContain('<tool_call');
+      expect(message.content).not.toContain('<tool_response');
+    }
+  });
+
+  it('passes through assistant history unchanged on the native path when it has no tool blocks', async () => {
+    const runSpy = vi.fn(async (_runInput: any, _callbacks?: any) => makeGenOutput({ text: 'Final answer.', rawText: 'Final answer.' }));
+    deps = makeDeps({
+      generationPipeline: { run: runSpy } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    const cleanAssistant = '  Plain answer with leading and trailing spaces.  ';
+    await orchestrator.executeTurn(makeInput({
+      messages: [
+        { role: 'system', content: 'You are a narrator.' },
+        { role: 'assistant', content: cleanAssistant },
+        { role: 'user', content: 'continue' },
+      ],
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+      toolTransport: {
+        selection: {
+          transport: 'native_function_call',
+          reasonCode: 'default_native_function_call',
+        },
+        toolChoiceApplied: true,
+      },
+      graphAssistantAgentLoop: {
+        decideConfirmation: () => 'auto' as const,
+      },
+    }));
+
+    const firstRunMessages = (runSpy.mock.calls[0]![0] as any).messages as Array<{
+      role: string;
+      content: string;
+    }>;
+    const assistantHistory = firstRunMessages.find((message) => message.role === 'assistant');
+    // 不含工具块时原样透传，包括首尾空白不被改写。
+    expect(assistantHistory?.content).toBe(cleanAssistant);
+  });
+
+  it('does not apply native history normalization on the text_protocol path', async () => {
+    const runSpy = vi.fn(async (_runInput: any, _callbacks?: any) => makeGenOutput({ text: 'Final answer.', rawText: 'Final answer.' }));
+    deps = makeDeps({
+      generationPipeline: { run: runSpy } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    const assistantWithBlocks =
+      'Sure.<tool_call id="c1" name="random">{"args":{"sides":6}}</tool_call> Done.';
+    await orchestrator.executeTurn(makeInput({
+      messages: [
+        { role: 'system', content: 'You are a narrator.' },
+        { role: 'assistant', content: assistantWithBlocks },
+        { role: 'user', content: 'continue' },
+      ],
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+      toolTransport: {
+        selection: {
+          transport: 'text_protocol',
+          reasonCode: 'explicit_override',
+        },
+      },
+      graphAssistantAgentLoop: {
+        decideConfirmation: () => 'auto' as const,
+      },
+    }));
+
+    const firstRunMessages = (runSpy.mock.calls[0]![0] as any).messages as Array<{
+      role: string;
+      content: string;
+    }>;
+    const assistantHistory = firstRunMessages.find((message) => message.role === 'assistant');
+    // text_protocol 路径不走 native 历史归一化，历史工具块原样保留。
+    expect(assistantHistory?.content).toBe(assistantWithBlocks);
+  });
+
+  it('captures parser diagnostics for invalid text_protocol calls without executing tools', async () => {
+    const provider = makeTestToolProvider();
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async () => makeGenOutput({
+          text: '<tool_call id="bad" name="missing">{"args":{}}</tool_call>',
+          rawText: '<tool_call id="bad" name="missing">{"args":{}}</tool_call>',
+        })),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(provider);
+
+    const result = await orchestrator.executeTurn(makeInput({
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+      toolTransport: {
+        selection: {
+          transport: 'text_protocol',
+          reasonCode: 'explicit_override',
+        },
+      },
+    }));
+
+    expect(result.toolTransport?.parsing?.diagnostics).toEqual([
+      expect.objectContaining({
+        callId: 'bad',
+        toolName: 'missing',
+        reason: 'tool_not_registered',
+      }),
+    ]);
+    expect(result.toolTransport?.parsing?.diagnosticsByReason).toEqual({
+      tool_not_registered: 1,
+    });
+    expect(result.toolTransport?.toolResult).toEqual({
+      writtenBack: false,
+      blockCount: 0,
+      tokenCount: 0,
+      budgetGroup: 'tool_result',
+    });
+    expect(result.toolExecutionRecords).toBeUndefined();
+    expect((provider.executeTool as any).mock.calls).toHaveLength(0);
+  });
+
+  it('rejects text_protocol calls with missing ids, missing names, and malformed JSON while preserving assistant text', async () => {
+    const provider = makeTestToolProvider();
+    const text = [
+      'Visible before.',
+      '<tool_call name="random">{"args":{"sides":20}}</tool_call>',
+      '<tool_call id="missing-name">{"args":{"sides":20}}</tool_call>',
+      '<tool_call id="bad-json" name="random">not-json</tool_call>',
+      'Visible after.',
+    ].join('\n');
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async () => makeGenOutput({ text, rawText: text })),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(provider);
+
+    const result = await orchestrator.executeTurn(makeInput({
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+      toolTransport: {
+        selection: {
+          transport: 'text_protocol',
+          reasonCode: 'explicit_override',
+        },
+      },
+    }));
+
+    expect(result.generatedText).toBe('Visible before.\n\n\n\nVisible after.');
+    expect(result.toolTransport?.parsing).toEqual({
+      blockCount: 3,
+      acceptedCount: 0,
+      rejectedCount: 3,
+      diagnostics: [
+        expect.objectContaining({ callId: null, toolName: 'random', reason: 'missing_call_id' }),
+        expect.objectContaining({ callId: 'missing-name', toolName: null, reason: 'missing_tool_name' }),
+        expect.objectContaining({ callId: 'bad-json', toolName: 'random', reason: 'json_parse_failed' }),
+      ],
+      diagnosticsByReason: {
+        missing_call_id: 1,
+        missing_tool_name: 1,
+        json_parse_failed: 1,
+      },
+    });
+    expect(result.toolExecutionRecords).toBeUndefined();
+    expect(result.toolResultWritebackText).toBeUndefined();
+    expect((provider.executeTool as any).mock.calls).toHaveLength(0);
+  });
+
+  it('suppresses complete text_protocol blocks during streaming and forwards only visible narration', async () => {
+    const streamedChunks: string[] = [];
+    const provider = makeTestToolProvider();
+    const fullText = [
+      'Narration before ',
+      '<tool_call id="call-1" name="random">',
+      '{"args":{"sides":20}}',
+      '</tool_call>',
+      ' Narration after.',
+    ].join('');
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async (_runInput, callbacks) => {
+          callbacks?.onChunk?.('Narration before ');
+          callbacks?.onChunk?.('<tool_');
+          callbacks?.onChunk?.('call id="call-1" name="random">{"args":{"sides":20}}</tool_call>');
+          callbacks?.onChunk?.(' Narration after.');
+          return makeGenOutput({ text: fullText, rawText: fullText });
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(provider);
+
+    const result = await orchestrator.executeTurn(makeInput({
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+      toolTransport: {
+        selection: {
+          transport: 'text_protocol',
+          reasonCode: 'explicit_override',
+        },
+      },
+      onChunk: (chunk) => streamedChunks.push(chunk),
+    }));
+
+    expect(streamedChunks).toEqual(['Narration before ', ' Narration after.']);
+    expect(result.generatedText).not.toContain('<tool_call');
+    expect(result.toolResultWritebackText).toContain('<tool_result id="call-1" name="random" status="success">');
+  });
+
+  it('releases an unclosed text_protocol block as visible text at stream finalization', async () => {
+    const streamedChunks: string[] = [];
+    const provider = makeTestToolProvider();
+    const fullText = 'Narration before <tool_call id="call-1" name="random">{"args":{"sides":20}}';
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async (_runInput, callbacks) => {
+          callbacks?.onChunk?.('Narration before ');
+          callbacks?.onChunk?.('<tool_call id="call-1"');
+          callbacks?.onChunk?.(' name="random">{"args":{"sides":20}}');
+          return makeGenOutput({ text: fullText, rawText: fullText });
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(provider);
+
+    const result = await orchestrator.executeTurn(makeInput({
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+      toolTransport: {
+        selection: {
+          transport: 'text_protocol',
+          reasonCode: 'explicit_override',
+        },
+      },
+      onChunk: (chunk) => streamedChunks.push(chunk),
+    }));
+
+    expect(streamedChunks.join('')).toContain('<tool_call id="call-1"');
+    expect(result.generatedText).toContain('<tool_call id="call-1"');
+    expect(result.toolTransport?.parsing?.diagnostics).toEqual([
+      expect.objectContaining({
+        callId: 'call-1',
+        toolName: 'random',
+        reason: 'malformed_block',
+      }),
+    ]);
+    expect((provider.executeTool as any).mock.calls).toHaveLength(0);
+  });
+
+  it('returns pendingToolJobs when a tool is configured for deferred async delivery', async () => {
+    const deferredTool: ToolDefinition = {
+      name: 'mcp_create_issue',
+      description: 'Create an issue and return a deferred receipt.',
+      parameters: { type: 'object', properties: { title: { type: 'string' } }, required: ['title'] },
+      sideEffectLevel: 'irreversible',
+      allowedSlots: [],
+      source: 'mcp',
+      asyncCapability: 'deferred_ok',
+      defaultDeliveryMode: 'async_job',
+      resultVisibility: 'deferred_receipt',
+    };
+
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async (runInput) => {
+          await runInput.tools?.mcp_create_issue?.execute({ title: 'Need help' });
+          return makeGenOutput();
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const executeTool = vi.fn(async () => ({ data: { shouldNot: 'run-inline' } }));
+    const registry = new ToolRegistry();
+    registry.register({
+      id: 'mcp:test-server',
+      type: 'mcp',
+      listTools: vi.fn().mockResolvedValue([deferredTool]),
+      executeTool,
+    });
+
+    const result = await orchestrator.executeTurn(makeInput({
+      accountId: 'account-1',
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions({ allowIrreversible: true }),
+      pageId: 'input-page-1',
+    }));
+
+    expect(executeTool).not.toHaveBeenCalled();
+    expect(result.toolExecutionRecords).toEqual([
+      expect.objectContaining({ toolName: 'mcp_create_issue', status: 'queued', deliveryMode: 'async_job' }),
+    ]);
+    expect(result.pendingToolJobs).toEqual([
+      expect.objectContaining({
+        envelope: expect.objectContaining({ toolName: 'mcp_create_issue', providerType: 'mcp', deliveryMode: 'async_job' }),
+      }),
+    ]);
+  });
+
+  it('blocks verifier retry when the attempt executed a non-replay-safe tool', async () => {
+    const unsafeTool: ToolDefinition = {
+      name: 'create_character',
+      description: 'Create a character',
+      parameters: { type: 'object', properties: { name: { type: 'string' } }, required: ['name'] },
+      sideEffectLevel: 'irreversible',
+      allowedSlots: [],
+      source: 'builtin',
+    };
+
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async (runInput) => {
+          await runInput.tools?.create_character?.execute({ name: 'Alice' });
+          return makeGenOutput();
+        }),
+      } as any,
+      verifier: {
+        verify: vi.fn().mockResolvedValue(makeVerifierResult(false)),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register({
+      id: 'resource',
+      type: 'builtin',
+      listTools: vi.fn().mockResolvedValue([unsafeTool]),
+      executeTool: vi.fn().mockResolvedValue({ data: { created: true } }),
+    });
+
+    try {
+      await orchestrator.executeTurn(makeInput({
+        config: {
+          enableTools: true,
+          enableVerifier: true,
+          verifierFailStrategy: 'retry',
+          maxRetries: 1,
+          toolMode: 'inline',
+        },
+        verifierInput: { characterRules: 'Rules', activeFacts: [] },
+        toolRegistry: registry,
+        toolPermissions: makeToolPermissions({ allowIrreversible: true }),
+        pageId: 'input-page-1',
+      }));
+      expect.unreachable('Should have blocked verifier replay');
+    } catch (error) {
+      expect(error).toBeInstanceOf(TurnError);
+      expect((error as TurnError).phase).toBe('verifier');
+      expect((error as TurnError).message).toContain('Verifier retry blocked');
+      expect((error as TurnError).cause).toBeInstanceOf(ToolReplayBlockedError);
+      expect(((error as TurnError).cause as ToolReplayBlockedError).blockingExecutions).toMatchObject([
+        {
+          toolName: 'create_character',
+          providerId: 'resource',
+          replaySafety: 'never_auto_replay',
+          reason: 'irreversible_side_effect',
+        },
+      ]);
+    }
+
+    expect(deps.generationPipeline.run).toHaveBeenCalledTimes(1);
+  });
+
+  it('discards buffered tool mutations before a safe verifier retry and keeps only the passing attempt', async () => {
+    const attemptValues: string[] = [];
+    const safeTool: ToolDefinition = {
+      name: 'set_variable',
+      description: 'Set a variable',
+      parameters: { type: 'object', properties: { key: { type: 'string' }, value: { type: 'string' } }, required: ['key', 'value'] },
+      sideEffectLevel: 'sandbox',
+      allowedSlots: [],
+      source: 'builtin',
+    };
+    const verifyMock = vi.fn()
+      .mockResolvedValueOnce(makeVerifierResult(false))
+      .mockResolvedValueOnce(makeVerifierResult(true));
+
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async (runInput) => {
+          await runInput.tools?.set_variable?.execute({ key: 'mood', value: 'happy' });
+          return makeGenOutput();
+        }),
+      } as any,
+      verifier: { verify: verifyMock } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register({
+      id: 'builtin',
+      type: 'builtin',
+      listTools: vi.fn().mockResolvedValue([safeTool]),
+      executeTool: vi.fn(async (_name, _args, context) => {
+        const attemptNo = context.variableContext.toolMutationAttemptNo!;
+        attemptValues.push(`attempt-${attemptNo}`);
+        context.variableContext.toolMutationBuffer!.upsert({
+          generationAttemptNo: attemptNo,
+          scope: 'page',
+          scopeId: context.pageId!,
+          key: 'mood',
+          value: `attempt-${attemptNo}`,
+        });
+        return { data: { key: 'mood', value: `attempt-${attemptNo}` } };
+      }),
+    });
+
+    const result = await orchestrator.executeTurn(makeInput({
+      config: {
+        enableTools: true,
+        enableVerifier: true,
+        verifierFailStrategy: 'retry',
+        maxRetries: 1,
+        toolMode: 'inline',
+      },
+      verifierInput: { characterRules: 'Rules', activeFacts: [] },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+      pageId: 'input-page-1',
+    }));
+
+    expect(verifyMock).toHaveBeenCalledTimes(2);
+    expect(deps.generationPipeline.run).toHaveBeenCalledTimes(2);
+    expect(attemptValues).toEqual(['attempt-1', 'attempt-2']);
+    expect(result.bufferedVariableMutations).toEqual([
+      expect.objectContaining({
+        key: 'mood',
+        value: 'attempt-2',
+        scope: 'page',
+        scopeId: 'input-page-1',
+        generationAttemptNo: 2,
+      }),
+    ]);
+  });
+
+  it('passes accountId into tool execution variableContext', async () => {
+    const provider = makeTestToolProvider();
+
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async (runInput) => {
+          await runInput.tools?.get_variable?.execute({ key: 'hp' });
+          return makeGenOutput();
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(provider);
+
+    await orchestrator.executeTurn(makeInput({
+      accountId: 'account-1',
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+    }));
+
+    const executeCalls = (provider.executeTool as any).mock.calls;
+    expect(executeCalls).toHaveLength(1);
+
+    const context = executeCalls[0][2];
+    expect(context.accountId).toBe('account-1');
+    expect(context.variableContext.accountId).toBe('account-1');
+    expect(context.variableContext.sessionId).toBe('session-1');
+    expect(context.variableContext.floorId).toBe('floor-1');
+  });
+
+  it('does not use floorId as a fake pageId when no real pageId is provided', async () => {
+    deps = makeDeps({
+      generationPipeline: {
+        run: vi.fn(async (runInput) => {
+          await runInput.tools?.random?.execute({ sides: 20 });
+          return makeGenOutput();
+        }),
+      } as any,
+    });
+    orchestrator = new TurnOrchestrator(deps);
+
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    const input = makeInput({
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+    });
+
+    const result = await orchestrator.executeTurn(input);
+
+    expect(result.toolExecutionRecords).toBeDefined();
+    expect(result.toolExecutionRecords).toHaveLength(1);
+    expect(result.toolExecutionRecords![0]!.pageId).toBeUndefined();
+  });
+
+  it('respects permissions: disabled tools = no tools passed', async () => {
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    const input = makeInput({
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions({ enabled: false }),
+    });
+
+    await orchestrator.executeTurn(input);
+
+    const runCall = (deps.generationPipeline.run as any).mock.calls[0][0];
+    // listForSlot returns [] when permissions.enabled is false
+    expect(runCall.tools).toBeUndefined();
+  });
+
+  it('wraps tool setup errors in TurnError with tool_setup phase', async () => {
+    const badProvider: ToolProvider = {
+      id: 'bad-provider',
+      type: 'builtin',
+      listTools: vi.fn().mockRejectedValue(new Error('Provider init failed')),
+      executeTool: vi.fn(),
+    };
+
+    const registry = new ToolRegistry();
+    registry.register(badProvider);
+
+    const input = makeInput({
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions(),
+    });
+
+    try {
+      await orchestrator.executeTurn(input);
+      expect.unreachable('Should have thrown');
+    } catch (error) {
+      expect(error).toBeInstanceOf(TurnError);
+      expect((error as TurnError).phase).toBe('tool_setup');
+      expect((error as TurnError).message).toContain('Tool setup failed');
+    }
+  });
+
+  it('uses maxStepsPerGeneration from permissions', async () => {
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    const input = makeInput({
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: makeToolPermissions({ maxStepsPerGeneration: 8 }),
+    });
+
+    await orchestrator.executeTurn(input);
+
+    const runCall = (deps.generationPipeline.run as any).mock.calls[0][0];
+    expect(runCall.maxSteps).toBe(8);
+  });
+
+  it('defaults maxSteps to 5 when maxStepsPerGeneration is not set', async () => {
+    const registry = new ToolRegistry();
+    registry.register(makeTestToolProvider());
+
+    const input = makeInput({
+      config: { enableTools: true, toolMode: 'inline' },
+      toolRegistry: registry,
+      toolPermissions: {
+        enabled: true,
+        // maxStepsPerGeneration not set
+      },
+    });
+
+    await orchestrator.executeTurn(input);
+
+    const runCall = (deps.generationPipeline.run as any).mock.calls[0][0];
+    expect(runCall.maxSteps).toBe(5);
+  });
+});

@@ -1,0 +1,31 @@
+{
+  "port": 43876,
+  "dataDirectory": "/tmp/tavern-published-prototype",
+  "credentialsFile": "/Users/developer/.config/tavern-headless/openrouter-linqian-test.json",
+  "masterKeyFile": "/Users/developer/.config/tavern-headless/prototype-master-key",
+  "characters": [
+    "linqian",
+    "gushengman"
+  ],
+  "presetDirectory": "characters/linqian",
+  "performers": [
+    {
+      "name": "你",
+      "description": ""
+    },
+    {
+      "name": "裴修远",
+      "description": ""
+    }
+  ],
+  "disabledSlots": [
+    "director",
+    "verifier",
+    "memory"
+  ],
+  "defaultUpdaterSlot": "verifier",
+  "modelTimeoutMs": 600000,
+  "presetPromptOrderCharacterId": 100001,
+  "narratorContextTokens": 262144,
+  "llmProfileApiMode": "chat"
+}

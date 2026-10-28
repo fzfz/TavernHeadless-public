@@ -1,0 +1,196 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["version", "defaults", "tools", "environments", "verification"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": 1 },
+    "defaults": {
+      "type": "object",
+      "required": [
+        "listenHost",
+        "gatewayListenHost",
+        "hostAliases",
+        "timeouts",
+        "probes",
+        "files",
+        "layout",
+        "frontends",
+        "hostVariables",
+        "managedVariables",
+        "secretVariables",
+        "retainedReleases"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "listenHost": { "const": "127.0.0.1" },
+        "gatewayListenHost": { "enum": ["127.0.0.1", "0.0.0.0"] },
+        "hostAliases": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/definitions/hostname" }
+        },
+        "timeouts": {
+          "type": "object",
+          "required": [
+            "startSeconds",
+            "stopSeconds",
+            "proxySeconds",
+            "probeSeconds",
+            "pollMs"
+          ],
+          "additionalProperties": { "type": "integer", "minimum": 1 }
+        },
+        "probes": {
+          "type": "object",
+          "required": ["api", "frontend"],
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^/[a-zA-Z0-9/_-]*$"
+          }
+        },
+        "files": {
+          "type": "object",
+          "required": ["processIdentity", "archive", "manifest"],
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+          }
+        },
+        "layout": {
+          "type": "object",
+          "required": [
+            "config",
+            "applicationEnv",
+            "secretsEnv",
+            "publicConfig",
+            "nginxConfig",
+            "data",
+            "releases",
+            "current",
+            "buildWork",
+            "artifacts",
+            "run",
+            "processLogs",
+            "operations",
+            "backups"
+          ],
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[a-zA-Z][a-zA-Z0-9/._-]*$"
+          }
+        },
+        "frontends": { "const": ["web", "user-web", "studio"] },
+        "hostVariables": { "$ref": "#/definitions/variables" },
+        "managedVariables": { "$ref": "#/definitions/variables" },
+        "secretVariables": { "$ref": "#/definitions/variables" },
+        "retainedReleases": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "tools": {
+      "type": "object",
+      "required": [
+        "node",
+        "pnpm",
+        "nginx",
+        "openssl",
+        "pcre2",
+        "caCertificates"
+      ],
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "version": { "type": "string", "minLength": 1 },
+          "versionSource": { "type": "string" }
+        }
+      }
+    },
+    "environments": {
+      "type": "object",
+      "required": ["dev", "staging", "prod"],
+      "additionalProperties": false,
+      "properties": {
+        "dev": { "$ref": "#/definitions/environment" },
+        "staging": { "$ref": "#/definitions/environment" },
+        "prod": { "$ref": "#/definitions/environment" }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": ["rootNames", "portOffset"],
+      "additionalProperties": false,
+      "properties": {
+        "rootNames": {
+          "type": "object",
+          "required": ["dev", "staging", "prod"],
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          }
+        },
+        "portOffset": { "type": "integer", "minimum": 0, "maximum": 60000 }
+      }
+    }
+  },
+  "definitions": {
+    "hostname": {
+      "type": "string",
+      "maxLength": 253,
+      "pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*$"
+    },
+    "variables": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]*$" }
+    },
+    "port": { "type": "integer", "minimum": 1024, "maximum": 65535 },
+    "environment": {
+      "type": "object",
+      "required": [
+        "root",
+        "mode",
+        "hostname",
+        "processPrefix",
+        "sessionCookieName",
+        "sessionCookieSecure",
+        "ports"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "root": { "type": "string", "pattern": "^/" },
+        "mode": { "enum": ["development", "release"] },
+        "hostname": { "$ref": "#/definitions/hostname" },
+        "processPrefix": { "type": "string", "pattern": "^[a-z][a-z0-9:-]*$" },
+        "sessionCookieName": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "sessionCookieSecure": { "type": "boolean" },
+        "ports": {
+          "type": "object",
+          "required": ["api", "frontends"],
+          "additionalProperties": false,
+          "properties": {
+            "api": { "$ref": "#/definitions/port" },
+            "frontends": {
+              "type": "object",
+              "required": ["web", "user-web", "studio"],
+              "additionalProperties": {
+                "type": "object",
+                "required": ["http", "dev"],
+                "additionalProperties": false,
+                "properties": {
+                  "http": { "$ref": "#/definitions/port" },
+                  "dev": { "$ref": "#/definitions/port" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

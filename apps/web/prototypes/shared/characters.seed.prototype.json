@@ -1,0 +1,912 @@
+[
+  {
+    "id": "card-bookshop",
+    "snapshot": {
+      "name": "林岚",
+      "description": "港口的来访者",
+      "first_mes": "窗外传来海潮的声音。\n\n她把桌上的信推到你面前。\n\n“我们从哪里开始？”",
+      "extensions": {
+        "tavern_headless": {
+          "card_view": {
+            "apiVersion": 1,
+            "title": "灯塔来信",
+            "variables": {
+              "trust": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "location": {
+                "type": "string"
+              },
+              "background": {
+                "type": "string"
+              },
+              "portrait": {
+                "type": "string"
+              },
+              "clue": {
+                "type": "string"
+              },
+              "expanded": {
+                "type": "boolean"
+              },
+              "actionLabel": {
+                "type": "string"
+              },
+              "actionText": {
+                "type": "string"
+              },
+              "gallery": {
+                "type": "array"
+              }
+            },
+            "initial": {
+              "trust": 10,
+              "location": "港口书店",
+              "background": "shop",
+              "portrait": "person",
+              "clue": "尚未找到线索",
+              "expanded": false,
+              "actionLabel": "询问信件",
+              "actionText": "请告诉我信件的来历。",
+              "gallery": ["shop"]
+            },
+            "ui": {
+              "status": true,
+              "history": true,
+              "gallery": false
+            },
+            "assets": {
+              "shop": {
+                "file": "bookshop.svg",
+                "kind": "image"
+              },
+              "harbor": {
+                "file": "harbor.svg",
+                "kind": "image"
+              },
+              "person": {
+                "file": "linlan.svg",
+                "kind": "image"
+              },
+              "music": {
+                "file": "harbor-theme.wav",
+                "kind": "audio"
+              }
+            },
+            "css": ".layout{display:grid;grid-template-columns:40% 60%;min-height:680px}.layout.expanded{grid-template-columns:55% 45%}.scene{position:relative;min-height:660px}.background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.portrait{position:absolute;bottom:0;left:8%;width:85%;height:85%;object-fit:contain}.status{position:absolute;bottom:14px;left:14px;right:14px}.conversation{padding:16px;display:flex;flex-direction:column;gap:12px}.history{height:350px;overflow:auto}.gallery{grid-column:1/-1}@media(max-width:700px){.layout,.layout.expanded{grid-template-columns:1fr}.scene{min-height:430px}} *{box-sizing:border-box}[hidden]{display:none!important}button{border:1px solid #607777;background:#17363b;color:#f5f5ec;padding:10px;border-radius:6px;cursor:pointer}button:disabled{opacity:.4;cursor:default}.controls,.actions{display:flex;gap:8px;flex-wrap:wrap}.status{padding:16px;background:#fffff1ed;color:#233e45;border-radius:10px;display:grid;gap:8px}progress{width:100%}.gallery img{max-width:210px;margin:8px;border-radius:8px}",
+            "tree": {
+              "id": "root",
+              "type": "box",
+              "class": "layout",
+              "classWhen": {
+                "expanded": {
+                  "op": "eq",
+                  "left": {
+                    "source": "view",
+                    "key": "expanded"
+                  },
+                  "right": {
+                    "source": "literal",
+                    "value": true
+                  }
+                }
+              },
+              "children": [
+                {
+                  "id": "scene",
+                  "type": "box",
+                  "class": "scene",
+                  "children": [
+                    {
+                      "id": "background",
+                      "type": "image",
+                      "value": {
+                        "source": "view",
+                        "key": "background"
+                      },
+                      "alt": "场景背景",
+                      "class": "background"
+                    },
+                    {
+                      "id": "portrait",
+                      "type": "image",
+                      "value": {
+                        "source": "view",
+                        "key": "portrait"
+                      },
+                      "alt": "林岚",
+                      "class": "portrait"
+                    },
+                    {
+                      "id": "status",
+                      "type": "box",
+                      "class": "status",
+                      "when": {
+                        "op": "eq",
+                        "left": {
+                          "source": "ui",
+                          "key": "status"
+                        },
+                        "right": {
+                          "source": "literal",
+                          "value": true
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "location",
+                          "type": "text",
+                          "value": {
+                            "source": "view",
+                            "key": "location"
+                          }
+                        },
+                        {
+                          "id": "metric-label",
+                          "type": "text",
+                          "value": {
+                            "source": "literal",
+                            "value": "信任"
+                          }
+                        },
+                        {
+                          "id": "metric-value",
+                          "type": "text",
+                          "value": {
+                            "source": "view",
+                            "key": "trust"
+                          }
+                        },
+                        {
+                          "id": "meter",
+                          "type": "meter",
+                          "value": {
+                            "source": "view",
+                            "key": "trust"
+                          },
+                          "min": 0,
+                          "max": 100
+                        },
+                        {
+                          "id": "clue",
+                          "type": "text",
+                          "value": {
+                            "source": "view",
+                            "key": "clue"
+                          }
+                        },
+                        {
+                          "id": "prev-state",
+                          "type": "button",
+                          "value": {
+                            "source": "literal",
+                            "value": "上一轮状态"
+                          },
+                          "action": "previous"
+                        },
+                        {
+                          "id": "latest-state",
+                          "type": "button",
+                          "value": {
+                            "source": "literal",
+                            "value": "当前状态"
+                          },
+                          "action": "latest"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "conversation",
+                  "type": "box",
+                  "class": "conversation",
+                  "children": [
+                    {
+                      "id": "controls",
+                      "type": "box",
+                      "class": "controls",
+                      "children": [
+                        {
+                          "id": "toggle-status",
+                          "type": "button",
+                          "value": {
+                            "source": "literal",
+                            "value": "状态"
+                          },
+                          "action": "status"
+                        },
+                        {
+                          "id": "toggle-history",
+                          "type": "button",
+                          "value": {
+                            "source": "literal",
+                            "value": "历史"
+                          },
+                          "action": "history"
+                        },
+                        {
+                          "id": "toggle-gallery",
+                          "type": "button",
+                          "value": {
+                            "source": "literal",
+                            "value": "画廊"
+                          },
+                          "action": "gallery"
+                        },
+                        {
+                          "id": "music",
+                          "type": "button",
+                          "value": {
+                            "source": "literal",
+                            "value": "音乐"
+                          },
+                          "action": "music"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "history-panel",
+                      "type": "box",
+                      "class": "history",
+                      "when": {
+                        "op": "eq",
+                        "left": {
+                          "source": "ui",
+                          "key": "history"
+                        },
+                        "right": {
+                          "source": "literal",
+                          "value": true
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "history-slot",
+                          "type": "slot",
+                          "name": "history"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "actions",
+                      "type": "box",
+                      "class": "actions",
+                      "children": [
+                        {
+                          "id": "advance",
+                          "type": "button",
+                          "value": {
+                            "source": "current",
+                            "key": "actionLabel"
+                          },
+                          "action": "advance"
+                        },
+                        {
+                          "id": "fill",
+                          "type": "button",
+                          "value": {
+                            "source": "literal",
+                            "value": "继续倾听"
+                          },
+                          "action": "fill"
+                        },
+                        {
+                          "id": "unlocked",
+                          "type": "button",
+                          "value": {
+                            "source": "literal",
+                            "value": "查看线索"
+                          },
+                          "action": "unlocked",
+                          "when": {
+                            "op": "gte",
+                            "left": {
+                              "source": "current",
+                              "key": "trust"
+                            },
+                            "right": {
+                              "source": "literal",
+                              "value": 30
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "composer-slot",
+                      "type": "slot",
+                      "name": "composer"
+                    }
+                  ]
+                },
+                {
+                  "id": "gallery-panel",
+                  "type": "box",
+                  "class": "gallery",
+                  "when": {
+                    "op": "eq",
+                    "left": {
+                      "source": "ui",
+                      "key": "gallery"
+                    },
+                    "right": {
+                      "source": "literal",
+                      "value": true
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "gallery-list",
+                      "type": "repeat",
+                      "value": {
+                        "source": "view",
+                        "key": "gallery"
+                      },
+                      "children": [
+                        {
+                          "id": "gallery-image",
+                          "type": "image",
+                          "value": {
+                            "source": "item"
+                          },
+                          "alt": "场景画面"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "actions": {
+              "status": {
+                "type": "ui.toggle",
+                "target": "status"
+              },
+              "history": {
+                "type": "ui.toggle",
+                "target": "history"
+              },
+              "fill": {
+                "type": "chat.fill",
+                "text": {
+                  "source": "literal",
+                  "value": "我想听你继续说。"
+                }
+              },
+              "advance": {
+                "type": "chat.send",
+                "text": {
+                  "source": "current",
+                  "key": "actionText"
+                }
+              },
+              "unlocked": {
+                "type": "chat.fill",
+                "text": {
+                  "source": "literal",
+                  "value": "请展示刚发现的线索。"
+                },
+                "when": {
+                  "op": "gte",
+                  "left": {
+                    "source": "current",
+                    "key": "trust"
+                  },
+                  "right": {
+                    "source": "literal",
+                    "value": 30
+                  }
+                }
+              },
+              "previous": {
+                "type": "history.prev"
+              },
+              "latest": {
+                "type": "history.latest"
+              },
+              "prevText": {
+                "type": "reading.prev"
+              },
+              "nextText": {
+                "type": "reading.next"
+              },
+              "lastText": {
+                "type": "reading.latest"
+              },
+              "auto": {
+                "type": "reading.auto",
+                "intervalMs": 800
+              },
+              "music": {
+                "type": "audio.toggle",
+                "asset": "music"
+              },
+              "gallery": {
+                "type": "ui.toggle",
+                "target": "gallery"
+              }
+            },
+            "avatar": "person"
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "card-novel",
+    "snapshot": {
+      "name": "岑宁",
+      "description": "港口的来访者",
+      "first_mes": "窗外传来海潮的声音。\n\n她把桌上的信推到你面前。\n\n“我们从哪里开始？”",
+      "extensions": {
+        "tavern_headless": {
+          "card_view": {
+            "apiVersion": 1,
+            "title": "潮汐之约",
+            "variables": {
+              "courage": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "location": {
+                "type": "string"
+              },
+              "background": {
+                "type": "string"
+              },
+              "portrait": {
+                "type": "string"
+              },
+              "clue": {
+                "type": "string"
+              },
+              "expanded": {
+                "type": "boolean"
+              },
+              "actionLabel": {
+                "type": "string"
+              },
+              "actionText": {
+                "type": "string"
+              },
+              "gallery": {
+                "type": "array"
+              }
+            },
+            "initial": {
+              "courage": 10,
+              "location": "海边栈道",
+              "background": "harbor",
+              "portrait": "person",
+              "clue": "尚未找到线索",
+              "expanded": false,
+              "actionLabel": "走向灯塔",
+              "actionText": "我们沿着栈道走向灯塔。",
+              "gallery": ["shop"]
+            },
+            "ui": {
+              "status": true,
+              "history": false,
+              "gallery": false
+            },
+            "assets": {
+              "shop": {
+                "file": "bookshop.svg",
+                "kind": "image"
+              },
+              "harbor": {
+                "file": "harbor.svg",
+                "kind": "image"
+              },
+              "person": {
+                "file": "linlan.svg",
+                "kind": "image"
+              },
+              "music": {
+                "file": "harbor-theme.wav",
+                "kind": "audio"
+              }
+            },
+            "css": ".layout{position:relative;display:grid;grid-template-columns:1fr;min-height:720px;gap:12px;padding:16px}.scene{position:relative;height:320px}.background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.portrait{position:absolute;bottom:0;left:35%;height:95%;width:30%;object-fit:contain}.status{position:absolute;right:12px;bottom:12px;width:240px}.narration{background:#fff4eaeF;color:#30262a;padding:22px;font:20px/1.7 serif;min-height:100px}.expanded .narration{border-left:12px solid #de9e42}.controls{background:#bd768a}.history{height:280px;overflow:auto}.gallery{background:#1b2932}@media(max-width:700px){.scene{height:470px}.portrait{left:5%;width:65%;height:80%}.status{right:0;width:200px}} *{box-sizing:border-box}[hidden]{display:none!important}button{border:1px solid #607777;background:#17363b;color:#f5f5ec;padding:10px;border-radius:6px;cursor:pointer}button:disabled{opacity:.4;cursor:default}.controls,.actions{display:flex;gap:8px;flex-wrap:wrap}.status{padding:16px;background:#fffff1ed;color:#233e45;border-radius:10px;display:grid;gap:8px}progress{width:100%}.gallery img{max-width:210px;margin:8px;border-radius:8px}",
+            "tree": {
+              "id": "root",
+              "type": "box",
+              "class": "layout",
+              "classWhen": {
+                "expanded": {
+                  "op": "eq",
+                  "left": {
+                    "source": "view",
+                    "key": "expanded"
+                  },
+                  "right": {
+                    "source": "literal",
+                    "value": true
+                  }
+                }
+              },
+              "children": [
+                {
+                  "id": "scene",
+                  "type": "box",
+                  "class": "scene",
+                  "children": [
+                    {
+                      "id": "background",
+                      "type": "image",
+                      "value": {
+                        "source": "view",
+                        "key": "background"
+                      },
+                      "alt": "场景背景",
+                      "class": "background"
+                    },
+                    {
+                      "id": "portrait",
+                      "type": "image",
+                      "value": {
+                        "source": "view",
+                        "key": "portrait"
+                      },
+                      "alt": "岑宁",
+                      "class": "portrait"
+                    },
+                    {
+                      "id": "status",
+                      "type": "box",
+                      "class": "status",
+                      "when": {
+                        "op": "eq",
+                        "left": {
+                          "source": "ui",
+                          "key": "status"
+                        },
+                        "right": {
+                          "source": "literal",
+                          "value": true
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "location",
+                          "type": "text",
+                          "value": {
+                            "source": "view",
+                            "key": "location"
+                          }
+                        },
+                        {
+                          "id": "metric-label",
+                          "type": "text",
+                          "value": {
+                            "source": "literal",
+                            "value": "勇气"
+                          }
+                        },
+                        {
+                          "id": "metric-value",
+                          "type": "text",
+                          "value": {
+                            "source": "view",
+                            "key": "courage"
+                          }
+                        },
+                        {
+                          "id": "meter",
+                          "type": "meter",
+                          "value": {
+                            "source": "view",
+                            "key": "courage"
+                          },
+                          "min": 0,
+                          "max": 100
+                        },
+                        {
+                          "id": "clue",
+                          "type": "text",
+                          "value": {
+                            "source": "view",
+                            "key": "clue"
+                          }
+                        },
+                        {
+                          "id": "prev-state",
+                          "type": "button",
+                          "value": {
+                            "source": "literal",
+                            "value": "上一轮状态"
+                          },
+                          "action": "previous"
+                        },
+                        {
+                          "id": "latest-state",
+                          "type": "button",
+                          "value": {
+                            "source": "literal",
+                            "value": "当前状态"
+                          },
+                          "action": "latest"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "narration",
+                  "type": "text",
+                  "value": {
+                    "source": "read",
+                    "key": "text"
+                  },
+                  "class": "narration"
+                },
+                {
+                  "id": "controls",
+                  "type": "box",
+                  "class": "controls",
+                  "children": [
+                    {
+                      "id": "toggle-status",
+                      "type": "button",
+                      "value": {
+                        "source": "literal",
+                        "value": "状态"
+                      },
+                      "action": "status"
+                    },
+                    {
+                      "id": "toggle-history",
+                      "type": "button",
+                      "value": {
+                        "source": "literal",
+                        "value": "历史"
+                      },
+                      "action": "history"
+                    },
+                    {
+                      "id": "toggle-gallery",
+                      "type": "button",
+                      "value": {
+                        "source": "literal",
+                        "value": "画廊"
+                      },
+                      "action": "gallery"
+                    },
+                    {
+                      "id": "music",
+                      "type": "button",
+                      "value": {
+                        "source": "literal",
+                        "value": "音乐"
+                      },
+                      "action": "music"
+                    },
+                    {
+                      "id": "prev-text",
+                      "type": "button",
+                      "value": {
+                        "source": "literal",
+                        "value": "上一段"
+                      },
+                      "action": "prevText"
+                    },
+                    {
+                      "id": "next-text",
+                      "type": "button",
+                      "value": {
+                        "source": "literal",
+                        "value": "下一段"
+                      },
+                      "action": "nextText"
+                    },
+                    {
+                      "id": "auto",
+                      "type": "button",
+                      "value": {
+                        "source": "literal",
+                        "value": "自动阅读"
+                      },
+                      "action": "auto"
+                    },
+                    {
+                      "id": "last-text",
+                      "type": "button",
+                      "value": {
+                        "source": "literal",
+                        "value": "最新正文"
+                      },
+                      "action": "lastText"
+                    }
+                  ]
+                },
+                {
+                  "id": "actions",
+                  "type": "box",
+                  "class": "actions",
+                  "children": [
+                    {
+                      "id": "advance",
+                      "type": "button",
+                      "value": {
+                        "source": "current",
+                        "key": "actionLabel"
+                      },
+                      "action": "advance"
+                    },
+                    {
+                      "id": "fill",
+                      "type": "button",
+                      "value": {
+                        "source": "literal",
+                        "value": "继续倾听"
+                      },
+                      "action": "fill"
+                    },
+                    {
+                      "id": "unlocked",
+                      "type": "button",
+                      "value": {
+                        "source": "literal",
+                        "value": "查看线索"
+                      },
+                      "action": "unlocked",
+                      "when": {
+                        "op": "gte",
+                        "left": {
+                          "source": "current",
+                          "key": "courage"
+                        },
+                        "right": {
+                          "source": "literal",
+                          "value": 30
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "composer-slot",
+                  "type": "slot",
+                  "name": "composer"
+                },
+                {
+                  "id": "history-panel",
+                  "type": "box",
+                  "class": "history",
+                  "when": {
+                    "op": "eq",
+                    "left": {
+                      "source": "ui",
+                      "key": "history"
+                    },
+                    "right": {
+                      "source": "literal",
+                      "value": true
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "history-slot",
+                      "type": "slot",
+                      "name": "history"
+                    }
+                  ]
+                },
+                {
+                  "id": "gallery-panel",
+                  "type": "box",
+                  "class": "gallery",
+                  "when": {
+                    "op": "eq",
+                    "left": {
+                      "source": "ui",
+                      "key": "gallery"
+                    },
+                    "right": {
+                      "source": "literal",
+                      "value": true
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "gallery-list",
+                      "type": "repeat",
+                      "value": {
+                        "source": "view",
+                        "key": "gallery"
+                      },
+                      "children": [
+                        {
+                          "id": "gallery-image",
+                          "type": "image",
+                          "value": {
+                            "source": "item"
+                          },
+                          "alt": "场景画面"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "actions": {
+              "status": {
+                "type": "ui.toggle",
+                "target": "status"
+              },
+              "history": {
+                "type": "ui.toggle",
+                "target": "history"
+              },
+              "fill": {
+                "type": "chat.fill",
+                "text": {
+                  "source": "literal",
+                  "value": "我想听你继续说。"
+                }
+              },
+              "advance": {
+                "type": "chat.send",
+                "text": {
+                  "source": "current",
+                  "key": "actionText"
+                }
+              },
+              "unlocked": {
+                "type": "chat.fill",
+                "text": {
+                  "source": "literal",
+                  "value": "请展示刚发现的线索。"
+                },
+                "when": {
+                  "op": "gte",
+                  "left": {
+                    "source": "current",
+                    "key": "courage"
+                  },
+                  "right": {
+                    "source": "literal",
+                    "value": 30
+                  }
+                }
+              },
+              "previous": {
+                "type": "history.prev"
+              },
+              "latest": {
+                "type": "history.latest"
+              },
+              "prevText": {
+                "type": "reading.prev"
+              },
+              "nextText": {
+                "type": "reading.next"
+              },
+              "lastText": {
+                "type": "reading.latest"
+              },
+              "auto": {
+                "type": "reading.auto",
+                "intervalMs": 800
+              },
+              "music": {
+                "type": "audio.toggle",
+                "asset": "music"
+              },
+              "gallery": {
+                "type": "ui.toggle",
+                "target": "gallery"
+              }
+            },
+            "avatar": "person"
+          }
+        }
+      }
+    }
+  }
+]

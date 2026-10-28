@@ -1,0 +1,15 @@
+{
+  "defaultOpeningId": "alternate-1",
+  "entries": {
+    "first": {
+      "title": "作品介绍",
+      "summary": "轻音社成员介绍作品、音乐、变量机制与操作方式。",
+      "kind": "introduction"
+    },
+    "alternate-1": {
+      "title": "走廊初遇",
+      "summary": "旧教学楼的傍晚，顾声慢叫住了走廊里的你。",
+      "kind": "story"
+    }
+  }
+}

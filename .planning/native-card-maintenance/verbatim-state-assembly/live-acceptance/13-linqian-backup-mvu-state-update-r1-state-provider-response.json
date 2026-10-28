@@ -1,0 +1,6 @@
+{
+  "status": 400,
+  "contentType": "application/json",
+  "elapsedMs": 5135,
+  "text": "{\"error\":{\"message\":\"Provider returned error\",\"code\":400,\"metadata\":{\"raw\":\"{\\\"error\\\":{\\\"code\\\":\\\"400\\\",\\\"message\\\":\\\"stream error: rpc error: code = InvalidArgument desc = grammar does not compile: xgrammar StructuralTag compilation failed: [14:11:26] external/+http_archive+xgrammar/cpp/json_schema_converter.cc:6201: unsupported schema keyword: oneOf with overlapping or non-provably-disjoint branches\\\\n\\\",\\\"type\\\":\\\"invalid_request_error\\\"}}\\n\",\"provider_name\":\"ModelRun\",\"is_byok\":false,\"provider_error_code\":\"400\"}},\"user_id\":\"user_2eaKHkAWDCnviVoRJzVRt7gkThs\"}"
+}

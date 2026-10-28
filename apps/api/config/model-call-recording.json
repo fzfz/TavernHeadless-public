@@ -1,0 +1,6 @@
+{
+  "maxRetries": 2,
+  "baseDelayMs": 25,
+  "maxDelayMs": 1000,
+  "streamSaveIntervalMs": 250
+}

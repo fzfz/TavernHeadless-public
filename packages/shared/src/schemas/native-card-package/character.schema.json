@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "personality": {
+      "type": "string"
+    },
+    "scenario": {
+      "type": "string"
+    },
+    "exampleDialogue": {
+      "type": "string"
+    },
+    "systemPrompt": {
+      "type": "string"
+    },
+    "postHistoryInstructions": {
+      "type": "string"
+    },
+    "creatorNotes": {
+      "type": "string"
+    },
+    "creator": {
+      "type": "string"
+    },
+    "characterVersion": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nickname": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "worldbooks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "file": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "file",
+          "enabled"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "stateUpdate": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+    },
+    "promptController": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+    },
+    "regexProfiles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\u0000])[^/]+(?:\\/[^/]+)*$"
+      }
+    },
+    "extra": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {}
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "additionalProperties": false,
+  "$comment": "Generated from schema.ts by scripts/generate-native-card-schemas.ts."
+}

@@ -1,0 +1,4 @@
+{
+  "address": "http://127.0.0.1:56723",
+  "mode": "static-with-direct-cross-origin-api"
+}

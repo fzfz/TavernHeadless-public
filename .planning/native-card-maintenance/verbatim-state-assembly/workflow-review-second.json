@@ -1,0 +1,25 @@
+{
+  "standards": {
+    "agent": "/root/workflow_semantic_final",
+    "findings": [
+      {
+        "issue": "消费绑定缺少定义",
+        "resolution": "改为目标文件及读取这些文件的模块。"
+      },
+      {
+        "issue": "斜线表示字段位置或别名的说明晚于首次使用",
+        "resolution": "移至世界书文档首次字段表前。"
+      },
+      {
+        "issue": "begin 的脚本及参数用法重复",
+        "resolution": "入口只引用 begin；工具文档集中说明脚本和参数用法。"
+      }
+    ]
+  },
+  "spec": {
+    "agent": "/root/workflow_spec_final",
+    "findings": [],
+    "result": "未发现要求缺失、错误实现或范围扩大"
+  },
+  "newConversionTests": 0
+}

@@ -1,0 +1,81 @@
+{
+  "counts": {
+    "withEmbeddedWorldbook": 106,
+    "withRegex": 72,
+    "withAlternateGreetings": 66,
+    "withTavernHelperExtension": 81
+  },
+  "extensionKeys": {
+    "talkativeness": 115,
+    "fav": 115,
+    "world": 115,
+    "depth_prompt": 115,
+    "regex_scripts": 79,
+    "xiaobaix-tasks": 8,
+    "chub": 3,
+    "agnai": 1,
+    "tavern_helper": 81,
+    "piupiu_regex": 1,
+    "cm_manager": 3,
+    "anima_prompt_config": 1,
+    "anima_gc_prompts": 1,
+    "anima_rag_settings": 1,
+    "anima_beautify_template": 1,
+    "anima_bm25_settings": 1,
+    "huanhuan_card_id": 1,
+    "huanhuan_card_version": 1
+  },
+  "nonzeroTimedOrGroups": [
+    {
+      "id": "C030",
+      "name": "备胎女友1.1",
+      "fields": [
+        [101, "group", "角色_桐岛的妹妹_卷1"],
+        [114, "group", "角色_桐岛司郎"],
+        [15, "group", "角色_大道寺学长_卷1"],
+        [2, "group", "角色_滨波惠"],
+        [25, "group", "角色_福田充_卷1"],
+        [378, "group", "地点_橘光里家"],
+        [46, "group", "角色_酒井文"],
+        [764, "group", "章节剧情_第1章"],
+        [77, "group", "角色_柳瞬_卷1"],
+        [775, "group", "章节剧情_第6章_卷1"],
+        [792, "group", "章节剧情_第10章"],
+        [800, "group", "章节剧情_第14章"]
+      ]
+    },
+    {
+      "id": "C059",
+      "name": "日奈的秘密潜入",
+      "fields": [
+        [27, "delay", 1],
+        [28, "delay", 1],
+        [29, "delay", 1],
+        [31, "delay", 1],
+        [32, "delay", 1],
+        [35, "delay", 1],
+        [37, "delay", 1],
+        [39, "delay", 1],
+        [40, "delay", 1]
+      ]
+    },
+    {
+      "id": "C107",
+      "name": "郝叔和他的女人V1",
+      "fields": [
+        [0, "group", "主要人物: 郝江化"],
+        [2, "group", "主要人物:"],
+        [8, "group", "角色设定细节"],
+        [9, "group", "主要人物: 李萱诗"],
+        [10, "group", "主要人物: 左京"],
+        [11, "group", "背景人物"],
+        [12, "group", "地点设定"],
+        [13, "group", "主要人物: 李萱诗"],
+        [15, "group", "主要人物: 白颖"],
+        [16, "group", "主要人物: 白颖"],
+        [17, "group", "次要女性角色"],
+        [18, "group", "次要女性角色"]
+      ]
+    }
+  ]
+}

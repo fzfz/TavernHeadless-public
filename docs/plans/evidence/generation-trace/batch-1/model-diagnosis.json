@@ -1,0 +1,395 @@
+{
+  "date": "2026-09-25",
+  "scope": "Repeated identical single-turn Gushengman requests; raw transport comparison and deterministic replay",
+  "models": [
+    {
+      "model": "nex-agi/nex-n2.5-pro:free",
+      "status": "completed",
+      "samples": [
+        {
+          "label": "app-1",
+          "status": "succeeded",
+          "callId": "aj6rSbAhZaCPChDzkTDtQ",
+          "sessionId": "5ShAkTI9toY89ZYwxjxla",
+          "rawTextLength": 1031,
+          "publicTextLength": 874,
+          "gameOpen": true,
+          "gameClose": true,
+          "finish": ["stop", "stop"],
+          "recordedEqualsRaw": true
+        },
+        {
+          "label": "app-2",
+          "status": "succeeded",
+          "callId": "jF__ywZmZ3Rl3lgVlM1oG",
+          "sessionId": "6_jTTtiwPPYCL8gZ1Q4Gh",
+          "rawTextLength": 934,
+          "publicTextLength": 739,
+          "gameOpen": true,
+          "gameClose": true,
+          "finish": ["stop", "stop"],
+          "recordedEqualsRaw": true
+        },
+        {
+          "label": "app-3",
+          "status": "succeeded",
+          "callId": "F4PBtHFIoNpZEJotbS332",
+          "sessionId": "uzKuWzzdcGPkiLUG2usGw",
+          "rawTextLength": 842,
+          "publicTextLength": 716,
+          "gameOpen": true,
+          "gameClose": true,
+          "finish": ["stop", "stop"],
+          "recordedEqualsRaw": true
+        },
+        {
+          "label": "direct-1",
+          "status": 200,
+          "callId": null,
+          "sessionId": null,
+          "rawTextLength": 1141,
+          "publicTextLength": null,
+          "gameOpen": true,
+          "gameClose": true,
+          "finish": ["stop", "stop"],
+          "recordedEqualsRaw": null
+        },
+        {
+          "label": "direct-3",
+          "status": 200,
+          "callId": null,
+          "sessionId": null,
+          "rawTextLength": 784,
+          "publicTextLength": null,
+          "gameOpen": true,
+          "gameClose": true,
+          "finish": ["stop", "stop"],
+          "recordedEqualsRaw": null
+        }
+      ],
+      "transportFailures": [
+        {
+          "label": "direct-2",
+          "name": "TimeoutError",
+          "message": "The operation was aborted due to timeout"
+        }
+      ],
+      "replays": [
+        {
+          "source": "app-1",
+          "sessionId": "8UBSsWP-50sU78ivLouTL",
+          "callId": "72EL76sNBGT_k1Q3IhUrt",
+          "requestEqual": true,
+          "recordedEqual": true,
+          "publicEqual": true
+        },
+        {
+          "source": "app-2",
+          "sessionId": "uzQImwqWKuaEi87dhIQzn",
+          "callId": "f6G0Ysuq5dnIE_0Xf6kmN",
+          "requestEqual": true,
+          "recordedEqual": true,
+          "publicEqual": true
+        },
+        {
+          "source": "app-3",
+          "sessionId": "d_BUzL0xY4RwIeSLSU6tH",
+          "callId": "aDPGjeVDtaCTGpPec5naY",
+          "requestEqual": true,
+          "recordedEqual": true,
+          "publicEqual": true
+        }
+      ]
+    },
+    {
+      "model": "deepseek/deepseek-v4.1-flash",
+      "status": "completed",
+      "samples": [
+        {
+          "label": "app-1",
+          "status": "succeeded",
+          "callId": "CKKcoP8y4MGWtdNUaA_iu",
+          "sessionId": "wDX5CgiuueXXLyqrSS8OF",
+          "rawTextLength": 1022,
+          "publicTextLength": 813,
+          "gameOpen": true,
+          "gameClose": true,
+          "finish": ["stop", "stop"],
+          "recordedEqualsRaw": true
+        },
+        {
+          "label": "app-2",
+          "status": "succeeded",
+          "callId": "6j4eFJtoHzETbYW4GxZ4v",
+          "sessionId": "erd93WhOw5Xh_Gy__hLut",
+          "rawTextLength": 893,
+          "publicTextLength": 677,
+          "gameOpen": true,
+          "gameClose": true,
+          "finish": ["stop", "stop"],
+          "recordedEqualsRaw": true
+        },
+        {
+          "label": "app-3",
+          "status": "succeeded",
+          "callId": "uCqPz8gl6d57kiJD6aFfY",
+          "sessionId": "xU9QVPMVFgdmVUtQ9mhcu",
+          "rawTextLength": 1492,
+          "publicTextLength": 1400,
+          "gameOpen": true,
+          "gameClose": true,
+          "finish": ["stop", "stop"],
+          "recordedEqualsRaw": true
+        },
+        {
+          "label": "direct-1",
+          "status": 200,
+          "callId": null,
+          "sessionId": null,
+          "rawTextLength": 1126,
+          "publicTextLength": null,
+          "gameOpen": true,
+          "gameClose": true,
+          "finish": ["stop", "stop"],
+          "recordedEqualsRaw": null
+        },
+        {
+          "label": "direct-2",
+          "status": 200,
+          "callId": null,
+          "sessionId": null,
+          "rawTextLength": 1216,
+          "publicTextLength": null,
+          "gameOpen": true,
+          "gameClose": false,
+          "finish": ["stop", "stop"],
+          "recordedEqualsRaw": null
+        },
+        {
+          "label": "direct-3",
+          "status": 200,
+          "callId": null,
+          "sessionId": null,
+          "rawTextLength": 1883,
+          "publicTextLength": null,
+          "gameOpen": true,
+          "gameClose": true,
+          "finish": ["stop", "stop"],
+          "recordedEqualsRaw": null
+        }
+      ],
+      "transportFailures": [],
+      "replays": [
+        {
+          "source": "app-1",
+          "sessionId": "kwE20t4-EBF9Dljlay1D2",
+          "callId": "euBncemDf28JJZfodhbJU",
+          "requestEqual": true,
+          "recordedEqual": true,
+          "publicEqual": true
+        },
+        {
+          "source": "app-2",
+          "sessionId": "h33kfN8B8CykCBjsvkal1",
+          "callId": "ygvdEaAvvlgpevk7Rl4QT",
+          "requestEqual": true,
+          "recordedEqual": true,
+          "publicEqual": true
+        },
+        {
+          "source": "app-3",
+          "sessionId": "PFSbkkDZCRJXbMLZtRe4n",
+          "callId": "p3Fvnk26Fkp5eSNDWe-5j",
+          "requestEqual": true,
+          "recordedEqual": true,
+          "publicEqual": true
+        }
+      ]
+    }
+  ],
+  "budget": {
+    "limitUsd": 3,
+    "model": "deepseek/deepseek-v4.1-flash",
+    "provider": "dekallm",
+    "reportedCostUsd": 0.0042934617,
+    "reservedUsd": 0.10437336000000001,
+    "pricing": {
+      "prompt": "0.00000004",
+      "completion": "0.00000049",
+      "input_cache_read": "0.00000001",
+      "discount": 0
+    },
+    "calls": [
+      {
+        "number": 1,
+        "startedAt": "2026-09-25T06:47:39.076Z",
+        "reservedUsd": 0.01159704,
+        "inputTokenUpperBound": 44611,
+        "maxOutputTokens": 8192,
+        "status": "completed",
+        "httpStatus": 429,
+        "costUsd": null,
+        "providers": [],
+        "generationIds": []
+      },
+      {
+        "number": 2,
+        "startedAt": "2026-09-25T06:47:41.851Z",
+        "reservedUsd": 0.01159704,
+        "inputTokenUpperBound": 44611,
+        "maxOutputTokens": 8192,
+        "status": "completed",
+        "httpStatus": 200,
+        "costUsd": 0.0005954058,
+        "providers": ["DekaLLM"],
+        "generationIds": ["gen-1790318862-m40nIY9LFGvaD3YaYUmQ"]
+      },
+      {
+        "number": 3,
+        "startedAt": "2026-09-25T06:48:21.408Z",
+        "reservedUsd": 0.01159704,
+        "inputTokenUpperBound": 44611,
+        "maxOutputTokens": 8192,
+        "status": "completed",
+        "httpStatus": 200,
+        "costUsd": 0.0004432923,
+        "providers": ["DekaLLM"],
+        "generationIds": ["gen-1790318902-d2stWxuXLI01EPw0QvY3"]
+      },
+      {
+        "number": 4,
+        "startedAt": "2026-09-25T06:50:27.476Z",
+        "reservedUsd": 0.01159704,
+        "inputTokenUpperBound": 44611,
+        "maxOutputTokens": 8192,
+        "status": "completed",
+        "httpStatus": 200,
+        "costUsd": 0.00040788,
+        "providers": ["DekaLLM"],
+        "generationIds": ["gen-1790319028-zFWyv4drwrXGBj7LleRN"]
+      },
+      {
+        "number": 5,
+        "startedAt": "2026-09-25T06:51:04.765Z",
+        "reservedUsd": 0.01159704,
+        "inputTokenUpperBound": 44611,
+        "maxOutputTokens": 8192,
+        "status": "completed",
+        "httpStatus": 200,
+        "costUsd": 0.0003661614,
+        "providers": ["DekaLLM"],
+        "generationIds": ["gen-1790319065-qNkKccDBK8ecOFftFo1P"]
+      },
+      {
+        "number": 6,
+        "startedAt": "2026-09-25T06:51:43.435Z",
+        "reservedUsd": 0.01159704,
+        "inputTokenUpperBound": 44611,
+        "maxOutputTokens": 8192,
+        "status": "completed",
+        "httpStatus": 200,
+        "costUsd": 0.0005859117,
+        "providers": ["DekaLLM"],
+        "generationIds": ["gen-1790319103-zj7ibYXxFfJ1MCkfhRaC"]
+      },
+      {
+        "number": 7,
+        "startedAt": "2026-09-25T06:52:28.112Z",
+        "reservedUsd": 0.01159704,
+        "inputTokenUpperBound": 44611,
+        "maxOutputTokens": 8192,
+        "status": "completed",
+        "httpStatus": 200,
+        "costUsd": 0.000441837,
+        "providers": ["DekaLLM"],
+        "generationIds": ["gen-1790319149-ACoWnSWCevg0jPGGQK1e"]
+      },
+      {
+        "number": 8,
+        "startedAt": "2026-09-25T06:53:04.243Z",
+        "reservedUsd": 0.01159704,
+        "inputTokenUpperBound": 44611,
+        "maxOutputTokens": 8192,
+        "status": "completed",
+        "httpStatus": 200,
+        "costUsd": 0.0007530633,
+        "providers": ["DekaLLM"],
+        "generationIds": ["gen-1790319185-YHRV0vNBzOm7glHtHaua"]
+      },
+      {
+        "number": 9,
+        "startedAt": "2026-09-25T06:53:48.776Z",
+        "reservedUsd": 0.01159704,
+        "inputTokenUpperBound": 44611,
+        "maxOutputTokens": 8192,
+        "status": "completed",
+        "httpStatus": 200,
+        "costUsd": 0.0006999102,
+        "providers": ["DekaLLM"],
+        "generationIds": ["gen-1790319230-CF4WQv1mNuMyyPMAIp93"]
+      }
+    ]
+  },
+  "historicalRawComparison": [
+    {
+      "callId": "X-5Pwr2o992jyFtaCjQrT",
+      "sessionId": "CId3O02Bn4ze24kyZOEjz",
+      "floorId": "cg2r2h0ML7fDYN_MDmWe1",
+      "rawLength": 1764,
+      "recordedLength": 1764,
+      "rawContainsGameText": true,
+      "finishReasons": ["stop", "stop"]
+    },
+    {
+      "callId": "1Afy196IMm0PnqsN2pQ-N",
+      "sessionId": "CId3O02Bn4ze24kyZOEjz",
+      "floorId": "-_1QDq5fv5_Y7UVpr8vu_",
+      "rawLength": 975,
+      "recordedLength": 975,
+      "rawContainsGameText": false,
+      "finishReasons": ["stop", "stop"]
+    },
+    {
+      "callId": "me0NHf4uqE19fDfAZ6USc",
+      "sessionId": "EVrhU386SubosiY3LASJZ",
+      "floorId": "noLa3fRlAxcCICHBtHQn5",
+      "rawLength": 1851,
+      "recordedLength": 1851,
+      "rawContainsGameText": true,
+      "finishReasons": ["stop", "stop"]
+    },
+    {
+      "callId": "rcVntRcUMLLesiZWK0LJm",
+      "sessionId": "EVrhU386SubosiY3LASJZ",
+      "floorId": "vjdCIUUyZ0t75Vu26UmNz",
+      "rawLength": 2505,
+      "recordedLength": 2505,
+      "rawContainsGameText": true,
+      "finishReasons": ["stop", "stop"]
+    },
+    {
+      "callId": "0ILd2R4IonmA7Si5ur9Ge",
+      "sessionId": "CId3O02Bn4ze24kyZOEjz",
+      "floorId": "gUQmUZWnTKlttr4HxvPQg",
+      "rawLength": 2772,
+      "recordedLength": 2772,
+      "rawContainsGameText": true,
+      "finishReasons": ["stop", "stop"]
+    },
+    {
+      "callId": "_bFSmsducHHDlNA1Gl7eu",
+      "sessionId": "EVrhU386SubosiY3LASJZ",
+      "floorId": "nHg3ryygvt_Vfi0pV2e1O",
+      "rawLength": 2530,
+      "recordedLength": 2530,
+      "rawContainsGameText": true,
+      "finishReasons": ["stop", "stop"]
+    }
+  ],
+  "historicalDuplication": {
+    "rawBodiesEqual": false,
+    "rawGameSectionsEqual": true,
+    "publicBodiesEqual": true,
+    "explanation": "The original provider game sections are already identical; application post-processing is not the source of this duplicate game text."
+  }
+}

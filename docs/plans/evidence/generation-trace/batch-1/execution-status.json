@@ -1,0 +1,292 @@
+{
+  "baselineCommit": "80865e3",
+  "sourceWorktree": "/srv/tavern/TavernHeadless-role-app-prototype",
+  "implementationBranch": "codex/generation-trace-batch-1",
+  "status": "free_neutral_semantic_samples_completed_continuity_findings_original_role_acceptance_pending",
+  "items": {
+    "M1": {
+      "status": "implemented",
+      "evidence": [
+        "shared schema files copied; validator generator runs; 7 policy tests pass; shared package compiles"
+      ]
+    },
+    "M2": {
+      "status": "implemented",
+      "evidence": [
+        "release contract and model parameter schema moved to shared; role_release migration registered; standard app routes connected; 8 route tests and 7 service tests passed; role-view initialization pending",
+        "standard session creation now initializes display snapshots; 8 release route tests passed",
+        "Release-created sessions now pin generation slot enablement and clear global model/preset/parameter overrides. A red-green regression test plus twelve release route tests and two full-fixture tests pass."
+      ]
+    },
+    "M3": {
+      "status": "implemented",
+      "evidence": [
+        "filesystem-backed bundle and file index migration, service and standard routes implemented; 4 service tests and 1 standard API restart test passed; fixture import and release completeness validation pending",
+        "Publication checks required file metadata, purposes and physical files; 7 asset service tests and 8 release route tests passed.",
+        "Missing/malformed manifest errors retain file identity and cause; 8 asset service tests passed.",
+        "Complete Linqian and Gushengman runtime file sets imported through standard API, validated for publication and reopened after database/application restart. Gushengman manifest references 128460249 raw bytes; configured JSON upload limit raised to 268435456 bytes. Large base64 stack overflow reproduced and fixed; 15 format/large-file schema tests passed."
+      ]
+    },
+    "M4": {
+      "status": "implemented",
+      "evidence": [
+        "typed state contract, proposal engine and fixed-version module loader implemented; 11 state proposal/controller tests passed; display snapshots and recorded state updater pending",
+        "display snapshots commit atomically with variables; recorded state updater and formal view routes integrated; 7 provider/state failure tests, 3 snapshot tests, 1 standard API restart test passed; state contract route and SDK added, further integration pending",
+        "State-update fixed binding generation parameters were omitted from provider request; regression test reproduced failure and implementation now passes all eight state-update tests.",
+        "Prompt controller compiled output migrated to a versioned server script with relative module loading, shared configuration schema and injected loader in standard prompt assembly. Twenty-three adapter/controller/full-fixture tests and two loader tests pass; final compiled real-flow verification still pending."
+      ]
+    },
+    "M5": {
+      "status": "implemented",
+      "evidence": [
+        "Typed regex, preset output, MVU controller/agent and opening adapters migrated with shared schemas; 11 adapter tests passed; formal importer awaits YAML dependency authorization.",
+        "User approved yaml@2.9.1; exact API dependency, targeted lock entry and isolated worktree installation completed with scripts disabled. RoleImportService now parses YAML and prepares all source openings; standard /import/character and SDK accept role_migration. 12 YAML/preparation tests and 4 standard API integration tests passed, including both full role fixtures, parse failure with no character write, session-creation restriction and non-admin denial.",
+        "Both fixtures now pass standard character import with YAML/MVU/opening migration, preset and regex imports, release publication, formal session initialization and role-view retrieval after restart. These tests use fixture model profiles and do not send provider requests.",
+        "Gushengman variable macro mapping added to reviewed MVU configuration; red-green restart test confirms old macro removal.",
+        "After restart, formal respond/dry-run expands Gushengman current-state JSON to exactly the restored initial.variables; both full-fixture tests pass. Independent spec reviewer approved the macro mapping and assertion."
+      ]
+    },
+    "M6": {
+      "status": "implemented",
+      "evidence": [
+        "TypeScript runtime and session controller migrated; 9 runtime tests and 2 recovery tests passed; lifecycle releases visibility listeners and blocks script mount after page disposal."
+      ]
+    },
+    "M7": {
+      "status": "implemented",
+      "evidence": [
+        "modelCalls SDK resource added; 3 contract tests passed; other resources and user pages pending",
+        "Release and role runtime SDK resources implemented; 6 resource contract tests and 5 projected SSE/reader cleanup tests passed; 5 user transport tests passed; shared Vue ChatSession component added, application navigation pending.",
+        "Formal Vue user entry now loads runtime configuration, published roles/openings, session history and shared ChatSession. SDK draft/preview APIs and transport asset origins connected. Five bootstrap tests and six transport tests pass; user production build passes. Formal identity remains deferred."
+      ]
+    },
+    "M8": {
+      "status": "implemented",
+      "evidence": [
+        "Management /role-apps page saves versioned bindings, lists/continues draft previews, exchanges scoped handoffs into user Web and explicitly publishes saved revisions. Management production build passes; new and revised UI text independently reviewed."
+      ]
+    },
+    "M9": {
+      "status": "implemented",
+      "evidence": [
+        "Admin timeline generation-details dialog uses SDK saved-call query with run/attempt filters, pagination, raw requests/responses, status, result and identity fields; 5 view-model tests passed; screenshot and real-call acceptance pending.",
+        "Admin production build passed after building workspace dependencies; shared UI labels passed independent semantic review.",
+        "Added reopenable /generation-detail URL with session/branch/floor/run/page/call coordinates; validates floor, page and selected call ownership before display. 11 location tests plus 5 history view-model tests passed.",
+        "Generation detail now returns to the original session; preview returns mint a new single-use handoff. Four return-route tests and independent copy review pass."
+      ]
+    },
+    "M10": {
+      "status": "implemented",
+      "evidence": [
+        "both complete prototype fixture directories copied; formal import pending",
+        "Compiled standard API imported both full fixtures into isolated persistent acceptance data: Linqian 12 files and Gushengman 155 files; drafts and immutable releases created. scripts/prepare-role-acceptance.mjs and scripts/run-role-acceptance.mjs prepared. Service startup approval pending.",
+        "Corrected Linqian import now includes prompt-controllers.js and the reviewed controller/macro configuration from prompt-bundle.json. New version has 13 files; Gushengman has 156. Three focused files, 17 tests pass. Raw EJS and unconverted variable macros are absent from the new actual Linqian request."
+      ]
+    },
+    "M11": {
+      "status": "acceptance_incomplete",
+      "evidence": [
+        "Full suite: 470 files, 4172 tests; initial 22 failures in 3 files. Those files were repaired and targeted checks passed.",
+        "Production builds for API, admin Web and user Web pass; root typecheck and SDK generation consistency pass. ESLint has zero errors and four existing warnings.",
+        "Browser verified complete publication checks, scoped preview exchange and refresh, generation detail classifications, return to original floor, cross-session URL cleanup, formal/preview history isolation, desktop/mobile role layouts and Gushengman choices.",
+        "Restored original database and files into a dist-only package and another data root; all four session histories and state snapshots reopened. Real continuation evidence includes provider failures, truncation and empty narration; semantic acceptance is still in progress for corrected resource versions.",
+        "Corrected four-session data copied to another data root under a dist-only deployment: role-view, floor messages and stored calls readable; both Web entry points returned HTTP 200. Continuous real-model acceptance remains incomplete.",
+        "User requested another free model. Nine candidates were probed, all with zero input/output pricing. Current model pair is confirmed in actual requests. New flow evidence is free-model-flow-evidence.json; semantic acceptance remains incomplete.",
+        "Four synthetic formal/preview flows each completed two turns and a third after application restart. Twelve dry-runs and twenty-four recorded calls passed; copying database/assets to another data root preserved all messages, snapshots and calls. See offline-acceptance.json; real-model semantic acceptance remains pending."
+      ]
+    },
+    "N1": {
+      "status": "implemented",
+      "evidence": [
+        "independent call table and migration, record persistence/retry, admin history routes, shared JSON schemas implemented; 11 service tests passed; output and final turn outcome linkage added"
+      ]
+    },
+    "N2": {
+      "status": "implemented",
+      "evidence": [
+        "actual provider transport plus awaited middleware integrated with narrator pipeline; prepared/result/outcome failures tested via standard API; core recording tests 15 passed; variable model integration pending",
+        "state-update calls now use actual provider recording and retain independent result/turn outcome through retries",
+        "HTTP and SSE propagate save stage, actual call/run/floor identity and complete error causes; turn-outcome failures no longer mislabel run ID as call ID. Core diagnostic tests 3 passed, recorder service tests 11 passed; recording-fetch, SDK SSE and standard API integration tests 16 passed.",
+        "Real provider returned HTTP 200 with finish_reason=error. Transport now saves partial parsed output as failed and propagates the provider failure. HTTP and SSE tests prevent committing the failed floor; combined provider and final evidence-save failure retains both causes."
+      ]
+    },
+    "N3": {
+      "status": "implemented",
+      "evidence": [
+        "Single-use short-lived handoff and scoped preview credentials use standard auth and persisted tables. Six auth integration tests plus eleven release/draft route tests pass. Tokens are excluded from formal session context; popup and refresh flows implemented; browser acceptance pending.",
+        "Real preview generation exposed an invalid client actor classification. Preview now delegates project access from its creator while preserving user role and strict per-session route/resource scope. Seven preview auth tests pass, including project membership and foreign-session denial."
+      ]
+    },
+    "N4": {
+      "status": "implemented",
+      "evidence": [
+        "Independent user Web production entry implemented and built. Shared chat controller/runtime used for formal and preview sessions. Browser/mobile acceptance pending."
+      ]
+    },
+    "N5": {
+      "status": "implemented",
+      "evidence": [
+        "storage configuration and startup checks, versioned file store implemented; 12 file store tests passed previously; standard API filesystem restart test passed; recovery collection acceptance pending"
+      ]
+    }
+  },
+  "pendingDecisions": [
+    "formal user identity scheme deferred by user"
+  ],
+  "checks": [
+    {
+      "command": "node node_modules/vitest/vitest.mjs run packages/shared/src/__tests__/role-runtime.test.ts --reporter=dot",
+      "result": "red: generated validator not yet available"
+    },
+    {
+      "command": "node node_modules/vitest/vitest.mjs run apps/api/src/__tests__/storage-config.test.ts apps/api/src/__tests__/config.test.ts --reporter=dot",
+      "result": "65 tests passed"
+    },
+    {
+      "command": "npm audit --prefix .tmp/validator-dependencies --registry=https://registry.npmjs.org --json",
+      "result": "0 vulnerabilities; dependency-audit.json"
+    },
+    {
+      "command": "pnpm exec vitest run apps/api/test/model-calls.integration.test.ts packages/core/src/llm/__tests__/recording-fetch.test.ts --reporter=dot",
+      "result": "10 tests passed; includes response and output-link persistence failures"
+    },
+    {
+      "command": "pnpm exec vitest run apps/api/src/routes/__tests__/role-releases.test.ts apps/api/test/role-assets.integration.test.ts --reporter=dot",
+      "result": "9 tests passed via standard application"
+    },
+    {
+      "command": "pnpm exec vitest run apps/user-web/src packages/official-integration-kit/sdk/src/__tests__/role-stream.test.ts packages/official-integration-kit/sdk/src/__tests__/role-runtime.test.ts --reporter=dot",
+      "result": "27 tests passed"
+    },
+    {
+      "command": "pnpm exec vitest run apps/web/src/composables/useModelCallHistory.test.ts packages/official-integration-kit/client-helpers/src/stream/role-text.test.ts --reporter=dot",
+      "result": "6 tests passed"
+    },
+    {
+      "command": "pnpm --filter @tavern/api typecheck; pnpm --filter @tavern/web typecheck; pnpm --filter @tavern/user-web typecheck",
+      "result": "Each command executed separately and passed; shared and SDK builds passed."
+    },
+    {
+      "command": "pnpm --filter @tavern/web build",
+      "result": "Passed after building shared, SDK and client-helpers and linking client-helpers to this worktree SDK. Existing Browserslist age and bundle-size warnings remain."
+    },
+    {
+      "command": "pnpm --filter @tavern/core build; pnpm --filter @tavern/api typecheck; pnpm --filter @tavern/sdk typecheck; pnpm --filter @tavern/user-web typecheck",
+      "result": "Each command executed separately and passed after rebuilding changed shared/core declarations."
+    },
+    {
+      "command": "npm audit --prefix .tmp/yaml-dependencies --registry=https://registry.npmjs.org --json",
+      "result": "0 vulnerabilities; yaml-installation-audit.json"
+    },
+    {
+      "command": "pnpm exec vitest run packages/official-integration-kit/sdk/src/__tests__/role-runtime.test.ts --reporter=dot",
+      "result": "7 tests passed, including role migration request validation."
+    },
+    {
+      "command": "pnpm exec vitest run apps/api/test/character-import.integration.test.ts --reporter=dot",
+      "result": "7 existing character import regression tests passed."
+    },
+    {
+      "command": "pnpm exec vitest run packages/shared/src/__tests__/role-assets.test.ts apps/api/test/role-import.integration.test.ts --reporter=dot",
+      "result": "15 base64 and 4 role import tests passed in combined run; full fixture test initially failed on test MIME mapping, then corrected and rerun separately."
+    },
+    {
+      "command": "pnpm exec vitest run apps/api/test/role-fixture-assets.integration.test.ts apps/api/src/__tests__/storage-config.test.ts apps/api/src/services/role-runtime/__tests__/role-asset-service.test.ts --reporter=dot",
+      "result": "14 tests passed; full runtime assets persist across restart."
+    },
+    {
+      "command": "pnpm exec vitest run apps/api/test/role-fixture-assets.integration.test.ts --reporter=dot",
+      "result": "2 expanded tests passed including preset/regex import, release publication, session initialization and identical role-view after restart."
+    },
+    {
+      "command": "pnpm --filter @tavern/shared build; pnpm --filter @tavern/api typecheck",
+      "result": "Commands executed separately and passed after YAML integration and base64 schema changes."
+    },
+    {
+      "command": "node scripts/prepare-role-acceptance.mjs .tmp/batch-1-acceptance/config.json",
+      "result": "Passed. Both complete fixture sets imported and published with compiled standard API."
+    },
+    {
+      "command": "pnpm exec vitest run apps/api/test/role-preview.integration.test.ts apps/api/src/routes/__tests__/role-releases.test.ts packages/official-integration-kit/sdk/src/__tests__/role-apps.test.ts apps/user-web/src/lib/bootstrap.test.ts --reporter=dot",
+      "result": "25 tests passed."
+    },
+    {
+      "command": "pnpm exec vitest run apps/api/src/__tests__/config.test.ts --reporter=dot",
+      "result": "65 tests pass after forwarding OPENAI_API_MODE to profile-based generation."
+    },
+    {
+      "command": "pnpm exec vitest run apps/api/test/role-import.integration.test.ts apps/api/test/role-fixture-assets.integration.test.ts apps/api/src/services/__tests__/role-prompt-controller.test.ts --reporter=dot",
+      "result": "17 tests passed"
+    },
+    {
+      "command": "pnpm exec vitest run packages/core/src/llm/__tests__/recording-fetch.test.ts apps/api/test/model-calls.integration.test.ts --reporter=dot",
+      "result": "13 tests passed; subsequent combined provider/persistence failure test added and recording-fetch file rerun: 6 passed"
+    },
+    {
+      "command": "pnpm exec vitest run apps/api/test/role-fixture-assets.integration.test.ts packages/adapters-sillytavern/src/role-migrations/__tests__/role-migrations.test.ts",
+      "result": "13 passed; subsequent expanded final-prompt comparison rerun: 2 passed."
+    },
+    {
+      "command": "pnpm typecheck; pnpm sdk:check; pnpm lint; targeted markdownlint-cli2 (executed separately)",
+      "result": "All passed; ESLint has zero errors and four existing warnings. Five changed Markdown files pass. API typecheck rerun after final test change passed."
+    },
+    {
+      "command": "targeted prompt assembly/model call/dry-run/full-fixture regressions; API and admin build; lint",
+      "result": "83 tests in 4 files passed; builds and lint passed."
+    }
+  ],
+  "services": {
+    "apiPort": 43980,
+    "adminPort": 43981,
+    "userPort": 43982,
+    "status": "stopped",
+    "verifiedPortsClosed": true
+  },
+  "currentLimitations": [
+    "Four-flow offline acceptance passed with fixed synthetic responses; real-model narrative and state semantics after the prompt-input regex fix remain pending.",
+    "Formal user identity remains deferred by user decision.",
+    "MCP runtime was disabled in the acceptance environment; no runtime acceptance claim."
+  ],
+  "semanticReview": {
+    "artifact": "acceptance-record.md",
+    "reviewer": "acceptance_record_semantic_review",
+    "result": "passed",
+    "items": 10
+  },
+  "currentModelBindings": {
+    "narrator": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "state_update": "nex-agi/nex-n2.5-mini:free"
+  },
+  "authorizationUpdate": "User authorized deepseek/deepseek-v4.1-flash only via dekallm, total budget USD 3; diagnostic requests enforce provider.only, disable fallback, cap per-token prices and reserve each call before transmission.",
+  "modelDiagnosis": {
+    "evidence": "model-diagnosis.json",
+    "report": "model-diagnosis.md",
+    "reportedCostUsd": 0.0042934617,
+    "productionBindingsChanged": false
+  },
+  "offlineAcceptance": {
+    "evidence": "offline-acceptance.json",
+    "report": "offline-acceptance.md",
+    "externalModelRequests": 0,
+    "syntheticRecordedCalls": 24,
+    "dryRuns": 12
+  },
+  "fullRegression": {
+    "command": "pnpm exec vitest run --reporter=dot",
+    "passedFiles": 472,
+    "passedTests": 4200,
+    "durationSeconds": 191.73,
+    "result": "passed"
+  },
+  "freeSemanticAcceptance": {
+    "report": "free-semantic-acceptance.md",
+    "evidence": "free-semantic-acceptance.json",
+    "model": "nex-agi/nex-n2.5-pro:free",
+    "realRequests": 15,
+    "completed": 13,
+    "timeouts": 2,
+    "offlineReplays": 6,
+    "scope": "neutral ordinary-session fixture; original releases/previews and independent state updater remain pending",
+    "result": "continuity_findings"
+  }
+}

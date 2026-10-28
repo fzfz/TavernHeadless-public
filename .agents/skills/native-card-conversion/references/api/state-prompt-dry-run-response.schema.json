@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "additionalProperties": false,
+      "properties": {
+        "assembly": {
+          "additionalProperties": {},
+          "type": "object"
+        },
+        "before": {
+          "additionalProperties": {},
+          "type": "object"
+        },
+        "messages": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "content": {
+                "type": "string"
+              },
+              "role": {
+                "enum": [
+                  "system",
+                  "user",
+                  "assistant"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "role",
+              "content"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "outputSchema": {
+          "additionalProperties": {},
+          "type": "object"
+        },
+        "preset": {
+          "additionalProperties": false,
+          "properties": {
+            "presetId": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "presetVersionId": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "presetId",
+            "presetVersionId"
+          ],
+          "type": "object"
+        },
+        "previousSnapshotId": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "prompt_snapshot": {
+          "additionalProperties": {},
+          "type": "object"
+        },
+        "runtime_trace": {
+          "additionalProperties": {},
+          "type": "object"
+        },
+        "sourceIdentity": {
+          "additionalProperties": {},
+          "type": "object"
+        },
+        "sources": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "messageId": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "revision": {
+                "exclusiveMinimum": 0,
+                "type": "integer"
+              },
+              "role": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "messageId",
+              "revision",
+              "role",
+              "text"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "token_usage": {
+          "additionalProperties": true,
+          "properties": {
+            "availableForReply": {
+              "type": "number"
+            },
+            "total": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "total",
+            "availableForReply"
+          ],
+          "type": "object"
+        },
+        "variableHistory": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "after": {
+                "additionalProperties": {},
+                "type": "object"
+              },
+              "before": {
+                "additionalProperties": {},
+                "type": "object"
+              },
+              "changes": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "set",
+                        "remove"
+                      ],
+                      "type": "string"
+                    },
+                    "path": {
+                      "pattern": "^\\/",
+                      "type": "string"
+                    },
+                    "value": {}
+                  },
+                  "required": [
+                    "op",
+                    "path"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "floorId": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "floorNo": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "snapshotIds": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "floorId",
+              "floorNo",
+              "before",
+              "after",
+              "changes",
+              "snapshotIds"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "messages",
+        "preset",
+        "before",
+        "previousSnapshotId",
+        "sources",
+        "variableHistory",
+        "sourceIdentity",
+        "outputSchema",
+        "prompt_snapshot",
+        "assembly",
+        "runtime_trace",
+        "token_usage"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "data"
+  ],
+  "type": "object"
+}

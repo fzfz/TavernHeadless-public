@@ -1,0 +1,44 @@
+{
+  "passed": false,
+  "record": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-CuL1xq/validation-PZfcWs/result.json",
+  "issues": [
+    {
+      "code": "NATIVE_CARD_INITIAL_STATE_INVALID",
+      "path": "state/initial/first-meeting.json",
+      "pointer": "/stat_data/行动选项/1",
+      "message": "开场初始变量不符合角色状态定义，请按问题列表修正初始变量文件和字段后重试。",
+      "action": "开场初始变量不符合角色状态定义，请按问题列表修正初始变量文件和字段后重试。",
+      "expected": "pattern: must match pattern \"^[^\\r\\n|<>{}]+$\""
+    },
+    {
+      "code": "NATIVE_CARD_INITIAL_STATE_INVALID",
+      "path": "state/initial/first-meeting.json",
+      "pointer": "/stat_data/行动选项/2",
+      "message": "开场初始变量不符合角色状态定义，请按问题列表修正初始变量文件和字段后重试。",
+      "action": "开场初始变量不符合角色状态定义，请按问题列表修正初始变量文件和字段后重试。",
+      "expected": "pattern: must match pattern \"^[^\\r\\n|<>{}]+$\""
+    },
+    {
+      "code": "NATIVE_CARD_INITIAL_STATE_INVALID",
+      "path": "state/initial/studio-audio.json",
+      "pointer": "/stat_data/行动选项/1",
+      "message": "开场初始变量不符合角色状态定义，请按问题列表修正初始变量文件和字段后重试。",
+      "action": "开场初始变量不符合角色状态定义，请按问题列表修正初始变量文件和字段后重试。",
+      "expected": "pattern: must match pattern \"^[^\\r\\n|<>{}]+$\""
+    },
+    {
+      "code": "NATIVE_CARD_INITIAL_STATE_INVALID",
+      "path": "state/initial/studio-audio.json",
+      "pointer": "/stat_data/行动选项/2",
+      "message": "开场初始变量不符合角色状态定义，请按问题列表修正初始变量文件和字段后重试。",
+      "action": "开场初始变量不符合角色状态定义，请按问题列表修正初始变量文件和字段后重试。",
+      "expected": "pattern: must match pattern \"^[^\\r\\n|<>{}]+$\""
+    }
+  ],
+  "issueSummary": {
+    "totalCount": 4,
+    "displayedCount": 4,
+    "truncated": false,
+    "completeResult": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-CuL1xq/validation-PZfcWs/result.json"
+  }
+}

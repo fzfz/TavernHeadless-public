@@ -1,0 +1,6 @@
+{
+  "status": 400,
+  "contentType": "application/json",
+  "elapsedMs": 5341,
+  "text": "{\"error\":{\"message\":\"Reasoning is mandatory for this endpoint and cannot be disabled.\",\"code\":400,\"metadata\":{\"provider_name\":null}}}"
+}

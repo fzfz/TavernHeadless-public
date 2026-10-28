@@ -1,0 +1,3950 @@
+{
+  "userMessage": "“请给我两份药草，并计算三份药草的总价。”",
+  "requests": [
+    {
+      "model": "test-model",
+      "max_tokens": 3919,
+      "temperature": 0.7,
+      "messages": [
+        {
+          "role": "system",
+          "content": "作者必须使用第三人称叙述，台词中的我和你按照说话者和听话者解释。用户扮演裴修远，角色为林澄。\n\nThe user is 裴修远: 裴修远是二十八岁的男性药师，性格谨慎，正在向林澄询问药草的数量。\n\n林澄是药铺的店主。\n\n[Tool calling protocol]\n# Tool calling protocol\n\nTools are available through native function calling. Follow these rules:\n\n- Always invoke tools through the native function calling channel, never as text.\n- Do not output <tool_call>, <tool_result>, or <tool_response> blocks in your reply.\n- Do not describe, narrate, replay, or fabricate any tool call or tool result in the reply text.\n- When you need a tool, issue a structured tool call directly instead of writing about it.\n- When you need to answer, output only the user-facing reply text."
+        },
+        {
+          "role": "assistant",
+          "content": "林澄指着药柜，问裴修远：‘你想买几份药草？’"
+        },
+        {
+          "role": "user",
+          "content": "“请给我两份药草，并计算三份药草的总价。”"
+        }
+      ],
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "random",
+            "description": "Draw one or more samples from an integer range or candidate list.",
+            "parameters": {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "title": "random arguments",
+              "description": "Draw one or more samples from an integer range or candidate list.",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "const": "integer_range"
+                        },
+                        "min": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "max": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        }
+                      },
+                      "required": [
+                        "kind",
+                        "min",
+                        "max"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "distribution": {
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "const": "uniform"
+                        }
+                      },
+                      "required": [
+                        "kind"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "count": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 9007199254740991
+                    },
+                    "replacement": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "domain",
+                    "distribution",
+                    "count",
+                    "replacement"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "const": "choices"
+                        },
+                        "values": {
+                          "type": "array",
+                          "items": {
+                            "anyOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "boolean"
+                              },
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/definitions/jsonValue"
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "$ref": "#/definitions/jsonValue"
+                                }
+                              }
+                            ]
+                          },
+                          "minItems": 1
+                        }
+                      },
+                      "required": [
+                        "kind",
+                        "values"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "distribution": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "kind": {
+                              "const": "uniform"
+                            }
+                          },
+                          "required": [
+                            "kind"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "kind": {
+                              "const": "weighted"
+                            },
+                            "weights": {
+                              "type": "array",
+                              "items": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "minItems": 1
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "weights"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "count": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 9007199254740991
+                    },
+                    "replacement": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "domain",
+                    "distribution",
+                    "count",
+                    "replacement"
+                  ],
+                  "additionalProperties": false
+                }
+              ],
+              "type": "object",
+              "definitions": {
+                "jsonValue": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/jsonValue"
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/definitions/jsonValue"
+                      }
+                    }
+                  ]
+                },
+                "safeInteger": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991
+                },
+                "positiveSafeInteger": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "randomRange": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "integer_range"
+                    },
+                    "min": {
+                      "$ref": "#/definitions/safeInteger"
+                    },
+                    "max": {
+                      "$ref": "#/definitions/safeInteger"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "min",
+                    "max"
+                  ],
+                  "additionalProperties": false
+                },
+                "randomChoices": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "choices"
+                    },
+                    "values": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/jsonValue"
+                      },
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "values"
+                  ],
+                  "additionalProperties": false
+                },
+                "uniformDistribution": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "uniform"
+                    }
+                  },
+                  "required": [
+                    "kind"
+                  ],
+                  "additionalProperties": false
+                },
+                "weightedDistribution": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "weighted"
+                    },
+                    "weights": {
+                      "type": "array",
+                      "items": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "weights"
+                  ],
+                  "additionalProperties": false
+                },
+                "randomArguments": {
+                  "title": "random arguments",
+                  "description": "Draw one or more samples from an integer range or candidate list.",
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "$ref": "#/definitions/randomRange"
+                        },
+                        "distribution": {
+                          "$ref": "#/definitions/uniformDistribution"
+                        },
+                        "count": {
+                          "$ref": "#/definitions/positiveSafeInteger"
+                        },
+                        "replacement": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "domain",
+                        "distribution",
+                        "count",
+                        "replacement"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "$ref": "#/definitions/randomChoices"
+                        },
+                        "distribution": {
+                          "oneOf": [
+                            {
+                              "$ref": "#/definitions/uniformDistribution"
+                            },
+                            {
+                              "$ref": "#/definitions/weightedDistribution"
+                            }
+                          ]
+                        },
+                        "count": {
+                          "$ref": "#/definitions/positiveSafeInteger"
+                        },
+                        "replacement": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "domain",
+                        "distribution",
+                        "count",
+                        "replacement"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "variadicNumericOperation": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "add",
+                        "mul",
+                        "min",
+                        "max"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 2
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "binaryNumericOperation": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "sub",
+                        "div"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "unaryNumericOperation": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "floor",
+                        "ceil",
+                        "trunc"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 1,
+                      "maxItems": 1
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "numericExpression": {
+                  "oneOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "$ref": "#/definitions/variadicNumericOperation"
+                    },
+                    {
+                      "$ref": "#/definitions/binaryNumericOperation"
+                    },
+                    {
+                      "$ref": "#/definitions/unaryNumericOperation"
+                    }
+                  ]
+                },
+                "comparisonExpression": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "eq",
+                        "ne",
+                        "lt",
+                        "lte",
+                        "gt",
+                        "gte"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "calculateArguments": {
+                  "title": "calculate arguments",
+                  "description": "Evaluate a finite number or a bounded tree of arithmetic and comparison operations.",
+                  "type": "object",
+                  "properties": {
+                    "expression": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/definitions/numericExpression"
+                        },
+                        {
+                          "$ref": "#/definitions/comparisonExpression"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "expression"
+                  ],
+                  "additionalProperties": false
+                },
+                "randomData": {
+                  "type": "object",
+                  "properties": {
+                    "samples": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/jsonValue"
+                      },
+                      "minItems": 1
+                    },
+                    "indices": {
+                      "oneOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "minItems": 1
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "samples",
+                    "indices"
+                  ],
+                  "additionalProperties": false
+                },
+                "calculateData": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "const": "number"
+                        },
+                        "value": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "const": "boolean"
+                        },
+                        "value": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "randomResult": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "const": true
+                    },
+                    "data": {
+                      "$ref": "#/definitions/randomData"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "calculateResult": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "const": true
+                    },
+                    "data": {
+                      "$ref": "#/definitions/calculateData"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "capabilityErrorCode": {
+                  "type": "string",
+                  "enum": [
+                    "INVALID_ARGUMENT",
+                    "INVALID_RANGE",
+                    "INVALID_WEIGHTS",
+                    "INSUFFICIENT_POPULATION",
+                    "LIMIT_EXCEEDED",
+                    "DIVISION_BY_ZERO",
+                    "NUMERIC_OVERFLOW",
+                    "CAPABILITY_DENIED",
+                    "EXECUTION_FAILED"
+                  ]
+                },
+                "errorResult": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "const": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "$ref": "#/definitions/capabilityErrorCode"
+                        },
+                        "message": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "additionalProperties": false
+                },
+                "result": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/randomResult"
+                    },
+                    {
+                      "$ref": "#/definitions/calculateResult"
+                    },
+                    {
+                      "$ref": "#/definitions/errorResult"
+                    }
+                  ]
+                },
+                "invocation": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "toolName": {
+                          "const": "random"
+                        },
+                        "arguments": {
+                          "$ref": "#/definitions/randomArguments"
+                        }
+                      },
+                      "required": [
+                        "toolName",
+                        "arguments"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "toolName": {
+                          "const": "calculate"
+                        },
+                        "arguments": {
+                          "$ref": "#/definitions/calculateArguments"
+                        }
+                      },
+                      "required": [
+                        "toolName",
+                        "arguments"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "capabilityName": {
+                  "type": "string",
+                  "enum": [
+                    "random",
+                    "calculate"
+                  ]
+                },
+                "transport": {
+                  "type": "string",
+                  "enum": [
+                    "native_function_call",
+                    "text_protocol"
+                  ]
+                },
+                "capabilityNames": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/capabilityName"
+                  },
+                  "uniqueItems": true
+                },
+                "positiveCapabilityLimit": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "resultByteLimit": {
+                  "type": "integer",
+                  "minimum": 1024,
+                  "maximum": 9007199254740991
+                },
+                "capabilityLimits": {
+                  "type": "object",
+                  "properties": {
+                    "maxResultBytes": {
+                      "$ref": "#/definitions/resultByteLimit"
+                    },
+                    "minResultBytes": {
+                      "$ref": "#/definitions/resultByteLimit"
+                    }
+                  },
+                  "propertyNames": {
+                    "enum": [
+                      "maxCallsPerTurn",
+                      "maxStepsPerGeneration",
+                      "maxRandomSamples",
+                      "maxRandomCandidates",
+                      "maxCalculateNodes",
+                      "maxCalculateDepth",
+                      "maxCandidateDepth",
+                      "maxInputBytes",
+                      "maxResultBytes",
+                      "minResultBytes"
+                    ]
+                  },
+                  "additionalProperties": {
+                    "$ref": "#/definitions/positiveCapabilityLimit"
+                  }
+                },
+                "roleLimits": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/capabilityLimits"
+                    },
+                    {
+                      "not": {
+                        "type": "object",
+                        "properties": {
+                          "minResultBytes": {
+                            "$ref": "#/definitions/resultByteLimit"
+                          }
+                        },
+                        "required": [
+                          "minResultBytes"
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "capabilityGrant": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "allowed": {
+                      "$ref": "#/definitions/capabilityNames"
+                    },
+                    "slot": {
+                      "const": "narrator"
+                    },
+                    "transport": {
+                      "$ref": "#/definitions/transport"
+                    },
+                    "limits": {
+                      "$ref": "#/definitions/roleLimits"
+                    }
+                  },
+                  "required": [
+                    "enabled",
+                    "allowed",
+                    "slot",
+                    "transport"
+                  ],
+                  "additionalProperties": false
+                },
+                "systemCapabilityLimits": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/capabilityLimits"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "maxCallsPerTurn": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxStepsPerGeneration": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxRandomSamples": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxRandomCandidates": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxCalculateNodes": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxCalculateDepth": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxCandidateDepth": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxInputBytes": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxResultBytes": {
+                          "$ref": "#/definitions/resultByteLimit"
+                        },
+                        "minResultBytes": {
+                          "$ref": "#/definitions/resultByteLimit"
+                        }
+                      },
+                      "required": [
+                        "maxCallsPerTurn",
+                        "maxStepsPerGeneration",
+                        "maxRandomSamples",
+                        "maxRandomCandidates",
+                        "maxCalculateNodes",
+                        "maxCalculateDepth",
+                        "maxCandidateDepth",
+                        "maxInputBytes",
+                        "maxResultBytes",
+                        "minResultBytes"
+                      ]
+                    }
+                  ]
+                },
+                "capabilityErrorMessages": {
+                  "type": "object",
+                  "properties": {
+                    "INVALID_ARGUMENT": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "INVALID_RANGE": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "INVALID_WEIGHTS": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "INSUFFICIENT_POPULATION": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "LIMIT_EXCEEDED": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "DIVISION_BY_ZERO": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "NUMERIC_OVERFLOW": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "CAPABILITY_DENIED": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "EXECUTION_FAILED": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    }
+                  },
+                  "required": [
+                    "INVALID_ARGUMENT",
+                    "INVALID_RANGE",
+                    "INVALID_WEIGHTS",
+                    "INSUFFICIENT_POPULATION",
+                    "LIMIT_EXCEEDED",
+                    "DIVISION_BY_ZERO",
+                    "NUMERIC_OVERFLOW",
+                    "CAPABILITY_DENIED",
+                    "EXECUTION_FAILED"
+                  ],
+                  "additionalProperties": false
+                },
+                "systemCapabilityConfig": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "allowed": {
+                      "$ref": "#/definitions/capabilityNames"
+                    },
+                    "transports": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/transport"
+                      },
+                      "minItems": 1,
+                      "uniqueItems": true
+                    },
+                    "slot": {
+                      "const": "narrator"
+                    },
+                    "limits": {
+                      "$ref": "#/definitions/systemCapabilityLimits"
+                    },
+                    "messages": {
+                      "$ref": "#/definitions/capabilityErrorMessages"
+                    }
+                  },
+                  "required": [
+                    "enabled",
+                    "allowed",
+                    "transports",
+                    "slot",
+                    "limits",
+                    "messages"
+                  ],
+                  "additionalProperties": false
+                },
+                "capabilityProviderId": {
+                  "const": "system:role-model-capabilities"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "calculate",
+            "description": "Evaluate a finite number or a bounded tree of arithmetic and comparison operations.",
+            "parameters": {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "title": "calculate arguments",
+              "description": "Evaluate a finite number or a bounded tree of arithmetic and comparison operations.",
+              "type": "object",
+              "properties": {
+                "expression": {
+                  "oneOf": [
+                    {
+                      "oneOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "op": {
+                              "enum": [
+                                "add",
+                                "mul",
+                                "min",
+                                "max"
+                              ]
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/definitions/numericExpression"
+                              },
+                              "minItems": 2
+                            }
+                          },
+                          "required": [
+                            "op",
+                            "args"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "op": {
+                              "enum": [
+                                "sub",
+                                "div"
+                              ]
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/definitions/numericExpression"
+                              },
+                              "minItems": 2,
+                              "maxItems": 2
+                            }
+                          },
+                          "required": [
+                            "op",
+                            "args"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "op": {
+                              "enum": [
+                                "floor",
+                                "ceil",
+                                "trunc"
+                              ]
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/definitions/numericExpression"
+                              },
+                              "minItems": 1,
+                              "maxItems": 1
+                            }
+                          },
+                          "required": [
+                            "op",
+                            "args"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "enum": [
+                            "eq",
+                            "ne",
+                            "lt",
+                            "lte",
+                            "gt",
+                            "gte"
+                          ]
+                        },
+                        "args": {
+                          "type": "array",
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "op": {
+                                    "enum": [
+                                      "add",
+                                      "mul",
+                                      "min",
+                                      "max"
+                                    ]
+                                  },
+                                  "args": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/definitions/numericExpression"
+                                    },
+                                    "minItems": 2
+                                  }
+                                },
+                                "required": [
+                                  "op",
+                                  "args"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "op": {
+                                    "enum": [
+                                      "sub",
+                                      "div"
+                                    ]
+                                  },
+                                  "args": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/definitions/numericExpression"
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 2
+                                  }
+                                },
+                                "required": [
+                                  "op",
+                                  "args"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "op": {
+                                    "enum": [
+                                      "floor",
+                                      "ceil",
+                                      "trunc"
+                                    ]
+                                  },
+                                  "args": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/definitions/numericExpression"
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 1
+                                  }
+                                },
+                                "required": [
+                                  "op",
+                                  "args"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          },
+                          "minItems": 2,
+                          "maxItems": 2
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "args"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "expression"
+              ],
+              "additionalProperties": false,
+              "definitions": {
+                "jsonValue": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/jsonValue"
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/definitions/jsonValue"
+                      }
+                    }
+                  ]
+                },
+                "safeInteger": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991
+                },
+                "positiveSafeInteger": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "randomRange": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "integer_range"
+                    },
+                    "min": {
+                      "$ref": "#/definitions/safeInteger"
+                    },
+                    "max": {
+                      "$ref": "#/definitions/safeInteger"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "min",
+                    "max"
+                  ],
+                  "additionalProperties": false
+                },
+                "randomChoices": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "choices"
+                    },
+                    "values": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/jsonValue"
+                      },
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "values"
+                  ],
+                  "additionalProperties": false
+                },
+                "uniformDistribution": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "uniform"
+                    }
+                  },
+                  "required": [
+                    "kind"
+                  ],
+                  "additionalProperties": false
+                },
+                "weightedDistribution": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "weighted"
+                    },
+                    "weights": {
+                      "type": "array",
+                      "items": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "weights"
+                  ],
+                  "additionalProperties": false
+                },
+                "randomArguments": {
+                  "title": "random arguments",
+                  "description": "Draw one or more samples from an integer range or candidate list.",
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "$ref": "#/definitions/randomRange"
+                        },
+                        "distribution": {
+                          "$ref": "#/definitions/uniformDistribution"
+                        },
+                        "count": {
+                          "$ref": "#/definitions/positiveSafeInteger"
+                        },
+                        "replacement": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "domain",
+                        "distribution",
+                        "count",
+                        "replacement"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "$ref": "#/definitions/randomChoices"
+                        },
+                        "distribution": {
+                          "oneOf": [
+                            {
+                              "$ref": "#/definitions/uniformDistribution"
+                            },
+                            {
+                              "$ref": "#/definitions/weightedDistribution"
+                            }
+                          ]
+                        },
+                        "count": {
+                          "$ref": "#/definitions/positiveSafeInteger"
+                        },
+                        "replacement": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "domain",
+                        "distribution",
+                        "count",
+                        "replacement"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "variadicNumericOperation": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "add",
+                        "mul",
+                        "min",
+                        "max"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 2
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "binaryNumericOperation": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "sub",
+                        "div"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "unaryNumericOperation": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "floor",
+                        "ceil",
+                        "trunc"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 1,
+                      "maxItems": 1
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "numericExpression": {
+                  "oneOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "$ref": "#/definitions/variadicNumericOperation"
+                    },
+                    {
+                      "$ref": "#/definitions/binaryNumericOperation"
+                    },
+                    {
+                      "$ref": "#/definitions/unaryNumericOperation"
+                    }
+                  ]
+                },
+                "comparisonExpression": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "eq",
+                        "ne",
+                        "lt",
+                        "lte",
+                        "gt",
+                        "gte"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "calculateArguments": {
+                  "title": "calculate arguments",
+                  "description": "Evaluate a finite number or a bounded tree of arithmetic and comparison operations.",
+                  "type": "object",
+                  "properties": {
+                    "expression": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/definitions/numericExpression"
+                        },
+                        {
+                          "$ref": "#/definitions/comparisonExpression"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "expression"
+                  ],
+                  "additionalProperties": false
+                },
+                "randomData": {
+                  "type": "object",
+                  "properties": {
+                    "samples": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/jsonValue"
+                      },
+                      "minItems": 1
+                    },
+                    "indices": {
+                      "oneOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "minItems": 1
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "samples",
+                    "indices"
+                  ],
+                  "additionalProperties": false
+                },
+                "calculateData": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "const": "number"
+                        },
+                        "value": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "const": "boolean"
+                        },
+                        "value": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "randomResult": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "const": true
+                    },
+                    "data": {
+                      "$ref": "#/definitions/randomData"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "calculateResult": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "const": true
+                    },
+                    "data": {
+                      "$ref": "#/definitions/calculateData"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "capabilityErrorCode": {
+                  "type": "string",
+                  "enum": [
+                    "INVALID_ARGUMENT",
+                    "INVALID_RANGE",
+                    "INVALID_WEIGHTS",
+                    "INSUFFICIENT_POPULATION",
+                    "LIMIT_EXCEEDED",
+                    "DIVISION_BY_ZERO",
+                    "NUMERIC_OVERFLOW",
+                    "CAPABILITY_DENIED",
+                    "EXECUTION_FAILED"
+                  ]
+                },
+                "errorResult": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "const": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "$ref": "#/definitions/capabilityErrorCode"
+                        },
+                        "message": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "additionalProperties": false
+                },
+                "result": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/randomResult"
+                    },
+                    {
+                      "$ref": "#/definitions/calculateResult"
+                    },
+                    {
+                      "$ref": "#/definitions/errorResult"
+                    }
+                  ]
+                },
+                "invocation": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "toolName": {
+                          "const": "random"
+                        },
+                        "arguments": {
+                          "$ref": "#/definitions/randomArguments"
+                        }
+                      },
+                      "required": [
+                        "toolName",
+                        "arguments"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "toolName": {
+                          "const": "calculate"
+                        },
+                        "arguments": {
+                          "$ref": "#/definitions/calculateArguments"
+                        }
+                      },
+                      "required": [
+                        "toolName",
+                        "arguments"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "capabilityName": {
+                  "type": "string",
+                  "enum": [
+                    "random",
+                    "calculate"
+                  ]
+                },
+                "transport": {
+                  "type": "string",
+                  "enum": [
+                    "native_function_call",
+                    "text_protocol"
+                  ]
+                },
+                "capabilityNames": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/capabilityName"
+                  },
+                  "uniqueItems": true
+                },
+                "positiveCapabilityLimit": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "resultByteLimit": {
+                  "type": "integer",
+                  "minimum": 1024,
+                  "maximum": 9007199254740991
+                },
+                "capabilityLimits": {
+                  "type": "object",
+                  "properties": {
+                    "maxResultBytes": {
+                      "$ref": "#/definitions/resultByteLimit"
+                    },
+                    "minResultBytes": {
+                      "$ref": "#/definitions/resultByteLimit"
+                    }
+                  },
+                  "propertyNames": {
+                    "enum": [
+                      "maxCallsPerTurn",
+                      "maxStepsPerGeneration",
+                      "maxRandomSamples",
+                      "maxRandomCandidates",
+                      "maxCalculateNodes",
+                      "maxCalculateDepth",
+                      "maxCandidateDepth",
+                      "maxInputBytes",
+                      "maxResultBytes",
+                      "minResultBytes"
+                    ]
+                  },
+                  "additionalProperties": {
+                    "$ref": "#/definitions/positiveCapabilityLimit"
+                  }
+                },
+                "roleLimits": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/capabilityLimits"
+                    },
+                    {
+                      "not": {
+                        "type": "object",
+                        "properties": {
+                          "minResultBytes": {
+                            "$ref": "#/definitions/resultByteLimit"
+                          }
+                        },
+                        "required": [
+                          "minResultBytes"
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "capabilityGrant": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "allowed": {
+                      "$ref": "#/definitions/capabilityNames"
+                    },
+                    "slot": {
+                      "const": "narrator"
+                    },
+                    "transport": {
+                      "$ref": "#/definitions/transport"
+                    },
+                    "limits": {
+                      "$ref": "#/definitions/roleLimits"
+                    }
+                  },
+                  "required": [
+                    "enabled",
+                    "allowed",
+                    "slot",
+                    "transport"
+                  ],
+                  "additionalProperties": false
+                },
+                "systemCapabilityLimits": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/capabilityLimits"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "maxCallsPerTurn": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxStepsPerGeneration": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxRandomSamples": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxRandomCandidates": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxCalculateNodes": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxCalculateDepth": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxCandidateDepth": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxInputBytes": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxResultBytes": {
+                          "$ref": "#/definitions/resultByteLimit"
+                        },
+                        "minResultBytes": {
+                          "$ref": "#/definitions/resultByteLimit"
+                        }
+                      },
+                      "required": [
+                        "maxCallsPerTurn",
+                        "maxStepsPerGeneration",
+                        "maxRandomSamples",
+                        "maxRandomCandidates",
+                        "maxCalculateNodes",
+                        "maxCalculateDepth",
+                        "maxCandidateDepth",
+                        "maxInputBytes",
+                        "maxResultBytes",
+                        "minResultBytes"
+                      ]
+                    }
+                  ]
+                },
+                "capabilityErrorMessages": {
+                  "type": "object",
+                  "properties": {
+                    "INVALID_ARGUMENT": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "INVALID_RANGE": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "INVALID_WEIGHTS": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "INSUFFICIENT_POPULATION": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "LIMIT_EXCEEDED": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "DIVISION_BY_ZERO": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "NUMERIC_OVERFLOW": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "CAPABILITY_DENIED": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "EXECUTION_FAILED": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    }
+                  },
+                  "required": [
+                    "INVALID_ARGUMENT",
+                    "INVALID_RANGE",
+                    "INVALID_WEIGHTS",
+                    "INSUFFICIENT_POPULATION",
+                    "LIMIT_EXCEEDED",
+                    "DIVISION_BY_ZERO",
+                    "NUMERIC_OVERFLOW",
+                    "CAPABILITY_DENIED",
+                    "EXECUTION_FAILED"
+                  ],
+                  "additionalProperties": false
+                },
+                "systemCapabilityConfig": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "allowed": {
+                      "$ref": "#/definitions/capabilityNames"
+                    },
+                    "transports": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/transport"
+                      },
+                      "minItems": 1,
+                      "uniqueItems": true
+                    },
+                    "slot": {
+                      "const": "narrator"
+                    },
+                    "limits": {
+                      "$ref": "#/definitions/systemCapabilityLimits"
+                    },
+                    "messages": {
+                      "$ref": "#/definitions/capabilityErrorMessages"
+                    }
+                  },
+                  "required": [
+                    "enabled",
+                    "allowed",
+                    "transports",
+                    "slot",
+                    "limits",
+                    "messages"
+                  ],
+                  "additionalProperties": false
+                },
+                "capabilityProviderId": {
+                  "const": "system:role-model-capabilities"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "tool_choice": "auto"
+    },
+    {
+      "model": "test-model",
+      "max_tokens": 3919,
+      "temperature": 0.7,
+      "messages": [
+        {
+          "role": "system",
+          "content": "作者必须使用第三人称叙述，台词中的我和你按照说话者和听话者解释。用户扮演裴修远，角色为林澄。\n\nThe user is 裴修远: 裴修远是二十八岁的男性药师，性格谨慎，正在向林澄询问药草的数量。\n\n林澄是药铺的店主。\n\n[Tool calling protocol]\n# Tool calling protocol\n\nTools are available through native function calling. Follow these rules:\n\n- Always invoke tools through the native function calling channel, never as text.\n- Do not output <tool_call>, <tool_result>, or <tool_response> blocks in your reply.\n- Do not describe, narrate, replay, or fabricate any tool call or tool result in the reply text.\n- When you need a tool, issue a structured tool call directly instead of writing about it.\n- When you need to answer, output only the user-facing reply text."
+        },
+        {
+          "role": "assistant",
+          "content": "林澄指着药柜，问裴修远：‘你想买几份药草？’"
+        },
+        {
+          "role": "user",
+          "content": "“请给我两份药草，并计算三份药草的总价。”"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "tool_calls": [
+            {
+              "id": "capability-call",
+              "type": "function",
+              "function": {
+                "name": "calculate",
+                "arguments": "{\"expression\":{\"op\":\"div\",\"args\":[3,0]}}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "capability-call",
+          "content": "{\"ok\":false,\"error\":{\"code\":\"DIVISION_BY_ZERO\",\"message\":\"除数为 0，请修改 expression 中的除数。\"}}"
+        }
+      ],
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "random",
+            "description": "Draw one or more samples from an integer range or candidate list.",
+            "parameters": {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "title": "random arguments",
+              "description": "Draw one or more samples from an integer range or candidate list.",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "const": "integer_range"
+                        },
+                        "min": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "max": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        }
+                      },
+                      "required": [
+                        "kind",
+                        "min",
+                        "max"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "distribution": {
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "const": "uniform"
+                        }
+                      },
+                      "required": [
+                        "kind"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "count": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 9007199254740991
+                    },
+                    "replacement": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "domain",
+                    "distribution",
+                    "count",
+                    "replacement"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "const": "choices"
+                        },
+                        "values": {
+                          "type": "array",
+                          "items": {
+                            "anyOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "boolean"
+                              },
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/definitions/jsonValue"
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "$ref": "#/definitions/jsonValue"
+                                }
+                              }
+                            ]
+                          },
+                          "minItems": 1
+                        }
+                      },
+                      "required": [
+                        "kind",
+                        "values"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "distribution": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "kind": {
+                              "const": "uniform"
+                            }
+                          },
+                          "required": [
+                            "kind"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "kind": {
+                              "const": "weighted"
+                            },
+                            "weights": {
+                              "type": "array",
+                              "items": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "minItems": 1
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "weights"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "count": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 9007199254740991
+                    },
+                    "replacement": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "domain",
+                    "distribution",
+                    "count",
+                    "replacement"
+                  ],
+                  "additionalProperties": false
+                }
+              ],
+              "type": "object",
+              "definitions": {
+                "jsonValue": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/jsonValue"
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/definitions/jsonValue"
+                      }
+                    }
+                  ]
+                },
+                "safeInteger": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991
+                },
+                "positiveSafeInteger": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "randomRange": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "integer_range"
+                    },
+                    "min": {
+                      "$ref": "#/definitions/safeInteger"
+                    },
+                    "max": {
+                      "$ref": "#/definitions/safeInteger"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "min",
+                    "max"
+                  ],
+                  "additionalProperties": false
+                },
+                "randomChoices": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "choices"
+                    },
+                    "values": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/jsonValue"
+                      },
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "values"
+                  ],
+                  "additionalProperties": false
+                },
+                "uniformDistribution": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "uniform"
+                    }
+                  },
+                  "required": [
+                    "kind"
+                  ],
+                  "additionalProperties": false
+                },
+                "weightedDistribution": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "weighted"
+                    },
+                    "weights": {
+                      "type": "array",
+                      "items": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "weights"
+                  ],
+                  "additionalProperties": false
+                },
+                "randomArguments": {
+                  "title": "random arguments",
+                  "description": "Draw one or more samples from an integer range or candidate list.",
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "$ref": "#/definitions/randomRange"
+                        },
+                        "distribution": {
+                          "$ref": "#/definitions/uniformDistribution"
+                        },
+                        "count": {
+                          "$ref": "#/definitions/positiveSafeInteger"
+                        },
+                        "replacement": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "domain",
+                        "distribution",
+                        "count",
+                        "replacement"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "$ref": "#/definitions/randomChoices"
+                        },
+                        "distribution": {
+                          "oneOf": [
+                            {
+                              "$ref": "#/definitions/uniformDistribution"
+                            },
+                            {
+                              "$ref": "#/definitions/weightedDistribution"
+                            }
+                          ]
+                        },
+                        "count": {
+                          "$ref": "#/definitions/positiveSafeInteger"
+                        },
+                        "replacement": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "domain",
+                        "distribution",
+                        "count",
+                        "replacement"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "variadicNumericOperation": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "add",
+                        "mul",
+                        "min",
+                        "max"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 2
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "binaryNumericOperation": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "sub",
+                        "div"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "unaryNumericOperation": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "floor",
+                        "ceil",
+                        "trunc"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 1,
+                      "maxItems": 1
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "numericExpression": {
+                  "oneOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "$ref": "#/definitions/variadicNumericOperation"
+                    },
+                    {
+                      "$ref": "#/definitions/binaryNumericOperation"
+                    },
+                    {
+                      "$ref": "#/definitions/unaryNumericOperation"
+                    }
+                  ]
+                },
+                "comparisonExpression": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "eq",
+                        "ne",
+                        "lt",
+                        "lte",
+                        "gt",
+                        "gte"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "calculateArguments": {
+                  "title": "calculate arguments",
+                  "description": "Evaluate a finite number or a bounded tree of arithmetic and comparison operations.",
+                  "type": "object",
+                  "properties": {
+                    "expression": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/definitions/numericExpression"
+                        },
+                        {
+                          "$ref": "#/definitions/comparisonExpression"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "expression"
+                  ],
+                  "additionalProperties": false
+                },
+                "randomData": {
+                  "type": "object",
+                  "properties": {
+                    "samples": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/jsonValue"
+                      },
+                      "minItems": 1
+                    },
+                    "indices": {
+                      "oneOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "minItems": 1
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "samples",
+                    "indices"
+                  ],
+                  "additionalProperties": false
+                },
+                "calculateData": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "const": "number"
+                        },
+                        "value": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "const": "boolean"
+                        },
+                        "value": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "randomResult": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "const": true
+                    },
+                    "data": {
+                      "$ref": "#/definitions/randomData"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "calculateResult": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "const": true
+                    },
+                    "data": {
+                      "$ref": "#/definitions/calculateData"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "capabilityErrorCode": {
+                  "type": "string",
+                  "enum": [
+                    "INVALID_ARGUMENT",
+                    "INVALID_RANGE",
+                    "INVALID_WEIGHTS",
+                    "INSUFFICIENT_POPULATION",
+                    "LIMIT_EXCEEDED",
+                    "DIVISION_BY_ZERO",
+                    "NUMERIC_OVERFLOW",
+                    "CAPABILITY_DENIED",
+                    "EXECUTION_FAILED"
+                  ]
+                },
+                "errorResult": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "const": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "$ref": "#/definitions/capabilityErrorCode"
+                        },
+                        "message": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "additionalProperties": false
+                },
+                "result": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/randomResult"
+                    },
+                    {
+                      "$ref": "#/definitions/calculateResult"
+                    },
+                    {
+                      "$ref": "#/definitions/errorResult"
+                    }
+                  ]
+                },
+                "invocation": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "toolName": {
+                          "const": "random"
+                        },
+                        "arguments": {
+                          "$ref": "#/definitions/randomArguments"
+                        }
+                      },
+                      "required": [
+                        "toolName",
+                        "arguments"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "toolName": {
+                          "const": "calculate"
+                        },
+                        "arguments": {
+                          "$ref": "#/definitions/calculateArguments"
+                        }
+                      },
+                      "required": [
+                        "toolName",
+                        "arguments"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "capabilityName": {
+                  "type": "string",
+                  "enum": [
+                    "random",
+                    "calculate"
+                  ]
+                },
+                "transport": {
+                  "type": "string",
+                  "enum": [
+                    "native_function_call",
+                    "text_protocol"
+                  ]
+                },
+                "capabilityNames": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/capabilityName"
+                  },
+                  "uniqueItems": true
+                },
+                "positiveCapabilityLimit": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "resultByteLimit": {
+                  "type": "integer",
+                  "minimum": 1024,
+                  "maximum": 9007199254740991
+                },
+                "capabilityLimits": {
+                  "type": "object",
+                  "properties": {
+                    "maxResultBytes": {
+                      "$ref": "#/definitions/resultByteLimit"
+                    },
+                    "minResultBytes": {
+                      "$ref": "#/definitions/resultByteLimit"
+                    }
+                  },
+                  "propertyNames": {
+                    "enum": [
+                      "maxCallsPerTurn",
+                      "maxStepsPerGeneration",
+                      "maxRandomSamples",
+                      "maxRandomCandidates",
+                      "maxCalculateNodes",
+                      "maxCalculateDepth",
+                      "maxCandidateDepth",
+                      "maxInputBytes",
+                      "maxResultBytes",
+                      "minResultBytes"
+                    ]
+                  },
+                  "additionalProperties": {
+                    "$ref": "#/definitions/positiveCapabilityLimit"
+                  }
+                },
+                "roleLimits": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/capabilityLimits"
+                    },
+                    {
+                      "not": {
+                        "type": "object",
+                        "properties": {
+                          "minResultBytes": {
+                            "$ref": "#/definitions/resultByteLimit"
+                          }
+                        },
+                        "required": [
+                          "minResultBytes"
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "capabilityGrant": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "allowed": {
+                      "$ref": "#/definitions/capabilityNames"
+                    },
+                    "slot": {
+                      "const": "narrator"
+                    },
+                    "transport": {
+                      "$ref": "#/definitions/transport"
+                    },
+                    "limits": {
+                      "$ref": "#/definitions/roleLimits"
+                    }
+                  },
+                  "required": [
+                    "enabled",
+                    "allowed",
+                    "slot",
+                    "transport"
+                  ],
+                  "additionalProperties": false
+                },
+                "systemCapabilityLimits": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/capabilityLimits"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "maxCallsPerTurn": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxStepsPerGeneration": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxRandomSamples": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxRandomCandidates": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxCalculateNodes": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxCalculateDepth": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxCandidateDepth": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxInputBytes": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxResultBytes": {
+                          "$ref": "#/definitions/resultByteLimit"
+                        },
+                        "minResultBytes": {
+                          "$ref": "#/definitions/resultByteLimit"
+                        }
+                      },
+                      "required": [
+                        "maxCallsPerTurn",
+                        "maxStepsPerGeneration",
+                        "maxRandomSamples",
+                        "maxRandomCandidates",
+                        "maxCalculateNodes",
+                        "maxCalculateDepth",
+                        "maxCandidateDepth",
+                        "maxInputBytes",
+                        "maxResultBytes",
+                        "minResultBytes"
+                      ]
+                    }
+                  ]
+                },
+                "capabilityErrorMessages": {
+                  "type": "object",
+                  "properties": {
+                    "INVALID_ARGUMENT": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "INVALID_RANGE": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "INVALID_WEIGHTS": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "INSUFFICIENT_POPULATION": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "LIMIT_EXCEEDED": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "DIVISION_BY_ZERO": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "NUMERIC_OVERFLOW": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "CAPABILITY_DENIED": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "EXECUTION_FAILED": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    }
+                  },
+                  "required": [
+                    "INVALID_ARGUMENT",
+                    "INVALID_RANGE",
+                    "INVALID_WEIGHTS",
+                    "INSUFFICIENT_POPULATION",
+                    "LIMIT_EXCEEDED",
+                    "DIVISION_BY_ZERO",
+                    "NUMERIC_OVERFLOW",
+                    "CAPABILITY_DENIED",
+                    "EXECUTION_FAILED"
+                  ],
+                  "additionalProperties": false
+                },
+                "systemCapabilityConfig": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "allowed": {
+                      "$ref": "#/definitions/capabilityNames"
+                    },
+                    "transports": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/transport"
+                      },
+                      "minItems": 1,
+                      "uniqueItems": true
+                    },
+                    "slot": {
+                      "const": "narrator"
+                    },
+                    "limits": {
+                      "$ref": "#/definitions/systemCapabilityLimits"
+                    },
+                    "messages": {
+                      "$ref": "#/definitions/capabilityErrorMessages"
+                    }
+                  },
+                  "required": [
+                    "enabled",
+                    "allowed",
+                    "transports",
+                    "slot",
+                    "limits",
+                    "messages"
+                  ],
+                  "additionalProperties": false
+                },
+                "capabilityProviderId": {
+                  "const": "system:role-model-capabilities"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "calculate",
+            "description": "Evaluate a finite number or a bounded tree of arithmetic and comparison operations.",
+            "parameters": {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "title": "calculate arguments",
+              "description": "Evaluate a finite number or a bounded tree of arithmetic and comparison operations.",
+              "type": "object",
+              "properties": {
+                "expression": {
+                  "oneOf": [
+                    {
+                      "oneOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "op": {
+                              "enum": [
+                                "add",
+                                "mul",
+                                "min",
+                                "max"
+                              ]
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/definitions/numericExpression"
+                              },
+                              "minItems": 2
+                            }
+                          },
+                          "required": [
+                            "op",
+                            "args"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "op": {
+                              "enum": [
+                                "sub",
+                                "div"
+                              ]
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/definitions/numericExpression"
+                              },
+                              "minItems": 2,
+                              "maxItems": 2
+                            }
+                          },
+                          "required": [
+                            "op",
+                            "args"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "op": {
+                              "enum": [
+                                "floor",
+                                "ceil",
+                                "trunc"
+                              ]
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/definitions/numericExpression"
+                              },
+                              "minItems": 1,
+                              "maxItems": 1
+                            }
+                          },
+                          "required": [
+                            "op",
+                            "args"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "op": {
+                          "enum": [
+                            "eq",
+                            "ne",
+                            "lt",
+                            "lte",
+                            "gt",
+                            "gte"
+                          ]
+                        },
+                        "args": {
+                          "type": "array",
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "op": {
+                                    "enum": [
+                                      "add",
+                                      "mul",
+                                      "min",
+                                      "max"
+                                    ]
+                                  },
+                                  "args": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/definitions/numericExpression"
+                                    },
+                                    "minItems": 2
+                                  }
+                                },
+                                "required": [
+                                  "op",
+                                  "args"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "op": {
+                                    "enum": [
+                                      "sub",
+                                      "div"
+                                    ]
+                                  },
+                                  "args": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/definitions/numericExpression"
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 2
+                                  }
+                                },
+                                "required": [
+                                  "op",
+                                  "args"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "op": {
+                                    "enum": [
+                                      "floor",
+                                      "ceil",
+                                      "trunc"
+                                    ]
+                                  },
+                                  "args": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/definitions/numericExpression"
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 1
+                                  }
+                                },
+                                "required": [
+                                  "op",
+                                  "args"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          },
+                          "minItems": 2,
+                          "maxItems": 2
+                        }
+                      },
+                      "required": [
+                        "op",
+                        "args"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "expression"
+              ],
+              "additionalProperties": false,
+              "definitions": {
+                "jsonValue": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/jsonValue"
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/definitions/jsonValue"
+                      }
+                    }
+                  ]
+                },
+                "safeInteger": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991
+                },
+                "positiveSafeInteger": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "randomRange": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "integer_range"
+                    },
+                    "min": {
+                      "$ref": "#/definitions/safeInteger"
+                    },
+                    "max": {
+                      "$ref": "#/definitions/safeInteger"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "min",
+                    "max"
+                  ],
+                  "additionalProperties": false
+                },
+                "randomChoices": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "choices"
+                    },
+                    "values": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/jsonValue"
+                      },
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "values"
+                  ],
+                  "additionalProperties": false
+                },
+                "uniformDistribution": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "uniform"
+                    }
+                  },
+                  "required": [
+                    "kind"
+                  ],
+                  "additionalProperties": false
+                },
+                "weightedDistribution": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "weighted"
+                    },
+                    "weights": {
+                      "type": "array",
+                      "items": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "weights"
+                  ],
+                  "additionalProperties": false
+                },
+                "randomArguments": {
+                  "title": "random arguments",
+                  "description": "Draw one or more samples from an integer range or candidate list.",
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "$ref": "#/definitions/randomRange"
+                        },
+                        "distribution": {
+                          "$ref": "#/definitions/uniformDistribution"
+                        },
+                        "count": {
+                          "$ref": "#/definitions/positiveSafeInteger"
+                        },
+                        "replacement": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "domain",
+                        "distribution",
+                        "count",
+                        "replacement"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "$ref": "#/definitions/randomChoices"
+                        },
+                        "distribution": {
+                          "oneOf": [
+                            {
+                              "$ref": "#/definitions/uniformDistribution"
+                            },
+                            {
+                              "$ref": "#/definitions/weightedDistribution"
+                            }
+                          ]
+                        },
+                        "count": {
+                          "$ref": "#/definitions/positiveSafeInteger"
+                        },
+                        "replacement": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "domain",
+                        "distribution",
+                        "count",
+                        "replacement"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "variadicNumericOperation": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "add",
+                        "mul",
+                        "min",
+                        "max"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 2
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "binaryNumericOperation": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "sub",
+                        "div"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "unaryNumericOperation": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "floor",
+                        "ceil",
+                        "trunc"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 1,
+                      "maxItems": 1
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "numericExpression": {
+                  "oneOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "$ref": "#/definitions/variadicNumericOperation"
+                    },
+                    {
+                      "$ref": "#/definitions/binaryNumericOperation"
+                    },
+                    {
+                      "$ref": "#/definitions/unaryNumericOperation"
+                    }
+                  ]
+                },
+                "comparisonExpression": {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "enum": [
+                        "eq",
+                        "ne",
+                        "lt",
+                        "lte",
+                        "gt",
+                        "gte"
+                      ]
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/numericExpression"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "args"
+                  ],
+                  "additionalProperties": false
+                },
+                "calculateArguments": {
+                  "title": "calculate arguments",
+                  "description": "Evaluate a finite number or a bounded tree of arithmetic and comparison operations.",
+                  "type": "object",
+                  "properties": {
+                    "expression": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/definitions/numericExpression"
+                        },
+                        {
+                          "$ref": "#/definitions/comparisonExpression"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "expression"
+                  ],
+                  "additionalProperties": false
+                },
+                "randomData": {
+                  "type": "object",
+                  "properties": {
+                    "samples": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/jsonValue"
+                      },
+                      "minItems": 1
+                    },
+                    "indices": {
+                      "oneOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "minItems": 1
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "samples",
+                    "indices"
+                  ],
+                  "additionalProperties": false
+                },
+                "calculateData": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "const": "number"
+                        },
+                        "value": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "const": "boolean"
+                        },
+                        "value": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "randomResult": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "const": true
+                    },
+                    "data": {
+                      "$ref": "#/definitions/randomData"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "calculateResult": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "const": true
+                    },
+                    "data": {
+                      "$ref": "#/definitions/calculateData"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                },
+                "capabilityErrorCode": {
+                  "type": "string",
+                  "enum": [
+                    "INVALID_ARGUMENT",
+                    "INVALID_RANGE",
+                    "INVALID_WEIGHTS",
+                    "INSUFFICIENT_POPULATION",
+                    "LIMIT_EXCEEDED",
+                    "DIVISION_BY_ZERO",
+                    "NUMERIC_OVERFLOW",
+                    "CAPABILITY_DENIED",
+                    "EXECUTION_FAILED"
+                  ]
+                },
+                "errorResult": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "const": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "$ref": "#/definitions/capabilityErrorCode"
+                        },
+                        "message": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "additionalProperties": false
+                },
+                "result": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/randomResult"
+                    },
+                    {
+                      "$ref": "#/definitions/calculateResult"
+                    },
+                    {
+                      "$ref": "#/definitions/errorResult"
+                    }
+                  ]
+                },
+                "invocation": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "toolName": {
+                          "const": "random"
+                        },
+                        "arguments": {
+                          "$ref": "#/definitions/randomArguments"
+                        }
+                      },
+                      "required": [
+                        "toolName",
+                        "arguments"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "toolName": {
+                          "const": "calculate"
+                        },
+                        "arguments": {
+                          "$ref": "#/definitions/calculateArguments"
+                        }
+                      },
+                      "required": [
+                        "toolName",
+                        "arguments"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "capabilityName": {
+                  "type": "string",
+                  "enum": [
+                    "random",
+                    "calculate"
+                  ]
+                },
+                "transport": {
+                  "type": "string",
+                  "enum": [
+                    "native_function_call",
+                    "text_protocol"
+                  ]
+                },
+                "capabilityNames": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/capabilityName"
+                  },
+                  "uniqueItems": true
+                },
+                "positiveCapabilityLimit": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "resultByteLimit": {
+                  "type": "integer",
+                  "minimum": 1024,
+                  "maximum": 9007199254740991
+                },
+                "capabilityLimits": {
+                  "type": "object",
+                  "properties": {
+                    "maxResultBytes": {
+                      "$ref": "#/definitions/resultByteLimit"
+                    },
+                    "minResultBytes": {
+                      "$ref": "#/definitions/resultByteLimit"
+                    }
+                  },
+                  "propertyNames": {
+                    "enum": [
+                      "maxCallsPerTurn",
+                      "maxStepsPerGeneration",
+                      "maxRandomSamples",
+                      "maxRandomCandidates",
+                      "maxCalculateNodes",
+                      "maxCalculateDepth",
+                      "maxCandidateDepth",
+                      "maxInputBytes",
+                      "maxResultBytes",
+                      "minResultBytes"
+                    ]
+                  },
+                  "additionalProperties": {
+                    "$ref": "#/definitions/positiveCapabilityLimit"
+                  }
+                },
+                "roleLimits": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/capabilityLimits"
+                    },
+                    {
+                      "not": {
+                        "type": "object",
+                        "properties": {
+                          "minResultBytes": {
+                            "$ref": "#/definitions/resultByteLimit"
+                          }
+                        },
+                        "required": [
+                          "minResultBytes"
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "capabilityGrant": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "allowed": {
+                      "$ref": "#/definitions/capabilityNames"
+                    },
+                    "slot": {
+                      "const": "narrator"
+                    },
+                    "transport": {
+                      "$ref": "#/definitions/transport"
+                    },
+                    "limits": {
+                      "$ref": "#/definitions/roleLimits"
+                    }
+                  },
+                  "required": [
+                    "enabled",
+                    "allowed",
+                    "slot",
+                    "transport"
+                  ],
+                  "additionalProperties": false
+                },
+                "systemCapabilityLimits": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/capabilityLimits"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "maxCallsPerTurn": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxStepsPerGeneration": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxRandomSamples": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxRandomCandidates": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxCalculateNodes": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxCalculateDepth": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxCandidateDepth": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxInputBytes": {
+                          "$ref": "#/definitions/positiveCapabilityLimit"
+                        },
+                        "maxResultBytes": {
+                          "$ref": "#/definitions/resultByteLimit"
+                        },
+                        "minResultBytes": {
+                          "$ref": "#/definitions/resultByteLimit"
+                        }
+                      },
+                      "required": [
+                        "maxCallsPerTurn",
+                        "maxStepsPerGeneration",
+                        "maxRandomSamples",
+                        "maxRandomCandidates",
+                        "maxCalculateNodes",
+                        "maxCalculateDepth",
+                        "maxCandidateDepth",
+                        "maxInputBytes",
+                        "maxResultBytes",
+                        "minResultBytes"
+                      ]
+                    }
+                  ]
+                },
+                "capabilityErrorMessages": {
+                  "type": "object",
+                  "properties": {
+                    "INVALID_ARGUMENT": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "INVALID_RANGE": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "INVALID_WEIGHTS": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "INSUFFICIENT_POPULATION": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "LIMIT_EXCEEDED": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "DIVISION_BY_ZERO": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "NUMERIC_OVERFLOW": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "CAPABILITY_DENIED": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "EXECUTION_FAILED": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    }
+                  },
+                  "required": [
+                    "INVALID_ARGUMENT",
+                    "INVALID_RANGE",
+                    "INVALID_WEIGHTS",
+                    "INSUFFICIENT_POPULATION",
+                    "LIMIT_EXCEEDED",
+                    "DIVISION_BY_ZERO",
+                    "NUMERIC_OVERFLOW",
+                    "CAPABILITY_DENIED",
+                    "EXECUTION_FAILED"
+                  ],
+                  "additionalProperties": false
+                },
+                "systemCapabilityConfig": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "allowed": {
+                      "$ref": "#/definitions/capabilityNames"
+                    },
+                    "transports": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/transport"
+                      },
+                      "minItems": 1,
+                      "uniqueItems": true
+                    },
+                    "slot": {
+                      "const": "narrator"
+                    },
+                    "limits": {
+                      "$ref": "#/definitions/systemCapabilityLimits"
+                    },
+                    "messages": {
+                      "$ref": "#/definitions/capabilityErrorMessages"
+                    }
+                  },
+                  "required": [
+                    "enabled",
+                    "allowed",
+                    "transports",
+                    "slot",
+                    "limits",
+                    "messages"
+                  ],
+                  "additionalProperties": false
+                },
+                "capabilityProviderId": {
+                  "const": "system:role-model-capabilities"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "tool_choice": "auto"
+    }
+  ],
+  "response": {
+    "data": {
+      "floor_id": "uVTZluqYK2iGmnrGta00A",
+      "floor_no": 1,
+      "branch_id": "main",
+      "generated_text": "林澄取出两份药草，告诉裴修远：‘每份四枚铜钱，三份共十二枚。’",
+      "summaries": [],
+      "total_usage": {
+        "prompt_tokens": 40,
+        "completion_tokens": 20,
+        "total_tokens": 60
+      },
+      "final_state": "committed"
+    }
+  },
+  "executionRecord": {
+    "id": "b9832e3a-86d4-4bee-9653-2727d4f23d97",
+    "runId": "0kblXyHqIM4CsABFADOMQ",
+    "floorId": "uVTZluqYK2iGmnrGta00A",
+    "pageId": "VER733bNPLsEUedeXSbFx",
+    "callerSlot": "narrator",
+    "providerId": "system:role-model-capabilities",
+    "toolName": "calculate",
+    "providerType": "builtin",
+    "argsJson": "{\"expression\":{\"op\":\"div\",\"args\":[3,0]}}",
+    "resultJson": "{\"ok\":false,\"error\":{\"code\":\"DIVISION_BY_ZERO\",\"message\":\"除数为 0，请修改 expression 中的除数。\"}}",
+    "status": "error",
+    "lifecycleState": "finished",
+    "commitOutcome": "committed",
+    "deliveryMode": "inline",
+    "runtimeJobId": null,
+    "sideEffectLevel": "none",
+    "errorMessage": "除数为 0，请修改 expression 中的除数。",
+    "durationMs": 1,
+    "startedAt": 1790926076246,
+    "finishedAt": 1790926076247,
+    "attemptNo": 1,
+    "replayParentExecutionId": null,
+    "generationStepNo": 1,
+    "callId": "capability-call",
+    "generationAttemptNo": 1,
+    "acceptedPageId": "JBVbU7t0OvLGTfDMVqW86",
+    "createdAt": 1790926076246
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "model": "minimax/minimax-m3.1-flash:free",
+  "updaterModel": "dots-studio/dots-3-note-preview:free",
+  "updaterProfileId": "ZACx3EPlgeWe2KSl9r-PP",
+  "params": {
+    "max_retries": 0,
+    "max_output_tokens": 1800,
+    "temperature": 0.3,
+    "timeout_ms": 90000,
+    "reasoning_effort": "none"
+  },
+  "releaseId": "Csbl5kALGOAcrKC7kv25h",
+  "profileId": "J2Lw5XRWMA9SUttMwkv-e",
+  "bodyPreset": {
+    "id": "SN2SnJb0HFd5V3xaC9kM1",
+    "versionId": "Ig7rgPeFBXtTzXuV8SipH"
+  },
+  "updaterPreset": {
+    "id": "EARf02ngNGBPkkMyaFoCk",
+    "versionId": "mbvw9vG3qbuCY3E6e7Z9B"
+  },
+  "persona": {
+    "name": "裴修远",
+    "description": "裴修远，31岁，男性，雾港深夜邮局的管理员。性格谨慎，熟悉邮政记录，与向导沈知夏刚开始调查一封没有收件人的信。"
+  },
+  "roleName": "雾港来信 · 真实演绎",
+  "maxCalls": 16
+}

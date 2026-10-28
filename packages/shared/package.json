@@ -1,0 +1,39 @@
+{
+  "name": "@tavern/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./types/backup-file": {
+      "development": "./src/types/backup-file.ts",
+      "types": "./dist/types/backup-file.d.ts",
+      "import": "./dist/types/backup-file.js",
+      "default": "./dist/types/backup-file.js"
+    }
+  },
+  "scripts": {
+    "build": "node ../../scripts/generate-role-runtime-validators.mjs && node ../../scripts/generate-llm-slot-config.mjs && tsx ../../scripts/generate-model-call-schemas.ts && tsx ../../scripts/generate-role-asset-schemas.ts && tsx ../../scripts/generate-role-view-schemas.ts && tsx ../../scripts/generate-role-import-schemas.ts && tsx ../../scripts/generate-role-app-schemas.ts && tsx ../../scripts/generate-native-card-schemas.ts && tsc -p tsconfig.json",
+    "typecheck": "tsc -b && tsc -p tsconfig.test.json",
+    "test": "vitest run --passWithNoTests",
+    "test:native-build": "node --test test/native-build.node-test.mjs"
+  },
+  "dependencies": {
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "5.9.3",
+    "vitest": "4.1.12"
+  },
+  "files": [
+    "dist"
+  ]
+}

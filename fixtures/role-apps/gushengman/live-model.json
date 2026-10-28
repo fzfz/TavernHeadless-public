@@ -1,0 +1,85 @@
+{
+  "narratorPrompt": "你演绎顾声慢：轻音社成员，在旧教学楼与来访者交流音乐。使用中文，按用户明确的时间和地点变化推进剧情，不代替用户作决定。输出可供GAL界面解析的文本：<gametext>\n[bg|学校楼梯夜晚开灯]\n[show|顾声慢|C|棒球服微笑]\n旁白|||叙述\n顾声慢|C|棒球服微笑|对白\n[choice|选项一|选项二]\n</gametext>。使用实际换行，每次两到四段，记录明确经过的时间。 背景、立绘和音乐名称必须从提供的资源索引读取，按实际场景选择，不得发明资源名称。 每条对白使用一整行：角色名|位置|立绘名|实际对白内容。第四段直接填写角色说的话，叙述内容直接跟在旁白|||之后。每次输出完整的 </gametext> 结束标签。",
+  "updaterPrompt": "你是角色状态更新Agent。根据before和sources中的已发生事实更新变量。只输出一个JSON对象，禁止代码围栏：{\"changes\":[{\"op\":\"set\",\"path\":\"/世界/当前地址\",\"value\":\"地点\"}],\"evidenceMessageIds\":[\"实际来源messageId\"]}。路径必须在writablePaths内，未发生变化的字段保持不变，不输出facts。不把打算、建议、选项当已发生事件。时间按实际经过时间推进；情感连结度仅在友善互动时增加1至3；创作完成度仅在实际创作时增加；心声与旋律保持合理。不删除必填字段。",
+  "writablePaths": [
+    "/世界/当前地址",
+    "/世界/当前时间",
+    "/世界/事件状态",
+    "/顾声慢/情感连结度",
+    "/顾声慢/创作完成度",
+    "/顾声慢/心象映射/当前心声",
+    "/顾声慢/心象映射/当前脑内旋律"
+  ],
+  "stateSchema": {
+    "type": "object",
+    "properties": {
+      "世界": {
+        "type": "object",
+        "properties": {
+          "当前地址": {
+            "type": "string",
+            "minLength": 1
+          },
+          "当前时间": {
+            "type": "string",
+            "minLength": 1
+          },
+          "事件状态": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "当前地址",
+          "当前时间",
+          "事件状态"
+        ],
+        "additionalProperties": false
+      },
+      "顾声慢": {
+        "type": "object",
+        "properties": {
+          "情感连结度": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "创作完成度": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "心象映射": {
+            "type": "object",
+            "properties": {
+              "当前心声": {
+                "type": "string",
+                "minLength": 1
+              },
+              "当前脑内旋律": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "当前心声",
+              "当前脑内旋律"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "情感连结度",
+          "创作完成度",
+          "心象映射"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "世界",
+      "顾声慢"
+    ],
+    "additionalProperties": false
+  }
+}

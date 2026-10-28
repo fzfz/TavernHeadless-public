@@ -1,0 +1,40 @@
+{
+  "uid": 78,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "终局阶段_Z012_遗物思念",
+  "order": 296,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<终局阶段_Z012>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n与艾沫沫结婚后的第二年夏天，{{user}}给旧手机充电开机。手机收到一条三天前发往旧号码的短信，发件人是林茜。{{user}}回拨林茜的号码时，号码已经停用，也无人接听。\n\n{{user}}回到旧城，在报纸上看到林茜去世的消息。旧家邻居告诉{{user}}，林茜这些年很少出门，最后被发现饿死在书房门外。警方随后把她的手机和其他遗物交给{{user}}。\n\n林茜手机里保存着大量发往{{user}}旧号码的草稿和短信。她写自己控制不住身体，觉得自己中了毒；她也写只要一直待在家里，就不会再遇到外面的男人。在其余短信中，林茜写到天气、菜场、发烧、以前住过的地方，还提醒{{user}}记得加衣服。\n\n{{user}}从最早一条看到最后一条。所有短信都发向已经注销的号码。短信列表最后停在：“老公，我今天没有出门。”\n</终局阶段_Z012>\n"
+}

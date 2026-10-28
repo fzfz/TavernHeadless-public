@@ -1,0 +1,117 @@
+{
+  "apiPort": 3041,
+  "providerPort": 3042,
+  "webOrigin": "http://127.0.0.1:5195",
+  "userWebOrigin": "http://localhost:5174",
+  "dataDirectory": ".planning/native-card-production/evidence/instance-a",
+  "providerId": "native-card-controlled-provider",
+  "modelId": "native-card-controlled-model",
+  "narration": [
+    "沈知夏把信封转向灯光，",
+    "指出邮戳边缘的蓝色印记。",
+    "她和裴修远走到花园门口，接过他递来的信封，向他道谢。"
+  ],
+  "updatedState": {
+    "location": "花园门口",
+    "hour": 23,
+    "trust": 21
+  },
+  "persona": {
+    "name": "裴修远",
+    "description": "裴修远，31岁，男性，雾港深夜邮局的管理员。性格谨慎，熟悉邮政记录，与向导沈知夏刚开始调查一封没有收件人的信。"
+  },
+  "userMessage": "“我先检查信封上的邮戳，再和你去花园门口核对地址。”",
+  "preset": {
+    "name": "原生包验收：第三人称",
+    "prompts": [
+      {
+        "identifier": "main",
+        "name": "叙述要求",
+        "role": "system",
+        "content": "写作者必须采用第三人称叙述，使用人物姓名区分动作主体，直接引语保留说话者自身的人称。承接已经发生的开场和历史，不提前告知角色尚未获得的信息。",
+        "system_prompt": true
+      },
+      {
+        "identifier": "charDescription",
+        "name": "人物资料",
+        "role": "system",
+        "marker": true
+      },
+      {
+        "identifier": "charPersonality",
+        "name": "人物性格",
+        "role": "system",
+        "marker": true
+      },
+      {
+        "identifier": "scenario",
+        "name": "场景",
+        "role": "system",
+        "marker": true
+      },
+      {
+        "identifier": "personaDescription",
+        "name": "扮演人设",
+        "role": "system",
+        "marker": true
+      },
+      {
+        "identifier": "worldInfoBefore",
+        "name": "世界书",
+        "role": "system",
+        "marker": true
+      },
+      {
+        "identifier": "chatHistory",
+        "name": "历史",
+        "role": "system",
+        "marker": true
+      },
+      {
+        "identifier": "worldInfoAfter",
+        "name": "世界书后置",
+        "role": "system",
+        "marker": true
+      }
+    ],
+    "prompt_order": [
+      {
+        "character_id": 100001,
+        "order": [
+          {
+            "identifier": "main",
+            "enabled": true
+          },
+          {
+            "identifier": "charDescription",
+            "enabled": true
+          },
+          {
+            "identifier": "charPersonality",
+            "enabled": true
+          },
+          {
+            "identifier": "scenario",
+            "enabled": true
+          },
+          {
+            "identifier": "personaDescription",
+            "enabled": true
+          },
+          {
+            "identifier": "worldInfoBefore",
+            "enabled": true
+          },
+          {
+            "identifier": "chatHistory",
+            "enabled": true
+          },
+          {
+            "identifier": "worldInfoAfter",
+            "enabled": true
+          }
+        ]
+      }
+    ]
+  }
+}

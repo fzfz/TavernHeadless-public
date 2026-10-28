@@ -1,0 +1,1430 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "id": "C005",
+      "semantic": [
+        {
+          "id": "user",
+          "actual": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+          "expected": "沈知夏 $ <林&> / 沈知夏 $ <林&>"
+        },
+        {
+          "id": "space",
+          "actual": "甲  乙",
+          "expected": "甲  乙"
+        },
+        {
+          "id": "newline",
+          "actual": "甲\n乙",
+          "expected": "甲\n乙"
+        },
+        {
+          "id": "noop",
+          "actual": "甲乙",
+          "expected": "甲乙"
+        },
+        {
+          "id": "trim",
+          "actual": "甲乙",
+          "expected": "甲乙"
+        },
+        {
+          "id": "if",
+          "actual": "乙",
+          "expected": "乙"
+        },
+        {
+          "id": "else",
+          "actual": "甲",
+          "expected": "甲"
+        },
+        {
+          "id": "reverse",
+          "actual": "乙😀甲",
+          "expected": "乙😀甲"
+        },
+        {
+          "id": "comment",
+          "actual": "甲乙 / 甲乙 / 甲乙 / ",
+          "expected": "甲乙 / 甲乙 / 甲乙 / "
+        },
+        {
+          "id": "roll",
+          "actual": "5",
+          "expected": "5"
+        },
+        {
+          "id": "random",
+          "actual": "首项",
+          "expected": "首项"
+        },
+        {
+          "id": "char",
+          "actual": "Gracie",
+          "expected": "Gracie"
+        },
+        {
+          "id": "group",
+          "actual": "Gracie",
+          "expected": "Gracie"
+        },
+        {
+          "id": "groupNotMuted",
+          "actual": "Gracie",
+          "expected": "Gracie"
+        },
+        {
+          "id": "notChar",
+          "actual": "沈知夏 $ <林&>",
+          "expected": "沈知夏 $ <林&>"
+        },
+        {
+          "id": "charDescription",
+          "actual": "这份资料属于Gracie。姓名：沈知夏 $ <林&>。",
+          "expected": "这份资料属于Gracie。姓名：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charPersonality",
+          "actual": "沉着",
+          "expected": "沉着"
+        },
+        {
+          "id": "charScenario",
+          "actual": "资料核对",
+          "expected": "资料核对"
+        },
+        {
+          "id": "mesExamplesRaw",
+          "actual": "示例：Gracie。",
+          "expected": "示例：Gracie。"
+        },
+        {
+          "id": "charDepthPrompt",
+          "actual": "深度：沈知夏 $ <林&>。",
+          "expected": "深度：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charCreatorNotes",
+          "actual": "作者说明",
+          "expected": "作者说明"
+        },
+        {
+          "id": "charFirstMessage",
+          "actual": "候选开场：沈知夏 $ <林&>。",
+          "expected": "候选开场：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charVersion",
+          "actual": " 1.2.3 {{revision}} ",
+          "expected": " 1.2.3 {{revision}} "
+        },
+        {
+          "id": "isMobile",
+          "actual": "false",
+          "expected": "false"
+        },
+        {
+          "id": "time",
+          "actual": "8:05 AM",
+          "expected": "8:05 AM"
+        },
+        {
+          "id": "date",
+          "actual": "October 9, 2026",
+          "expected": "October 9, 2026"
+        },
+        {
+          "id": "weekday",
+          "actual": "Friday",
+          "expected": "Friday"
+        },
+        {
+          "id": "isotime",
+          "actual": "08:05",
+          "expected": "08:05"
+        },
+        {
+          "id": "isodate",
+          "actual": "2026-10-09",
+          "expected": "2026-10-09"
+        },
+        {
+          "id": "datetimeformat",
+          "actual": "2026-10-09 at 08:05",
+          "expected": "2026-10-09 at 08:05"
+        },
+        {
+          "id": "timeDiff",
+          "actual": "in a minute",
+          "expected": "in a minute"
+        },
+        {
+          "id": "getvar",
+          "actual": "0",
+          "expected": "0"
+        },
+        {
+          "id": "hasvar",
+          "actual": "true",
+          "expected": "true"
+        },
+        {
+          "id": "lastMessage",
+          "actual": "最后角色消息",
+          "expected": "最后角色消息"
+        },
+        {
+          "id": "lastUserMessage",
+          "actual": "最后用户消息",
+          "expected": "最后用户消息"
+        },
+        {
+          "id": "lastCharMessage",
+          "actual": "最后角色消息",
+          "expected": "最后角色消息"
+        }
+      ],
+      "instances": [
+        {
+          "persona": {
+            "name": "沈知夏 $ <林&>",
+            "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+          },
+          "rendered": {
+            "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+            "card": "Gracie",
+            "state": "1",
+            "message": "最后角色消息"
+          },
+          "initial": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "remount": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "pages": 15
+        },
+        {
+          "persona": {
+            "name": "林婉宁",
+            "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+          },
+          "rendered": {
+            "user": "林婉宁 / 林婉宁",
+            "card": "Gracie",
+            "state": "1",
+            "message": "最后角色消息"
+          },
+          "initial": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "remount": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "pages": 15
+        }
+      ]
+    },
+    {
+      "id": "C063",
+      "semantic": [
+        {
+          "id": "user",
+          "actual": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+          "expected": "沈知夏 $ <林&> / 沈知夏 $ <林&>"
+        },
+        {
+          "id": "space",
+          "actual": "甲  乙",
+          "expected": "甲  乙"
+        },
+        {
+          "id": "newline",
+          "actual": "甲\n乙",
+          "expected": "甲\n乙"
+        },
+        {
+          "id": "noop",
+          "actual": "甲乙",
+          "expected": "甲乙"
+        },
+        {
+          "id": "trim",
+          "actual": "甲乙",
+          "expected": "甲乙"
+        },
+        {
+          "id": "if",
+          "actual": "乙",
+          "expected": "乙"
+        },
+        {
+          "id": "else",
+          "actual": "甲",
+          "expected": "甲"
+        },
+        {
+          "id": "reverse",
+          "actual": "乙😀甲",
+          "expected": "乙😀甲"
+        },
+        {
+          "id": "comment",
+          "actual": "甲乙 / 甲乙 / 甲乙 / ",
+          "expected": "甲乙 / 甲乙 / 甲乙 / "
+        },
+        {
+          "id": "roll",
+          "actual": "5",
+          "expected": "5"
+        },
+        {
+          "id": "random",
+          "actual": "首项",
+          "expected": "首项"
+        },
+        {
+          "id": "char",
+          "actual": "极乐庄混浴物语",
+          "expected": "极乐庄混浴物语"
+        },
+        {
+          "id": "group",
+          "actual": "极乐庄混浴物语",
+          "expected": "极乐庄混浴物语"
+        },
+        {
+          "id": "groupNotMuted",
+          "actual": "极乐庄混浴物语",
+          "expected": "极乐庄混浴物语"
+        },
+        {
+          "id": "notChar",
+          "actual": "沈知夏 $ <林&>",
+          "expected": "沈知夏 $ <林&>"
+        },
+        {
+          "id": "charDescription",
+          "actual": "这份资料属于极乐庄混浴物语。姓名：沈知夏 $ <林&>。",
+          "expected": "这份资料属于极乐庄混浴物语。姓名：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charPersonality",
+          "actual": "沉着",
+          "expected": "沉着"
+        },
+        {
+          "id": "charScenario",
+          "actual": "资料核对",
+          "expected": "资料核对"
+        },
+        {
+          "id": "mesExamplesRaw",
+          "actual": "示例：极乐庄混浴物语。",
+          "expected": "示例：极乐庄混浴物语。"
+        },
+        {
+          "id": "charDepthPrompt",
+          "actual": "深度：沈知夏 $ <林&>。",
+          "expected": "深度：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charCreatorNotes",
+          "actual": "作者说明",
+          "expected": "作者说明"
+        },
+        {
+          "id": "charFirstMessage",
+          "actual": "候选开场：沈知夏 $ <林&>。",
+          "expected": "候选开场：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charVersion",
+          "actual": " 1.2.3 {{revision}} ",
+          "expected": " 1.2.3 {{revision}} "
+        },
+        {
+          "id": "isMobile",
+          "actual": "false",
+          "expected": "false"
+        },
+        {
+          "id": "time",
+          "actual": "8:05 AM",
+          "expected": "8:05 AM"
+        },
+        {
+          "id": "date",
+          "actual": "October 9, 2026",
+          "expected": "October 9, 2026"
+        },
+        {
+          "id": "weekday",
+          "actual": "Friday",
+          "expected": "Friday"
+        },
+        {
+          "id": "isotime",
+          "actual": "08:05",
+          "expected": "08:05"
+        },
+        {
+          "id": "isodate",
+          "actual": "2026-10-09",
+          "expected": "2026-10-09"
+        },
+        {
+          "id": "datetimeformat",
+          "actual": "2026-10-09 at 08:05",
+          "expected": "2026-10-09 at 08:05"
+        },
+        {
+          "id": "timeDiff",
+          "actual": "in a minute",
+          "expected": "in a minute"
+        },
+        {
+          "id": "getvar",
+          "actual": "0",
+          "expected": "0"
+        },
+        {
+          "id": "hasvar",
+          "actual": "true",
+          "expected": "true"
+        },
+        {
+          "id": "lastMessage",
+          "actual": "最后角色消息",
+          "expected": "最后角色消息"
+        },
+        {
+          "id": "lastUserMessage",
+          "actual": "最后用户消息",
+          "expected": "最后用户消息"
+        },
+        {
+          "id": "lastCharMessage",
+          "actual": "最后角色消息",
+          "expected": "最后角色消息"
+        }
+      ],
+      "instances": [
+        {
+          "persona": {
+            "name": "沈知夏 $ <林&>",
+            "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+          },
+          "rendered": {
+            "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+            "card": "极乐庄混浴物语",
+            "state": "1",
+            "message": "最后角色消息"
+          },
+          "initial": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "remount": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "pages": 15
+        },
+        {
+          "persona": {
+            "name": "林婉宁",
+            "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+          },
+          "rendered": {
+            "user": "林婉宁 / 林婉宁",
+            "card": "极乐庄混浴物语",
+            "state": "1",
+            "message": "最后角色消息"
+          },
+          "initial": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "remount": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "pages": 15
+        }
+      ]
+    },
+    {
+      "id": "C013",
+      "semantic": [
+        {
+          "id": "user",
+          "actual": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+          "expected": "沈知夏 $ <林&> / 沈知夏 $ <林&>"
+        },
+        {
+          "id": "space",
+          "actual": "甲  乙",
+          "expected": "甲  乙"
+        },
+        {
+          "id": "newline",
+          "actual": "甲\n乙",
+          "expected": "甲\n乙"
+        },
+        {
+          "id": "noop",
+          "actual": "甲乙",
+          "expected": "甲乙"
+        },
+        {
+          "id": "trim",
+          "actual": "甲乙",
+          "expected": "甲乙"
+        },
+        {
+          "id": "if",
+          "actual": "乙",
+          "expected": "乙"
+        },
+        {
+          "id": "else",
+          "actual": "甲",
+          "expected": "甲"
+        },
+        {
+          "id": "reverse",
+          "actual": "乙😀甲",
+          "expected": "乙😀甲"
+        },
+        {
+          "id": "comment",
+          "actual": "甲乙 / 甲乙 / 甲乙 / ",
+          "expected": "甲乙 / 甲乙 / 甲乙 / "
+        },
+        {
+          "id": "roll",
+          "actual": "5",
+          "expected": "5"
+        },
+        {
+          "id": "random",
+          "actual": "首项",
+          "expected": "首项"
+        },
+        {
+          "id": "char",
+          "actual": "七色光_AMBER_v1.6.41",
+          "expected": "七色光_AMBER_v1.6.41"
+        },
+        {
+          "id": "group",
+          "actual": "七色光_AMBER_v1.6.41",
+          "expected": "七色光_AMBER_v1.6.41"
+        },
+        {
+          "id": "groupNotMuted",
+          "actual": "七色光_AMBER_v1.6.41",
+          "expected": "七色光_AMBER_v1.6.41"
+        },
+        {
+          "id": "notChar",
+          "actual": "沈知夏 $ <林&>",
+          "expected": "沈知夏 $ <林&>"
+        },
+        {
+          "id": "charDescription",
+          "actual": "这份资料属于七色光_AMBER_v1.6.41。姓名：沈知夏 $ <林&>。",
+          "expected": "这份资料属于七色光_AMBER_v1.6.41。姓名：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charPersonality",
+          "actual": "沉着",
+          "expected": "沉着"
+        },
+        {
+          "id": "charScenario",
+          "actual": "资料核对",
+          "expected": "资料核对"
+        },
+        {
+          "id": "mesExamplesRaw",
+          "actual": "示例：七色光_AMBER_v1.6.41。",
+          "expected": "示例：七色光_AMBER_v1.6.41。"
+        },
+        {
+          "id": "charDepthPrompt",
+          "actual": "深度：沈知夏 $ <林&>。",
+          "expected": "深度：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charCreatorNotes",
+          "actual": "作者说明",
+          "expected": "作者说明"
+        },
+        {
+          "id": "charFirstMessage",
+          "actual": "候选开场：沈知夏 $ <林&>。",
+          "expected": "候选开场：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charVersion",
+          "actual": " 1.2.3 {{revision}} ",
+          "expected": " 1.2.3 {{revision}} "
+        },
+        {
+          "id": "isMobile",
+          "actual": "false",
+          "expected": "false"
+        },
+        {
+          "id": "time",
+          "actual": "8:05 AM",
+          "expected": "8:05 AM"
+        },
+        {
+          "id": "date",
+          "actual": "October 9, 2026",
+          "expected": "October 9, 2026"
+        },
+        {
+          "id": "weekday",
+          "actual": "Friday",
+          "expected": "Friday"
+        },
+        {
+          "id": "isotime",
+          "actual": "08:05",
+          "expected": "08:05"
+        },
+        {
+          "id": "isodate",
+          "actual": "2026-10-09",
+          "expected": "2026-10-09"
+        },
+        {
+          "id": "datetimeformat",
+          "actual": "2026-10-09 at 08:05",
+          "expected": "2026-10-09 at 08:05"
+        },
+        {
+          "id": "timeDiff",
+          "actual": "in a minute",
+          "expected": "in a minute"
+        },
+        {
+          "id": "getvar",
+          "actual": "0",
+          "expected": "0"
+        },
+        {
+          "id": "hasvar",
+          "actual": "true",
+          "expected": "true"
+        },
+        {
+          "id": "lastMessage",
+          "actual": "最后角色消息",
+          "expected": "最后角色消息"
+        },
+        {
+          "id": "lastUserMessage",
+          "actual": "最后用户消息",
+          "expected": "最后用户消息"
+        },
+        {
+          "id": "lastCharMessage",
+          "actual": "最后角色消息",
+          "expected": "最后角色消息"
+        }
+      ],
+      "instances": [
+        {
+          "persona": {
+            "name": "沈知夏 $ <林&>",
+            "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+          },
+          "rendered": {
+            "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+            "card": "七色光_AMBER_v1.6.41",
+            "state": "1",
+            "message": "最后角色消息"
+          },
+          "initial": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "remount": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "pages": 15
+        },
+        {
+          "persona": {
+            "name": "林婉宁",
+            "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+          },
+          "rendered": {
+            "user": "林婉宁 / 林婉宁",
+            "card": "七色光_AMBER_v1.6.41",
+            "state": "1",
+            "message": "最后角色消息"
+          },
+          "initial": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "remount": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "pages": 15
+        }
+      ]
+    },
+    {
+      "id": "C072",
+      "semantic": [
+        {
+          "id": "user",
+          "actual": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+          "expected": "沈知夏 $ <林&> / 沈知夏 $ <林&>"
+        },
+        {
+          "id": "space",
+          "actual": "甲  乙",
+          "expected": "甲  乙"
+        },
+        {
+          "id": "newline",
+          "actual": "甲\n乙",
+          "expected": "甲\n乙"
+        },
+        {
+          "id": "noop",
+          "actual": "甲乙",
+          "expected": "甲乙"
+        },
+        {
+          "id": "trim",
+          "actual": "甲乙",
+          "expected": "甲乙"
+        },
+        {
+          "id": "if",
+          "actual": "乙",
+          "expected": "乙"
+        },
+        {
+          "id": "else",
+          "actual": "甲",
+          "expected": "甲"
+        },
+        {
+          "id": "reverse",
+          "actual": "乙😀甲",
+          "expected": "乙😀甲"
+        },
+        {
+          "id": "comment",
+          "actual": "甲乙 / 甲乙 / 甲乙 / ",
+          "expected": "甲乙 / 甲乙 / 甲乙 / "
+        },
+        {
+          "id": "roll",
+          "actual": "5",
+          "expected": "5"
+        },
+        {
+          "id": "random",
+          "actual": "首项",
+          "expected": "首项"
+        },
+        {
+          "id": "char",
+          "actual": "楚昭昭",
+          "expected": "楚昭昭"
+        },
+        {
+          "id": "group",
+          "actual": "楚昭昭",
+          "expected": "楚昭昭"
+        },
+        {
+          "id": "groupNotMuted",
+          "actual": "楚昭昭",
+          "expected": "楚昭昭"
+        },
+        {
+          "id": "notChar",
+          "actual": "沈知夏 $ <林&>",
+          "expected": "沈知夏 $ <林&>"
+        },
+        {
+          "id": "charDescription",
+          "actual": "这份资料属于楚昭昭。姓名：沈知夏 $ <林&>。",
+          "expected": "这份资料属于楚昭昭。姓名：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charPersonality",
+          "actual": "沉着",
+          "expected": "沉着"
+        },
+        {
+          "id": "charScenario",
+          "actual": "资料核对",
+          "expected": "资料核对"
+        },
+        {
+          "id": "mesExamplesRaw",
+          "actual": "示例：楚昭昭。",
+          "expected": "示例：楚昭昭。"
+        },
+        {
+          "id": "charDepthPrompt",
+          "actual": "深度：沈知夏 $ <林&>。",
+          "expected": "深度：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charCreatorNotes",
+          "actual": "作者说明",
+          "expected": "作者说明"
+        },
+        {
+          "id": "charFirstMessage",
+          "actual": "候选开场：沈知夏 $ <林&>。",
+          "expected": "候选开场：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charVersion",
+          "actual": " 1.2.3 {{revision}} ",
+          "expected": " 1.2.3 {{revision}} "
+        },
+        {
+          "id": "isMobile",
+          "actual": "false",
+          "expected": "false"
+        },
+        {
+          "id": "time",
+          "actual": "8:05 AM",
+          "expected": "8:05 AM"
+        },
+        {
+          "id": "date",
+          "actual": "October 9, 2026",
+          "expected": "October 9, 2026"
+        },
+        {
+          "id": "weekday",
+          "actual": "Friday",
+          "expected": "Friday"
+        },
+        {
+          "id": "isotime",
+          "actual": "08:05",
+          "expected": "08:05"
+        },
+        {
+          "id": "isodate",
+          "actual": "2026-10-09",
+          "expected": "2026-10-09"
+        },
+        {
+          "id": "datetimeformat",
+          "actual": "2026-10-09 at 08:05",
+          "expected": "2026-10-09 at 08:05"
+        },
+        {
+          "id": "timeDiff",
+          "actual": "in a minute",
+          "expected": "in a minute"
+        },
+        {
+          "id": "getvar",
+          "actual": "0",
+          "expected": "0"
+        },
+        {
+          "id": "hasvar",
+          "actual": "true",
+          "expected": "true"
+        },
+        {
+          "id": "lastMessage",
+          "actual": "最后角色消息",
+          "expected": "最后角色消息"
+        },
+        {
+          "id": "lastUserMessage",
+          "actual": "最后用户消息",
+          "expected": "最后用户消息"
+        },
+        {
+          "id": "lastCharMessage",
+          "actual": "最后角色消息",
+          "expected": "最后角色消息"
+        }
+      ],
+      "instances": [
+        {
+          "persona": {
+            "name": "沈知夏 $ <林&>",
+            "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+          },
+          "rendered": {
+            "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+            "card": "楚昭昭",
+            "state": "1",
+            "message": "最后角色消息"
+          },
+          "initial": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "remount": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "pages": 15
+        },
+        {
+          "persona": {
+            "name": "林婉宁",
+            "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+          },
+          "rendered": {
+            "user": "林婉宁 / 林婉宁",
+            "card": "楚昭昭",
+            "state": "1",
+            "message": "最后角色消息"
+          },
+          "initial": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "remount": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "pages": 15
+        }
+      ]
+    },
+    {
+      "id": "C025",
+      "semantic": [
+        {
+          "id": "user",
+          "actual": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+          "expected": "沈知夏 $ <林&> / 沈知夏 $ <林&>"
+        },
+        {
+          "id": "space",
+          "actual": "甲  乙",
+          "expected": "甲  乙"
+        },
+        {
+          "id": "newline",
+          "actual": "甲\n乙",
+          "expected": "甲\n乙"
+        },
+        {
+          "id": "noop",
+          "actual": "甲乙",
+          "expected": "甲乙"
+        },
+        {
+          "id": "trim",
+          "actual": "甲乙",
+          "expected": "甲乙"
+        },
+        {
+          "id": "if",
+          "actual": "乙",
+          "expected": "乙"
+        },
+        {
+          "id": "else",
+          "actual": "甲",
+          "expected": "甲"
+        },
+        {
+          "id": "reverse",
+          "actual": "乙😀甲",
+          "expected": "乙😀甲"
+        },
+        {
+          "id": "comment",
+          "actual": "甲乙 / 甲乙 / 甲乙 / ",
+          "expected": "甲乙 / 甲乙 / 甲乙 / "
+        },
+        {
+          "id": "roll",
+          "actual": "5",
+          "expected": "5"
+        },
+        {
+          "id": "random",
+          "actual": "首项",
+          "expected": "首项"
+        },
+        {
+          "id": "char",
+          "actual": "叶昀",
+          "expected": "叶昀"
+        },
+        {
+          "id": "group",
+          "actual": "叶昀",
+          "expected": "叶昀"
+        },
+        {
+          "id": "groupNotMuted",
+          "actual": "叶昀",
+          "expected": "叶昀"
+        },
+        {
+          "id": "notChar",
+          "actual": "沈知夏 $ <林&>",
+          "expected": "沈知夏 $ <林&>"
+        },
+        {
+          "id": "charDescription",
+          "actual": "这份资料属于叶昀。姓名：沈知夏 $ <林&>。",
+          "expected": "这份资料属于叶昀。姓名：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charPersonality",
+          "actual": "沉着",
+          "expected": "沉着"
+        },
+        {
+          "id": "charScenario",
+          "actual": "资料核对",
+          "expected": "资料核对"
+        },
+        {
+          "id": "mesExamplesRaw",
+          "actual": "示例：叶昀。",
+          "expected": "示例：叶昀。"
+        },
+        {
+          "id": "charDepthPrompt",
+          "actual": "深度：沈知夏 $ <林&>。",
+          "expected": "深度：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charCreatorNotes",
+          "actual": "作者说明",
+          "expected": "作者说明"
+        },
+        {
+          "id": "charFirstMessage",
+          "actual": "候选开场：沈知夏 $ <林&>。",
+          "expected": "候选开场：沈知夏 $ <林&>。"
+        },
+        {
+          "id": "charVersion",
+          "actual": " 1.2.3 {{revision}} ",
+          "expected": " 1.2.3 {{revision}} "
+        },
+        {
+          "id": "isMobile",
+          "actual": "false",
+          "expected": "false"
+        },
+        {
+          "id": "time",
+          "actual": "8:05 AM",
+          "expected": "8:05 AM"
+        },
+        {
+          "id": "date",
+          "actual": "October 9, 2026",
+          "expected": "October 9, 2026"
+        },
+        {
+          "id": "weekday",
+          "actual": "Friday",
+          "expected": "Friday"
+        },
+        {
+          "id": "isotime",
+          "actual": "08:05",
+          "expected": "08:05"
+        },
+        {
+          "id": "isodate",
+          "actual": "2026-10-09",
+          "expected": "2026-10-09"
+        },
+        {
+          "id": "datetimeformat",
+          "actual": "2026-10-09 at 08:05",
+          "expected": "2026-10-09 at 08:05"
+        },
+        {
+          "id": "timeDiff",
+          "actual": "in a minute",
+          "expected": "in a minute"
+        },
+        {
+          "id": "getvar",
+          "actual": "0",
+          "expected": "0"
+        },
+        {
+          "id": "hasvar",
+          "actual": "true",
+          "expected": "true"
+        },
+        {
+          "id": "lastMessage",
+          "actual": "最后角色消息",
+          "expected": "最后角色消息"
+        },
+        {
+          "id": "lastUserMessage",
+          "actual": "最后用户消息",
+          "expected": "最后用户消息"
+        },
+        {
+          "id": "lastCharMessage",
+          "actual": "最后角色消息",
+          "expected": "最后角色消息"
+        }
+      ],
+      "instances": [
+        {
+          "persona": {
+            "name": "沈知夏 $ <林&>",
+            "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+          },
+          "rendered": {
+            "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+            "card": "叶昀",
+            "state": "1",
+            "message": "最后角色消息"
+          },
+          "initial": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "remount": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "pages": 15
+        },
+        {
+          "persona": {
+            "name": "林婉宁",
+            "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+          },
+          "rendered": {
+            "user": "林婉宁 / 林婉宁",
+            "card": "叶昀",
+            "state": "1",
+            "message": "最后角色消息"
+          },
+          "initial": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "remount": {
+            "scopes": 1,
+            "floorScopes": 0,
+            "pendingOperations": 0,
+            "layouts": 2,
+            "subscriptions": 2,
+            "eventListeners": 0,
+            "timers": 0,
+            "media": 0,
+            "widgets": 0,
+            "floorLists": 0,
+            "historyCacheEntries": 0,
+            "historyCacheBytes": 0,
+            "settledStreamCacheEntries": 0,
+            "settledStreamCacheBytes": 0,
+            "diagnosticEntries": 0,
+            "diagnosticBytes": 0
+          },
+          "pages": 15
+        }
+      ]
+    }
+  ]
+}

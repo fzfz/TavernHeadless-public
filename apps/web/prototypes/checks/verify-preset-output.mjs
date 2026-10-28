@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createFormalTransport} from '../shared/formal-transport.prototype.js';
+import {parseGalgame} from '../characters/gushengman/main.js';
+const path=new URL('../../../../docs/plans/evidence/published-backend/preset-output-live.json',import.meta.url);
+const evidence=JSON.parse(fs.readFileSync(path));const requests=[];
+const transport=createFormalTransport({sessionId:evidence.sessionId,fetchImpl:(url,options)=>{requests.push(url);return fetch('http://localhost:43876'+url,options)}});
+const session=await transport.loadSession();const messages=await transport.getMessages({floorId:session.current.floorId});
+const end=evidence.events.findLast(e=>e.type==='text'&&e.data.type==='end').data.text;
+assert.equal(messages.findLast(m=>m.role==='assistant').text,end);
+assert(end.length>0);assert(!end.includes('这是你需求的最终输出：'));
+assert(!requests.some(url=>url.includes('/regex-profiles/')));
+const frames=parseGalgame(end);assert(frames.length>0);assert(frames.some(f=>f.choices.length));
+evidence.verification={success:true,snapshot:session.current,requests,frames:frames.length,completedAndHistoryEqual:true};
+fs.writeFileSync(path,JSON.stringify(evidence,null,2)+'\n');console.log({sessionId:evidence.sessionId,frames:frames.length,snapshotId:session.current.snapshotId});

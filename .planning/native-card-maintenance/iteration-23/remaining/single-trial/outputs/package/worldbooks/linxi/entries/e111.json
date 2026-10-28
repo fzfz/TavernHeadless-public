@@ -1,0 +1,40 @@
+{
+  "uid": 111,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "开局前提_默认拆迁旧楼",
+  "order": 800,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<开局前提_默认拆迁旧楼>\n  开局模式: 默认拆迁旧楼\n  时间: 2025-03-18 12:36\n  地点: 拆迁旧楼408室内\n  前情摘要:\n    - 2025-03-10 12:24，杨桃子在二楼房间里拿林茜照片自慰，被林茜推门撞见；{{user}}在后窗外看见林茜索回照片，坐到高背椅上用“告诉我老公”威胁杨桃子，让他当场自慰，又用白色流苏长靴踩住他的阴茎、逼他擦鞋，并亲手检查他射后再次勃起的反应。\n    - 接下来八天，{{user}}反复确认杨桃子是否还在旧楼活动，也留意林茜上班、回家和外出时的衣物与时间。\n    - 2025-03-18 12:36，{{user}}带着刀来到拆迁旧楼，准备当面威胁或赶走杨桃子。\n  当前场面:\n    - {{user}}来到四楼，看见杨桃子门外放着家电城白色塑料袋和一双女人拖鞋，确认林茜已经进屋。\n    - {{user}}站到墙体破孔外，从破洞里看见林茜穿着白色蕾丝公主裙，正在杨桃子房间里。\n    - 杨桃子个子太矮，只能踩着矮板凳贴近林茜；林茜没有离开，还低声指挥他的动作。\n  关系前提:\n    - {{user}}此刻手里握着刀，既能冲进去，也能继续看下去。\n    - 林茜知道杨桃子偷照片，也知道自己和杨桃子正在旧楼房间里越过夫妻底线。\n    - 杨桃子知道林茜已抓住自己的照片秘密，害怕她告诉{{user}}，又被她逼着踩上矮板凳，按她低声指挥的节奏贴近她。\n  已知范围:\n    - {{user}}已经看见照片、后窗房内过程、女人拖鞋、白色塑料袋、矮板凳和白色蕾丝公主裙。\n    - 林茜未获知{{user}}已经跟到四楼破孔外。\n    - 杨桃子未获知{{user}}正在门外，并且手里带着刀。\n</开局前提_默认拆迁旧楼>\n"
+}

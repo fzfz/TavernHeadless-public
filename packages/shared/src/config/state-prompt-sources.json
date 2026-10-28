@@ -1,0 +1,20 @@
+{
+  "defaultParameters": {
+    "role": "system",
+    "budgetGroup": "role_state",
+    "pinned": false,
+    "prunable": true
+  },
+  "sources": {
+    "definition": "stateDefinition",
+    "rules": "stateRules",
+    "before": "stateBefore",
+    "history": "stateHistory",
+    "evidence": "stateEvidence",
+    "outputContract": "stateOutputContract"
+  },
+  "errors": {
+    "duplicateSourceId": "系统的变量更新数据源标识重复。请联系管理员在 state-prompt-sources.json 中为各数据源配置不同标识。",
+    "unknownSourceId": "变量更新提示词引用了系统无法识别的数据源。请按 state-prompt-sources.json 中的 sources 配置填写数据源标识。"
+  }
+}

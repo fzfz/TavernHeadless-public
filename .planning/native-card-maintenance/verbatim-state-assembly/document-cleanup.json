@@ -1,0 +1,62 @@
+{
+  "task": "清理重复要求及章节范围",
+  "baseCommit": "e965c9f58e6d90bcc0ee6b829391d5eb3a3bd4f9",
+  "modifiedFiles": [
+    ".agents/skills/native-card-conversion/SKILL.md",
+    ".agents/skills/native-card-conversion/references/acceptance.md",
+    ".agents/skills/native-card-conversion/references/architecture.md",
+    ".agents/skills/native-card-conversion/references/character-fields.md",
+    ".agents/skills/native-card-conversion/references/conversion-map.md",
+    ".agents/skills/native-card-conversion/references/extension-fields.md",
+    ".agents/skills/native-card-conversion/references/semantic-experience.md",
+    ".agents/skills/native-card-conversion/references/tools.md",
+    ".agents/skills/native-card-conversion/references/worldbook-fields.md"
+  ],
+  "stage": "检查与审阅通过，准备精确提交",
+  "completed": [
+    "删除“拆分改变承载位置，合并保留各段原文及生效条件。”",
+    "原文保留与程序转换原则只在入口完整定义",
+    "删除六份文档中的重复定义",
+    "字段映射与转义说明移入文件生成步骤"
+  ],
+  "preserved": [
+    "原文保留最高原则",
+    "代码输入、条件、分支、顺序、状态来源和结果",
+    "具体字段用途、目录与格式归属",
+    "API及源卡只读、批准后的架构实施",
+    "正式导入、回读和实际请求验收"
+  ],
+  "checks": {
+    "markdownlint": {
+      "files": 11,
+      "errors": 0
+    },
+    "prettier": "passed",
+    "gitDiffCheck": "passed",
+    "skillStartup": "passed"
+  },
+  "scriptsChanged": false,
+  "backendChanged": false,
+  "newConversionTrials": 0,
+  "resolvedFindings": [
+    "F01：格式标识与数据容器移入格式章节",
+    "F02：全文来源移至文档开头",
+    "F03：明确可更名对象为文件",
+    "F04：缺失引用处理只在入口定义",
+    "F05：未决记录只在转换记录定义",
+    "F06：通用诊断只在工具第2章定义",
+    "F07：删除未定义的两种协议尾句",
+    "R1：文件登记与数据引用只在格式第3章定义",
+    "J2：自定义扩展读取说明只在扩展文档定义",
+    "架构句明确正文模型读取结果及后端保存正文"
+  ],
+  "reviews": {
+    "sectionScope": "section-scope-review-final.json",
+    "standards": "dedup-code-review-standards-final.json",
+    "spec": "dedup-code-review-spec-final.json"
+  },
+  "acceptedDeletionSuggestions": [
+    "删除pack末段的交付概述句",
+    "删除resume末段的通用诊断导航句"
+  ]
+}

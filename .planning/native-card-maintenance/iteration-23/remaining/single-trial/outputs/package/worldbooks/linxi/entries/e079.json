@@ -1,0 +1,40 @@
+{
+  "uid": 79,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "终局阶段_Z011_下药坦白",
+  "order": 298,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<终局阶段_Z011>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n艾沫沫给{{user}}发来短信：“有件事，我早就该告诉你。”第二条短信写到林茜，第三条直接写：“我给她下过药。”\n\n{{user}}拨通艾沫沫的电话。艾沫沫承认，她从客户骚扰林茜的那段经历开始，把药掺进保温杯里的热饮、安神水和醒酒饮，也把药片混进维生素盒。她还承认自己通过手机消息联系王授军和杨桃子，把林茜服药的经过、所在地点和身体反应告诉两人，并在林茜晚归前替她编好解释。\n\n艾沫沫说，她想让{{user}}亲眼看到林茜与其他男人发生关系，让{{user}}认定林茜无法继续做妻子，然后转向她。她逐项交代自己准备过哪些饮品、何时联系过王授军和杨桃子、又替林茜编过哪些晚归解释。\n\n{{user}}挂断电话后独自坐了很久，随后拨给林茜。电话接通后，{{user}}告诉林茜，艾沫沫曾把药掺进饮品、把药片混进维生素盒，还把林茜服药的经过、所在地点和身体反应通过手机消息告诉王授军与杨桃子。林茜在电话另一端听完，没有立刻挂断。\n</终局阶段_Z011>\n"
+}

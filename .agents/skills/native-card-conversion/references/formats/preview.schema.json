@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tavern-headless.local/native-card-maintenance/preview.schema.json",
+  "title": "Native role package preview scenario",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "persona",
+    "preset",
+    "modelParams",
+    "sessionType",
+    "testMessages"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "persona": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "description"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 }
+      },
+      "description": "The complete named user persona used by this test, based on the source card's current scene and required voice."
+    },
+    "preset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "data"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "data": {
+          "type": "object",
+          "description": "The complete preset snapshot used for actual prompt assembly."
+        }
+      }
+    },
+    "statePreset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "data"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "data": {
+          "type": "object",
+          "description": "The complete independent preset snapshot used for actual state update assembly."
+        }
+      },
+      "description": "Optional independent state update preset. When supplied, the formal preview request is bound to its separately saved preset and version."
+    },
+    "modelParams": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_context_tokens"],
+      "properties": {
+        "max_context_tokens": { "type": "integer", "minimum": 1 },
+        "max_output_tokens": { "type": ["integer", "null"], "minimum": 1 },
+        "temperature": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 2
+        },
+        "top_p": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "top_k": { "type": ["integer", "null"], "minimum": 0 },
+        "frequency_penalty": {
+          "type": ["number", "null"],
+          "minimum": -2,
+          "maximum": 2
+        },
+        "presence_penalty": {
+          "type": ["number", "null"],
+          "minimum": -2,
+          "maximum": 2
+        },
+        "stop_sequences": {
+          "type": ["array", "null"],
+          "maxItems": 16,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "seed": { "type": ["integer", "null"] },
+        "repetition_penalty": {
+          "type": ["number", "null"],
+          "exclusiveMinimum": 0,
+          "maximum": 2
+        },
+        "min_p": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "logit_bias": {
+          "anyOf": [
+            {
+              "type": "object",
+              "maxProperties": 256,
+              "additionalProperties": {
+                "type": "number",
+                "minimum": -100,
+                "maximum": 100
+              }
+            },
+            { "type": "null" }
+          ]
+        },
+        "response_format": {
+          "anyOf": [
+            {
+              "type": "object",
+              "required": ["type"],
+              "properties": {
+                "type": { "enum": ["text", "json_object", "json_schema"] },
+                "json_schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": false
+            },
+            { "type": "null" }
+          ]
+        },
+        "stream": { "type": ["boolean", "null"] },
+        "timeout_ms": { "type": ["integer", "null"], "minimum": 1 },
+        "max_retries": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "maximum": 10
+        },
+        "reasoning_effort": {
+          "type": ["string", "null"],
+          "enum": ["none", "low", "medium", "high", null]
+        }
+      },
+      "description": "The explicit model-generation settings for both preview slots. max_context_tokens sets the context used during this preview."
+    },
+    "modelCapabilities": {
+      "anyOf": [
+        {
+          "$ref": "https://tavernheadless.local/schemas/role-model-capabilities.schema.json#/definitions/capabilityGrant"
+        },
+        { "type": "null" }
+      ],
+      "description": "Optional shared role model capability grant for the narrator slot."
+    },
+    "sessionType": { "enum": ["individual", "group"] },
+    "openingId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The imported native opening ID to select for this preview. When omitted, the formal preview API selects the default opening for sessionType; if the package has no applicable opening, the session starts without an opening."
+    },
+    "testMessages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/testMessage" },
+      "description": "Each message is sent to the formal prompt dry-run endpoint and its actual assembled messages are recorded."
+    },
+    "offlineReplay": {
+      "$ref": "#/$defs/offlineReplay",
+      "description": "Optional explicit local narrator and state-updater responses for manual browser interaction. The preview tool serves these responses only on loopback."
+    }
+  },
+  "$defs": {
+    "testMessage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "message"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "message": { "type": "string", "minLength": 1 },
+        "branch_id": { "type": "string", "minLength": 1 },
+        "prompt_intent": {
+          "enum": [
+            "normal",
+            "continue",
+            "impersonate",
+            "swipe",
+            "regenerate",
+            "quiet"
+          ]
+        },
+        "debug_options": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "include_worldbook_matches": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "offlineReplay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["steps"],
+      "properties": {
+        "steps": {
+          "$ref": "https://tavern-headless.local/native-card-maintenance/replay-fixture.schema.json#/properties/steps"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "uid": 73,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "终局阶段_Z002_硬盘已经清空",
+  "order": 281,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<终局阶段_Z002>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n{{user}}到达颐园小区，向物业出示维修派单并领取王授军住处钥匙。\n{{user}}用钥匙进入王授军住处，确认屋内无人，把带来的U盘插入电脑，准备从U盘启动格式化程序。\n电脑启动后，{{user}}先打开硬盘根目录，准备确认要删除的文件范围。\n根目录已经为空，原有视频、画稿、日记和文件夹全部消失。{{user}}检查回收站和常用目录，也没有找到原文件。\n{{user}}查看系统日志和最近使用记录，系统日志显示硬盘格式化操作在他进门前已经完成。\n{{user}}拔出U盘，删除本次开机产生的最近使用记录，关闭电脑，把钥匙归还物业后离开。\n</终局阶段_Z002>\n"
+}

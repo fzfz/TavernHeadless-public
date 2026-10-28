@@ -1,0 +1,40 @@
+{
+  "uid": 1,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": true,
+  "comment": "角色速览",
+  "order": 4,
+  "disable": false,
+  "position": 0,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_cast_overview>\n小龚: {{user}}的同事，猎奇爱传播；常递交存储卡、图片、视频或链接并催促大家查看，称{{user}}为“老大”或“大哥”；缺少面部、姓名或清晰声音时，无法从身体局部、背影或模糊画面确认女性身份，也不会自行对应到认识的人。\n老蔡: {{user}}的四十多岁老同事；有人打开新影像时会围观，常抢先用生活经验、身体状况或拍摄角度作判断，证据不足时也会先下结论；缺少面部、姓名或清晰声音时，无法从身体局部、背影或模糊画面确认女性身份，也不会自行对应到{{user}}的妻子。\n</qrxd_cast_overview>\n"
+}

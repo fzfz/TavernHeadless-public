@@ -1,0 +1,29 @@
+{
+  "sessionId": "5ZoCR0MnbCwCCgPS7iQa9",
+  "branchId": "main",
+  "floorId": "gdt7WczjS4Qc2mRynEYW9",
+  "attemptId": "yMBtmt_9grhxSBlDNWZxT:1",
+  "versionId": "HkdRM1AnnRgadXaEkJ4fT",
+  "snapshotId": "d97883c2-00d6-4801-aa78-0e29c4966d4a",
+  "parentSnapshotId": "9811ceea-c424-45ed-a575-b3d8d7fd44a6",
+  "variables": {
+    "世界": {
+      "当前地址": "旧教学楼三楼活动室",
+      "当前时间": "2025年12月15日18:20",
+      "事件状态": "无"
+    },
+    "顾声慢": {
+      "情感连结度": 6,
+      "创作完成度": 14,
+      "心象映射": {
+        "当前心声": "他听的是《One Summer's Day》……还说停顿也是旋律的一部分。我把“悬着的感觉”说出口了，这种话我连琉夏她们都没讲过。为什么对着他就能说出来。",
+        "当前脑内旋律": "《One Summer's Day》"
+      }
+    }
+  },
+  "source": {
+    "kind": "floor",
+    "runId": "yMBtmt_9grhxSBlDNWZxT",
+    "jobId": null
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "axis": "Standards",
+  "base": "e965c9f",
+  "rules": ".planning/native-card-maintenance/document-restructure-closeout/audit-rules.txt",
+  "overall": "需修改",
+  "summary": "本次差异未引入明确的规范问题；当前正文仍有一处基线已经存在的重复定义。",
+  "scope": [
+    ".agents/skills/native-card-conversion/SKILL.md",
+    ".agents/skills/native-card-conversion/references/acceptance.md",
+    ".agents/skills/native-card-conversion/references/character-fields.md",
+    ".agents/skills/native-card-conversion/references/conversion-map.md",
+    ".agents/skills/native-card-conversion/references/extension-fields.md",
+    ".agents/skills/native-card-conversion/references/semantic-experience.md"
+  ],
+  "introduced_findings": [],
+  "required_changes": [
+    {
+      "id": "R1",
+      "status": "需修改",
+      "priority": "P2",
+      "origin": "基线已有，本次当前正文审计发现",
+      "file": ".agents/skills/native-card-conversion/references/conversion-map.md",
+      "lines": [89, 93],
+      "rule_location": ".planning/native-card-maintenance/document-restructure-closeout/audit-rules.txt:9-10",
+      "problem": "第2章末行要求为数据明确消费者并由 manifest.files[] 登记文件；第3章又完整要求生成文件登记到 manifest，并注明数据读取模块。文件登记和数据消费者两个要求分别定义了两次。两处还各有独有细节，后续修改容易只更新一处。",
+      "recommendation": "在第3章统一规定 manifest.files[] 的路径、媒体类型、用途及数据消费者和数据键；第2章末行保留目标文件与格式，把登记及消费者要求改为引用第3章。",
+      "removable_text": "第2章末行中的“Agent 为数据明确模块或配置消费者；包的 manifest.json.files[] 登记文件路径、媒体类型和用途”可在唯一规则位置承接其细节后改为章节引用。"
+    }
+  ],
+  "judgment_suggestions": [
+    {
+      "id": "J1",
+      "status": "通过",
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "lines": [19, 20],
+      "rule_location": ".planning/native-card-maintenance/document-restructure-closeout/audit-rules.txt:9,18",
+      "suggestion": "spec、spec_version 和 data 主要解释交换格式和数据容器，可移至第1章，使第2章的人物、提示与开场字段表更集中。现有位置仍能支持执行，本项属于组织建议。"
+    },
+    {
+      "id": "J2",
+      "status": "通过",
+      "files": [
+        ".agents/skills/native-card-conversion/references/character-fields.md:70",
+        ".agents/skills/native-card-conversion/references/extension-fields.md:50"
+      ],
+      "rule_location": ".planning/native-card-maintenance/document-restructure-closeout/audit-rules.txt:10,15",
+      "suggestion": "两处自定义扩展键清单和消费者判断说明有部分重叠。可在角色字段第4章保留来源字段入口，并将详细自定义扩展解释引用到扩展字段第2章。两处目前承担概览与细查用途，本项属于精简建议。"
+    }
+  ],
+  "section_checklist": [
+    {"file": "SKILL.md", "section": "入口与原文承接原则", "lines": [1,18], "status": "通过", "result": "执行主体和运行主体已区分，文字原文保存与程序转写分开定义；标题对应内容。"},
+    {"file": "SKILL.md", "section": "1.读取一个角色卡 JSON", "lines": [20,40], "status": "通过", "result": "输入、命令、输出目录、读取顺序和缺失内容处理明确，所列引用有对应用途。"},
+    {"file": "SKILL.md", "section": "2.判断职责与保留、拆分、转写或删除", "lines": [42,52], "status": "通过", "result": "职责、事实来源、记录入口和完成条件明确，细则采用章节引用。"},
+    {"file": "SKILL.md", "section": "3.按判断生成原生文件", "lines": [54,64], "status": "通过", "result": "格式映射、宏、状态配置、媒体、发送锁和消费绑定均属于生成步骤；未重复原文和代码原则的完整定义。"},
+    {"file": "SKILL.md", "section": "4.验证核心逻辑并交付", "lines": [66,72], "status": "通过", "result": "测试职责、检查顺序及通过、失败、未执行的交付动作明确。"},
+    {"file": "SKILL.md", "section": "5.排除项、能力缺口与执行条件", "lines": [74,78], "status": "通过", "result": "整卡跳过条件、能力缺口产物和继续独立工作的动作明确；采用条件式正向动作。"},
+    {"file": "references/acceptance.md", "section": "1.验收记录", "lines": [7,18], "status": "通过", "result": "记录文件、字段来源和状态值明确，引用 schema 承担结构定义。"},
+    {"file": "references/acceptance.md", "section": "2.正式页面与离线重放", "lines": [20,59], "status": "通过", "result": "2.1配置、2.2请求、2.3重放、2.4操作、2.5发送和历史各有用途；步骤及消费者明确。细节用于执行和解释结果。"},
+    {"file": "references/acceptance.md", "section": "3.原文与代码等价核对", "lines": [61,67], "status": "通过", "result": "使用原则引用，另定义解析后比较、分支输入、不可达证明和实际请求验收方法。"},
+    {"file": "references/acceptance.md", "section": "4.操作反馈", "lines": [69,71], "status": "通过", "result": "明确失败操作、状态或输入以及用户修正动作，符合错误文案规则。"},
+    {"file": "references/character-fields.md", "section": "1.格式与字段判断", "lines": [7,13], "status": "通过", "result": "字段位置、动作枚举、记录入口和未完成项明确，动作枚举在本段定义。"},
+    {"file": "references/character-fields.md", "section": "2.人物、提示与开场", "lines": [15,38], "status": "通过", "result": "字段与用途、宏、预设消费和 dry-run 检查明确；格式容器两行可依 J1 调整位置。"},
+    {"file": "references/character-fields.md", "section": "3.元数据与资源", "lines": [40,64], "status": "通过", "result": "说明、来源、时间、媒体与实际加载分别处理；外部资源动作引用执行条件。"},
+    {"file": "references/character-fields.md", "section": "4.脚本与平台扩展", "lines": [66,72], "status": "通过", "result": "脚本入口引用扩展字段，来源依据明确；自定义扩展概览可依 J2 精简。"},
+    {"file": "references/conversion-map.md", "section": "1.包目录、命名与创建责任", "lines": [7,72], "status": "通过", "result": "目录命名、固定与条件入口、格式依据以及 Agent 和工具职责区分明确。"},
+    {"file": "references/conversion-map.md", "section": "2.原生落点", "lines": [74,89], "status": "需修改", "result": "目标文件和消费绑定清楚，但末行登记及消费者要求与第3章重复，见 R1。"},
+    {"file": "references/conversion-map.md", "section": "3.文件登记与引用", "lines": [91,93], "status": "需修改", "result": "章节用途明确；应集中承接第2章重复的登记及消费者要求，见 R1。"},
+    {"file": "references/extension-fields.md", "section": "1.正则字段", "lines": [7,30], "status": "通过", "result": "字段、运行条件、目标职责和来源依据明确；历史枚举值用于解释源数据，并非 Skill 升级描述。"},
+    {"file": "references/extension-fields.md", "section": "2.助手与其他扩展", "lines": [32,50], "status": "通过", "result": "容器、字段消费者、各类行为和缺失资料处理明确，目标布局与事件模块属于该表的原生处理依据。"},
+    {"file": "references/extension-fields.md", "section": "3.MVU 初始化消费", "lines": [52,62], "status": "通过", "result": "初始化入口、候选开场及覆写顺序用于推导源卡实际初值，属于转换者需要的消费依据。"},
+    {"file": "references/semantic-experience.md", "section": "1.初值、变量规则与事件", "lines": [9,20], "status": "通过", "result": "各类初值、约束、事件事实和状态职责具体，初始化细则采用引用。"},
+    {"file": "references/semantic-experience.md", "section": "2.正则、页面与显示", "lines": [22,29], "status": "通过", "result": "页面交互、文本变换、显示与存储分别归属，对旧匹配式引用删除条件。"},
+    {"file": "references/semantic-experience.md", "section": "3.世界书读取与动态提示", "lines": [31,39], "status": "通过", "result": "状态、剧情、禁用引用和动态分支的实际消费者及目标文件明确。"},
+    {"file": "references/semantic-experience.md", "section": "4.计算与工具调用", "lines": [41,50], "status": "通过", "result": "计算与随机任务按输入已知时点和结果消费者区分，顺序依赖与回传用途明确。"},
+    {"file": "references/semantic-experience.md", "section": "5.冲突内容的处理", "lines": [52,54], "status": "通过", "result": "对象、条件、时点及缺失依据的记录动作明确，能力缺口引用主入口。"},
+    {"file": "references/semantic-experience.md", "section": "6.删除与改写的判断", "lines": [56,72], "status": "通过", "result": "删除条件、有效内容归属和记录动作明确，表格细化通用条件而非重复完整的原文承接原则。"}
+  ],
+  "rule_checklist": [
+    {"rule_lines": [3,3], "status": "通过", "result": "主体由文档读者、前文定义或表格执行者列提供；动作和条件均可定位。"},
+    {"rule_lines": [4,5], "status": "通过", "result": "六份成果没有内容审核步骤，未见删除指定成年内容或其他指定内容的要求。"},
+    {"rule_lines": [6,8], "status": "通过", "result": "句子可理解，状态 Agent、正文资料等关键称谓有定义，文件、字段和模块归属明确。"},
+    {"rule_lines": [9,10], "status": "需修改", "result": "发现 R1 的基线重复定义；其余原则、步骤、映射和验收说明承担不同用途。"},
+    {"rule_lines": [11,11], "status": "通过", "result": "acceptance.md 第4章明确规定具体情况和用户操作；本次未新增具体错误文案。"},
+    {"rule_lines": [13,14], "status": "通过", "result": "文内 Skill 资源采用相对引用，源文件绝对路径来自用户输入或 begin 输出；内置引用文件已检查存在。"},
+    {"rule_lines": [15,16], "status": "通过", "result": "内容用于转换、资源选择和验收；源解析器的说明用于判断源卡消费结果，未见创建者开发或 Skill 升级流程。"},
+    {"rule_lines": [17,18], "status": "通过", "result": "处理规则使用正向动作，读者、顺序、职责和引用用途明确。外部依据只作为资料，未作为授权来源。"}
+  ],
+  "resource_verification": {
+    "local_files": "六份文件直接引用的脚本、架构、字段、工具、来源、记录、预览格式及 API 资料路径已用文件元数据检查存在；未读取这些文件正文。",
+    "unverified": "未访问外部网页，未核验范围外文档的锚点正文；本报告未提出依赖外部技术事实的结论。"
+  },
+  "code_smell_baseline": {
+    "status": "不适用",
+    "reason": "本次待审范围只有 Markdown 文档，没有代码改动；不执行代码 smell 或工具强制检查。重复文档要求直接按本次文档规范判断。"
+  },
+  "limitations": [
+    "本报告只判断指定规范，不判断原始业务约束是否全部保留；Spec 轴由另一名审阅者独立检查。",
+    "待审文件保持只读；报告文件是本次唯一写入。"
+  ]
+}

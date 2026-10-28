@@ -1,0 +1,98 @@
+{
+  "axis": "Standards",
+  "baseline": ".planning/native-card-maintenance/verbatim-state-assembly/before/",
+  "diff": ".planning/native-card-maintenance/verbatim-state-assembly/review-diff.patch",
+  "scope": "8 份 Skill 文档修订及新增 architecture-proposal.md；成果保持原样。",
+  "hardFindings": [],
+  "judgementSuggestions": [
+    {
+      "status": "通过",
+      "file": ".planning/native-card-maintenance/verbatim-state-assembly/architecture-proposal.md",
+      "line": 80,
+      "rule": "audit-rules.txt：逐句检查并提出可删除文字；内容写作：删除重复解释。",
+      "observation": "“新增输入名称与约束由第5章的共享 schema 定义，各模块读取同一契约”与前一句及第5.2节第104行部分重复。",
+      "recommendation": "可将这句压缩为第5.2节的引用，保留前句对节点标识、共享配置和读取方的具体规定。此项属于精简建议，不影响验收。"
+    }
+  ],
+  "checklist": [
+    {
+      "rule": "规则使用正向句式，写清执行者、动作、对象和条件。",
+      "status": "通过"
+    },
+    {
+      "rule": "输出排除内容审核步骤和规范。",
+      "status": "通过"
+    },
+    {
+      "rule": "完整表达成果要求的指定内容。",
+      "status": "通过"
+    },
+    {
+      "rule": "句子通顺，主体、动作及结果明确。",
+      "status": "通过"
+    },
+    {
+      "rule": "采用常用词和专业术语，专用名称先定义。",
+      "status": "通过"
+    },
+    {
+      "rule": "写清对象所属文件、接口、数据表或模块。",
+      "status": "通过"
+    },
+    {
+      "rule": "章节用途与正文对应，要求通过引用衔接。",
+      "status": "通过"
+    },
+    {
+      "rule": "删除抽象空话及无关说明，重复表述有精简建议。",
+      "status": "通过"
+    },
+    {
+      "rule": "错误反馈说明具体情况和用户操作。",
+      "status": "通过"
+    },
+    {
+      "rule": "Skill 资源可访问，新增内容未引入宿主仓库流程依赖。",
+      "status": "通过"
+    },
+    {
+      "rule": "Skill 自身文件使用相对路径。",
+      "status": "通过"
+    },
+    {
+      "rule": "Skill 内容属于执行规范、步骤、资源及消费契约。",
+      "status": "通过"
+    },
+    {
+      "rule": "Skill 新增内容未包含创建者开发要求、升级过程或旧版本迁移说明。",
+      "status": "通过"
+    },
+    {
+      "rule": "错误动作限制以正向执行步骤表达。",
+      "status": "通过"
+    },
+    {
+      "rule": "方案包含目标、验收清单、非本次目标和已获得授权。",
+      "status": "通过"
+    },
+    {
+      "rule": "方案明确实施开发者与转换 Agent 的职责、产物和完成条件。",
+      "status": "通过"
+    },
+    {
+      "rule": "方案正文排除编写时的思考过程和中间结果。",
+      "status": "通过"
+    },
+    {
+      "rule": "代码 smell baseline 按适用范围判断。",
+      "status": "通过",
+      "note": "本次无程序代码变更，未发现适用的代码 smell。"
+    }
+  ],
+  "report": "未发现需要修改的明确规范违反项。8 份 Skill 文档使用相对引用，明确转换者、目标文件和实际消费者；原文保留原则、代码转写和验收职责一致。架构方案具有规定的四类章节，区分当前行为、拟议契约和实施授权，并明确开发者与转换 Agent 的职责。第80行有一处可精简的共享 schema 重复解释，列为判断建议。本次没有程序代码变更，代码 smell baseline 没有适用发现。工具覆盖事项未重复审查。",
+  "summary": {
+    "hardFindings": 0,
+    "judgementSuggestions": 1,
+    "overall": "通过"
+  }
+}

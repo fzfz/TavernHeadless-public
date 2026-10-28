@@ -1,0 +1,211 @@
+{
+  "sample": 2,
+  "sourceCallId": "Tr90dtzgXtqgJPIRx8IUF",
+  "request": {
+    "model": "dots-studio/dots-3-note-preview:free",
+    "temperature": 0.3,
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "schema": {
+          "type": "object",
+          "required": [
+            "changes",
+            "evidenceMessageIds"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "changes": {
+              "type": "array",
+              "description": "Write each path at most once. For an array path, set the complete array in one operation.",
+              "maxItems": 3,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "op",
+                      "path",
+                      "value"
+                    ],
+                    "properties": {
+                      "op": {
+                        "const": "set"
+                      },
+                      "path": {
+                        "const": "/location"
+                      },
+                      "value": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "op",
+                      "path"
+                    ],
+                    "properties": {
+                      "op": {
+                        "const": "remove"
+                      },
+                      "path": {
+                        "const": "/location"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "op",
+                      "path",
+                      "value"
+                    ],
+                    "properties": {
+                      "op": {
+                        "const": "set"
+                      },
+                      "path": {
+                        "const": "/hour"
+                      },
+                      "value": {
+                        "type": "integer"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "op",
+                      "path"
+                    ],
+                    "properties": {
+                      "op": {
+                        "const": "remove"
+                      },
+                      "path": {
+                        "const": "/hour"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "op",
+                      "path",
+                      "value"
+                    ],
+                    "properties": {
+                      "op": {
+                        "const": "set"
+                      },
+                      "path": {
+                        "const": "/trust"
+                      },
+                      "value": {
+                        "type": "integer"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "op",
+                      "path"
+                    ],
+                    "properties": {
+                      "op": {
+                        "const": "remove"
+                      },
+                      "path": {
+                        "const": "/trust"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "evidenceMessageIds": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "jbmD4gK6Cxn7Dt3p8l_4v",
+                  "QClYkf_lLRYBdKBrh98eN"
+                ]
+              },
+              "uniqueItems": true
+            },
+            "evidenceExecutionIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": false
+            }
+          }
+        },
+        "strict": true,
+        "name": "response"
+      }
+    },
+    "messages": [
+      {
+        "role": "system",
+        "content": "根据当前来源中已经发生的剧情、更新规则和输出契约，输出状态更新 JSON。\n\n{\"stateSchema\":{\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"location\":{\"type\":\"string\"},\"hour\":{\"type\":\"integer\",\"minimum\":0,\"maximum\":23},\"trust\":{\"type\":\"integer\",\"minimum\":0,\"maximum\":100}},\"required\":[\"location\",\"hour\",\"trust\"],\"additionalProperties\":false},\"writablePaths\":[\"/location\",\"/hour\",\"/trust\"],\"derivedPaths\":[]}\n\n{\n  \"rules\": [\n    {\n      \"id\": \"location\",\n      \"instruction\": \"人物明确抵达另一地点时更新location。\"\n    },\n    {\n      \"id\": \"trust\",\n      \"instruction\": \"发生友善互动时信任增加1至3。\"\n    }\n  ]\n}\n\n{\"before\":{\"location\":\"夜间邮局\",\"hour\":23,\"trust\":20},\"floorBefore\":{\"location\":\"夜间邮局\",\"hour\":23,\"trust\":20},\"previousSnapshotId\":\"7b8e3120-8feb-415d-b335-5996dc4ca46f\"}\n\n[{\"floorId\":\"7VJtb2hvXv6MYw0uQrkji\",\"floorNo\":1,\"before\":{\"location\":\"夜间邮局\",\"hour\":23,\"trust\":20},\"after\":{\"location\":\"夜间邮局\",\"hour\":23,\"trust\":20},\"changes\":[],\"snapshotIds\":[\"04248538-0cb6-45f8-9b81-1e6d6820b339\"]},{\"floorId\":\"FQrIPFHeky6hgMfo1QK6h\",\"floorNo\":2,\"before\":{\"location\":\"夜间邮局\",\"hour\":23,\"trust\":20},\"after\":{\"location\":\"夜间邮局\",\"hour\":23,\"trust\":20},\"changes\":[],\"snapshotIds\":[\"7b8e3120-8feb-415d-b335-5996dc4ca46f\"]}]\n\n{\"sources\":[{\"messageId\":\"jbmD4gK6Cxn7Dt3p8l_4v\",\"revision\":1,\"role\":\"user\",\"text\":\"【给写作者的要求】保持第三人称叙述；只写沈知夏的动作和台词，不替裴修远发言或作决定。\\n【用户角色的动作与台词】裴修远收好仍未拆开的信，带着沈知夏走出邮局，抵达码头卖报摊前。“到了。你认识守灯人，能请你看看他今晚来了吗？”\"},{\"messageId\":\"QClYkf_lLRYBdKBrh98eN\",\"revision\":1,\"role\":\"assistant\",\"text\":\"沈知夏走到报摊前，目光在摊面和通往防波堤的小路上各停了一瞬。\\n\\n“老板，守灯人今晚来过吗？”\\n\\n卖报人看了看旧灯塔的方向，摇了摇头，又指向摊位上仅剩的一份《雾港夜报》。\\n\\n“还没来？”沈知夏轻声问。\\n\\n卖报人点头。他平日留给守灯人的那份报纸已经被人取走，只剩今晚这一份。\\n\\n沈知夏望向浓雾里的石阶。潮线已经淹过最低几级，石面泛着冷光。\\n\\n“按他每晚的习惯，应该已经到了买报的时候。”她退回裴修远身旁，“但石阶正在涨潮。如果他回灯塔，途中可能会被困在半路。”\\n\\n她压低声音：“也可能是他来过，却刻意避开了报摊。老板只认得常来买报的人，未必留意过守灯人今晚有没有从别处经过。”\\n\\n沈知夏重新看向报摊。\\n\\n“老板，刚才还有别人来过吗？尤其是从北岬方向来的人。”\"}],\"sourceIdentity\":{\"floorId\":\"1527Vd_QVWsd2l3Q81LOy\",\"branchId\":\"main\",\"runId\":\"rd8OcFS6a-4WR87AU07ju\",\"attemptNo\":1,\"floorRunId\":\"rd8OcFS6a-4WR87AU07ju\",\"floorAttemptNo\":1,\"outputPageId\":\"5uxX1oxuGL1HFCpddJiU5\",\"assistantMessageId\":\"QClYkf_lLRYBdKBrh98eN\",\"messages\":[{\"messageId\":\"jbmD4gK6Cxn7Dt3p8l_4v\",\"pageId\":\"kslc4iJPV85Vwjw5E03T5\",\"revision\":1,\"seq\":0,\"role\":\"user\"},{\"messageId\":\"QClYkf_lLRYBdKBrh98eN\",\"pageId\":\"5uxX1oxuGL1HFCpddJiU5\",\"revision\":1,\"seq\":0,\"role\":\"assistant\"}]},\"toolEvidence\":[],\"worldbookSelection\":{\"entries\":[{\"uid\":110,\"activationKey\":\"worldbook:ULbylNyt2DE2csluZu3cH:1:entry:110\",\"source\":{\"kind\":\"session_worldbook\",\"worldbookId\":\"ULbylNyt2DE2csluZu3cH\",\"worldbookName\":\"雾港地理\",\"assetScopeId\":\"worldbook:ULbylNyt2DE2csluZu3cH:1\"},\"insertion\":{\"position\":\"before\"}},{\"uid\":120,\"activationKey\":\"worldbook:ULbylNyt2DE2csluZu3cH:1:entry:120\",\"source\":{\"kind\":\"session_worldbook\",\"worldbookId\":\"ULbylNyt2DE2csluZu3cH\",\"worldbookName\":\"雾港地理\",\"assetScopeId\":\"worldbook:ULbylNyt2DE2csluZu3cH:1\"},\"insertion\":{\"position\":\"before\"}},{\"uid\":110,\"activationKey\":\"worldbook:7h4CugxkQzHiLLZUB5xV8:1:entry:110\",\"source\":{\"kind\":\"session_worldbook\",\"worldbookId\":\"7h4CugxkQzHiLLZUB5xV8\",\"worldbookName\":\"雾港人物\",\"assetScopeId\":\"worldbook:7h4CugxkQzHiLLZUB5xV8:1\"},\"insertion\":{\"position\":\"before\"}}],\"entryUids\":[110,120,110],\"presetId\":\"SN2SnJb0HFd5V3xaC9kM1\",\"presetVersionId\":\"Ig7rgPeFBXtTzXuV8SipH\"},\"priorFacts\":[],\"consumedSources\":[],\"agentResults\":[]}\n\n{\"outputSchema\":{\"type\":\"object\",\"required\":[\"changes\",\"evidenceMessageIds\"],\"additionalProperties\":false,\"properties\":{\"changes\":{\"type\":\"array\",\"description\":\"Write each path at most once. For an array path, set the complete array in one operation.\",\"maxItems\":3,\"items\":{\"oneOf\":[{\"type\":\"object\",\"required\":[\"op\",\"path\",\"value\"],\"properties\":{\"op\":{\"const\":\"set\"},\"path\":{\"const\":\"/location\"},\"value\":{\"type\":\"string\"}},\"additionalProperties\":false},{\"type\":\"object\",\"required\":[\"op\",\"path\"],\"properties\":{\"op\":{\"const\":\"remove\"},\"path\":{\"const\":\"/location\"}},\"additionalProperties\":false},{\"type\":\"object\",\"required\":[\"op\",\"path\",\"value\"],\"properties\":{\"op\":{\"const\":\"set\"},\"path\":{\"const\":\"/hour\"},\"value\":{\"type\":\"integer\"}},\"additionalProperties\":false},{\"type\":\"object\",\"required\":[\"op\",\"path\"],\"properties\":{\"op\":{\"const\":\"remove\"},\"path\":{\"const\":\"/hour\"}},\"additionalProperties\":false},{\"type\":\"object\",\"required\":[\"op\",\"path\",\"value\"],\"properties\":{\"op\":{\"const\":\"set\"},\"path\":{\"const\":\"/trust\"},\"value\":{\"type\":\"integer\"}},\"additionalProperties\":false},{\"type\":\"object\",\"required\":[\"op\",\"path\"],\"properties\":{\"op\":{\"const\":\"remove\"},\"path\":{\"const\":\"/trust\"}},\"additionalProperties\":false}]}},\"evidenceMessageIds\":{\"type\":\"array\",\"items\":{\"enum\":[\"jbmD4gK6Cxn7Dt3p8l_4v\",\"QClYkf_lLRYBdKBrh98eN\"]},\"uniqueItems\":true},\"evidenceExecutionIds\":{\"type\":\"array\",\"uniqueItems\":true,\"items\":false}}}}"
+      }
+    ]
+  },
+  "httpStatus": 200,
+  "response": {
+    "id": "gen-1792497023-dKiwMr0IP8veqX6aWZ7m",
+    "object": "chat.completion",
+    "created": 1792497023,
+    "model": "dots-studio/dots-3-note-preview:free",
+    "provider": "AtlasCloud",
+    "system_fingerprint": null,
+    "service_tier": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"changes\":[],\"evidenceMessageIds\":[\"jbmD4gK6Cxn7Dt3p8l_4v\",\"QClYkf_lLRYBdKBrh98eN\"]}",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 1854,
+      "completion_tokens": 47,
+      "total_tokens": 1901,
+      "cost": 0,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0,
+        "upstream_inference_prompt_cost": 0,
+        "upstream_inference_completions_cost": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "durationSeconds": 2.041
+}

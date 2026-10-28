@@ -1,0 +1,40 @@
+{
+  "uid": 48,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_18_王授军私下联系",
+  "order": 241,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E018>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n王授军通过微信向林茜发送消息，消息显示已经送达。他先写：“女神，你把我从黑名单里放出来了。”\n王授军接着在同一聊天窗口发送一个熊猫人动图。动图开始时，熊猫人戴贝雷帽、拿画笔；播放到后半段，画面变成《剥削》的局部。\n林茜看到消息后先没有回复。王授军打来电话，她接听十几秒后挂断。\n王授军随后多次给林茜打电话，通话从简短应答逐渐延长。林茜接电话时避开{{user}}，通话结束后把手机翻面扣下。\n{{user}}再次检查林茜手机，逐帧重播熊猫人动图，确认最后一帧正是公司大厅里的《剥削》。他把动图发送记录与通话记录并排：图片送达前，林茜只接过两通很短的电话；图片送达后，她接听电话的过程明显延长。\n{{user}}在林茜手机上把王授军的电话号码和微信账号重新加入黑名单。\n</事件_E018>\n"
+}

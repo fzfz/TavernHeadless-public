@@ -1,0 +1,803 @@
+{
+  "key": "linqian",
+  "releaseId": "O37l-6vx0hLAiOBVSLGWR",
+  "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+  "rounds": [
+    {
+      "message": "我把买来的水果放在桌上，说：“你今天累不累？先坐下来休息一会儿吧。”",
+      "before": {
+        "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "VJ6-gqYOqdI597510yLAs",
+        "snapshotId": "821f4b5e-9e1c-4d1e-a98a-c41a1c44b3a2",
+        "parentSnapshotId": null,
+        "variables": {
+          "林茜": {
+            "感情": 504.85,
+            "堕落": 80,
+            "内心想法": "**我最近总是腿里燥热，可能是例假快来了。这条狗偷我的照片，我拿老公吓住他，他就不敢反抗。被靴子踩着会硬，射完还会再硬，第二次还射这么多，好玩。我要用旧飞机杯把他精液吸出来喂给他吃完就回家,这会很好玩的,就这一次,以后不来了。他是狗,狗不会反抗,狗可以当玩具。不能让老公知道。**"
+          },
+          "行动选项": [
+            "元指令:细腻演绎5分钟内林茜的剧情。",
+            "你绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。",
+            "你绕到门口现身，追问杨桃子从哪里得到林茜的照片。",
+            "元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+          ],
+          "世界": {
+            "日期": "2025-03-10",
+            "星期": "周一",
+            "小时": 12,
+            "分钟": 24,
+            "状态_A1_日期": "2025-03-10",
+            "时间": "中午",
+            "地点": "拆迁旧楼408室内",
+            "开局模式": "原始首次撞见",
+            "终局路线": "未定",
+            "终局阶段": "Z000",
+            "事件_D001记录日期": "2025-03-10",
+            "已触发事件": {
+              "事件_E001": false,
+              "事件_E002": false,
+              "事件_E003": false,
+              "事件_E004": false,
+              "事件_E005": false,
+              "事件_E006": false,
+              "事件_E008": false,
+              "事件_E009": false,
+              "事件_E010": false,
+              "事件_E011": false,
+              "事件_E012": false,
+              "事件_E013": false,
+              "事件_E014": false,
+              "事件_E015": false,
+              "事件_E016": false,
+              "事件_E017": false,
+              "事件_E018": false,
+              "事件_E019": false,
+              "事件_E020": false,
+              "事件_E021": false,
+              "事件_E022": false,
+              "事件_E023": false,
+              "事件_E024": false,
+              "事件_E025": false,
+              "事件_E026": false,
+              "事件_E027": false,
+              "事件_E028": false,
+              "事件_E029": false,
+              "事件_E030": false,
+              "事件_E031": false,
+              "事件_E032": false,
+              "事件_E033": false,
+              "事件_E034": false,
+              "事件_E035": false,
+              "事件_E048": false,
+              "事件_E049": false
+            },
+            "已离婚": false,
+            "状态_A1_计数": 1
+          }
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "events": [
+        {
+          "type": "text",
+          "data": {
+            "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+            "branchId": "main",
+            "floorId": "ghlA9qJn7wf_ZBQMmjYRk",
+            "attemptId": "v7V6_RMk1RgTHRZ-oURnI:1",
+            "streamId": "response:ghlA9qJn7wf_ZBQMmjYRk",
+            "runId": "v7V6_RMk1RgTHRZ-oURnI",
+            "jobId": null,
+            "messageId": null,
+            "revision": 0,
+            "type": "start",
+            "status": "streaming",
+            "text": "",
+            "error": null
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+            "branchId": "main",
+            "floorId": "ghlA9qJn7wf_ZBQMmjYRk",
+            "attemptId": "v7V6_RMk1RgTHRZ-oURnI:1",
+            "streamId": "response:ghlA9qJn7wf_ZBQMmjYRk",
+            "runId": "v7V6_RMk1RgTHRZ-oURnI",
+            "jobId": null,
+            "messageId": null,
+            "revision": 1,
+            "type": "update",
+            "status": "streaming",
+            "text": "林茜的手停住了。\n\n纸团被捏紧，杨桃子缩在墙角，连呼吸都放轻了。她低头看着杯口，又看了看自己沾着污迹的靴子，终于意识到事情已经滑向荒唐的尽头。\n\n拿杯子套住他？\n\n疯了。真这么做了，她还能用什么理由说服自己，只是吓唬他？\n\n就在这时，门外传来熟悉的脚步声。\n\n林茜整个人僵住。\n\n那个脚步声她太熟了。每天上班前听见，晚上下班回来也听见，偶尔半夜翻身，旁边的人稍微动一下，她闭着眼都知道是谁。\n\n可此刻，那脚步声偏偏停在了她最不该听见的时候。\n\n水果放在桌上？\n\n她猛地回头，脸唰地白了。\n\n“老、老公？”\n\n杨桃子也听见了。他吓得几乎从地上弹起来，手忙脚乱地提裤子，结果越急越乱，裤腰半天没整理好。\n\n林茜迅速把照片塞进裙袋，又抓起桌上的旧杯子，塞进怀里。动作快得近乎狼狈。她转身时，白色雪纺裙摆扫过椅脚，长靴踩在地上发出沉闷的声响。\n\n“你听我解释。”\n\n她一边说，一边朝门口走去，却在门边停住。\n\n不对，不能这么开门。\n\n她现在这副样子，裙子皱了些，靴面脏了，怀里还藏着杯子和照片。她要是就这么出去，老公会怎么想？\n\n林茜咬了咬牙，把旧杯子塞进椅后，又用脚把地上的纸巾往角落踢了踢。做完这些，她才抬手整理裙摆，试图让自己看起来正常些。\n\n可心里那点慌乱根本压不住。\n\n完了完了完了。\n\n她深吸了口气，推门出去。\n\n门外，你正站在走廊里，手里还拎着买来的水果。她看见你时，脸上的怒意已经收了起来，只剩强撑出来的平静。\n\n“嗯……我今天有点累。”\n\n她走到你面前，接过水果袋，声音比平时低了些。\n\n“你怎么买这么多？又乱花钱。”\n\n话说出口，她自己都觉得虚。\n\n你还没回答，她就伸手抱住了你。抱得很紧，额头抵在你肩上，像是在确认你确实还在这里。\n\n“老公，先别进去。”\n\n她停了几秒，又小声补了句：\n\n“房间有点乱，我先收拾一下。”\n\n你还没看见里面。\n\n至少现在还没看见。\n\n她抱着你，手掌紧紧抓着你后背的衣服，声音闷闷地传来：\n\n“你相信我吗？”",
+            "error": null
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+            "branchId": "main",
+            "floorId": "ghlA9qJn7wf_ZBQMmjYRk",
+            "attemptId": "v7V6_RMk1RgTHRZ-oURnI:1",
+            "streamId": "response:ghlA9qJn7wf_ZBQMmjYRk",
+            "runId": "v7V6_RMk1RgTHRZ-oURnI",
+            "jobId": null,
+            "messageId": "qJAOqyvFUBhB5WftaoDMk",
+            "revision": 2,
+            "type": "end",
+            "status": "completed",
+            "text": "林茜的手停住了。\n\n纸团被捏紧，杨桃子缩在墙角，连呼吸都放轻了。她低头看着杯口，又看了看自己沾着污迹的靴子，终于意识到事情已经滑向荒唐的尽头。\n\n拿杯子套住他？\n\n疯了。真这么做了，她还能用什么理由说服自己，只是吓唬他？\n\n就在这时，门外传来熟悉的脚步声。\n\n林茜整个人僵住。\n\n那个脚步声她太熟了。每天上班前听见，晚上下班回来也听见，偶尔半夜翻身，旁边的人稍微动一下，她闭着眼都知道是谁。\n\n可此刻，那脚步声偏偏停在了她最不该听见的时候。\n\n水果放在桌上？\n\n她猛地回头，脸唰地白了。\n\n“老、老公？”\n\n杨桃子也听见了。他吓得几乎从地上弹起来，手忙脚乱地提裤子，结果越急越乱，裤腰半天没整理好。\n\n林茜迅速把照片塞进裙袋，又抓起桌上的旧杯子，塞进怀里。动作快得近乎狼狈。她转身时，白色雪纺裙摆扫过椅脚，长靴踩在地上发出沉闷的声响。\n\n“你听我解释。”\n\n她一边说，一边朝门口走去，却在门边停住。\n\n不对，不能这么开门。\n\n她现在这副样子，裙子皱了些，靴面脏了，怀里还藏着杯子和照片。她要是就这么出去，老公会怎么想？\n\n林茜咬了咬牙，把旧杯子塞进椅后，又用脚把地上的纸巾往角落踢了踢。做完这些，她才抬手整理裙摆，试图让自己看起来正常些。\n\n可心里那点慌乱根本压不住。\n\n完了完了完了。\n\n她深吸了口气，推门出去。\n\n门外，你正站在走廊里，手里还拎着买来的水果。她看见你时，脸上的怒意已经收了起来，只剩强撑出来的平静。\n\n“嗯……我今天有点累。”\n\n她走到你面前，接过水果袋，声音比平时低了些。\n\n“你怎么买这么多？又乱花钱。”\n\n话说出口，她自己都觉得虚。\n\n你还没回答，她就伸手抱住了你。抱得很紧，额头抵在你肩上，像是在确认你确实还在这里。\n\n“老公，先别进去。”\n\n她停了几秒，又小声补了句：\n\n“房间有点乱，我先收拾一下。”\n\n你还没看见里面。\n\n至少现在还没看见。\n\n她抱着你，手掌紧紧抓着你后背的衣服，声音闷闷地传来：\n\n“你相信我吗？”",
+            "error": null
+          }
+        },
+        {
+          "type": "commit",
+          "data": {
+            "eventId": "commit:324abdad-af28-40d3-acf2-8ce870590454",
+            "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+            "branchId": "main",
+            "kind": "generated",
+            "previousCurrentSnapshotId": "821f4b5e-9e1c-4d1e-a98a-c41a1c44b3a2",
+            "before": {
+              "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+              "branchId": "main",
+              "floorId": null,
+              "attemptId": null,
+              "versionId": "VJ6-gqYOqdI597510yLAs",
+              "snapshotId": "821f4b5e-9e1c-4d1e-a98a-c41a1c44b3a2",
+              "parentSnapshotId": null,
+              "variables": {
+                "林茜": {
+                  "感情": 504.85,
+                  "堕落": 80,
+                  "内心想法": "**我最近总是腿里燥热，可能是例假快来了。这条狗偷我的照片，我拿老公吓住他，他就不敢反抗。被靴子踩着会硬，射完还会再硬，第二次还射这么多，好玩。我要用旧飞机杯把他精液吸出来喂给他吃完就回家,这会很好玩的,就这一次,以后不来了。他是狗,狗不会反抗,狗可以当玩具。不能让老公知道。**"
+                },
+                "行动选项": [
+                  "元指令:细腻演绎5分钟内林茜的剧情。",
+                  "你绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。",
+                  "你绕到门口现身，追问杨桃子从哪里得到林茜的照片。",
+                  "元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+                ],
+                "世界": {
+                  "日期": "2025-03-10",
+                  "星期": "周一",
+                  "小时": 12,
+                  "分钟": 24,
+                  "状态_A1_日期": "2025-03-10",
+                  "时间": "中午",
+                  "地点": "拆迁旧楼408室内",
+                  "开局模式": "原始首次撞见",
+                  "终局路线": "未定",
+                  "终局阶段": "Z000",
+                  "事件_D001记录日期": "2025-03-10",
+                  "已触发事件": {
+                    "事件_E001": false,
+                    "事件_E002": false,
+                    "事件_E003": false,
+                    "事件_E004": false,
+                    "事件_E005": false,
+                    "事件_E006": false,
+                    "事件_E008": false,
+                    "事件_E009": false,
+                    "事件_E010": false,
+                    "事件_E011": false,
+                    "事件_E012": false,
+                    "事件_E013": false,
+                    "事件_E014": false,
+                    "事件_E015": false,
+                    "事件_E016": false,
+                    "事件_E017": false,
+                    "事件_E018": false,
+                    "事件_E019": false,
+                    "事件_E020": false,
+                    "事件_E021": false,
+                    "事件_E022": false,
+                    "事件_E023": false,
+                    "事件_E024": false,
+                    "事件_E025": false,
+                    "事件_E026": false,
+                    "事件_E027": false,
+                    "事件_E028": false,
+                    "事件_E029": false,
+                    "事件_E030": false,
+                    "事件_E031": false,
+                    "事件_E032": false,
+                    "事件_E033": false,
+                    "事件_E034": false,
+                    "事件_E035": false,
+                    "事件_E048": false,
+                    "事件_E049": false
+                  },
+                  "已离婚": false,
+                  "状态_A1_计数": 1
+                }
+              },
+              "source": {
+                "kind": "initial",
+                "runId": null,
+                "jobId": null
+              }
+            },
+            "after": {
+              "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+              "branchId": "main",
+              "floorId": "ghlA9qJn7wf_ZBQMmjYRk",
+              "attemptId": "v7V6_RMk1RgTHRZ-oURnI:1",
+              "versionId": "VJ6-gqYOqdI597510yLAs",
+              "snapshotId": "324abdad-af28-40d3-acf2-8ce870590454",
+              "parentSnapshotId": "821f4b5e-9e1c-4d1e-a98a-c41a1c44b3a2",
+              "variables": {
+                "林茜": {
+                  "感情": 504.85,
+                  "堕落": 80,
+                  "内心想法": "**老公都问出来了，我还在硬撑，他说累不累、让我休息时，我心虚得几乎抬不起头。可现在还不能承认，更不能让他碰杨桃子。先稳住他，等他转身，我再收拾照片和杯子、离开这里；以后绝不能再让他撞见。**"
+                },
+                "行动选项": [
+                  "元指令:细腻演绎5分钟内林茜的剧情。",
+                  "你绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。",
+                  "你绕到门口现身，追问杨桃子从哪里得到林茜的照片。",
+                  "元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+                ],
+                "世界": {
+                  "日期": "2025-03-10",
+                  "星期": "周一",
+                  "小时": 12,
+                  "分钟": 25,
+                  "状态_A1_日期": "2025-03-10",
+                  "时间": "中午",
+                  "地点": "拆迁旧楼408室门外",
+                  "开局模式": "原始首次撞见",
+                  "终局路线": "未定",
+                  "终局阶段": "Z000",
+                  "事件_D001记录日期": "2025-03-10",
+                  "已触发事件": {
+                    "事件_E001": false,
+                    "事件_E002": false,
+                    "事件_E003": false,
+                    "事件_E004": false,
+                    "事件_E005": false,
+                    "事件_E006": false,
+                    "事件_E008": false,
+                    "事件_E009": false,
+                    "事件_E010": false,
+                    "事件_E011": false,
+                    "事件_E012": false,
+                    "事件_E013": false,
+                    "事件_E014": false,
+                    "事件_E015": false,
+                    "事件_E016": false,
+                    "事件_E017": false,
+                    "事件_E018": false,
+                    "事件_E019": false,
+                    "事件_E020": false,
+                    "事件_E021": false,
+                    "事件_E022": false,
+                    "事件_E023": false,
+                    "事件_E024": false,
+                    "事件_E025": false,
+                    "事件_E026": false,
+                    "事件_E027": false,
+                    "事件_E028": false,
+                    "事件_E029": false,
+                    "事件_E030": false,
+                    "事件_E031": false,
+                    "事件_E032": false,
+                    "事件_E033": false,
+                    "事件_E034": false,
+                    "事件_E035": false,
+                    "事件_E048": false,
+                    "事件_E049": false
+                  },
+                  "已离婚": false,
+                  "状态_A1_计数": 1
+                }
+              },
+              "source": {
+                "kind": "floor",
+                "runId": "v7V6_RMk1RgTHRZ-oURnI",
+                "jobId": null
+              }
+            }
+          }
+        },
+        {
+          "type": "completed",
+          "data": {
+            "snapshotId": "324abdad-af28-40d3-acf2-8ce870590454"
+          }
+        }
+      ],
+      "dryRunWithoutMvu": true,
+      "after": {
+        "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+        "branchId": "main",
+        "floorId": "ghlA9qJn7wf_ZBQMmjYRk",
+        "attemptId": "v7V6_RMk1RgTHRZ-oURnI:1",
+        "versionId": "VJ6-gqYOqdI597510yLAs",
+        "snapshotId": "324abdad-af28-40d3-acf2-8ce870590454",
+        "parentSnapshotId": "821f4b5e-9e1c-4d1e-a98a-c41a1c44b3a2",
+        "variables": {
+          "林茜": {
+            "感情": 504.85,
+            "堕落": 80,
+            "内心想法": "**老公都问出来了，我还在硬撑，他说累不累、让我休息时，我心虚得几乎抬不起头。可现在还不能承认，更不能让他碰杨桃子。先稳住他，等他转身，我再收拾照片和杯子、离开这里；以后绝不能再让他撞见。**"
+          },
+          "行动选项": [
+            "元指令:细腻演绎5分钟内林茜的剧情。",
+            "你绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。",
+            "你绕到门口现身，追问杨桃子从哪里得到林茜的照片。",
+            "元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+          ],
+          "世界": {
+            "日期": "2025-03-10",
+            "星期": "周一",
+            "小时": 12,
+            "分钟": 25,
+            "状态_A1_日期": "2025-03-10",
+            "时间": "中午",
+            "地点": "拆迁旧楼408室门外",
+            "开局模式": "原始首次撞见",
+            "终局路线": "未定",
+            "终局阶段": "Z000",
+            "事件_D001记录日期": "2025-03-10",
+            "已触发事件": {
+              "事件_E001": false,
+              "事件_E002": false,
+              "事件_E003": false,
+              "事件_E004": false,
+              "事件_E005": false,
+              "事件_E006": false,
+              "事件_E008": false,
+              "事件_E009": false,
+              "事件_E010": false,
+              "事件_E011": false,
+              "事件_E012": false,
+              "事件_E013": false,
+              "事件_E014": false,
+              "事件_E015": false,
+              "事件_E016": false,
+              "事件_E017": false,
+              "事件_E018": false,
+              "事件_E019": false,
+              "事件_E020": false,
+              "事件_E021": false,
+              "事件_E022": false,
+              "事件_E023": false,
+              "事件_E024": false,
+              "事件_E025": false,
+              "事件_E026": false,
+              "事件_E027": false,
+              "事件_E028": false,
+              "事件_E029": false,
+              "事件_E030": false,
+              "事件_E031": false,
+              "事件_E032": false,
+              "事件_E033": false,
+              "事件_E034": false,
+              "事件_E035": false,
+              "事件_E048": false,
+              "事件_E049": false
+            },
+            "已离婚": false,
+            "状态_A1_计数": 1
+          }
+        },
+        "source": {
+          "kind": "floor",
+          "runId": "v7V6_RMk1RgTHRZ-oURnI",
+          "jobId": null
+        }
+      },
+      "success": true
+    },
+    {
+      "message": "我陪她坐了十分钟，然后起身去厨房倒了两杯温水，把一杯放在她手边。",
+      "before": {
+        "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+        "branchId": "main",
+        "floorId": "ghlA9qJn7wf_ZBQMmjYRk",
+        "attemptId": "v7V6_RMk1RgTHRZ-oURnI:1",
+        "versionId": "VJ6-gqYOqdI597510yLAs",
+        "snapshotId": "324abdad-af28-40d3-acf2-8ce870590454",
+        "parentSnapshotId": "821f4b5e-9e1c-4d1e-a98a-c41a1c44b3a2",
+        "variables": {
+          "林茜": {
+            "感情": 504.85,
+            "堕落": 80,
+            "内心想法": "**老公都问出来了，我还在硬撑，他说累不累、让我休息时，我心虚得几乎抬不起头。可现在还不能承认，更不能让他碰杨桃子。先稳住他，等他转身，我再收拾照片和杯子、离开这里；以后绝不能再让他撞见。**"
+          },
+          "行动选项": [
+            "元指令:细腻演绎5分钟内林茜的剧情。",
+            "你绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。",
+            "你绕到门口现身，追问杨桃子从哪里得到林茜的照片。",
+            "元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+          ],
+          "世界": {
+            "日期": "2025-03-10",
+            "星期": "周一",
+            "小时": 12,
+            "分钟": 25,
+            "状态_A1_日期": "2025-03-10",
+            "时间": "中午",
+            "地点": "拆迁旧楼408室门外",
+            "开局模式": "原始首次撞见",
+            "终局路线": "未定",
+            "终局阶段": "Z000",
+            "事件_D001记录日期": "2025-03-10",
+            "已触发事件": {
+              "事件_E001": false,
+              "事件_E002": false,
+              "事件_E003": false,
+              "事件_E004": false,
+              "事件_E005": false,
+              "事件_E006": false,
+              "事件_E008": false,
+              "事件_E009": false,
+              "事件_E010": false,
+              "事件_E011": false,
+              "事件_E012": false,
+              "事件_E013": false,
+              "事件_E014": false,
+              "事件_E015": false,
+              "事件_E016": false,
+              "事件_E017": false,
+              "事件_E018": false,
+              "事件_E019": false,
+              "事件_E020": false,
+              "事件_E021": false,
+              "事件_E022": false,
+              "事件_E023": false,
+              "事件_E024": false,
+              "事件_E025": false,
+              "事件_E026": false,
+              "事件_E027": false,
+              "事件_E028": false,
+              "事件_E029": false,
+              "事件_E030": false,
+              "事件_E031": false,
+              "事件_E032": false,
+              "事件_E033": false,
+              "事件_E034": false,
+              "事件_E035": false,
+              "事件_E048": false,
+              "事件_E049": false
+            },
+            "已离婚": false,
+            "状态_A1_计数": 1
+          }
+        },
+        "source": {
+          "kind": "floor",
+          "runId": "v7V6_RMk1RgTHRZ-oURnI",
+          "jobId": null
+        }
+      },
+      "events": [
+        {
+          "type": "text",
+          "data": {
+            "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+            "branchId": "main",
+            "floorId": "EOG0b9UB_mNu5QW8DHfHJ",
+            "attemptId": "UfYKa2IRyy_rDgG166UiQ:1",
+            "streamId": "response:EOG0b9UB_mNu5QW8DHfHJ",
+            "runId": "UfYKa2IRyy_rDgG166UiQ",
+            "jobId": null,
+            "messageId": null,
+            "revision": 0,
+            "type": "start",
+            "status": "streaming",
+            "text": "",
+            "error": null
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+            "branchId": "main",
+            "floorId": "EOG0b9UB_mNu5QW8DHfHJ",
+            "attemptId": "UfYKa2IRyy_rDgG166UiQ:1",
+            "streamId": "response:EOG0b9UB_mNu5QW8DHfHJ",
+            "runId": "UfYKa2IRyy_rDgG166UiQ",
+            "jobId": null,
+            "messageId": null,
+            "revision": 1,
+            "type": "update",
+            "status": "streaming",
+            "text": "<｜begin▁of▁thinking｜>",
+            "error": null
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+            "branchId": "main",
+            "floorId": "EOG0b9UB_mNu5QW8DHfHJ",
+            "attemptId": "UfYKa2IRyy_rDgG166UiQ:1",
+            "streamId": "response:EOG0b9UB_mNu5QW8DHfHJ",
+            "runId": "UfYKa2IRyy_rDgG166UiQ",
+            "jobId": null,
+            "messageId": "vT2b6h1qGmuUAg2UBJgar",
+            "revision": 2,
+            "type": "end",
+            "status": "completed",
+            "text": "<｜begin▁of▁thinking｜>",
+            "error": null
+          }
+        },
+        {
+          "type": "commit",
+          "data": {
+            "eventId": "commit:02a5c3d3-eb67-46d5-b6cf-ccf9ef982542",
+            "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+            "branchId": "main",
+            "kind": "generated",
+            "previousCurrentSnapshotId": "324abdad-af28-40d3-acf2-8ce870590454",
+            "before": {
+              "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+              "branchId": "main",
+              "floorId": "ghlA9qJn7wf_ZBQMmjYRk",
+              "attemptId": "v7V6_RMk1RgTHRZ-oURnI:1",
+              "versionId": "VJ6-gqYOqdI597510yLAs",
+              "snapshotId": "324abdad-af28-40d3-acf2-8ce870590454",
+              "parentSnapshotId": "821f4b5e-9e1c-4d1e-a98a-c41a1c44b3a2",
+              "variables": {
+                "林茜": {
+                  "感情": 504.85,
+                  "堕落": 80,
+                  "内心想法": "**老公都问出来了，我还在硬撑，他说累不累、让我休息时，我心虚得几乎抬不起头。可现在还不能承认，更不能让他碰杨桃子。先稳住他，等他转身，我再收拾照片和杯子、离开这里；以后绝不能再让他撞见。**"
+                },
+                "行动选项": [
+                  "元指令:细腻演绎5分钟内林茜的剧情。",
+                  "你绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。",
+                  "你绕到门口现身，追问杨桃子从哪里得到林茜的照片。",
+                  "元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+                ],
+                "世界": {
+                  "日期": "2025-03-10",
+                  "星期": "周一",
+                  "小时": 12,
+                  "分钟": 25,
+                  "状态_A1_日期": "2025-03-10",
+                  "时间": "中午",
+                  "地点": "拆迁旧楼408室门外",
+                  "开局模式": "原始首次撞见",
+                  "终局路线": "未定",
+                  "终局阶段": "Z000",
+                  "事件_D001记录日期": "2025-03-10",
+                  "已触发事件": {
+                    "事件_E001": false,
+                    "事件_E002": false,
+                    "事件_E003": false,
+                    "事件_E004": false,
+                    "事件_E005": false,
+                    "事件_E006": false,
+                    "事件_E008": false,
+                    "事件_E009": false,
+                    "事件_E010": false,
+                    "事件_E011": false,
+                    "事件_E012": false,
+                    "事件_E013": false,
+                    "事件_E014": false,
+                    "事件_E015": false,
+                    "事件_E016": false,
+                    "事件_E017": false,
+                    "事件_E018": false,
+                    "事件_E019": false,
+                    "事件_E020": false,
+                    "事件_E021": false,
+                    "事件_E022": false,
+                    "事件_E023": false,
+                    "事件_E024": false,
+                    "事件_E025": false,
+                    "事件_E026": false,
+                    "事件_E027": false,
+                    "事件_E028": false,
+                    "事件_E029": false,
+                    "事件_E030": false,
+                    "事件_E031": false,
+                    "事件_E032": false,
+                    "事件_E033": false,
+                    "事件_E034": false,
+                    "事件_E035": false,
+                    "事件_E048": false,
+                    "事件_E049": false
+                  },
+                  "已离婚": false,
+                  "状态_A1_计数": 1
+                }
+              },
+              "source": {
+                "kind": "floor",
+                "runId": "v7V6_RMk1RgTHRZ-oURnI",
+                "jobId": null
+              }
+            },
+            "after": {
+              "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+              "branchId": "main",
+              "floorId": "EOG0b9UB_mNu5QW8DHfHJ",
+              "attemptId": "UfYKa2IRyy_rDgG166UiQ:1",
+              "versionId": "VJ6-gqYOqdI597510yLAs",
+              "snapshotId": "02a5c3d3-eb67-46d5-b6cf-ccf9ef982542",
+              "parentSnapshotId": "324abdad-af28-40d3-acf2-8ce870590454",
+              "variables": {
+                "林茜": {
+                  "感情": 504.85,
+                  "堕落": 80,
+                  "内心想法": "**温水到手后，我捧着杯子沉默了好一会儿。他问我累不累，又让我休息，每一句都像在逼我承认自己撒了谎。可照片、杯子和那些不能说的经过还摆在面前，我还没有勇气全部讲出来。先稳住他，等他把注意力转开，我再收拾东西离开；以后绝不能再让他撞见。**"
+                },
+                "行动选项": [
+                  "元指令:细腻演绎5分钟内林茜的剧情。",
+                  "你绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。",
+                  "你绕到门口现身，追问杨桃子从哪里得到林茜的照片。",
+                  "元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+                ],
+                "世界": {
+                  "日期": "2025-03-10",
+                  "星期": "周一",
+                  "小时": 12,
+                  "分钟": 35,
+                  "状态_A1_日期": "2025-03-10",
+                  "时间": "中午",
+                  "地点": "拆迁旧楼408室门外",
+                  "开局模式": "原始首次撞见",
+                  "终局路线": "未定",
+                  "终局阶段": "Z000",
+                  "事件_D001记录日期": "2025-03-10",
+                  "已触发事件": {
+                    "事件_E001": false,
+                    "事件_E002": false,
+                    "事件_E003": false,
+                    "事件_E004": false,
+                    "事件_E005": false,
+                    "事件_E006": false,
+                    "事件_E008": false,
+                    "事件_E009": false,
+                    "事件_E010": false,
+                    "事件_E011": false,
+                    "事件_E012": false,
+                    "事件_E013": false,
+                    "事件_E014": false,
+                    "事件_E015": false,
+                    "事件_E016": false,
+                    "事件_E017": false,
+                    "事件_E018": false,
+                    "事件_E019": false,
+                    "事件_E020": false,
+                    "事件_E021": false,
+                    "事件_E022": false,
+                    "事件_E023": false,
+                    "事件_E024": false,
+                    "事件_E025": false,
+                    "事件_E026": false,
+                    "事件_E027": false,
+                    "事件_E028": false,
+                    "事件_E029": false,
+                    "事件_E030": false,
+                    "事件_E031": false,
+                    "事件_E032": false,
+                    "事件_E033": false,
+                    "事件_E034": false,
+                    "事件_E035": false,
+                    "事件_E048": false,
+                    "事件_E049": false
+                  },
+                  "已离婚": false,
+                  "状态_A1_计数": 1
+                }
+              },
+              "source": {
+                "kind": "floor",
+                "runId": "UfYKa2IRyy_rDgG166UiQ",
+                "jobId": null
+              }
+            }
+          }
+        },
+        {
+          "type": "completed",
+          "data": {
+            "snapshotId": "02a5c3d3-eb67-46d5-b6cf-ccf9ef982542"
+          }
+        }
+      ],
+      "dryRunWithoutMvu": true,
+      "after": {
+        "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+        "branchId": "main",
+        "floorId": "EOG0b9UB_mNu5QW8DHfHJ",
+        "attemptId": "UfYKa2IRyy_rDgG166UiQ:1",
+        "versionId": "VJ6-gqYOqdI597510yLAs",
+        "snapshotId": "02a5c3d3-eb67-46d5-b6cf-ccf9ef982542",
+        "parentSnapshotId": "324abdad-af28-40d3-acf2-8ce870590454",
+        "variables": {
+          "林茜": {
+            "感情": 504.85,
+            "堕落": 80,
+            "内心想法": "**温水到手后，我捧着杯子沉默了好一会儿。他问我累不累，又让我休息，每一句都像在逼我承认自己撒了谎。可照片、杯子和那些不能说的经过还摆在面前，我还没有勇气全部讲出来。先稳住他，等他把注意力转开，我再收拾东西离开；以后绝不能再让他撞见。**"
+          },
+          "行动选项": [
+            "元指令:细腻演绎5分钟内林茜的剧情。",
+            "你绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。",
+            "你绕到门口现身，追问杨桃子从哪里得到林茜的照片。",
+            "元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+          ],
+          "世界": {
+            "日期": "2025-03-10",
+            "星期": "周一",
+            "小时": 12,
+            "分钟": 35,
+            "状态_A1_日期": "2025-03-10",
+            "时间": "中午",
+            "地点": "拆迁旧楼408室门外",
+            "开局模式": "原始首次撞见",
+            "终局路线": "未定",
+            "终局阶段": "Z000",
+            "事件_D001记录日期": "2025-03-10",
+            "已触发事件": {
+              "事件_E001": false,
+              "事件_E002": false,
+              "事件_E003": false,
+              "事件_E004": false,
+              "事件_E005": false,
+              "事件_E006": false,
+              "事件_E008": false,
+              "事件_E009": false,
+              "事件_E010": false,
+              "事件_E011": false,
+              "事件_E012": false,
+              "事件_E013": false,
+              "事件_E014": false,
+              "事件_E015": false,
+              "事件_E016": false,
+              "事件_E017": false,
+              "事件_E018": false,
+              "事件_E019": false,
+              "事件_E020": false,
+              "事件_E021": false,
+              "事件_E022": false,
+              "事件_E023": false,
+              "事件_E024": false,
+              "事件_E025": false,
+              "事件_E026": false,
+              "事件_E027": false,
+              "事件_E028": false,
+              "事件_E029": false,
+              "事件_E030": false,
+              "事件_E031": false,
+              "事件_E032": false,
+              "事件_E033": false,
+              "事件_E034": false,
+              "事件_E035": false,
+              "事件_E048": false,
+              "事件_E049": false
+            },
+            "已离婚": false,
+            "状态_A1_计数": 1
+          }
+        },
+        "source": {
+          "kind": "floor",
+          "runId": "UfYKa2IRyy_rDgG166UiQ",
+          "jobId": null
+        }
+      },
+      "success": true
+    }
+  ],
+  "semanticAcceptance": false,
+  "semanticRejection": "正文只有思考标记或脱离演绎的说明，未通过正文验收"
+}

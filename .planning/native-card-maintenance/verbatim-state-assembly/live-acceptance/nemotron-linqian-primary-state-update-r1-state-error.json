@@ -1,0 +1,11 @@
+{
+  "ok": false,
+  "label": "linqian-primary-state-update-r1-state",
+  "count": 7,
+  "error": "TavernApiError: Invalid JSON response",
+  "code": "internal_error",
+  "status": 500,
+  "details": {
+    "request_id": "req-3k"
+  }
+}

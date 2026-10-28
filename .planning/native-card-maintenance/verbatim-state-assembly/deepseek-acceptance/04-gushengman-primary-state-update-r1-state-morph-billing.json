@@ -1,0 +1,12 @@
+{
+  "status": 200,
+  "data": {
+    "id": "gen-1791213185-3oxiEuT7FUfSTWNhiLPQ",
+    "model": "deepseek/deepseek-v4.1-flash-20260910",
+    "provider_name": "Morph",
+    "total_cost": 0.001105653,
+    "tokens_prompt": 21533,
+    "tokens_completion": 199,
+    "finish_reason": "stop"
+  }
+}

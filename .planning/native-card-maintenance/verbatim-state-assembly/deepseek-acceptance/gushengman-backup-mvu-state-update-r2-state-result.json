@@ -1,0 +1,29 @@
+{
+  "sessionId": "LrmpKr8l2lKJequJyyTiC",
+  "branchId": "main",
+  "floorId": "lBk-vIiG2tJaRPcWkqtR5",
+  "attemptId": "6TOkFNmgxgH3R5L6iRX7E:1",
+  "versionId": "HkdRM1AnnRgadXaEkJ4fT",
+  "snapshotId": "045d81b5-015f-40b8-945f-eb130b5f1b74",
+  "parentSnapshotId": "eb1364aa-89de-49dc-adb2-8ebbfa7f1bf7",
+  "variables": {
+    "世界": {
+      "当前地址": "旧教学楼三楼走廊",
+      "当前时间": "2025年12月15日17:50",
+      "事件状态": "无"
+    },
+    "顾声慢": {
+      "情感连结度": 4,
+      "创作完成度": 4,
+      "心象映射": {
+        "当前心声": "他一句话就拆开了我卡一周的过渡段。缩短尾音、提前半拍……他说想听我试试。这个人，到底是怎么听出来的？",
+        "当前脑内旋律": "《君の知らない物語》"
+      }
+    }
+  },
+  "source": {
+    "kind": "floor",
+    "runId": "6TOkFNmgxgH3R5L6iRX7E",
+    "jobId": null
+  }
+}

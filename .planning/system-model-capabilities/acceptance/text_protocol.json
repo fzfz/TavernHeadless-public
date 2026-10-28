@@ -1,0 +1,354 @@
+{
+  "persona": {
+    "name": "裴修远",
+    "description": "裴修远是二十八岁的男性药师，性格谨慎，正在向林澄询问药草的数量。"
+  },
+  "character": {
+    "name": "林澄",
+    "description": "林澄是药铺的店主。",
+    "primaryGreeting": "林澄指着药柜，问裴修远：‘你想买几份药草？’"
+  },
+  "preset": "第三人称；names_behavior=0",
+  "userMessage": "“请给我两份药草，并计算三份药草的总价。”",
+  "dryRun": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "作者必须使用第三人称叙述，台词中的我和你按照说话者和听话者解释。用户扮演裴修远，角色为林澄。\n\nThe user is 裴修远: 裴修远是二十八岁的男性药师，性格谨慎，正在向林澄询问药草的数量。\n\n林澄是药铺的店主。"
+      },
+      {
+        "role": "assistant",
+        "content": "林澄指着药柜，问裴修远：‘你想买几份药草？’"
+      },
+      {
+        "role": "user",
+        "content": "“请给我两份药草，并计算三份药草的总价。”"
+      }
+    ],
+    "token_estimate": 39,
+    "available_for_reply": 4056,
+    "memory": {
+      "summary_injected": false,
+      "runtime_mode": "disabled",
+      "requested_write": false,
+      "effective_write": false,
+      "strategy": "none"
+    },
+    "memory_summary": null,
+    "prompt_snapshot": {
+      "preset_id": "capability-preset",
+      "preset_updated_at": 1790926073591,
+      "preset_version": 1,
+      "preset_version_id": null,
+      "preset_content_hash": "sha256:bb5f3342a66e6db7de7a247e8c148415635078cefadf2398a28e213b345bf837",
+      "worldbook_id": null,
+      "worldbook_updated_at": null,
+      "worldbook_version": null,
+      "worldbook_version_id": null,
+      "worldbook_content_hash": null,
+      "regex_profile_id": null,
+      "regex_profile_updated_at": null,
+      "regex_profile_version": null,
+      "regex_profile_version_id": null,
+      "regex_profile_content_hash": null,
+      "character_id": "capability-character",
+      "character_version_id": "capability-version",
+      "character_imported_format": null,
+      "character_content_hash": "13b625ac799692ba9cd8213910df146f17bd9622c104051285f99394c56968b8",
+      "worldbook_activated_entry_uids": [],
+      "worldbook_activated_entries": [],
+      "regex_pre_rule_names": [],
+      "regex_post_rule_names": [],
+      "prompt_mode": "native",
+      "asset_manifest_digest": "73736438d3baca03d149195a9ceecf5e382e9def73472bdf4a29c2be85252337",
+      "prompt_digest": "853c8f403a102b62cdeaf63645f5f23489a4ada8f9cc0fce24817c4df5e6ce30",
+      "token_estimate": 39
+    },
+    "assembly": {
+      "mode": "preset",
+      "prompt_intent": "normal",
+      "assistant_prefill_applied": false,
+      "assistant_prefill_strategy": "none",
+      "preset_used": true,
+      "worldbook_hits": 0,
+      "selected_prompt_order_character_id": 100001,
+      "ignored_prompt_order_character_ids": [],
+      "regex_pre_rules": [],
+      "regex_post_rules": [],
+      "memory_summary_injected": false,
+      "reserved_variable_collisions": [],
+      "unsupported_preset_fields": [],
+      "ignored_preset_fields": [],
+      "unresolved_preset_markers": [],
+      "preset_warnings": [],
+      "continue_nudge_applied": false,
+      "continue_nudge_text": null,
+      "names_behavior_applied": "off",
+      "trigger_filtered_entry_ids": [],
+      "in_chat_inserted_entry_ids": [],
+      "preprocessed_user_message": "“请给我两份药草，并计算三份药草的总价。”"
+    },
+    "runtime_trace": {
+      "preset": {
+        "selected_prompt_order_character_id": 100001,
+        "ignored_prompt_order_character_ids": [],
+        "unsupported_fields": [],
+        "ignored_fields": [],
+        "unresolved_markers": [],
+        "warnings": [],
+        "trigger_filtered_entry_ids": [],
+        "in_chat_inserted_entry_ids": [],
+        "continue_nudge_applied": false,
+        "continue_nudge_text": null,
+        "names_behavior_applied": "off"
+      },
+      "worldbook": {
+        "hit_count": 0
+      },
+      "regex": {
+        "user_input_rules": [],
+        "ai_output_rules": [],
+        "preprocessed_user_message": "“请给我两份药草，并计算三份药草的总价。”"
+      },
+      "budgets": {
+        "by_group": [
+          {
+            "group": "history",
+            "token_count": 12
+          },
+          {
+            "group": "section:character",
+            "token_count": 3
+          },
+          {
+            "group": "section:Narration",
+            "token_count": 12
+          },
+          {
+            "group": "section:Persona Description",
+            "token_count": 13
+          },
+          {
+            "group": "tool_list",
+            "token_count": 0,
+            "pruned_token_count": 12419
+          }
+        ],
+        "trim_reasons": [
+          {
+            "group": "tool_list",
+            "reason": "budget_exceeded",
+            "detail": "Prompt runtime pruned 12419 tokens from budget group 'tool_list'.",
+            "pruned_token_count": 12419
+          }
+        ]
+      },
+      "source_selection": {
+        "excluded_sources": [
+          {
+            "source": "tool_list",
+            "reason": "budget_trimmed",
+            "detail": "Budget trimming removed all remaining 'tool_list' content from the prompt."
+          }
+        ]
+      },
+      "memory": {
+        "summary_injected": false,
+        "runtime_mode": "disabled",
+        "requested_write": false,
+        "effective_write": false,
+        "strategy": "none"
+      },
+      "macro": {
+        "warnings": [
+          {
+            "code": "macro_value_missing",
+            "message": "Macro mesExamples has no resolved value and fell back to empty string.",
+            "macro_name": "mesExamples"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro mesExamplesRaw has no resolved value and fell back to empty string.",
+            "macro_name": "mesExamplesRaw"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro authorsNote has no resolved value and fell back to empty string.",
+            "macro_name": "authorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+            "macro_name": "defaultAuthorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro model has no resolved value and fell back to empty string.",
+            "macro_name": "model"
+          }
+        ],
+        "used_names": [],
+        "mutation_preview": [],
+        "staged_mutations": [],
+        "traces": []
+      },
+      "delivery": {
+        "assistant_prefill_requested": false,
+        "assistant_prefill_applied": false,
+        "assistant_prefill_strategy": "none",
+        "allow_assistant_prefill": true,
+        "require_last_user": false,
+        "no_assistant": false,
+        "last_message_role": "user",
+        "ends_with_user": true,
+        "degraded": false,
+        "degrade_reasons": []
+      },
+      "history_normalization": {
+        "raw_entry_count": 2,
+        "effective_turn_count": 2,
+        "selected_turn_count": 2,
+        "trailing_user_source_floor_ids": [],
+        "merged_user_groups": [],
+        "violations": []
+      },
+      "tool_transport": {
+        "selection": {
+          "transport": "text_protocol",
+          "reason_code": "explicit_override",
+          "reason_detail": "Tool transport was explicitly overridden to 'text_protocol'."
+        },
+        "tool_list": {
+          "injected": true,
+          "tool_count": 2,
+          "contributor_id": "builtin:tool_list",
+          "placement_mode": "contributor_chain",
+          "token_count": 12416,
+          "budget_group": "tool_list"
+        }
+      }
+    }
+  },
+  "requests": [
+    {
+      "model": "test-model",
+      "max_tokens": 4056,
+      "temperature": 0.7,
+      "messages": [
+        {
+          "role": "system",
+          "content": "作者必须使用第三人称叙述，台词中的我和你按照说话者和听话者解释。用户扮演裴修远，角色为林澄。\n\nThe user is 裴修远: 裴修远是二十八岁的男性药师，性格谨慎，正在向林澄询问药草的数量。\n\n林澄是药铺的店主。"
+        },
+        {
+          "role": "assistant",
+          "content": "林澄指着药柜，问裴修远：‘你想买几份药草？’"
+        },
+        {
+          "role": "user",
+          "content": "“请给我两份药草，并计算三份药草的总价。”"
+        }
+      ]
+    },
+    {
+      "model": "test-model",
+      "max_tokens": 4056,
+      "temperature": 0.7,
+      "messages": [
+        {
+          "role": "system",
+          "content": "作者必须使用第三人称叙述，台词中的我和你按照说话者和听话者解释。用户扮演裴修远，角色为林澄。\n\nThe user is 裴修远: 裴修远是二十八岁的男性药师，性格谨慎，正在向林澄询问药草的数量。\n\n林澄是药铺的店主。"
+        },
+        {
+          "role": "assistant",
+          "content": "林澄指着药柜，问裴修远：‘你想买几份药草？’"
+        },
+        {
+          "role": "user",
+          "content": "“请给我两份药草，并计算三份药草的总价。”"
+        },
+        {
+          "role": "assistant",
+          "content": "<tool_call id=\"capability-call\" name=\"calculate\">{\"args\":{\"expression\":{\"op\":\"mul\",\"args\":[3,4]}}}</tool_call>"
+        },
+        {
+          "role": "user",
+          "content": "<tool_result id=\"capability-call\" name=\"calculate\" status=\"success\">\n{\n  \"ok\": true,\n  \"data\": {\n    \"type\": \"number\",\n    \"value\": 12\n  }\n}\n</tool_result>"
+        }
+      ]
+    }
+  ],
+  "response": {
+    "data": {
+      "floor_id": "WS6EL_tW3Mbcfn3hGeYdh",
+      "floor_no": 1,
+      "branch_id": "main",
+      "generated_text": "林澄取出两份药草，告诉裴修远：‘每份四枚铜钱，三份共十二枚。’",
+      "summaries": [],
+      "total_usage": {
+        "prompt_tokens": 40,
+        "completion_tokens": 20,
+        "total_tokens": 60
+      },
+      "final_state": "committed"
+    }
+  },
+  "executionRecords": [
+    {
+      "id": "01cfe8ea-06af-4da6-a9df-81e563da0073",
+      "runId": "60xLS6SbulQjbtmRlYrjX",
+      "floorId": "WS6EL_tW3Mbcfn3hGeYdh",
+      "pageId": "wC_Px9g65FrSMSaxi01Ga",
+      "callerSlot": "narrator",
+      "providerId": "system:role-model-capabilities",
+      "toolName": "calculate",
+      "providerType": "builtin",
+      "argsJson": "{\"expression\":{\"op\":\"mul\",\"args\":[3,4]}}",
+      "resultJson": "{\"ok\":true,\"data\":{\"type\":\"number\",\"value\":12}}",
+      "status": "success",
+      "lifecycleState": "finished",
+      "commitOutcome": "committed",
+      "deliveryMode": "inline",
+      "runtimeJobId": null,
+      "sideEffectLevel": "none",
+      "errorMessage": null,
+      "durationMs": 0,
+      "startedAt": 1790926074245,
+      "finishedAt": 1790926074245,
+      "attemptNo": 1,
+      "replayParentExecutionId": null,
+      "generationStepNo": 1,
+      "callId": "capability-call",
+      "generationAttemptNo": 1,
+      "acceptedPageId": "nyIXhe1SRoteBI9lVsEoz",
+      "createdAt": 1790926074245
+    }
+  ],
+  "toolEvidence": [
+    {
+      "executionId": "01cfe8ea-06af-4da6-a9df-81e563da0073",
+      "callId": "capability-call",
+      "runId": "60xLS6SbulQjbtmRlYrjX",
+      "generationAttemptNo": 1,
+      "generationStepNo": 1,
+      "pageId": "nyIXhe1SRoteBI9lVsEoz",
+      "toolName": "calculate",
+      "arguments": {
+        "expression": {
+          "op": "mul",
+          "args": [
+            3,
+            4
+          ]
+        }
+      },
+      "result": {
+        "ok": true,
+        "data": {
+          "type": "number",
+          "value": 12
+        }
+      },
+      "status": "success"
+    }
+  ]
+}

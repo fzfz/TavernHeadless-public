@@ -1,0 +1,29 @@
+{
+  "enabled": true,
+  "allowed": ["random", "calculate"],
+  "transports": ["native_function_call", "text_protocol"],
+  "slot": "narrator",
+  "limits": {
+    "maxCallsPerTurn": 16,
+    "maxStepsPerGeneration": 8,
+    "maxRandomSamples": 32,
+    "maxRandomCandidates": 1024,
+    "maxCalculateNodes": 256,
+    "maxCalculateDepth": 32,
+    "maxCandidateDepth": 32,
+    "maxInputBytes": 65536,
+    "maxResultBytes": 65536,
+    "minResultBytes": 1024
+  },
+  "messages": {
+    "INVALID_ARGUMENT": "参数结构或取值无效，请按工具参数 schema 修正字段和值。",
+    "INVALID_RANGE": "整数区间无效，请修正 min 和 max。",
+    "INVALID_WEIGHTS": "权重长度或总和无效，请修正 weights。",
+    "INSUFFICIENT_POPULATION": "无放回抽样数量超过可用成员数，请减少 count，或按规则改用有放回抽样。",
+    "LIMIT_EXCEEDED": "参数或结果超过当前调用额度，请减小输入规模后重试。",
+    "DIVISION_BY_ZERO": "除数为 0，请修改 expression 中的除数。",
+    "NUMERIC_OVERFLOW": "中间运算产生非有限数值，请缩小操作数或拆分 expression。",
+    "CAPABILITY_DENIED": "系统许可关闭或当前角色、正文槽位、会话授权不足，请由管理员检查系统许可与发布配置。",
+    "EXECUTION_FAILED": "系统能力执行失败，请保留调用记录并由管理员检查服务日志。"
+  }
+}

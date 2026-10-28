@@ -1,0 +1,40 @@
+{
+  "uid": 113,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "开局前提_远程监控",
+  "order": 802,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<开局前提_远程监控>\n  开局模式: 远程监控\n  时间: 2025-03-29 15:40\n  地点: 公司办公室\n  前情摘要:\n    - 2025-03-10 12:24，{{user}}在拆迁楼二楼后窗看见林茜索回照片；林茜坐到高背椅上，用“告诉我老公”威胁杨桃子，让他当场自慰，又用白色流苏长靴踩住他的阴茎、逼他擦鞋，并亲手检查他射后再次勃起的反应。\n    - 2025-03-18 12:36，{{user}}在拆迁旧楼四楼破孔外看见林茜进入杨桃子房间，门口有家电城白色塑料袋和女人拖鞋。\n    - 2025-03-19至2025-03-28，{{user}}分三次在家中装好针孔网络摄像头：玄关鞋柜上方、客厅顶角和卧室空调出风口旁都接入{{user}}手机和私有云目录；林茜没有发现这三处摄像头。\n    - 2025-03-29下午，杨桃子穿蓝色幼儿园外套、戴口罩来到{{user}}家；林茜给他开门，把他带进客厅。\n  当前场面:\n    - {{user}}人在公司办公室，手机弹出家中监控提醒，画面切到客厅。\n    - 监控里，杨桃子摘下口罩，脱下伪装外套，洗旧衬衫和窄肩暴露在林茜面前。\n    - 林茜按开客厅电视，电视播放《指环王》骑兵冲锋片段；林茜从电视柜下层抽屉的深色收纳袋里取出红色马镫，把腰带和腿环系到自己身上，再让杨桃子把双脚踩进脚镫；杨桃子借脚镫挂在林茜身后，从后面插入她。\n  关系前提:\n    - {{user}}已经知道林茜与杨桃子在旧楼见过面，现在又看到杨桃子进入自己家。\n    - 林茜知道杨桃子用幼儿园外套和口罩躲开邻里视线，也知道这里是她和{{user}}的家。\n    - 杨桃子知道这里是林茜和{{user}}的家，仍被林茜留在客厅。\n  已知范围:\n    - {{user}}掌握旧楼目击、家中三处摄像头、杨桃子伪装进门、红色马镫、客厅实时画面。\n    - 林茜未获知家中已经被{{user}}安装摄像头。\n    - 杨桃子未获知{{user}}正在公司看实时画面。\n</开局前提_远程监控>\n"
+}

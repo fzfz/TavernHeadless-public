@@ -1,0 +1,22 @@
+{
+  "result": "passed",
+  "backend": "actual character routes / in-memory SQLite",
+  "checks": [
+    "backend catalog",
+    "two card layouts",
+    "three narrative frames",
+    "auto reading without generation",
+    "status and gallery overlays",
+    "missing config and invalid action rejection",
+    "network failure message",
+    "missing character version rejection",
+    "music playback and pause",
+    "next and skip without generation",
+    "history overlay",
+    "session input retained",
+    "backend version changes template geometry, title and action without frontend changes",
+    "single composer",
+    "mobile width"
+  ],
+  "consoleErrors": []
+}

@@ -1,0 +1,37 @@
+diff --git a/apps/api/src/services/__tests__/turn-commit-service.test.ts b/apps/api/src/services/__tests__/turn-commit-service.test.ts
+index 0dc06dc..6fb9baa 100644
+--- a/apps/api/src/services/__tests__/turn-commit-service.test.ts
++++ b/apps/api/src/services/__tests__/turn-commit-service.test.ts
+@@ -235 +235 @@ describe("TurnCommitService", () => {
+-  it("commits assistant output, usage, records, and events in one transaction", async () => {
++  it.each([false, true])("commits assistant output, usage, records, and events in one transaction (existing snapshot: %s)", async (existingSnapshot) => {
+@@ -275 +275,6 @@ describe("TurnCommitService", () => {
+-      worldbookActivatedEntries: [],
++      worldbookActivatedEntries: [{
++        uid: 101,
++        activationKey: "worldbook:book:1:entry:101",
++        source: { kind: "session_worldbook", worldbookId: "book", worldbookName: "Book", assetScopeId: "worldbook:book:1" },
++        insertion: { position: "before" },
++      }],
+@@ -284,0 +290,11 @@ describe("TurnCommitService", () => {
++    if (existingSnapshot) {
++      await database.db.insert(promptSnapshots).values({
++        floorId,
++        sessionId,
++        worldbookActivatedEntriesJson: JSON.stringify([{ uid: 999 }]),
++        promptMode: "native",
++        promptDigest: "previous-digest",
++        createdAt: now,
++      });
++    }
++
+@@ -489,0 +506 @@ describe("TurnCommitService", () => {
++    expect(snapshotRow?.worldbookActivatedEntriesJson).toBe(JSON.stringify(promptSnapshot.worldbookActivatedEntries));
+diff --git a/apps/api/src/services/turn-commit-service.ts b/apps/api/src/services/turn-commit-service.ts
+index d35c1b8..3a137be 100644
+--- a/apps/api/src/services/turn-commit-service.ts
++++ b/apps/api/src/services/turn-commit-service.ts
+@@ -300,0 +301 @@ function toPromptSnapshotInsert(record: PromptSnapshotRecord): PromptSnapshotIns
++    worldbookActivatedEntriesJson: JSON.stringify(record.worldbookActivatedEntries),
+@@ -960,0 +962 @@ export class TurnCommitService {
++                worldbookActivatedEntriesJson: snapshot.worldbookActivatedEntriesJson,

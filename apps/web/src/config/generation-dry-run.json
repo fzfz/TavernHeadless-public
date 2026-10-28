@@ -1,0 +1,23 @@
+{
+  "title": "按当前会话配置预览提示词",
+  "description": "输入一条新的演绎消息，查看当前会话组装的提示词。此检查不会生成回复。",
+  "input": "新的演绎消息",
+  "submit": "预览提示词",
+  "loading": "正在组装提示词…",
+  "emptyInput": "请输入演绎消息后再预览。",
+  "failed": "提示词预览未完成。请重试；若仍然失败，请查看 API 服务日志中的对应请求错误。",
+  "noResult": "输入消息并提交后，这里会显示当前组装结果。",
+  "messages": "本次组装的消息",
+  "noMessages": "接口没有返回组装消息，请检查会话配置后重试。",
+  "assembly": "组装信息",
+  "promptSnapshot": "提示词快照",
+  "runtimeTrace": "运行追踪",
+  "noRuntimeTrace": "本次组装预览未返回运行追踪。请查看本次组装的消息和提示词快照。",
+  "tokenEstimate": "预计输入 token",
+  "availableForReply": "预留回复 token",
+  "memorySummary": "记忆摘要",
+  "resultScope": "此结果属于本次预览输入；“历史提示词”页签显示已保存的生成记录。",
+  "roleSystem": "系统",
+  "roleUser": "用户",
+  "roleAssistant": "助手"
+}

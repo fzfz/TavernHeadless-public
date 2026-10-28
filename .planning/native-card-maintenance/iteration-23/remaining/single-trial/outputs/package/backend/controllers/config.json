@@ -1,0 +1,37 @@
+{
+  "modulePath": "backend/controllers/linxi.js",
+  "variableRoot": "stat_data",
+  "variableMacros": [],
+  "controllerEntries": [
+    {
+      "bookId": "linxi",
+      "entryId": 104
+    },
+    {
+      "bookId": "linxi",
+      "entryId": 106
+    },
+    {
+      "bookId": "linxi",
+      "entryId": 107
+    },
+    {
+      "bookId": "linxi",
+      "entryId": 122
+    }
+  ],
+  "updaterEntries": [
+    {
+      "bookId": "linxi",
+      "entryId": 108
+    },
+    {
+      "bookId": "linxi",
+      "entryId": 109
+    },
+    {
+      "bookId": "linxi",
+      "entryId": 110
+    }
+  ]
+}

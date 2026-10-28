@@ -1,0 +1,6 @@
+{
+  "status": 400,
+  "contentType": "application/json",
+  "elapsedMs": 5014,
+  "text": "{\"error\":{\"message\":\"Provider returned error\",\"code\":400,\"metadata\":{\"raw\":\"{\\\"error\\\":{\\\"message\\\":\\\"The `uniqueItems` JSON Schema keyword is not supported.\\\",\\\"type\\\":\\\"invalid_request_error\\\",\\\"param\\\":\\\"response_format.json_schema.schema.properties.evidenceMessageIds.uniqueItems\\\",\\\"code\\\":null}}\",\"provider_name\":\"Liquid\",\"is_byok\":false}},\"user_id\":\"user_2eaKHkAWDCnviVoRJzVRt7gkThs\"}"
+}

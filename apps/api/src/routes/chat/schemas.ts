@@ -1,0 +1,353 @@
+import { z } from "zod";
+
+import { buildZodObjectSchema } from "../schemas/json-schema-zod.js";
+import { errorResponseJsonSchema, idParamsJsonSchema } from "../schemas/common.js";
+import { SESSION_STATE_NAMESPACE_PATTERN } from "../../session-state/session-state-types.js";
+import {
+  generationParamsJsonSchema,
+  sessionIdParamsJsonSchema,
+  respondBodyJsonSchema,
+  regenerateBodyJsonSchema,
+  promptIntentValues,
+  editAndRegenerateBodyJsonSchema,
+  respondSuccessResponseJsonSchema,
+  regenerateSuccessResponseJsonSchema,
+  retryFloorBodyJsonSchema,
+retryStepBodyJsonSchema,
+  retryStepSuccessResponseJsonSchema,
+  editAndRegenerateSuccessResponseJsonSchema,
+  dryRunSuccessResponseJsonSchema,
+  dryRunBodyJsonSchema,
+  streamResponseExample,
+  liveDebugOptionsJsonSchema,
+  promptDeliveryJsonSchema,
+  promptStructureJsonSchema,
+  promptBudgetJsonSchema,
+  promptSourceSelectionJsonSchema,
+  dryRunVisibilityJsonSchema,
+  turnConfigJsonSchema,
+} from "../schemas/chat-schemas.js";
+
+import { roleModelCapabilityLimitsSchema } from "@tavern/shared";
+import { PROMPT_RUNTIME_INJECTION_LIMITS } from "../../services/prompt-runtime/injection-governance.js";
+import type {
+  PromptRuntimeClientInjectionInput,
+} from "../../services/prompt-runtime-injection-types.js";
+
+export type TurnConfigBody = {
+  modelCapabilityLimits?: Partial<import("@tavern/shared").RoleModelCapabilityLimits>;
+  enableTools?: boolean;
+  enableDirector?: boolean;
+  enableVerifier?: boolean;
+  enableMemoryConsolidation?: boolean;
+  verifierFailStrategy?: "warn" | "block" | "retry";
+  toolMode?: "inline" | "standalone" | "both";
+  maxRetries?: number;
+};
+
+export type GenerationParamsBody = {
+  temperature?: number | null;
+  max_output_tokens?: number | null;
+  top_p?: number | null;
+  top_k?: number | null;
+  frequency_penalty?: number | null;
+  presence_penalty?: number | null;
+  stop_sequences?: string[] | null;
+  seed?: number | null;
+  repetition_penalty?: number | null;
+  min_p?: number | null;
+  logit_bias?: Record<string, number> | null;
+  response_format?: {
+    type: "text" | "json_object" | "json_schema";
+    json_schema?: Record<string, unknown>;
+  } | null;
+  stream?: boolean | null;
+  reasoning_effort?: "low" | "medium" | "high" | null;
+};
+
+export type PromptDeliveryBody = {
+  allow_assistant_prefill?: boolean;
+  require_last_user?: boolean;
+  no_assistant?: boolean;
+};
+
+export type PromptStructureBody = {
+  mode: "default" | "strict_alternating" | "no_assistant" | "flattened";
+  merge_adjacent_same_role?: boolean;
+  assistant_rewrite_strategy?: "to_system" | "to_user_transcript";
+  preserve_system_messages?: boolean;
+};
+
+export type PromptBudgetBody = {
+  max_input_tokens?: number;
+  reserved_completion_tokens?: number;
+};
+
+export type PromptSourceSelectionBody = {
+  history?: {
+    mode?: "full" | "windowed";
+    max_messages?: number;
+  };
+  memory?: { enabled?: boolean };
+  worldbook?: { enabled?: boolean };
+  examples?: { enabled?: boolean };
+};
+
+export type LiveDebugOptionsBody = {
+  include_prompt_snapshot?: boolean;
+  include_runtime_trace?: boolean;
+  include_worldbook_matches?: boolean;
+};
+
+export type DryRunDebugOptionsBody = {
+  include_worldbook_matches?: boolean;
+};
+
+export type FloorVisibilityRangeBody = {
+  start_floor_no: number;
+  end_floor_no: number;
+};
+
+export type DryRunVisibilityBody = {
+  hidden_floor_ranges?: FloorVisibilityRangeBody[];
+  visible_floor_ranges?: FloorVisibilityRangeBody[];
+  hidden_floor_ids?: string[];
+  mode?: "allow_all_except_hidden" | "deny_all_except_visible";
+};
+
+export type TurnSessionStateWriteValueBody = {
+  namespace: string;
+  slot: string;
+  value?: unknown;
+};
+
+export type TurnSessionStateWriteDeleteBody = {
+  namespace: string;
+  slot: string;
+  delete: true;
+};
+
+/**
+ * I3 高级位置参数（snake_case 公共面）。
+ * 字段全部为可选非负整数；具体校验语义由 placement resolver 负责。
+ */
+export type PromptRuntimeInjectionPlacementParamsBody = {
+  floor_no?: number;
+  offset?: number;
+  depth?: number;
+};
+
+export type PromptRuntimeInjectionBody = {
+  source_kind: PromptRuntimeClientInjectionInput["sourceKind"];
+  title: string;
+  content: string;
+  placement: string;
+  placement_params?: PromptRuntimeInjectionPlacementParamsBody;
+  order?: number;
+  scope?: PromptRuntimeClientInjectionInput["scope"];
+};
+
+export type RespondBody = {
+  client_operation_id?: string;
+  message: string;
+  prompt_intent?: (typeof promptIntentValues)[number];
+  delivery?: PromptDeliveryBody;
+  structure?: PromptStructureBody;
+  debug_options?: LiveDebugOptionsBody;
+  config?: TurnConfigBody;
+  generation_params?: GenerationParamsBody;
+  branch_id?: string;
+  source_floor_id?: string;
+  session_state_writes?: Array<TurnSessionStateWriteValueBody | TurnSessionStateWriteDeleteBody>;
+  prompt_runtime_injections?: PromptRuntimeInjectionBody[];
+};
+
+export type DryRunBody = {
+  message: string;
+  config?: TurnConfigBody;
+  branch_id?: string;
+  prompt_intent?: (typeof promptIntentValues)[number];
+  debug_options?: DryRunDebugOptionsBody;
+  visibility?: DryRunVisibilityBody;
+  structure?: PromptStructureBody;
+  delivery?: PromptDeliveryBody;
+  budget?: PromptBudgetBody;
+  source_selection?: PromptSourceSelectionBody;
+  prompt_runtime_injections?: PromptRuntimeInjectionBody[];
+};
+
+export type RegenerateBody = {
+  branch_id?: string;
+  client_operation_id?: string;
+  delivery?: PromptDeliveryBody;
+  structure?: PromptStructureBody;
+  debug_options?: LiveDebugOptionsBody;
+  config?: TurnConfigBody;
+  generation_params?: GenerationParamsBody;
+  confirmed_execution_ids?: string[];
+  confirmed_session_state_mutation_ids?: string[];
+  session_state_writes?: Array<TurnSessionStateWriteValueBody | TurnSessionStateWriteDeleteBody>;
+  prompt_runtime_injections?: PromptRuntimeInjectionBody[];
+};
+
+export type EditAndRegenerateBody = RegenerateBody & {
+  content: string;
+  branch_id?: string;
+};
+
+export type RetryFloorBody = RegenerateBody;
+
+export const sessionIdParamsSchema = z.object({
+  id: z.string().min(1),
+});
+
+export const floorIdParamsSchema = z.object({
+  id: z.string().min(1),
+});
+
+export const messageIdParamsSchema = z.object({
+  id: z.string().min(1),
+});
+
+export const turnConfigBodySchema = buildZodObjectSchema<TurnConfigBody>(turnConfigJsonSchema).extend({
+  modelCapabilityLimits: roleModelCapabilityLimitsSchema.optional(),
+}) as z.ZodType<TurnConfigBody>;
+export const generationParamsBodySchema = buildZodObjectSchema<GenerationParamsBody>(generationParamsJsonSchema);
+export const promptDeliveryBodySchema = buildZodObjectSchema<PromptDeliveryBody>(promptDeliveryJsonSchema);
+export const promptStructureBodySchema = buildZodObjectSchema<PromptStructureBody>(promptStructureJsonSchema);
+export const promptBudgetBodySchema = buildZodObjectSchema<PromptBudgetBody>(promptBudgetJsonSchema);
+export const promptSourceSelectionBodySchema = buildZodObjectSchema<PromptSourceSelectionBody>(promptSourceSelectionJsonSchema);
+export const dryRunVisibilityBodySchema = buildZodObjectSchema<DryRunVisibilityBody>(dryRunVisibilityJsonSchema);
+export const liveDebugOptionsBodySchema = buildZodObjectSchema<LiveDebugOptionsBody>(liveDebugOptionsJsonSchema);
+
+const turnSessionStateWriteBaseSchema = {
+  namespace: z.string().min(1).max(128).regex(SESSION_STATE_NAMESPACE_PATTERN),
+  slot: z.string().min(1).max(256),
+} as const;
+
+const turnSessionStateWriteValueBodySchema = z.object({
+  ...turnSessionStateWriteBaseSchema,
+  value: z.unknown(),
+}).strict();
+
+const turnSessionStateWriteDeleteBodySchema = z.object({
+  ...turnSessionStateWriteBaseSchema,
+  delete: z.literal(true),
+}).strict();
+
+export const turnSessionStateWriteBodySchema: z.ZodType<TurnSessionStateWriteValueBody | TurnSessionStateWriteDeleteBody> = z.union([
+  turnSessionStateWriteValueBodySchema,
+  turnSessionStateWriteDeleteBodySchema,
+]);
+
+export const promptRuntimeInjectionPlacementParamsBodySchema: z.ZodType<PromptRuntimeInjectionPlacementParamsBody> = z.object({
+  floor_no: z.number().int().nonnegative().optional(),
+  offset: z.number().int().nonnegative().optional(),
+  depth: z.number().int().nonnegative().optional(),
+}).strict();
+
+export const promptRuntimeInjectionBodySchema: z.ZodType<PromptRuntimeInjectionBody> = z.object({
+  source_kind: z.literal("client_injection"),
+  title: z.string().max(PROMPT_RUNTIME_INJECTION_LIMITS.titleMaxLength),
+  content: z.string().max(PROMPT_RUNTIME_INJECTION_LIMITS.contentMaxLength),
+  placement: z.string().min(1),
+  placement_params: promptRuntimeInjectionPlacementParamsBodySchema.optional(),
+  order: z.number().int().optional(),
+  scope: z.literal("request").optional(),
+}).strict();
+
+export const respondBodySchema: z.ZodType<RespondBody> = z.object({
+  client_operation_id: z.string().min(1).max(200).optional(),
+  message: z.string(),
+  prompt_intent: z.enum(promptIntentValues).optional(),
+  delivery: promptDeliveryBodySchema.optional(),
+  structure: promptStructureBodySchema.optional(),
+  debug_options: liveDebugOptionsBodySchema.optional(),
+  config: turnConfigBodySchema.optional(),
+  generation_params: generationParamsBodySchema.optional(),
+  branch_id: z.string().min(1).optional(),
+  source_floor_id: z.string().min(1).optional(),
+  session_state_writes: z.array(turnSessionStateWriteBodySchema).optional(),
+  prompt_runtime_injections: z.array(promptRuntimeInjectionBodySchema).max(PROMPT_RUNTIME_INJECTION_LIMITS.requestMaxCount).optional(),
+}).strict().refine(body => body.prompt_intent === "continue" ? body.message.length === 0 : body.message.length > 0, { path: ["message"], message: "Use an empty message for continue and a nonempty message for a new user turn." });
+
+export const dryRunBodySchema: z.ZodType<DryRunBody> = z.object({
+  message: z.string().min(1),
+  config: turnConfigBodySchema.optional(),
+  branch_id: z.string().min(1).optional(),
+  prompt_intent: z.enum(promptIntentValues).optional(),
+  debug_options: z.object({
+    include_worldbook_matches: z.boolean().optional(),
+  }).strict().optional(),
+  visibility: dryRunVisibilityBodySchema.optional(),
+  structure: promptStructureBodySchema.optional(),
+  delivery: promptDeliveryBodySchema.optional(),
+  budget: promptBudgetBodySchema.optional(),
+  source_selection: promptSourceSelectionBodySchema.optional(),
+  prompt_runtime_injections: z.array(promptRuntimeInjectionBodySchema).max(PROMPT_RUNTIME_INJECTION_LIMITS.requestMaxCount).optional(),
+}).strict();
+
+export const regenerateBodySchema = z.object({
+  branch_id: z.string().min(1).optional(),
+  client_operation_id: z.string().min(1).max(200).optional(),
+  delivery: promptDeliveryBodySchema.optional(),
+  structure: promptStructureBodySchema.optional(),
+  debug_options: liveDebugOptionsBodySchema.optional(),
+  config: turnConfigBodySchema.optional(),
+  generation_params: generationParamsBodySchema.optional(),
+  confirmed_execution_ids: z.array(z.string().min(1)).optional(),
+  confirmed_session_state_mutation_ids: z.array(z.string().min(1)).optional(),
+  session_state_writes: z.array(turnSessionStateWriteBodySchema).optional(),
+  prompt_runtime_injections: z.array(promptRuntimeInjectionBodySchema).max(PROMPT_RUNTIME_INJECTION_LIMITS.requestMaxCount).optional(),
+}).strict() satisfies z.ZodType<RegenerateBody>;
+
+export const editAndRegenerateBodySchema: z.ZodType<EditAndRegenerateBody> = regenerateBodySchema.extend({
+  content: z.string().min(1),
+  branch_id: z.string().min(1).optional(),
+}) as z.ZodType<EditAndRegenerateBody>;
+
+export const retryFloorBodySchema: z.ZodType<RetryFloorBody> = regenerateBodySchema;
+
+// step 级重试：复用 retryFloor 请求体，额外必传 from_step_index。
+export type RetryStepBody = RetryFloorBody & { from_step_index: number };
+
+export const retryStepBodySchema: z.ZodType<RetryStepBody> = regenerateBodySchema.extend({
+  from_step_index: z.number().int().min(1),
+}) as z.ZodType<RetryStepBody>;
+
+export const chatMutationErrorResponses = {
+  400: errorResponseJsonSchema,
+  404: errorResponseJsonSchema,
+  499: errorResponseJsonSchema,
+  409: errorResponseJsonSchema,
+  422: errorResponseJsonSchema,
+  500: errorResponseJsonSchema,
+  503: errorResponseJsonSchema,
+  504: errorResponseJsonSchema,
+} as const;
+
+export interface RegisterChatRoutesOptions {
+  enableSseChat?: boolean;
+  enablePromptDryRun?: boolean;
+  enableClientData?: boolean;
+  cors?: import("../../plugins/cors.js").CorsConfig;
+  projectAccessService?: import("../../services/project-access-service.js").ProjectAccessService;
+}
+
+export {
+  dryRunBodyJsonSchema,
+  dryRunSuccessResponseJsonSchema,
+  editAndRegenerateBodyJsonSchema,
+  editAndRegenerateSuccessResponseJsonSchema,
+  errorResponseJsonSchema,
+  idParamsJsonSchema,
+  regenerateBodyJsonSchema,
+  regenerateSuccessResponseJsonSchema,
+  respondBodyJsonSchema,
+  respondSuccessResponseJsonSchema,
+  retryFloorBodyJsonSchema,
+  retryStepBodyJsonSchema,
+  retryStepSuccessResponseJsonSchema,
+  sessionIdParamsJsonSchema,
+  streamResponseExample,
+};

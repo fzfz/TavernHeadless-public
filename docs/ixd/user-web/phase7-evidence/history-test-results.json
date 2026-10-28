@@ -1,0 +1,98 @@
+{
+  "pages": [
+    "P15",
+    "P16",
+    "P21"
+  ],
+  "boundary": "Public browser UI against the built desktop and mobile prototypes; local simulated account storage.",
+  "red": [
+    {
+      "suite": "history.test.cjs",
+      "failure": "Timeout waiting for [data-page-id=\"P15\"] before history module integration."
+    },
+    {
+      "suite": "history-quality.test.cjs",
+      "failure": "selection keeps keyboard focus: false !== true",
+      "fix": "Restore the active control after list rendering."
+    },
+    {
+      "suite": "history-isolation.test.cjs",
+      "failure": "logout clears the account title draft: 1 !== 0",
+      "fix": "Clear the previous account title drafts and history cache on cross-tab account loss."
+    }
+  ],
+  "green": [
+    {
+      "platform": "desktop",
+      "suite": "history.test.cjs",
+      "exitCode": 0,
+      "output": "desktop history search and navigation: passed"
+    },
+    {
+      "platform": "desktop",
+      "suite": "history-acceptance.test.cjs",
+      "exitCode": 0,
+      "output": "desktop rename keyboard, draft conflict and unknown reload: passed\ndesktop delete cancel, fixed targets and partial retry: passed"
+    },
+    {
+      "platform": "desktop",
+      "suite": "history-edge.test.cjs",
+      "exitCode": 0,
+      "output": "desktop pagination, loaded-only selection and applied search: passed\ndesktop delete unknown retention, failed verification, reload and offline: passed"
+    },
+    {
+      "platform": "desktop",
+      "suite": "history-quality.test.cjs",
+      "exitCode": 0,
+      "output": "desktop history keyboard focus, long titles, themes, widths and delete focus trap: passed"
+    },
+    {
+      "platform": "desktop",
+      "suite": "history-isolation.test.cjs",
+      "exitCode": 0,
+      "output": "desktop shared title draft and history return anchor: passed\ndesktop cross-tab logout, account isolation and draft cleanup: passed"
+    },
+    {
+      "platform": "mobile",
+      "suite": "history.test.cjs",
+      "exitCode": 0,
+      "output": "mobile history search and navigation: passed"
+    },
+    {
+      "platform": "mobile",
+      "suite": "history-acceptance.test.cjs",
+      "exitCode": 0,
+      "output": "mobile rename keyboard, draft conflict and unknown reload: passed\nmobile delete cancel, fixed targets and partial retry: passed"
+    },
+    {
+      "platform": "mobile",
+      "suite": "history-edge.test.cjs",
+      "exitCode": 0,
+      "output": "mobile pagination, loaded-only selection and applied search: passed\nmobile delete unknown retention, failed verification, reload and offline: passed"
+    },
+    {
+      "platform": "mobile",
+      "suite": "history-quality.test.cjs",
+      "exitCode": 0,
+      "output": "mobile history keyboard focus, long titles, themes, widths and delete focus trap: passed"
+    },
+    {
+      "platform": "mobile",
+      "suite": "history-isolation.test.cjs",
+      "exitCode": 0,
+      "output": "mobile shared title draft and history return anchor: passed\nmobile cross-tab logout, account isolation and draft cleanup: passed"
+    },
+    {
+      "platform": "desktop",
+      "suite": "history-running.test.cjs",
+      "exitCode": 0,
+      "output": "desktop running session remains readable and excludes deletion: passed"
+    },
+    {
+      "platform": "mobile",
+      "suite": "history-running.test.cjs",
+      "exitCode": 0,
+      "output": "mobile running session remains readable and excludes deletion: passed"
+    }
+  ]
+}

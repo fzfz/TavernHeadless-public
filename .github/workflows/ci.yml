@@ -1,0 +1,515 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+    inputs:
+      run_coverage:
+        description: "Whether to run the coverage job"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+      release_ref:
+        description: "Approved native release tag; empty runs unit verification only"
+        required: false
+        type: string
+      release_id:
+        description: "Immutable native release identifier"
+        required: false
+        type: string
+      installation_approved:
+        description: "Approve native macOS tool setup and locked dependencies with configured lifecycle scripts"
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  native:
+    if: github.event_name == 'workflow_dispatch' && inputs.installation_approved == true
+    permissions:
+      contents: read
+    uses: ./.github/workflows/native-environments.yml
+    with:
+      release_ref: ${{ inputs.release_ref }}
+      release_id: ${{ inputs.release_id }}
+      installation_approved: ${{ inputs.installation_approved }}
+
+  changes:
+    name: Changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      docs: ${{ steps.classify.outputs.docs }}
+      code: ${{ steps.classify.outputs.code }}
+      docs_only: ${{ steps.classify.outputs.docs_only }}
+      docs_files: ${{ steps.filter.outputs.docs_files }}
+
+    steps:
+      - name: Checkout filters
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v4
+
+      - name: Detect changed paths
+        if: github.event_name == 'pull_request'
+        id: filter
+        uses: dorny/paths-filter@v4
+        with:
+          list-files: shell
+          filters: .github/filters/ci-paths.yaml
+
+      - name: Classify change scope
+        id: classify
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            docs="${{ steps.filter.outputs.docs }}"
+            code="${{ steps.filter.outputs.code }}"
+          else
+            docs="false"
+            code="true"
+          fi
+
+          echo "docs=$docs" >> "$GITHUB_OUTPUT"
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+
+          if [ "$docs" = "true" ] && [ "$code" != "true" ]; then
+            echo "docs_only=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "docs_only=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: changes
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint docs
+        run: |
+          node --test scripts/docs-lint.node-test.mjs
+          pnpm docs:lint --report "$RUNNER_TEMP/docs-lint-report.json"
+
+      - name: Upload docs lint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-lint-report
+          path: ${{ runner.temp }}/docs-lint-report.json
+          if-no-files-found: ignore
+
+      - name: Lint repository
+        if: needs.changes.outputs.docs_only != 'true'
+        run: pnpm lint
+
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: changes
+
+    steps:
+      - name: Docs-only shortcut
+        if: needs.changes.outputs.docs_only == 'true'
+        run: 'echo "Docs-only PR: typecheck skipped by design."'
+
+      - name: Checkout
+        if: needs.changes.outputs.docs_only != 'true'
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        if: needs.changes.outputs.docs_only != 'true'
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        if: needs.changes.outputs.docs_only != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install
+        if: needs.changes.outputs.docs_only != 'true'
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        if: needs.changes.outputs.docs_only != 'true'
+        run: pnpm typecheck
+
+  test-slices-1:
+    name: Test slice ${{ matrix.slice }}/6 (internal)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: changes
+    if: needs.changes.outputs.docs_only != 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        slice: [1, 2]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Test
+        run: pnpm exec vitest run --reporter=verbose --shard=${{ matrix.slice }}/6
+
+  test-slices-2:
+    name: Test slice ${{ matrix.slice }}/6 (internal)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: changes
+    if: needs.changes.outputs.docs_only != 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        slice: [3, 4]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Test
+        run: pnpm exec vitest run --reporter=verbose --shard=${{ matrix.slice }}/6
+
+  test-slices-3:
+    name: Test slice ${{ matrix.slice }}/6 (internal)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: changes
+    if: needs.changes.outputs.docs_only != 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        slice: [5, 6]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Test
+        run: pnpm exec vitest run --reporter=verbose --shard=${{ matrix.slice }}/6
+
+  test-shard-1:
+    name: Test (shard 1/3)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: always()
+    needs:
+      - changes
+      - test-slices-1
+
+    steps:
+      - name: Docs-only shortcut
+        if: needs.changes.outputs.docs_only == 'true'
+        run: 'echo "Docs-only PR: test shard 1/3 skipped by design."'
+
+      - name: Fail on internal slice failure
+        if: needs.changes.outputs.docs_only != 'true' && needs.test-slices-1.result != 'success'
+        run: exit 1
+
+      - name: Report success
+        if: needs.changes.outputs.docs_only != 'true' && needs.test-slices-1.result == 'success'
+        run: 'echo "Internal test slices 1/6 and 2/6 passed."'
+
+  test-shard-2:
+    name: Test (shard 2/3)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: always()
+    needs:
+      - changes
+      - test-slices-2
+
+    steps:
+      - name: Docs-only shortcut
+        if: needs.changes.outputs.docs_only == 'true'
+        run: 'echo "Docs-only PR: test shard 2/3 skipped by design."'
+
+      - name: Fail on internal slice failure
+        if: needs.changes.outputs.docs_only != 'true' && needs.test-slices-2.result != 'success'
+        run: exit 1
+
+      - name: Report success
+        if: needs.changes.outputs.docs_only != 'true' && needs.test-slices-2.result == 'success'
+        run: 'echo "Internal test slices 3/6 and 4/6 passed."'
+
+  test-shard-3:
+    name: Test (shard 3/3)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: always()
+    needs:
+      - changes
+      - test-slices-3
+
+    steps:
+      - name: Docs-only shortcut
+        if: needs.changes.outputs.docs_only == 'true'
+        run: 'echo "Docs-only PR: test shard 3/3 skipped by design."'
+
+      - name: Fail on internal slice failure
+        if: needs.changes.outputs.docs_only != 'true' && needs.test-slices-3.result != 'success'
+        run: exit 1
+
+      - name: Report success
+        if: needs.changes.outputs.docs_only != 'true' && needs.test-slices-3.result == 'success'
+        run: 'echo "Internal test slices 5/6 and 6/6 passed."'
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: changes
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify dependency compatibility
+        run: pnpm test:dependencies
+
+      - name: Build docs
+        run: pnpm docs:build
+
+      - name: Build workspace
+        if: needs.changes.outputs.docs_only != 'true'
+        run: pnpm build
+
+  # Studio uses its own Vitest configuration and coverage thresholds.
+  studio-test:
+    name: Studio test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: changes
+    if: needs.changes.outputs.docs_only != 'true'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Studio unit + integration tests (with coverage gate)
+        run: pnpm --filter @tavern/studio test:coverage
+
+  coverage:
+    name: Coverage
+    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.run_coverage == 'true') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs:
+      - lint
+      - typecheck
+      - test-shard-1
+      - test-shard-2
+      - test-shard-3
+      - build
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Coverage
+        run: pnpm test:ci:coverage --maxWorkers=2
+
+  api-smoke:
+    name: API Smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: changes
+    env:
+      PORT: "4010"
+      HOST: "127.0.0.1"
+      AUTH_MODE: "off"
+      ENABLE_SSE_CHAT: "true"
+      ENABLE_PROMPT_DRY_RUN: "true"
+      ENABLE_MCP: "true"
+      ENABLE_MEMORY: "false"
+      CORS_ORIGINS: "*"
+      CORS_CREDENTIALS: "false"
+      APP_SECRETS_MASTER_KEY: "ci-smoke-test-only"
+      # No LLM_API_KEY — chat routes stay disabled; CRUD-only is fine for smoke.
+
+    steps:
+      - name: Docs-only shortcut
+        if: needs.changes.outputs.docs_only == 'true'
+        run: 'echo "Docs-only PR: API smoke skipped by design."'
+
+      - name: Checkout
+        if: needs.changes.outputs.docs_only != 'true'
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        if: needs.changes.outputs.docs_only != 'true'
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        if: needs.changes.outputs.docs_only != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install
+        if: needs.changes.outputs.docs_only != 'true'
+        run: pnpm install --frozen-lockfile
+
+      - name: Prepare isolated database paths
+        if: needs.changes.outputs.docs_only != 'true'
+        shell: bash
+        run: |
+          data_directory="$RUNNER_TEMP/tavern-api-smoke"
+          {
+            echo "DATA_DIR=$data_directory"
+            echo "DATABASE_URL=$data_directory/tavern-headless.db"
+            echo "TAVERN_LOG_DIR=$data_directory/logs"
+          } >> "$GITHUB_ENV"
+
+      - name: Build API and initialize isolated database
+        if: needs.changes.outputs.docs_only != 'true'
+        run: |
+          pnpm --filter '@tavern/api...' build
+          node apps/api/dist/db/environment-command.js migrate --database "$DATABASE_URL" --output "$RUNNER_TEMP/api-smoke-migration.json"
+
+      - name: Start API server
+        if: needs.changes.outputs.docs_only != 'true'
+        run: |
+          node apps/api/dist/index.js > api.log 2>&1 &
+          echo "API_PID=$!" >> "$GITHUB_ENV"
+
+      - name: Wait for API health
+        if: needs.changes.outputs.docs_only != 'true'
+        run: |
+          for i in {1..60}; do
+            if curl -fsS "http://127.0.0.1:$PORT/health" > /dev/null; then
+              echo "API is ready"
+              exit 0
+            fi
+            sleep 1
+          done
+
+          echo "API did not become healthy within timeout"
+          cat api.log || true
+          exit 1
+
+      - name: Run smoke tests
+        if: needs.changes.outputs.docs_only != 'true'
+        run: pnpm --filter @tavern/api smoke
+
+      - name: Stop API server
+        if: always() && needs.changes.outputs.docs_only != 'true'
+        run: |
+          if [ -n "${API_PID:-}" ]; then
+            kill "$API_PID" || true
+          fi
+
+      - name: Print API logs on failure
+        if: failure() && needs.changes.outputs.docs_only != 'true'
+        run: cat api.log || true

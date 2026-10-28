@@ -1,0 +1,15 @@
+{
+  "httpStatuses": [400, 422],
+  "rules": [
+    {
+      "codes": ["unsupported_parameter"],
+      "parameterPatterns": ["^tools$"]
+    },
+    {
+      "codes": ["invalid_function_parameters", "unsupported_tool_schema"],
+      "parameterPatterns": [
+        "^tools(?:\\[\\d+\\]|\\.\\d+)\\.(?:function\\.parameters|input_schema)(?:$|[.\\[])"
+      ]
+    }
+  ]
+}

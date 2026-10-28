@@ -1,0 +1,1428 @@
+{
+  "version": 1,
+  "syntax": {
+    "identifier": "[a-zA-Z][\\w-]*|//",
+    "variable": "[a-zA-Z](?:[\\w\\-_]*[\\w])?",
+    "preserveWhitespace": "#",
+    "closing": "/",
+    "localPrefix": ".",
+    "globalPrefix": "$",
+    "argumentSeparator": "::",
+    "legacyArgumentSeparator": ":",
+    "localMacro": "getvar",
+    "globalMacro": "getglobalvar",
+    "integer": "^-?\\d+$"
+  },
+  "dataKeys": {
+    "performerName": "performerName",
+    "card": "pageMacroCard",
+    "state": "current",
+    "messages": "messages"
+  },
+  "diagnostics": {
+    "unknown": "页面宏 {macro} 尚未登记。请核对宏名称。",
+    "syntax": "页面宏 {macro} 的语法无效：{reason}。",
+    "arguments": "页面宏 {macro} 的参数无效：{reason}。",
+    "condition": "页面宏 {macro} 需要明确的用途选择：{reason}",
+    "variable": "页面宏 {macro} 使用变量 {reason}，请提交该变量与状态字段的对应关系。",
+    "missing": "页面宏 {macro} 无法读取数据键 {dataKey}。请核对会话数据与角色包数据。",
+    "cycle": "页面宏 {macro} 的角色资料存在循环引用：{reason}。",
+    "invalid": "页面宏 {macro} 的输入无效：{reason}。",
+    "invalidBinding": "页面宏绑定需要唯一且非空的文字节点 ID。"
+  },
+  "macros": [
+    {
+      "name": "lastMessage",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "message",
+      "condition": {
+        "messages": "saved-visible-active"
+      },
+      "dependencies": ["state", "messages"],
+      "purpose": "输出当前分支中最后一条已保存、可见消息的活动页正文。",
+      "diagnostic": null,
+      "role": null
+    },
+    {
+      "name": "lastMessageId",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出 ST 聊天中最后一条有效消息的数组下标。",
+      "diagnostic": "页面 API 未提供 ST 消息数组下标及排除未完成 swipe 后的有效消息定位结果。"
+    },
+    {
+      "name": "lastUserMessage",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "message",
+      "condition": {
+        "messages": "saved-visible-active"
+      },
+      "dependencies": ["state", "messages"],
+      "purpose": "输出当前分支中最后一条已保存、可见用户消息的活动页正文。",
+      "diagnostic": null,
+      "role": "user"
+    },
+    {
+      "name": "lastCharMessage",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "message",
+      "condition": {
+        "messages": "saved-visible-active"
+      },
+      "dependencies": ["state", "messages"],
+      "purpose": "输出当前分支中最后一条已保存、可见角色消息（assistant）的活动页正文。",
+      "diagnostic": null,
+      "role": "assistant"
+    },
+    {
+      "name": "firstIncludedMessageId",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出当前提示词上下文包含的第一条 ST 消息的数组下标。",
+      "diagnostic": "页面 API 未提供提示词组装记录中的 chat_metadata.lastInContextMessageId。"
+    },
+    {
+      "name": "firstDisplayedMessageId",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出 ST 聊天页面显示的第一条消息的数组下标。",
+      "diagnostic": "页面 API 未提供 ST 聊天 DOM 中第一条消息的 mesid。"
+    },
+    {
+      "name": "lastSwipeId",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出最后一条 ST 消息的最后一个 swipe 的序号，序号从 1 开始。",
+      "diagnostic": "页面 API 未提供最后一条 ST 消息的 swipes 数组长度。"
+    },
+    {
+      "name": "currentSwipeId",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出最后一条 ST 消息当前选择的 swipe 序号，序号从 1 开始。",
+      "diagnostic": "页面 API 未提供最后一条 ST 消息的 swipe_id。"
+    },
+    {
+      "name": "allChatRange",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出完整 ST 聊天消息数组的下标范围；聊天为空时输出空字符串。",
+      "diagnostic": "页面 API 未提供完整 ST 消息数组长度，无法确定从 0 开始的消息下标范围。"
+    },
+    {
+      "name": "space",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "count",
+          "optional": true,
+          "type": "integer",
+          "default": "1"
+        }
+      ],
+      "list": false,
+      "handler": "space",
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出 count 个空格。",
+      "diagnostic": null
+    },
+    {
+      "name": "newline",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "count",
+          "optional": true,
+          "type": "integer",
+          "default": "1"
+        }
+      ],
+      "list": false,
+      "handler": "newline",
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出 count 个换行符。",
+      "diagnostic": null
+    },
+    {
+      "name": "noop",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "noop",
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出空字符串。",
+      "diagnostic": null
+    },
+    {
+      "name": "trim",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "content",
+          "optional": true,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": "trim",
+      "condition": null,
+      "dependencies": [],
+      "purpose": "独立写法删除宏两侧相邻的换行；成对写法输出去除边缘空白并按首个非空行缩进调整行首空白的正文。开始宏使用 # 标志时保留正文空白。",
+      "diagnostic": null
+    },
+    {
+      "name": "if",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "condition",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": "if",
+      "condition": null,
+      "dependencies": [],
+      "purpose": "根据 condition 的真假选择并求值正文分支，输出所选分支的文字。",
+      "diagnostic": null
+    },
+    {
+      "name": "else",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "else",
+      "condition": null,
+      "dependencies": [],
+      "purpose": "在 if 正文中标记条件为假时使用的分支；宏本身输出空字符串。",
+      "diagnostic": null
+    },
+    {
+      "name": "input",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出当前聊天输入框的草稿文字。",
+      "diagnostic": "页面 API 未提供当前聊天输入框草稿的读取操作。"
+    },
+    {
+      "name": "maxPrompt",
+      "aliases": ["maxPromptTokens"],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出当前生成配置中提示词可使用的最大 token 数。",
+      "diagnostic": "页面 API 未提供当前生成配置的提示词可用 token 上限及计算该值所需的上下文和回复上限。"
+    },
+    {
+      "name": "maxContext",
+      "aliases": ["maxContextTokens"],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出当前生成配置的上下文 token 上限。",
+      "diagnostic": "页面 API 未提供当前生成配置的上下文 token 上限。"
+    },
+    {
+      "name": "maxResponse",
+      "aliases": ["maxResponseTokens"],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出当前生成配置的回复 token 上限。",
+      "diagnostic": "页面 API 未提供当前生成配置的回复 token 上限。"
+    },
+    {
+      "name": "reverse",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "value",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": "reverse",
+      "condition": null,
+      "dependencies": [],
+      "purpose": "按 Unicode 码点反转 value 的顺序并输出文字。",
+      "diagnostic": null
+    },
+    {
+      "name": "//",
+      "aliases": ["comment"],
+      "parameters": [
+        {
+          "name": "comment",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": true,
+      "handler": "//",
+      "scoped": true,
+      "strictArgs": false,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "将 comment 作为注释处理并输出空字符串。",
+      "diagnostic": null
+    },
+    {
+      "name": "roll",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "formula",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": "roll",
+      "condition": null,
+      "dependencies": ["random"],
+      "purpose": "按 formula 掷骰并输出骰子点数与修正值的总和。",
+      "diagnostic": null,
+      "formulaPattern": "^([1-9]\\d*)?d([1-9]\\d*)([+-]\\d+)?$"
+    },
+    {
+      "name": "random",
+      "aliases": [],
+      "parameters": [],
+      "list": true,
+      "handler": "random",
+      "condition": null,
+      "dependencies": ["random"],
+      "purpose": "求值全部候选项后，随机选择一项并输出其文字。",
+      "diagnostic": null
+    },
+    {
+      "name": "pick",
+      "aliases": [],
+      "parameters": [],
+      "list": true,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "根据聊天、原文、宏位置和重掷种子稳定地选择候选项，并输出其文字。",
+      "diagnostic": "页面 API 未提供 ST 聊天身份哈希、完整原文及宏位置上下文，也未提供 chat_metadata.pick_reroll_seed 的读取与持久化。"
+    },
+    {
+      "name": "banned",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "word",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "将 word 写入文本生成后端的宏禁词列表，并输出空字符串。",
+      "diagnostic": "页面 API 未提供文本生成后端的生成禁词列表的写入操作。"
+    },
+    {
+      "name": "outlet",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "key",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出指定 key 对应的世界书 outlet 已组装文本。",
+      "diagnostic": "页面 API 未提供指定 key 对应的世界书 outlet 的已组装文本。"
+    },
+    {
+      "name": "user",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "user",
+      "condition": null,
+      "dependencies": ["performerName"],
+      "purpose": "输出当前会话固定人设的姓名。",
+      "diagnostic": null
+    },
+    {
+      "name": "char",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "card",
+      "condition": {
+        "card": "package-card"
+      },
+      "dependencies": ["card"],
+      "purpose": "输出角色包固定版本的角色姓名。",
+      "diagnostic": null,
+      "cardPath": ["name"],
+      "trim": true
+    },
+    {
+      "name": "group",
+      "aliases": ["charIfNotGroup"],
+      "parameters": [],
+      "list": false,
+      "handler": "card",
+      "condition": {
+        "session": "single-character"
+      },
+      "dependencies": ["card"],
+      "purpose": "在单角色会话中输出角色包固定版本的角色姓名。",
+      "diagnostic": null,
+      "cardPath": ["name"],
+      "trim": true
+    },
+    {
+      "name": "groupNotMuted",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "card",
+      "condition": {
+        "session": "single-character"
+      },
+      "dependencies": ["card"],
+      "purpose": "在单角色会话中输出角色包固定版本的角色姓名。",
+      "diagnostic": null,
+      "cardPath": ["name"],
+      "trim": true
+    },
+    {
+      "name": "notChar",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "user",
+      "condition": {
+        "session": "single-character"
+      },
+      "dependencies": ["performerName"],
+      "purpose": "在单角色会话中输出当前会话固定人设的姓名。",
+      "diagnostic": null
+    },
+    {
+      "name": "charPrompt",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出当前角色生效的主提示词覆盖文本。",
+      "diagnostic": "页面 API 未提供 prefer_character_prompt 开关、当前聊天的 system_prompt 覆盖值及当前角色的主提示词选择结果。"
+    },
+    {
+      "name": "charInstruction",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出当前角色生效的历史后指令覆盖文本。",
+      "diagnostic": "页面 API 未提供 prefer_character_jailbreak 开关及当前角色 post_history_instructions 的生效结果。"
+    },
+    {
+      "name": "charDescription",
+      "aliases": ["description"],
+      "parameters": [],
+      "list": false,
+      "handler": "card",
+      "condition": {
+        "card": "package-card"
+      },
+      "dependencies": ["card"],
+      "purpose": "输出角色包固定版本的角色描述。",
+      "diagnostic": null,
+      "cardPath": ["description"],
+      "trim": true
+    },
+    {
+      "name": "charPersonality",
+      "aliases": ["personality"],
+      "parameters": [],
+      "list": false,
+      "handler": "card",
+      "condition": {
+        "card": "package-card"
+      },
+      "dependencies": ["card"],
+      "purpose": "输出角色包固定版本的角色性格描述。",
+      "diagnostic": null,
+      "cardPath": ["personality"],
+      "trim": true
+    },
+    {
+      "name": "charScenario",
+      "aliases": ["scenario"],
+      "parameters": [],
+      "list": false,
+      "handler": "card",
+      "condition": {
+        "card": "package-card"
+      },
+      "dependencies": ["card"],
+      "purpose": "输出角色包固定版本的场景描述。",
+      "diagnostic": null,
+      "cardPath": ["scenario"],
+      "trim": true
+    },
+    {
+      "name": "persona",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出当前人设的完整描述。",
+      "diagnostic": "页面 API 未提供当前会话固定人设的完整描述，performerName 仅包含姓名。"
+    },
+    {
+      "name": "mesExamplesRaw",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "card",
+      "condition": {
+        "card": "package-card"
+      },
+      "dependencies": ["card"],
+      "purpose": "输出角色包固定版本的对话示例文本。",
+      "diagnostic": null,
+      "cardPath": ["mes_example"],
+      "trim": true
+    },
+    {
+      "name": "mesExamples",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出按当前提示词配置格式化后的对话示例。",
+      "diagnostic": "页面 API 未提供当前聊天的示例覆盖文本及示例格式化配置，包括指令模板的启用状态与格式片段。"
+    },
+    {
+      "name": "charDepthPrompt",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "card",
+      "condition": {
+        "card": "package-card"
+      },
+      "dependencies": ["card"],
+      "purpose": "输出角色包固定版本的深度提示词。",
+      "diagnostic": null,
+      "cardPath": ["extensions", "depth_prompt", "prompt"],
+      "trim": true
+    },
+    {
+      "name": "charCreatorNotes",
+      "aliases": ["creatorNotes"],
+      "parameters": [],
+      "list": false,
+      "handler": "card",
+      "condition": {
+        "card": "package-card"
+      },
+      "dependencies": ["card"],
+      "purpose": "输出角色包固定版本的角色卡作者说明。",
+      "diagnostic": null,
+      "cardPath": ["creator_notes"],
+      "trim": true
+    },
+    {
+      "name": "charFirstMessage",
+      "aliases": ["greeting"],
+      "parameters": [
+        {
+          "name": "index",
+          "optional": true,
+          "type": "integer",
+          "default": "0"
+        }
+      ],
+      "list": false,
+      "handler": "card",
+      "condition": {
+        "card": "package-card"
+      },
+      "dependencies": ["card"],
+      "purpose": "按 index 输出角色包固定版本的开场或备选开场。",
+      "diagnostic": null,
+      "cardPath": ["first_mes"],
+      "trim": true,
+      "alternatePath": ["alternate_greetings"]
+    },
+    {
+      "name": "charVersion",
+      "aliases": ["version", "char_version"],
+      "parameters": [],
+      "list": false,
+      "handler": "card",
+      "condition": {
+        "card": "package-card"
+      },
+      "dependencies": ["card"],
+      "purpose": "输出角色包固定角色资料中的作者定义版本号（character_version）。",
+      "diagnostic": null,
+      "cardPath": ["character_version"],
+      "trim": false,
+      "expand": false
+    },
+    {
+      "name": "model",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出当前选择的生成模型名称。",
+      "diagnostic": "页面 API 未提供当前生成模型名称。"
+    },
+    {
+      "name": "original",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "首次调用时输出源宏调用者传入的原文；同一求值上下文后续调用输出空字符串。",
+      "diagnostic": "页面宏挂载输入未提供调用者的 original 原文及其单次消费上下文。"
+    },
+    {
+      "name": "isMobile",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "isMobile",
+      "condition": null,
+      "dependencies": ["userAgent"],
+      "purpose": "判断当前浏览器是否运行在手机或平板上，并输出 true 或 false。",
+      "diagnostic": null
+    },
+    {
+      "name": "systemPrompt",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出启用的系统提示词，并按当前偏好选择角色主提示词覆盖文本。",
+      "diagnostic": "页面 API 未提供 sysprompt.enabled、sysprompt.content、角色提示词优先开关及当前角色生效的主提示词覆盖文本。"
+    },
+    {
+      "name": "lastGenerationType",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出当前 ST 聊天最近一次非 dry-run 生成的类型。",
+      "diagnostic": "页面 API 未提供 ST 的 GENERATION_STARTED 生成类型事件及 CHAT_CHANGED 聊天切换事件。"
+    },
+    {
+      "name": "hasExtension",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "extensionName",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "判断指定 ST 扩展是否已安装且启用，并输出 true 或 false。",
+      "diagnostic": "页面 API 未提供指定 ST 扩展的安装及启用状态。"
+    },
+    {
+      "name": "time",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "offset",
+          "optional": true,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": "time",
+      "condition": null,
+      "dependencies": ["clock"],
+      "purpose": "输出当前时间；提供有效 UTC 偏移时输出该偏移下的时间。",
+      "diagnostic": null,
+      "format": "LT"
+    },
+    {
+      "name": "date",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "date",
+      "condition": null,
+      "dependencies": ["clock"],
+      "purpose": "输出当前本地日期的英文长日期文字。",
+      "diagnostic": null,
+      "format": "LL"
+    },
+    {
+      "name": "weekday",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "weekday",
+      "condition": null,
+      "dependencies": ["clock"],
+      "purpose": "输出当前本地日期的英文星期名称。",
+      "diagnostic": null,
+      "format": "dddd"
+    },
+    {
+      "name": "isotime",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "isotime",
+      "condition": null,
+      "dependencies": ["clock"],
+      "purpose": "以 HH:mm 格式输出当前本地时间。",
+      "diagnostic": null,
+      "format": "HH:mm"
+    },
+    {
+      "name": "isodate",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": "isodate",
+      "condition": null,
+      "dependencies": ["clock"],
+      "purpose": "以 YYYY-MM-DD 格式输出当前本地日期。",
+      "diagnostic": null,
+      "format": "YYYY-MM-DD"
+    },
+    {
+      "name": "datetimeformat",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "format",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": "datetimeformat",
+      "condition": null,
+      "dependencies": ["clock"],
+      "purpose": "按提供的 Moment 格式输出当前本地日期和时间。",
+      "diagnostic": null
+    },
+    {
+      "name": "idleDuration",
+      "aliases": ["idle_duration"],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出最后一条非系统消息之前最近一条用户消息距今的时长文字；没有可用记录时输出 just now。",
+      "diagnostic": "页面 API 未提供 ST 历史消息的 send_date、is_user 和 is_system，无法定位最近一条用户消息的发送时间。"
+    },
+    {
+      "name": "timeDiff",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "left",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "right",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": "timeDiff",
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出 left 相对于 right 的时间差文字，并标明过去或未来。",
+      "diagnostic": null
+    },
+    {
+      "name": "setvar",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "将指定 ST 聊天本地变量设置为 value，并输出空字符串。",
+      "diagnostic": "页面 API 未提供 ST 本地变量的持久化赋值操作。"
+    },
+    {
+      "name": "addvar",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "向指定 ST 聊天本地变量加上数值或追加字符串、数组元素，并输出空字符串。",
+      "diagnostic": "页面 API 未提供 ST 本地变量的持久化追加操作，包括数值相加、字符串拼接和数组追加。"
+    },
+    {
+      "name": "incvar",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "将指定 ST 聊天本地变量加一，并输出更新后的值。",
+      "diagnostic": "页面 API 未提供 ST 本地变量的持久化加一操作。"
+    },
+    {
+      "name": "decvar",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "将指定 ST 聊天本地变量减一，并输出更新后的值。",
+      "diagnostic": "页面 API 未提供 ST 本地变量的持久化减一操作。"
+    },
+    {
+      "name": "getvar",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": "getvar",
+      "condition": {
+        "variables": true
+      },
+      "dependencies": ["state"],
+      "purpose": "读取已对应到当前状态字段的源本地变量，并输出该变量的值。",
+      "diagnostic": null
+    },
+    {
+      "name": "hasvar",
+      "aliases": ["varexists"],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": "hasvar",
+      "condition": {
+        "variables": true
+      },
+      "dependencies": ["state"],
+      "purpose": "判断已对应到当前状态字段的源本地变量是否存在，并输出 true 或 false。",
+      "diagnostic": null
+    },
+    {
+      "name": "deletevar",
+      "aliases": ["flushvar"],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "删除指定 ST 聊天本地变量，并输出空字符串。",
+      "diagnostic": "页面 API 未提供 ST 本地变量的持久化删除操作。"
+    },
+    {
+      "name": "setglobalvar",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "将指定 ST 全局变量设置为 value，并输出空字符串。",
+      "diagnostic": "页面 API 未提供 ST 全局变量的持久化赋值操作。"
+    },
+    {
+      "name": "addglobalvar",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "向指定 ST 全局变量加上数值或追加字符串、数组元素，并输出空字符串。",
+      "diagnostic": "页面 API 未提供 ST 全局变量的持久化追加操作，包括数值相加、字符串拼接和数组追加。"
+    },
+    {
+      "name": "incglobalvar",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "将指定 ST 全局变量加一，并输出更新后的值。",
+      "diagnostic": "页面 API 未提供 ST 全局变量的持久化加一操作。"
+    },
+    {
+      "name": "decglobalvar",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "将指定 ST 全局变量减一，并输出更新后的值。",
+      "diagnostic": "页面 API 未提供 ST 全局变量的持久化减一操作。"
+    },
+    {
+      "name": "getglobalvar",
+      "aliases": [],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "读取指定 ST 全局变量，并输出该变量的值。",
+      "diagnostic": "页面 API 未提供 ST 全局变量的值读取操作。"
+    },
+    {
+      "name": "hasglobalvar",
+      "aliases": ["globalvarexists"],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "判断指定 ST 全局变量是否存在，并输出 true 或 false。",
+      "diagnostic": "页面 API 未提供 ST 全局变量的存在性查询操作。"
+    },
+    {
+      "name": "deleteglobalvar",
+      "aliases": ["flushglobalvar"],
+      "parameters": [
+        {
+          "name": "name",
+          "optional": false,
+          "type": "string"
+        }
+      ],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "删除指定 ST 全局变量，并输出空字符串。",
+      "diagnostic": "页面 API 未提供 ST 全局变量的持久化删除操作。"
+    },
+    {
+      "name": "instructStoryStringPrefix",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出故事资料文本的前缀。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled 及 instruct.story_string_prefix。"
+    },
+    {
+      "name": "instructStoryStringSuffix",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出故事资料文本的后缀。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled 及 instruct.story_string_suffix。"
+    },
+    {
+      "name": "instructUserPrefix",
+      "aliases": ["instructInput"],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出用户消息的前缀。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled 及 instruct.input_sequence。"
+    },
+    {
+      "name": "instructUserSuffix",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出用户消息的后缀。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled 及 instruct.input_suffix。"
+    },
+    {
+      "name": "instructAssistantPrefix",
+      "aliases": ["instructOutput"],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出助手消息的前缀。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled 及 instruct.output_sequence。"
+    },
+    {
+      "name": "instructAssistantSuffix",
+      "aliases": ["instructSeparator"],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出助手消息的后缀。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled 及 instruct.output_suffix。"
+    },
+    {
+      "name": "instructSystemPrefix",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出系统消息的前缀。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled 及 instruct.system_sequence。"
+    },
+    {
+      "name": "instructSystemSuffix",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出系统消息的后缀。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled 及 instruct.system_suffix。"
+    },
+    {
+      "name": "instructFirstAssistantPrefix",
+      "aliases": ["instructFirstOutputPrefix"],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出首条助手消息的前缀；专用前缀为空时使用普通助手消息前缀。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled、instruct.first_output_sequence 及回退字段 instruct.output_sequence。"
+    },
+    {
+      "name": "instructLastAssistantPrefix",
+      "aliases": ["instructLastOutputPrefix"],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出末条助手消息的前缀；专用前缀为空时使用普通助手消息前缀。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled、instruct.last_output_sequence 及回退字段 instruct.output_sequence。"
+    },
+    {
+      "name": "instructStop",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出停止序列。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled 及 instruct.stop_sequence。"
+    },
+    {
+      "name": "instructUserFiller",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出用于补齐用户轮次的文字。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled 及 instruct.user_alignment_message。"
+    },
+    {
+      "name": "instructSystemInstructionPrefix",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出末条系统指令的前缀。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled 及 instruct.last_system_sequence。"
+    },
+    {
+      "name": "instructFirstUserPrefix",
+      "aliases": ["instructFirstInput"],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出首条用户消息的前缀；专用前缀为空时使用普通用户消息前缀。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled、instruct.first_input_sequence 及回退字段 instruct.input_sequence。"
+    },
+    {
+      "name": "instructLastUserPrefix",
+      "aliases": ["instructLastInput"],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用指令模板时，输出末条用户消息的前缀；专用前缀为空时使用普通用户消息前缀。",
+      "diagnostic": "页面 API 未提供 power_user.instruct.enabled、instruct.last_input_sequence 及回退字段 instruct.input_sequence。"
+    },
+    {
+      "name": "defaultSystemPrompt",
+      "aliases": ["instructSystem", "instructSystemPrompt"],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "启用系统提示词时，输出系统提示词预设的默认文本。",
+      "diagnostic": "页面 API 未提供 power_user.sysprompt.enabled 及 sysprompt.content。"
+    },
+    {
+      "name": "exampleSeparator",
+      "aliases": ["chatSeparator"],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出上下文模板的对话示例分隔符。",
+      "diagnostic": "页面 API 未提供 power_user.context.example_separator。"
+    },
+    {
+      "name": "chatStart",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出上下文模板的聊天开始标记。",
+      "diagnostic": "页面 API 未提供 power_user.context.chat_start。"
+    },
+    {
+      "name": "authorsNote",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出当前聊天的作者注释。",
+      "diagnostic": "页面 API 未提供 chat_metadata 中的当前聊天作者注释。"
+    },
+    {
+      "name": "charAuthorsNote",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出作者注释扩展中为当前角色配置的注释。",
+      "diagnostic": "页面 API 未提供 extension_settings.note.chara 中的当前角色作者注释及匹配该配置所需的角色文件身份。"
+    },
+    {
+      "name": "defaultAuthorsNote",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出作者注释扩展的默认注释。",
+      "diagnostic": "页面 API 未提供 extension_settings.note.default。"
+    },
+    {
+      "name": "reasoningPrefix",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出推理模板的前缀。",
+      "diagnostic": "页面 API 未提供 power_user.reasoning.prefix。"
+    },
+    {
+      "name": "reasoningSuffix",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出推理模板的后缀。",
+      "diagnostic": "页面 API 未提供 power_user.reasoning.suffix。"
+    },
+    {
+      "name": "reasoningSeparator",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出推理模板中推理文字与回复正文之间的分隔符。",
+      "diagnostic": "页面 API 未提供 power_user.reasoning.separator。"
+    },
+    {
+      "name": "charPrefix",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出当前角色的图像生成正向提示词前缀；扩展未配置该值时使用角色卡中的正向前缀。",
+      "diagnostic": "页面 API 未提供 extension_settings.sd.character_prompts 及当前角色的选择状态，无法确定是否使用 sd_character_prompt.positive 回退值。"
+    },
+    {
+      "name": "charNegativePrefix",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出当前角色的图像生成负向提示词前缀；扩展未配置该值时使用角色卡中的负向前缀。",
+      "diagnostic": "页面 API 未提供 extension_settings.sd.character_negative_prompts 及当前角色的选择状态，无法确定是否使用 sd_character_prompt.negative 回退值。"
+    },
+    {
+      "name": "summary",
+      "aliases": [],
+      "parameters": [],
+      "list": false,
+      "handler": null,
+      "condition": null,
+      "dependencies": [],
+      "purpose": "输出摘要扩展当前显示的摘要；没有显示值时输出最后一条消息之前最近保存的摘要。",
+      "diagnostic": "页面 API 未提供摘要扩展的 memory_contents 当前值及 ST 历史消息的 extra.memory。"
+    }
+  ],
+  "legacyForms": [
+    {
+      "name": "instructFirstOutput",
+      "equivalent": "instructFirstAssistantPrefix"
+    },
+    {
+      "name": "instructLastOutput",
+      "equivalent": "instructLastAssistantPrefix"
+    },
+    {
+      "name": "charJailbreak",
+      "equivalent": "charInstruction"
+    },
+    {
+      "name": "<USER>",
+      "equivalent": "user",
+      "pattern": "^<USER>"
+    },
+    {
+      "name": "<BOT>",
+      "equivalent": "char",
+      "pattern": "^<BOT>"
+    },
+    {
+      "name": "<CHAR>",
+      "equivalent": "char",
+      "pattern": "^<CHAR>"
+    },
+    {
+      "name": "<GROUP>",
+      "equivalent": "group",
+      "pattern": "^<GROUP>"
+    },
+    {
+      "name": "<CHARIFNOTGROUP>",
+      "equivalent": "group",
+      "pattern": "^<CHARIFNOTGROUP>"
+    },
+    {
+      "name": "{{time_UTC±integer}}",
+      "equivalent": "time",
+      "pattern": "^\\{\\{time_(UTC[+-]\\d+)\\}\\}",
+      "argumentGroup": 1
+    }
+  ]
+}

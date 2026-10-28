@@ -1,0 +1,104 @@
+{
+  "apiVersion": 1,
+  "html": "view.html",
+  "css": "view.css",
+  "script": "main.js",
+  "assets": {
+    "portrait": {
+      "kind": "image",
+      "file": "assets/portrait.svg",
+      "label": "沈遥",
+      "tags": ["portrait", "avatar"]
+    },
+    "visitor": {
+      "kind": "image",
+      "file": "assets/visitor.svg",
+      "label": "演绎者",
+      "tags": ["avatar"]
+    },
+    "interior": {
+      "kind": "image",
+      "file": "assets/interior.svg",
+      "label": "室内",
+      "tags": ["background"]
+    },
+    "exterior": {
+      "kind": "image",
+      "file": "assets/exterior.svg",
+      "label": "室外",
+      "tags": ["background"]
+    },
+    "scene-0": {
+      "kind": "image",
+      "file": "assets/scene-0.svg",
+      "label": "山谷",
+      "tags": ["background"]
+    },
+    "scene-1": {
+      "kind": "image",
+      "file": "assets/scene-1.svg",
+      "label": "月色",
+      "tags": ["background"]
+    },
+    "scene-2": {
+      "kind": "image",
+      "file": "assets/scene-2.svg",
+      "label": "林地",
+      "tags": ["background"]
+    },
+    "music-0": {
+      "kind": "audio",
+      "file": "assets/theme.wav",
+      "label": "环境音 1",
+      "tags": ["bgm"]
+    },
+    "music-1": {
+      "kind": "audio",
+      "file": "assets/theme.wav",
+      "label": "环境音 2",
+      "tags": ["bgm"]
+    },
+    "music-2": {
+      "kind": "audio",
+      "file": "assets/theme.wav",
+      "label": "环境音 3",
+      "tags": ["bgm"]
+    },
+    "classroom": {
+      "kind": "image",
+      "file": "assets/classroom.svg",
+      "label": "午后的琴房",
+      "tags": ["background"]
+    }
+  },
+  "data": {
+    "title": "雨后，第二乐章",
+    "characterName": "沈遥",
+    "characterAvatar": "portrait",
+    "performerName": "旅人",
+    "performerAvatar": "visitor",
+    "scenes": {
+      "inside": {
+        "background": "classroom",
+        "label": "旧教学楼 · 琴房"
+      },
+      "outside": {
+        "background": "scene-1",
+        "label": "教学楼 · 雨后回廊"
+      },
+      "valley": {
+        "background": "scene-0",
+        "label": "雾谷 · 石桥"
+      },
+      "moon": {
+        "background": "scene-1",
+        "label": "山脊 · 月色"
+      }
+    },
+    "choices": ["听她演奏", "走近窗边"],
+    "music": "music-0",
+    "opening": "窗外的雨刚刚停下。\n\n你推开琴房的门，她正坐在钢琴前，翻看一张没有署名的乐谱。",
+    "autoDelayMs": 2200,
+    "continueText": "继续眼前的剧情。"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "./runtime.schema.json",
+  "packageVersion": "1.0.0",
+  "apiVersion": 1,
+  "skillDirectory": ".agents/skills/native-card-conversion",
+  "outputDirectory": ".tmp/native-card-conversion",
+  "entrypoint": ".agents/skills/native-card-conversion/scripts/cli.ts",
+  "packageSchema": "packages/shared/src/schemas/native-card-package/schema.ts",
+  "fileRules": "packages/shared/src/config/native-card-file-rules.json",
+  "acceptanceCards": "docs/plans/native-card-converter/acceptance-cards.json",
+  "readOnlyDirectories": [
+    "apps/api/src",
+    "apps/user-web/src",
+    "packages/shared/src",
+    "packages/core/src",
+    "packages/adapters-sillytavern/src",
+    "docs/character-authoring",
+    ".agents/skills/native-card-conversion",
+    "apps/web/prototypes/native-card-converter",
+    "apps/api/config"
+  ],
+  "zipFile": "role.zip",
+  "runner": {
+    "program": "/opt/homebrew/bin/node",
+    "arguments": ["--import", "tsx"]
+  },
+  "resultPartBytes": 16384,
+  "creationWaitMs": 60000,
+  "examples": {
+    "preview": ".agents/skills/native-card-conversion/scripts/preview.example.json",
+    "replayFixture": ".agents/skills/native-card-conversion/scripts/replay-fixture.example.json",
+    "acceptance": ".agents/skills/native-card-conversion/scripts/acceptance.example.json"
+  },
+  "stateOutputDiagnostics": {
+    "pathInvalid": {
+      "code": "NATIVE_CARD_STATE_OUTPUT_SCHEMA_PATH_INVALID",
+      "messageTemplate": "可写路径 {path} 无法通过 state/schema.json 的对象属性解析，无法构建状态输出 JSON Schema。",
+      "actionTemplate": "请在 state/schema.json 定义 {path} 对应的对象属性；如果路径指向数组元素，请改用该数组字段的完整路径；如果该字段无需由状态更新 Agent 修改，请从 {profilePath} 的 writablePaths 删除该项，然后重新运行 validate 或 pack。"
+    },
+    "buildFailed": {
+      "code": "NATIVE_CARD_STATE_OUTPUT_SCHEMA_BUILD_FAILED",
+      "messageTemplate": "无法根据 {profilePath} 和 {schemaPath} 构建状态输出 JSON Schema：{detail}",
+      "actionTemplate": "请检查 {profilePath} 的 writablePaths 与 {schemaPath} 的 schema 定义，再重新运行 validate 或 pack。"
+    }
+  }
+}

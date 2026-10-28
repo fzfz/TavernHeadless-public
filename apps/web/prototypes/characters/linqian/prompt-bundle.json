@@ -1,0 +1,254 @@
+{
+  "presetName": "夏瑾 天琴座 Beta 3.9（泛国模）",
+  "presetFile": "preset-tianqin-beta-3.9.json",
+  "variableRoot": "stat_data",
+  "promptMode": "compat_strict",
+  "performer": {
+    "name": "你",
+    "description": ""
+  },
+  "controllerModule": "prompt-controllers.js",
+  "controllerEntryIds": [
+    109,
+    111,
+    127
+  ],
+  "updaterEntryIds": [
+    113,
+    114,
+    115
+  ],
+  "variableMacros": [
+    {
+      "source": "{{format_message_variable::stat_data.世界.事件_D001记录日期}}",
+      "target": "{{getvar::stat_data.世界.事件_D001记录日期}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.分钟}}",
+      "target": "{{getvar::stat_data.世界.分钟}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.地点}}",
+      "target": "{{getvar::stat_data.世界.地点}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.小时}}",
+      "target": "{{getvar::stat_data.世界.小时}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已离婚}}",
+      "target": "{{getvar::stat_data.世界.已离婚}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E001}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E001}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E002}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E002}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E003}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E003}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E004}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E004}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E005}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E005}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E006}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E006}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E008}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E008}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E009}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E009}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E010}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E010}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E011}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E011}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E012}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E012}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E013}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E013}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E014}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E014}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E015}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E015}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E016}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E016}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E017}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E017}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E018}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E018}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E019}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E019}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E020}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E020}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E021}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E021}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E022}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E022}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E023}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E023}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E024}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E024}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E025}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E025}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E026}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E026}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E027}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E027}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E028}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E028}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E029}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E029}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E030}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E030}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E031}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E031}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E032}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E032}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E033}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E033}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E034}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E034}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E035}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E035}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E048}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E048}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.已触发事件.事件_E049}}",
+      "target": "{{getvar::stat_data.世界.已触发事件.事件_E049}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.开局模式}}",
+      "target": "{{getvar::stat_data.世界.开局模式}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.日期}}",
+      "target": "{{getvar::stat_data.世界.日期}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.时间}}",
+      "target": "{{getvar::stat_data.世界.时间}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.星期}}",
+      "target": "{{getvar::stat_data.世界.星期}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.状态_A1_日期}}",
+      "target": "{{getvar::stat_data.世界.状态_A1_日期}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.状态_A1_计数}}",
+      "target": "{{getvar::stat_data.世界.状态_A1_计数}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.终局路线}}",
+      "target": "{{getvar::stat_data.世界.终局路线}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.世界.终局阶段}}",
+      "target": "{{getvar::stat_data.世界.终局阶段}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.林茜.内心想法}}",
+      "target": "{{getvar::stat_data.林茜.内心想法}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.林茜.堕落}}",
+      "target": "{{getvar::stat_data.林茜.堕落}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.林茜.感情}}",
+      "target": "{{getvar::stat_data.林茜.感情}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.行动选项.0}}",
+      "target": "{{getvar::stat_data.行动选项.0}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.行动选项.1}}",
+      "target": "{{getvar::stat_data.行动选项.1}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.行动选项.2}}",
+      "target": "{{getvar::stat_data.行动选项.2}}"
+    },
+    {
+      "source": "{{format_message_variable::stat_data.行动选项.3}}",
+      "target": "{{getvar::stat_data.行动选项.3}}"
+    }
+  ],
+  "presetImport": {
+    "roleAliases": {
+      "model": "assistant"
+    },
+    "trimMacro": true,
+    "commentMacros": true
+  }
+}

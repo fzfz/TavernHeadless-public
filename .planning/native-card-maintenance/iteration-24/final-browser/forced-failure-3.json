@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-06T11:09:29.287Z",
+  "expression": "(async()=>{const s=Array.from(document.querySelectorAll('*')).find(e=>e.shadowRoot).shadowRoot;s.querySelector('#option-0').click();await new Promise(r=>setTimeout(r,1400));const c=s.querySelector('#system-chat').firstElementChild.shadowRoot;return {feedback:s.querySelector('[data-option-feedback]').textContent,options:[0,1,2,3].map(i=>s.querySelector('#option-'+i).disabled),retryResponse:{hidden:c.querySelector('.retry-response').hidden,disabled:c.querySelector('.retry-response').disabled,text:c.querySelector('.retry-response').textContent},error:c.querySelector('.error').textContent}})()",
+  "result": {
+    "feedback": "发送结果暂不可确认，请核对当前楼层后再继续操作。",
+    "options": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "retryResponse": {
+      "hidden": false,
+      "disabled": false,
+      "text": "重试生成回复"
+    },
+    "error": ""
+  },
+  "errors": []
+}

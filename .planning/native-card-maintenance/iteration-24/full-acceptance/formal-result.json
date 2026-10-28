@@ -1,0 +1,940 @@
+{
+  "passed": true,
+  "status": "passed",
+  "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-maintenance-24/acceptance-0GKEkh/formal/formal-runs/2026-10-06T11-06-26-832Z-fedc11ac-1723-4bd2-bbae-cb0bf3f6dcfa",
+  "readbackPath": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-maintenance-24/acceptance-0GKEkh/formal/formal-runs/2026-10-06T11-06-26-832Z-fedc11ac-1723-4bd2-bbae-cb0bf3f6dcfa/readback.json",
+  "importedCardId": "_Cbf3wCVeQUYRTetLo23k",
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/native-cards/imports?fileName=role.zip",
+      "headers": {
+        "content-type": "application/zip"
+      },
+      "bodyReference": "request-bodies/000.bin",
+      "bodyByteLength": 227578,
+      "statusCode": 200
+    },
+    {
+      "method": "POST",
+      "path": "/native-cards/imports/qQP75R2cZqDcdnh520Wps/confirm",
+      "headers": {},
+      "statusCode": 201
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=agents%2Fstate-update%2Flinxi-update.txt",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=agents%2Fstate-update%2Fprofile.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=backend%2Fcontrollers%2Fconfig.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=backend%2Fcontrollers%2Fprompt.js",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=backend%2Fvalidators%2Fvalidate.js",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=backend%2Fvariable-tools%2Fderive.js",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=character.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=data%2Fportrait-gallery.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=data%2Frole-ui.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=frontend%2Findex.html",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=frontend%2Fmain.js",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=frontend%2Fmanifest.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=frontend%2Fstyle.css",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=manifest.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=openings.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=openings%2Ffirst-meeting.txt",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=openings%2Fstudio-audio.txt",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=state%2Finitial%2Ffirst-meeting.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=state%2Finitial%2Fstudio-audio.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=state%2Fschema.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fbook.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe0.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe1.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe10.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe100.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe101.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe102.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe103.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe104.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe105.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe106.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe107.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe11.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe111.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe112.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe113.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe114.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe115.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe116.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe117.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe118.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe119.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe12.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe120.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe121.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe122.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe123.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe124.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe125.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe126.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe127.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe128.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe129.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe13.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe130.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe131.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe132.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe14.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe15.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe16.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe17.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe18.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe19.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe20.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe21.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe22.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe23.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe24.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe25.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe26.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe27.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe28.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe29.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe3.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe30.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe31.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe32.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe33.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe34.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe35.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe36.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe37.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe38.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe39.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe4.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe40.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe41.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe42.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe43.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe44.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe45.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe46.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe47.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe48.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe49.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe5.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe50.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe51.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe52.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe53.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe54.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe55.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe56.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe57.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe58.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe59.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe6.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe60.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe61.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe62.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe63.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe64.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe65.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe66.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe67.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe68.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe69.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe7.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe70.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe71.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe72.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe73.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe74.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe75.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe76.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe77.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe78.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe79.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe8.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe80.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe81.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe82.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe83.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe84.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe85.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe86.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe87.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe88.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe89.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe9.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe90.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe91.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe92.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe93.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe94.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe95.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe96.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe97.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe98.json",
+      "headers": {},
+      "statusCode": 200
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/_Cbf3wCVeQUYRTetLo23k/file?path=worldbooks%2Flinxi-lore%2Fentries%2Fe99.json",
+      "headers": {},
+      "statusCode": 200
+    }
+  ],
+  "zipRead": {
+    "status": "passed",
+    "fileCount": 150
+  },
+  "schemaValidation": {
+    "status": "passed",
+    "valid": true,
+    "issues": []
+  },
+  "diagnostics": [],
+  "readback": {
+    "status": "passed",
+    "fileCount": 150,
+    "failedPaths": []
+  }
+}

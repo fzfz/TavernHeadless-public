@@ -1,0 +1,40 @@
+{
+  "uid": 71,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_34_王授军溺水",
+  "order": 279,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E034>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n{{user}}从手机新闻客户端看到王授军被送进重症监护室的报道，报道只写浴缸溺水和抢救。\n{{user}}回到公司。老总来到{{user}}办公室，说王授军饮酒后在浴缸洗澡时睡着，后来有人发现他已经溺水。\n老总要求{{user}}陪同去中心医院。到达后，老总进入医院探视，{{user}}留在车里等待。\n老总返回车内，告诉{{user}}王授军已经脑死亡，最轻也是植物人。\n老总继续说明王授军出现溺水性肺炎、窒息和并发症，无法自主行动，也无法回应外界刺激。\n\n</事件_E034>"
+}

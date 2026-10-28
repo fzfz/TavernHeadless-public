@@ -1,0 +1,485 @@
+import Fastify, { type FastifyInstance } from "fastify";
+import { afterEach, describe, expect, it, vi } from "vitest";
+
+import { type ChatService } from "../../services/chat/chat-service.js";
+import { ChatServiceError } from "../../services/chat/errors.js";
+import { SessionStateServiceError } from "../../session-state/session-state-service.js";
+import { registerChatRoutes } from "../chat.js";
+
+type MockedChatService = {
+  service: ChatService;
+  dryRun: ReturnType<typeof vi.fn>;
+  respond: ReturnType<typeof vi.fn>;
+  regenerate: ReturnType<typeof vi.fn>;
+  retryFloor: ReturnType<typeof vi.fn>;
+  editAndRegenerate: ReturnType<typeof vi.fn>;
+};
+
+const apps: FastifyInstance[] = [];
+const CLIENT_INJECTION_TITLE = "Client guide";
+const CLIENT_INJECTION_CONTENT = "Keep the north pass in focus.";
+const CLIENT_INJECTION_REQUEST_BODY = [{
+  source_kind: "client_injection" as const,
+  title: CLIENT_INJECTION_TITLE,
+  content: CLIENT_INJECTION_CONTENT,
+  placement: "before_history",
+  order: 30,
+  scope: "request" as const,
+}];
+const CLIENT_INJECTION_REQUEST = [{
+  sourceKind: "client_injection" as const,
+  title: CLIENT_INJECTION_TITLE,
+  content: CLIENT_INJECTION_CONTENT,
+  placement: "before_history",
+  order: 30,
+  scope: "request" as const,
+}];
+
+describe("chat routes", () => {
+  afterEach(async () => {
+    while (apps.length > 0) {
+      const app = apps.pop();
+      if (app) {
+        await app.close();
+      }
+    }
+  });
+
+  it("returns 503 feature_unavailable for session_state_writes when client-data is disabled", async () => {
+    const mocked = await buildChatApp({ enableClientData: false });
+    const payload = {
+      session_state_writes: [
+        {
+          namespace: "quest_flags",
+          slot: "companion",
+          value: { mood: "ally" },
+        },
+      ],
+    };
+
+    const cases = [
+      {
+        expectedMock: mocked.respond,
+        method: "POST",
+        payload: { message: "Continue the quest.", ...payload },
+        url: "/sessions/session-1/respond",
+      },
+      {
+        expectedMock: mocked.respond,
+        method: "POST",
+        payload: { message: "Continue the quest.", ...payload },
+        url: "/sessions/session-1/respond/stream",
+      },
+      {
+        expectedMock: mocked.regenerate,
+        method: "POST",
+        payload,
+        url: "/sessions/session-1/regenerate",
+      },
+      {
+        expectedMock: mocked.retryFloor,
+        method: "POST",
+        payload,
+        url: "/floors/floor-1/retry",
+      },
+      {
+        expectedMock: mocked.editAndRegenerate,
+        method: "POST",
+        payload: { content: "Revise the turn.", ...payload },
+        url: "/messages/message-1/edit-and-regenerate",
+      },
+    ] as const;
+
+    for (const testCase of cases) {
+      const response = await mocked.serviceApp.inject({
+        method: testCase.method,
+        payload: testCase.payload,
+        url: testCase.url,
+      });
+      expect(response.statusCode).toBe(503);
+      expect(JSON.parse(response.body).error.code).toBe("feature_unavailable");
+      expect(testCase.expectedMock).not.toHaveBeenCalled();
+    }
+  });
+
+  it("rejects session_state_writes on dry-run because dry-run has no side effects", async () => {
+    const mocked = await buildChatApp();
+
+    const response = await mocked.serviceApp.inject({
+      method: "POST",
+      payload: {
+        message: "Preview only.",
+        session_state_writes: [
+          {
+            namespace: "quest_flags",
+            slot: "companion",
+            value: { mood: "ally" },
+          },
+        ],
+      },
+      url: "/sessions/session-1/respond/dry-run",
+    });
+
+    expect(response.statusCode).toBe(400);
+    expect(mocked.dryRun).not.toHaveBeenCalled();
+  });
+
+  it("parses the same session_state_writes body for respond and respond/stream", async () => {
+    const mocked = await buildChatApp();
+    const payload = {
+      message: "Continue the quest.",
+      session_state_writes: [
+        {
+          namespace: "quest_flags",
+          slot: "companion",
+          value: { mood: "ally" },
+        },
+        {
+          namespace: "quest_flags",
+          slot: "expired_hint",
+          delete: true,
+        },
+      ],
+    };
+
+    const respondResponse = await mocked.serviceApp.inject({
+      method: "POST",
+      payload,
+      url: "/sessions/session-1/respond",
+    });
+    const streamResponse = await mocked.serviceApp.inject({
+      method: "POST",
+      payload,
+      url: "/sessions/session-1/respond/stream",
+    });
+
+    expect(respondResponse.statusCode).toBe(200);
+    expect(streamResponse.statusCode).toBe(200);
+    expect(streamResponse.body).toContain("event: done");
+
+    expect(mocked.respond).toHaveBeenCalledTimes(2);
+    const firstRequest = mocked.respond.mock.calls[0]?.[1];
+    const secondRequest = mocked.respond.mock.calls[1]?.[1];
+    expect(firstRequest?.sessionStateWrites).toEqual([
+      {
+        namespace: "quest_flags",
+        slot: "companion",
+        value: { mood: "ally" },
+      },
+      {
+        namespace: "quest_flags",
+        slot: "expired_hint",
+        delete: true,
+      },
+    ]);
+    expect(secondRequest?.sessionStateWrites).toEqual(firstRequest?.sessionStateWrites);
+  });
+
+  it("parses session_state_writes for regenerate, retry, and edit-and-regenerate", async () => {
+    const mocked = await buildChatApp();
+    const writes = [
+      {
+        namespace: "quest_flags",
+        slot: "companion",
+        value: { mood: "ally" },
+      },
+      {
+        namespace: "quest_flags",
+        slot: "expired_hint",
+        delete: true,
+      },
+    ];
+
+    const regenerateResponse = await mocked.serviceApp.inject({
+      method: "POST",
+      payload: { session_state_writes: writes },
+      url: "/sessions/session-1/regenerate",
+    });
+    const retryResponse = await mocked.serviceApp.inject({
+      method: "POST",
+      payload: { session_state_writes: writes },
+      url: "/floors/floor-1/retry",
+    });
+    const editResponse = await mocked.serviceApp.inject({
+      method: "POST",
+      payload: { content: "Revise the turn.", session_state_writes: writes },
+      url: "/messages/message-1/edit-and-regenerate",
+    });
+
+    expect(regenerateResponse.statusCode).toBe(200);
+    expect(retryResponse.statusCode).toBe(200);
+    expect(editResponse.statusCode).toBe(200);
+
+    expect(mocked.regenerate.mock.calls[0]?.[1]?.sessionStateWrites).toEqual(writes);
+    expect(mocked.retryFloor.mock.calls[0]?.[1]?.sessionStateWrites).toEqual(writes);
+    expect(mocked.editAndRegenerate.mock.calls[0]?.[1]?.sessionStateWrites).toEqual(writes);
+  });
+
+  it("parses prompt_runtime_injections for respond and respond/stream", async () => {
+    const mocked = await buildChatApp();
+    const payload = {
+      message: "Continue the quest.",
+      prompt_runtime_injections: CLIENT_INJECTION_REQUEST_BODY,
+    };
+
+    const respondResponse = await mocked.serviceApp.inject({
+      method: "POST",
+      payload,
+      url: "/sessions/session-1/respond",
+    });
+    const streamResponse = await mocked.serviceApp.inject({
+      method: "POST",
+      payload,
+      url: "/sessions/session-1/respond/stream",
+    });
+
+    expect(respondResponse.statusCode).toBe(200);
+    expect(streamResponse.statusCode).toBe(200);
+    expect(streamResponse.body).toContain("event: done");
+
+    expect(mocked.respond).toHaveBeenCalledTimes(2);
+    expect(mocked.respond.mock.calls[0]?.[1]?.promptRuntimeInjections).toEqual(CLIENT_INJECTION_REQUEST);
+    expect(mocked.respond.mock.calls[1]?.[1]?.promptRuntimeInjections).toEqual(CLIENT_INJECTION_REQUEST);
+  });
+
+  it("parses prompt_runtime_injections for regenerate, retry, and edit-and-regenerate", async () => {
+    const mocked = await buildChatApp();
+
+    const regenerateResponse = await mocked.serviceApp.inject({
+      method: "POST",
+      payload: { prompt_runtime_injections: CLIENT_INJECTION_REQUEST_BODY },
+      url: "/sessions/session-1/regenerate",
+    });
+    const retryResponse = await mocked.serviceApp.inject({
+      method: "POST",
+      payload: { prompt_runtime_injections: CLIENT_INJECTION_REQUEST_BODY },
+      url: "/floors/floor-1/retry",
+    });
+    const editResponse = await mocked.serviceApp.inject({
+      method: "POST",
+      payload: {
+        content: "Revise the turn.",
+        prompt_runtime_injections: CLIENT_INJECTION_REQUEST_BODY,
+      },
+      url: "/messages/message-1/edit-and-regenerate",
+    });
+
+    expect(regenerateResponse.statusCode).toBe(200);
+    expect(retryResponse.statusCode).toBe(200);
+    expect(editResponse.statusCode).toBe(200);
+
+    expect(mocked.regenerate.mock.calls[0]?.[1]?.promptRuntimeInjections).toEqual(CLIENT_INJECTION_REQUEST);
+    expect(mocked.retryFloor.mock.calls[0]?.[1]?.promptRuntimeInjections).toEqual(CLIENT_INJECTION_REQUEST);
+    expect(mocked.editAndRegenerate.mock.calls[0]?.[1]?.promptRuntimeInjections).toEqual(CLIENT_INJECTION_REQUEST);
+  });
+
+  it("serializes runtime_trace.injection on respond responses", async () => {
+    const mocked = await buildChatApp({
+      respondImpl: async () => ({
+        ...createRespondResult(),
+        runtimeTrace: {
+          injection: {
+            items: [{
+              requestIndex: 0,
+              sourceKind: "client_injection",
+              visibility: "client",
+              enabled: true,
+              scope: "request",
+              placementRequested: "before_history",
+              orderRequested: 30,
+              title: CLIENT_INJECTION_TITLE,
+              contentLength: CLIENT_INJECTION_CONTENT.length,
+              applied: true,
+              placementResolved: "history.before",
+            }],
+          },
+        },
+      }),
+    });
+
+    const response = await mocked.serviceApp.inject({
+      method: "POST",
+      payload: {
+        message: "Continue the quest.",
+      },
+      url: "/sessions/session-1/respond",
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.json()).toMatchObject({
+      data: {
+        runtime_trace: {
+          injection: {
+            items: [
+              {
+                request_index: 0,
+                source_kind: "client_injection",
+                injection_id: null,
+                enabled: true,
+                scope: "request",
+                placement_requested: "before_history",
+                order_requested: 30,
+                title: CLIENT_INJECTION_TITLE,
+                content_length: CLIENT_INJECTION_CONTENT.length,
+                applied: true,
+                placement_resolved: "history.before",
+                not_applied_reason: null,
+              },
+            ],
+          },
+        },
+      },
+    });
+  });
+
+  it("returns validation_error when a session_state_write mixes value and delete", async () => {
+    const mocked = await buildChatApp();
+
+    const response = await mocked.serviceApp.inject({
+      method: "POST",
+      payload: {
+        message: "Continue the quest.",
+        session_state_writes: [
+          {
+            namespace: "quest_flags",
+            slot: "companion",
+            value: { mood: "ally" },
+            delete: true,
+          },
+        ],
+      },
+      url: "/sessions/session-1/respond",
+    });
+
+    expect(response.statusCode).toBe(400);
+    expect(JSON.parse(response.body).error.code).toBe("validation_error");
+    expect(mocked.respond).not.toHaveBeenCalled();
+  });
+
+  it("maps session-state errors without collapsing them to generic 500", async () => {
+    const mocked = await buildChatApp({
+      respondImpl: async () => {
+        throw new ChatServiceError(
+          "session_state_namespace_not_registered",
+          "Session state namespace 'quest_flags' is not registered for session 'session-1'",
+          new SessionStateServiceError(
+            404,
+            "session_state_namespace_not_registered",
+            "Session state namespace 'quest_flags' is not registered for session 'session-1'",
+          ),
+        );
+      },
+    });
+
+    const response = await mocked.serviceApp.inject({
+      method: "POST",
+      payload: {
+        message: "Continue the quest.",
+        session_state_writes: [
+          {
+            namespace: "quest_flags",
+            slot: "companion",
+            value: { mood: "ally" },
+          },
+        ],
+      },
+      url: "/sessions/session-1/respond",
+    });
+
+    expect(response.statusCode).toBe(404);
+    expect(JSON.parse(response.body).error.code).toBe("session_state_namespace_not_registered");
+  });
+});
+
+async function buildChatApp(input: {
+  enableClientData?: boolean;
+  respondImpl?: (...args: unknown[]) => unknown | Promise<unknown>;
+} = {}): Promise<MockedChatService & { serviceApp: FastifyInstance }> {
+  const app = Fastify();
+  app.addHook("onRequest", async (request) => {
+    request.authContext = {
+      kind: "authenticated",
+      accountId: "default-admin",
+      role: "admin",
+      status: "active",
+      actorType: "account",
+      actorId: "default-admin",
+      actorAccountId: "default-admin",
+      actorClientId: null,
+      authMethod: "dev",
+    };
+  });
+
+  const dryRun = vi.fn();
+  const respond = vi.fn(async () => createRespondResult());
+  const regenerate = vi.fn(async () => createRegenerateResult());
+  const retryFloor = vi.fn(async () => createRespondResult());
+  const editAndRegenerate = vi.fn(async () => createEditAndRegenerateResult());
+
+  if (input.respondImpl) {
+    respond.mockImplementation(input.respondImpl as never);
+  }
+
+  await registerChatRoutes(app, {
+    getRoleTextProcessor: () => ({project:(text:string)=>text}),
+    dryRun,
+    respond,
+    regenerate,
+    retryFloor,
+    editAndRegenerate,
+  } as unknown as ChatService, {
+    enableSseChat: true,
+    enablePromptDryRun: true,
+    enableClientData: input.enableClientData ?? true,
+  });
+  await app.ready();
+  apps.push(app);
+
+  return {
+    service: {
+      dryRun,
+      respond,
+      regenerate,
+      retryFloor,
+      editAndRegenerate,
+    } as unknown as ChatService,
+    serviceApp: app,
+    dryRun,
+    respond,
+    regenerate,
+    retryFloor,
+    editAndRegenerate,
+  };
+}
+
+function createRespondResult() {
+  return {
+    floorId: "floor-1",
+    floorNo: 1,
+    branchId: "main",
+    generatedText: "Hello",
+    summaries: ["summary-1"],
+    totalUsage: {
+      promptTokens: 10,
+      completionTokens: 5,
+      totalTokens: 15,
+    },
+    finalState: "committed" as const,
+    memory: undefined,
+  };
+}
+
+function createRegenerateResult() {
+  return {
+    ...createRespondResult(),
+    previousFloorId: "floor-0",
+  };
+}
+
+function createEditAndRegenerateResult() {
+  return {
+    ...createRespondResult(),
+    sourceFloorId: "floor-0",
+    sourceMessageId: "message-0",
+  };
+}

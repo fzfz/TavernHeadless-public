@@ -1,0 +1,40 @@
+{
+  "uid": 107,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": true,
+  "comment": "变量列表",
+  "order": 1080,
+  "disable": false,
+  "position": 4,
+  "selectiveLogic": 0,
+  "depth": 0,
+  "role": 1,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": true,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "---\n<status_current_variables>\n行动选项:\n  - {{format_message_variable::stat_data.行动选项.0}}\n  - {{format_message_variable::stat_data.行动选项.1}}\n  - {{format_message_variable::stat_data.行动选项.2}}\n  - {{format_message_variable::stat_data.行动选项.3}}\n\n林茜:\n  感情: {{format_message_variable::stat_data.林茜.感情}}\n  堕落: {{format_message_variable::stat_data.林茜.堕落}}\n  内心想法: {{format_message_variable::stat_data.林茜.内心想法}}\n世界:\n  日期: {{format_message_variable::stat_data.世界.日期}}\n  星期: {{format_message_variable::stat_data.世界.星期}}\n  小时: {{format_message_variable::stat_data.世界.小时}}\n  分钟: {{format_message_variable::stat_data.世界.分钟}}\n  状态_A1_日期: {{format_message_variable::stat_data.世界.状态_A1_日期}}\n  时间: {{format_message_variable::stat_data.世界.时间}}\n  地点: {{format_message_variable::stat_data.世界.地点}}\n  开局模式: {{format_message_variable::stat_data.世界.开局模式}}\n  终局路线: {{format_message_variable::stat_data.世界.终局路线}}\n  终局阶段: {{format_message_variable::stat_data.世界.终局阶段}}\n  事件_D001记录日期: {{format_message_variable::stat_data.世界.事件_D001记录日期}}\n  已触发事件:\n    事件_E001: {{format_message_variable::stat_data.世界.已触发事件.事件_E001}}\n    事件_E002: {{format_message_variable::stat_data.世界.已触发事件.事件_E002}}\n    事件_E003: {{format_message_variable::stat_data.世界.已触发事件.事件_E003}}\n    事件_E004: {{format_message_variable::stat_data.世界.已触发事件.事件_E004}}\n    事件_E005: {{format_message_variable::stat_data.世界.已触发事件.事件_E005}}\n    事件_E006: {{format_message_variable::stat_data.世界.已触发事件.事件_E006}}\n    事件_E008: {{format_message_variable::stat_data.世界.已触发事件.事件_E008}}\n    事件_E009: {{format_message_variable::stat_data.世界.已触发事件.事件_E009}}\n    事件_E010: {{format_message_variable::stat_data.世界.已触发事件.事件_E010}}\n    事件_E011: {{format_message_variable::stat_data.世界.已触发事件.事件_E011}}\n    事件_E012: {{format_message_variable::stat_data.世界.已触发事件.事件_E012}}\n    事件_E013: {{format_message_variable::stat_data.世界.已触发事件.事件_E013}}\n    事件_E014: {{format_message_variable::stat_data.世界.已触发事件.事件_E014}}\n    事件_E015: {{format_message_variable::stat_data.世界.已触发事件.事件_E015}}\n    事件_E016: {{format_message_variable::stat_data.世界.已触发事件.事件_E016}}\n    事件_E017: {{format_message_variable::stat_data.世界.已触发事件.事件_E017}}\n    事件_E018: {{format_message_variable::stat_data.世界.已触发事件.事件_E018}}\n    事件_E019: {{format_message_variable::stat_data.世界.已触发事件.事件_E019}}\n    事件_E020: {{format_message_variable::stat_data.世界.已触发事件.事件_E020}}\n    事件_E021: {{format_message_variable::stat_data.世界.已触发事件.事件_E021}}\n    事件_E022: {{format_message_variable::stat_data.世界.已触发事件.事件_E022}}\n    事件_E023: {{format_message_variable::stat_data.世界.已触发事件.事件_E023}}\n    事件_E024: {{format_message_variable::stat_data.世界.已触发事件.事件_E024}}\n    事件_E025: {{format_message_variable::stat_data.世界.已触发事件.事件_E025}}\n    事件_E026: {{format_message_variable::stat_data.世界.已触发事件.事件_E026}}\n    事件_E027: {{format_message_variable::stat_data.世界.已触发事件.事件_E027}}\n    事件_E028: {{format_message_variable::stat_data.世界.已触发事件.事件_E028}}\n    事件_E029: {{format_message_variable::stat_data.世界.已触发事件.事件_E029}}\n    事件_E030: {{format_message_variable::stat_data.世界.已触发事件.事件_E030}}\n    事件_E031: {{format_message_variable::stat_data.世界.已触发事件.事件_E031}}\n    事件_E032: {{format_message_variable::stat_data.世界.已触发事件.事件_E032}}\n    事件_E033: {{format_message_variable::stat_data.世界.已触发事件.事件_E033}}\n    事件_E034: {{format_message_variable::stat_data.世界.已触发事件.事件_E034}}\n    事件_E035: {{format_message_variable::stat_data.世界.已触发事件.事件_E035}}\n    事件_E048: {{format_message_variable::stat_data.世界.已触发事件.事件_E048}}\n    事件_E049: {{format_message_variable::stat_data.世界.已触发事件.事件_E049}}\n  已离婚: {{format_message_variable::stat_data.世界.已离婚}}\n  状态_A1_计数: {{format_message_variable::stat_data.世界.状态_A1_计数}}\n</status_current_variables>\n"
+}

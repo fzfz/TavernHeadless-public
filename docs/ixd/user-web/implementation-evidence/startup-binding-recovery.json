@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-10-20T10:21:40.924081+00:00",
+  "environment": "isolated acceptance SQLite after API restart",
+  "status": "passed",
+  "counts": {
+    "publicSessions": 132,
+    "missingCharacterBindings": 0,
+    "mismatchedReleaseBindings": 0
+  },
+  "regression": "apps/api/src/routes/__tests__/role-releases.test.ts"
+}

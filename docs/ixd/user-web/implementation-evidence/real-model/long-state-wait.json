@@ -1,0 +1,7 @@
+{
+  "callId": "LJMskk6_LuqIhANxWRaDW",
+  "statusAtCleanup": "in_flight",
+  "elapsedSeconds": 438,
+  "browserStopResult": "state retry button visible; input blocked until state completion",
+  "recordStillInFlightAfterBrowserStop": true
+}

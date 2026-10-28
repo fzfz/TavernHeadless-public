@@ -1,0 +1,1002 @@
+import Fastify, { type FastifyInstance } from "fastify";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+
+import { buildTestApp } from "./helpers/create-test-db.js";
+import { createOpenApiExportBuildAppOptions } from "../src/openapi-export-profile.js";
+import { registerOpenApi } from "../src/plugins/openapi";
+import { registerChatRoutes } from "../src/routes/chat";
+import type { ChatService as ChatServiceType } from "../src/services/chat/chat-service";
+
+type OpenApiDocument = {
+  openapi: string;
+  info: { title: string; description?: string };
+  tags?: Array<{ name?: string; description?: string }>;
+  components?: { securitySchemes?: Record<string, unknown> };
+  security?: Array<Record<string, string[]>>;
+  paths: Record<string, unknown>;
+};
+
+type OpenApiExampleObject = {
+  value?: unknown;
+};
+
+type OpenApiSchemaObject = {
+  example?: unknown;
+};
+
+type OpenApiMediaTypeObject = {
+  example?: unknown;
+  examples?: Record<string, OpenApiExampleObject>;
+  schema?: OpenApiSchemaObject;
+};
+
+type OpenApiContentContainer = {
+  content?: Record<string, OpenApiMediaTypeObject>;
+};
+
+type OpenApiOperation = {
+  operationId?: string;
+  summary?: string;
+  description?: string;
+  requestBody?: OpenApiContentContainer;
+  parameters?: Array<{ name?: string }>;
+  responses?: Record<string, OpenApiContentContainer>;
+  security?: Array<Record<string, string[]>>;
+};
+
+function getOpenApiMediaExample(media: OpenApiMediaTypeObject | undefined): unknown {
+  if (!media) {
+    return undefined;
+  }
+
+  return media.example ?? Object.values(media.examples ?? {})[0]?.value ?? media.schema?.example;
+}
+
+function getOpenApiSchemaExample(container: OpenApiContentContainer | undefined): unknown {
+  const firstContent = container?.content ? Object.values(container.content)[0] : undefined;
+  return getOpenApiMediaExample(firstContent);
+}
+
+function getOpenApiRequestSchema(operation: OpenApiOperation | undefined): Record<string, unknown> | undefined {
+  const requestBody = readRecordNode(operation?.requestBody);
+  const content = readRecordNode(requestBody?.content);
+  const media = readRecordNode(content?.["application/json"]);
+  return readRecordNode(media?.schema);
+}
+
+function getOpenApiResponseSchema(operation: OpenApiOperation | undefined, statusCode: string): Record<string, unknown> | undefined {
+  const response = readRecordNode(operation?.responses?.[statusCode]);
+  const content = readRecordNode(response?.content);
+  const media = readRecordNode(content?.["application/json"]);
+  return readRecordNode(media?.schema);
+}
+
+function readArrayNode(value: unknown): unknown[] | undefined {
+  if (!Array.isArray(value)) {
+    return undefined;
+  }
+
+  return value;
+}
+
+function getOpenApiResponseExample(operation: OpenApiOperation | undefined, statusCode: string): unknown {
+  return getOpenApiSchemaExample(operation?.responses?.[statusCode]);
+}
+
+function readRecordNode(value: unknown): Record<string, unknown> | undefined {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return undefined;
+  }
+
+  return value as Record<string, unknown>;
+}
+
+describe("OpenAPI schema dialect boundary", () => {
+  it("serves the same strict OpenAPI schema through JSON and Swagger UI while preserving runtime union input", async () => {
+    const boundaryApp = Fastify({
+      ajv: { customOptions: { removeAdditional: true, coerceTypes: false } },
+    });
+    const body = {
+      anyOf: [
+        {
+          type: "object",
+          properties: {
+            operation: { type: "string", enum: ["write"] },
+            text: { type: "string" },
+          },
+          required: ["operation", "text"],
+          propertyNames: { anyOf: [{ enum: ["operation", "text"] }] },
+        },
+        {
+          type: "object",
+          properties: {
+            operation: { type: "string", enum: ["delete"] },
+            path: { type: "string" },
+          },
+          required: ["operation", "path"],
+          propertyNames: { anyOf: [{ enum: ["operation", "path"] }] },
+        },
+      ],
+    };
+    const original = structuredClone(body);
+    try {
+      await registerOpenApi(boundaryApp);
+      boundaryApp.post("/dialect-boundary", { schema: { body } }, async (request) => request.body);
+      await boundaryApp.ready();
+
+      const specifications = [];
+      for (const url of ["/openapi.json", "/docs/json"]) {
+        const response = await boundaryApp.inject({ method: "GET", url });
+        expect(response.statusCode).toBe(200);
+        const document = response.json<OpenApiDocument>();
+        expect(document.openapi).toBe("3.0.3");
+        const operation = document.paths["/dialect-boundary"] as { post?: OpenApiOperation };
+        const schema = getOpenApiRequestSchema(operation.post);
+        expect(schema).toEqual({
+          anyOf: original.anyOf.map(({ propertyNames: _names, ...branch }) => ({
+            ...branch,
+            additionalProperties: false,
+          })),
+        });
+        specifications.push(document);
+      }
+      expect(specifications[0]).toEqual(specifications[1]);
+      expect(boundaryApp.swagger()).toEqual(specifications[0]);
+      expect(body).toEqual(original);
+
+      for (const payload of [
+        { operation: "write", text: "value" },
+        { operation: "delete", path: "path" },
+      ]) {
+        const response = await boundaryApp.inject({ method: "POST", url: "/dialect-boundary", payload });
+        expect(response.statusCode).toBe(200);
+        expect(response.json()).toEqual(payload);
+      }
+      const invalid = await boundaryApp.inject({
+        method: "POST",
+        url: "/dialect-boundary",
+        payload: { operation: "delete", path: "path", text: "wrong branch" },
+      });
+      expect(invalid.statusCode).toBe(400);
+      expect(body).toEqual(original);
+    } finally {
+      await boundaryApp.close();
+    }
+  });
+});
+
+describe("OpenAPI integration", () => {
+  let app: FastifyInstance;
+
+  beforeEach(async () => {
+    ({ app } = await buildTestApp({ databasePath: ":memory:", logger: false }));
+  });
+
+  afterEach(async () => {
+    if (app) {
+      await app.close();
+    }
+  });
+
+  it("serves OpenAPI JSON with key routes", async () => {
+    const res = await app.inject({ method: "GET", url: "/openapi.json" });
+
+    expect(res.statusCode).toBe(200);
+
+    const body = res.json<OpenApiDocument>();
+    expect(body.openapi).toMatch(/^3\./);
+    expect(body.info.title).toBe("TavernHeadless API");
+    expect(Object.keys(body.paths)).toContain("/health");
+    expect(Object.keys(body.paths)).toContain("/version");
+    expect(Object.keys(body.paths)).toContain("/sessions");
+    expect(Object.keys(body.paths)).toContain("/floors");
+    expect(Object.keys(body.paths)).toContain("/memories");
+    expect(Object.keys(body.paths)).toContain("/memories/batch/status");
+    expect(Object.keys(body.paths)).toContain("/memories/batch/delete");
+    expect(Object.keys(body.paths)).toContain("/memories/stats");
+    expect(Object.keys(body.paths)).toContain("/characters");
+    expect(Object.keys(body.paths)).toContain("/messages/batch/visibility");
+    expect(Object.keys(body.paths)).toContain("/messages/batch/delete");
+    expect(Object.keys(body.paths)).toContain("/sessions/{id}/character/sync");
+    expect(Object.keys(body.paths)).toContain("/llm-profiles");
+    expect(Object.keys(body.paths)).toContain("/llm-profiles/models/discover");
+    expect(Object.keys(body.paths)).toContain("/llm-profiles/models/test");
+    expect(Object.keys(body.paths)).toContain("/import/chat/jobs");
+    expect(Object.keys(body.paths)).toContain("/export/chat/{id}/jobs");
+    expect(Object.keys(body.paths)).toContain("/chat-transfer-jobs");
+    expect(Object.keys(body.paths)).toContain("/chat-transfer-jobs/{id}");
+    expect(Object.keys(body.paths)).toContain("/chat-transfer-jobs/{id}/cancel");
+    expect(Object.keys(body.paths)).toContain("/chat-transfer-jobs/{id}/retry");
+    expect(Object.keys(body.paths)).toContain("/chat-transfer-jobs/{id}/file");
+    expect(Object.keys(body.paths)).toContain("/sessions/{id}/prompt-runtime");
+    expect(Object.keys(body.paths)).toContain("/sessions/{id}/prompt-runtime/policy");
+    expect(Object.keys(body.paths)).toContain("/sessions/{id}/prompt-runtime/assets");
+    expect(Object.keys(body.paths)).toContain("/sessions/{id}/prompt-runtime/injections");
+    expect(Object.keys(body.paths)).toContain("/sessions/{id}/prompt-runtime/injections/{injectionId}");
+    expect(Object.keys(body.paths)).toContain("/sessions/{id}/prompt-runtime/branches/{branchId}/injections");
+    expect(Object.keys(body.paths)).toContain("/sessions/{id}/prompt-runtime/branches/{branchId}/injections/{injectionId}");
+    expect(Object.keys(body.paths)).toContain("/prompt-runtime/capabilities");
+
+    const versionPath = body.paths["/version"] as { get?: OpenApiOperation };
+    expect(versionPath.get?.security).toEqual([]);
+  });
+
+  it("supports Chinese localization via lang query", async () => {
+    const res = await app.inject({ method: "GET", url: "/openapi.json?lang=zh" });
+
+    expect(res.statusCode).toBe(200);
+
+    const body = res.json<OpenApiDocument>();
+    expect(body.info.title).toBe("TavernHeadless API 文档");
+
+    const sessionsPath = body.paths["/sessions"] as {
+      post?: OpenApiOperation;
+    };
+    expect(sessionsPath.post?.summary).toBe("创建会话");
+    expect(body.info.description).toBe("TavernHeadless 核心引擎后端 API");
+
+    const accountsTag = body.tags?.find((tag) => tag.name === "accounts");
+    expect(accountsTag?.description).toBe("账号管理");
+
+    const exportsTag = body.tags?.find((tag) => tag.name === "exports");
+    expect(exportsTag?.description).toBe("资源导出与文件下载接口（含高级异步作业入口）");
+
+    const chatTransferJobsTag = body.tags?.find((tag) => tag.name === "chat-transfer-jobs");
+    expect(chatTransferJobsTag?.description).toBe("异步聊天导入导出作业观测与产物下载的高级开发接口");
+
+    const usersPath = body.paths["/users"] as {
+      post?: OpenApiOperation;
+    };
+    expect(usersPath.post?.summary).toBe("创建用户");
+
+    const importChatJobsPath = body.paths["/import/chat/jobs"] as {
+      post?: OpenApiOperation;
+    };
+    expect(importChatJobsPath.post?.summary).toBe("创建异步聊天导入作业");
+
+    const exportChatJobsPath = body.paths["/export/chat/{id}/jobs"] as { post?: OpenApiOperation };
+    expect(exportChatJobsPath.post?.summary).toBe("创建异步聊天导出作业");
+
+    const llmDiscoverPath = body.paths["/llm-profiles/models/discover"] as { post?: OpenApiOperation };
+    expect(llmDiscoverPath.post?.summary).toBe("发现 provider 模型列表");
+
+    const variablesBatchPath = body.paths["/variables/batch"] as {
+      put?: OpenApiOperation;
+    };
+    expect(variablesBatchPath.put?.summary).toBe("批量新增或更新变量");
+
+    const memoriesBatchStatusPath = body.paths["/memories/batch/status"] as {
+      patch?: OpenApiOperation;
+    };
+    expect(memoriesBatchStatusPath.patch?.summary).toBe("批量更新记忆条目状态");
+
+    const messagesBatchVisibilityPath = body.paths["/messages/batch/visibility"] as {
+      patch?: OpenApiOperation;
+    };
+    expect(messagesBatchVisibilityPath.patch?.summary).toBe("批量更新消息可见性");
+  });
+
+  it("uses docs referer language for Swagger JSON", async () => {
+    const res = await app.inject({ method: "GET", url: "/docs/json", headers: { referer: "http://localhost/docs/?lang=zh" } });
+    expect(res.statusCode).toBe(200);
+    expect(res.json<OpenApiDocument>().info.title).toBe("TavernHeadless API 文档");
+  });
+
+  it("exposes request/response schemas for core CRUD routes", async () => {
+    const res = await app.inject({ method: "GET", url: "/openapi.json" });
+    expect(res.statusCode).toBe(200);
+
+    const body = res.json<OpenApiDocument>();
+
+    const sessionsPath = body.paths["/sessions"] as {
+      post?: { requestBody?: unknown; responses?: Record<string, unknown> };
+      get?: { parameters?: unknown[]; responses?: Record<string, unknown> };
+    };
+    expect(sessionsPath.post?.requestBody).toBeDefined();
+    expect(sessionsPath.post?.responses).toHaveProperty("201");
+    expect(Array.isArray(sessionsPath.get?.parameters)).toBe(true);
+
+    const memoriesPath = body.paths["/memories"] as {
+      get?: { parameters?: Array<{ name?: string }>; responses?: Record<string, unknown> };
+    };
+    expect(memoriesPath.get?.responses).toHaveProperty("200");
+    expect(memoriesPath.get?.parameters?.some((parameter) => parameter.name === "created_from")).toBe(true);
+
+    const memoryStatsPath = body.paths["/memories/stats"] as {
+      get?: { responses?: Record<string, unknown> };
+    };
+    expect(memoryStatsPath.get?.responses).toHaveProperty("200");
+
+    const sessionBranchesPath = body.paths["/sessions/{id}/branches"] as {
+      get?: { parameters?: Array<{ name?: string }>; responses?: Record<string, unknown> };
+    };
+    expect(sessionBranchesPath.get?.responses).toHaveProperty("200");
+    expect(sessionBranchesPath.get?.parameters?.some((parameter) => parameter.name === "sort_by")).toBe(true);
+
+    const sessionBranchesDiffPath = body.paths["/sessions/{id}/branches/diff"] as {
+      get?: { parameters?: Array<{ name?: string }>; responses?: Record<string, unknown> };
+    };
+    expect(sessionBranchesDiffPath.get?.responses).toHaveProperty("200");
+    expect(sessionBranchesDiffPath.get?.parameters?.some((parameter) => parameter.name === "target_branch_id")).toBe(true);
+
+    const sessionTimelinePath = body.paths["/sessions/{id}/timeline"] as {
+      get?: { parameters?: Array<{ name?: string }>; responses?: Record<string, unknown> };
+    };
+    expect(sessionTimelinePath.get?.responses).toHaveProperty("200");
+    expect(sessionTimelinePath.get?.parameters?.some((parameter) => parameter.name === "branch_id")).toBe(true);
+
+    const floorBranchPath = body.paths["/floors/{id}/branch"] as {
+      post?: { requestBody?: unknown; responses?: Record<string, unknown> };
+    };
+    expect(floorBranchPath.post?.requestBody).toBeDefined();
+    expect(floorBranchPath.post?.responses).toHaveProperty("201");
+
+    const deleteBranchPath = body.paths["/branches/{id}"] as {
+      delete?: { parameters?: Array<{ name?: string }>; responses?: Record<string, unknown> };
+    };
+    expect(deleteBranchPath.delete?.responses).toHaveProperty("200");
+    expect(deleteBranchPath.delete?.parameters?.some((parameter) => parameter.name === "session_id")).toBe(true);
+
+    const sessionCharacterSyncPath = body.paths["/sessions/{id}/character/sync"] as {
+      post?: { parameters?: Array<{ name?: string }>; responses?: Record<string, unknown> };
+    };
+    expect(sessionCharacterSyncPath.post?.responses).toHaveProperty("200");
+    expect(sessionCharacterSyncPath.post?.responses).toHaveProperty("409");
+
+    const messagesPath = body.paths["/messages"] as {
+      post?: OpenApiOperation;
+      get?: OpenApiOperation;
+    };
+    expect(messagesPath.post?.operationId).toBe("createMessage");
+    expect(messagesPath.post?.requestBody).toBeDefined();
+    expect(messagesPath.post?.responses).toHaveProperty("201");
+    expect(messagesPath.get?.operationId).toBe("listMessages");
+
+    const sessionPromptRuntimePath = body.paths["/sessions/{id}/prompt-runtime"] as {
+      get?: OpenApiOperation;
+    };
+    expect(sessionPromptRuntimePath.get?.operationId).toBe("getSessionPromptRuntime");
+    expect(sessionPromptRuntimePath.get?.responses).toHaveProperty("200");
+    expect(sessionPromptRuntimePath.get?.parameters?.some((parameter) => parameter.name === "branch_id")).toBe(true);
+
+    const sessionPromptRuntimePolicyPath = body.paths["/sessions/{id}/prompt-runtime/policy"] as {
+      get?: OpenApiOperation;
+      patch?: OpenApiOperation;
+    };
+    expect(sessionPromptRuntimePolicyPath.get?.operationId).toBe("getSessionPromptRuntimePolicy");
+    expect(sessionPromptRuntimePolicyPath.patch?.operationId).toBe("patchSessionPromptRuntimePolicy");
+    expect(sessionPromptRuntimePolicyPath.patch?.requestBody).toBeDefined();
+    expect(sessionPromptRuntimePolicyPath.patch?.responses).toHaveProperty("200");
+
+    const sessionPromptRuntimeBranchPolicyPath = body.paths["/sessions/{id}/prompt-runtime/branches/{branchId}/policy"] as {
+      get?: OpenApiOperation;
+      patch?: OpenApiOperation;
+    };
+    expect(sessionPromptRuntimeBranchPolicyPath.get?.operationId).toBe("getSessionPromptRuntimeBranchPolicy");
+    expect(sessionPromptRuntimeBranchPolicyPath.get?.responses).toHaveProperty("200");
+    expect(sessionPromptRuntimeBranchPolicyPath.patch?.operationId).toBe("patchSessionPromptRuntimeBranchPolicy");
+    expect(sessionPromptRuntimeBranchPolicyPath.patch?.requestBody).toBeDefined();
+    expect(sessionPromptRuntimeBranchPolicyPath.patch?.responses).toHaveProperty("200");
+
+    const sessionPromptRuntimePreviewPath = body.paths["/sessions/{id}/prompt-runtime/preview"] as {
+      post?: OpenApiOperation;
+    };
+    expect(sessionPromptRuntimePreviewPath.post?.operationId).toBe("previewSessionPromptRuntime");
+    expect(sessionPromptRuntimePreviewPath.post?.requestBody).toBeDefined();
+    expect(sessionPromptRuntimePreviewPath.post?.responses).toHaveProperty("200");
+    expect(sessionPromptRuntimePreviewPath.post?.responses).toHaveProperty("404");
+    expect(sessionPromptRuntimePreviewPath.post?.responses).toHaveProperty("409");
+
+    const previewResponseSchema = getOpenApiResponseSchema(sessionPromptRuntimePreviewPath.post, "200");
+    const previewResponseProperties = readRecordNode(previewResponseSchema?.properties);
+    const previewDataSchema = readRecordNode(previewResponseProperties?.data);
+    const previewDataProperties = readRecordNode(previewDataSchema?.properties);
+    const previewRuntimeTraceSchema = readRecordNode(previewDataProperties?.runtime_trace);
+    const previewRuntimeTraceProperties = readRecordNode(previewRuntimeTraceSchema?.properties);
+    expect(previewRuntimeTraceSchema?.additionalProperties).toBe(false);
+    expect(Object.keys(previewRuntimeTraceProperties ?? {}).sort()).toEqual([
+      "generation_params_resolution",
+      "history_normalization",
+      "injection",
+      "macro",
+      "source_selection",
+      "tool_transport",
+      "visibility",
+    ]);
+
+    const promptRuntimeCapabilitiesPath = body.paths["/prompt-runtime/capabilities"] as {
+      get?: OpenApiOperation;
+    };
+    expect(promptRuntimeCapabilitiesPath.get?.operationId).toBe("getPromptRuntimeCapabilities");
+    expect(promptRuntimeCapabilitiesPath.get?.responses).toHaveProperty("200");
+
+    const messageByIdPath = body.paths["/messages/{id}"] as {
+      patch?: OpenApiOperation;
+      delete?: OpenApiOperation;
+    };
+    expect(messageByIdPath.patch?.operationId).toBe("updateMessage");
+    expect(messageByIdPath.delete?.operationId).toBe("deleteMessage");
+
+    const messageBatchVisibilityPath = body.paths["/messages/batch/visibility"] as {
+      patch?: OpenApiOperation;
+    };
+    expect(messageBatchVisibilityPath.patch?.operationId).toBe("batchUpdateMessageVisibility");
+    expect(messageBatchVisibilityPath.patch?.responses).toHaveProperty("200");
+
+    const messageBatchDeletePath = body.paths["/messages/batch/delete"] as {
+      post?: OpenApiOperation;
+    };
+    expect(messageBatchDeletePath.post?.operationId).toBe("batchDeleteMessages");
+    expect(messageBatchDeletePath.post?.responses).toHaveProperty("200");
+
+    const memoriesBatchStatusPath = body.paths["/memories/batch/status"] as {
+      patch?: OpenApiOperation;
+    };
+    expect(memoriesBatchStatusPath.patch?.operationId).toBe("batchUpdateMemoryItemStatus");
+
+    const memoriesBatchDeletePath = body.paths["/memories/batch/delete"] as {
+      post?: OpenApiOperation;
+    };
+    expect(memoriesBatchDeletePath.post?.operationId).toBe("batchDeleteMemoryItems");
+
+    const variablesPath = body.paths["/variables"] as {
+      put?: OpenApiOperation;
+      get?: OpenApiOperation;
+    };
+    expect(variablesPath.put?.operationId).toBe("upsertVariable");
+    expect(variablesPath.put?.responses).toHaveProperty("201");
+    expect(variablesPath.get?.parameters?.some((parameter) => parameter.name === "scope_id")).toBe(true);
+
+    const variablesBatchPath = body.paths["/variables/batch"] as {
+      put?: OpenApiOperation;
+    };
+    expect(variablesBatchPath.put?.operationId).toBe("batchUpsertVariables");
+    expect(variablesBatchPath.put?.responses).toHaveProperty("200");
+
+    const pagesActivatePath = body.paths["/pages/{id}/activate"] as {
+      patch?: OpenApiOperation;
+    };
+    expect(pagesActivatePath.patch?.operationId).toBe("activatePage");
+    expect(pagesActivatePath.patch?.responses).toHaveProperty("200");
+    expect(pagesActivatePath.patch?.responses).toHaveProperty("404");
+
+    const importCharacterPath = body.paths["/import/character"] as {
+      post?: OpenApiOperation;
+    };
+    expect(importCharacterPath.post?.operationId).toBe("importCharacter");
+    expect(importCharacterPath.post?.responses).toHaveProperty("201");
+    expect(importCharacterPath.post?.responses).toHaveProperty("413");
+
+    const importedPresetPath = body.paths["/presets/{id}"] as {
+      get?: OpenApiOperation;
+      delete?: OpenApiOperation;
+    };
+    expect(importedPresetPath.get?.operationId).toBe("getImportedPreset");
+    expect(importedPresetPath.delete?.operationId).toBe("deleteImportedPreset");
+
+    const charactersPath = body.paths["/characters"] as {
+      get?: OpenApiOperation;
+    };
+    expect(charactersPath.get?.operationId).toBe("listCharacters");
+    expect(charactersPath.get?.parameters?.some((parameter) => parameter.name === "status")).toBe(true);
+
+    const characterRollbackPath = body.paths["/characters/{id}/versions/{versionId}/rollback"] as {
+      post?: OpenApiOperation;
+    };
+    expect(characterRollbackPath.post?.operationId).toBe("rollbackCharacterVersion");
+
+    const llmProfilesPath = body.paths["/llm-profiles"] as {
+      post?: OpenApiOperation;
+      get?: OpenApiOperation;
+    };
+    expect(llmProfilesPath.post?.operationId).toBe("createLlmProfile");
+    expect(llmProfilesPath.get?.operationId).toBe("listLlmProfiles");
+
+    const llmProfileActivatePath = body.paths["/llm-profiles/{id}/activate"] as { post?: OpenApiOperation };
+    expect(llmProfileActivatePath.post?.operationId).toBe("activateLlmProfile");
+
+    const llmProfileRuntimePath = body.paths["/llm-profiles/runtime"] as { get?: OpenApiOperation };
+    expect(llmProfileRuntimePath.get?.operationId).toBe("getLlmRuntimeProfiles");
+    expect(llmProfileRuntimePath.get?.responses).toHaveProperty("500");
+
+    const mcpServersPath = readRecordNode(body.paths["/mcp/servers"]);
+    const mcpServersGet = readRecordNode(mcpServersPath?.get);
+    const mcpServersPost = readRecordNode(mcpServersPath?.post);
+    const mcpGetResponses = readRecordNode(mcpServersGet?.responses);
+    const mcpPostResponses = readRecordNode(mcpServersPost?.responses);
+    const mcpListResponse = readRecordNode(mcpGetResponses?.["200"]);
+    const mcpListContent = readRecordNode(mcpListResponse?.content);
+    const mcpListMedia = readRecordNode(mcpListContent?.["application/json"]);
+    const mcpListSchema = readRecordNode(mcpListMedia?.schema);
+    const mcpListProperties = readRecordNode(mcpListSchema?.properties);
+    const mcpListDataSchema = readRecordNode(mcpListProperties?.data);
+    const mcpListItemSchema = readRecordNode(mcpListDataSchema?.items);
+    const mcpListItemProperties = readRecordNode(mcpListItemSchema?.properties);
+    const mcpStdioSchema = readRecordNode(mcpListItemProperties?.stdio);
+    const mcpHttpSchema = readRecordNode(mcpListItemProperties?.http);
+    const mcpStdioProperties = readRecordNode(mcpStdioSchema?.properties);
+    const mcpHttpProperties = readRecordNode(mcpHttpSchema?.properties);
+
+    expect(mcpGetResponses).toHaveProperty("200");
+    expect(mcpPostResponses).toHaveProperty("503");
+    expect(mcpStdioProperties).toHaveProperty("env_masked");
+    expect(mcpStdioProperties).not.toHaveProperty("env");
+    expect(mcpHttpProperties).toHaveProperty("headers_masked");
+    expect(mcpHttpProperties).not.toHaveProperty("headers");
+
+    const mcpUpdatePath = body.paths["/mcp/servers/{id}"] as { patch?: OpenApiOperation };
+    expect(mcpUpdatePath.patch?.responses).toHaveProperty("500");
+    expect(mcpUpdatePath.patch?.responses).toHaveProperty("503");
+
+    const llmModelDiscoverPath = body.paths["/llm-profiles/models/discover"] as { post?: OpenApiOperation };
+    expect(llmModelDiscoverPath.post?.operationId).toBe("discoverLlmProfileModels");
+
+    const llmModelTestPath = body.paths["/llm-profiles/models/test"] as { post?: OpenApiOperation };
+    expect(llmModelTestPath.post?.operationId).toBe("testLlmProfileModel");
+
+    const llmInstancesListPath = body.paths["/llm-instances"] as { get?: OpenApiOperation };
+    expect(llmInstancesListPath.get?.operationId).toBe("listLlmInstanceConfigs");
+
+    const llmInstancesResolvedPath = body.paths["/llm-instances/resolved"] as { get?: OpenApiOperation };
+    expect(llmInstancesResolvedPath.get?.operationId).toBe("getResolvedLlmInstanceConfigs");
+
+    const llmInstancesSlotPath = body.paths["/llm-instances/{slot}"] as {
+      get?: OpenApiOperation;
+      put?: OpenApiOperation;
+      delete?: OpenApiOperation;
+    };
+    expect(llmInstancesSlotPath.get?.operationId).toBe("getLlmInstanceConfigs");
+    expect(llmInstancesSlotPath.put?.operationId).toBe("upsertLlmInstanceConfig");
+    expect(llmInstancesSlotPath.delete?.operationId).toBe("deleteLlmInstanceConfig");
+
+    const importChatJobsPath = body.paths["/import/chat/jobs"] as {
+      post?: OpenApiOperation;
+    };
+    expect(importChatJobsPath.post?.operationId).toBe("createImportChatJob");
+    expect(importChatJobsPath.post?.responses).toHaveProperty("202");
+
+    const exportChatJobsPath = body.paths["/export/chat/{id}/jobs"] as {
+      post?: OpenApiOperation;
+    };
+    expect(exportChatJobsPath.post?.operationId).toBe("createExportChatJob");
+    expect(exportChatJobsPath.post?.responses).toHaveProperty("202");
+
+    const chatTransferJobsPath = body.paths["/chat-transfer-jobs"] as { get?: OpenApiOperation };
+    expect(chatTransferJobsPath.get?.operationId).toBe("listChatTransferJobs");
+
+    const chatTransferJobByIdPath = body.paths["/chat-transfer-jobs/{id}"] as { get?: OpenApiOperation };
+    expect(chatTransferJobByIdPath.get?.operationId).toBe("getChatTransferJob");
+
+    const chatTransferJobCancelPath = body.paths["/chat-transfer-jobs/{id}/cancel"] as { post?: OpenApiOperation };
+    expect(chatTransferJobCancelPath.post?.operationId).toBe("cancelChatTransferJob");
+
+    const chatTransferJobRetryPath = body.paths["/chat-transfer-jobs/{id}/retry"] as { post?: OpenApiOperation };
+    expect(chatTransferJobRetryPath.post?.operationId).toBe("retryChatTransferJob");
+
+    const chatTransferJobFilePath = body.paths["/chat-transfer-jobs/{id}/file"] as { get?: OpenApiOperation };
+    expect(chatTransferJobFilePath.get?.operationId).toBe("downloadChatTransferJobFile");
+  });
+
+  it("includes request/response examples for beta-hardening CRUD routes", async () => {
+    const res = await app.inject({ method: "GET", url: "/openapi.json" });
+    expect(res.statusCode).toBe(200);
+
+    const body = res.json<OpenApiDocument>();
+
+    const sessionsPath = body.paths["/sessions"] as {
+      post?: OpenApiOperation;
+      get?: OpenApiOperation;
+    };
+    expect(getOpenApiSchemaExample(sessionsPath.post?.requestBody)).toMatchObject({ title: "Campfire Planning" });
+    expect(getOpenApiResponseExample(sessionsPath.post, "201")).toMatchObject({ data: { id: "sess_demo" } });
+    expect(getOpenApiResponseExample(sessionsPath.get, "200")).toMatchObject({ data: [{ id: "sess_demo" }] });
+
+    const sessionTimelinePath = body.paths["/sessions/{id}/timeline"] as { get?: OpenApiOperation };
+    expect(getOpenApiResponseExample(sessionTimelinePath.get, "200")).toMatchObject({
+      data: { branch_id: "main" },
+      meta: { sort_by: "floor_no" },
+    });
+
+    const sessionCharacterSyncPath = body.paths["/sessions/{id}/character/sync"] as { post?: OpenApiOperation };
+    expect(getOpenApiSchemaExample(sessionCharacterSyncPath.post?.requestBody)).toMatchObject({ force: true });
+
+    const accountsPath = body.paths["/accounts"] as {
+      post?: OpenApiOperation;
+      get?: OpenApiOperation;
+    };
+    expect(getOpenApiSchemaExample(accountsPath.post?.requestBody)).toMatchObject({ name: "Demo Workspace" });
+    expect(getOpenApiResponseExample(accountsPath.post, "201")).toMatchObject({ data: { id: "acc_demo" } });
+    expect(getOpenApiResponseExample(accountsPath.get, "200")).toMatchObject({ data: [{ id: "acc_demo" }] });
+
+    const usersPath = body.paths["/users"] as {
+      post?: OpenApiOperation;
+      get?: OpenApiOperation;
+    };
+    expect(getOpenApiSchemaExample(usersPath.post?.requestBody)).toMatchObject({ snapshot: { name: "Alice" } });
+    expect(getOpenApiResponseExample(usersPath.post, "201")).toMatchObject({ data: { id: "usr_demo" } });
+    expect(getOpenApiResponseExample(usersPath.get, "200")).toMatchObject({ data: [{ id: "usr_demo" }] });
+
+    const variablesPath = body.paths["/variables"] as {
+      put?: OpenApiOperation;
+      get?: OpenApiOperation;
+    };
+    expect(getOpenApiSchemaExample(variablesPath.put?.requestBody)).toMatchObject({ key: "mood" });
+    expect(getOpenApiResponseExample(variablesPath.put, "201")).toMatchObject({ data: { id: "var_mood" } });
+    expect(getOpenApiResponseExample(variablesPath.get, "200")).toMatchObject({ data: expect.any(Array) });
+    const variablesListExample = getOpenApiResponseExample(variablesPath.get, "200") as { data?: unknown };
+    expect(variablesListExample.data).toEqual(expect.arrayContaining([
+      expect.objectContaining({ id: "var_mood" }),
+    ]));
+
+    const variablesBatchPath = body.paths["/variables/batch"] as { put?: OpenApiOperation };
+    expect(getOpenApiSchemaExample(variablesBatchPath.put?.requestBody)).toEqual(expect.objectContaining({
+      items: expect.arrayContaining([expect.objectContaining({ key: "mood" })])
+    }));
+    expect(getOpenApiResponseExample(variablesBatchPath.put, "200")).toEqual(expect.objectContaining({
+      data: expect.objectContaining({ meta: { total: 3, created: 2, updated: 1 } })
+    }));
+
+    const memoriesBatchStatusPath = body.paths["/memories/batch/status"] as { patch?: OpenApiOperation };
+    expect(getOpenApiSchemaExample(memoriesBatchStatusPath.patch?.requestBody)).toMatchObject({ status: "deprecated" });
+    expect(getOpenApiResponseExample(memoriesBatchStatusPath.patch, "200")).toEqual(expect.objectContaining({
+      data: expect.objectContaining({ meta: { total: 2, updated: 1, not_found: 1, status: "deprecated" } })
+    }));
+
+    const memoriesBatchDeletePath = body.paths["/memories/batch/delete"] as { post?: OpenApiOperation };
+    expect(getOpenApiSchemaExample(memoriesBatchDeletePath.post?.requestBody)).toEqual(expect.objectContaining({
+      ids: ["mem_fact_1", "mem_missing"]
+    }));
+    expect(getOpenApiResponseExample(memoriesBatchDeletePath.post, "200")).toEqual(expect.objectContaining({
+      data: expect.objectContaining({ meta: { total: 2, deleted: 1, not_found: 1 } })
+    }));
+
+    const messagesBatchVisibilityPath = body.paths["/messages/batch/visibility"] as { patch?: OpenApiOperation };
+    expect(getOpenApiSchemaExample(messagesBatchVisibilityPath.patch?.requestBody)).toMatchObject({ is_hidden: true });
+    expect(getOpenApiResponseExample(messagesBatchVisibilityPath.patch, "200")).toEqual(expect.objectContaining({
+      data: expect.objectContaining({ meta: { total: 2, updated: 1, not_found: 1, is_hidden: true } })
+    }));
+
+    const messagesBatchDeletePath = body.paths["/messages/batch/delete"] as { post?: OpenApiOperation };
+    expect(getOpenApiSchemaExample(messagesBatchDeletePath.post?.requestBody)).toEqual(expect.objectContaining({ ids: ["msg_21", "msg_missing"] }));
+    expect(getOpenApiResponseExample(messagesBatchDeletePath.post, "200")).toEqual(expect.objectContaining({
+      data: expect.objectContaining({ meta: { total: 2, deleted: 1, not_found: 1 } })
+    }));
+
+    const llmProfilesPath = body.paths["/llm-profiles"] as {
+      post?: OpenApiOperation;
+      get?: OpenApiOperation;
+    };
+    expect(getOpenApiSchemaExample(llmProfilesPath.post?.requestBody)).toMatchObject({ preset_name: "OpenAI Narrator" });
+    expect(getOpenApiResponseExample(llmProfilesPath.post, "201")).toMatchObject({ data: { id: "lp_narrator" } });
+    expect(getOpenApiResponseExample(llmProfilesPath.get, "200")).toMatchObject({ data: [{ id: "lp_narrator" }] });
+
+    const llmDiscoverPath = body.paths["/llm-profiles/models/discover"] as { post?: OpenApiOperation };
+    expect(getOpenApiSchemaExample(llmDiscoverPath.post?.requestBody)).toMatchObject({ provider: "openai" });
+    expect(getOpenApiResponseExample(llmDiscoverPath.post, "200")).toMatchObject({
+      data: expect.arrayContaining([
+        expect.objectContaining({ id: "gpt-4o-mini" }),
+      ]),
+    });
+
+    const llmActivatePath = body.paths["/llm-profiles/{id}/activate"] as { post?: OpenApiOperation };
+    expect(getOpenApiSchemaExample(llmActivatePath.post?.requestBody)).toMatchObject({ scope: "session", instance_slot: "director" });
+    expect(getOpenApiResponseExample(llmActivatePath.post, "200")).toMatchObject({ data: { activated: true } });
+
+    const importPresetPath = body.paths["/import/preset"] as { post?: OpenApiOperation };
+    expect(getOpenApiSchemaExample(importPresetPath.post?.requestBody)).toMatchObject({ name: "Story Preset" });
+    expect(getOpenApiResponseExample(importPresetPath.post, "201")).toMatchObject({ data: { id: "preset_story" } });
+
+    const importCharacterPath = body.paths["/import/character"] as { post?: OpenApiOperation };
+    expect(getOpenApiSchemaExample(importCharacterPath.post?.requestBody)).toMatchObject({ title: "Luna Demo Session" });
+    expect(getOpenApiResponseExample(importCharacterPath.post, "201")).toMatchObject({ data: { create_session: true } });
+
+    const importChatJobsPath = body.paths["/import/chat/jobs"] as { post?: OpenApiOperation };
+    expect(getOpenApiSchemaExample(importChatJobsPath.post?.requestBody)).toMatchObject({ title: "Imported Chat" });
+    expect(getOpenApiResponseExample(importChatJobsPath.post, "202")).toMatchObject({
+      data: { job_id: "ctj_import_demo", job_kind: "import_chat" },
+    });
+
+    const exportChatJobsPath = body.paths["/export/chat/{id}/jobs"] as { post?: OpenApiOperation };
+    expect(getOpenApiSchemaExample(exportChatJobsPath.post?.requestBody)).toMatchObject({ format: "thchat" });
+    expect(getOpenApiResponseExample(exportChatJobsPath.post, "202")).toMatchObject({
+      data: { job_id: "ctj_export_demo", job_kind: "export_chat", requested_session_id: "sess_demo" },
+    });
+
+    const chatTransferJobsPath = body.paths["/chat-transfer-jobs"] as { get?: OpenApiOperation };
+    expect(getOpenApiResponseExample(chatTransferJobsPath.get, "200")).toMatchObject({
+      data: [expect.objectContaining({ id: "ctj_export_demo", status: "succeeded" })],
+      meta: { sort_by: "created_at" },
+    });
+
+    const chatTransferJobByIdPath = body.paths["/chat-transfer-jobs/{id}"] as { get?: OpenApiOperation };
+    expect(getOpenApiResponseExample(chatTransferJobByIdPath.get, "200")).toMatchObject({
+      data: expect.objectContaining({ id: "ctj_export_demo", output_artifact_path: "data/chat-transfer-artifacts/ctj_export_demo.thchat" }),
+    });
+
+    const chatTransferJobCancelPath = body.paths["/chat-transfer-jobs/{id}/cancel"] as { post?: OpenApiOperation };
+    expect(getOpenApiResponseExample(chatTransferJobCancelPath.post, "200")).toMatchObject({ data: { job_id: "ctj_export_demo" } });
+
+    const chatTransferJobRetryPath = body.paths["/chat-transfer-jobs/{id}/retry"] as { post?: OpenApiOperation };
+    expect(getOpenApiResponseExample(chatTransferJobRetryPath.post, "200")).toMatchObject({ data: { job_id: "ctj_export_demo" } });
+
+    const instancesListPath = body.paths["/llm-instances"] as { get?: OpenApiOperation };
+    expect(getOpenApiResponseExample(instancesListPath.get, "200")).toMatchObject({ data: [{ id: "ic_demo123" }] });
+
+    const instancesSlotPath = body.paths["/llm-instances/{slot}"] as { put?: OpenApiOperation };
+    expect(getOpenApiSchemaExample(instancesSlotPath.put?.requestBody)).toMatchObject({
+      scope: "global",
+      model_id_override: "gpt-4.1-mini",
+    });
+    expect(getOpenApiResponseExample(instancesSlotPath.put, "200")).toMatchObject({
+      data: { id: "ic_demo123", model_id_override: "gpt-4.1-mini" },
+    });
+
+    const instancesResolvedPath = body.paths["/llm-instances/resolved"] as { get?: OpenApiOperation };
+    expect(getOpenApiResponseExample(instancesResolvedPath.get, "200")).toMatchObject({
+      data: { slots: [{ slot: "narrator", model_id_override: "gpt-4.1-mini" }] },
+    });
+  });
+
+  it("includes chat route schemas and examples when chat routes are registered", async () => {
+    const chatApp = Fastify({ logger: false });
+    try {
+      await registerOpenApi(chatApp);
+
+      const chatService = {
+        respond: vi.fn(),
+        regenerate: vi.fn(),
+        retryFloor: vi.fn(),
+        dryRun: vi.fn(),
+        editAndRegenerate: vi.fn(),
+      } as unknown as ChatServiceType;
+
+      await registerChatRoutes(chatApp, chatService, { enableSseChat: true, enablePromptDryRun: true });
+
+      const res = await chatApp.inject({ method: "GET", url: "/openapi.json" });
+      expect(res.statusCode).toBe(200);
+
+      const body = res.json<OpenApiDocument>();
+      expect(Object.keys(body.paths)).toContain("/sessions/{id}/respond");
+      expect(Object.keys(body.paths)).toContain("/sessions/{id}/respond/stream");
+      expect(Object.keys(body.paths)).toContain("/sessions/{id}/respond/dry-run");
+      expect(Object.keys(body.paths)).toContain("/sessions/{id}/regenerate");
+      expect(Object.keys(body.paths)).toContain("/floors/{id}/retry");
+      expect(Object.keys(body.paths)).toContain("/messages/{id}/edit-and-regenerate");
+
+      const respondPath = body.paths["/sessions/{id}/respond"] as { post?: OpenApiOperation };
+      expect(getOpenApiSchemaExample(respondPath.post?.requestBody)).toMatchObject({
+        message: "Please continue the campfire scene.",
+        debug_options: {
+          include_prompt_snapshot: true,
+          include_runtime_trace: true,
+        },
+      });
+      expect(getOpenApiResponseExample(respondPath.post, "200")).toMatchObject({
+        data: {
+          branch_id: "main",
+          prompt_snapshot: { prompt_digest: expect.any(String) },
+          runtime_trace: { delivery: expect.any(Object) },
+        },
+      });
+      const respondResponseSchema = getOpenApiResponseSchema(respondPath.post, "200");
+      const respondResponseProperties = readRecordNode(respondResponseSchema?.properties);
+      const respondDataSchema = readRecordNode(respondResponseProperties?.data);
+      const respondDataProperties = readRecordNode(respondDataSchema?.properties);
+      const liveRuntimeTraceSchema = readRecordNode(respondDataProperties?.runtime_trace);
+      const liveRuntimeTraceProperties = readRecordNode(liveRuntimeTraceSchema?.properties);
+      expect(liveRuntimeTraceSchema?.additionalProperties).toBe(false);
+      expect(liveRuntimeTraceProperties).toHaveProperty("preset");
+      expect(liveRuntimeTraceProperties).toHaveProperty("worldbook");
+      expect(liveRuntimeTraceProperties).toHaveProperty("regex");
+      expect(liveRuntimeTraceProperties).toHaveProperty("budgets");
+      expect(liveRuntimeTraceProperties).toHaveProperty("structure");
+      expect(liveRuntimeTraceProperties).toHaveProperty("memory");
+      expect(liveRuntimeTraceProperties).toHaveProperty("delivery");
+      expect(liveRuntimeTraceProperties).not.toHaveProperty("visibility");
+
+      const dryRunPath = body.paths["/sessions/{id}/respond/dry-run"] as {
+        post?: OpenApiOperation;
+      };
+      expect(dryRunPath.post?.responses).toHaveProperty("200");
+      expect(dryRunPath.post?.responses).toHaveProperty("400");
+      expect(getOpenApiSchemaExample(dryRunPath.post?.requestBody)).toMatchObject({ message: "Please continue the campfire scene." });
+      const dryRunResponseSchema = getOpenApiResponseSchema(dryRunPath.post, "200");
+      const dryRunResponseProperties = readRecordNode(dryRunResponseSchema?.properties);
+      const dryRunDataSchema = readRecordNode(dryRunResponseProperties?.data);
+      const dryRunDataProperties = readRecordNode(dryRunDataSchema?.properties);
+      const dryRunRuntimeTraceSchema = readRecordNode(dryRunDataProperties?.runtime_trace);
+      const dryRunRuntimeTraceProperties = readRecordNode(dryRunRuntimeTraceSchema?.properties);
+      const dryRunAssemblySchema = readRecordNode(dryRunDataProperties?.assembly);
+      const dryRunAssemblyProperties = readRecordNode(dryRunAssemblySchema?.properties);
+      expect(dryRunRuntimeTraceSchema?.additionalProperties).toBe(false);
+      expect(dryRunRuntimeTraceProperties).toHaveProperty("visibility");
+      expect(dryRunAssemblySchema?.additionalProperties).toBe(false);
+      expect(dryRunAssemblyProperties).not.toHaveProperty("macro_warnings");
+      expect(dryRunAssemblyProperties).not.toHaveProperty("macro_used_names");
+      expect(dryRunAssemblyProperties).not.toHaveProperty("macro_mutation_preview");
+      expect(dryRunAssemblyProperties).not.toHaveProperty("macro_staged_mutations");
+      expect(dryRunAssemblyProperties).not.toHaveProperty("macro_traces");
+      expect(getOpenApiResponseExample(dryRunPath.post, "200")).toMatchObject({
+        data: {
+          runtime_trace: {
+            budgets: {
+              by_group: expect.arrayContaining([
+                expect.objectContaining({ group: "section:main" }),
+              ]),
+            },
+          },
+        },
+      });
+    } finally {
+      await chatApp.close();
+    }
+  });
+
+  it("includes prompt runtime route schemas and examples", async () => {
+    const res = await app.inject({ method: "GET", url: "/openapi.json" });
+    expect(res.statusCode).toBe(200);
+
+    const body = res.json<OpenApiDocument>();
+
+    const capabilitiesPath = body.paths["/prompt-runtime/capabilities"] as { get?: OpenApiOperation };
+    expect(getOpenApiResponseExample(capabilitiesPath.get, "200")).toMatchObject({
+      data: {
+        source_selection: {
+          supported_sources: ["history", "memory", "worldbook", "examples"],
+        },
+      },
+    });
+
+    const explainPath = body.paths["/floors/{id}/prompt-runtime/explain"] as { get?: OpenApiOperation };
+    expect(getOpenApiResponseExample(explainPath.get, "200")).toMatchObject({
+      data: {
+        trim_reasons: [expect.objectContaining({ group: "section:main" })],
+        excluded_sources: [expect.objectContaining({ source: "examples" })],
+      },
+    });
+
+    const comparePath = body.paths["/sessions/{id}/prompt-runtime/compare"] as { post?: OpenApiOperation };
+    expect(getOpenApiResponseExample(comparePath.post, "200")).toMatchObject({
+      data: {
+        trim_changes: [expect.objectContaining({ left: [expect.objectContaining({ group: "section:main" })] })],
+        exclusion_changes: [expect.objectContaining({ right: [expect.objectContaining({ source: "examples" })] })],
+      },
+    });
+
+    const sessionInjectionPath = body.paths["/sessions/{id}/prompt-runtime/injections"] as {
+      get?: OpenApiOperation;
+      post?: OpenApiOperation;
+    };
+    expect(getOpenApiResponseExample(sessionInjectionPath.get, "200")).toMatchObject({
+      data: [expect.objectContaining({ scope: "session", source_kind: "client_injection" })],
+    });
+    expect(getOpenApiRequestSchema(sessionInjectionPath.post)?.properties).toHaveProperty("mode_scope");
+    expect(getOpenApiRequestSchema(sessionInjectionPath.post)?.properties).toHaveProperty("ttl_ms");
+  });
+
+  it("includes feature-gated chat and session-state routes in the export profile", async () => {
+    const exportAppResult = await buildTestApp(createOpenApiExportBuildAppOptions());
+
+    try {
+      const res = await exportAppResult.app.inject({ method: "GET", url: "/openapi.json" });
+      expect(res.statusCode).toBe(200);
+
+      const body = res.json<OpenApiDocument>();
+      expect(Object.keys(body.paths)).toContain("/sessions/{id}/respond");
+      expect(Object.keys(body.paths)).toContain("/sessions/{id}/regenerate");
+      expect(Object.keys(body.paths)).toContain("/floors/{id}/retry");
+      expect(Object.keys(body.paths)).toContain("/messages/{id}/edit-and-regenerate");
+      expect(Object.keys(body.paths)).toContain("/sessions/{sessionId}/state/namespaces");
+      expect(Object.keys(body.paths)).toContain("/sessions/{sessionId}/state/values/write");
+      expect(Object.keys(body.paths)).toContain("/sessions/{sessionId}/state/values");
+      expect(Object.keys(body.paths)).toContain("/sessions/{sessionId}/state/resolve");
+      expect(Object.keys(body.paths)).toContain("/sessions/{sessionId}/state/floors/{floorId}/snapshot");
+      expect(Object.keys(body.paths)).toContain("/sessions/{sessionId}/state/diff");
+
+      const respondPath = body.paths["/sessions/{id}/respond"] as { post?: OpenApiOperation };
+      const respondRequestSchema = getOpenApiRequestSchema(respondPath.post);
+      const respondProperties = readRecordNode(respondRequestSchema?.properties);
+      const sessionStateWritesSchema = readRecordNode(respondProperties?.session_state_writes);
+      const sessionStateWriteItemSchema = readRecordNode(sessionStateWritesSchema?.items);
+      const sessionStateWriteVariants = readArrayNode(sessionStateWriteItemSchema?.oneOf);
+      expect(sessionStateWriteVariants).toHaveLength(2);
+
+      const sessionStateWriteValueVariant = readRecordNode(sessionStateWriteVariants?.[0]);
+      const sessionStateWriteDeleteVariant = readRecordNode(sessionStateWriteVariants?.[1]);
+      const sessionStateWriteValueProperties = readRecordNode(sessionStateWriteValueVariant?.properties);
+      const sessionStateWriteDeleteProperties = readRecordNode(sessionStateWriteDeleteVariant?.properties);
+
+      expect(sessionStateWriteValueProperties?.namespace).toBeDefined();
+      expect(sessionStateWriteValueProperties?.slot).toBeDefined();
+      expect(sessionStateWriteValueProperties?.value).toBeDefined();
+      expect(readArrayNode(sessionStateWriteValueVariant?.required)).toEqual(expect.arrayContaining(["namespace", "slot", "value"]));
+
+      expect(sessionStateWriteDeleteProperties?.namespace).toBeDefined();
+      expect(sessionStateWriteDeleteProperties?.slot).toBeDefined();
+      expect(sessionStateWriteDeleteProperties?.delete).toBeDefined();
+      expect(readArrayNode(sessionStateWriteDeleteVariant?.required)).toEqual(expect.arrayContaining(["namespace", "slot", "delete"]));
+
+      const regeneratePath = body.paths["/sessions/{id}/regenerate"] as { post?: OpenApiOperation };
+      expect(readRecordNode(getOpenApiRequestSchema(regeneratePath.post)?.properties)?.session_state_writes).toBeDefined();
+
+      const retryPath = body.paths["/floors/{id}/retry"] as { post?: OpenApiOperation };
+      expect(readRecordNode(getOpenApiRequestSchema(retryPath.post)?.properties)?.session_state_writes).toBeDefined();
+
+      const editAndRegeneratePath = body.paths["/messages/{id}/edit-and-regenerate"] as { post?: OpenApiOperation };
+      expect(readRecordNode(getOpenApiRequestSchema(editAndRegeneratePath.post)?.properties)?.session_state_writes).toBeDefined();
+
+      const namespacesPath = body.paths["/sessions/{sessionId}/state/namespaces"] as { post?: OpenApiOperation; get?: OpenApiOperation };
+      expect(readArrayNode(getOpenApiRequestSchema(namespacesPath.post)?.required)).toEqual(
+        expect.arrayContaining(["namespace", "logical_owner_type", "logical_owner_id"]),
+      );
+      expect(getOpenApiResponseSchema(namespacesPath.post, "201")).toBeDefined();
+      expect(getOpenApiResponseSchema(namespacesPath.get, "200")).toBeDefined();
+
+      const writePath = body.paths["/sessions/{sessionId}/state/values/write"] as { post?: OpenApiOperation };
+      expect(readArrayNode(getOpenApiRequestSchema(writePath.post)?.required)).toEqual(
+        expect.arrayContaining(["branch_id", "namespace", "slot", "value"]),
+      );
+      expect(getOpenApiResponseSchema(writePath.post, "200")).toBeDefined();
+
+      const deletePath = body.paths["/sessions/{sessionId}/state/values"] as { delete?: OpenApiOperation };
+      expect(readArrayNode(getOpenApiRequestSchema(deletePath.delete)?.required)).toEqual(
+        expect.arrayContaining(["branch_id", "namespace", "slot"]),
+      );
+
+      const resolvePath = body.paths["/sessions/{sessionId}/state/resolve"] as { get?: OpenApiOperation };
+      expect(resolvePath.get?.parameters?.some((parameter) => parameter.name === "branch_id")).toBe(true);
+      expect(getOpenApiResponseSchema(resolvePath.get, "200")).toBeDefined();
+
+      const snapshotPath = body.paths["/sessions/{sessionId}/state/floors/{floorId}/snapshot"] as { get?: OpenApiOperation };
+      expect(snapshotPath.get?.parameters?.some((parameter) => parameter.name === "floorId")).toBe(true);
+      expect(getOpenApiResponseSchema(snapshotPath.get, "200")).toBeDefined();
+
+      const diffPath = body.paths["/sessions/{sessionId}/state/diff"] as { get?: OpenApiOperation };
+      expect(diffPath.get?.parameters?.some((parameter) => parameter.name === "against")).toBe(true);
+      expect(getOpenApiResponseSchema(diffPath.get, "200")).toBeDefined();
+    } finally {
+      await exportAppResult.app.close();
+    }
+  });
+
+  it("serves Swagger UI page", async () => {
+    const res = await app.inject({ method: "GET", url: "/docs/" });
+
+    expect(res.statusCode).toBe(200);
+    expect(res.headers["content-type"]).toContain("text/html");
+  });
+
+  it("provides quick language redirect routes", async () => {
+    const zhRes = await app.inject({ method: "GET", url: "/docs-zh" });
+    expect(zhRes.statusCode).toBe(302);
+    expect(zhRes.headers.location).toBe("/docs/?lang=zh");
+
+    const enRes = await app.inject({ method: "GET", url: "/docs-en" });
+    expect(enRes.statusCode).toBe(302);
+    expect(enRes.headers.location).toBe("/docs/?lang=en");
+  });
+
+  it("declares auth security schemes when auth mode is enabled", async () => {
+    const authAppResult = await buildTestApp({
+      databasePath: ":memory:",
+      logger: false,
+      auth: { mode: "api_key", apiKeys: ["dev-key"] },
+    });
+
+    try {
+      const res = await authAppResult.app.inject({ method: "GET", url: "/openapi.json" });
+      expect(res.statusCode).toBe(200);
+
+      const body = res.json<OpenApiDocument>();
+      expect(body.components?.securitySchemes).toHaveProperty("ApiKeyAuth");
+      expect(body.components?.securitySchemes).toHaveProperty("BearerAuth");
+      expect(body.components?.securitySchemes).toHaveProperty("BrowserSessionAuth");
+      expect(body.security).toEqual([{ ApiKeyAuth: [] }, { BrowserSessionAuth: [] }]);
+
+      const healthPath = body.paths["/health"] as { get?: OpenApiOperation };
+      expect(healthPath.get?.security).toEqual([]);
+    } finally {
+      await authAppResult.app.close();
+    }
+  });
+});

@@ -1,0 +1,13 @@
+{
+  "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-aH63tU/task.json",
+  "results": [
+    {
+      "opening": "main",
+      "exactInitial": true
+    },
+    {
+      "opening": "studio",
+      "exactInitial": true
+    }
+  ]
+}

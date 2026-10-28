@@ -1,0 +1,138 @@
+[
+  {
+    "id": "gen-1792496529-JmxsDtOLz62qdFKBaU7c",
+    "model": "minimax/minimax-m3.1-flash-20261019:free",
+    "provider_name": "Minimax",
+    "total_cost": 0,
+    "tokens_prompt": 438,
+    "tokens_completion": 2473,
+    "native_tokens_reasoning": 1678,
+    "finish_reason": "stop",
+    "generation_time": 25933
+  },
+  {
+    "id": "gen-1792496556-1Yw2HPCYAfjzMdK7UJxZ",
+    "billingStatus": 404
+  },
+  {
+    "id": "gen-1792496666-zmDHyF4Mc5qBdvbbSpAW",
+    "model": "minimax/minimax-m3.1-flash-20261019:free",
+    "provider_name": "Minimax",
+    "total_cost": 0,
+    "tokens_prompt": 438,
+    "tokens_completion": 2373,
+    "native_tokens_reasoning": 1600,
+    "finish_reason": "stop",
+    "generation_time": 24970
+  },
+  {
+    "id": "gen-1792496810-TOTNgWKENddyttv9xz74",
+    "model": "minimax/minimax-m3.1-flash-20261019:free",
+    "provider_name": "Minimax",
+    "total_cost": 0,
+    "tokens_prompt": 438,
+    "tokens_completion": 341,
+    "native_tokens_reasoning": 0,
+    "finish_reason": "stop",
+    "generation_time": 3650
+  },
+  {
+    "id": "gen-1792496814-mj0QU8EN8OywcQX4xrgd",
+    "model": "dots-studio/dots-3-note-preview-20260813:free",
+    "provider_name": "AtlasCloud",
+    "total_cost": 0,
+    "tokens_prompt": 1393,
+    "tokens_completion": 22,
+    "native_tokens_reasoning": 0,
+    "finish_reason": "stop",
+    "generation_time": 1084
+  },
+  {
+    "id": "gen-1792496820-fYcv4K1lvlkBz4onKuUL",
+    "model": "minimax/minimax-m3.1-flash-20261019:free",
+    "provider_name": "Minimax",
+    "total_cost": 0,
+    "tokens_prompt": 438,
+    "tokens_completion": 4793,
+    "native_tokens_reasoning": 3579,
+    "finish_reason": "stop",
+    "generation_time": 50725
+  },
+  {
+    "id": "gen-1792496857-9Q3Dyk4PZ2mMfmbDlfzb",
+    "model": "minimax/minimax-m3.1-flash-20261019:free",
+    "provider_name": "Minimax",
+    "total_cost": 0,
+    "tokens_prompt": 829,
+    "tokens_completion": 361,
+    "native_tokens_reasoning": 0,
+    "finish_reason": "stop",
+    "generation_time": 5558
+  },
+  {
+    "id": "gen-1792496863-cPTE0rC2gLjC0dVWJNfH",
+    "model": "dots-studio/dots-3-note-preview-20260813:free",
+    "provider_name": "AtlasCloud",
+    "total_cost": 0,
+    "tokens_prompt": 1487,
+    "tokens_completion": 280,
+    "native_tokens_reasoning": 258,
+    "finish_reason": "stop",
+    "generation_time": 4516
+  },
+  {
+    "id": "gen-1792496872-6opyWIE0WMkyHV6MlxWM",
+    "model": "dots-studio/dots-3-note-preview-20260813:free",
+    "provider_name": "AtlasCloud",
+    "total_cost": 0,
+    "tokens_prompt": 1587,
+    "tokens_completion": 1171,
+    "native_tokens_reasoning": 1139,
+    "finish_reason": "stop",
+    "generation_time": 14885
+  },
+  {
+    "id": "gen-1792496908-4JPLEGtvMasZvLTc2vS9",
+    "model": "minimax/minimax-m3.1-flash-20261019:free",
+    "provider_name": "Minimax",
+    "total_cost": 0,
+    "tokens_prompt": 1302,
+    "tokens_completion": 1478,
+    "native_tokens_reasoning": 910,
+    "finish_reason": "stop",
+    "generation_time": 14156
+  },
+  {
+    "id": "gen-1792496923-QZkY9WzJU3EIw5O12u4L",
+    "model": "dots-studio/dots-3-note-preview-20260813:free",
+    "provider_name": "AtlasCloud",
+    "total_cost": 0,
+    "tokens_prompt": 1565,
+    "tokens_completion": 22,
+    "native_tokens_reasoning": 0,
+    "finish_reason": "stop",
+    "generation_time": 1119
+  },
+  {
+    "id": "gen-1792497023-dKiwMr0IP8veqX6aWZ7m",
+    "model": "dots-studio/dots-3-note-preview-20260813:free",
+    "provider_name": "AtlasCloud",
+    "total_cost": 0,
+    "tokens_prompt": 1565,
+    "tokens_completion": 22,
+    "native_tokens_reasoning": 0,
+    "finish_reason": "stop",
+    "generation_time": 1209
+  },
+  {
+    "id": "gen-1792497025-zOKRwNrFovtBkYKhoD6J",
+    "model": "dots-studio/dots-3-note-preview-20260813:free",
+    "provider_name": "AtlasCloud",
+    "total_cost": 0,
+    "tokens_prompt": 1565,
+    "tokens_completion": 1597,
+    "native_tokens_reasoning": 1559,
+    "finish_reason": "stop",
+    "generation_time": 16217
+  }
+]

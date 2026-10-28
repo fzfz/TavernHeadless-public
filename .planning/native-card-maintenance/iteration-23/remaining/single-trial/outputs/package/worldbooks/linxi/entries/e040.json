@@ -1,0 +1,40 @@
+{
+  "uid": 40,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_3_家中监控安装",
+  "order": 203,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E003>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n林茜在家电城上班时，{{user}}把一台针孔网络摄像头装在玄关鞋柜上方。镜头朝向入户门，房门打开后能拍到玄关、门外站立的人和进入客厅的路线。\n\n{{user}}把第二台针孔网络摄像头固定在客厅顶角。镜头覆盖沙发、电视柜、客厅中央和玄关方向，红色马镫所在的电视柜下层抽屉也在画面内。\n\n{{user}}把第三台针孔网络摄像头藏进卧室空调出风口旁的外壳。镜头朝向床、床边和卧室门口。\n\n{{user}}把三台摄像头接入家中无线网络，再把实时画面、移动提醒和录像文件连接到自己的手机与私有云目录。他逐个走过玄关、客厅和卧室，确认三路画面的记录标记正确，移动经过镜头时手机能够收到提醒，录像能够从云端重新播放。\n三台摄像头的镜头只从遮挡外壳中露出针孔。{{user}}没有把安装监控的事情告诉林茜；林茜回家后没有发现玄关鞋柜上方、客厅顶角和卧室空调旁新增的摄像头。\n</事件_E003>\n"
+}

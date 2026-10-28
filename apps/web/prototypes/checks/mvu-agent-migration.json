@@ -1,0 +1,41 @@
+{
+  "linqian": {
+    "disabledEntryIds": [
+      113,
+      114,
+      115
+    ],
+    "ruleEntryIds": [
+      115
+    ],
+    "readonlyPaths": [],
+    "cleanRuleFiles": [
+      "update-rules.json"
+    ],
+    "initialEntryId": 2,
+    "controllerEntryIds": []
+  },
+  "gushengman": {
+    "disabledEntryIds": [
+      9,
+      11
+    ],
+    "ruleEntryIds": [
+      9
+    ],
+    "readonlyPaths": [
+      "/世界/事件状态"
+    ],
+    "updaterPrompt": "你是角色变量更新 Agent。根据 before 和 sources 中实际发生的剧情，严格按规则文件更新状态。只返回符合 outputSchema 的 JSON 对象。changes 仅使用 writablePaths 中的路径，evidenceMessageIds 引用实际依据的 sources.messageId。未发生变化的字段保持原值；计划、建议和行动选项不代表事件已经发生。",
+    "maxTokens": 4096,
+    "cleanRuleFiles": [],
+    "initialEntryId": 0,
+    "controllerEntryIds": [
+      8,
+      15,
+      16,
+      17,
+      20
+    ]
+  }
+}

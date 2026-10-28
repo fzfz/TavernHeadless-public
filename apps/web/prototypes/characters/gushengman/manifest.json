@@ -1,0 +1,1377 @@
+{
+  "apiVersion": 1,
+  "html": "view.html",
+  "css": "view.css",
+  "script": "main.js",
+  "assets": {
+    "sprite:棒球服流泪": {
+      "kind": "image",
+      "file": "assets/棒球服流泪.png",
+      "label": "棒球服流泪",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "sprite:棒球服害羞": {
+      "kind": "image",
+      "file": "assets/棒球服害羞.png",
+      "label": "棒球服害羞",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "sprite:棒球服微笑": {
+      "kind": "image",
+      "file": "assets/棒球服微笑.png",
+      "label": "棒球服微笑",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "sprite:睡衣平静": {
+      "kind": "image",
+      "file": "assets/睡衣平静.png",
+      "label": "睡衣平静",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "sprite:睡衣微笑": {
+      "kind": "image",
+      "file": "assets/睡衣微笑.png",
+      "label": "睡衣微笑",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "sprite:裸体": {
+      "kind": "image",
+      "file": "assets/裸体.png",
+      "label": "裸体",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "sprite:琉夏校服平静": {
+      "kind": "image",
+      "file": "assets/琉夏校服平静.png",
+      "label": "琉夏校服平静",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "sprite:琉夏校服流泪": {
+      "kind": "image",
+      "file": "assets/琉夏校服流泪.png",
+      "label": "琉夏校服流泪",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "sprite:琉夏校服害羞": {
+      "kind": "image",
+      "file": "assets/琉夏校服害羞.png",
+      "label": "琉夏校服害羞",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "sprite:琉夏校服微笑": {
+      "kind": "image",
+      "file": "assets/琉夏校服微笑.png",
+      "label": "琉夏校服微笑",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "sprite:泽音校服平静": {
+      "kind": "image",
+      "file": "assets/泽音校服平静.png",
+      "label": "泽音校服平静",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "sprite:泽音校服流泪": {
+      "kind": "image",
+      "file": "assets/泽音校服流泪.png",
+      "label": "泽音校服流泪",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "sprite:泽音校服害羞": {
+      "kind": "image",
+      "file": "assets/泽音校服害羞.png",
+      "label": "泽音校服害羞",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "sprite:泽音校服微笑": {
+      "kind": "image",
+      "file": "assets/泽音校服微笑.png",
+      "label": "泽音校服微笑",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "background:便利店": {
+      "kind": "image",
+      "file": "assets/便利店.jpg",
+      "label": "便利店",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:商店街白天": {
+      "kind": "image",
+      "file": "assets/商店街白天.jpg",
+      "label": "商店街白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:商店街黄昏": {
+      "kind": "image",
+      "file": "assets/商店街黄昏.jpg",
+      "label": "商店街黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:商店街夜晚开灯": {
+      "kind": "image",
+      "file": "assets/商店街夜晚开灯.jpg",
+      "label": "商店街夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:拱廊商店街白天": {
+      "kind": "image",
+      "file": "assets/拱廊商店街白天.jpg",
+      "label": "拱廊商店街白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:拱廊商店街黄昏": {
+      "kind": "image",
+      "file": "assets/拱廊商店街黄昏.jpg",
+      "label": "拱廊商店街黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:拱廊商店街夜晚开灯": {
+      "kind": "image",
+      "file": "assets/拱廊商店街夜晚开灯.jpg",
+      "label": "拱廊商店街夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:购物中心白天": {
+      "kind": "image",
+      "file": "assets/购物中心白天.jpg",
+      "label": "购物中心白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:购物中心黄昏": {
+      "kind": "image",
+      "file": "assets/购物中心黄昏.jpg",
+      "label": "购物中心黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:购物中心夜晚关灯": {
+      "kind": "image",
+      "file": "assets/购物中心夜晚关灯.jpg",
+      "label": "购物中心夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:庙会小吃街白天": {
+      "kind": "image",
+      "file": "assets/庙会小吃街白天.jpg",
+      "label": "庙会小吃街白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:庙会小吃街黄昏": {
+      "kind": "image",
+      "file": "assets/庙会小吃街黄昏.jpg",
+      "label": "庙会小吃街黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:庙会小吃街夜晚开灯": {
+      "kind": "image",
+      "file": "assets/庙会小吃街夜晚开灯.jpg",
+      "label": "庙会小吃街夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校教室白天": {
+      "kind": "image",
+      "file": "assets/学校教室白天.jpg",
+      "label": "学校教室白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校教室黄昏": {
+      "kind": "image",
+      "file": "assets/学校教室黄昏.jpg",
+      "label": "学校教室黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校教室夜晚开灯": {
+      "kind": "image",
+      "file": "assets/学校教室夜晚开灯.jpg",
+      "label": "学校教室夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校教室夜晚关灯": {
+      "kind": "image",
+      "file": "assets/学校教室夜晚关灯.jpg",
+      "label": "学校教室夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校教学楼正门前白天": {
+      "kind": "image",
+      "file": "assets/学校教学楼正门前白天.jpg",
+      "label": "学校教学楼正门前白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校教学楼正门前黄昏": {
+      "kind": "image",
+      "file": "assets/学校教学楼正门前黄昏.jpg",
+      "label": "学校教学楼正门前黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校教学楼正门前夜晚开灯": {
+      "kind": "image",
+      "file": "assets/学校教学楼正门前夜晚开灯.jpg",
+      "label": "学校教学楼正门前夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校教学楼正门前夜晚关灯": {
+      "kind": "image",
+      "file": "assets/学校教学楼正门前夜晚关灯.jpg",
+      "label": "学校教学楼正门前夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校楼梯白天": {
+      "kind": "image",
+      "file": "assets/学校楼梯白天.jpg",
+      "label": "学校楼梯白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校楼梯黄昏": {
+      "kind": "image",
+      "file": "assets/学校楼梯黄昏.jpg",
+      "label": "学校楼梯黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校楼梯夜晚开灯": {
+      "kind": "image",
+      "file": "assets/学校楼梯夜晚开灯.jpg",
+      "label": "学校楼梯夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校楼梯夜晚关灯": {
+      "kind": "image",
+      "file": "assets/学校楼梯夜晚关灯.jpg",
+      "label": "学校楼梯夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校天台白天": {
+      "kind": "image",
+      "file": "assets/学校天台白天.jpg",
+      "label": "学校天台白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校天台黄昏": {
+      "kind": "image",
+      "file": "assets/学校天台黄昏.jpg",
+      "label": "学校天台黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校天台夜晚关灯": {
+      "kind": "image",
+      "file": "assets/学校天台夜晚关灯.jpg",
+      "label": "学校天台夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校校园白天": {
+      "kind": "image",
+      "file": "assets/学校校园白天.jpg",
+      "label": "学校校园白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校校园黄昏": {
+      "kind": "image",
+      "file": "assets/学校校园黄昏.jpg",
+      "label": "学校校园黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校校园夜晚": {
+      "kind": "image",
+      "file": "assets/学校校园夜晚.jpg",
+      "label": "学校校园夜晚",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校校园夜晚开灯": {
+      "kind": "image",
+      "file": "assets/学校校园夜晚开灯.jpg",
+      "label": "学校校园夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校中庭白天": {
+      "kind": "image",
+      "file": "assets/学校中庭白天.jpg",
+      "label": "学校中庭白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校中庭黄昏": {
+      "kind": "image",
+      "file": "assets/学校中庭黄昏.jpg",
+      "label": "学校中庭黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校中庭夜晚开灯": {
+      "kind": "image",
+      "file": "assets/学校中庭夜晚开灯.jpg",
+      "label": "学校中庭夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:学校中庭夜晚关灯": {
+      "kind": "image",
+      "file": "assets/学校中庭夜晚关灯.jpg",
+      "label": "学校中庭夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:上学路上白天": {
+      "kind": "image",
+      "file": "assets/上学路上白天.jpg",
+      "label": "上学路上白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:上学路上黄昏": {
+      "kind": "image",
+      "file": "assets/上学路上黄昏.jpg",
+      "label": "上学路上黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:上学路上夜晚开灯": {
+      "kind": "image",
+      "file": "assets/上学路上夜晚开灯.jpg",
+      "label": "上学路上夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:上学路上夜晚关灯": {
+      "kind": "image",
+      "file": "assets/上学路上夜晚关灯.jpg",
+      "label": "上学路上夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:图书馆": {
+      "kind": "image",
+      "file": "assets/图书馆.jpg",
+      "label": "图书馆",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:男生房间白天": {
+      "kind": "image",
+      "file": "assets/男生房间白天.jpg",
+      "label": "男生房间白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:男生房间黄昏": {
+      "kind": "image",
+      "file": "assets/男生房间黄昏.jpg",
+      "label": "男生房间黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:男生房间夜晚开灯": {
+      "kind": "image",
+      "file": "assets/男生房间夜晚开灯.jpg",
+      "label": "男生房间夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:男生房间夜晚关灯": {
+      "kind": "image",
+      "file": "assets/男生房间夜晚关灯.jpg",
+      "label": "男生房间夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:女生房间白天": {
+      "kind": "image",
+      "file": "assets/女生房间白天.jpg",
+      "label": "女生房间白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:女生房间黄昏": {
+      "kind": "image",
+      "file": "assets/女生房间黄昏.jpg",
+      "label": "女生房间黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:女生房间夜晚开灯": {
+      "kind": "image",
+      "file": "assets/女生房间夜晚开灯.jpg",
+      "label": "女生房间夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:女生房间夜晚关灯": {
+      "kind": "image",
+      "file": "assets/女生房间夜晚关灯.jpg",
+      "label": "女生房间夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:女生房间夜晚夜灯": {
+      "kind": "image",
+      "file": "assets/女生房间夜晚夜灯.jpg",
+      "label": "女生房间夜晚夜灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:住所客厅白天": {
+      "kind": "image",
+      "file": "assets/住所客厅白天.jpg",
+      "label": "住所客厅白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:住所客厅黄昏": {
+      "kind": "image",
+      "file": "assets/住所客厅黄昏.jpg",
+      "label": "住所客厅黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:住所客厅夜晚开灯": {
+      "kind": "image",
+      "file": "assets/住所客厅夜晚开灯.jpg",
+      "label": "住所客厅夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:住所客厅夜晚关灯": {
+      "kind": "image",
+      "file": "assets/住所客厅夜晚关灯.jpg",
+      "label": "住所客厅夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:住所玄关白天": {
+      "kind": "image",
+      "file": "assets/住所玄关白天.jpg",
+      "label": "住所玄关白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:住所玄关黄昏": {
+      "kind": "image",
+      "file": "assets/住所玄关黄昏.jpg",
+      "label": "住所玄关黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:住所玄关夜晚开灯": {
+      "kind": "image",
+      "file": "assets/住所玄关夜晚开灯.jpg",
+      "label": "住所玄关夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:住所玄关夜晚关灯": {
+      "kind": "image",
+      "file": "assets/住所玄关夜晚关灯.jpg",
+      "label": "住所玄关夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:住所玄关夜晚夜灯": {
+      "kind": "image",
+      "file": "assets/住所玄关夜晚夜灯.jpg",
+      "label": "住所玄关夜晚夜灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:浴室开灯": {
+      "kind": "image",
+      "file": "assets/浴室开灯.jpg",
+      "label": "浴室开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:浴室关灯": {
+      "kind": "image",
+      "file": "assets/浴室关灯.jpg",
+      "label": "浴室关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:住宅街白天": {
+      "kind": "image",
+      "file": "assets/住宅街白天.jpg",
+      "label": "住宅街白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:住宅街黄昏": {
+      "kind": "image",
+      "file": "assets/住宅街黄昏.jpg",
+      "label": "住宅街黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:住宅街夜晚开灯": {
+      "kind": "image",
+      "file": "assets/住宅街夜晚开灯.jpg",
+      "label": "住宅街夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:住宅街夜晚关灯": {
+      "kind": "image",
+      "file": "assets/住宅街夜晚关灯.jpg",
+      "label": "住宅街夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:地铁站": {
+      "kind": "image",
+      "file": "assets/地铁站.jpg",
+      "label": "地铁站",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:高铁站白天": {
+      "kind": "image",
+      "file": "assets/高铁站白天.jpg",
+      "label": "高铁站白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:高铁站黄昏": {
+      "kind": "image",
+      "file": "assets/高铁站黄昏.jpg",
+      "label": "高铁站黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:高铁站夜晚": {
+      "kind": "image",
+      "file": "assets/高铁站夜晚.jpg",
+      "label": "高铁站夜晚",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:高铁站夜晚开灯": {
+      "kind": "image",
+      "file": "assets/高铁站夜晚开灯.jpg",
+      "label": "高铁站夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:铁路道口白天": {
+      "kind": "image",
+      "file": "assets/铁路道口白天.jpg",
+      "label": "铁路道口白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:铁路道口黄昏": {
+      "kind": "image",
+      "file": "assets/铁路道口黄昏.jpg",
+      "label": "铁路道口黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:铁路道口夜晚开灯": {
+      "kind": "image",
+      "file": "assets/铁路道口夜晚开灯.jpg",
+      "label": "铁路道口夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:酒吧内": {
+      "kind": "image",
+      "file": "assets/酒吧内.jpg",
+      "label": "酒吧内",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:温泉白天": {
+      "kind": "image",
+      "file": "assets/温泉白天.jpg",
+      "label": "温泉白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:温泉黄昏": {
+      "kind": "image",
+      "file": "assets/温泉黄昏.jpg",
+      "label": "温泉黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:温泉夜晚": {
+      "kind": "image",
+      "file": "assets/温泉夜晚.jpg",
+      "label": "温泉夜晚",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:游乐场白天": {
+      "kind": "image",
+      "file": "assets/游乐场白天.jpg",
+      "label": "游乐场白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:游乐场黄昏": {
+      "kind": "image",
+      "file": "assets/游乐场黄昏.jpg",
+      "label": "游乐场黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:游乐场夜晚": {
+      "kind": "image",
+      "file": "assets/游乐场夜晚.jpg",
+      "label": "游乐场夜晚",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:公园白天": {
+      "kind": "image",
+      "file": "assets/公园白天.jpg",
+      "label": "公园白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:公园黄昏": {
+      "kind": "image",
+      "file": "assets/公园黄昏.jpg",
+      "label": "公园黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:公园夜晚": {
+      "kind": "image",
+      "file": "assets/公园夜晚.jpg",
+      "label": "公园夜晚",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:公园夜晚开灯": {
+      "kind": "image",
+      "file": "assets/公园夜晚开灯.jpg",
+      "label": "公园夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:公园凉亭白天": {
+      "kind": "image",
+      "file": "assets/公园凉亭白天.jpg",
+      "label": "公园凉亭白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:公园凉亭黄昏": {
+      "kind": "image",
+      "file": "assets/公园凉亭黄昏.jpg",
+      "label": "公园凉亭黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:公园凉亭夜晚开灯": {
+      "kind": "image",
+      "file": "assets/公园凉亭夜晚开灯.jpg",
+      "label": "公园凉亭夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:公园商店白天": {
+      "kind": "image",
+      "file": "assets/公园商店白天.jpg",
+      "label": "公园商店白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:公园商店黄昏": {
+      "kind": "image",
+      "file": "assets/公园商店黄昏.jpg",
+      "label": "公园商店黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:公园商店夜晚开灯": {
+      "kind": "image",
+      "file": "assets/公园商店夜晚开灯.jpg",
+      "label": "公园商店夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:海滩白天": {
+      "kind": "image",
+      "file": "assets/海滩白天.jpg",
+      "label": "海滩白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:海滩黄昏": {
+      "kind": "image",
+      "file": "assets/海滩黄昏.jpg",
+      "label": "海滩黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:海滩夜晚": {
+      "kind": "image",
+      "file": "assets/海滩夜晚.jpg",
+      "label": "海滩夜晚",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:河边白天": {
+      "kind": "image",
+      "file": "assets/河边白天.jpg",
+      "label": "河边白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:河边黄昏": {
+      "kind": "image",
+      "file": "assets/河边黄昏.jpg",
+      "label": "河边黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:河边夜晚关灯": {
+      "kind": "image",
+      "file": "assets/河边夜晚关灯.jpg",
+      "label": "河边夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:咖啡厅白天": {
+      "kind": "image",
+      "file": "assets/咖啡厅白天.jpg",
+      "label": "咖啡厅白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:咖啡厅黄昏": {
+      "kind": "image",
+      "file": "assets/咖啡厅黄昏.jpg",
+      "label": "咖啡厅黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:咖啡厅夜晚开灯": {
+      "kind": "image",
+      "file": "assets/咖啡厅夜晚开灯.jpg",
+      "label": "咖啡厅夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:餐馆白天": {
+      "kind": "image",
+      "file": "assets/餐馆白天.jpg",
+      "label": "餐馆白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:餐馆黄昏": {
+      "kind": "image",
+      "file": "assets/餐馆黄昏.jpg",
+      "label": "餐馆黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:餐馆夜晚开灯": {
+      "kind": "image",
+      "file": "assets/餐馆夜晚开灯.jpg",
+      "label": "餐馆夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:美术馆白天": {
+      "kind": "image",
+      "file": "assets/美术馆白天.jpg",
+      "label": "美术馆白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:美术馆夜晚关灯": {
+      "kind": "image",
+      "file": "assets/美术馆夜晚关灯.jpg",
+      "label": "美术馆夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:医院病房": {
+      "kind": "image",
+      "file": "assets/医院病房.jpg",
+      "label": "医院病房",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:医院大厅开灯": {
+      "kind": "image",
+      "file": "assets/医院大厅开灯.jpg",
+      "label": "医院大厅开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:医院大厅夜晚开灯": {
+      "kind": "image",
+      "file": "assets/医院大厅夜晚开灯.jpg",
+      "label": "医院大厅夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:医院大厅夜晚关灯": {
+      "kind": "image",
+      "file": "assets/医院大厅夜晚关灯.jpg",
+      "label": "医院大厅夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:医院走廊白天": {
+      "kind": "image",
+      "file": "assets/医院走廊白天.jpg",
+      "label": "医院走廊白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:医院走廊夜晚": {
+      "kind": "image",
+      "file": "assets/医院走廊夜晚.jpg",
+      "label": "医院走廊夜晚",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:酒店白天": {
+      "kind": "image",
+      "file": "assets/酒店白天.jpg",
+      "label": "酒店白天",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:酒店黄昏": {
+      "kind": "image",
+      "file": "assets/酒店黄昏.jpg",
+      "label": "酒店黄昏",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:酒店夜晚": {
+      "kind": "image",
+      "file": "assets/酒店夜晚.jpg",
+      "label": "酒店夜晚",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:酒店前台开灯": {
+      "kind": "image",
+      "file": "assets/酒店前台开灯.jpg",
+      "label": "酒店前台开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:酒店前台夜晚开灯": {
+      "kind": "image",
+      "file": "assets/酒店前台夜晚开灯.jpg",
+      "label": "酒店前台夜晚开灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "background:酒店前台夜晚关灯": {
+      "kind": "image",
+      "file": "assets/酒店前台夜晚关灯.jpg",
+      "label": "酒店前台夜晚关灯",
+      "tags": [
+        "background"
+      ]
+    },
+    "cg:CG奇迹的压轴_开场": {
+      "kind": "image",
+      "file": "assets/CG奇迹的压轴_开场.png",
+      "label": "CG奇迹的压轴_开场",
+      "tags": [
+        "cg"
+      ]
+    },
+    "cg:CG奇迹的压轴_高潮": {
+      "kind": "image",
+      "file": "assets/CG奇迹的压轴_高潮.png",
+      "label": "CG奇迹的压轴_高潮",
+      "tags": [
+        "cg"
+      ]
+    },
+    "cg:CG天台告白_并肩": {
+      "kind": "image",
+      "file": "assets/CG天台告白_并肩.png",
+      "label": "CG天台告白_并肩",
+      "tags": [
+        "cg"
+      ]
+    },
+    "cg:CG天台告白_花火": {
+      "kind": "image",
+      "file": "assets/CG天台告白_花火.png",
+      "label": "CG天台告白_花火",
+      "tags": [
+        "cg"
+      ]
+    },
+    "cg:CG做爱事后": {
+      "kind": "image",
+      "file": "assets/CG做爱事后.png",
+      "label": "CG做爱事后",
+      "tags": [
+        "cg"
+      ]
+    },
+    "cg:CG游乐场": {
+      "kind": "image",
+      "file": "assets/CG游乐场.png",
+      "label": "CG游乐场",
+      "tags": [
+        "cg"
+      ]
+    },
+    "cg:CG用餐": {
+      "kind": "image",
+      "file": "assets/CG用餐.png",
+      "label": "CG用餐",
+      "tags": [
+        "cg"
+      ]
+    },
+    "cg:CG学校": {
+      "kind": "image",
+      "file": "assets/CG学校.png",
+      "label": "CG学校",
+      "tags": [
+        "cg"
+      ]
+    },
+    "cg:CG河边": {
+      "kind": "image",
+      "file": "assets/CG河边.png",
+      "label": "CG河边",
+      "tags": [
+        "cg"
+      ]
+    },
+    "cg:CG散步": {
+      "kind": "image",
+      "file": "assets/CG散步.png",
+      "label": "CG散步",
+      "tags": [
+        "cg"
+      ]
+    },
+    "cg:CG便利店": {
+      "kind": "image",
+      "file": "assets/CG便利店.png",
+      "label": "CG便利店",
+      "tags": [
+        "cg"
+      ]
+    },
+    "cg:CG观景": {
+      "kind": "image",
+      "file": "assets/CG观景.png",
+      "label": "CG观景",
+      "tags": [
+        "cg"
+      ]
+    },
+    "cg:CG酒吧": {
+      "kind": "image",
+      "file": "assets/CG酒吧.png",
+      "label": "CG酒吧",
+      "tags": [
+        "cg"
+      ]
+    },
+    "cg:CG居家": {
+      "kind": "image",
+      "file": "assets/CG居家.png",
+      "label": "CG居家",
+      "tags": [
+        "cg"
+      ]
+    },
+    "bgm:学校": {
+      "kind": "audio",
+      "file": "assets/学校.mp3",
+      "label": "学校",
+      "tags": [
+        "bgm"
+      ]
+    },
+    "bgm:校外": {
+      "kind": "audio",
+      "file": "assets/校外.mp3",
+      "label": "校外",
+      "tags": [
+        "bgm"
+      ]
+    },
+    "bgm:酒吧": {
+      "kind": "audio",
+      "file": "assets/酒吧.mp3",
+      "label": "酒吧",
+      "tags": [
+        "bgm"
+      ]
+    },
+    "bgm:白羽": {
+      "kind": "audio",
+      "file": "assets/白羽.mp3",
+      "label": "白羽",
+      "tags": [
+        "bgm"
+      ]
+    },
+    "sprite:棒球服平静": {
+      "kind": "image",
+      "file": "assets/棒球服平静.png",
+      "label": "棒球服平静",
+      "tags": [
+        "sprite"
+      ]
+    },
+    "performer-avatar": {
+      "kind": "image",
+      "file": "assets/visitor.svg",
+      "label": "演绎者",
+      "tags": [
+        "avatar"
+      ]
+    }
+  },
+  "data": {
+    "title": "顾声慢 · 白羽",
+    "assetAliases": {
+      "sprite": {
+        "棒球服流泪": "sprite:棒球服流泪",
+        "棒球服害羞": "sprite:棒球服害羞",
+        "棒球服微笑": "sprite:棒球服微笑",
+        "睡衣平静": "sprite:睡衣平静",
+        "睡衣微笑": "sprite:睡衣微笑",
+        "裸体": "sprite:裸体",
+        "琉夏校服平静": "sprite:琉夏校服平静",
+        "琉夏校服流泪": "sprite:琉夏校服流泪",
+        "琉夏校服害羞": "sprite:琉夏校服害羞",
+        "琉夏校服微笑": "sprite:琉夏校服微笑",
+        "泽音校服平静": "sprite:泽音校服平静",
+        "泽音校服流泪": "sprite:泽音校服流泪",
+        "泽音校服害羞": "sprite:泽音校服害羞",
+        "泽音校服微笑": "sprite:泽音校服微笑",
+        "棒球服平静": "sprite:棒球服平静"
+      },
+      "background": {
+        "便利店": "background:便利店",
+        "商店街白天": "background:商店街白天",
+        "商店街黄昏": "background:商店街黄昏",
+        "商店街夜晚开灯": "background:商店街夜晚开灯",
+        "拱廊商店街白天": "background:拱廊商店街白天",
+        "拱廊商店街黄昏": "background:拱廊商店街黄昏",
+        "拱廊商店街夜晚开灯": "background:拱廊商店街夜晚开灯",
+        "购物中心白天": "background:购物中心白天",
+        "购物中心黄昏": "background:购物中心黄昏",
+        "购物中心夜晚关灯": "background:购物中心夜晚关灯",
+        "庙会小吃街白天": "background:庙会小吃街白天",
+        "庙会小吃街黄昏": "background:庙会小吃街黄昏",
+        "庙会小吃街夜晚开灯": "background:庙会小吃街夜晚开灯",
+        "学校教室白天": "background:学校教室白天",
+        "学校教室黄昏": "background:学校教室黄昏",
+        "学校教室夜晚开灯": "background:学校教室夜晚开灯",
+        "学校教室夜晚关灯": "background:学校教室夜晚关灯",
+        "学校教学楼正门前白天": "background:学校教学楼正门前白天",
+        "学校教学楼正门前黄昏": "background:学校教学楼正门前黄昏",
+        "学校教学楼正门前夜晚开灯": "background:学校教学楼正门前夜晚开灯",
+        "学校教学楼正门前夜晚关灯": "background:学校教学楼正门前夜晚关灯",
+        "学校楼梯白天": "background:学校楼梯白天",
+        "学校楼梯黄昏": "background:学校楼梯黄昏",
+        "学校楼梯夜晚开灯": "background:学校楼梯夜晚开灯",
+        "学校楼梯夜晚关灯": "background:学校楼梯夜晚关灯",
+        "学校天台白天": "background:学校天台白天",
+        "学校天台黄昏": "background:学校天台黄昏",
+        "学校天台夜晚关灯": "background:学校天台夜晚关灯",
+        "学校校园白天": "background:学校校园白天",
+        "学校校园黄昏": "background:学校校园黄昏",
+        "学校校园夜晚": "background:学校校园夜晚",
+        "学校校园夜晚开灯": "background:学校校园夜晚开灯",
+        "学校中庭白天": "background:学校中庭白天",
+        "学校中庭黄昏": "background:学校中庭黄昏",
+        "学校中庭夜晚开灯": "background:学校中庭夜晚开灯",
+        "学校中庭夜晚关灯": "background:学校中庭夜晚关灯",
+        "上学路上白天": "background:上学路上白天",
+        "上学路上黄昏": "background:上学路上黄昏",
+        "上学路上夜晚开灯": "background:上学路上夜晚开灯",
+        "上学路上夜晚关灯": "background:上学路上夜晚关灯",
+        "图书馆": "background:图书馆",
+        "男生房间白天": "background:男生房间白天",
+        "男生房间黄昏": "background:男生房间黄昏",
+        "男生房间夜晚开灯": "background:男生房间夜晚开灯",
+        "男生房间夜晚关灯": "background:男生房间夜晚关灯",
+        "女生房间白天": "background:女生房间白天",
+        "女生房间黄昏": "background:女生房间黄昏",
+        "女生房间夜晚开灯": "background:女生房间夜晚开灯",
+        "女生房间夜晚关灯": "background:女生房间夜晚关灯",
+        "女生房间夜晚夜灯": "background:女生房间夜晚夜灯",
+        "住所客厅白天": "background:住所客厅白天",
+        "住所客厅黄昏": "background:住所客厅黄昏",
+        "住所客厅夜晚开灯": "background:住所客厅夜晚开灯",
+        "住所客厅夜晚关灯": "background:住所客厅夜晚关灯",
+        "住所玄关白天": "background:住所玄关白天",
+        "住所玄关黄昏": "background:住所玄关黄昏",
+        "住所玄关夜晚开灯": "background:住所玄关夜晚开灯",
+        "住所玄关夜晚关灯": "background:住所玄关夜晚关灯",
+        "住所玄关夜晚夜灯": "background:住所玄关夜晚夜灯",
+        "浴室开灯": "background:浴室开灯",
+        "浴室关灯": "background:浴室关灯",
+        "住宅街白天": "background:住宅街白天",
+        "住宅街黄昏": "background:住宅街黄昏",
+        "住宅街夜晚开灯": "background:住宅街夜晚开灯",
+        "住宅街夜晚关灯": "background:住宅街夜晚关灯",
+        "地铁站": "background:地铁站",
+        "高铁站白天": "background:高铁站白天",
+        "高铁站黄昏": "background:高铁站黄昏",
+        "高铁站夜晚": "background:高铁站夜晚",
+        "高铁站夜晚开灯": "background:高铁站夜晚开灯",
+        "铁路道口白天": "background:铁路道口白天",
+        "铁路道口黄昏": "background:铁路道口黄昏",
+        "铁路道口夜晚开灯": "background:铁路道口夜晚开灯",
+        "酒吧内": "background:酒吧内",
+        "温泉白天": "background:温泉白天",
+        "温泉黄昏": "background:温泉黄昏",
+        "温泉夜晚": "background:温泉夜晚",
+        "游乐场白天": "background:游乐场白天",
+        "游乐场黄昏": "background:游乐场黄昏",
+        "游乐场夜晚": "background:游乐场夜晚",
+        "公园白天": "background:公园白天",
+        "公园黄昏": "background:公园黄昏",
+        "公园夜晚": "background:公园夜晚",
+        "公园夜晚开灯": "background:公园夜晚开灯",
+        "公园凉亭白天": "background:公园凉亭白天",
+        "公园凉亭黄昏": "background:公园凉亭黄昏",
+        "公园凉亭夜晚开灯": "background:公园凉亭夜晚开灯",
+        "公园商店白天": "background:公园商店白天",
+        "公园商店黄昏": "background:公园商店黄昏",
+        "公园商店夜晚开灯": "background:公园商店夜晚开灯",
+        "海滩白天": "background:海滩白天",
+        "海滩黄昏": "background:海滩黄昏",
+        "海滩夜晚": "background:海滩夜晚",
+        "河边白天": "background:河边白天",
+        "河边黄昏": "background:河边黄昏",
+        "河边夜晚关灯": "background:河边夜晚关灯",
+        "咖啡厅白天": "background:咖啡厅白天",
+        "咖啡厅黄昏": "background:咖啡厅黄昏",
+        "咖啡厅夜晚开灯": "background:咖啡厅夜晚开灯",
+        "餐馆白天": "background:餐馆白天",
+        "餐馆黄昏": "background:餐馆黄昏",
+        "餐馆夜晚开灯": "background:餐馆夜晚开灯",
+        "美术馆白天": "background:美术馆白天",
+        "美术馆夜晚关灯": "background:美术馆夜晚关灯",
+        "医院病房": "background:医院病房",
+        "医院大厅开灯": "background:医院大厅开灯",
+        "医院大厅夜晚开灯": "background:医院大厅夜晚开灯",
+        "医院大厅夜晚关灯": "background:医院大厅夜晚关灯",
+        "医院走廊白天": "background:医院走廊白天",
+        "医院走廊夜晚": "background:医院走廊夜晚",
+        "酒店白天": "background:酒店白天",
+        "酒店黄昏": "background:酒店黄昏",
+        "酒店夜晚": "background:酒店夜晚",
+        "酒店前台开灯": "background:酒店前台开灯",
+        "酒店前台夜晚开灯": "background:酒店前台夜晚开灯",
+        "酒店前台夜晚关灯": "background:酒店前台夜晚关灯"
+      },
+      "cg": {
+        "CG奇迹的压轴_开场": "cg:CG奇迹的压轴_开场",
+        "CG奇迹的压轴_高潮": "cg:CG奇迹的压轴_高潮",
+        "CG天台告白_并肩": "cg:CG天台告白_并肩",
+        "CG天台告白_花火": "cg:CG天台告白_花火",
+        "CG做爱事后": "cg:CG做爱事后",
+        "CG游乐场": "cg:CG游乐场",
+        "CG用餐": "cg:CG用餐",
+        "CG学校": "cg:CG学校",
+        "CG河边": "cg:CG河边",
+        "CG散步": "cg:CG散步",
+        "CG便利店": "cg:CG便利店",
+        "CG观景": "cg:CG观景",
+        "CG酒吧": "cg:CG酒吧",
+        "CG居家": "cg:CG居家"
+      },
+      "bgm": {
+        "学校": "bgm:学校",
+        "校外": "bgm:校外",
+        "酒吧": "bgm:酒吧",
+        "白羽": "bgm:白羽"
+      }
+    },
+    "autoDelayMs": 1500,
+    "defaultInputPrompt": "继续眼前的故事。",
+    "characterName": "顾声慢",
+    "characterAvatar": "sprite:棒球服平静",
+    "performerName": "你",
+    "performerAvatar": "performer-avatar",
+    "typewriterSpeedMs": 30
+  }
+}

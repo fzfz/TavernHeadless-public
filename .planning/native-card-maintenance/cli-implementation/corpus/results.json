@@ -1,0 +1,1200 @@
+{
+  "scope": "begin结构与机械复制复核；不代表角色卡语义转换验收",
+  "rows": [
+    {
+      "id": "C001",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/1.官场.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-PD4rgs/task.json",
+      "durationMs": 34.74812499999999,
+      "pendingCount": 6,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C002",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/91聊天群.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-OnMR1J/task.json",
+      "durationMs": 10.118875000000003,
+      "pendingCount": 7,
+      "copiedFields": 9,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C003",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/Ava Kensington.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-2nL7WU/task.json",
+      "durationMs": 3.8257500000000277,
+      "pendingCount": 7,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C004",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/Charlotte & Samantha.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-iVdpzo/task.json",
+      "durationMs": 3.426540999999986,
+      "pendingCount": 8,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C005",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/Gracie_1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Nm7XRb/task.json",
+      "durationMs": 4.2193340000000035,
+      "pendingCount": 10,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C006",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/IVORY_七色光_v1.6.51.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-prbev9/task.json",
+      "durationMs": 44.83891700000004,
+      "pendingCount": 43,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C007",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/The End of the Tribe.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-jlqHTa/task.json",
+      "durationMs": 3.561333999999988,
+      "pendingCount": 5,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C008",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/default_Assistant.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-SvJgvk/task.json",
+      "durationMs": 1.5555830000000128,
+      "pendingCount": 2,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C009",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/《Lost Good Things》.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-87gFzP/task.json",
+      "durationMs": 39.626832999999976,
+      "pendingCount": 22,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C010",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/《绀野夏日》夏日狂想曲.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-4I1jte/task.json",
+      "durationMs": 16.136374999999987,
+      "pendingCount": 16,
+      "copiedFields": 9,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C011",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/一定会NTR的世界：很容易或很难被NTR的人妻.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Dx60gi/task.json",
+      "durationMs": 28.28412499999996,
+      "pendingCount": 42,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C012",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光_AMBER_v1.6.39.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-k5fcOY/task.json",
+      "durationMs": 43.14120799999995,
+      "pendingCount": 42,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C013",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光_AMBER_v1.6.41.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-wmwdsn/task.json",
+      "durationMs": 45.228542000000004,
+      "pendingCount": 44,
+      "copiedFields": 9,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C014",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.10.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-PTNCzi/task.json",
+      "durationMs": 70.74066600000003,
+      "pendingCount": 103,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C015",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.5(魔改).png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-YjnVqR/task.json",
+      "durationMs": 40.419250000000034,
+      "pendingCount": 50,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C016",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.6.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-rYcXui/task.json",
+      "durationMs": 76.57104200000003,
+      "pendingCount": 109,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C017",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.61.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-zf7EtU/task.json",
+      "durationMs": 77.164083,
+      "pendingCount": 108,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C018",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/人妻公寓.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-2qDmBs/task.json",
+      "durationMs": 15.085542000000032,
+      "pendingCount": 20,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C019",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/优衣.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-KqBHHm/task.json",
+      "durationMs": 3.4129580000000033,
+      "pendingCount": 7,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C020",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/偏航·三人座的公路夏天.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-vuTQB7/task.json",
+      "durationMs": 27.678540999999996,
+      "pendingCount": 38,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C021",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/共妻法案.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-aPiPXN/task.json",
+      "durationMs": 13.555500000000052,
+      "pendingCount": 11,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C022",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/共犯.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-DmXXwQ/task.json",
+      "durationMs": 17.16599999999994,
+      "pendingCount": 27,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C023",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/冒险大陆 1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-oRHQY7/task.json",
+      "durationMs": 26.824333999999908,
+      "pendingCount": 14,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C024",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/双面恋人v1.0.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TbthNW/task.json",
+      "durationMs": 8.69333400000005,
+      "pendingCount": 12,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C025",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/叶昀.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-W8agSh/task.json",
+      "durationMs": 3.8772920000000113,
+      "pendingCount": 6,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C026",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/垃圾回收员.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-B0mXi6/task.json",
+      "durationMs": 43.55720800000006,
+      "pendingCount": 63,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C027",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/城破十日记.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-civGN7/task.json",
+      "durationMs": 28.538667000000032,
+      "pendingCount": 37,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C028",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/堕落之旅：出轨模拟器.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-HZUJUe/task.json",
+      "durationMs": 9.214875000000006,
+      "pendingCount": 9,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C029",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/堕落的女友璃儿.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ADqqVj/task.json",
+      "durationMs": 6.009042000000022,
+      "pendingCount": 4,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C030",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/备胎女友1.1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-A5CtvR/task.json",
+      "durationMs": 22.549750000000017,
+      "pendingCount": 30,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C031",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/大学生活好1.01.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-b2wwft/task.json",
+      "durationMs": 18.116959000000065,
+      "pendingCount": 6,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C032",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/天龙小段誉.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-jza8Wk/task.json",
+      "durationMs": 15.507791999999995,
+      "pendingCount": 29,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C033",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/妻心如刀-林茜.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-0Xtk8S/task.json",
+      "durationMs": 2.8084579999999733,
+      "pendingCount": 4,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C034",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/妻心如刀.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-lEX959/task.json",
+      "durationMs": 13.871915999999828,
+      "pendingCount": 25,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C035",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/妻悦论坛.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-LsHfny/task.json",
+      "durationMs": 62.08541700000001,
+      "pendingCount": 103,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C036",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/完蛋我被熟女包围了！.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ryWov7/task.json",
+      "durationMs": 9.615374999999858,
+      "pendingCount": 6,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C037",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/小野芥子.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-KElcZD/task.json",
+      "durationMs": 4.896166999999878,
+      "pendingCount": 8,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C038",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/影像鉴定科.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-JiOx4G/task.json",
+      "durationMs": 2.885875000000169,
+      "pendingCount": 4,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C039",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/成人博主模拟器.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-55mjt5/task.json",
+      "durationMs": 100.9448339999999,
+      "pendingCount": 36,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C040",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我与竹马的大学生活会一帆风顺吗.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-zfS3LF/task.json",
+      "durationMs": 39.6946660000001,
+      "pendingCount": 11,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C041",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我的妻子好像不爱我.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-lUohOp/task.json",
+      "durationMs": 8.190250000000106,
+      "pendingCount": 10,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C042",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我的姐姐李玉青.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-DckF3X/task.json",
+      "durationMs": 7.532959000000119,
+      "pendingCount": 6,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C043",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我请的导师，在琴房享用我的未婚妻 1.1 NTL视角.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Dk4XWx/task.json",
+      "durationMs": 5.867000000000189,
+      "pendingCount": 8,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C044",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我请的导师，在琴房享用我的未婚妻 1.1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-7Buvoq/task.json",
+      "durationMs": 5.66820800000005,
+      "pendingCount": 8,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C045",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-0WRTve/task.json",
+      "durationMs": 21.10858300000018,
+      "pendingCount": 22,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C046",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦1.1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1Vpbd5/task.json",
+      "durationMs": 35.04316700000004,
+      "pendingCount": 35,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C047",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦1.5.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-GVngOK/task.json",
+      "durationMs": 56.12254200000007,
+      "pendingCount": 47,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C048",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦1.6.1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-cTZ3HN/task.json",
+      "durationMs": 62.5456250000002,
+      "pendingCount": 48,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C049",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦1.6.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-vFzVwp/task.json",
+      "durationMs": 60.44945799999982,
+      "pendingCount": 48,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C050",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/折镜v1.6.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-xC7bKy/task.json",
+      "durationMs": 60.35508300000015,
+      "pendingCount": 86,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C051",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/抽卡江湖·二改.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-XL5Xsq/task.json",
+      "durationMs": 55.260749999999916,
+      "pendingCount": 59,
+      "copiedFields": 8,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C052",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/换偶比拼.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-gcXOjG/task.json",
+      "durationMs": 14.771625000000085,
+      "pendingCount": 26,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C053",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/收债人.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-qu6FdL/task.json",
+      "durationMs": 5.87783300000001,
+      "pendingCount": 10,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C054",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教坊司.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-qb9Izg/task.json",
+      "durationMs": 36.03779200000008,
+      "pendingCount": 47,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C055",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教坊司1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-uuQp3u/task.json",
+      "durationMs": 37.36820799999987,
+      "pendingCount": 47,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C056",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教堂拆除计划 0.8.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Bl3QkH/task.json",
+      "durationMs": 6.645542000000205,
+      "pendingCount": 5,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C057",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教堂拆除计划 1.5.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-LWPz8m/task.json",
+      "durationMs": 8.080040999999937,
+      "pendingCount": 7,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C058",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教授职业生涯.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-edIL8Q/task.json",
+      "durationMs": 23.768290999999863,
+      "pendingCount": 35,
+      "copiedFields": 8,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C059",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/日奈的秘密潜入.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-0yPSpG/task.json",
+      "durationMs": 25.460167000000183,
+      "pendingCount": 20,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C060",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/早川凛音.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ubrAA4/task.json",
+      "durationMs": 3.1829170000000886,
+      "pendingCount": 4,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C061",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/明末挽歌 (local).png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-9Rp2KN/task.json",
+      "durationMs": 115.09466599999996,
+      "pendingCount": 130,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C062",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/暗恋的学姐被黑皮体育生调教成反差母驴V0.3.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-cOIkRI/task.json",
+      "durationMs": 103.21958299999983,
+      "pendingCount": 136,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C063",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/极乐庄混浴物语.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-xXDvak/task.json",
+      "durationMs": 13.861875000000055,
+      "pendingCount": 14,
+      "copiedFields": 9,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C064",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林筱墨.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-dO9s9f/task.json",
+      "durationMs": 31.0987090000001,
+      "pendingCount": 8,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C065",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林筱墨2.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-FQ7yqn/task.json",
+      "durationMs": 32.302582999999686,
+      "pendingCount": 9,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C066",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-AKc9oc/task.json",
+      "durationMs": 18.24850000000015,
+      "pendingCount": 16,
+      "copiedFields": 8,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C067",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜_妻心如刀_v1.3.22.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-jHtErL/task.json",
+      "durationMs": 52.0190419999999,
+      "pendingCount": 49,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C068",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜_妻心如刀_v1.3.31.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-I0u98j/task.json",
+      "durationMs": 55.13920899999994,
+      "pendingCount": 48,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C069",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜_妻心如刀_v1.3.32.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1mgmCJ/task.json",
+      "durationMs": 54.57316700000001,
+      "pendingCount": 48,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C070",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜_妻心如刀_v1.4.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ZgX3C5/task.json",
+      "durationMs": 58.88520900000003,
+      "pendingCount": 48,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C071",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/桃花村的公媳.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-RugTfA/task.json",
+      "durationMs": 41.64058299999988,
+      "pendingCount": 70,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C072",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/楚昭昭.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nkmdu5/task.json",
+      "durationMs": 4.509915999999976,
+      "pendingCount": 4,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C073",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/橘さん家ノ男性事情_1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-YmIoaL/task.json",
+      "durationMs": 7.181333999999879,
+      "pendingCount": 9,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C074",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/欢迎来到成绩至上的世界.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-HYIJp2/task.json",
+      "durationMs": 10.3471669999999,
+      "pendingCount": 6,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C075",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/沈听雪｜盛唐清音.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-LpFX14/task.json",
+      "durationMs": 23.36595800000032,
+      "pendingCount": 26,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C076",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/沈栀晚.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Axc4Tw/task.json",
+      "durationMs": 4.469750000000204,
+      "pendingCount": 5,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C077",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/洁白jk1.3.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-qyo2Gh/task.json",
+      "durationMs": 16.266165999999885,
+      "pendingCount": 36,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C078",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/爱如雨止.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-kO276P/task.json",
+      "durationMs": 9.16583300000002,
+      "pendingCount": 18,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C079",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/琼明神女录.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ipKUXL/task.json",
+      "durationMs": 74.45258400000012,
+      "pendingCount": 8,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C080",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/白给之家1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-pp9WGF/task.json",
+      "durationMs": 27.40274999999974,
+      "pendingCount": 38,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C081",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/百合露出1.1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-0ns2li/task.json",
+      "durationMs": 19.19137499999988,
+      "pendingCount": 26,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C082",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/直到夺走你的一切.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-8nB9ut/task.json",
+      "durationMs": 24.738667000000078,
+      "pendingCount": 30,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C083",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/真实女友.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-AqD7b8/task.json",
+      "durationMs": 9.963459000000057,
+      "pendingCount": 11,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C084",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/真爱背后.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-asNEuB/task.json",
+      "durationMs": 38.67250000000013,
+      "pendingCount": 47,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C085",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/真爱背后1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-HTg0tI/task.json",
+      "durationMs": 40.087625000000116,
+      "pendingCount": 48,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C086",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/禁果之间！0.5.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-UNFEII/task.json",
+      "durationMs": 5.878167000000303,
+      "pendingCount": 7,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C087",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/穗并町.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-zS2KTP/task.json",
+      "durationMs": 14.853625000000193,
+      "pendingCount": 24,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C088",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/穿越之我是秦书记.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Utcv5H/task.json",
+      "durationMs": 62.901666999999634,
+      "pendingCount": 13,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C089",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/綾瀬 千晴.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1TMGWQ/task.json",
+      "durationMs": 6.936584000000039,
+      "pendingCount": 4,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C090",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/结婚后，前女友找上门来了.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-vzQPEc/task.json",
+      "durationMs": 7.365500000000338,
+      "pendingCount": 5,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C091",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/综漫-春物.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-T4zsyo/task.json",
+      "durationMs": 354.1980410000001,
+      "pendingCount": 81,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C092",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/绿之丘居委会的浅仓穗香.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1RcsFY/task.json",
+      "durationMs": 53.68025000000034,
+      "pendingCount": 17,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C093",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/群友们.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-6lRl3t/task.json",
+      "durationMs": 9.098207999999886,
+      "pendingCount": 20,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C094",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/舞艺附中的少女们.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-9KFGyZ/task.json",
+      "durationMs": 17.82145900000023,
+      "pendingCount": 9,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C095",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/荆桁.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-PE7g1B/task.json",
+      "durationMs": 12.75649999999996,
+      "pendingCount": 21,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C096",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/萧曦月.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-BScgYz/task.json",
+      "durationMs": 12.813415999999961,
+      "pendingCount": 8,
+      "copiedFields": 9,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C097",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/萧曦月1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-AmqQR9/task.json",
+      "durationMs": 12.069833000000017,
+      "pendingCount": 8,
+      "copiedFields": 9,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C098",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/萧谴写卡助手版_V4.5.1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-msKElc/task.json",
+      "durationMs": 80.8857909999997,
+      "pendingCount": 22,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C099",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/蚌埠夜话-梁文峰版.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-bmUvEv/task.json",
+      "durationMs": 56.38933399999996,
+      "pendingCount": 21,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C100",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/西门庆模拟器.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-CPUKVD/task.json",
+      "durationMs": 8.417500000000018,
+      "pendingCount": 6,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C101",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/诸天无限壁尻中心.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ixJket/task.json",
+      "durationMs": 15.95658400000002,
+      "pendingCount": 25,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C102",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/调教老婆王予璇.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-j4tdMN/task.json",
+      "durationMs": 28.879917000000205,
+      "pendingCount": 24,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C103",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/谷依依.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-s2nINk/task.json",
+      "durationMs": 25.82975000000033,
+      "pendingCount": 29,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C104",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/赌狗美女的末路.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-cV6yub/task.json",
+      "durationMs": 10.152875000000222,
+      "pendingCount": 5,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C105",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/遠坂家ノ家計事情.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-FMMb2q/task.json",
+      "durationMs": 24.75649999999996,
+      "pendingCount": 35,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C106",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/那些年.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-X8G5UZ/task.json",
+      "durationMs": 19.155709000000115,
+      "pendingCount": 36,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C107",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/郝叔和他的女人V1.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-SMef4h/task.json",
+      "durationMs": 51.01491699999997,
+      "pendingCount": 33,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C108",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/陈乖乖.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-UAZTlF/task.json",
+      "durationMs": 4.785874999999578,
+      "pendingCount": 4,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C109",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/韩警官之警妻沉沦（警妻逆袭）.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-O9rz96/task.json",
+      "durationMs": 25.472915999999714,
+      "pendingCount": 24,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C110",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/韩警官之警妻沉沦（隐秘者）.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-EJ1nOy/task.json",
+      "durationMs": 23.83416599999964,
+      "pendingCount": 23,
+      "copiedFields": 9,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C111",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/顾声慢.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nxkK2A/task.json",
+      "durationMs": 29.0654999999997,
+      "pendingCount": 33,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C112",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/风月宝鉴.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-lmkHOR/task.json",
+      "durationMs": 62.28700000000026,
+      "pendingCount": 29,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C113",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/鹡鸰女神.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-4iKGDO/task.json",
+      "durationMs": 29.83929199999966,
+      "pendingCount": 28,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C114",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/dev/characters/林茜_妻心如刀_v1.3.31.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-cmuotw/task.json",
+      "durationMs": 57.04816699999992,
+      "pendingCount": 49,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "C115",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/dev/characters/林茜_妻心如刀_v1.3.32.png",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-UPX4FJ/task.json",
+      "durationMs": 57.181666999999834,
+      "pendingCount": 48,
+      "copiedFields": 11,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "USER001",
+      "inputFile": "/Users/developer/Downloads/林茜_妻心如刀_v1.3.01.json",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-BoEGE2/task.json",
+      "durationMs": 53.724541000000045,
+      "pendingCount": 84,
+      "copiedFields": 10,
+      "unequal": [],
+      "passed": true
+    },
+    {
+      "id": "USER002",
+      "inputFile": "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-aegY9r/task.json",
+      "durationMs": 56.885915999999725,
+      "pendingCount": 50,
+      "copiedFields": 9,
+      "unequal": [],
+      "passed": true
+    }
+  ],
+  "totals": {
+    "inputs": 117,
+    "failed": 0
+  },
+  "sameBaselineSource": {
+    "durationMs": 1905.2191249999996,
+    "stdoutBytes": 167,
+    "stderrBytes": 0,
+    "oldStdoutBytes": 501402,
+    "reference": {
+      "resultFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/calls/call-DoXBN8/result.json",
+      "bytes": 500,
+      "partCount": 0
+    },
+    "result": {
+      "command": "begin",
+      "passed": true,
+      "data": {
+        "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nfUrMm/task.json",
+        "packageDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nfUrMm/package",
+        "workFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nfUrMm/review/work.json",
+        "pendingCount": 7082
+      }
+    }
+  }
+}

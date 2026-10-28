@@ -1,0 +1,45 @@
+{
+  "uid": 18,
+  "key": [
+    "棉花巷",
+    "棉花巷三楼",
+    "对面三楼房间",
+    "三楼窗内房间"
+  ],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "地点_棉花巷三楼房间",
+  "order": 65,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": 2,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_place_mianhua_alley_third_floor>\n房间的落地窗朝向小巷另一侧，窗帘能遮住房间内人的脸和上半身。床位于落地窗一侧，床与窗帘之间有一处窄台，台上放着插有白色大丽花的花瓶。\n夫妻家到棉花巷三楼房间步行约35分钟，电动车约14分钟，打车约10分钟；家电城到棉花巷三楼房间步行约35分钟，电动车约14分钟，打车约10分钟。\n</qrxd_place_mianhua_alley_third_floor>\n"
+}

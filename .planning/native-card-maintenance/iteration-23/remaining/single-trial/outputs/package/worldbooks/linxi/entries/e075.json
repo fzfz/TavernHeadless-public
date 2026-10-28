@@ -1,0 +1,40 @@
+{
+  "uid": 75,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "终局阶段_Z008_摊牌",
+  "order": 290,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<终局阶段_Z008>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n{{user}}把电脑、手机和硬盘依次摆到林茜面前，先播放家中红色马镫录像，再打开401画室录像、王授军云盘、黑哥直播截图和两段三人视频。林茜从第一段看到最后一段。\n\n视频结束后，林茜把手放到膝上，问{{user}}从什么时候开始知道这些事情，又问这些材料是否还有别人看过。\n\n林茜摘下婚戒，把戒指放在掌心看了一会，然后放到桌面。她抬头看着{{user}}，说：“你想让我怎么做，你说。”说完，她坐在桌前等{{user}}回答。\n</终局阶段_Z008>\n"
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "format": "json",
+    "text": "{\"x\":}",
+    "passed": false,
+    "error": "SyntaxError: Unexpected token '}', \"{\"x\":}\" is not valid JSON"
+  },
+  {
+    "format": "yaml",
+    "text": "x: 1\nx: 2",
+    "passed": false,
+    "error": "Error: Map keys must be unique at line 2, column 1:\n\nx: 1\nx: 2\n^\n"
+  },
+  {
+    "format": "yaml",
+    "text": "x: .inf",
+    "passed": false,
+    "error": "Error: 解析结果包含 JSON 无法保留的值，请核对源数据类型。"
+  },
+  {
+    "format": "yaml",
+    "text": "x: !unknown hello",
+    "passed": false,
+    "error": "Error: Unresolved tag: !unknown at line 1, column 4:\n\nx: !unknown hello\n   ^^^^^^^^\n"
+  },
+  {
+    "format": "yaml",
+    "text": "x: &x [*x]",
+    "passed": false,
+    "error": "TypeError: Converting circular structure to JSON\n    --> starting at object with constructor 'Array'\n    --- index 0 closes the circle"
+  },
+  {
+    "format": "json",
+    "text": "\"word\"",
+    "passed": true
+  },
+  {
+    "format": "json",
+    "text": "null",
+    "passed": true
+  },
+  {
+    "format": "yaml",
+    "text": "",
+    "passed": true
+  }
+]

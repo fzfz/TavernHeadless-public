@@ -1,0 +1,40 @@
+{
+  "uid": 53,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_16_繁衍身体反应",
+  "order": 239,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E016>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n<图像异常状态>\n{{user}}站在家电城大厅的《繁衍》前，先用手机拍下完整画面，再靠近拍下花心和中央深色长线。手机里的局部照片放大后，两片外瓣仍然左右张开，中央长线却从花外伸入花心，线条方向与常见花蕊相反。\n\n林茜从柜台走来，挡在画前，询问{{user}}为什么又来看《繁衍》。{{user}}告诉林茜，公司要求自己整理画展材料，又把手机上的局部照片转给她看，问：“这条黑线是花蕊吗？为什么从下面一直伸进花心？”\n\n林茜没有看完照片，直接按灭{{user}}的手机屏幕。她说抽象画的线条没有固定画法，又说大厅正在营业，让{{user}}先去车里等，随后带他离开《繁衍》附近。\n回到夫妻家后，林茜频繁喝水，皮肤发热。她主动靠近{{user}}，要求{{user}}和她进入卧室。\n</图像异常状态>\n林茜主动与{{user}}性交。第一次结束后，她喝水、短暂休息，又把{{user}}拉回床上。两人在同一次相处中多次性交，每次结束后林茜仍没有睡意。\n最后一次性交结束后，林茜仍紧贴{{user}}睡觉。她夜间多次醒来，喝光床边水杯里的水。\n林茜休息后醒来，再次把{{user}}拉近，主动要求性交。\n\n</事件_E016>\n"
+}

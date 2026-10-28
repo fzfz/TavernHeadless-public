@@ -1,0 +1,56 @@
+{
+  "axis": "Spec",
+  "base": "e965c9f",
+  "status": "passed",
+  "findings": [],
+  "checks": [
+    {
+      "requirement": "有效语义文字、HTML 和 CSS 保持源原文",
+      "status": "通过",
+      "evidence": [".agents/skills/native-card-conversion/SKILL.md:16", ".agents/skills/native-card-conversion/SKILL.md:56", ".agents/skills/native-card-conversion/references/acceptance.md:63"],
+      "conclusion": "最高原则保留原文要求；生成步骤说明字段映射、字符串转义与宏绑定；验收通过最高原则引用核对源片段、目标文件和读取位置。删除字段表中的重复表述未撤销该要求。"
+    },
+    {
+      "requirement": "程序代码按正式 API 等价转写并保留核心逻辑",
+      "status": "通过",
+      "evidence": [".agents/skills/native-card-conversion/SKILL.md:18", ".agents/skills/native-card-conversion/references/acceptance.md:65", ".agents/skills/native-card-conversion/references/semantic-experience.md:39", ".agents/skills/native-card-conversion/references/semantic-experience.md:46"],
+      "conclusion": "最高原则仍要求保持输入、条件、分支、执行顺序、状态来源和结果；验收保留分支成立与不成立样本；动态提示、固定算法和顺序依赖的具体归属仍明确。"
+    },
+    {
+      "requirement": "源卡只接受单个 JSON，源卡、API 和 schema 只读",
+      "status": "通过",
+      "evidence": [".agents/skills/native-card-conversion/SKILL.md:22", ".agents/skills/native-card-conversion/SKILL.md:30"],
+      "conclusion": "单个角色卡 JSON 与只读依据要求未被修改或删除。"
+    },
+    {
+      "requirement": "后端架构或接口能力扩充等待批准",
+      "status": "通过",
+      "evidence": [".agents/skills/native-card-conversion/SKILL.md:46", ".agents/skills/native-card-conversion/SKILL.md:78"],
+      "conclusion": "现有能力不能承接核心功能时仍须记录缺口、提交方案并等待批准；差异未增加 API 或 schema 修改权限。"
+    },
+    {
+      "requirement": "语义判断继续决定目标目录、文件、格式及消费绑定",
+      "status": "通过",
+      "evidence": [".agents/skills/native-card-conversion/references/semantic-experience.md:5", ".agents/skills/native-card-conversion/references/conversion-map.md:65", ".agents/skills/native-card-conversion/references/conversion-map.md:76", ".agents/skills/native-card-conversion/references/conversion-map.md:93"],
+      "conclusion": "语义表保留目标文件与执行者；目录、命名、创建责任、格式和组件引用仍由目标文件文档完整定义；工具职责未接管语义判断。"
+    },
+    {
+      "requirement": "删除重复表述后保留技术改动、来源、消费绑定及验证记录",
+      "status": "通过",
+      "evidence": [".agents/skills/native-card-conversion/SKILL.md:50", ".agents/skills/native-card-conversion/references/conversion-records.md:19", ".agents/skills/native-card-conversion/references/conversion-records.md:20", ".agents/skills/native-card-conversion/references/conversion-records.md:32", ".agents/skills/native-card-conversion/references/conversion-records.md:40"],
+      "conclusion": "已删除的记录要求由生成流程所引用的转换记录格式承接，仍包括技术改动及接口依据、验证证据和实际消费者。"
+    },
+    {
+      "requirement": "状态规则仍进入实际模型输入，保留条件与定义的适用范围",
+      "status": "通过",
+      "evidence": [".agents/skills/native-card-conversion/references/conversion-map.md:82", ".agents/skills/native-card-conversion/references/semantic-experience.md:16", ".agents/skills/native-card-conversion/references/semantic-experience.md:20", ".agents/skills/native-card-conversion/references/acceptance.md:67"],
+      "conclusion": "ruleFiles 读取规则全文的事实仍保留在落点表；条件、取值依据、定义及标签边界仍分配给实际判定者；验收继续区分文件保存与模型实际取得内容。"
+    },
+    {
+      "requirement": "各节保持标题职责，通过引用取得其他文档的内容",
+      "status": "通过",
+      "evidence": [".agents/skills/native-card-conversion/references/acceptance.md:63", ".agents/skills/native-card-conversion/references/character-fields.md:5", ".agents/skills/native-card-conversion/references/extension-fields.md:5", ".agents/skills/native-card-conversion/references/semantic-experience.md:5"],
+      "conclusion": "差异移除了字段、落点和归属表中的重复原文原则；验收引用唯一最高原则，字段和语义文档引用目标文件与格式。未发现本次删除或移动造成的需求遗漏、错误设计或新增未授权范围。"
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "fields": {
+    "persona": [
+      ["description", "人设描述", "area"],
+      ["status", "状态", "status"]
+    ],
+    "model": [
+      ["provider", "Provider", "provider"],
+      ["base_url", "API 地址（留空使用提供商默认地址）", "url"],
+      ["model_id", "模型标识", "text"],
+      ["api_key_name", "凭证名称（可选）", "text"],
+      ["api_key", "API Key（已有凭证留空保持不变）", "password"],
+      ["status", "状态", "status"]
+    ],
+    "preset": [
+      ["identifier", "条目标识", "text"],
+      ["name", "条目名称", "text"],
+      ["role", "消息角色", "role"],
+      ["content", "正文", "area"],
+      ["enabled", "启用", "check"],
+      ["systemPrompt", "系统提示词条目", "check"],
+      ["marker", "标记条目", "check"],
+      ["injectionPosition", "注入位置", "position"],
+      ["injectionDepth", "注入深度", "number"],
+      ["injectionOrder", "注入顺序", "number"],
+      ["forbidOverrides", "禁止覆盖", "check"],
+      ["injectionTrigger", "注入触发条件（JSON 数组）", "json"],
+      ["extra", "扩展字段（JSON 对象）", "json"]
+    ],
+    "worldbook": [
+      ["comment", "条目名称", "text"],
+      ["key", "主关键词（以逗号分隔）", "text"],
+      ["keysecondary", "辅助关键词（以逗号分隔）", "text"],
+      ["selective", "使用辅助关键词", "check"],
+      ["selectiveLogic", "辅助关键词匹配逻辑", "wiLogic"],
+      ["content", "正文", "area"],
+      ["constant", "始终启用", "check"],
+      ["disable", "停用", "check"],
+      ["position", "插入位置", "wiPosition"],
+      ["depth", "指定深度（插入位置为指定深度时生效）", "number"],
+      ["role", "注入消息角色（指定深度）", "wiRole"],
+      ["outletName", "Outlet 名称（插入位置为 Outlet 时生效）", "text"],
+      ["order", "插入优先级（越大越优先）", "number"],
+      ["scanDepth", "独立扫描深度（留空跟随全局）", "nullableNumber"],
+      ["caseSensitive", "大小写敏感", "tri"],
+      ["matchWholeWords", "全词匹配", "tri"],
+      ["excludeRecursion", "仅初始轮触发", "check"],
+      ["preventRecursion", "内容不进入递归缓冲区", "check"],
+      ["delayUntilRecursion", "递归触发起始层级（留空关闭）", "nullableNumber"]
+    ],
+    "regex": [
+      ["scriptName", "规则名称", "text"],
+      ["findRegex", "查找表达式", "text"],
+      ["replaceString", "替换文本", "area"],
+      ["trimStrings", "捕获内容裁剪文本（JSON 数组）", "json"],
+      ["placement", "执行位置", "placements"],
+      ["disabled", "停用", "check"],
+      ["markdownOnly", "仅显示通道执行", "check"],
+      ["promptOnly", "仅发送给模型的提示词通道执行", "check"],
+      ["runOnEdit", "编辑后执行", "check"],
+      ["substituteRegex", "表达式宏替换", "substitute"],
+      ["minDepth", "最小消息深度（-1 表示不限）", "number"],
+      ["maxDepth", "最大消息深度（-1 表示不限）", "number"]
+    ]
+  },
+  "enums": {
+    "provider": [
+      ["openai", "OpenAI"],
+      ["anthropic", "Anthropic"],
+      ["google", "Google"],
+      ["deepseek", "DeepSeek"],
+      ["xai", "xAI"],
+      ["openai-compatible", "OpenAI 兼容"]
+    ],
+    "status": [
+      ["active", "启用"],
+      ["disabled", "停用"]
+    ],
+    "wiPosition": [
+      [0, "角色定义之前"],
+      [1, "角色定义之后"],
+      [2, "作者注释之前"],
+      [3, "作者注释之后"],
+      [4, "指定深度"],
+      [5, "示例消息之前"],
+      [6, "示例消息之后"],
+      [7, "Outlet 宏槽位"]
+    ],
+    "wiLogic": [
+      [0, "至少一个辅助词命中"],
+      [1, "辅助词未全部命中"],
+      [2, "辅助词均未命中"],
+      [3, "全部辅助词命中"]
+    ],
+    "wiRole": [
+      [0, "system"],
+      [1, "user"],
+      [2, "assistant"]
+    ],
+    "substitute": [
+      [0, "不替换宏"],
+      [1, "原样替换"],
+      [2, "转义后替换"]
+    ],
+    "tri": [
+      ["", "跟随全局"],
+      ["true", "启用"],
+      ["false", "关闭"]
+    ],
+    "role": [
+      ["system", "system"],
+      ["user", "user"],
+      ["assistant", "assistant"]
+    ],
+    "position": [
+      [0, "相对顺序"],
+      [1, "指定对话深度"]
+    ]
+  },
+  "placements": [
+    [1, "用户输入"],
+    [2, "角色回复"],
+    [5, "世界书内容"],
+    [0, "Markdown 显示（保留字段）"],
+    [3, "斜杠命令（保留字段）"],
+    [6, "推理内容（保留字段）"]
+  ],
+  "worldbookAliases": {
+    "key": "keys",
+    "keysecondary": "secondary_keys",
+    "order": "insertion_order"
+  },
+  "worldbookExtensionFields": {
+    "position": "position",
+    "selectiveLogic": "selectiveLogic",
+    "role": "role",
+    "depth": "depth",
+    "scanDepth": "scan_depth",
+    "caseSensitive": "case_sensitive",
+    "matchWholeWords": "match_whole_words",
+    "excludeRecursion": "exclude_recursion",
+    "preventRecursion": "prevent_recursion",
+    "delayUntilRecursion": "delay_until_recursion",
+    "outletName": "outlet_name"
+  },
+  "defaults": {
+    "worldbook": {
+      "position": 0,
+      "depth": 4,
+      "role": 0,
+      "order": 100,
+      "selectiveLogic": 0,
+      "key": [],
+      "keysecondary": [],
+      "scanDepth": null,
+      "caseSensitive": null,
+      "matchWholeWords": null,
+      "delayUntilRecursion": null
+    },
+    "regex": {
+      "placement": [2],
+      "trimStrings": [],
+      "minDepth": -1,
+      "maxDepth": -1,
+      "substituteRegex": 0
+    },
+    "preset": {
+      "role": "system",
+      "injectionPosition": 0,
+      "injectionTrigger": [],
+      "extra": {}
+    },
+    "model": {
+      "provider": "openai",
+      "status": "active"
+    },
+    "persona": {
+      "status": "active"
+    }
+  },
+  "worldbookDefaults": {
+    "scanDepth": 2,
+    "caseSensitive": false,
+    "matchWholeWords": false,
+    "recursive": false,
+    "maxRecursionSteps": 0
+  },
+  "worldbookSettings": [
+    ["scanDepth", "扫描深度", "number"],
+    ["caseSensitive", "大小写敏感", "check"],
+    ["matchWholeWords", "全词匹配", "check"],
+    ["recursive", "递归扫描", "check"],
+    ["maxRecursionSteps", "最大递归次数", "number"]
+  ],
+  "presetDefaults": {
+    "defaultCharacterId": 100001
+  }
+}

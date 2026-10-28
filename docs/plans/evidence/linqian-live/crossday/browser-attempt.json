@@ -1,0 +1,216 @@
+{
+  "checks": {
+    "updates": 533,
+    "ends": 4,
+    "commits": 1,
+    "jobs": [
+      "script-linqian:floor:1:run:1:job:linqian-followup-door",
+      "script-linqian:floor:1:run:1:job:linqian-followup-street"
+    ],
+    "snapshots": [
+      "script-linqian:snapshot:0",
+      "script-linqian:floor:1:attempt:1:snapshot",
+      "script-linqian:floor:1:run:1:job:linqian-followup-door:snapshot",
+      "script-linqian:floor:1:run:1:job:linqian-followup-street:snapshot"
+    ],
+    "historicalStable": true
+  },
+  "current": {
+    "sessionId": "script-linqian",
+    "branchId": "branch-linqian",
+    "floorId": "script-linqian:floor:1",
+    "attemptId": "script-linqian:floor:1:attempt:1",
+    "versionId": "pZNer0kImlS5uZDene706",
+    "snapshotId": "script-linqian:floor:1:run:1:job:linqian-followup-street:snapshot",
+    "parentSnapshotId": "script-linqian:floor:1:run:1:job:linqian-followup-door:snapshot",
+    "variables": {
+      "林茜": {
+        "感情": 506.85,
+        "堕落": 80,
+        "内心想法": "**我们已经走到街口的路灯下了。牵着你的手离开这里，我心里很踏实；今晚只想和你一起回家，把外面的事都留在身后。**"
+      },
+      "行动选项": [
+        "元指令:细腻演绎5分钟内林茜在凌晨街口与你牵手、短暂停留并返回夫妻家玄关的剧情。",
+        "你握紧林茜的手，低声告诉她今晚不会再让她一个人面对外面的事。",
+        "你边走边问她昨晚离开旧楼后是否有人跟踪，并检查她随身物品是否遗失。",
+        "元指令:简要收束当前街口场景，时间推进到2025年3月11日07:00，家电城柜台，让杨桃子通过微信以核对旧楼为由邀约林茜去拆迁旧楼408，并明确重置当日需重置的变量。"
+      ],
+      "世界": {
+        "日期": "2025-03-11",
+        "星期": "周二",
+        "小时": 0,
+        "分钟": 4,
+        "状态_A1_日期": "2025-03-11",
+        "时间": "深夜",
+        "地点": "街口的路灯转角处",
+        "开局模式": "原始首次撞见",
+        "终局路线": "未定",
+        "终局阶段": "Z000",
+        "事件_D001记录日期": "2025-03-10",
+        "已触发事件": {
+          "事件_E001": false,
+          "事件_E002": false,
+          "事件_E003": false,
+          "事件_E004": false,
+          "事件_E005": false,
+          "事件_E006": false,
+          "事件_E008": false,
+          "事件_E009": false,
+          "事件_E010": false,
+          "事件_E011": false,
+          "事件_E012": false,
+          "事件_E013": false,
+          "事件_E014": false,
+          "事件_E015": false,
+          "事件_E016": false,
+          "事件_E017": false,
+          "事件_E018": false,
+          "事件_E019": false,
+          "事件_E020": false,
+          "事件_E021": false,
+          "事件_E022": false,
+          "事件_E023": false,
+          "事件_E024": false,
+          "事件_E025": false,
+          "事件_E026": false,
+          "事件_E027": false,
+          "事件_E028": false,
+          "事件_E029": false,
+          "事件_E030": false,
+          "事件_E031": false,
+          "事件_E032": false,
+          "事件_E033": false,
+          "事件_E034": false,
+          "事件_E035": false,
+          "事件_E048": false,
+          "事件_E049": false
+        },
+        "已离婚": false,
+        "状态_A1_计数": 0
+      }
+    },
+    "source": {
+      "kind": "job",
+      "runId": "script-linqian:floor:1:run:1",
+      "jobId": "script-linqian:floor:1:run:1:job:linqian-followup-street"
+    }
+  },
+  "view": {
+    "sessionId": "script-linqian",
+    "branchId": "branch-linqian",
+    "floorId": null,
+    "attemptId": null,
+    "versionId": "pZNer0kImlS5uZDene706",
+    "snapshotId": "script-linqian:snapshot:0",
+    "parentSnapshotId": null,
+    "variables": {
+      "林茜": {
+        "感情": 504.85,
+        "堕落": 80,
+        "内心想法": "**我最近总是腿里燥热，可能是例假快来了。这条狗偷我的照片，我拿老公吓住他，他就不敢反抗。被靴子踩着会硬，射完还会再硬，第二次还射这么多，好玩。我要用旧飞机杯把他精液吸出来喂给他吃完就回家,这会很好玩的,就这一次,以后不来了。他是狗,狗不会反抗,狗可以当玩具。不能让老公知道。**"
+      },
+      "行动选项": [
+        "元指令:细腻演绎5分钟内林茜的剧情。",
+        "你绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。",
+        "你绕到门口现身，追问杨桃子从哪里得到林茜的照片。",
+        "元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+      ],
+      "世界": {
+        "日期": "2025-03-10",
+        "星期": "周一",
+        "小时": 12,
+        "分钟": 24,
+        "状态_A1_日期": "2025-03-10",
+        "时间": "中午",
+        "地点": "拆迁旧楼408室内",
+        "开局模式": "原始首次撞见",
+        "终局路线": "未定",
+        "终局阶段": "Z000",
+        "事件_D001记录日期": "2025-03-10",
+        "已触发事件": {
+          "事件_E001": false,
+          "事件_E002": false,
+          "事件_E003": false,
+          "事件_E004": false,
+          "事件_E005": false,
+          "事件_E006": false,
+          "事件_E008": false,
+          "事件_E009": false,
+          "事件_E010": false,
+          "事件_E011": false,
+          "事件_E012": false,
+          "事件_E013": false,
+          "事件_E014": false,
+          "事件_E015": false,
+          "事件_E016": false,
+          "事件_E017": false,
+          "事件_E018": false,
+          "事件_E019": false,
+          "事件_E020": false,
+          "事件_E021": false,
+          "事件_E022": false,
+          "事件_E023": false,
+          "事件_E024": false,
+          "事件_E025": false,
+          "事件_E026": false,
+          "事件_E027": false,
+          "事件_E028": false,
+          "事件_E029": false,
+          "事件_E030": false,
+          "事件_E031": false,
+          "事件_E032": false,
+          "事件_E033": false,
+          "事件_E034": false,
+          "事件_E035": false,
+          "事件_E048": false,
+          "事件_E049": false
+        },
+        "已离婚": false,
+        "状态_A1_计数": 1
+      }
+    },
+    "source": {
+      "kind": "initial",
+      "runId": null,
+      "jobId": null
+    }
+  },
+  "error": "",
+  "diagnostics": {
+    "busy": false,
+    "chatWidgets": 1,
+    "activeStreams": 0,
+    "listeners": {
+      "current": 2,
+      "view": 1,
+      "commit": 2,
+      "text": 2
+    },
+    "history": {
+      "entries": 3,
+      "bytes": 7785
+    },
+    "settled": {
+      "entries": 1,
+      "bytes": 1010
+    },
+    "diagnostics": {
+      "entries": 0,
+      "bytes": 0
+    },
+    "lists": [
+      {
+        "items": 1,
+        "mounted": 1,
+        "visibleStart": 0,
+        "visibleEnd": 0,
+        "firstVisibleFloorId": "script-linqian:floor:1",
+        "lastVisibleFloorId": "script-linqian:floor:1",
+        "followTail": true,
+        "cached": 0,
+        "cacheBytes": 0,
+        "hasNextPage": false
+      }
+    ]
+  }
+}

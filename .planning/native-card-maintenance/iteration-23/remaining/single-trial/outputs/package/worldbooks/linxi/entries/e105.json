@@ -1,0 +1,40 @@
+{
+  "uid": 105,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "终局路线变量规则",
+  "order": 848,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": true,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<终局路线变量规则>\n世界.终局路线:\n  check:\n    - 只能将 /世界/终局路线 写为 未定、结局一_离婚、结局二_三人共处、结局三_隔离守婚或双向出轨。\n    - {{user}}明确要求离婚且正文进入民政局结局时，将 /世界/终局路线 写为 结局一_离婚，并将 /世界/已离婚 写为 true。\n    - {{user}}明确接受艾沫沫与林茜共同寻找、共同生活的走向时，将 /世界/终局路线 写为 结局二_三人共处。\n    - {{user}}明确选择守住婚姻，并让林茜以清空证据、辞职、住院或隔离切断外部关系时，将 /世界/终局路线 写为 结局三_隔离守婚。\n    - {{user}}与艾沫沫形成恋爱或性关系，林茜发现后进入离婚谈判时，将 /世界/终局路线 写为 双向出轨，并将 /世界/已离婚 写为 true。\n    - 正文只出现试探、争吵、冷战、离家过夜或尚未落定的威胁时，保持 /世界/终局路线 的原值。\n    - /世界/终局路线 已经进入任一路线时，保持该值；只有用户明确重选结局时，才更新该变量。\n</终局路线变量规则>\n"
+}

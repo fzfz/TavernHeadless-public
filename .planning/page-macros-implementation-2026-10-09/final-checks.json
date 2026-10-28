@@ -1,0 +1,95 @@
+{
+  "checks": {
+    "static": {
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 4,
+      "log": "final-lint.log"
+    },
+    "types": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "final-typecheck.log"
+    },
+    "skillTypes": {
+      "command": "pnpm exec tsc -p .agents/skills/native-card-conversion/scripts/tsconfig.json",
+      "exitCode": 0,
+      "evidence": "final-macro-repair-progress.json"
+    },
+    "tests": {
+      "command": "pnpm test:ci --maxWorkers=4 --minWorkers=1",
+      "exitCode": 0,
+      "passedFiles": 600,
+      "skippedFiles": 3,
+      "passedTests": 6357,
+      "skippedTests": 4,
+      "log": "final-full-tests-bounded.log"
+    },
+    "generated": {
+      "command": "pnpm sdk:generate && pnpm sdk:check",
+      "exitCode": 0,
+      "logs": [
+        "final-sdk-generate.log",
+        "final-sdk-check.log"
+      ]
+    },
+    "docs": {
+      "command": "pnpm docs:build",
+      "exitCode": 0,
+      "log": "final-docs-build.log"
+    },
+    "clientTypes": {
+      "command": "pnpm --filter @tavern/user-web typecheck",
+      "exitCode": 0,
+      "log": "final-client-typecheck.log"
+    },
+    "clientTests": {
+      "command": "pnpm --filter @tavern/user-web test",
+      "exitCode": 0,
+      "passed": 96,
+      "log": "final-client-tests.log"
+    },
+    "helpRegression": {
+      "exitCode": 0,
+      "passed": 11,
+      "log": "final-help-tests.log"
+    },
+    "format": {
+      "exitCode": 0,
+      "log": "final-format-check.log",
+      "firstFailure": "final-format-check-first.log",
+      "adjustedFile": ".agents/skills/native-card-conversion/references/tools.md"
+    }
+  },
+  "acceptance": {
+    "browser-acceptance.json": {
+      "passed": true,
+      "count": 5
+    },
+    "preview-acceptance.json": {
+      "passed": true,
+      "count": 10
+    },
+    "C011-acceptance.json": {
+      "passed": true,
+      "count": 4
+    },
+    "C011-assembly-acceptance.json": {
+      "passed": true,
+      "count": 4
+    },
+    "initial-and-assembly-acceptance.json": {
+      "passed": true,
+      "count": 10
+    },
+    "random-card-acceptance.json": {
+      "passed": true,
+      "count": 4
+    },
+    "final-package-module-consistency.json": {
+      "passed": true,
+      "count": 6
+    }
+  }
+}

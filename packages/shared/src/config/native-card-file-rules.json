@@ -1,0 +1,1647 @@
+{
+  "format": "tavern_headless_role_package",
+  "frontendResourceAttributes": [
+    "src",
+    "srcset",
+    "href",
+    "poster",
+    "data",
+    "action",
+    "formaction",
+    "background",
+    "xlink:href"
+  ],
+  "creationTemplates": [
+    {
+      "id": "openingText",
+      "label": "开场正文",
+      "pathTemplate": "openings/{openingId}.txt",
+      "mediaType": "text/plain",
+      "purpose": "data",
+      "content": ""
+    },
+    {
+      "id": "openingInitialState",
+      "label": "开场初始变量",
+      "pathTemplate": "state/initial/{openingId}.json",
+      "mediaType": "application/json",
+      "purpose": "data",
+      "content": {}
+    },
+    {
+      "id": "worldbookIndex",
+      "label": "世界书",
+      "pathTemplate": "worldbooks/{bookId}/book.json",
+      "mediaType": "application/json",
+      "purpose": "data",
+      "content": {
+        "name": "新世界书",
+        "entryFiles": [],
+        "scanDepth": 2,
+        "caseSensitive": false,
+        "matchWholeWords": false,
+        "recursive": false,
+        "maxRecursionSteps": 1
+      }
+    },
+    {
+      "id": "worldbookEntry",
+      "label": "世界书条目",
+      "pathTemplate": "worldbooks/{bookId}/entries/{entryId}.json",
+      "mediaType": "application/json",
+      "purpose": "data",
+      "content": {
+        "uid": 1,
+        "key": [],
+        "keysecondary": [],
+        "selective": false,
+        "selectiveLogic": 0,
+        "constant": false,
+        "content": "",
+        "comment": "",
+        "position": 0,
+        "order": 100,
+        "depth": 4,
+        "role": 0,
+        "disable": false,
+        "scanDepth": null,
+        "caseSensitive": null,
+        "matchWholeWords": null
+      }
+    },
+    {
+      "id": "stateSchema",
+      "label": "变量结构",
+      "pathTemplate": "state/schema.json",
+      "mediaType": "application/json",
+      "purpose": "data",
+      "content": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "stateUpdateProfile",
+      "label": "变量更新 Agent 配置",
+      "pathTemplate": "agents/state-update/profile.json",
+      "mediaType": "application/json",
+      "purpose": "data",
+      "content": {
+        "updaterPrompt": "",
+        "writablePaths": [],
+        "stateSchemaFile": "state/schema.json",
+        "ruleFiles": []
+      }
+    },
+    {
+      "id": "stateUpdateRules",
+      "label": "变量更新规则",
+      "pathTemplate": "agents/state-update/rules.json",
+      "mediaType": "application/json",
+      "purpose": "data",
+      "content": {
+        "rules": []
+      }
+    },
+    {
+      "id": "stateUpdateRulesText",
+      "label": "变量更新文本规则",
+      "pathTemplate": "agents/state-update/rules.txt",
+      "mediaType": "text/plain",
+      "purpose": "data",
+      "content": ""
+    },
+    {
+      "id": "deriveModule",
+      "label": "变量派生模块",
+      "pathTemplate": "backend/variable-tools/{name}.js",
+      "mediaType": "text/javascript",
+      "purpose": "server_script",
+      "content": "export function derive(context) {\n  return context.candidate;\n}\n"
+    },
+    {
+      "id": "validatorModule",
+      "label": "变量校验模块",
+      "pathTemplate": "backend/validators/{name}.js",
+      "mediaType": "text/javascript",
+      "purpose": "server_script",
+      "content": "export function validate(context) {\n  return { issues: [] };\n}\n"
+    },
+    {
+      "id": "controllerConfig",
+      "label": "提示词控制器配置",
+      "pathTemplate": "backend/controllers/config.json",
+      "mediaType": "application/json",
+      "purpose": "data",
+      "content": {
+        "modulePath": "backend/controllers/prompt.js",
+        "variableRoot": "state",
+        "variableMacros": [],
+        "controllerEntries": [],
+        "updaterEntries": []
+      }
+    },
+    {
+      "id": "controllerModule",
+      "label": "提示词控制器模块",
+      "pathTemplate": "backend/controllers/{name}.js",
+      "mediaType": "text/javascript",
+      "purpose": "server_script",
+      "content": "export function renderController(context) {\n  return { text: \"\" };\n}\n"
+    },
+    {
+      "id": "regexProfile",
+      "label": "正则规则",
+      "pathTemplate": "regex/{name}.json",
+      "mediaType": "application/json",
+      "purpose": "data",
+      "content": []
+    },
+    {
+      "id": "frontendManifest",
+      "label": "前端入口配置",
+      "pathTemplate": "frontend/manifest.json",
+      "mediaType": "application/json",
+      "purpose": "data",
+      "content": {
+        "apiVersion": 1,
+        "html": "frontend/index.html",
+        "css": "frontend/style.css",
+        "script": "frontend/main.js",
+        "assets": {},
+        "data": {}
+      }
+    },
+    {
+      "id": "frontendHtml",
+      "label": "前端 HTML",
+      "pathTemplate": "frontend/index.html",
+      "mediaType": "text/html",
+      "purpose": "template",
+      "content": "<main></main>\n"
+    },
+    {
+      "id": "frontendCss",
+      "label": "前端 CSS",
+      "pathTemplate": "frontend/style.css",
+      "mediaType": "text/css",
+      "purpose": "template",
+      "content": ""
+    },
+    {
+      "id": "frontendModule",
+      "label": "前端 JavaScript",
+      "pathTemplate": "frontend/main.js",
+      "mediaType": "text/javascript",
+      "purpose": "browser_script",
+      "content": "export function mount({ api }) {\n  return () => {};\n}\n"
+    },
+    {
+      "id": "dataJson",
+      "label": "JSON 数据",
+      "pathTemplate": "data/{name}.json",
+      "mediaType": "application/json",
+      "purpose": "data",
+      "content": {}
+    }
+  ],
+  "versions": {
+    "1.0.0": {
+      "fixedFiles": [
+        {
+          "pathPattern": "manifest.json",
+          "schema": "native-card-package/manifest.schema.json",
+          "purpose": "data",
+          "extensions": [
+            ".json"
+          ],
+          "mediaTypes": [
+            "application/json"
+          ],
+          "condition": "always",
+          "inManifestFiles": false
+        },
+        {
+          "pathPattern": "character.json",
+          "schema": "native-card-package/character.schema.json",
+          "purpose": "data",
+          "extensions": [
+            ".json"
+          ],
+          "mediaTypes": [
+            "application/json"
+          ],
+          "condition": "always",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "openings.json",
+          "schema": "native-card-package/openings.schema.json",
+          "purpose": "data",
+          "extensions": [
+            ".json"
+          ],
+          "mediaTypes": [
+            "application/json"
+          ],
+          "condition": "always",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "state/schema.json",
+          "schema": "native-card-package/state-schema.schema.json",
+          "purpose": "data",
+          "extensions": [
+            ".json"
+          ],
+          "mediaTypes": [
+            "application/json"
+          ],
+          "condition": "state",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "agents/state-update/profile.json",
+          "schema": "native-card-package/state-update-profile.schema.json",
+          "purpose": "data",
+          "extensions": [
+            ".json"
+          ],
+          "mediaTypes": [
+            "application/json"
+          ],
+          "condition": "stateUpdate",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "backend/controllers/config.json",
+          "schema": "native-card-package/controller-config.schema.json",
+          "purpose": "data",
+          "extensions": [
+            ".json"
+          ],
+          "mediaTypes": [
+            "application/json"
+          ],
+          "condition": "promptController",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "frontend/manifest.json",
+          "schema": "native-card-package/frontend-manifest.schema.json",
+          "purpose": "data",
+          "extensions": [
+            ".json"
+          ],
+          "mediaTypes": [
+            "application/json"
+          ],
+          "condition": "frontend",
+          "inManifestFiles": true
+        }
+      ],
+      "directoryRules": [
+        {
+          "pathPattern": "worldbooks/{bookId}/book.json",
+          "schema": "native-card-package/worldbook.schema.json",
+          "purpose": "data",
+          "extensions": [
+            ".json"
+          ],
+          "mediaTypes": [
+            "application/json"
+          ],
+          "condition": "worldbooks",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "openings/*.txt",
+          "schema": "utf8-text",
+          "purpose": "data",
+          "extensions": [
+            ".txt"
+          ],
+          "mediaTypes": [
+            "text/plain"
+          ],
+          "condition": "always",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "state/initial/*.json",
+          "schema": "native-card-package/initial-state.schema.json",
+          "purpose": "data",
+          "extensions": [
+            ".json"
+          ],
+          "mediaTypes": [
+            "application/json"
+          ],
+          "condition": "state",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "worldbooks/{bookId}/entries/*.json",
+          "schema": "native-card-package/worldbook-entry.schema.json",
+          "purpose": "data",
+          "extensions": [
+            ".json"
+          ],
+          "mediaTypes": [
+            "application/json"
+          ],
+          "condition": "worldbooks",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "agents/state-update/*.json",
+          "schema": "native-card-package/state-update-rules.schema.json",
+          "creationTemplateId": "stateUpdateRules",
+          "purpose": "data",
+          "extensions": [
+            ".json"
+          ],
+          "mediaTypes": [
+            "application/json"
+          ],
+          "condition": "stateUpdate",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "agents/state-update/*.txt",
+          "schema": "utf8-text",
+          "creationTemplateId": "stateUpdateRulesText",
+          "purpose": "data",
+          "extensions": [
+            ".txt"
+          ],
+          "mediaTypes": [
+            "text/plain"
+          ],
+          "condition": "stateUpdate",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "backend/controllers/*.js",
+          "schema": "javascript-module",
+          "purpose": "server_script",
+          "extensions": [
+            ".js"
+          ],
+          "mediaTypes": [
+            "text/javascript",
+            "application/javascript"
+          ],
+          "condition": "promptController",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "backend/validators/*.js",
+          "schema": "javascript-module",
+          "purpose": "server_script",
+          "extensions": [
+            ".js"
+          ],
+          "mediaTypes": [
+            "text/javascript",
+            "application/javascript"
+          ],
+          "condition": "stateUpdate",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "backend/variable-tools/*.js",
+          "schema": "javascript-module",
+          "purpose": "server_script",
+          "extensions": [
+            ".js"
+          ],
+          "mediaTypes": [
+            "text/javascript",
+            "application/javascript"
+          ],
+          "condition": "stateUpdate",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "frontend/*.html",
+          "schema": "html",
+          "purpose": "template",
+          "extensions": [
+            ".html"
+          ],
+          "mediaTypes": [
+            "text/html"
+          ],
+          "condition": "frontend",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "frontend/*.css",
+          "schema": "css",
+          "purpose": "template",
+          "extensions": [
+            ".css"
+          ],
+          "mediaTypes": [
+            "text/css"
+          ],
+          "condition": "frontend",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "frontend/*.js",
+          "schema": "javascript-module",
+          "purpose": "browser_script",
+          "extensions": [
+            ".js"
+          ],
+          "mediaTypes": [
+            "text/javascript",
+            "application/javascript"
+          ],
+          "condition": "frontend",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "regex/*.json",
+          "schema": "native-card-package/regex-profile.schema.json",
+          "purpose": "data",
+          "extensions": [
+            ".json"
+          ],
+          "mediaTypes": [
+            "application/json"
+          ],
+          "condition": "always",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "data/*.json",
+          "schema": "json",
+          "purpose": "data",
+          "extensions": [
+            ".json"
+          ],
+          "mediaTypes": [
+            "application/json"
+          ],
+          "condition": "always",
+          "inManifestFiles": true
+        },
+        {
+          "pathPattern": "assets/**",
+          "schema": "binary",
+          "purpose": "media",
+          "extensions": [],
+          "mediaTypes": [
+            "*/*"
+          ],
+          "condition": "always",
+          "inManifestFiles": true
+        }
+      ],
+      "referenceRules": [
+        {
+          "schema": "native-card-package/openings.schema.json",
+          "field": [
+            "items",
+            "*",
+            "textFile"
+          ],
+          "targets": [
+            "openings/*.txt"
+          ]
+        },
+        {
+          "schema": "native-card-package/openings.schema.json",
+          "field": [
+            "items",
+            "*",
+            "initialStateFile"
+          ],
+          "targets": [
+            "state/initial/*.json"
+          ]
+        },
+        {
+          "schema": "native-card-package/state-update-profile.schema.json",
+          "field": [
+            "deriveScript"
+          ],
+          "targets": [
+            "backend/variable-tools/*.js"
+          ]
+        },
+        {
+          "schema": "native-card-package/state-update-profile.schema.json",
+          "field": [
+            "validateScript"
+          ],
+          "targets": [
+            "backend/validators/*.js"
+          ]
+        },
+        {
+          "schema": "native-card-package/state-update-profile.schema.json",
+          "field": [
+            "moduleFiles",
+            "*"
+          ],
+          "targets": [
+            "backend/variable-tools/*.js",
+            "backend/validators/*.js"
+          ]
+        },
+        {
+          "schema": "native-card-package/state-update-profile.schema.json",
+          "field": [
+            "ruleFiles",
+            "*"
+          ],
+          "targets": [
+            "agents/state-update/*.json",
+            "agents/state-update/*.txt"
+          ]
+        },
+        {
+          "schema": "native-card-package/state-update-profile.schema.json",
+          "field": [
+            "stateSchemaFile"
+          ],
+          "targets": [
+            "state/schema.json"
+          ]
+        },
+        {
+          "schema": "native-card-package/controller-config.schema.json",
+          "field": [
+            "modulePath"
+          ],
+          "targets": [
+            "backend/controllers/*.js"
+          ]
+        },
+        {
+          "schema": "native-card-package/frontend-manifest.schema.json",
+          "field": [
+            "html"
+          ],
+          "targets": [
+            "frontend/*.html"
+          ]
+        },
+        {
+          "schema": "native-card-package/frontend-manifest.schema.json",
+          "field": [
+            "floorHtml"
+          ],
+          "targets": [
+            "frontend/*.html"
+          ]
+        },
+        {
+          "schema": "native-card-package/frontend-manifest.schema.json",
+          "field": [
+            "css"
+          ],
+          "targets": [
+            "frontend/*.css"
+          ]
+        },
+        {
+          "schema": "native-card-package/frontend-manifest.schema.json",
+          "field": [
+            "script"
+          ],
+          "targets": [
+            "frontend/*.js"
+          ]
+        },
+        {
+          "schema": "native-card-package/frontend-manifest.schema.json",
+          "field": [
+            "assets",
+            "*",
+            "file"
+          ],
+          "targets": [
+            "assets/**"
+          ]
+        },
+        {
+          "schema": "native-card-package/frontend-manifest.schema.json",
+          "field": [
+            "data",
+            "*"
+          ],
+          "targets": [
+            "data/*.json"
+          ]
+        }
+      ]
+    }
+  },
+  "backendModuleApi": {
+    "exports": [
+      {
+        "name": "derive",
+        "directory": "backend/variable-tools/",
+        "contextFields": [
+          "before",
+          "candidate",
+          "sourceMessages",
+          "priorFacts",
+          "floorBefore",
+          "facts",
+          "toolEvidence"
+        ],
+        "async": false
+      },
+      {
+        "name": "validate",
+        "directory": "backend/validators/",
+        "contextFields": [
+          "before",
+          "candidate",
+          "sourceMessages",
+          "priorFacts",
+          "floorBefore",
+          "facts",
+          "toolEvidence"
+        ],
+        "async": false
+      },
+      {
+        "name": "renderController",
+        "directory": "backend/controllers/",
+        "contextFields": [
+          "bookId",
+          "entryId",
+          "variables",
+          "characterBook"
+        ],
+        "async": true
+      }
+    ],
+    "globals": [
+      "Array",
+      "Boolean",
+      "BigInt",
+      "Error",
+      "Infinity",
+      "isFinite",
+      "isNaN",
+      "JSON",
+      "Map",
+      "Math",
+      "NaN",
+      "Number",
+      "Object",
+      "parseFloat",
+      "parseInt",
+      "Promise",
+      "RangeError",
+      "RegExp",
+      "Set",
+      "String",
+      "TypeError",
+      "undefined"
+    ],
+    "blockedProperties": [
+      "constructor",
+      "__proto__"
+    ],
+    "imports": {
+      "relativeOnly": true,
+      "extensions": [
+        ".js",
+        ".json"
+      ]
+    }
+  },
+  "assetMediaFormats": [
+    {
+      "id": "png",
+      "mediaTypes": [
+        "image/png",
+        "image/apng"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              137,
+              80,
+              78,
+              71,
+              13,
+              10,
+              26,
+              10
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".png",
+          "mediaType": "image/png"
+        },
+        {
+          "extension": ".apng",
+          "mediaType": "image/apng"
+        }
+      ]
+    },
+    {
+      "id": "jpeg",
+      "mediaTypes": [
+        "image/jpeg"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              255,
+              216,
+              255
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".jpg",
+          "mediaType": "image/jpeg"
+        },
+        {
+          "extension": ".jpeg",
+          "mediaType": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "gif",
+      "mediaTypes": [
+        "image/gif"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              71,
+              73,
+              70,
+              56,
+              55,
+              97
+            ]
+          }
+        ],
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              71,
+              73,
+              70,
+              56,
+              57,
+              97
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".gif",
+          "mediaType": "image/gif"
+        }
+      ]
+    },
+    {
+      "id": "webp",
+      "mediaTypes": [
+        "image/webp"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              82,
+              73,
+              70,
+              70
+            ]
+          },
+          {
+            "offset": 8,
+            "bytes": [
+              87,
+              69,
+              66,
+              80
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".webp",
+          "mediaType": "image/webp"
+        }
+      ]
+    },
+    {
+      "id": "bmp",
+      "mediaTypes": [
+        "image/bmp"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              66,
+              77
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".bmp",
+          "mediaType": "image/bmp"
+        }
+      ]
+    },
+    {
+      "id": "woff",
+      "mediaTypes": [
+        "font/woff"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              119,
+              79,
+              70,
+              70
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".woff",
+          "mediaType": "font/woff"
+        }
+      ]
+    },
+    {
+      "id": "woff2",
+      "mediaTypes": [
+        "font/woff2"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              119,
+              79,
+              70,
+              50
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".woff2",
+          "mediaType": "font/woff2"
+        }
+      ]
+    },
+    {
+      "id": "ttf",
+      "mediaTypes": [
+        "font/ttf"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              0,
+              1,
+              0,
+              0
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".ttf",
+          "mediaType": "font/ttf"
+        }
+      ]
+    },
+    {
+      "id": "otf",
+      "mediaTypes": [
+        "font/otf"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              79,
+              84,
+              84,
+              79
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".otf",
+          "mediaType": "font/otf"
+        }
+      ]
+    },
+    {
+      "id": "wav",
+      "mediaTypes": [
+        "audio/wav",
+        "audio/x-wav",
+        "audio/wave"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              82,
+              73,
+              70,
+              70
+            ]
+          },
+          {
+            "offset": 8,
+            "bytes": [
+              87,
+              65,
+              86,
+              69
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".wav",
+          "mediaType": "audio/wav"
+        }
+      ]
+    },
+    {
+      "id": "ogg",
+      "mediaTypes": [
+        "audio/ogg",
+        "video/ogg",
+        "application/ogg"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              79,
+              103,
+              103,
+              83
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".ogg",
+          "mediaType": "audio/ogg"
+        },
+        {
+          "extension": ".oga",
+          "mediaType": "audio/ogg"
+        },
+        {
+          "extension": ".ogv",
+          "mediaType": "video/ogg"
+        },
+        {
+          "extension": ".ogx",
+          "mediaType": "application/ogg"
+        }
+      ]
+    },
+    {
+      "id": "flac",
+      "mediaTypes": [
+        "audio/flac"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              102,
+              76,
+              97,
+              67
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".flac",
+          "mediaType": "audio/flac"
+        }
+      ]
+    },
+    {
+      "id": "mp3",
+      "mediaTypes": [
+        "audio/mpeg"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              73,
+              68,
+              51
+            ]
+          }
+        ],
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              255,
+              226
+            ],
+            "mask": [
+              255,
+              230
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".mp3",
+          "mediaType": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "webm",
+      "mediaTypes": [
+        "video/webm",
+        "audio/webm"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 0,
+            "bytes": [
+              26,
+              69,
+              223,
+              163
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".webm",
+          "mediaType": "video/webm"
+        },
+        {
+          "extension": ".weba",
+          "mediaType": "audio/webm"
+        }
+      ]
+    },
+    {
+      "id": "avif",
+      "mediaTypes": [
+        "image/avif"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 4,
+            "bytes": [
+              102,
+              116,
+              121,
+              112,
+              97,
+              118,
+              105,
+              102
+            ]
+          }
+        ],
+        [
+          {
+            "offset": 4,
+            "bytes": [
+              102,
+              116,
+              121,
+              112,
+              97,
+              118,
+              105,
+              115
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".avif",
+          "mediaType": "image/avif"
+        }
+      ]
+    },
+    {
+      "id": "mp4",
+      "mediaTypes": [
+        "video/mp4",
+        "audio/mp4"
+      ],
+      "signatures": [
+        [
+          {
+            "offset": 4,
+            "bytes": [
+              102,
+              116,
+              121,
+              112,
+              105,
+              115,
+              111,
+              109
+            ]
+          }
+        ],
+        [
+          {
+            "offset": 4,
+            "bytes": [
+              102,
+              116,
+              121,
+              112,
+              105,
+              115,
+              111,
+              50
+            ]
+          }
+        ],
+        [
+          {
+            "offset": 4,
+            "bytes": [
+              102,
+              116,
+              121,
+              112,
+              109,
+              112,
+              52,
+              49
+            ]
+          }
+        ],
+        [
+          {
+            "offset": 4,
+            "bytes": [
+              102,
+              116,
+              121,
+              112,
+              109,
+              112,
+              52,
+              50
+            ]
+          }
+        ],
+        [
+          {
+            "offset": 4,
+            "bytes": [
+              102,
+              116,
+              121,
+              112,
+              77,
+              52,
+              86,
+              32
+            ]
+          }
+        ],
+        [
+          {
+            "offset": 4,
+            "bytes": [
+              102,
+              116,
+              121,
+              112,
+              77,
+              52,
+              65,
+              32
+            ]
+          }
+        ],
+        [
+          {
+            "offset": 4,
+            "bytes": [
+              102,
+              116,
+              121,
+              112,
+              97,
+              118,
+              99,
+              49
+            ]
+          }
+        ]
+      ],
+      "extensions": [
+        {
+          "extension": ".mp4",
+          "mediaType": "video/mp4"
+        },
+        {
+          "extension": ".m4v",
+          "mediaType": "video/mp4"
+        },
+        {
+          "extension": ".m4a",
+          "mediaType": "audio/mp4"
+        }
+      ]
+    },
+    {
+      "id": "svg",
+      "mediaTypes": [
+        "image/svg+xml"
+      ],
+      "textPattern": "^\\s*(?:<\\?xml[^?]*\\?>\\s*)?(?:<!--[\\s\\S]*?-->\\s*)*<svg(?:\\s|>)",
+      "extensions": [
+        {
+          "extension": ".svg",
+          "mediaType": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  "frontendModuleApi": {
+    "entryExport": "mount",
+    "contextFields": [
+      "api"
+    ],
+    "methods": {
+      "variables": {
+        "get": {
+          "minArguments": 1,
+          "maxArguments": 1
+        },
+        "watch": {
+          "minArguments": 2,
+          "maxArguments": 2
+        },
+        "onTurnCommitted": {
+          "minArguments": 1,
+          "maxArguments": 1
+        },
+        "getSnapshot": {
+          "minArguments": 1,
+          "maxArguments": 1
+        },
+        "recalculateLatest": {
+          "minArguments": 1,
+          "maxArguments": 1
+        },
+        "restoreMissing": {
+          "minArguments": 1,
+          "maxArguments": 1
+        }
+      },
+      "messages": {
+        "listFloors": {
+          "minArguments": 1,
+          "maxArguments": 1
+        },
+        "getFloor": {
+          "minArguments": 1,
+          "maxArguments": 1
+        },
+        "onTextStream": {
+          "minArguments": 1,
+          "maxArguments": 2
+        }
+      },
+      "history": {
+        "select": {
+          "minArguments": 1,
+          "maxArguments": 1
+        },
+        "latest": {
+          "minArguments": 0,
+          "maxArguments": 0
+        },
+        "listSnapshots": {
+          "minArguments": 1,
+          "maxArguments": 1
+        }
+      },
+      "chat": {
+        "setDraft": {
+          "minArguments": 1,
+          "maxArguments": 1
+        },
+        "send": {
+          "minArguments": 1,
+          "maxArguments": 1
+        }
+      },
+      "ui": {
+        "register": {
+          "minArguments": 2,
+          "maxArguments": 2
+        },
+        "mountFloors": {
+          "minArguments": 3,
+          "maxArguments": 3
+        }
+      },
+      "assets": {
+        "url": {
+          "minArguments": 1,
+          "maxArguments": 1
+        },
+        "list": {
+          "minArguments": 0,
+          "maxArguments": 1
+        }
+      },
+      "data": {
+        "get": {
+          "minArguments": 1,
+          "maxArguments": 1
+        }
+      },
+      "media": {
+        "play": {
+          "minArguments": 1,
+          "maxArguments": 1
+        },
+        "pause": {
+          "minArguments": 1,
+          "maxArguments": 1
+        },
+        "stop": {
+          "minArguments": 1,
+          "maxArguments": 1
+        }
+      },
+      "events": {
+        "on": {
+          "minArguments": 3,
+          "maxArguments": 3
+        }
+      },
+      "timers": {
+        "after": {
+          "minArguments": 2,
+          "maxArguments": 2
+        },
+        "every": {
+          "minArguments": 2,
+          "maxArguments": 2
+        }
+      },
+      "widgets": {
+        "mountChat": {
+          "minArguments": 2,
+          "maxArguments": 2
+        }
+      }
+    },
+    "imports": {
+      "relativeOnly": true,
+      "extensions": [
+        ".js",
+        ".json"
+      ]
+    },
+    "layoutMethods": {
+      "update": {
+        "minArguments": 1,
+        "maxArguments": 1
+      },
+      "bind": {
+        "minArguments": 2,
+        "maxArguments": 2
+      },
+      "on": {
+        "minArguments": 3,
+        "maxArguments": 3
+      },
+      "remove": {
+        "minArguments": 0,
+        "maxArguments": 0
+      },
+      "animateVisibility": {
+        "minArguments": 2,
+        "maxArguments": 2
+      }
+    }
+  },
+  "issueMessages": {
+    "NATIVE_CARD_CHARACTER_INVALID": {
+      "message": "人物资料格式不正确。",
+      "action": "请按 character.json 的字段定义修正人物资料。"
+    },
+    "NATIVE_CARD_DEFAULT_OPENING_AUDIENCE_INVALID": {
+      "message": "默认开场不适用于所指定的会话类型。",
+      "action": "请选择适用于该会话类型的开场，或修正开场 audience 字段。"
+    },
+    "NATIVE_CARD_DEFAULT_OPENING_MISSING": {
+      "message": "默认开场标识没有对应的开场。",
+      "action": "请补齐 openings.json 中的开场，或修正默认开场标识。"
+    },
+    "NATIVE_CARD_DEFAULT_OPENING_REQUIRED": {
+      "message": "开场列表缺少适用会话类型的默认开场。",
+      "action": "请在 openings.json 的 defaultOpeningIds 中选择默认开场。"
+    },
+    "NATIVE_CARD_FILE_ENCODING_INVALID": {
+      "message": "文本文件不是有效的 UTF-8 编码。",
+      "action": "请将该文件另存为 UTF-8 后重新上传。"
+    },
+    "NATIVE_CARD_FILE_EXTENSION_INVALID": {
+      "message": "文件扩展名不符合所在目录的文件规则。",
+      "action": "请按目录规则修改扩展名并同步引用。"
+    },
+    "NATIVE_CARD_FILE_FEATURE_DISABLED": {
+      "message": "文件依赖的角色功能尚未在配置中启用。",
+      "action": "请补齐对应功能配置，或移除未使用的文件及其引用。"
+    },
+    "NATIVE_CARD_FILE_JSON_INVALID": {
+      "message": "文件内容不是有效的 JSON。",
+      "action": "请检查引号、逗号和括号，修正 JSON 语法后重新检查。"
+    },
+    "NATIVE_CARD_FILE_MEDIA_TYPE_MISMATCH": {
+      "message": "清单中的媒体类型不符合该文件的目录规则。",
+      "action": "请按文件格式修正 manifest.json 中的 mediaType。"
+    },
+    "NATIVE_CARD_FILE_MISSING": {
+      "message": "角色包缺少必需文件。",
+      "action": "请补齐所列路径的文件后重新检查。"
+    },
+    "NATIVE_CARD_FILE_NOT_REGISTERED": {
+      "message": "包内文件没有登记在清单中。",
+      "action": "请在 manifest.json 的 files 中登记该文件，或移除该文件。"
+    },
+    "NATIVE_CARD_FILE_PATH_UNSUPPORTED": {
+      "message": "文件路径不属于当前包格式支持的目录。",
+      "action": "请将文件移动到规则规定的目录并同步引用。"
+    },
+    "NATIVE_CARD_FILE_PURPOSE_MISMATCH": {
+      "message": "清单中的文件用途不符合该文件的目录规则。",
+      "action": "请按目录规则修正 manifest.json 中的 purpose。"
+    },
+    "NATIVE_CARD_FILE_RULE_SCHEMA_UNKNOWN": {
+      "message": "文件规则引用了系统中未登记的 schema。",
+      "action": "请管理员核对文件规则配置与共享 schema 的版本。"
+    },
+    "NATIVE_CARD_FILE_SCHEMA_INVALID": {
+      "message": "文件字段不符合对应 schema 的类型或约束。",
+      "action": "请按所列字段位置和格式详情修正内容后重新检查。"
+    },
+    "NATIVE_CARD_FIXED_PATH_INVALID": {
+      "message": "配置中的固定文件路径不符合原生包格式。",
+      "action": "请使用规则规定的固定路径，并补齐对应文件。"
+    },
+    "NATIVE_CARD_FORMAT_VERSION_UNSUPPORTED": {
+      "message": "服务器不支持角色包声明的格式版本。",
+      "action": "请使用服务器支持的包版本，或通过明确的迁移程序转换后导入。"
+    },
+    "NATIVE_CARD_INITIAL_STATE_MISSING": {
+      "message": "开场引用的初始变量文件不存在。",
+      "action": "请补齐 initialStateFile 指向的文件，或修正该路径。"
+    },
+    "NATIVE_CARD_MANIFEST_INVALID": {
+      "message": "根 manifest.json 的结构不符合原生包格式。",
+      "action": "请按原生包清单 schema 修正根清单后重新检查。"
+    },
+    "NATIVE_CARD_MANIFEST_PATH_DUPLICATE": {
+      "message": "清单多次登记了同一路径。",
+      "action": "请在 manifest.json 的 files 中为每个文件保留一条记录。"
+    },
+    "NATIVE_CARD_MANIFEST_SELF_REFERENCE": {
+      "message": "根清单将自身登记为普通包文件。",
+      "action": "请从 manifest.json 的 files 中移除 manifest.json 记录。"
+    },
+    "NATIVE_CARD_OPENINGS_INVALID": {
+      "message": "开场配置的结构不符合原生包格式。",
+      "action": "请按 openings.json 的字段定义修正开场配置。"
+    },
+    "NATIVE_CARD_OPENING_ID_DUPLICATE": {
+      "message": "多个开场使用了同一标识。",
+      "action": "请为每个开场指定唯一 id，并同步默认开场引用。"
+    },
+    "NATIVE_CARD_OPENING_TEXT_MISSING": {
+      "message": "开场引用的正文文件不存在。",
+      "action": "请补齐 textFile 指向的正文文件，或修正该路径。"
+    },
+    "NATIVE_CARD_PATH_DUPLICATE": {
+      "message": "角色包包含重复的文件路径。",
+      "action": "请为文件使用唯一的包内路径后重新打包。"
+    },
+    "NATIVE_CARD_PATH_INVALID": {
+      "message": "文件路径包含原生包不允许的片段或字符。",
+      "action": "请使用包内相对路径，移除越界片段并同步引用。"
+    },
+    "NATIVE_CARD_REFERENCE_ENTRY_MISSING": {
+      "message": "配置引用的世界书条目不存在。",
+      "action": "请在指定世界书中补齐条目，或修正 bookId 和 entryId。"
+    },
+    "NATIVE_CARD_REFERENCE_MISSING": {
+      "message": "配置引用的包内文件不存在。",
+      "action": "请补齐所列文件，或将引用改为已有的包内路径。"
+    },
+    "NATIVE_CARD_REFERENCE_SCOPE_INVALID": {
+      "message": "文件引用超出了该字段允许的目录范围。",
+      "action": "请将引用改为该字段规定目录中的文件。"
+    },
+    "NATIVE_CARD_REFERENCE_WORLDBOOK_MISSING": {
+      "message": "配置引用的世界书标识不存在。",
+      "action": "请登记对应世界书，或修正引用中的 bookId。"
+    },
+    "NATIVE_CARD_WORLDBOOK_ENTRY_SCOPE_INVALID": {
+      "message": "世界书引用了其他世界书目录中的条目文件。",
+      "action": "请将条目文件放入所属世界书目录，并修正该书的条目路径。"
+    },
+    "NATIVE_CARD_WORLDBOOK_ENTRY_UNREFERENCED": {
+      "message": "世界书目录中的条目没有被所属世界书登记。",
+      "action": "请在该书 book.json 的条目列表中登记文件，或移除未使用的条目文件。"
+    },
+    "NATIVE_CARD_WORLDBOOK_FILE_DUPLICATE": {
+      "message": "多个世界书登记项指向同一文件。",
+      "action": "请为每本世界书指定独立的 book.json 路径。"
+    },
+    "NATIVE_CARD_WORLDBOOK_ID_DUPLICATE": {
+      "message": "角色配置重复登记了世界书标识。",
+      "action": "请为各世界书使用唯一 id 并同步引用。"
+    },
+    "NATIVE_CARD_WORLDBOOK_PATH_INVALID": {
+      "message": "世界书路径与其所属标识不一致。",
+      "action": "请使用 worldbooks/<bookId>/book.json 并同步角色配置。"
+    },
+    "NATIVE_CARD_WORLDBOOK_UID_DUPLICATE": {
+      "message": "同一本世界书中的多个条目使用了同一 uid。",
+      "action": "请在该世界书内为条目分配唯一 uid，并同步条目引用。"
+    }
+  }
+}

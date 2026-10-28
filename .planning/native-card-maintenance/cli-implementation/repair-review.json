@@ -1,0 +1,72 @@
+{
+  "reviewedRoot": "/srv/tavern/TavernHeadless-remove-preview-credentials",
+  "scope": "scripts/native-card-conversion/ 当前修改的五项修复行为",
+  "conclusion": "未发现本次审阅范围内的遗留实质问题。",
+  "findings": [],
+  "checks": [
+    {
+      "behavior": "begin 在同次调用生成待判断正文与关联原文文件",
+      "result": "通过",
+      "evidence": [
+        "source.ts:1040-1098：待判断正文与每个 contextPointer 均写入独立 contentFile，并通过 saveTextParts 提供长文本分片。",
+        "source.ts:1064：关联文件目录使用 source-config.ts 的 contextDirectoryPrefix。",
+        "source-features.test.ts：22 项通过，包含关联变量、正则原文及长文本完整分片。"
+      ]
+    },
+    {
+      "behavior": "copy/parse 省略 start/end 时分别默认 0/源字符串长度",
+      "result": "通过",
+      "evidence": [
+        "write.ts:438-461：分别通过空值合并操作设置两个边界，并保留范围与代理对检查。",
+        "write-copy.test.ts：51 项通过，包含默认边界与不同目标文件并发写入。",
+        "write-parse.test.ts：40 项通过，包含仅传 start、仅传 end 的 JSON 解析。"
+      ]
+    },
+    {
+      "behavior": "世界书路径命名由 source-config 共享函数提供",
+      "result": "通过",
+      "evidence": [
+        "source.ts:728 与 source.ts:1001：预检查索引及 begin 实际文件写入均使用 worldbookEntryPath。",
+        "write.ts:108、136、141、154：单条与批量映射的文件名使用 worldbookEntryFile。",
+        "source-config.ts:287-306：统一生成文件名、路径与解析排序序号。"
+      ]
+    },
+    {
+      "behavior": "preview 关闭时完成依赖缓存写入",
+      "result": "通过",
+      "evidence": [
+        "preview.ts:542-551：关闭 Vite 前依次等待静态导入请求、扫描及 discovered.processing。",
+        "当前本机 Vite runOptimizer 的 commitProcessing 在依赖缓存 commit 完成后解决 discovered.processing。",
+        "preview.test.ts：21 项通过；afterEach 随后递归删除预览目录成功。"
+      ],
+      "validationLimit": "关闭后的目录稳定性由立即递归清理与关闭逻辑提供证据，本次未增加持续监测目录内容的测试。"
+    },
+    {
+      "behavior": "不同输出文件支持并发，同书 map-entry 采用批量或顺序调用",
+      "result": "通过",
+      "evidence": [
+        "atomic-write.ts:44-76：每次写入具有独立临时文件与原子替换。",
+        "output.ts:1-15：调用目录通过 AsyncLocalStorage 与 mkdtemp 隔离。",
+        "write.ts:190-303：单次批量映射读取一次关联资源，合并成功成员后更新 book/character。",
+        "map-entry-batch.test.ts：17 项通过；output.test.ts：8 项通过。",
+        "references/tools.md:132：要求 map-entry/map-regex 逐次完成，同书多个条目通过 --indices 一次提交。"
+      ],
+      "boundary": "同一共享 book.json 或 character.json 的多次写入需要调用方按文档顺序执行。"
+    }
+  ],
+  "validation": {
+    "finalRerun": {
+      "command": "pnpm exec vitest run scripts/native-card-conversion/source-features.test.ts scripts/native-card-conversion/write-copy.test.ts scripts/native-card-conversion/write-parse.test.ts --reporter=dot",
+      "passedTests": 113,
+      "failedTests": 0
+    },
+    "additionalPassingSuites": {
+      "source-assessment.test.ts": 14,
+      "map-entry-batch.test.ts": 17,
+      "output.test.ts": 8,
+      "preview.test.ts": 21
+    },
+    "note": "首次测试运行期间文件仍在修改，其七个测试失败对应修改前快照；最终重测已全部通过。全仓检查由主队员执行。"
+  },
+  "reviewedFilesUnchanged": true
+}

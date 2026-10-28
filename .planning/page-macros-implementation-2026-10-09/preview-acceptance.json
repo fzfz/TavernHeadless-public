@@ -1,0 +1,735 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "card": "C005",
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "view": {
+        "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+        "card": "Gracie",
+        "state": "0",
+        "message": "姓名：沈知夏 $ <林&>，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：沈知夏 $ <林&>，请核对当前资料。"
+      },
+      "initial": {
+        "sessionId": "RWj4mFAfI-7ssWmOYleTS",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "EXfaFC1HepV2gNQuSW6Mt",
+        "snapshotId": "38c03fcd-2c8b-4c1e-9f08-f9daa16cdbf7",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "沈知夏 $ <林&>与Gracie的资料室"
+          },
+          "labels": ["沈知夏 $ <林&>", "Gracie"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "current": {
+        "sessionId": "RWj4mFAfI-7ssWmOYleTS",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "EXfaFC1HepV2gNQuSW6Mt",
+        "snapshotId": "38c03fcd-2c8b-4c1e-9f08-f9daa16cdbf7",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "沈知夏 $ <林&>与Gracie的资料室"
+          },
+          "labels": ["沈知夏 $ <林&>", "Gracie"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "url": "http://127.0.0.1:63921/?sessionId=RWj4mFAfI-7ssWmOYleTS",
+      "sessionId": "RWj4mFAfI-7ssWmOYleTS",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-doXUEa/preview-runs/2026-10-09T09-54-11-225Z-3d8c88b1-829f-4204-8f1a-9957efc5486c",
+      "dryRuns": [
+        {
+          "id": "identity",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "card": "C005",
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "view": {
+        "user": "林婉宁 / 林婉宁",
+        "card": "Gracie",
+        "state": "0",
+        "message": "姓名：林婉宁，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：林婉宁，请核对当前资料。"
+      },
+      "initial": {
+        "sessionId": "YzetS8nrjThtBASsriOxh",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "MmvJGlmKO-voSzUcESeBI",
+        "snapshotId": "22701498-edf7-41ce-81f5-0673995a496c",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "林婉宁与Gracie的资料室"
+          },
+          "labels": ["林婉宁", "Gracie"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "current": {
+        "sessionId": "YzetS8nrjThtBASsriOxh",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "MmvJGlmKO-voSzUcESeBI",
+        "snapshotId": "22701498-edf7-41ce-81f5-0673995a496c",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "林婉宁与Gracie的资料室"
+          },
+          "labels": ["林婉宁", "Gracie"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "url": "http://127.0.0.1:63983/?sessionId=YzetS8nrjThtBASsriOxh",
+      "sessionId": "YzetS8nrjThtBASsriOxh",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-doXUEa/preview-runs/2026-10-09T09-54-16-214Z-bf472c71-45f9-425a-ac37-4fbc7a5413e7",
+      "dryRuns": [
+        {
+          "id": "identity",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "card": "C063",
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "view": {
+        "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+        "card": "极乐庄混浴物语",
+        "state": "0",
+        "message": "姓名：沈知夏 $ <林&>，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：沈知夏 $ <林&>，请核对当前资料。"
+      },
+      "initial": {
+        "sessionId": "gr_usHlZqz9jj1rnlspaV",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "cOJJQwuHmfD55ET_5RWm4",
+        "snapshotId": "9b7822e5-90b1-4291-ae02-1ef5d5c7464d",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "沈知夏 $ <林&>与极乐庄混浴物语的资料室"
+          },
+          "labels": ["沈知夏 $ <林&>", "极乐庄混浴物语"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "current": {
+        "sessionId": "gr_usHlZqz9jj1rnlspaV",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "cOJJQwuHmfD55ET_5RWm4",
+        "snapshotId": "9b7822e5-90b1-4291-ae02-1ef5d5c7464d",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "沈知夏 $ <林&>与极乐庄混浴物语的资料室"
+          },
+          "labels": ["沈知夏 $ <林&>", "极乐庄混浴物语"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "url": "http://127.0.0.1:64032/?sessionId=gr_usHlZqz9jj1rnlspaV",
+      "sessionId": "gr_usHlZqz9jj1rnlspaV",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-k2XtTN/preview-runs/2026-10-09T09-54-20-142Z-46830b52-b964-45c9-a480-c7734926aa1e",
+      "dryRuns": [
+        {
+          "id": "identity",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "card": "C063",
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "view": {
+        "user": "林婉宁 / 林婉宁",
+        "card": "极乐庄混浴物语",
+        "state": "0",
+        "message": "姓名：林婉宁，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：林婉宁，请核对当前资料。"
+      },
+      "initial": {
+        "sessionId": "DNRy9v_D2KM7PJ9KSYnZx",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "2QbVJYx-QNsdDwnEqdsZE",
+        "snapshotId": "2eee73ff-de0b-4ea1-91f0-0fe6a01e3490",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "林婉宁与极乐庄混浴物语的资料室"
+          },
+          "labels": ["林婉宁", "极乐庄混浴物语"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "current": {
+        "sessionId": "DNRy9v_D2KM7PJ9KSYnZx",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "2QbVJYx-QNsdDwnEqdsZE",
+        "snapshotId": "2eee73ff-de0b-4ea1-91f0-0fe6a01e3490",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "林婉宁与极乐庄混浴物语的资料室"
+          },
+          "labels": ["林婉宁", "极乐庄混浴物语"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "url": "http://127.0.0.1:64085/?sessionId=DNRy9v_D2KM7PJ9KSYnZx",
+      "sessionId": "DNRy9v_D2KM7PJ9KSYnZx",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-k2XtTN/preview-runs/2026-10-09T09-54-24-170Z-cd405694-5801-405b-a32e-1b5c7f86d1b8",
+      "dryRuns": [
+        {
+          "id": "identity",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "card": "C013",
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "view": {
+        "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+        "card": "七色光_AMBER_v1.6.41",
+        "state": "0",
+        "message": "姓名：沈知夏 $ <林&>，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：沈知夏 $ <林&>，请核对当前资料。"
+      },
+      "initial": {
+        "sessionId": "PbVWrEuzIJrcPUzWUdFdx",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "a9UWH3ASNLdlU0wFCbqEi",
+        "snapshotId": "c7288804-f305-4e12-9e73-92ef76c411b8",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "沈知夏 $ <林&>与七色光_AMBER_v1.6.41的资料室"
+          },
+          "labels": ["沈知夏 $ <林&>", "七色光_AMBER_v1.6.41"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "current": {
+        "sessionId": "PbVWrEuzIJrcPUzWUdFdx",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "a9UWH3ASNLdlU0wFCbqEi",
+        "snapshotId": "c7288804-f305-4e12-9e73-92ef76c411b8",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "沈知夏 $ <林&>与七色光_AMBER_v1.6.41的资料室"
+          },
+          "labels": ["沈知夏 $ <林&>", "七色光_AMBER_v1.6.41"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "url": "http://127.0.0.1:64136/?sessionId=PbVWrEuzIJrcPUzWUdFdx",
+      "sessionId": "PbVWrEuzIJrcPUzWUdFdx",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-4MSkfp/preview-runs/2026-10-09T09-54-28-073Z-162d4f6c-2e34-4748-aa5e-efbd3391e408",
+      "dryRuns": [
+        {
+          "id": "identity",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "card": "C013",
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "view": {
+        "user": "林婉宁 / 林婉宁",
+        "card": "七色光_AMBER_v1.6.41",
+        "state": "0",
+        "message": "姓名：林婉宁，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：林婉宁，请核对当前资料。"
+      },
+      "initial": {
+        "sessionId": "WIOX_hyqJ6Xn6zwci8vPU",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "1UtIitBppiYX6QxVs_0Aa",
+        "snapshotId": "fe030f60-a354-44cd-8ff1-a3fc96975dfa",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "林婉宁与七色光_AMBER_v1.6.41的资料室"
+          },
+          "labels": ["林婉宁", "七色光_AMBER_v1.6.41"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "current": {
+        "sessionId": "WIOX_hyqJ6Xn6zwci8vPU",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "1UtIitBppiYX6QxVs_0Aa",
+        "snapshotId": "fe030f60-a354-44cd-8ff1-a3fc96975dfa",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "林婉宁与七色光_AMBER_v1.6.41的资料室"
+          },
+          "labels": ["林婉宁", "七色光_AMBER_v1.6.41"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "url": "http://127.0.0.1:64443/?sessionId=WIOX_hyqJ6Xn6zwci8vPU",
+      "sessionId": "WIOX_hyqJ6Xn6zwci8vPU",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-4MSkfp/preview-runs/2026-10-09T09-54-31-875Z-c1a452bd-48df-4c48-b783-6c0ce21a1b61",
+      "dryRuns": [
+        {
+          "id": "identity",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "card": "C072",
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "view": {
+        "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+        "card": "楚昭昭",
+        "state": "0",
+        "message": "姓名：沈知夏 $ <林&>，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：沈知夏 $ <林&>，请核对当前资料。"
+      },
+      "initial": {
+        "sessionId": "U-k25bySmhXTvVY3daNBo",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "E1RIdyjEwajpiq3UAMaHN",
+        "snapshotId": "e35cd508-6e63-4be5-aec8-c6829988ad03",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "沈知夏 $ <林&>与楚昭昭的资料室"
+          },
+          "labels": ["沈知夏 $ <林&>", "楚昭昭"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "current": {
+        "sessionId": "U-k25bySmhXTvVY3daNBo",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "E1RIdyjEwajpiq3UAMaHN",
+        "snapshotId": "e35cd508-6e63-4be5-aec8-c6829988ad03",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "沈知夏 $ <林&>与楚昭昭的资料室"
+          },
+          "labels": ["沈知夏 $ <林&>", "楚昭昭"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "url": "http://127.0.0.1:64576/?sessionId=U-k25bySmhXTvVY3daNBo",
+      "sessionId": "U-k25bySmhXTvVY3daNBo",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-4jUw7W/preview-runs/2026-10-09T09-54-35-799Z-e8ca8e5a-b215-4f0f-8991-f80e2f7d5c02",
+      "dryRuns": [
+        {
+          "id": "identity",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "card": "C072",
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "view": {
+        "user": "林婉宁 / 林婉宁",
+        "card": "楚昭昭",
+        "state": "0",
+        "message": "姓名：林婉宁，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：林婉宁，请核对当前资料。"
+      },
+      "initial": {
+        "sessionId": "w8lBc1Y6SwiiMGah481l5",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "MSvY23GV24jYP_MDVXXld",
+        "snapshotId": "ef17ba9e-a35f-43b3-9481-08b4cf27029c",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "林婉宁与楚昭昭的资料室"
+          },
+          "labels": ["林婉宁", "楚昭昭"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "current": {
+        "sessionId": "w8lBc1Y6SwiiMGah481l5",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "MSvY23GV24jYP_MDVXXld",
+        "snapshotId": "ef17ba9e-a35f-43b3-9481-08b4cf27029c",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "林婉宁与楚昭昭的资料室"
+          },
+          "labels": ["林婉宁", "楚昭昭"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "url": "http://127.0.0.1:64657/?sessionId=w8lBc1Y6SwiiMGah481l5",
+      "sessionId": "w8lBc1Y6SwiiMGah481l5",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-4jUw7W/preview-runs/2026-10-09T09-54-39-684Z-ae6f4f9e-a6fc-4673-88b1-60e89719aef8",
+      "dryRuns": [
+        {
+          "id": "identity",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "card": "C025",
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是档案馆的资料核对员，性格沉着、直率。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "view": {
+        "user": "沈知夏 $ <林&> / 沈知夏 $ <林&>",
+        "card": "叶昀",
+        "state": "0",
+        "message": "姓名：沈知夏 $ <林&>，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：沈知夏 $ <林&>，请核对当前资料。"
+      },
+      "initial": {
+        "sessionId": "5pkfDu7W28-m442F_yJHT",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "abz4wvUgWuL3LnMeVwsIv",
+        "snapshotId": "5a5c66a6-3f0a-4b30-9d0f-1645d0e4dd01",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "沈知夏 $ <林&>与叶昀的资料室"
+          },
+          "labels": ["沈知夏 $ <林&>", "叶昀"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "current": {
+        "sessionId": "5pkfDu7W28-m442F_yJHT",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "abz4wvUgWuL3LnMeVwsIv",
+        "snapshotId": "5a5c66a6-3f0a-4b30-9d0f-1645d0e4dd01",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "沈知夏 $ <林&>与叶昀的资料室"
+          },
+          "labels": ["沈知夏 $ <林&>", "叶昀"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "url": "http://127.0.0.1:64735/?sessionId=5pkfDu7W28-m442F_yJHT",
+      "sessionId": "5pkfDu7W28-m442F_yJHT",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nX8Amt/preview-runs/2026-10-09T09-54-43-473Z-8ac526e4-5b44-4f59-aafa-0f3f370263de",
+      "dryRuns": [
+        {
+          "id": "identity",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "card": "C025",
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是32岁的女性，是档案馆的资料核对员，性格谨慎、耐心。她正在对照当前角色页面的姓名和固定资料。"
+      },
+      "view": {
+        "user": "林婉宁 / 林婉宁",
+        "card": "叶昀",
+        "state": "0",
+        "message": "姓名：林婉宁，请核对当前资料。",
+        "lastUser": "",
+        "lastChar": "姓名：林婉宁，请核对当前资料。"
+      },
+      "initial": {
+        "sessionId": "8L4nx7QnOb6cpekUHpvF1",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "lK6_qXU1ew-7tL1g4N7-7",
+        "snapshotId": "f16e59e8-de9a-4f54-b5e3-bb13e20d0fb3",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "林婉宁与叶昀的资料室"
+          },
+          "labels": ["林婉宁", "叶昀"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "current": {
+        "sessionId": "8L4nx7QnOb6cpekUHpvF1",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "lK6_qXU1ew-7tL1g4N7-7",
+        "snapshotId": "f16e59e8-de9a-4f54-b5e3-bb13e20d0fb3",
+        "parentSnapshotId": null,
+        "variables": {
+          "score": false,
+          "details": {
+            "address": "林婉宁与叶昀的资料室"
+          },
+          "labels": ["林婉宁", "叶昀"]
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "url": "http://127.0.0.1:64830/?sessionId=8L4nx7QnOb6cpekUHpvF1",
+      "sessionId": "8L4nx7QnOb6cpekUHpvF1",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nX8Amt/preview-runs/2026-10-09T09-54-47-544Z-e66a3156-67c0-4f8d-a62f-0f1df8ea6bb8",
+      "dryRuns": [
+        {
+          "id": "identity",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "consoleErrors": []
+    }
+  ]
+}

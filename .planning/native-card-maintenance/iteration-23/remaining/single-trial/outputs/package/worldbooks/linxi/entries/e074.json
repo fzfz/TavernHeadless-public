@@ -1,0 +1,40 @@
+{
+  "uid": 74,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "终局阶段_Z005_杨桃子最终返乡",
+  "order": 282,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<终局阶段_Z005>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n{{user}}在办公室打开杨桃子的QQ空间，查看他最新发布的日志和照片。\n\n杨桃子在日志里辱骂王授军，又写道：“王授军出事后情况太可怕，我要马上离开本地。”随后，他发布一张自己站在老家院门前的照片，配文写着自己已经回到老家。\n\n{{user}}调出杨桃子应聘时留下的户籍资料，把资料中的地址、照片里的门牌和QQ空间发布记录逐项核对。门牌与户籍地址一致，照片也拍到杨桃子本人站在院门前。{{user}}保存日志、照片和户籍资料的截图，确认杨桃子这次已经回到老家。\n</终局阶段_Z005>\n"
+}

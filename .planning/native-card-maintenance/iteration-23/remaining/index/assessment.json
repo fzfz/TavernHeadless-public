@@ -1,0 +1,1762 @@
+{
+  "cards": 117,
+  "cliCalls": 1,
+  "scope": "deterministic index of prior tool outputs; incomplete semantic packages return formal diagnostics",
+  "results": [
+    {
+      "id": "C001",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-w9rk6F/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-w9rk6F/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C002",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-0uYd6m/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-0uYd6m/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C003",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-6TFsH0/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-6TFsH0/package/manifest.json",
+      "files": 4,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C004",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ICq0KA/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ICq0KA/package/manifest.json",
+      "files": 4,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C005",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-dVCILA/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-dVCILA/package/manifest.json",
+      "files": 4,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C006",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/package/manifest.json",
+      "files": 8,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C007",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-PH0e3F/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-PH0e3F/package/manifest.json",
+      "files": 4,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C008",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-3NUsRE/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-3NUsRE/package/manifest.json",
+      "files": 4,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C009",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-WjAo2F/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-WjAo2F/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C010",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-RihYGU/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-RihYGU/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C011",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-QZwE9u/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-QZwE9u/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C012",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Xr3ENH/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Xr3ENH/package/manifest.json",
+      "files": 8,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C013",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-narl7I/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-narl7I/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C014",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-svlGIp/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-svlGIp/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C015",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-IO3gqc/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-IO3gqc/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C016",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-HNgy7q/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-HNgy7q/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C017",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1VW5mL/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1VW5mL/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C018",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-FqYEX3/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-FqYEX3/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C019",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-qYYKTm/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-qYYKTm/package/manifest.json",
+      "files": 4,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C020",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-0TaT3M/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-0TaT3M/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C021",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1GIcMI/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1GIcMI/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C022",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-mQoioI/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-mQoioI/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C023",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-xSvNEb/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-xSvNEb/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C024",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-hrZVBn/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-hrZVBn/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C025",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-6996AD/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-6996AD/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C026",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nE61jG/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nE61jG/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C027",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-fH426h/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-fH426h/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C028",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-cKlAgP/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-cKlAgP/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C029",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-QclXJW/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-QclXJW/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C030",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-kwSnn5/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-kwSnn5/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C031",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-qqBfT5/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-qqBfT5/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C032",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-wXYUOp/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-wXYUOp/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C033",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-BnczuS/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-BnczuS/package/manifest.json",
+      "files": 4,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C034",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-xxpwp7/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-xxpwp7/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C035",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-bcrako/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-bcrako/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C036",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-3vsBOs/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-3vsBOs/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C037",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-3rV5eo/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-3rV5eo/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C038",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-lYelaH/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-lYelaH/package/manifest.json",
+      "files": 4,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C039",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ndgZcR/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ndgZcR/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C040",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-71OO0y/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-71OO0y/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C041",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ULanA1/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ULanA1/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C042",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-h4st1l/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-h4st1l/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C043",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-haDAyR/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-haDAyR/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C044",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-mb9CzX/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-mb9CzX/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C045",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ntHWZT/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ntHWZT/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C046",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-cuKOh7/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-cuKOh7/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C047",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-cUMXDT/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-cUMXDT/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C048",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-DlSKV5/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-DlSKV5/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C049",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-F4iCWn/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-F4iCWn/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C050",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nwZpzG/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nwZpzG/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C051",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Dm5U6D/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Dm5U6D/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C052",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-VJDk9H/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-VJDk9H/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C053",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-g7pZ4C/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-g7pZ4C/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C054",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-t9Wk1i/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-t9Wk1i/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C055",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TbdG88/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TbdG88/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C056",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-6MAeCP/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-6MAeCP/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C057",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-O0IcqS/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-O0IcqS/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C058",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-gLxUOz/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-gLxUOz/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C059",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-PhZZCS/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-PhZZCS/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C060",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-DeLUpI/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-DeLUpI/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C061",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-GSlKWH/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-GSlKWH/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C062",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-RKRUVQ/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-RKRUVQ/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C063",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-rSjfz5/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-rSjfz5/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C064",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-BI9RkV/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-BI9RkV/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C065",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-jwaflf/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-jwaflf/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C066",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-rhjdnF/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-rhjdnF/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C067",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-0Gzn1N/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-0Gzn1N/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C068",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-iwuGZa/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-iwuGZa/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C069",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-c3TSkt/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-c3TSkt/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C070",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-jrlFr5/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-jrlFr5/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C071",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-JFmpZM/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-JFmpZM/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C072",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-QVaY99/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-QVaY99/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C073",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-JG3fEb/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-JG3fEb/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C074",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-3QkyP0/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-3QkyP0/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C075",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-v5rNtP/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-v5rNtP/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C076",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-mNxSTX/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-mNxSTX/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C077",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-j3nbTI/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-j3nbTI/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C078",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-A4xkRC/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-A4xkRC/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C079",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-EZvi8c/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-EZvi8c/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C080",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-amWNmb/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-amWNmb/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C081",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-O4gyda/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-O4gyda/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C082",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-vP89xK/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-vP89xK/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C083",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-BDdMaH/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-BDdMaH/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C084",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-i6M2ek/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-i6M2ek/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C085",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-m2xuZH/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-m2xuZH/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C086",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-deaDlQ/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-deaDlQ/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C087",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-mfxu0F/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-mfxu0F/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C088",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-fUwqbe/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-fUwqbe/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C089",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-pDYIJp/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-pDYIJp/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C090",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-b2abOn/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-b2abOn/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C091",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-J8Q2DA/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-J8Q2DA/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C092",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-fKeWgi/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-fKeWgi/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C093",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-zuGrh5/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-zuGrh5/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C094",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-6uz43Q/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-6uz43Q/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C095",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-irzQOq/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-irzQOq/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C096",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-VXFUL0/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-VXFUL0/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C097",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-yIiIYG/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-yIiIYG/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C098",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ybRBW2/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ybRBW2/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C099",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Dfps9X/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Dfps9X/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C100",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-rmRjjg/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-rmRjjg/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C101",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Dp5Ds7/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Dp5Ds7/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C102",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-wEXv9F/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-wEXv9F/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C103",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-51NJlF/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-51NJlF/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C104",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-OwxIiH/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-OwxIiH/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C105",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-VDcu3b/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-VDcu3b/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C106",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-SOKH3j/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-SOKH3j/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C107",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nlkbrT/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-nlkbrT/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C108",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-uXJHvp/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-uXJHvp/package/manifest.json",
+      "files": 5,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C109",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-e2i44s/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-e2i44s/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C110",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-wktyQk/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-wktyQk/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C111",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-hnEFJc/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-hnEFJc/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C112",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-eDrC0G/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-eDrC0G/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C113",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-7lshyJ/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-7lshyJ/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C114",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1CyszI/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1CyszI/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "C115",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ORo3Jj/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-ORo3Jj/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "USER001",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-lc03qx/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-lc03qx/package/manifest.json",
+      "files": 6,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    },
+    {
+      "id": "USER002",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-fASNxk/task.json",
+      "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-fASNxk/package/manifest.json",
+      "files": 8,
+      "issues": [
+        {
+          "code": "NATIVE_CARD_OPENINGS_INVALID",
+          "path": "openings.json",
+          "message": "开场配置的结构不符合原生包格式。",
+          "action": "请按 openings.json 的字段定义修正开场配置。",
+          "expected": "File openings.json is missing. Add a valid openings.json."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "preset": "夏瑾 天琴座 Beta 3.9（泛国模）",
+  "presetVersionId": "0xQM1j_VZ9uqjXsuG4EGG",
+  "regexSources": [
+    {
+      "kind": "character",
+      "count": 8
+    },
+    {
+      "kind": "preset",
+      "count": 11
+    }
+  ],
+  "activatedWorldbookEntries": [
+    1,
+    0,
+    17,
+    16,
+    9,
+    14,
+    34,
+    33,
+    32,
+    31,
+    30,
+    29,
+    28,
+    27,
+    26,
+    37,
+    36,
+    35,
+    88,
+    5,
+    4,
+    3,
+    112,
+    111,
+    109,
+    127,
+    87
+  ],
+  "messageCount": 5,
+  "userInput": "我们先回家吧。",
+  "bindingChecks": "passed",
+  "fullPresetCompatibility": "live_not_yet_accepted",
+  "unresolvedMacros": []
+}

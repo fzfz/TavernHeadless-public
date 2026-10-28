@@ -1,0 +1,968 @@
+import Fastify, { type FastifyInstance } from "fastify";
+import { afterEach, describe, expect, it, vi } from "vitest";
+
+import { DEFAULT_ADMIN_ACCOUNT_ID } from "../../accounts/constants.js";
+import { createTestDatabase } from "../../../test/helpers/create-test-db.js";
+import { registerPromptRuntimeRoutes } from "../prompt-runtime.js";
+import { PromptRuntimeControlService } from "../../services/prompt-runtime/control-service.js";
+import type { PromptRuntimePreviewResult } from "../../services/chat/contracts.js";
+import type { PromptRuntimeInspectResult } from "../../services/prompt-runtime/types.js";
+
+const apps: FastifyInstance[] = [];
+const CLIENT_INJECTION_TITLE = "Client guide";
+const CLIENT_INJECTION_CONTENT = "Keep the north pass in focus.";
+
+describe("prompt-runtime preview and inspect routes", () => {
+  afterEach(async () => {
+    while (apps.length > 0) {
+      const app = apps.pop();
+      if (app) {
+        await app.close();
+      }
+    }
+  });
+
+  it("returns structured memory_injection and memory on preview", async () => {
+    const previewResult = createPreviewResult();
+    const built = await buildPromptRuntimeRouteApp({ previewResult });
+
+    const response = await built.app.inject({
+      method: "POST",
+      url: "/sessions/session-1/prompt-runtime/preview",
+      payload: {
+        text: "{{getvar::资产.金币}}",
+        branch_id: "alt-branch",
+        source_floor_id: "floor-source",
+        source_selection: {
+          history: { mode: "windowed", max_messages: 24 },
+          memory: { enabled: true },
+          worldbook: { enabled: true },
+          examples: { enabled: false },
+        },
+        prompt_runtime_injections: createPromptRuntimeInjectionsRequestBody(),
+      },
+    });
+
+    expect(response.statusCode, response.body).toBe(200);
+    expect(built.previewPromptRuntimeText).toHaveBeenCalledWith(
+      "session-1",
+      expect.objectContaining({
+        text: "{{getvar::资产.金币}}",
+        branchId: "alt-branch",
+        sourceFloorId: "floor-source",
+        sourceSelection: {
+          history: { mode: "windowed", maxMessages: 24 },
+          memory: { enabled: true },
+          worldbook: { enabled: true },
+          examples: { enabled: false },
+        },
+        promptRuntimeInjections: [{
+          sourceKind: "client_injection",
+          title: CLIENT_INJECTION_TITLE,
+          content: CLIENT_INJECTION_CONTENT,
+          placement: "before_history",
+          order: 30,
+          scope: "request",
+        }],
+      }),
+      DEFAULT_ADMIN_ACCOUNT_ID,
+    );
+
+    expect(response.json()).toMatchObject({
+      data: {
+        scope: {
+          session_id: "session-1",
+          target_branch_id: "alt-branch",
+          branch_exists: true,
+          source_floor_id: "floor-source",
+          history_source_branch_id: "alt-branch",
+          history_source_mode: "existing_branch",
+        },
+        memory_injection: {
+          items: [
+            {
+              id: "memory-branch-fact-1",
+              scope: "branch",
+              scope_id: "memscope:session-1:main",
+              type: "fact",
+              summary_tier: null,
+              content: "Bob still holds the vault key.",
+              fact_key: "vault_key_owner",
+              importance: 0.82,
+              confidence: 1,
+              source_floor_id: null,
+              source_message_id: null,
+              status: "active",
+              token_count_estimate: 18,
+            },
+          ],
+          formatted_text: "[Memory]\n- Bob still holds the vault key.",
+          token_count: 64,
+          scope_resolution: {
+            mode: "visible_refs",
+            strict: false,
+            scope_refs: [
+              { scope: "global", scopeId: "default-admin" },
+              { scope: "branch", scopeId: "memscope:session-1:main" },
+            ],
+          },
+        },
+        memory: {
+          summary_injected: true,
+          runtime_mode: "async_primary",
+          requested_write: false,
+          effective_write: false,
+          strategy: "dual_summary",
+          summary_text: "[Memory]\n- Bob still holds the vault key.",
+          summary_text_hash: "sha256:preview-memory-trace",
+          selected_items: [
+            {
+              memory_id: "memory-branch-fact-1",
+              scope: "branch",
+              scope_id: "memscope:session-1:main",
+              branch_id: "main",
+              kind: "fact",
+              source: "store",
+              score: 0.82,
+              token_count: 18,
+              selected_reason: null,
+            },
+          ],
+          token_stats: {
+            budget: 500,
+            used: 64,
+            micro_summary: 14,
+            macro_summary: 0,
+            direct_items: 50,
+          },
+          scope_resolution: {
+            mode: "branch_aware",
+            requested_scopes: ["global", "branch"],
+            resolved_scopes: ["global", "branch"],
+            requested_branch_id: "main",
+            resolved_branch_id: "main",
+            fallback_reason: null,
+          },
+        },
+        runtime_trace: {
+          generation_params_resolution: [
+            { name: "temperature", final_state: "sent", origin: "default", value_from: "default" },
+            { name: "maxOutputTokens", final_state: "sent", origin: "request", value_from: "request" },
+            { name: "topP", final_state: "cancelled", origin: "request", cancelled_at: "request" },
+            {
+              name: "responseFormat",
+              final_state: "filtered",
+              origin: "instance",
+              filter_reason: "field_not_supported_by_provider",
+            },
+          ],
+          tool_transport: {
+            selection: {
+              transport: "text_protocol",
+              reason_code: "explicit_override",
+              reason_detail: "Tool transport was explicitly overridden to 'text_protocol'.",
+            },
+            tool_list: {
+              injected: true,
+              contributor_id: "builtin:tool_list",
+              placement_mode: "contributor_chain",
+              tool_count: 2,
+            },
+            parsing: {
+              block_count: 1,
+              accepted_count: 1,
+              rejected_count: 0,
+              diagnostics: [],
+            },
+          },
+          injection: {
+            items: [
+              {
+                request_index: 0,
+                source_kind: "client_injection",
+                injection_id: null,
+                enabled: true,
+                scope: "request",
+                placement_requested: "before_history",
+                order_requested: 30,
+                title: CLIENT_INJECTION_TITLE,
+                content_length: CLIENT_INJECTION_CONTENT.length,
+                applied: true,
+                placement_resolved: "history.before",
+                not_applied_reason: null,
+              },
+            ],
+          },
+        },
+      },
+    });
+  });
+
+  it("returns prepared_turn memory_injection, memory, and memory_summary on inspect", async () => {
+    const inspectResult = createInspectResult();
+    const built = await buildPromptRuntimeRouteApp({ inspectResult });
+
+    const response = await built.app.inject({
+      method: "POST",
+      url: "/sessions/session-1/prompt-runtime/inspect",
+      payload: {
+        message: "Please continue the campfire scene.",
+        branch_id: "alt-branch",
+        source_floor_id: "floor-source",
+        session_state_writes: [
+          {
+            namespace: "quest_flags",
+            slot: "companion",
+            value: { mood: "ally" },
+          },
+          {
+            namespace: "quest_flags",
+            slot: "expired_hint",
+            delete: true,
+          },
+        ],
+        prompt_runtime_injections: createPromptRuntimeInjectionsRequestBody(),
+      },
+    });
+
+    expect(response.statusCode, response.body).toBe(200);
+    expect(built.inspectPromptRuntime).toHaveBeenCalledWith(
+      "session-1",
+      expect.objectContaining({
+        message: "Please continue the campfire scene.",
+        branchId: "alt-branch",
+        sourceFloorId: "floor-source",
+        sessionStateWrites: [
+          {
+            namespace: "quest_flags",
+            slot: "companion",
+            value: { mood: "ally" },
+          },
+          {
+            namespace: "quest_flags",
+            slot: "expired_hint",
+            delete: true,
+          },
+        ],
+        promptRuntimeInjections: [{
+          sourceKind: "client_injection",
+          title: CLIENT_INJECTION_TITLE,
+          content: CLIENT_INJECTION_CONTENT,
+          placement: "before_history",
+          order: 30,
+          scope: "request",
+        }],
+      }),
+      DEFAULT_ADMIN_ACCOUNT_ID,
+    );
+
+    expect(response.json()).toMatchObject({
+      data: {
+        scope: {
+          session_id: "session-1",
+          target_branch_id: "alt-branch",
+          branch_exists: true,
+          source_floor_id: "floor-source",
+          history_source_branch_id: "alt-branch",
+          history_source_mode: "existing_branch",
+        },
+        injections: [
+          {
+            request_index: 0,
+            source_kind: "client_injection",
+            injection_id: null,
+            enabled: true,
+            scope: "request",
+            placement_requested: "before_history",
+            order_requested: 30,
+            title: CLIENT_INJECTION_TITLE,
+            content_length: CLIENT_INJECTION_CONTENT.length,
+            applied: true,
+            placement_resolved: "history.before",
+            not_applied_reason: null,
+          },
+        ],
+        prepared_turn: {
+          prompt_snapshot: null,
+          runtime_trace: {
+            generation_params_resolution: [
+              { name: "temperature", final_state: "sent", origin: "default", value_from: "default" },
+              { name: "maxOutputTokens", final_state: "sent", origin: "request", value_from: "request" },
+              { name: "topP", final_state: "cancelled", origin: "request", cancelled_at: "request" },
+              {
+                name: "responseFormat",
+                final_state: "filtered",
+                origin: "instance",
+                filter_reason: "field_not_supported_by_provider",
+              },
+            ],
+            tool_transport: {
+              selection: {
+                transport: "text_protocol",
+                reason_code: "explicit_override",
+                reason_detail: "Tool transport was explicitly overridden to 'text_protocol'.",
+              },
+              tool_list: {
+                injected: true,
+                contributor_id: "builtin:tool_list",
+                placement_mode: "contributor_chain",
+                tool_count: 2,
+              },
+              parsing: {
+                block_count: 1,
+                accepted_count: 1,
+                rejected_count: 0,
+                diagnostics: [],
+              },
+            },
+            injection: {
+              items: [
+                {
+                  request_index: 0,
+                  source_kind: "client_injection",
+                  injection_id: null,
+                  enabled: true,
+                  scope: "request",
+                  placement_requested: "before_history",
+                  order_requested: 30,
+                  title: CLIENT_INJECTION_TITLE,
+                  content_length: CLIENT_INJECTION_CONTENT.length,
+                  applied: true,
+                  placement_resolved: "history.before",
+                  not_applied_reason: null,
+                },
+              ],
+            },
+          },
+          memory_injection: {
+            items: [
+              {
+                id: "memory-branch-fact-1",
+                scope: "branch",
+                scope_id: "memscope:session-1:main",
+                             type: "fact",
+                content: "Bob still holds the vault key.",
+              },
+            ],
+            scope_resolution: {
+              mode: "visible_refs",
+              strict: false,
+              scope_refs: [
+                { scope: "global", scopeId: "default-admin" },
+                { scope: "branch", scopeId: "memscope:session-1:main" },
+              ],
+            },
+          },
+          memory_summary: "The party recently agreed to search the northern pass.",
+          memory: {
+            summary_injected: true,
+            runtime_mode: "async_primary",
+            requested_write: false,
+            effective_write: false,
+            strategy: "dual_summary",
+          },
+          generation_params: {
+            temperature: 0.7,
+            max_output_tokens: 256,
+          },
+          requested_turn_config: {
+            enable_tools: false,
+            enable_director: false,
+            enable_verifier: false,
+          },
+          turn_config: {
+            enable_tools: false,
+            enable_director: false,
+            enable_verifier: false,
+          },
+          session_state_writes: {
+            total: 1,
+            writes: [
+              {
+                namespace: "quest_flags",
+                slot: "companion",
+                operation: "set",
+              },
+            ],
+          },
+          prepare_phase_trace: expect.arrayContaining([
+            {
+              phase: "source_resolve",
+              detail: {
+                selected_memory_count: 1,
+                memory_summary_injected: true,
+              },
+            },
+            {
+              phase: "injection",
+              detail: {
+                requested_count: 1,
+                applied_count: 1,
+                not_applied_count: 0,
+              },
+            },
+          ]),
+        },
+      },
+    });
+  });
+
+  it("redacts restricted injection content on inspect by default and exposes it on explicit request", async () => {
+    const built = await buildPromptRuntimeRouteApp({ inspectResult: createRestrictedInspectResult() });
+
+    const redactedResponse = await built.app.inject({
+      method: "POST",
+      url: "/sessions/session-1/prompt-runtime/inspect",
+      headers: { "x-account-id": DEFAULT_ADMIN_ACCOUNT_ID },
+      payload: { message: "Inspect please" },
+    });
+
+    expect(redactedResponse.statusCode, redactedResponse.body).toBe(200);
+    const redacted = redactedResponse.json().data;
+    expect(redacted.injections[0]).toMatchObject({
+      source_kind: "agent_injection",
+      visibility: "agent_private",
+      title: null,
+      source_chain: null,
+      restricted: true,
+      applied: true,
+      placement_resolved: "history.after",
+    });
+    expect(redacted.prepared_turn.runtime_trace.injection.items[0]).toMatchObject({
+      visibility: "agent_private",
+      title: null,
+      restricted: true,
+    });
+
+    const fullResponse = await built.app.inject({
+      method: "POST",
+      url: "/sessions/session-1/prompt-runtime/inspect",
+      headers: { "x-account-id": DEFAULT_ADMIN_ACCOUNT_ID },
+      payload: { message: "Inspect please", include_restricted_injection_content: true },
+    });
+
+    expect(fullResponse.statusCode, fullResponse.body).toBe(200);
+    const full = fullResponse.json().data;
+    expect(full.injections[0]).toMatchObject({
+      source_kind: "agent_injection",
+      visibility: "agent_private",
+      title: "Internal agent plan",
+      source_chain: { agent_type_id: "draft_assistant" },
+      restricted: false,
+    });
+    expect(full.prepared_turn.runtime_trace.injection.items[0]).toMatchObject({
+      title: "Internal agent plan",
+      restricted: false,
+    });
+  });
+});
+
+function createRestrictedInspectResult(): PromptRuntimeInspectResult {
+  const base = createInspectResult();
+  const restrictedItem = {
+    requestIndex: 0,
+    sourceKind: "agent_injection",
+    visibility: "agent_private" as const,
+    enabled: true,
+    scope: "request" as const,
+    placementRequested: "after_history",
+    orderRequested: 100,
+    title: "Internal agent plan",
+    contentLength: 18,
+    tokenCount: 6,
+    budgetGroup: "injection",
+    budgetStatus: "within_budget" as const,
+    applied: true,
+    placementResolved: "history.after",
+    anchorResolved: { kind: "section" as const, internalKey: "history.after" },
+    sourceChain: { agentTypeId: "draft_assistant" },
+  };
+  return {
+    ...base,
+    injections: [restrictedItem],
+    preparedTurn: {
+      ...base.preparedTurn,
+      runtimeTrace: {
+        ...base.preparedTurn.runtimeTrace,
+        injection: { items: [restrictedItem] },
+      },
+    },
+  } as PromptRuntimeInspectResult;
+}
+
+async function buildPromptRuntimeRouteApp(input: {
+  previewResult?: PromptRuntimePreviewResult;
+  inspectResult?: PromptRuntimeInspectResult;
+}): Promise<{
+  app: FastifyInstance;
+  previewPromptRuntimeText: ReturnType<typeof vi.fn>;
+  inspectPromptRuntime: ReturnType<typeof vi.fn>;
+}> {
+  const connection = createTestDatabase(":memory:");
+  const app = Fastify({ logger: false });
+
+  app.addHook("onRequest", async (request) => {
+    request.authContext = {
+      kind: "authenticated",
+      accountId: DEFAULT_ADMIN_ACCOUNT_ID,
+      role: "admin",
+      status: "active",
+      actorType: "account",
+      actorId: DEFAULT_ADMIN_ACCOUNT_ID,
+      actorAccountId: DEFAULT_ADMIN_ACCOUNT_ID,
+      actorClientId: null,
+      authMethod: "dev",
+    };
+  });
+  app.addHook("onClose", async () => {
+    connection.close();
+  });
+
+  const previewPromptRuntimeText = vi.fn(async () => input.previewResult ?? createPreviewResult());
+  const inspectPromptRuntime = vi.fn(async () => input.inspectResult ?? createInspectResult());
+
+  await registerPromptRuntimeRoutes(
+    app,
+    new PromptRuntimeControlService(connection.db),
+    {
+      previewService: { previewPromptRuntimeText },
+      inspectService: { inspectPromptRuntime },
+    },
+  );
+
+  await app.ready();
+  apps.push(app);
+
+  return {
+    app,
+    previewPromptRuntimeText,
+    inspectPromptRuntime,
+  };
+}
+
+function createScope() {
+  return {
+    sessionId: "session-1",
+    targetBranchId: "alt-branch",
+    branchExists: true,
+    sourceFloorId: "floor-source",
+    historySourceBranchId: "alt-branch",
+    historySourceMode: "existing_branch" as const,
+  };
+}
+
+function createResolvedPolicy() {
+  return {
+    structure: {
+      mode: "no_assistant" as const,
+      mergeAdjacentSameRole: true,
+      preserveSystemMessages: true,
+      assistantRewriteStrategy: "to_system" as const,
+    },
+    delivery: {
+      allowAssistantPrefill: true,
+      requireLastUser: true,
+      noAssistant: true,
+    },
+    debug: {
+      includePromptSnapshot: false,
+      includeRuntimeTrace: false,
+      includeWorldbookMatches: false,
+    },
+    budget: {
+      maxInputTokens: 4096,
+      reservedCompletionTokens: 1024,
+    },
+    sourceSelection: {
+      history: { mode: "windowed" as const, maxMessages: 24 },
+      memory: { enabled: true },
+      worldbook: { enabled: true },
+      examples: { enabled: false },
+    },
+    visibility: {
+      mode: "allow_all_except_hidden" as const,
+      hiddenFloorRanges: [{ startFloorNo: 1, endFloorNo: 2 }],
+    },
+  };
+}
+
+function createSourceMap() {
+  return {
+    structure: {
+      mode: "request_override" as const,
+      mergeAdjacentSameRole: "request_override" as const,
+      preserveSystemMessages: "system_default" as const,
+      assistantRewriteStrategy: "system_default" as const,
+    },
+    delivery: {
+      allowAssistantPrefill: "system_default" as const,
+      requireLastUser: "session_policy" as const,
+      noAssistant: "request_override" as const,
+    },
+    budget: {
+      maxInputTokens: "request_override" as const,
+      reservedCompletionTokens: "request_override" as const,
+    },
+    sourceSelection: {
+      history: {
+        mode: "request_override" as const,
+        maxMessages: "request_override" as const,
+      },
+      memory: { enabled: "system_default" as const },
+      worldbook: { enabled: "system_default" as const },
+      examples: { enabled: "request_override" as const },
+    },
+    visibility: {
+      mode: "request_override" as const,
+      hiddenFloorRanges: "request_override" as const,
+    },
+    history: {
+      sourceBranchId: "alt-branch",
+      sourceMode: "existing_branch" as const,
+    },
+  };
+}
+
+function createHistoryNormalization() {
+  return {
+    rawEntryCount: 4,
+    effectiveTurnCount: 2,
+    selectedTurnCount: 2,
+    trailingUserSourceFloorIds: ["floor-1", "floor-2"],
+    mergedUserGroups: [
+      {
+        effectiveRole: "user" as const,
+        sourceFloorIds: ["floor-1", "floor-2"],
+        sourceMessageIds: ["msg-1", "msg-2"],
+        includesCurrentInput: true,
+      },
+    ],
+    violations: [],
+  };
+}
+
+function createMemoryInjection() {
+  return {
+    items: [
+      {
+        id: "memory-branch-fact-1",
+        scope: "branch" as const,
+        scopeId: "memscope:session-1:main",
+        type: "fact" as const,
+        content: "Bob still holds the vault key.",
+        factKey: "vault_key_owner",
+        importance: 0.82,
+        confidence: 1,
+        status: "active" as const,
+        tokenCountEstimate: 18,
+        createdAt: 1710000000100,
+        updatedAt: 1710000000200,
+      },
+    ],
+    formattedText: "[Memory]\n- Bob still holds the vault key.",
+    tokenCount: 64,
+    scopeResolution: {
+      mode: "visible_refs" as const,
+      strict: false,
+      scopeRefs: [
+        { scope: "global" as const, scopeId: "default-admin" },
+        { scope: "branch" as const, scopeId: "memscope:session-1:main" },
+      ],
+    },
+  };
+}
+
+function createMemoryTrace() {
+  return {
+    summaryInjected: true,
+    runtimeMode: "async_primary" as const,
+    requestedWrite: false,
+    effectiveWrite: false,
+    strategy: "dual_summary" as const,
+    summaryText: "[Memory]\n- Bob still holds the vault key.",
+    summaryTextHash: "sha256:preview-memory-trace",
+    selectedItems: [
+      {
+        memoryId: "memory-branch-fact-1",
+        scope: "branch" as const,
+        scopeId: "memscope:session-1:main",
+        branchId: "main",
+        kind: "fact" as const,
+        source: "store" as const,
+        score: 0.82,
+        tokenCount: 18,
+        selectedReason: null,
+      },
+    ],
+    tokenStats: {
+      budget: 500,
+      used: 64,
+      microSummary: 14,
+      macroSummary: 0,
+      directItems: 50,
+    },
+    scopeResolution: {
+      mode: "branch_aware" as const,
+      requestedScopes: ["global", "branch"],
+      resolvedScopes: ["global", "branch"],
+      requestedBranchId: "main",
+      resolvedBranchId: "main",
+      fallbackReason: null,
+    },
+  };
+}
+
+function createToolTransportTrace() {
+  return {
+    selection: {
+      transport: "text_protocol" as const,
+      reasonCode: "explicit_override" as const,
+      reasonDetail: "Tool transport was explicitly overridden to 'text_protocol'.",
+    },
+    toolList: {
+      injected: true,
+      contributorId: "builtin:tool_list",
+      placementMode: "contributor_chain" as const,
+      toolCount: 2,
+    },
+    parsing: {
+      blockCount: 1,
+      acceptedCount: 1,
+      rejectedCount: 0,
+      diagnostics: [],
+    },
+  };
+}
+
+function createPromptRuntimeInjectionsRequestBody() {
+  return [{
+    source_kind: "client_injection" as const,
+    title: CLIENT_INJECTION_TITLE,
+    content: CLIENT_INJECTION_CONTENT,
+    placement: "before_history",
+    order: 30,
+    scope: "request" as const,
+  }];
+}
+
+function createInjectionTraceItems() {
+  return [{
+    requestIndex: 0,
+    sourceKind: "client_injection",
+    visibility: "client" as const,
+    enabled: true,
+    scope: "request" as const,
+    placementRequested: "before_history",
+    orderRequested: 30,
+    title: CLIENT_INJECTION_TITLE,
+    contentLength: CLIENT_INJECTION_CONTENT.length,
+    applied: true,
+    placementResolved: "history.before",
+  }];
+}
+
+function createPreviewResult(): PromptRuntimePreviewResult {
+  return {
+    scope: createScope(),
+    policy: createResolvedPolicy(),
+    sourceMap: createSourceMap(),
+    diagnostics: [
+      {
+        code: "derived_no_assistant_structure",
+        message: "Delivery policy implied a no-assistant prompt structure.",
+        severity: "warning",
+        source: "policy",
+        fieldPath: "policy.structure.mode",
+      },
+    ],
+    limitations: ["preview_limit"],
+    text: '{"资产":3}',
+    memoryInjection: createMemoryInjection(),
+    memory: createMemoryTrace(),
+    runtimeTrace: {
+      macro: {
+        warnings: [],
+        usedNames: ["getvar"],
+        mutationPreview: [],
+        stagedMutations: [],
+        traces: [
+          {
+            macroName: "getvar",
+            rawText: "{{getvar::资产.金币}}",
+            resolvedText: "3",
+            phase: "dry_run",
+            sourceKind: "macro",
+          },
+        ],
+      },
+      historyNormalization: createHistoryNormalization(),
+      generationParamsResolution: [
+        { name: "temperature", finalState: "sent", origin: "default", valueFrom: "default" },
+        { name: "maxOutputTokens", finalState: "sent", origin: "request", valueFrom: "request" },
+        { name: "topP", finalState: "cancelled", origin: "request", cancelledAt: "request" },
+        {
+          name: "responseFormat",
+          finalState: "filtered",
+          origin: "instance",
+          filterReason: "field_not_supported_by_provider",
+        },
+      ],
+      toolTransport: createToolTransportTrace(),
+      visibility: {
+        hiddenFloorRanges: [{ startFloorNo: 1, endFloorNo: 2 }],
+        filteredFloorNos: [2],
+      },
+      sourceSelection: {
+        excludedSources: [
+          {
+            source: "examples",
+            reason: "disabled_by_policy",
+            detail: "examples disabled",
+          },
+        ],
+      },
+      injection: {
+        items: createInjectionTraceItems(),
+      },
+    },
+  } as PromptRuntimePreviewResult;
+}
+
+function createInspectResult(): PromptRuntimeInspectResult {
+  return {
+    scope: createScope(),
+    mode: {
+      promptMode: "native",
+      sessionPromptMode: "native",
+      effectivePromptMode: "native",
+      defaultPromptMode: "compat_strict",
+      legacyFallback: false,
+      source: "session",
+    },
+    policy: createResolvedPolicy(),
+    sourceMap: createSourceMap(),
+    diagnostics: [
+      {
+        code: "derived_no_assistant_structure",
+        message: "Delivery policy implied a no-assistant prompt structure.",
+        severity: "warning",
+        source: "policy",
+        fieldPath: "policy.structure.mode",
+      },
+    ],
+    trimReasons: [
+      {
+        group: "history",
+        reason: "group_limit_exceeded",
+        detail: "Prompt runtime pruned 64 tokens from budget group 'history'.",
+        prunedTokenCount: 64,
+      },
+    ],
+    historyNormalization: createHistoryNormalization(),
+    excludedSources: [
+      {
+        source: "examples",
+        reason: "disabled_by_policy",
+        detail: "examples disabled",
+      },
+    ],
+    sectionStats: [
+      {
+        sectionName: "history",
+        tokenCount: 320,
+      },
+    ],
+    limitations: ["inspect_limit"],
+    injections: createInjectionTraceItems(),
+    preparedTurn: {
+      messages: [
+        { role: "system", content: "Stay in character and keep the tone warm." },
+        { role: "user", content: "Please continue the campfire scene." },
+      ],
+      tokenEstimate: 512,
+      availableForReply: 1536,
+      preprocessedUserMessage: "Please continue the campfire scene.",
+      promptSnapshot: null,
+      runtimeTrace: {
+        generationParamsResolution: [
+          { name: "temperature", finalState: "sent", origin: "default", valueFrom: "default" },
+          { name: "maxOutputTokens", finalState: "sent", origin: "request", valueFrom: "request" },
+          { name: "topP", finalState: "cancelled", origin: "request", cancelledAt: "request" },
+          {
+            name: "responseFormat",
+            finalState: "filtered",
+            origin: "instance",
+            filterReason: "field_not_supported_by_provider",
+          },
+        ],
+        toolTransport: createToolTransportTrace(),
+        injection: {
+          items: createInjectionTraceItems(),
+        },
+      },
+      memoryInjection: createMemoryInjection(),
+      memory: createMemoryTrace(),
+      memorySummary: "The party recently agreed to search the northern pass.",
+      generationParams: {
+        temperature: 0.7,
+        maxOutputTokens: 256,
+      },
+      requestedTurnConfig: {
+        enableTools: false,
+        enableDirector: false,
+        enableVerifier: false,
+      },
+      turnConfig: {
+        enableTools: false,
+        enableDirector: false,
+        enableVerifier: false,
+      },
+      sessionStateWrites: {
+        total: 1,
+        writes: [
+          {
+            namespace: "quest_flags",
+            slot: "companion",
+            operation: "set",
+          },
+        ],
+      },
+      contributors: [
+        {
+          id: "builtin:memory_projection",
+          kind: "memory_projection",
+          sourceKind: "memory",
+          modeScope: "native",
+          promptRenderable: {
+            title: "Memory summary",
+            content: "The party recently agreed to search the northern pass.",
+          },
+          deterministic: true,
+          cacheScope: "floor",
+        },
+      ],
+      preparePhaseTrace: [
+        {
+          phase: "source_resolve",
+          detail: {
+            selectedMemoryCount: 1,
+            memorySummaryInjected: true,
+          },
+        },
+        {
+          phase: "injection",
+          detail: {
+            requestedCount: 1,
+            appliedCount: 1,
+            notAppliedCount: 0,
+          },
+        },
+      ],
+    },
+    governance: {
+      entries: [],
+      mismatches: [],
+      limitations: [],
+    },
+  } as PromptRuntimeInspectResult;
+}

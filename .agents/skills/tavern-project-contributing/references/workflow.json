@@ -1,0 +1,151 @@
+{
+  "$schema": "workflow.schema.json",
+  "contractVersion": 1,
+  "skillId": "tavern-project-contributing",
+  "title": "参与项目开发",
+  "summary": "指导 Agent 根据当前 worktree 的项目规则、设计状态和实现边界完成 TavernHeadless 仓库改动。",
+  "status": "active",
+  "audience": [
+    "contributors",
+    "api-developers",
+    "studio-developers",
+    "web-developers",
+    "sdk-maintainers",
+    "docs-contributors"
+  ],
+  "recommendedWhen": [
+    "任务要求修改 TavernHeadless 的代码、接口、数据结构或项目文档。",
+    "任务需要判断改动所属模块及公开语义联动范围。",
+    "任务需要选择与改动范围相符的测试和文档检查。"
+  ],
+  "avoidWhen": [
+    "任务只要求客户端接入或升级时，使用 tavern-client-integration。",
+    "任务只要求读取具体协议字段时，直接查阅 API 参考或 OpenAPI。",
+    "任务只要求说明现状且没有改动授权时，完成只读核对并报告证据。"
+  ],
+  "decisionRules": [
+    {
+      "title": "当前 worktree 决定当前行为",
+      "rule": "Agent 必须以任务指定 worktree 的代码、schema、测试和配置判断当前行为，并使用设计文档识别意图与已知差异。"
+    },
+    {
+      "title": "领域边界决定修改位置",
+      "rule": "Agent 必须先读取项目规则和开发文档入口，再根据相关领域文档与实现确定修改所属模块。"
+    },
+    {
+      "title": "公开接入能力进入官方包",
+      "rule": "新增公开资源访问能力时，Agent 必须评估 @tavern/sdk；新增与框架无关的客户端语义整理时，Agent 必须评估 @tavern/client-helpers。"
+    },
+    {
+      "title": "公开语义变化同步核对契约",
+      "rule": "后端路由、OpenAPI、SSE、错误语义或其他外部可见行为变化时，Agent 必须同步核对官方包、生成物和公开文档。"
+    },
+    {
+      "title": "检查覆盖实际改动",
+      "rule": "Agent 必须运行改动涉及的测试与项目规则指定的检查，并在结果中列明未运行项目及原因。"
+    },
+    {
+      "title": "发布资料只服务版本比较",
+      "rule": "普通本地开发使用当前 worktree；跟进发布或升级接入时，Agent 才读取发布 manifest，并明确比较的两个提交。"
+    }
+  ],
+  "workflow": [
+    {
+      "step": 1,
+      "title": "确认输入和版本",
+      "action": "Agent 确认目标仓库根目录、项目规则文件、开发文档入口、分支、HEAD 和未提交改动。"
+    },
+    {
+      "step": 2,
+      "title": "核对领域与设计状态",
+      "action": "Agent 按开发文档入口读取本次模块的设计、接口和实现，并记录每项资料的已核对实现、设计提案或待核对状态。"
+    },
+    {
+      "step": 3,
+      "title": "确定改动与联动范围",
+      "action": "Agent 确定修改所属模块，并列出受影响的 OpenAPI、SDK、client-helpers、应用和文档。"
+    },
+    {
+      "step": 4,
+      "title": "按需比较发布版本",
+      "action": "Agent 按“发布资料只服务版本比较”规则核对发布资料，并记录与当前 worktree 的差异。",
+      "relatedAgentFields": [
+        "summary.domains",
+        "summary.breaking",
+        "changes",
+        "surfaceSummaries.openapi",
+        "surfaceSummaries.sdk",
+        "surfaceSummaries.clientHelpers"
+      ]
+    },
+    {
+      "step": 5,
+      "title": "实施已授权改动",
+      "action": "Agent 完成任务范围内的代码、schema、测试和文档改动，并保留同一 worktree 中的其他修改。"
+    },
+    {
+      "step": 6,
+      "title": "验证并报告",
+      "action": "Agent 运行适用于改动范围的检查，直接核对用户可见结果，并报告改动、检查结果和未验证项。"
+    }
+  ],
+  "checks": [
+    {
+      "command": "static",
+      "purpose": "代码改动涉及 lint 范围时，验证仓库静态规则。"
+    },
+    {
+      "command": "types",
+      "purpose": "代码改动涉及跨包类型时，验证仓库类型一致性。"
+    },
+    {
+      "command": "tests",
+      "purpose": "代码改动涉及项目测试范围时，复现常规 CI 测试路径。"
+    },
+    {
+      "command": "generated",
+      "purpose": "OpenAPI 或官方包生成面变化时，验证生成物一致性。"
+    },
+    {
+      "command": "docs",
+      "purpose": "文档或公开入口变化时，验证 Agent 资料、Skill JSON 和站点构建。"
+    }
+  ],
+  "relatedAgentFields": [
+    "summary.domains",
+    "summary.breaking",
+    "changes",
+    "surfaceSummaries.openapi",
+    "surfaceSummaries.sdk",
+    "surfaceSummaries.clientHelpers"
+  ],
+  "relatedDocs": [
+    {
+      "title": "本地开发入口",
+      "path": "development/local-development"
+    },
+    {
+      "title": "协作指南",
+      "path": "development/contributing"
+    },
+    {
+      "title": "测试与 CI",
+      "path": "development/testing"
+    },
+    {
+      "title": "文档规范",
+      "path": "development/doc-standards"
+    },
+    {
+      "title": "官方集成层",
+      "path": "guide/integration-kit"
+    },
+    {
+      "title": "Skill 页面",
+      "path": "agent/skills/tavern-project-contributing"
+    }
+  ],
+  "humanPage": "agent/skills/tavern-project-contributing",
+  "json": "agent/skills/tavern-project-contributing.json",
+  "lastReviewedAt": "2026-09-14"
+}

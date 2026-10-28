@@ -1,0 +1,16 @@
+{
+  "title": "Agent 任务",
+  "refresh": "刷新任务",
+  "empty": "当前项目没有 Agent 任务。",
+  "id": "任务 ID",
+  "status": "任务状态",
+  "actions": "操作",
+  "detail": "任务详情",
+  "cancel": "取消任务",
+  "previous": "上一页",
+  "next": "下一页",
+  "pageSize": 20,
+  "loadFailed": "任务列表读取失败。请刷新任务列表重试；若仍失败，请检查服务日志。",
+  "inspectFailed": "任务详情读取失败。请重新打开任务详情；若仍失败，请检查服务日志。",
+  "cancelFailed": "取消任务失败。请刷新任务列表核对状态后重试；若仍失败，请检查服务日志。"
+}

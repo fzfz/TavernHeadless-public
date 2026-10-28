@@ -1,0 +1,68 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+ RUN  v2.1.9 /srv/tavern/TavernHeadless-remove-preview-credentials
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stdout | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning System: To turn off warning logging, set the AI_SDK_LOG_WARNINGS global to false.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning (llm-profile-E9hUJLuIZU9jLvZsCPyYm-turn-e49gJhaC.chat / offline-example-narrator): The feature "topK" is not supported.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning (role-state.chat / offline-example-state-updater): The feature "topK" is not supported.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning (llm-profile-E9hUJLuIZU9jLvZsCPyYm-turn-HehaTkS-.chat / offline-example-narrator): The feature "topK" is not supported.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order
+AI SDK Warning (role-state.chat / offline-example-state-updater): The feature "topK" is not supported.
+
+ ✓ scripts/native-card-conversion/formal.test.ts (10 tests) 7768ms
+   ✓ verifyFormalPackage > imports through the formal API and compares every saved file byte-for-byte 1990ms
+   ✓ verifyFormalPackage > saves API and shared-schema diagnostics when package validation fails 626ms
+   ✓ verifyFormalPackage > records ZIP reader and API errors for an invalid archive 603ms
+   ✓ verifyFormalPackage > preserves the confirmation response and does not attempt readback after confirmation fails 651ms
+   ✓ verifyFormalPackage > marks mismatched saved bytes as failed and records the changed GET response 1611ms
+   ✓ verifyFormalPackage > continues file checks when the readback endpoint returns an error 1549ms
+   ✓ verifyFormalPackage > returns the confirmation response when saving formal evidence fails 714ms
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > isolates concurrent replay and role assets, keeps B live after closing A and failed startup, then restores the original key
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > isolates concurrent replay and role assets, keeps B live after closing A and failed startup, then restores the original key
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > streams a formal turn, saves the assistant body, runs the state updater, and reads the updated formal role view
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+stderr | scripts/native-card-conversion/preview.test.ts > formal isolated native-card preview server > streams a formal turn, saves the assistant body, runs the state updater, and reads the updated formal role view
+AI SDK Warning: System messages in the prompt or messages fields can be a security risk because they may enable prompt injection attacks. Use the system option instead when possible. Set allowSystemInMessages to true to suppress this warning, or false to throw an error.
+
+ ✓ scripts/native-card-conversion/preview.test.ts (15 tests) 18437ms
+   ✓ formal isolated native-card preview server > assembles the configured example through formal dry-run and replays narrator/state updates in order 1584ms
+   ✓ formal isolated native-card preview server > imports, seeds the named persona and preset, verifies dry-run content, serves a loopback URL, and closes every listener 1629ms
+   ✓ formal isolated native-card preview server > starts two previews concurrently on distinct ports with working pages, configs, proxies, and cleanup 2305ms
+   ✓ formal isolated native-card preview server > isolates concurrent replay and role assets, keeps B live after closing A and failed startup, then restores the original key 2782ms
+   ✓ formal isolated native-card preview server > restores the original master key after reverse-order and parallel close 4443ms
+   ✓ formal isolated native-card preview server > streams a formal turn, saves the assistant body, runs the state updater, and reads the updated formal role view 1715ms
+   ✓ formal isolated native-card preview server > records the actual import error and aborts before creating the preview page 717ms
+   ✓ formal isolated native-card preview server > marks generation as unavailable when the scenario supplies no offline response fixture 1177ms
+   ✓ formal isolated native-card preview server > preserves explicit null model capabilities in the formal preview request 1185ms
+   ✓ formal isolated native-card preview server > records the actual preview request when model capability limits exceed system policy 808ms
+
+ Test Files  2 passed (2)
+      Tests  25 passed (25)
+   Start at  10:26:37
+   Duration  22.44s (transform 2.51s, setup 0ms, collect 7.23s, tests 26.21s, environment 0ms, prepare 71ms)
+

@@ -1,0 +1,46 @@
+{
+  "uid": 124,
+  "key": [
+    "王授军PE文件夹",
+    "PE写字板",
+    "王授军写字板",
+    "GE研究组",
+    "所有埋下的种子"
+  ],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "物品_PE文件夹与种子",
+  "order": 77,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": 2,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_item_pe_seed>\n物品名: 王授军PE文件夹与写字板\n\n王授军云盘里的PE文件夹保存多份写字板。成功记录写明PE曾在他最想要的目标身上起效；衰减记录写明效果正在减弱，手术和药物用于强化效果；催眠记录写明PE属于成功率低、持续时间短于一个月的催眠催情技术；GE进度记录写明杨桃子容易被威胁利诱，林茜保持清楚的自我意识和精神抵抗。\n\n写字板把画作、动图、电话、消息和图片称为“种子”，并记录林茜看见或听见这些内容后的脸红、体热、口渴、出汗、自慰冲动、主动索求和画作反应。\n</qrxd_item_pe_seed>\n"
+}

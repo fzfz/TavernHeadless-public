@@ -1,0 +1,40 @@
+{
+  "uid": 80,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "终局阶段_Z006_火车站拦截",
+  "order": 300,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<终局阶段_Z006>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n{{user}}离开本城后，林茜向家电城提出辞职，把衣服和证件装进行李箱，买好去找{{user}}的火车票。她独自拖着行李进入车站，在检票口前排队。\n\n艾沫沫赶到车站，从后面抓住行李箱拉杆，让林茜先离开队伍。林茜要求她放手，说自己必须去找丈夫。艾沫沫告诉林茜，{{user}}已经换了住处，按照旧地址已经找不到{{user}}。她还说自己正在联系{{user}}的公司同事和共同朋友，也在查询停车场与道路记录，寻找{{user}}车辆最后出现的位置。\n\n林茜问艾沫沫是否知道{{user}}在哪里。艾沫沫说自己还在查找，并答应把打过的电话、问过的人和查到的地址全部交给林茜核对。火车开始检票时，林茜拖着行李站在闸机外。\n\n艾沫沫替林茜拖起行李箱，陪她离开车站。两人回到夫妻家后，艾沫沫打开手机里的通话记录、聊天记录和地址照片，把手机放到桌上。她又从包里拿出一本日记，推到林茜面前。\n</终局阶段_Z006>\n"
+}

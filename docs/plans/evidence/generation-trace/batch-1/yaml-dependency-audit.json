@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-24",
+  "package": "yaml",
+  "version": "2.9.1",
+  "runtimeDependencies": {},
+  "npmAdvisoryQuery": {
+    "endpoint": "https://registry.npmjs.org/-/npm/v1/security/advisories/bulk",
+    "status": 200,
+    "result": {}
+  },
+  "sources": [
+    "https://github.com/eemeli/yaml/security/advisories/GHSA-48c2-rrv3-qjmp",
+    "https://github.com/eemeli/yaml/releases/tag/v2.9.1"
+  ],
+  "installation": "approved_and_installed",
+  "approval": "用户明确批准 yaml@2.9.1 安装",
+  "manifest": "apps/api/package.json",
+  "installedDirectory": ".tmp/yaml-dependencies/node_modules/yaml",
+  "lifecycleScripts": "disabled",
+  "installationAudit": "yaml-installation-audit.json"
+}

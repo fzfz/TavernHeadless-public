@@ -1,0 +1,88 @@
+{
+  "documentPurpose": "记录页面宏绑定独立子任务实现、焦点回归和交接事项。",
+  "readWhen": "主线程接收绑定并发修复、更新消费者或核对验收范围时读取。",
+  "repository": "/srv/tavern/TavernHeadless-remove-preview-credentials",
+  "date": "2026-10-09",
+  "status": "实现与焦点验证已完成；主线程负责消费者迁移及独立语义审计。",
+  "changedFiles": [
+    ".agents/skills/native-card-conversion/scripts/page-macro-bindings.ts",
+    ".agents/skills/native-card-conversion/scripts/page-macro-bindings.test.ts",
+    ".agents/skills/native-card-conversion/scripts/cli.ts",
+    ".agents/skills/native-card-conversion/scripts/tool-config.ts"
+  ],
+  "implementation": {
+    "input": "bind-page-macros <taskFile> <requestFile> 接收稳定任务快照。",
+    "snapshot": "调用读取任务、请求、源文件和全部包文件后，后续处理使用已读取的数据。",
+    "output": "生成器复用 taskPaths、prepareOutputDirectory 和 readTaskContext，在 .tmp/native-card-conversion 下用 mkdtemp 创建独立直接子任务；source.json 和已有包文件保留原始字节；返回 taskFile 和 packageDirectory。",
+    "validation": "生成器对完整文件集合执行已有前端模块及标记校验，并对完成写入的子任务执行任务边界校验。",
+    "failure": "写入失败时删除本次独立子任务；调用结果目录保留诊断；父 task.json、source.json、package 与其他成功产物保持原样。",
+    "cli": "通用结果包装保留操作返回的 taskFile。",
+    "copiedContent": ["source.json", "package 文件快照"],
+    "unchangedConfig": ".agents/skills/native-card-conversion/config/page-macro-bindings.json"
+  },
+  "tdd": {
+    "red": {
+      "test": "绑定命令返回独立有效任务并保留父包、源快照和二进制资源",
+      "command": "pnpm exec vitest run .agents/skills/native-card-conversion/scripts/page-macro-bindings.test.ts -t '绑定命令返回独立有效任务' --reporter=verbose",
+      "exitCode": 1,
+      "observed": "CLI 返回的 taskFile 等于父 taskFile，独立任务断言失败。"
+    },
+    "green": {
+      "bindingTestsPassed": 19,
+      "existingBindingTestsAdapted": 15,
+      "addedBindingTests": 4,
+      "verifiedBehaviors": [
+        "单条成功返回合法子任务，父任务文件、父包及源快照保持原样，二进制资源逐字节保留。",
+        "子任务仅包含 package、source.json 和 task.json，已有预览证据与调用日志留在父任务。",
+        "index、validate 和 pack 消费返回的 taskFile 并成功完成。",
+        "连续绑定消费上次返回任务，保留两个绑定及上次完整产物。",
+        "相同绑定重试保留单个挂载位置与安装记录，生成文件内容一致。",
+        "同父任务并发绑定返回两个独立完整包，两包分别完成 index、validate 和 pack。",
+        "写入失败调用在入口 rename 前暂停；另一调用成功完成后，失败调用收到 EIO 并退出 1；失败子任务已删除，诊断可读，父包和成功包保持原样。"
+      ]
+    }
+  },
+  "checks": [
+    {
+      "command": "pnpm exec vitest run .agents/skills/native-card-conversion/scripts/page-macro-bindings.test.ts .agents/skills/native-card-conversion/scripts/cli-service.test.ts .agents/skills/native-card-conversion/scripts/task-context.test.ts --reporter=verbose",
+      "exitCode": 0,
+      "selectedFiles": [
+        ".agents/skills/native-card-conversion/scripts/page-macro-bindings.test.ts",
+        ".agents/skills/native-card-conversion/scripts/cli-service.test.ts"
+      ],
+      "passedTests": 21,
+      "durationSeconds": 42.11,
+      "selectionNote": "仓库当前没有 task-context.test.ts；子任务边界由返回任务的 index、validate 和 pack 消费路径验证。"
+    },
+    {
+      "command": "pnpm exec vitest run .agents/skills/native-card-conversion/scripts/cli-contract.test.ts .agents/skills/native-card-conversion/scripts/cli-flow.test.ts --reporter=verbose",
+      "exitCode": 0,
+      "passedTests": 9,
+      "durationSeconds": 10.84
+    },
+    {
+      "command": "pnpm exec tsc --project .agents/skills/native-card-conversion/scripts/tsconfig.json --noEmit",
+      "exitCode": 0
+    },
+    {
+      "command": "pnpm exec eslint .agents/skills/native-card-conversion/scripts",
+      "exitCode": 0
+    },
+    {
+      "command": "pnpm exec prettier --check .agents/skills/native-card-conversion/scripts/page-macro-bindings.ts .agents/skills/native-card-conversion/scripts/page-macro-bindings.test.ts .agents/skills/native-card-conversion/scripts/cli.ts .agents/skills/native-card-conversion/scripts/tool-config.ts .agents/skills/native-card-conversion/config/page-macro-bindings.json",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check -- .agents/skills/native-card-conversion/scripts/cli.ts .agents/skills/native-card-conversion/scripts/tool-config.ts",
+      "exitCode": 0
+    }
+  ],
+  "handoff": [
+    "连续绑定消费者在每次成功后更新 taskFile，并从返回任务重新读取 packageDirectory；index、validate、pack 使用最终返回任务。",
+    "页面、模块、正式导入及预览证据消费者使用最终子任务包和归档路径。",
+    "run-acceptance.mjs 当前已更新每次绑定后的 taskFile 与 task；主线程核对 C011 等实际转换记录和后续验收所选路径。",
+    "主线程说明父任务的 task.json、source.json 和 package 在绑定读取期间保持稳定；调用结果目录可以继续新增独立 calls/call-* 记录。",
+    "主线程独立审计 tool-config.ts 的 bind-page-macros 帮助文案及新增测试名称、诊断证据文本。"
+  ],
+  "fullSuite": "按任务授权范围仅执行焦点回归；全量测试由主线程在整体交付阶段安排。"
+}

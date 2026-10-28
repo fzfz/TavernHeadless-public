@@ -1,0 +1,582 @@
+{
+  "documentPurpose": "本文件记录页面宏绑定命令的并发证据、任务写入责任和可供决策的架构边界。",
+  "readWhen": "主线程判断页面宏绑定并发风险、确定 CLI 写入契约及调整实施范围时读取。",
+  "investigation": {
+    "date": "2026-10-09",
+    "repository": "/srv/tavern/TavernHeadless-remove-preview-credentials",
+    "status": "调查已完成；产品代码和 Skill 文件保持调查前状态。",
+    "scope": "顾问只读取绑定生成器及任务、文件写入、结果输出、索引和打包接口；顾问仅创建本文件和本人临时验证文件。",
+    "constraints": [
+      "用户要求 CLI 接受并发请求。",
+      "用户禁止设计并发锁。",
+      "用户禁止未经授权的哈希比较逻辑。",
+      "本项使用已经安装的 Node、tsx 及项目依赖；顾问未安装依赖。",
+      "主线程要求以单一真相源、深封装和简洁接口选择维护方案。"
+    ]
+  },
+  "definitions": [
+    {
+      "term": "绑定请求",
+      "meaning": "转换 Agent 提交的一项 BindingRequest，包含绑定 id、源位置、原始模板及用途条件。"
+    },
+    {
+      "term": "任务包",
+      "meaning": "ConversionTask.packageDirectory 指向的可编辑原生角色包目录。"
+    },
+    {
+      "term": "完整绑定请求集",
+      "meaning": "一次生成所需的全部 BindingRequest；转换 Agent 负责确认成员和用途，生成器负责验证结构及生成文件。"
+    },
+    {
+      "term": "包产物",
+      "meaning": "一次调用在独占目录中生成、验证完成并通过明确路径交付的完整原生角色包。"
+    },
+    {
+      "term": "任务发布者",
+      "meaning": "汇总本次所需绑定请求并选定最终包产物的唯一执行主体；当前流程中的转换 Agent 已负责调用顺序。"
+    },
+    {
+      "term": "调用级产物隔离",
+      "meaning": "每次调用只写入该调用独占目录，调用失败只影响该目录中的文件。"
+    },
+    {
+      "term": "同任务累积写入",
+      "meaning": "多个调用在同一任务包上增加绑定；全部成功调用的不同绑定须在最终包中同时保留。"
+    }
+  ],
+  "approvedGoal": {
+    "source": ".planning/native-card-maintenance/root-cause-research-2026-10-08/session-name-plan.md",
+    "section": "5.2",
+    "requirements": [
+      "绑定操作接收任务标识、源位置、原始模板及用途条件。",
+      "脚本向当前角色包生成文字节点、绑定模块、公共模块及入口调用，并校验前端模块与标记。",
+      "绑定失败时，此前完整文件应保持可用。"
+    ],
+    "concurrencyAmbiguity": "该节未定义同任务累积写入的并发成功语义；仓库用户规则要求 CLI 接受并发请求，现有工具说明同时规定重叠写入须逐次完成。"
+  },
+  "currentFacts": [
+    {
+      "fact": "bindPageMacros 读取整个任务包并缓存当前文件，再从缓存的绑定表中增加本次绑定。",
+      "evidence": [
+        {
+          "path": ".agents/skills/native-card-conversion/scripts/page-macro-bindings.ts",
+          "startLine": 482,
+          "endLine": 488
+        },
+        {
+          "path": ".agents/skills/native-card-conversion/scripts/page-macro-bindings.ts",
+          "startLine": 524,
+          "endLine": 532
+        }
+      ]
+    },
+    {
+      "fact": "不同绑定 id 仍会改写共享的 HTML、公共模块、绑定表、入口、安装记录和前端 manifest；固定角色资料宏还会生成角色资料文件。",
+      "evidence": [
+        {
+          "path": ".agents/skills/native-card-conversion/scripts/page-macro-bindings.ts",
+          "startLine": 577,
+          "endLine": 615
+        }
+      ]
+    },
+    {
+      "fact": "生成器在写入前校验完整的内存产物，但随后按文件逐次替换任务包。",
+      "evidence": [
+        {
+          "path": ".agents/skills/native-card-conversion/scripts/page-macro-bindings.ts",
+          "startLine": 619,
+          "endLine": 645
+        }
+      ]
+    },
+    {
+      "fact": "失败处理根据调用开始时缓存的文件恢复已经写入的路径；调用开始时不存在的路径会被删除。",
+      "evidence": [
+        {
+          "path": ".agents/skills/native-card-conversion/scripts/page-macro-bindings.ts",
+          "startLine": 646,
+          "endLine": 659
+        }
+      ]
+    },
+    {
+      "fact": "replaceFileContents 为每次替换创建独占临时文件，再调用 rename；临时文件独占不等于目标文件独占。",
+      "evidence": [
+        {
+          "path": ".agents/skills/native-card-conversion/scripts/atomic-write.ts",
+          "startLine": 47,
+          "endLine": 64
+        }
+      ]
+    },
+    {
+      "fact": "runCli 为调用建立独立结果目录，但 bind-page-macros 仍直接执行写操作；该命令未接入任务级写入所有者。",
+      "evidence": [
+        {
+          "path": ".agents/skills/native-card-conversion/scripts/cli.ts",
+          "startLine": 241,
+          "endLine": 259
+        }
+      ]
+    },
+    {
+      "fact": "taskLocationMatches 将 packageDirectory 固定为 task.outputDirectory/package；候选目录不能直接替换该字段后沿用现有校验。",
+      "evidence": [
+        {
+          "path": ".agents/skills/native-card-conversion/scripts/task-context.ts",
+          "startLine": 256,
+          "endLine": 277
+        }
+      ]
+    },
+    {
+      "fact": "工具说明要求同一目标文件的后续修改等待前次结束，并要求 index、validate 和 pack 运行期间保持包文件不变。",
+      "evidence": [
+        {
+          "path": ".agents/skills/native-card-conversion/references/tools.md",
+          "startLine": 169,
+          "endLine": 170
+        }
+      ]
+    },
+    {
+      "fact": "pack 已采用独立归档目录，并用同一次读取的文件集合验证和打包；该方法提供可复用的明确产物路径模式。",
+      "evidence": [
+        {
+          "path": ".agents/skills/native-card-conversion/scripts/tool.ts",
+          "startLine": 411,
+          "endLine": 443
+        },
+        {
+          "path": ".agents/skills/native-card-conversion/scripts/tool.ts",
+          "startLine": 455,
+          "endLine": 497
+        }
+      ]
+    },
+    {
+      "fact": "listFiles 按文件逐次读取目录；同次调用的数组只有在读取期间目录保持不变时才代表完整的一版包。",
+      "evidence": [
+        {
+          "path": ".agents/skills/native-card-conversion/scripts/index.ts",
+          "startLine": 16,
+          "endLine": 37
+        }
+      ]
+    }
+  ],
+  "verifiedExperiments": {
+    "runner": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/binding-concurrency-evidence-c16hnn_o/harness.mjs",
+    "worker": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/binding-concurrency-evidence-c16hnn_o/worker.mjs",
+    "summary": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/binding-concurrency-evidence-c16hnn_o/summary.json",
+    "nodeVersion": "v25.8.2",
+    "command": "node .tmp/native-card-conversion/binding-concurrency-evidence-c16hnn_o/harness.mjs /srv/tavern/TavernHeadless-remove-preview-credentials /srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/binding-concurrency-evidence-c16hnn_o",
+    "method": "临时 runner 创建隔离的任务和两个合法绑定请求。worker 经 tsx 加载当前 runCli，并在调用本机 fs.rename 前暂停；暂停仅用于固定执行交错，绑定生成代码继续使用仓库文件。失败样本仅在指定的入口 rename 处注入 EIO。",
+    "input": {
+      "html": "<main><p id=\"first\">甲：{{user}}</p><p id=\"second\">乙：{{user}}</p></main>",
+      "bindingA": "甲：{{user}}",
+      "bindingB": "乙：{{user}}",
+      "sourcePointer": "/data/extensions/page"
+    },
+    "cases": [
+      {
+        "name": "串行对照",
+        "evidenceFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/binding-case-sequential-wHIkGK/evidence.json",
+        "schedule": [
+          "A 完成全部写入并退出。",
+          "B 随后读取 A 的完整产物，再完成写入。"
+        ],
+        "exitCodes": [0, 0],
+        "result": {
+          "bindingIds": ["A", "B"],
+          "htmlMarkers": ["A", "B"],
+          "installationIds": ["A", "B"]
+        },
+        "conclusion": "A、B 两个绑定均保留；两个输入和串行累积机制可正常工作。"
+      },
+      {
+        "name": "单调用失败对照",
+        "evidenceFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/binding-case-single-failure-4j5Qy7/evidence.json",
+        "schedule": [
+          "A 写完 HTML、公共模块和绑定表。",
+          "A 在写入口时收到实验注入的 EIO。",
+          "A 执行已有失败恢复。"
+        ],
+        "exitCodes": [1],
+        "result": {
+          "baselineHtmlRestored": true,
+          "manifestScript": "frontend/main.js",
+          "installationIds": []
+        },
+        "conclusion": "独占任务包且恢复操作成功时，当前恢复逻辑保留了本次样本的原包。"
+      },
+      {
+        "name": "并发丢失绑定",
+        "evidenceFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/binding-case-lost-update-f2oDO3/evidence.json",
+        "intermediateFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/binding-case-lost-update-f2oDO3/after-A.json",
+        "schedule": [
+          "A、B 均读取原包、生成并校验本次产物，在第一个 HTML rename 前暂停。",
+          "释放 A，等待 A 成功退出。",
+          "释放 B，等待 B 成功退出。"
+        ],
+        "exitCodes": [0, 0],
+        "result": {
+          "bindingIds": ["B"],
+          "htmlMarkers": ["B"],
+          "installationIds": ["B"]
+        },
+        "conclusion": "A、B 均报告成功，最终包只保留 B；B 使用调用开始时的原包覆盖了 A 的产物。"
+      },
+      {
+        "name": "失败恢复破坏他人成功产物",
+        "evidenceFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/binding-case-rollback-Eg5h5k/evidence.json",
+        "intermediateFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/binding-case-rollback-Eg5h5k/after-B-before-A-failure.json",
+        "schedule": [
+          "B 读取原包、完成生成和校验，在第一个 HTML rename 前暂停。",
+          "A 读取原包，写完 HTML、公共模块和绑定表，在入口 rename 前暂停。",
+          "释放 B，等待 B 成功退出；中间记录确认 B 的绑定表、HTML 标记和安装记录均包含 B。",
+          "A 的入口 rename 收到实验注入的 EIO，随后执行已有失败恢复。"
+        ],
+        "exitCodes": [1, 0],
+        "result": {
+          "bindingIds": [],
+          "htmlMarkers": [],
+          "installationIds": ["B"],
+          "manifestScript": "frontend/page-macro-entry.js",
+          "baselineHtmlRestored": true,
+          "missingGeneratedFiles": [
+            "frontend/page-macros.js",
+            "frontend/page-macro-bindings.js"
+          ]
+        },
+        "conclusion": "A 删除了 B 已成功写入的公共模块和绑定表，并恢复原 HTML；B 的入口、安装记录和 manifest 仍在，最终包引用了已删除的文件。"
+      }
+    ],
+    "coverageLimits": [
+      "这些实验验证了两个真实 CLI 进程在给定交错中的结果，实验没有估计自然并发时的发生概率。",
+      "EIO 为受控故障注入，实验没有制造真实磁盘损坏。",
+      "实验没有覆盖进程强制终止、系统断电、恢复操作再次失败和跨文件系统发布。",
+      "实验没有调用真实模型、浏览器运行接口或角色包导入接口。"
+    ]
+  },
+  "causalChain": [
+    "多个调用对同一任务包取得同一份历史绑定集合。",
+    "每个调用各自在历史集合上增加自己的请求，再生成完整共享文件。",
+    "临时文件隔离只保护暂存文件，目标路径仍由多个调用分别覆盖。",
+    "成功路径按过期集合覆盖另一调用的成功结果；失败路径按过期文件恢复或删除另一调用的成功结果。",
+    "当前 TaskContext 提供路径边界，CLI 提供结果目录隔离；二者均未提供整包写入责任。"
+  ],
+  "concurrencyContract": {
+    "supportedByCurrentDocumentation": "不同任务及无重叠目标的调用可以并发；重叠目标的写入由转换 Agent 逐次安排。",
+    "bindingWriteSet": [
+      "request.htmlFile",
+      "frontend/page-macros.js",
+      "frontend/page-macro-bindings.js",
+      "frontend/page-macro-entry.js",
+      "data/page-macro-installation.json",
+      "frontend/manifest.json",
+      "data/page-macro-card.json（按宏依赖生成）"
+    ],
+    "sameTaskRequirement": "若用户要求同任务累积写入，则两个有效且不同的绑定请求并发成功后，最终包须包含二者；命令失败还须保留另一命令已经成功交付的包。",
+    "decision": "主线程须按用户要求确认并发是否包含同任务累积写入；当前文档的逐次安排规则不能作为已经实现该能力的证据。",
+    "selectedMeaning": "同父并发调用生成独立后续任务；累积绑定沿返回任务逐次完成。"
+  },
+  "minimumCorrectArchitecture": {
+    "recommendation": "采用 currentContractDecision 与 selectedChildTaskContract 指定的独立后续任务契约。",
+    "responsibilities": [
+      "转换 Agent 在输入包写入完成后提交单条绑定请求，并沿每次返回任务继续操作。",
+      "绑定生成器从稳定输入生成独占后续任务，只承担后续任务文件写入与校验。",
+      "通用 CLI 输出器保存独立结果记录，并保留生成器返回的后续 taskFile。",
+      "现有包消费者通过返回 taskFile 解析对应 packageDirectory。"
+    ],
+    "sourceOfTruth": "宏配置、包内生成路径及 BindingRequest 继续使用已有定义；后续任务复制源快照和包字节，生成文件从已有绑定集合与本次请求派生。",
+    "failureBoundary": "任何失败仅影响本次调用记录及其后续目录；输入包和此前成功后续任务保持原内容。",
+    "status": "主线程已选择该接口契约；实际生成与消费链路待执行队员验收。"
+  },
+  "alternatives": [
+    {
+      "option": "沿用现有同目标逐次写入契约",
+      "fit": "当前工具说明已有该边界；独立任务可并发。绑定命令的共享写入集合须写入调用说明。",
+      "limitation": "该边界不满足同任务累积写入并发成功的要求；已有失败恢复在强制终止或二次恢复失败时也缺少整包保证。"
+    },
+    {
+      "option": "一个命令接收全部绑定请求并由任务发布者逐次调用",
+      "fit": "批量输入可以减少同一页面的重复构建，并让同一批请求统一验证。",
+      "limitation": "批量输入不消除两个独立命令同时修改同一任务包的风险；直接逐文件发布还会留下整包可见性和异常恢复问题。"
+    },
+    {
+      "option": "前台任务写入宿主接收 CLI 请求",
+      "fit": "若必须保持每次 CLI 调用立即更新同一可变任务包，可让唯一前台宿主按请求次序拥有任务状态并生成完整发布包。",
+      "limitation": "该选项增加任务宿主生命周期和请求传输接口，范围明显大于页面宏生成器；用户须明确选择该契约。"
+    }
+  ],
+  "excludedApproaches": [
+    {
+      "approach": "先比较原文件或版本，再 rename",
+      "reason": "比较与替换之间仍允许另一调用提交，比较结果无法授予排他写入权。"
+    },
+    {
+      "approach": "增加哈希并在写入前或回滚前比较",
+      "reason": "哈希不提供原子的条件替换，而且本项没有用户授权增加哈希比较逻辑。"
+    },
+    {
+      "approach": "为目标路径创建占用文件或排他目录",
+      "reason": "将文件或目录作为竞争占用标记属于并发锁设计。"
+    },
+    {
+      "approach": "先移动当前包为备份，再移动候选包到当前路径",
+      "reason": "两次目录移动之间存在当前路径缺失的窗口；第二次失败也会让消费者失去当前路径。"
+    },
+    {
+      "approach": "让多个调用覆盖同一 current 记录",
+      "reason": "原子替换一个记录能避免读取半个记录，但各调用仍可能发布过期绑定集合。"
+    }
+  ],
+  "contractAndPlanImpact": [
+    {
+      "contract": "bind-page-macros 的成功副作用",
+      "change": "输入任务包保持原内容；成功结果交付独立后续任务及其完整包。",
+      "files": [
+        ".agents/skills/native-card-conversion/scripts/page-macro-bindings.ts"
+      ]
+    },
+    {
+      "contract": "通用命令结果中的 data.taskFile",
+      "change": "成功生成的后续 taskFile 优先于输入 taskFile；stdout 仍按现有方式返回 resultFile。",
+      "files": [".agents/skills/native-card-conversion/scripts/cli.ts"]
+    },
+    {
+      "contract": "命令帮助与调用说明",
+      "change": "说明返回任务路径、连续调用方式、并发分支含义和输入快照稳定时机。",
+      "files": [
+        ".agents/skills/native-card-conversion/scripts/tool-config.ts",
+        ".agents/skills/native-card-conversion/references/tools.md",
+        ".agents/skills/native-card-conversion/SKILL.md"
+      ]
+    },
+    {
+      "contract": "批准计划的生成目标",
+      "change": "第5.2节应描述输入任务到独立后续任务的生成与失败保留契约。",
+      "files": [
+        ".planning/native-card-maintenance/root-cause-research-2026-10-08/session-name-plan.md"
+      ]
+    }
+  ],
+  "decisionsRequired": [],
+  "acceptanceRequired": [
+    "保留本文件中串行、单次失败、并发丢失更新和失败恢复交错作为确定性回归样本。",
+    "同一基准的两个并发生成调用分别产生完整独占产物；其中一次失败时，另一成功产物及原基准逐文件保持原内容。",
+    "完整请求集包含 A、B 时，最终包的 HTML、绑定表、入口、安装记录和 manifest 全部对应 A、B。",
+    "重复提交同一请求后，绑定、导入和挂载标记各保留一份。",
+    "重复 id 对应不同源位置或用途时，命令返回可定位的冲突诊断。",
+    "基准选择与消费路径在一次操作中保持固定；读取侧不会混合不同完整包产物。",
+    "任一文件生成或校验失败时，已经交付的包产物保持完整可读。",
+    "index、validate、pack 和 ZIP 回读消费同一最终完整包；正式角色包导入及浏览器验收继续使用该 ZIP。",
+    "若选用可变任务包引用记录，在发布前故障及记录替换失败时，当前引用仍指向此前完整包；记录替换完成后的调用仅报告发布后的状态。",
+    "进程强制终止与恢复操作故障的保证范围由所选交付契约明确，不能用单次 EIO 样本代替。"
+  ],
+  "externalPrimarySources": [
+    {
+      "url": "https://nodejs.org/download/release/v25.8.2/docs/api/fs.html#promises-api",
+      "verified": "Node v25.8.2 官方文档说明 Promise 文件操作没有为同文件并发修改提供同步保证。"
+    },
+    {
+      "url": "https://nodejs.org/download/release/v25.8.2/docs/api/fs.html#fsrenameoldpath-newpath-callback",
+      "verified": "Node v25.8.2 官方文档说明 rename 的目标存在时会被覆盖。"
+    },
+    {
+      "url": "https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/rename.2.html",
+      "verified": "Apple rename(2) 文档说明同文件系统重命名的目标存在时会替换，并列出非空目标目录及跨设备错误；该接口不提供整包条件提交。"
+    }
+  ],
+  "outOfScope": [
+    "顾问未改写 Skill、产品代码、依赖配置或用户计划。",
+    "顾问未创建任务宿主、后台服务或可变任务包发布入口。",
+    "顾问未判断本次正式角色包的生成语义或页面内容。"
+  ],
+  "authorization": "主线程仅授权只读研究、本人临时复现及写入 .planning/page-macros-implementation-2026-10-09/binding-concurrency-design.json。",
+  "currentContractDecision": {
+    "decision": "主线程已选择单请求输入、独立后续任务输出的绑定契约。",
+    "input": "bind-page-macros <输入 taskFile> <单条 requestFile>。",
+    "success": "命令从输入任务包和源快照生成一个独立后续任务；结果 data 提供后续 taskFile、packageDirectory、原有绑定文件列表和源位置，stdout 继续提供通用 resultFile。",
+    "continuation": "调用者将返回 taskFile 作为后续绑定、编辑、index、validate 和 pack 的任务输入。",
+    "concurrentMeaning": "相同输入任务的并发请求生成不同后续任务；各任务分别保留输入包和本次绑定。多个绑定进入同一最终包时，调用者沿返回任务逐次绑定。",
+    "analysisStatus": "以下结论来自只读代码分析和 TaskContext 纯函数验证；执行队员负责实施及回归验收。"
+  },
+  "selectedChildTaskContract": {
+    "verdict": "该契约可在现有依赖范围内实现并发产物隔离、失败保留输入完整文件和连续绑定单份；它复用现有任务边界及消费接口，不需要并发锁、哈希比较或可变 current 指针。",
+    "taskLayout": {
+      "outputDirectory": "每个后续任务使用 .tmp/native-card-conversion 下一个独占的直接子目录；目录以现有 taskPaths.prefix 和 mkdtemp 创建。",
+      "id": "后续任务 id 使用后续任务目录的 basename。",
+      "packageDirectory": "后续任务包位于后续 outputDirectory/package。",
+      "sourceFile": "后续任务必须保存自己的 outputDirectory/source.json；parseTaskContext 要求该路径，不能引用输入任务的 sourceFile。",
+      "originalSourceFile": "该字段沿用输入任务的原始用户来源路径，作为来源记录。",
+      "repositoryRoot": "该字段沿用当前仓库根目录。",
+      "taskFile": "后续任务记录位于后续 outputDirectory/task.json。",
+      "evidence": [
+        "task-context.ts:233-253 的 parseTaskContext 校验源快照路径。",
+        "task-context.ts:256-277 的 taskLocationMatches 校验输出根、目录 id 和 package 路径。"
+      ]
+    },
+    "ownedWrites": {
+      "snapshot": "生成器只读取输入 task.json、source.json 和 package 文件；后续任务复制输入源快照及完整包文件，再覆盖本次派生的包内文件。",
+      "binaryFiles": "完整包复制必须保留 listFiles 返回的 Buffer 字节；既有图片、音频等文件不应经过 UTF-8 字符串转换。",
+      "generatedFiles": "本次 HTML、绑定模块、公共模块、入口、安装记录、manifest 数据引用和所需角色资料写入后续 packageDirectory。",
+      "failure": "生成器只删除或保留自己创建的未完成后续目录；生成器不恢复、删除或改写输入包及其他后续任务。",
+      "successBoundary": "生成器完成全部文件写入、源快照与任务记录保存及前端校验后，才返回后续任务；CLI 保存成功结果后再向 stdout 输出结果路径。",
+      "interruption": "进程终止可能留下未交付的后续目录；此前任务仍完整，未通过成功结果交付的目录不作为有效后续任务。"
+    },
+    "resultDirectory": {
+      "decision": "现有调度结果目录可以保留在输入任务的 calls/call-* 中。",
+      "basis": [
+        "createCallDirectory 使用 mkdir(recursive) 和 mkdtemp，为每次调用分配独占目录。",
+        "runCli 在开始调用时已根据输入 taskFile 确定结果目录，后续生成器返回任务的操作不会共享 result.json。",
+        "listFiles 仅读取输入 packageDirectory；calls 目录追加记录不影响输入包内容或快照。"
+      ],
+      "preciseGuarantee": "输入任务的 task.json、source.json 和 package 中每个文件保持原内容；输入任务可以新增独立的调用记录。",
+      "referenceShape": "stdout 的 resultFile 可以位于输入任务 calls 下；读取该文件时，data.taskFile 和 data.packageDirectory 指向后续任务。",
+      "retention": "调用者保存完整结果路径及后续 taskFile。清理输入任务会移除其调用记录；后续源快照和完整包仍位于独立任务目录中。",
+      "strictDirectoryImmutability": "如果原任务保持原样被定义为整个输入任务目录完全不增加文件，结果目录就须移到输出根目录或后续任务；本次选择沿用现有辅助调用记录模式。",
+      "requiredCodeChange": "沿用该结果目录模式时，output.ts 和 runCli 的 createCallDirectory 调度位置无需改动。"
+    },
+    "snapshotStability": {
+      "requirement": "输入任务的 task.json、source.json、package 文件及本次 requestFile 在整次绑定读取期间保持稳定。",
+      "safeConcurrency": [
+        "多个 bind-page-macros 调用读取同一个稳定输入任务，分别写入各自后续目录。",
+        "调用记录在输入任务 calls 下追加独占文件。",
+        "其他任务的写入及独立归档。"
+      ],
+      "scheduledMutations": "copy、parse、map-entry、map-regex、index 和转换 Agent 对该输入包的直接编辑，须等全部读取该输入包的绑定调用完成。",
+      "reason": "listFiles 按文件逐次读取，目录被其他写入者同时修改时可能得到多版混合内容；独立输出目录不能补偿不稳定的输入。",
+      "scope": "该要求属于输入包的调用调度契约，不使用占用文件、并发锁或写前哈希比较。"
+    },
+    "continuationAndSingleCopies": {
+      "sequence": "T0 经请求 A 返回 T1；调用者对 T1 提交请求 B，取得 T2；调用者对 T2 调用 index、validate 和 pack。",
+      "parallelSequence": "T0 并发接收 A、B 时分别返回 TA、TB；TA 与 TB 是独立产物。需要 A、B 同时进入一个包时，调用者再沿其中一个返回任务提交另一个请求。",
+      "bindings": "生成器从输入后续任务的已有绑定表和 installation.sources 读取完整集合；相同 id 按现有 findIndex 更新，新增 id 追加。",
+      "entry": "installation.originalScript 保留最初入口，generatedEntry 使用该入口生成本次完整包装入口，因此连续调用不会包装上一次生成的包装入口。",
+      "html": "已经登记的同 id 使用 existing marker 路径；同一最终包仅保留一个对应挂载节点。",
+      "runtime": "公共模块、绑定表和入口使用现有包内固定路径；完整包复制与本次覆盖后，每个路径在该包中保留一份。",
+      "retryBoundary": "相同输入和请求再次执行会创建另一独立任务；每个包内的绑定和模块仍保持单份。该契约保证重试不破坏已交付任务，不承诺返回同一个后续任务目录。"
+    },
+    "consumerFindings": [
+      {
+        "consumer": "cli.ts 的 runCli 结果回填",
+        "finding": "当前 data 先展开 result，再回填 invocation.taskFile，导致生成器返回的后续 taskFile 被覆盖。",
+        "required": "生成器返回的成功后续 taskFile 必须优先；普通命令继续使用输入 taskFile 作为默认值。"
+      },
+      {
+        "consumer": "cli.ts 的 parseInvocation 管道读取",
+        "finding": "该函数已经从成功 resultFile 的 data.taskFile 取得绝对任务路径。",
+        "required": "结果正确保留后续 taskFile 后，现有管道解析逻辑可以直接沿后续任务调用。"
+      },
+      {
+        "consumer": "write.ts 的 runBindPageMacros",
+        "finding": "该函数透传两个参数并返回生成器结果。",
+        "required": "单请求参数及透传职责保持现有形态。"
+      },
+      {
+        "consumer": "index.ts 的 indexPackage/runIndex",
+        "finding": "该接口通过输入 taskFile 读取 packageDirectory，并重新生成根 manifest；packageId 使用当前 task.id。",
+        "required": "调用者传入最终后续 taskFile，并继续带 --frontend frontend/manifest.json。根 manifest 需重新登记新增文件，最终 packageId 将对应后续任务 id。"
+      },
+      {
+        "consumer": "tool.ts 的 loadTask、validate、pack",
+        "finding": "这些接口通过现有 TaskContext 取得包路径。pack 会在对应任务中保存独立 ZIP。",
+        "required": "接口实现可以保持原样；调用者传入返回的后续 taskFile，按 index→validate→pack 的现有顺序消费。"
+      },
+      {
+        "consumer": "source.ts 的 readSource/extract 和映射命令",
+        "finding": "源读取使用 task.sourceFile，目标写入使用任务的 packageDirectory。",
+        "required": "后续任务保存独立 source.json 后，消费者可以直接使用后续 taskFile。"
+      },
+      {
+        "consumer": "tool.ts 的 resume",
+        "finding": "resume 返回当前任务的源路径、包路径和实际 artifacts 列表。",
+        "required": "后续任务包含自身源快照、任务记录和包文件即可读取；begin 的待判断索引仍可按首次返回的 workFile 读取，不需要复制其他调用历史。"
+      },
+      {
+        "consumer": "cli.ts/formal.ts 的正式导入",
+        "finding": "formal 把证据写入当前任务，并要求指定 ZIP 位于该任务目录内。",
+        "required": "最终后续 taskFile 必须与该后续任务 pack 返回的 archive 配对；父任务 ZIP 与后续任务输入不能混用。"
+      },
+      {
+        "consumer": "cli.ts/preview.ts 的页面验收",
+        "finding": "preview 从当前任务目录读取 preview.json。",
+        "required": "验收调用者在最终后续任务目录准备 preview.json，并使用该后续任务的 archive。"
+      },
+      {
+        "consumer": "page-macro-bindings.test.ts",
+        "finding": "现有测试在调用后继续读取 f.task.packageDirectory，并继续传入 f.begun.taskFile；这些断言依赖原地改写契约。",
+        "required": "成功测试读取返回包，连续绑定沿返回 taskFile；失败测试逐文件核对输入任务保持原内容；并发测试核对不同后续目录及独立完整产物。"
+      },
+      {
+        "consumer": "转换 Agent 及验收调用轨迹",
+        "finding": "现有 C011 轨迹的多项绑定持续传入 begin 的固定任务路径。",
+        "required": "后续执行每次保存返回 taskFile/packageDirectory，剩余直接编辑、绑定、索引、校验、打包和验收全部使用当前返回任务；历史证据保留其当时路径。"
+      }
+    ],
+    "minimumPublicChanges": [
+      {
+        "contract": "bind-page-macros 的成功副作用",
+        "change": "输入任务包保持原内容；成功结果交付独立后续任务及其完整包。",
+        "files": [
+          ".agents/skills/native-card-conversion/scripts/page-macro-bindings.ts"
+        ]
+      },
+      {
+        "contract": "通用命令结果中的 data.taskFile",
+        "change": "成功生成的后续 taskFile 优先于输入 taskFile；stdout 仍按现有方式返回 resultFile。",
+        "files": [".agents/skills/native-card-conversion/scripts/cli.ts"]
+      },
+      {
+        "contract": "命令帮助与调用说明",
+        "change": "说明返回任务路径、连续调用方式、并发分支含义和输入快照稳定时机。",
+        "files": [
+          ".agents/skills/native-card-conversion/scripts/tool-config.ts",
+          ".agents/skills/native-card-conversion/references/tools.md",
+          ".agents/skills/native-card-conversion/SKILL.md"
+        ]
+      },
+      {
+        "contract": "批准计划的生成目标",
+        "change": "第5.2节应描述输入任务到独立后续任务的生成与失败保留契约。",
+        "files": [
+          ".planning/native-card-maintenance/root-cause-research-2026-10-08/session-name-plan.md"
+        ]
+      }
+    ],
+    "sharedImplementationResponsibility": "任务边界继续以 task-context.ts、runtime.outputDirectory 和 taskPaths 为唯一依据。实现可以在 task-context.ts 封装任务创建与快照物化操作；若抽取 begin 已有的任务创建责任，source.ts 只调用同一封装。该职责整理不会要求修改 TaskContext 的六个既有字段或放宽目录校验。",
+    "unchangedPublicInterfaces": [
+      "page-macro-bindings.schema.json 的单条 BindingRequest 结构。",
+      "task-context.ts 的既有任务布局与校验边界。",
+      "write.ts 的两个参数。",
+      "output.ts 的 resultFile/diagnosticFile 形态。",
+      "parseInvocation 的 stdin 管道格式。",
+      "index、validate、pack 的任务参数及原生包格式。"
+    ],
+    "focusedAcceptance": [
+      "两个同父输入的请求并发成功，返回不同后续任务；父 task.json/source.json/package 的每个文件与原内容相同。",
+      "后续任务的 sourceFile 位于自身目录，readTaskContext 和 tool.loadTask 均接受实际返回任务。",
+      "子任务中非绑定的全部包文件按字节保持，覆盖图片或音频样本。",
+      "成功 resultFile 的 data.taskFile 确实指向后续任务；通过 stdin 的下一条命令消费后续任务。",
+      "连续绑定 T0→T1→T2 同时保留 A、B；重复同 id 时最终包保留一个绑定、节点、公共模块和入口。",
+      "注入后续文件写入失败、任务记录失败或结果保存失败时，此前输入任务与其他成功后续任务保持完整。",
+      "最终后续任务运行 index --frontend、validate 和 pack；ZIP 回读包含全部绑定文件，正式导入与页面验收使用同一后续 archive。",
+      "输入包编辑与绑定读取按文档规定时机调度；并发调用仅在输入稳定时验收。"
+    ],
+    "pureFunctionVerification": {
+      "method": "读取本人先前创建的有效临时任务；在内存构造后续任务字段，调用现有 parseTaskContext 与 taskLocationMatches。验证未创建后续目录，也未改写产品文件。",
+      "results": {
+        "existingParentValidated": true,
+        "siblingChildShapeParsed": true,
+        "siblingLayoutAccepted": true,
+        "nestedChildLayoutAccepted": false,
+        "parentSourceReuseRejected": true,
+        "currentCliSpreadOverwritesGeneratedTask": true
+      }
+    },
+    "remainingImplementationUncertainty": "实际后续任务创建、输出结果路径、文件失败注入及最终 ZIP 消费仍由执行队员实现后验收；本次纯函数结果证明布局契约可复用。"
+  }
+}

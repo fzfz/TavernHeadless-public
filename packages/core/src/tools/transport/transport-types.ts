@@ -1,0 +1,150 @@
+import type { ModelToolResultEnvelope, ToolCallResult, ToolDefinition } from '../types.js';
+
+export type { ModelToolResultEnvelope } from '../types.js';
+
+export function isModelToolResultEnvelope(
+  value: unknown,
+): value is ModelToolResultEnvelope {
+  if (!value || typeof value !== 'object') return false;
+  const candidate = value as Record<string, unknown>;
+  if (candidate.ok === true) {
+    return Object.prototype.hasOwnProperty.call(candidate, 'data');
+  }
+  if (candidate.ok !== false || !candidate.error || typeof candidate.error !== 'object') {
+    return false;
+  }
+  const error = candidate.error as Record<string, unknown>;
+  return typeof error.code === 'string' && typeof error.message === 'string';
+}
+
+/** Extracts the exact capability envelope shown to the model, preserving legacy tool output. */
+export function modelVisibleToolResult(result: ToolCallResult): unknown {
+  if (isModelToolResultEnvelope(result.data)) return result.data;
+  if (result.error) return { error: result.error };
+  return result.data;
+}
+
+/**
+ * 可用的工具调用传输方式。
+ */
+export type ToolCallTransportKind = 'native_function_call' | 'text_protocol' | 'none';
+
+/**
+ * 工具调用传输决策的稳定原因码。
+ */
+export type ToolCallTransportReasonCode =
+  | 'explicit_override'
+  | 'tools_disabled'
+  | 'instance_not_supports_function_call'
+  | 'default_native_function_call'
+  | 'mode_disallows_transport'
+  | 'override_rejected_by_mode';
+
+/**
+ * 本轮工具调用传输决策。
+ */
+export interface ToolCallTransportSelection {
+  transport: ToolCallTransportKind;
+  reasonCode: ToolCallTransportReasonCode;
+  reasonDetail?: string;
+}
+
+/**
+ * 渲染工具列表时的输入。
+ */
+export interface ToolListRenderInput {
+  tools: ToolDefinition[];
+}
+
+/**
+ * 渲染工具列表时的输出。
+ */
+export interface ToolListRenderOutput {
+  content: string;
+  renderedToolNames: string[];
+}
+
+/**
+ * 文本协议工具调用解析输入。
+ */
+export interface ToolCallParseInput {
+  modelOutputText: string;
+  allowedToolNames: ReadonlySet<string>;
+}
+
+/**
+ * 一条通过文本协议接受的工具调用。
+ */
+export interface ParsedToolCall {
+  callId: string;
+  toolName: string;
+  args: Record<string, unknown>;
+}
+
+/**
+ * 文本协议解析诊断原因。
+ */
+export type ToolCallParseDiagnosticReason =
+  | 'tool_not_registered'
+  | 'json_parse_failed'
+  | 'missing_args_field'
+  | 'missing_call_id'
+  | 'missing_tool_name'
+  | 'duplicate_call_id'
+  | 'malformed_block'
+  | 'malformed_attributes'
+  | 'invalid_tool_name';
+
+/**
+ * 一条文本协议解析诊断。
+ */
+export interface ToolCallParseDiagnostic {
+  callId: string | null;
+  toolName: string | null;
+  reason: ToolCallParseDiagnosticReason;
+  excerpt: string;
+}
+
+/**
+ * 文本协议块级统计。
+ */
+export interface ToolCallParseStats {
+  blockCount: number;
+  acceptedCount: number;
+  rejectedCount: number;
+}
+
+/**
+ * 文本协议工具调用解析输出。
+ */
+export interface ToolCallParseOutput {
+  calls: ParsedToolCall[];
+  diagnostics: ToolCallParseDiagnostic[];
+  stats: ToolCallParseStats;
+}
+
+/**
+ * 文本协议工具结果格式化输入。
+ */
+export interface ToolResultFormatInput {
+  callId: string;
+  toolName: string;
+  result: ToolCallResult;
+}
+
+/**
+ * 文本协议工具结果格式化输出。
+ */
+export interface ToolResultFormatOutput {
+  content: string;
+}
+
+/**
+ * 一种工具调用传输方式应提供的能力。
+ */
+export interface ToolCallTransport {
+  readonly kind: ToolCallTransportKind;
+  renderToolList?(input: ToolListRenderInput): ToolListRenderOutput;
+  parseToolCalls?(input: ToolCallParseInput): ToolCallParseOutput;
+  formatToolResult?(input: ToolResultFormatInput): ToolResultFormatOutput;
+}

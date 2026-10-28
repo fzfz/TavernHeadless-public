@@ -1,0 +1,127 @@
+// ── Types ─────────────────────────────────────────────
+export type {
+  ChatRole,
+  IRMessage,
+  IRSection,
+  IRSectionInsertion,
+  IRSectionSemantic,
+  PromptIR,
+  PromptMetadata,
+  PromptBudgetGroup,
+  TokenCounter,
+  ChatMessage,
+  AssembledPrompt,
+  PromptSnapshotRecord,
+  PromptSnapshotWorldbookActivation,
+  PromptSnapshotWorldbookActivationSource,
+  PromptSnapshotWorldbookInsertion,
+  PromptRuntimeBudgetGroupTrace,
+  PromptTrimReasonCode,
+  PromptTrimReason,
+  PromptRuntimeBudgetTrace,
+  PromptRuntimeSourceKind,
+  PromptSourceExclusionReasonCode,
+  PromptSourceExclusionReason,
+  PromptRuntimePresetTrace,
+  PromptRuntimeWorldbookTrace,
+  PromptRuntimeRegexTrace,
+  PromptRuntimeRegexPhaseId,
+  PromptRuntimeRegexPhaseStatus,
+  PromptRuntimeRegexSkipReason,
+  PromptRuntimeRegexSubstitutionMode,
+  PromptRuntimeRegexSkippedRule,
+  PromptRuntimeRegexPhaseTrace,
+  PromptRuntimeStructureTrace,
+  PromptRuntimeMemoryStrategy,
+  PromptRuntimeMemorySelectedItemTrace,
+  PromptRuntimeMemoryTokenStats,
+  PromptRuntimeMemoryScopeResolutionTrace,
+  PromptRuntimeMemoryProposalStatus,
+  PromptRuntimeMemoryPromotionStatus,
+  PromptRuntimeMemoryTrace,
+  PromptRuntimeMacroWarning,
+  PromptRuntimeMacroMutationPreview,
+  PromptRuntimeMacroStagedMutation,
+  PromptRuntimeMacroTraceEntry,
+  PromptRuntimeMacroTrace,
+  PromptRuntimeDeliveryDegradeReason,
+  PromptRuntimeDeliveryTrace,
+  PromptRuntimeVisibilityRange,
+  PromptRuntimeVisibilityTrace,
+  PromptRuntimeSourceSelectionTrace,
+  PromptRuntimeSectionStat,
+  PromptRuntimeDiffChangeType,
+  PromptRuntimeDiffEntry,
+  PromptRuntimeGenerationParamName,
+  PromptRuntimeGenerationParamFinalState,
+  PromptRuntimeGenerationParamOrigin,
+  PromptRuntimeGenerationParamLayer,
+  PromptRuntimeGenerationParamFilterReason,
+  PromptRuntimeGenerationParamResolution,
+  PromptRuntimeToolTransportTrace,
+  PromptRuntimeGovernanceRetention,
+  PromptRuntimeGovernancePolicy,
+  PromptRuntimeGovernanceSeedEntry,
+  PromptRuntimeGovernanceSeed,
+  PromptRuntimeTrace,
+  PromptRuntimeDebugView,
+} from './types.js';
+
+// ── Template Engine ───────────────────────────────────
+export { TemplateEngine, TemplateVariableError } from './template-engine.js';
+export type { TemplateOptions } from './template-engine.js';
+
+// ── Token Budget ──────────────────────────────────────
+export { TokenBudget, SimpleTokenCounter } from './token-budget.js';
+export {
+  buildPromptRuntimeSectionBudgetGroup,
+  resolvePromptRuntimeSourceDescriptor,
+  resolvePromptRuntimeBudgetGroupDescriptor,
+  resolvePromptRuntimeBudgetGroupDefaults,
+  resolvePromptRuntimeBudgetGroupExclusionSource,
+  resolvePromptRuntimeBudgetGroupTraceLabel,
+  resolvePromptRuntimeSourceGovernanceLevel,
+  PROMPT_MEMORY_SECTION_NAME,
+  PROMPT_MEMORY_MESSAGE_SOURCE,
+} from './runtime-registry.js';
+export { buildPromptRuntimeGovernanceSeed, inferPromptRuntimeGovernanceSourceKind, resolvePromptRuntimeGovernancePolicy } from './governance.js';
+
+export type {
+  PromptRuntimeSourceDescriptor,
+  PromptRuntimeBudgetGroupDescriptor,
+  PromptRuntimeSourceGovernanceLevel,
+} from './runtime-registry.js';
+
+// ── Message Builder ───────────────────────────────────
+export { MessageBuilder } from './message-builder.js';
+export type { MessageBuilderOptions } from './message-builder.js';
+
+// ── Native Pipeline ────────────────────────────────────
+export {
+  assembleNativePrompt,
+  runNativePipeline,
+  TemplateNode,
+  ConditionNode,
+  WorldbookResolveNode,
+  TransformNode,
+  MemoryInjectNode,
+  TokenBudgetNode,
+  PackMessagesNode,
+  NativePipelineError,
+} from './native-pipeline.js';
+export type {
+  NativePromptMode,
+  NativePipelinePhase,
+  NativeWorldbookEntry,
+  NativePipelineInput,
+  NativePipelineState,
+  NativePipelineNode,
+  NativePipelineNodeOutput,
+  NativePipelineNodeStateSnapshot,
+  NativePipelineNodeTraceEntry,
+  NativePipelineInputSummary,
+  NativePipelineStateSummary,
+  ConditionNodeOptions,
+  TransformRule,
+  TransformNodeOptions,
+} from './native-pipeline.js';

@@ -1,0 +1,38 @@
+[
+  {
+    "platform": "mobile",
+    "route": "auth",
+    "check": "独立文件运行、设备框、窄屏和横屏无横向溢出、操作目标44px、200%文字",
+    "result": "pass"
+  },
+  {
+    "platform": "mobile",
+    "route": "register",
+    "check": "独立文件运行、设备框、窄屏和横屏无横向溢出、操作目标44px、200%文字",
+    "result": "pass"
+  },
+  {
+    "platform": "mobile",
+    "route": "account",
+    "check": "独立文件运行、设备框、窄屏和横屏无横向溢出、操作目标44px、200%文字",
+    "result": "pass"
+  },
+  {
+    "platform": "desktop",
+    "route": "auth",
+    "check": "独立文件运行、设备框、窄屏和横屏无横向溢出、操作目标44px、200%文字",
+    "result": "pass"
+  },
+  {
+    "platform": "desktop",
+    "route": "register",
+    "check": "独立文件运行、设备框、窄屏和横屏无横向溢出、操作目标44px、200%文字",
+    "result": "pass"
+  },
+  {
+    "platform": "desktop",
+    "route": "account",
+    "check": "独立文件运行、设备框、窄屏和横屏无横向溢出、操作目标44px、200%文字",
+    "result": "pass"
+  }
+]

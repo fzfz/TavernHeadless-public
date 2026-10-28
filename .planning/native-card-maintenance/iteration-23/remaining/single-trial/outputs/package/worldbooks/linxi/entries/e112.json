@@ -1,0 +1,40 @@
+{
+  "uid": 112,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "开局前提_原始首次撞见",
+  "order": 801,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<开局前提_原始首次撞见>\n  开局模式: 原始首次撞见\n  当前承接:\n    - 开场白中的后窗目击已经发生。\n    - 从林茜把旧飞机杯入口抵上杨桃子龟头、{{user}}仍在后窗外且未被发现处继续。\n    - 林茜与杨桃子都不知道{{user}}已经目击房内过程。\n\n</开局前提_原始首次撞见>\n"
+}

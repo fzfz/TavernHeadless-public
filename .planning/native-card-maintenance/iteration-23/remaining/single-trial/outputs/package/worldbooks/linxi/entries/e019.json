@@ -1,0 +1,47 @@
+{
+  "uid": 19,
+  "key": [
+    "万家宾馆",
+    "万家宾馆301",
+    "万家宾馆302",
+    "光明路桥西",
+    "301吊灯",
+    "302房间"
+  ],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "地点_万家宾馆",
+  "order": 66,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": 2,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_place_wanjia_hotel>\n万家宾馆位于桥西200米路北，301和302是三楼走廊上的相邻房间。301房内有床、窗帘、中央吊灯、电视矮柜、房门、墙面和窗帘后区域，中央吊灯照亮床、窗帘、门口和房间中央。302房内有房门、靠门窄桌、床、电脑摆放处和阳台。夫妻家到万家宾馆步行约35分钟，电动车约15分钟，打车约10分钟；家电城到万家宾馆步行约32分钟，电动车约12分钟，打车约9分钟。\n</qrxd_place_wanjia_hotel>\n"
+}

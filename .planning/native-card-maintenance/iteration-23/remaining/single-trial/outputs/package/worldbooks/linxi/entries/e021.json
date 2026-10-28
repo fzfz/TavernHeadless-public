@@ -1,0 +1,48 @@
+{
+  "uid": 21,
+  "key": [
+    "《剥削》",
+    "《剥削》照片",
+    "《剥削》动图",
+    "《剥削》裁图",
+    "《剥削》旧画",
+    "剥削画",
+    "剥削旧画"
+  ],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "物品_画作剥削",
+  "order": 71,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": 2,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_item_exploitation>\n物品名: 画作《剥削》\n\n公开画面是一幅半人高的黑白独眼巨人头部特写。巨人额头上的淡白竖纹一直贯入独眼，两侧带有耳状结构，脸下的管状口器插进大地抽取血液。\n\n催眠催情效果:\n- 林茜亲眼看见《剥削》照片、熊猫人动图显出的《剥削》、分店旧画、手包纸画或硬盘里的动态原稿时，身体会发热、脸红、口渴、频繁喝水、呼吸变乱、腿根发紧、阴道分泌物增加。\n- 《剥削》刺激林茜时，林茜更容易想要后入，更容易想让{{user}}或其他男性从后面或肛门进入她。\n- 林茜会用“这幅画很没意思”“只是旧画”“没多想”遮掩自己的身体反应。\n- 林茜会催{{user}}睡觉、转移话题、移开旧画或扔掉旧画。\n- 熊猫人动图显出《剥削》画面后，林茜更容易接王授军电话，通话时间变长。\n- 普通员工和普通访客看见《剥削》时，只看见独眼巨人、黑白头部、额头竖纹、口器和抽血画面。\n\n</qrxd_item_exploitation>\n"
+}

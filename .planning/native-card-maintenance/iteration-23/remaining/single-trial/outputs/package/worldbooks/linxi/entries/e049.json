@@ -1,0 +1,40 @@
+{
+  "uid": 49,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_22_云盘备份",
+  "order": 245,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E022>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n{{user}}在夫妻家书房退出自己的云盘账号，输入王授军的用户名与密码并成功登录。\n{{user}}排列王授军云盘里的文件，文件列表显示仍有新增内容。\n王授军云盘根目录里有一张《面壁者》图片。{{user}}打开图片后，看见与公司电脑和长寿宫拍卖会宣传图相同的三角脑袋、长鼻子外星人和周围线条。他根据王授军把真人性场面改成抽象画的做法，怀疑这三个结构来自另一段女人身体特写，却还无法把任何线条对到具体部位。\n{{user}}返回目录，打开PE文件夹。里面有一个标记为“录音”的音频和一个写着“备份”的大体积视频。\n{{user}}播放录音。音频先出现电流声，随后传出王授军向一名女人道歉、谈粉丝骚扰、画展、缪斯和再次合作；女声拒绝继续配合并追问作品处理。\n林茜在门外提醒{{user}}吃饭。{{user}}暂停播放录音。\n</事件_E022>\n"
+}

@@ -1,0 +1,178 @@
+{
+  "sources": {
+    "linqian": {
+      "rules": [
+        {
+          "id": "59a0328b-c30a-52cc-95bf-04049945f0da",
+          "name": "页面隐藏变量更新块",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "e3e60295-a806-52b8-abf2-bd917800b904",
+          "name": "对模型隐藏历史Analysis",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "1c5ee016-4a42-5f2f-a136-8228e2ea37c1",
+          "name": "提示词历史裁剪3楼前的变量更新块",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "8cd5fc5e-5c9f-5153-9726-8e5ba2cdbca7",
+          "name": "对AI隐藏行动选项_逐项更新",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "3e2e54d2-79f8-5a45-bfa8-90b131d89b89",
+          "name": "对AI隐藏状态栏",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "e2910614-bef3-5c59-a8da-1f3d37918285",
+          "name": "状态栏渲染",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "6a93c71b-e392-5847-b5df-c58dcb441f4e",
+          "name": "回复修复_补正文闭合标签",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "7f1c5126-9b4e-5a05-a6f6-83d13fe49016",
+          "name": "回复修复_追加状态栏占位符",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        }
+      ]
+    },
+    "gushengman": {
+      "rules": [
+        {
+          "id": "c2655a16-d93d-491c-b79c-4ec59df53a18",
+          "name": "[美化]变量更新中-夜空诗意",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "00c7b472-1430-4120-b010-56cb8e74ff33",
+          "name": "[美化]完整变量完成-夜空诗意",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "daa6cb6f-e0f0-4a7a-b4f8-4d1b3a4989da",
+          "name": "对 AI 隐藏状态栏",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "374a2149-7c7d-44f5-9afe-f299a7aac301",
+          "name": "仅格式思维链",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "79a0e4b4-eb5d-4ecd-ab44-37bc55b085ad",
+          "name": "只发送最新3楼的变量更新",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "7da9a4c8-d7d1-420c-886f-c736998b4c1b",
+          "name": "删除",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "76985818-ab64-49fe-96b0-b842d45ae4cf",
+          "name": "状态栏美化",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        },
+        {
+          "id": "04d3a536-469a-4c5e-939e-4c90c541bed0",
+          "name": "背景替换",
+          "decision": "remove",
+          "reason": "旧 MVU 输出协议已从正文请求移除；变量 Agent 独立提交结构化状态，正文无需处理更新块。"
+        }
+      ]
+    },
+    "preset": {
+      "rules": [
+        {
+          "id": "51b3f4a5-ee72-4980-abda-8d8fb67479be",
+          "name": "【云瑾】包裹最新指示",
+          "decision": "keep",
+          "reason": "包装近期用户输入，保持预设约定。"
+        },
+        {
+          "id": "d0939a86-4170-44d8-8968-b6148a5c2ed6",
+          "name": "【云瑾】移除额外tag_1.5",
+          "decision": "keep",
+          "reason": "清理显示和提示词中的预设输出标签。"
+        },
+        {
+          "id": "b713fbff-47ae-4616-8d7a-655c4ba407e2",
+          "name": "【云瑾】八股抹除 - 4.24",
+          "decision": "keep",
+          "reason": "保留预设的文本修辞处理。"
+        },
+        {
+          "id": "30c53ab4-0c58-4df8-8d3c-e1ba24abcb92",
+          "name": "【云瑾】切除10楼以内小总结",
+          "decision": "keep",
+          "reason": "深度 9 以内移除小总结。"
+        },
+        {
+          "id": "4c56b336-bfb1-4766-a053-6f072bfd57c9",
+          "name": "【云瑾】切除10楼以上正文&仅保留小总结",
+          "decision": "keep",
+          "reason": "深度 10 起保留小总结并裁剪正文。"
+        },
+        {
+          "id": "14c836a8-2b8c-40ee-a476-83f17a7b8772",
+          "name": "【夏瑾】底部正则",
+          "decision": "keep",
+          "reason": "原预设停用的规则保持停用。"
+        },
+        {
+          "id": "7861fbe0-ed5f-40af-91c1-17f6a3a1a690",
+          "name": "【夏瑾】语气正则",
+          "decision": "keep",
+          "reason": "保留预设的语气文本处理。"
+        },
+        {
+          "id": "2112de1c-3a68-45bb-a389-1fd17dc09931",
+          "name": "【夏瑾】破折号处理",
+          "decision": "keep",
+          "reason": "保留预设的标点处理。"
+        },
+        {
+          "id": "85b2b65a-3762-4006-965c-69eda41ea80b",
+          "name": "【夏瑾】比喻正则",
+          "decision": "keep",
+          "reason": "保留预设的比喻文本处理。"
+        },
+        {
+          "id": "aba7227b-cb05-4a52-b899-604d7bb0a492",
+          "name": "【夏瑾】行动选项2",
+          "decision": "keep",
+          "reason": "深度 1 起清理旧 SUOT 文本。"
+        },
+        {
+          "id": "f1108fce-1300-4315-acdd-dca0399f2afc",
+          "name": "【夏瑾】行动选项1",
+          "decision": "remove",
+          "reason": "角色 Runtime 提供行动选项，替代 SUOT HTML 页面。"
+        }
+      ]
+    }
+  }
+}

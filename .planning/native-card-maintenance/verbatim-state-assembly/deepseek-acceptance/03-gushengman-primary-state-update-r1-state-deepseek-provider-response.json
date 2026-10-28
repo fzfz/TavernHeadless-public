@@ -1,0 +1,6 @@
+{
+  "status": 404,
+  "contentType": "application/json",
+  "elapsedMs": 5680,
+  "text": "{\"error\":{\"message\":\"No endpoints found that can handle the requested parameters. To learn more about provider routing, visit: https://openrouter.ai/docs/guides/routing/provider-selection\",\"code\":404,\"metadata\":{\"routing_funnel\":[{\"step\":\"Initial Endpoints\",\"endpoint_count\":30},{\"step\":\"Filter by Max Price\",\"endpoint_count\":27},{\"step\":\"Filter by Allowed Providers\",\"endpoint_count\":1,\"reason\":\"not in your request's provider.only preference\"}],\"failed_routing_step\":\"Filter by Parameters\"}}}"
+}

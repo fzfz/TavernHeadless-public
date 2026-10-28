@@ -1,0 +1,242 @@
+{
+  "checks": [
+    {
+      "check": "pnpm test:ci",
+      "exitCode": 1,
+      "logTail": [
+        " ❯ apps/api/src/routes/__tests__/role-view.test.ts:427:19",
+        "",
+        "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯",
+        "Serialized Error: { code: 'FST_ERR_DUPLICATED_ROUTE', statusCode: 500 }",
+        "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/22]⎯",
+        "",
+        " Test Files  3 failed | 467 passed (470)",
+        "      Tests  22 failed | 4150 passed (4172)",
+        "   Start at  00:05:55",
+        "   Duration  211.59s (transform 12.63s, setup 0ms, collect 396.04s, tests 1361.81s, environment 81ms, prepare 26.69s)",
+        "",
+        " ELIFECYCLE  Command failed with exit code 1."
+      ]
+    },
+    {
+      "check": "role-view regression",
+      "exitCode": 0,
+      "logTail": [
+        "   ✓ role view state contract > preserves committed controller state across updater success/failure (false) 582ms",
+        "   ✓ role view state contract > preserves committed controller state across updater success/failure (true) 578ms",
+        "   ✓ role view state contract > rejects a floor from another session and an out-of-order floor 579ms",
+        "   ✓ role view state contract > leaves both the snapshot and formal variable unchanged when a proposal fails 689ms",
+        "   ✓ role view state contract > rejects a second concurrent update while the first proposal is running 606ms",
+        "   ✓ role view state contract > returns 404 for a missing display snapshot and gates formal respond while state is pending 577ms",
+        "",
+        " Test Files  1 passed (1)",
+        "      Tests  15 passed (15)",
+        "   Start at  00:18:34",
+        "   Duration  11.86s (transform 2.65s, setup 0ms, collect 4.07s, tests 7.46s, environment 0ms, prepare 55ms)",
+        ""
+      ]
+    },
+    {
+      "check": "controller import tests",
+      "exitCode": 0,
+      "logTail": [
+        "   ✓ imports gushengman through the standard API with all prepared openings 563ms",
+        "   ✓ rejects malformed YAML and unsupported immediate session creation before writing character data 554ms",
+        "   ✓ denies role migration import for a regular authenticated account 572ms",
+        " ✓ apps/api/test/role-fixture-assets.integration.test.ts (2 tests) 5189ms",
+        "   ✓ persists the complete linqian runtime files through the standard API and reopens them 1611ms",
+        "   ✓ persists the complete gushengman runtime files through the standard API and reopens them 3578ms",
+        "",
+        " Test Files  3 passed (3)",
+        "      Tests  17 passed (17)",
+        "   Start at  00:59:07",
+        "   Duration  8.58s (transform 2.41s, setup 0ms, collect 6.75s, tests 7.71s, environment 0ms, prepare 224ms)",
+        ""
+      ]
+    },
+    {
+      "check": "provider error tests",
+      "exitCode": 0,
+      "logTail": [
+        "   ✓ standard model call history routes > records through the formal generation endpoint with write failure=succeeded 627ms",
+        "   ✓ standard model call history routes > records through the formal generation endpoint with write failure=outcome 619ms",
+        "   ✓ standard model call history routes > exposes the formal history route and schema and checks floor ownership 591ms",
+        "   ✓ standard model call history routes > denies a non-administrator authenticated account 685ms",
+        "   ✓ propagates provider finish_reason error without committing partial output, stream=false 613ms",
+        "   ✓ propagates provider finish_reason error without committing partial output, stream=true 622ms",
+        "",
+        " Test Files  2 passed (2)",
+        "      Tests  13 passed (13)",
+        "   Start at  01:04:59",
+        "   Duration  8.63s (transform 2.10s, setup 0ms, collect 3.46s, tests 5.40s, environment 0ms, prepare 85ms)",
+        ""
+      ]
+    },
+    {
+      "check": "combined provider/storage failure",
+      "exitCode": 0,
+      "logTail": [
+        "[WARN] The \"pnpm\" field in package.json is no longer read by pnpm. The following keys were ignored: \"pnpm.overrides\". See https://pnpm.io/settings for the new home of each setting.",
+        "",
+        " RUN  v2.1.9 /srv/tavern/TavernHeadless-generation-trace-batch-1",
+        "",
+        " ✓ packages/core/src/llm/__tests__/recording-fetch.test.ts (6 tests) 14ms",
+        "",
+        " Test Files  1 passed (1)",
+        "      Tests  6 passed (6)",
+        "   Start at  01:06:46",
+        "   Duration  973ms (transform 517ms, setup 0ms, collect 609ms, tests 14ms, environment 0ms, prepare 59ms)",
+        ""
+      ]
+    },
+    {
+      "check": "Gushengman macro migration tests",
+      "exitCode": 0,
+      "logTail": [
+        " RUN  v2.1.9 /srv/tavern/TavernHeadless-generation-trace-batch-1",
+        "",
+        " ✓ packages/adapters-sillytavern/src/role-migrations/__tests__/role-migrations.test.ts (11 tests) 8ms",
+        " ✓ apps/api/test/role-fixture-assets.integration.test.ts (2 tests) 5170ms",
+        "   ✓ persists the complete linqian runtime files through the standard API and reopens them 1637ms",
+        "   ✓ persists the complete gushengman runtime files through the standard API and reopens them 3533ms",
+        "",
+        " Test Files  2 passed (2)",
+        "      Tests  13 passed (13)",
+        "   Start at  01:19:16",
+        "   Duration  8.47s (transform 2.14s, setup 0ms, collect 3.54s, tests 5.18s, environment 0ms, prepare 80ms)",
+        ""
+      ]
+    },
+    {
+      "check": "restored final prompt state test",
+      "exitCode": 0,
+      "logTail": [
+        "",
+        " RUN  v2.1.9 /srv/tavern/TavernHeadless-generation-trace-batch-1",
+        "",
+        " ✓ apps/api/test/role-fixture-assets.integration.test.ts (2 tests) 5525ms",
+        "   ✓ persists the complete linqian runtime files through the standard API and reopens them 1768ms",
+        "   ✓ persists the complete gushengman runtime files through the standard API and reopens them 3756ms",
+        "",
+        " Test Files  1 passed (1)",
+        "      Tests  2 passed (2)",
+        "   Start at  01:22:46",
+        "   Duration  8.80s (transform 2.03s, setup 0ms, collect 3.01s, tests 5.53s, environment 0ms, prepare 44ms)",
+        ""
+      ]
+    },
+    {
+      "check": "pnpm typecheck",
+      "exitCode": 0,
+      "logTail": [
+        "apps/user-web typecheck$ vue-tsc --noEmit",
+        "packages/adapters-sillytavern typecheck$ tsc -b",
+        ".../client-helpers typecheck$ tsc -b",
+        ".../client-helpers typecheck: Done",
+        "packages/adapters-sillytavern typecheck: Done",
+        "apps/user-web typecheck: Done",
+        "apps/api typecheck$ tsc -p tsconfig.json --noEmit",
+        "apps/web typecheck$ vue-tsc --noEmit",
+        "apps/studio typecheck$ vue-tsc --noEmit",
+        "apps/web typecheck: Done",
+        "apps/studio typecheck: Done",
+        "apps/api typecheck: Done"
+      ]
+    },
+    {
+      "check": "pnpm sdk:check",
+      "exitCode": 0,
+      "logTail": [
+        "",
+        "> tavern-headless@0.1.0 sdk:check /srv/tavern/TavernHeadless-generation-trace-batch-1",
+        "> pnpm --filter @tavern/api openapi:export -- packages/shared/src/generated/.openapi.check.json && pnpm exec openapi-typescript packages/shared/src/generated/.openapi.check.json --output packages/shared/src/generated/.openapi-types.check.ts && tsx scripts/check-sdk-generated.ts",
+        "",
+        "",
+        "> @tavern/api@0.2.0-beta.3 openapi:export /srv/tavern/TavernHeadless-generation-trace-batch-1/apps/api",
+        "> tsx scripts/export-openapi.ts \"--\" \"packages/shared/src/generated/.openapi.check.json\"",
+        "",
+        "[openapi:export] wrote packages/shared/src/generated/.openapi.check.json",
+        "✨ openapi-typescript 7.13.0",
+        "🚀 packages/shared/src/generated/.openapi.check.json → packages/shared/src/generated/.openapi-types.check.ts [709.1ms]",
+        "[sdk:check] generated SDK artifacts are up to date"
+      ]
+    },
+    {
+      "check": "pnpm lint",
+      "exitCode": 0,
+      "logTail": [
+        "/srv/tavern/TavernHeadless-generation-trace-batch-1/apps/studio/src/modules/graph/assistant/AssistantMarkdown.vue",
+        "  79:28  warning  'v-html' directive can lead to XSS attack  vue/no-v-html",
+        "",
+        "/srv/tavern/TavernHeadless-generation-trace-batch-1/apps/web/src/components/workspace/MarkdownBlock.vue",
+        "  28:35  warning  'v-html' directive can lead to XSS attack  vue/no-v-html",
+        "",
+        "/srv/tavern/TavernHeadless-generation-trace-batch-1/packages/core/src/llm/provider-registry.ts",
+        "  48:3  warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-require-imports')",
+        "",
+        "✖ 4 problems (0 errors, 4 warnings)",
+        "  0 errors and 2 warnings potentially fixable with the `--fix` option.",
+        ""
+      ]
+    },
+    {
+      "check": "five changed Markdown files",
+      "exitCode": 0,
+      "logTail": [
+        "[WARN] The \"pnpm\" field in package.json is no longer read by pnpm. The following keys were ignored: \"pnpm.overrides\". See https://pnpm.io/settings for the new home of each setting.",
+        "markdownlint-cli2 v0.16.0 (markdownlint v0.36.1)",
+        "Finding: docs/plans/evidence/generation-trace/batch-1/acceptance-record.md docs/plans/evidence/generation-trace/batch-1/code-review.md docs/plans/evidence/generation-trace/batch-1/implementation-decisions.md docs/adr/0005-role-resource-file-storage.md packages/core/CONTEXT.md",
+        "Linting: 5 file(s)",
+        "Summary: 0 error(s)"
+      ]
+    },
+    {
+      "check": "API build",
+      "exitCode": 0,
+      "logTail": [
+        "[WARN] The \"pnpm\" field in package.json is no longer read by pnpm. The following keys were ignored: \"pnpm.overrides\". See https://pnpm.io/settings for the new home of each setting.",
+        "",
+        "> @tavern/api@0.2.0-beta.3 build /srv/tavern/TavernHeadless-generation-trace-batch-1/apps/api",
+        "> tsc -p tsconfig.json",
+        ""
+      ]
+    },
+    {
+      "check": "admin production build",
+      "exitCode": 0,
+      "logTail": [
+        "dist/assets/index-DPA0IqoN.css                      45.29 kB │ gzip:   9.28 kB",
+        "dist/assets/GenerationDetailView-BQG44xUi.js         3.83 kB │ gzip:   1.68 kB",
+        "dist/assets/ModelCallHistoryDialog-BCbvfWYW.js       6.17 kB │ gzip:   2.55 kB",
+        "dist/assets/RoleAppsView-Bb6t9PeM.js                13.53 kB │ gzip:   3.92 kB",
+        "dist/assets/api-error-messages-DLBmIClH.js          19.28 kB │ gzip:   6.92 kB",
+        "dist/assets/index-C9YbDE-z.js                    1,168.07 kB │ gzip: 314.67 kB",
+        "",
+        "(!) Some chunks are larger than 500 kB after minification. Consider:",
+        "- Using dynamic import() to code-split the application",
+        "- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks",
+        "- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.",
+        "✓ built in 3.00s"
+      ]
+    },
+    {
+      "check": "user production build",
+      "exitCode": 0,
+      "logTail": [
+        "✓ 128 modules transformed.",
+        "rendering chunks...",
+        "computing gzip size...",
+        "dist/index.html                   0.35 kB │ gzip:   0.28 kB",
+        "dist/assets/index-BTGpdCxO.css    2.70 kB │ gzip:   1.10 kB",
+        "dist/assets/index-Chw4wC3X.js   902.47 kB │ gzip: 166.88 kB",
+        "",
+        "(!) Some chunks are larger than 500 kB after minification. Consider:",
+        "- Using dynamic import() to code-split the application",
+        "- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks",
+        "- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.",
+        "✓ built in 1.10s"
+      ]
+    }
+  ],
+  "fullSuiteResult": "Initial failures repaired and targeted tests passed; no second full-suite run claimed."
+}

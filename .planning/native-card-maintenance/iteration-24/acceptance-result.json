@@ -1,0 +1,149 @@
+{
+  "scope": "本轮唯一转换子代理的林茜v1.3.32输出；不计入其他117卡的通过结果",
+  "originalArchive": ".tmp/native-card-conversion/run-CuL1xq/role.zip",
+  "originalCases": [
+    {
+      "id": "I01",
+      "source": "/data/first_mes",
+      "expectation": "默认开场使用开场initvar与JSONPatch后的状态，A1计数=1，初始开局模式=原始首次撞见；正文保留实际剧情，去掉旧更新块及状态栏挂载标记。",
+      "status": "failed",
+      "conclusion": "初始化数值保持源值，但状态schema提前应用页面发送检查，包含人物宏的选项被正式导入拒绝。"
+    },
+    {
+      "id": "I02",
+      "source": "/data/alternate_greetings/0",
+      "expectation": "画室赴约开场使用自身日期、地点、心情、评分、事件前置标记和四个JSONPatch覆写后的选项；E012保持false。",
+      "status": "failed",
+      "conclusion": "备用开场初始化后的四个replace选项未应用；同样被初始schema拒绝。"
+    },
+    {
+      "id": "W01",
+      "source": "/data/character_book/entries/104",
+      "expectation": "用户身体边界阈值300/450；杨桃子称呼阈值200/380/620与身体边界81/220/380/620分别选择；E012=true且E035=false时载入王授军规则。",
+      "status": "passed",
+      "conclusion": "源控制器阈值和无效值分支对照通过。"
+    },
+    {
+      "id": "W02",
+      "source": "/data/character_book/entries/106",
+      "expectation": "关键事件优先于终局阶段，均未选中时才选日常事件；保留完整前置事件、阈值、日期、计数和无效值条件。",
+      "status": "passed",
+      "conclusion": "源事件、阶段、日常优先顺序及完整条件对照通过。"
+    },
+    {
+      "id": "W03",
+      "source": "/data/character_book/entries/122",
+      "expectation": "按11种源开局模式显式读取对应禁用前提条目，原生控制器使用正式变量；保留知情边界。",
+      "status": "passed",
+      "conclusion": "11种开局模式及禁用条目显式读取对照通过。"
+    },
+    {
+      "id": "S01",
+      "source": "/data/character_book/entries/110",
+      "expectation": "业务变化规则交给状态Agent；当前值、已发生事实、时间进位、跨日计数、事件完成、关系增量与非用户行为结算条件完整。",
+      "status": "failed",
+      "conclusion": "行动选项的各序号用途、条件和格式被摘要替换；原文保留原则未满足。"
+    },
+    {
+      "id": "S02",
+      "source": "/data/character_book/entries/105",
+      "expectation": "终局路线规则的载入条件、不可任意改写与用户重选条件仍有实际消费者。",
+      "status": "failed",
+      "conclusion": "源105原文及条件控制器保留，但额外追加的无条件摘要绕过E032条件。"
+    },
+    {
+      "id": "D01",
+      "source": "/data/post_history_instructions, /data/character_book/entries/108,109",
+      "expectation": "删除旧正文变量输出协议；109中的业务约束先拆出；正文不再要求JSONPatch块。",
+      "status": "failed",
+      "conclusion": "旧正文更新块要求已删除，但109的三条有效当前值/路径/缺值约束没有原文写入状态规则。"
+    },
+    {
+      "id": "D02",
+      "source": "/data/extensions/regex_scripts",
+      "expectation": "只服务旧协议和旧状态栏挂载的正则删除；实际仍有消费者的正文边界或其他有效内容分别判断。",
+      "status": "passed",
+      "conclusion": "仅用于旧变量块和挂载的正则删除；页面内容迁移到前端。"
+    },
+    {
+      "id": "U01",
+      "source": "/data/extensions/regex_scripts/5",
+      "expectation": "最低必要呈现保留正式变量显示、四选项、当前与历史状态的正确读取和发送锁，明确记录源UI中其余有效操作的承接或退出依据。",
+      "status": "failed",
+      "conclusion": "缺系统聊天区域；失败恢复后选项内部锁仍阻止点击。画廊资源外链返回失败，未替换源URL。"
+    },
+    {
+      "id": "F01",
+      "source": "/data/character_book/entries/46",
+      "expectation": "画室赴约已有前提与E012剩余完成条件区分；需要跨回合的事件进展必须作为状态或明确事实供状态Agent取得。",
+      "status": "not_executed",
+      "conclusion": "未执行跨轮模型语义验收。独立转换原始包导入失败；修复副本的实际状态模型调用受到供应商schema错误阻断。"
+    },
+    {
+      "id": "F02",
+      "source": "/data/character_book/entries/58",
+      "expectation": "材料异常标签只覆盖第一段无阴道插入的视频；第二段生插事实独立判断，标签范围不被扩大。",
+      "status": "not_executed",
+      "conclusion": "未执行真实模型对两段视频标签范围的理解验收；仅确认条目原文保留。"
+    },
+    {
+      "id": "S03",
+      "source": "/data/character_book/entries/106/content",
+      "expectation": "前置事件完成、E048=false、隔离守婚路线、Z000时，终局未完成守卫阻止E048抢占，选择Z001；Z001选择Z003；Z003选择Z004；Z004终局守卫成立后才选择E048。源卡问题声明须与完整条件相符。",
+      "status": "passed",
+      "conclusion": "隔离守婚链及E048守卫分支对照通过。"
+    }
+  ],
+  "counts": {
+    "passed": 5,
+    "failed": 6,
+    "notExecuted": 2
+  },
+  "originalFormal": "failed",
+  "repairedFixture": {
+    "archive": ".tmp/native-maintenance-24/repaired/role.zip",
+    "owner": "main-agent",
+    "formalPassed": true,
+    "readback": {
+      "status": "passed",
+      "fileCount": 150,
+      "failedPaths": []
+    },
+    "controllerPassed": 199,
+    "stateDryRun": "passed",
+    "chatWidgetRetry": "passed",
+    "optionAfterWidgetRetry": "failed",
+    "liveBody": "passed: 1013字正文，第三人称叙述，用户仍在后窗观察，无JSONPatch块",
+    "liveState": "failed: provider返回uniqueItems不支持；状态未成功保存",
+    "liveCalls": 5,
+    "liveUsageCost": {
+      "callsWithUsage": 3,
+      "recordedCost": 0,
+      "errorCallsWithoutUsage": 2
+    },
+    "alternateLiveState": "failed: low reasoning model finished length with no content; HTTP422; state unchanged"
+  },
+  "efficiency": {
+    "childWallSeconds": 3281.346,
+    "toolCalls": 99,
+    "toolWallSeconds": 187.221,
+    "longestToolGapSeconds": 1142.827,
+    "beginReturnedAt": "2026-10-06T09:49:38.451Z",
+    "lastContentWriteAt": "2026-10-06T10:42:24.818Z",
+    "generationSeconds": 3166.367,
+    "generationGoalSeconds": 1200,
+    "conversionGoalSeconds": 1800
+  },
+  "evidence": {
+    "formal": "full-acceptance/formal-result.json",
+    "requests": "final-requests",
+    "stateDryRun": "final-requests/state-dry-run.json",
+    "browser": "final-browser",
+    "provider": "full-acceptance/live-3-response.json",
+    "controller": "controller-results.json",
+    "readonly": "single-trial/boundary-during.json",
+    "publicExecution": "single-trial/public-execution-final.json",
+    "alternateProvider": "alternate-reasoning-acceptance/provider-result.json",
+    "alternateState": "alternate-reasoning-acceptance/state-result.json"
+  }
+}

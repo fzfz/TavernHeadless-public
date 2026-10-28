@@ -1,0 +1,146 @@
+[
+  {
+    "name": "林茜_妻心如刀_v1.3.32",
+    "releaseId": "mehRRY_c4V89ErC5ESiFH",
+    "characterVersionId": "ikQSsBGeGuZ7RxndfNdpC",
+    "worldbookId": "xxbDnm1Th2ApNPhnl2QOd",
+    "worldbookVersionId": "d-Ofy8MUSgtN_WP-6r4rq",
+    "worldbookEntries": [
+      {
+        "id": 127,
+        "name": "开局前提控制器",
+        "disabled": false,
+        "enabled": null
+      },
+      {
+        "id": 109,
+        "name": "林茜_身体边界控制器",
+        "disabled": false,
+        "enabled": null
+      },
+      {
+        "id": 111,
+        "name": "关键事件控制器",
+        "disabled": false,
+        "enabled": null
+      },
+      {
+        "id": 115,
+        "name": "[mvu_update]变量更新规则",
+        "disabled": true,
+        "enabled": null
+      },
+      {
+        "id": 114,
+        "name": "[mvu_update]变量输出格式",
+        "disabled": true,
+        "enabled": null
+      },
+      {
+        "id": 113,
+        "name": "[mvu_update]变量输出格式强调",
+        "disabled": true,
+        "enabled": null
+      },
+      {
+        "id": 2,
+        "name": "[initvar]变量初始化勿开",
+        "disabled": true,
+        "enabled": null
+      }
+    ],
+    "ruleFiles": [
+      "update-rules.json",
+      "migrated-variable-rules.json"
+    ],
+    "migratedRules": [
+      {
+        "sourceEntryId": 115,
+        "equalToWorldbook": true
+      }
+    ],
+    "legacyProtocolCopies": [
+      {
+        "sourceId": 113,
+        "name": "[mvu_update]变量输出格式强调",
+        "enabled": true
+      },
+      {
+        "sourceId": 114,
+        "name": "[mvu_update]变量输出格式",
+        "enabled": true
+      }
+    ],
+    "duplicateRuleIds": [
+      115
+    ]
+  },
+  {
+    "name": "顾声慢",
+    "releaseId": "9K4D6JlZBWHD69dnhzNqA",
+    "characterVersionId": "4dJ-iMfIM-6DgvnpKWKKB",
+    "worldbookId": "sCurwMswB65q5Z099yoLX",
+    "worldbookVersionId": "fyRoqT677b38g7oyVwtv4",
+    "worldbookEntries": [
+      {
+        "id": 16,
+        "name": "顾声慢_特殊事件_天台的约定",
+        "disabled": false,
+        "enabled": null
+      },
+      {
+        "id": 8,
+        "name": "顾声慢_特殊事件_奇迹的压轴",
+        "disabled": false,
+        "enabled": null
+      },
+      {
+        "id": 17,
+        "name": "顾声慢_结局_未完的旋律",
+        "disabled": false,
+        "enabled": null
+      },
+      {
+        "id": 0,
+        "name": "[initvar]变量初始化勿开",
+        "disabled": true,
+        "enabled": null
+      },
+      {
+        "id": 15,
+        "name": "[script]顾声慢_多阶段控制器",
+        "disabled": false,
+        "enabled": null
+      },
+      {
+        "id": 9,
+        "name": "[mvu_update]变量更新规则",
+        "disabled": true,
+        "enabled": null
+      },
+      {
+        "id": 11,
+        "name": "[mvu_update]变量输出格式",
+        "disabled": true,
+        "enabled": null
+      },
+      {
+        "id": 20,
+        "name": "结局选择",
+        "disabled": false,
+        "enabled": null
+      }
+    ],
+    "ruleFiles": [
+      "migrated-variable-rules.json"
+    ],
+    "migratedRules": [
+      {
+        "sourceEntryId": 9,
+        "equalToWorldbook": true
+      }
+    ],
+    "legacyProtocolCopies": [],
+    "duplicateRuleIds": []
+  }
+]

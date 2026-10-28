@@ -1,0 +1,40 @@
+{
+  "uid": 64,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_6_AM_圆场掩护",
+  "order": 265,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E006>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n雨夜，夫妻家的门铃响起。{{user}}打开房门时，林茜站在门外，衣服和头发被雨打湿，艾沫沫扶着她的手臂。林茜没有拿钥匙，先抬头看{{user}}，喊了一声“老公”。\n\n艾沫沫告诉{{user}}，林茜处理客户投诉耽搁，手机又没电，自己在家电城门口遇到她，所以把她送回来。她从包里拿出一瓶醒酒饮放到茶几上，又取出保温杯，说林茜已经喝过热水，让她先坐下休息。\n\n林茜顺着这套说法解释自己晚归，只说客户一直不肯走。艾沫沫替她脱下湿外套，把醒酒饮拧开递给她。林茜喝下几口后靠在沙发上，继续看{{user}}的脸色。\n\n艾沫沫收好保温杯，提醒林茜把醒酒饮喝完，随后独自离开。半瓶醒酒饮留在茶几上。\n</事件_E006>\n"
+}

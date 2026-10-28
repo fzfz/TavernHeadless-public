@@ -1,0 +1,87 @@
+name: Native environments
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_ref:
+        description: "Approved release tag; empty runs unit verification only"
+        required: false
+        type: string
+      release_id:
+        description: "Immutable release identifier"
+        required: false
+        type: string
+      installation_approved:
+        description: "Approve Node.js/pnpm setup and locked dependencies with configured lifecycle scripts"
+        required: true
+        default: false
+        type: boolean
+  workflow_call:
+    inputs:
+      release_ref:
+        description: "Approved release tag; empty runs unit verification only"
+        required: false
+        type: string
+      release_id:
+        description: "Immutable release identifier"
+        required: false
+        type: string
+      installation_approved:
+        description: "Approve Node.js/pnpm setup and locked dependencies with configured lifecycle scripts"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  native:
+    if: github.event_name == 'workflow_dispatch' && inputs.installation_approved == true
+    name: Native macOS verification
+    runs-on: macos-15
+    timeout-minutes: 45
+    env:
+      RELEASE_REF: ${{ inputs.release_ref }}
+      RELEASE_ID: ${{ inputs.release_id }}
+      INSTALLATION_APPROVED: ${{ inputs.installation_approved }}
+    steps:
+      - name: Prepare native sandbox
+        shell: bash
+        run: echo "NATIVE_SANDBOX=$RUNNER_TEMP/tavern-native-environments" >> "$GITHUB_ENV"
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build shared contracts
+        run: pnpm --filter @tavern/shared build
+      - name: Verify native command contracts
+        run: node scripts/environments/cli.mjs verify --env dev --suite unit --sandbox "$NATIVE_SANDBOX"
+      - name: Prepare approved release inputs
+        if: github.event_name == 'workflow_dispatch' && inputs.release_ref != ''
+        shell: bash
+        run: |
+          test "$INSTALLATION_APPROVED" = true
+          test -n "$RELEASE_ID"
+          node scripts/environments/installation-approval.mjs --ref "$RELEASE_REF" --output "$RUNNER_TEMP/installation-approval.json" --approved
+      - name: Build one native release archive
+        if: github.event_name == 'workflow_dispatch' && inputs.release_ref != ''
+        run: node scripts/environments/cli.mjs build --env dev --ref "$RELEASE_REF" --release "$RELEASE_ID" --installation-approval "$RUNNER_TEMP/installation-approval.json" --sandbox "$NATIVE_SANDBOX"
+      - name: Verify release contents
+        if: github.event_name == 'workflow_dispatch' && inputs.release_ref != ''
+        run: node scripts/environments/cli.mjs verify --env dev --suite release --release "$RELEASE_ID" --sandbox "$NATIVE_SANDBOX"
+      - name: Save verification evidence and release archive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-environment-evidence
+          path: |
+            ${{ env.NATIVE_SANDBOX }}/dev/logs/operations
+            ${{ env.NATIVE_SANDBOX }}/dev/build/artifacts
+          if-no-files-found: ignore

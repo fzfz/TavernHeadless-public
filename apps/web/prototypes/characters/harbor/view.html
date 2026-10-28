@@ -1,0 +1,43 @@
+<div class="stage harbor">
+  <img class="background" data-background alt="" />
+  <div class="scene">
+    <header>
+      <small>港口书店</small>
+      <h1>灯塔来信</h1>
+      <p data-scene-title></p>
+    </header>
+    <img class="portrait" data-portrait alt="林岚" />
+    <section class="status" data-status-panel>
+      <div class="status-head">
+        <strong>角色状态</strong><span data-location></span>
+      </div>
+      <div class="values">
+        <div><small>时间</small><b data-clock></b></div>
+        <div><small>信任</small><b data-trust></b></div>
+        <div><small>体力</small><b data-energy></b></div>
+      </div>
+      <progress data-progress max="100"></progress>
+      <p data-clue></p>
+    </section>
+  </div>
+  <section class="conversation">
+    <div class="conversation-head">
+      <strong>与林岚交谈</strong><button data-music>♫ 环境音</button
+      ><button data-toggle>收起状态</button>
+    </div>
+    <div class="stream" aria-live="polite">
+      <small>当前回复</small>
+      <p data-live></p>
+      <p data-agent></p>
+    </div>
+    <div class="choices">
+      <button data-choice-a></button><button data-choice-b></button>
+    </div>
+    <p class="feedback" data-feedback aria-live="polite"></p>
+    <div data-chat class="chat-slot"></div>
+    <details class="journal">
+      <summary>旅程记录</summary>
+      <div class="floor-list" data-floors></div>
+    </details>
+  </section>
+</div>

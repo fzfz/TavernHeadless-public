@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "scriptName": {
+        "type": "string"
+      },
+      "findRegex": {
+        "type": "string"
+      },
+      "replaceString": {
+        "type": "string"
+      },
+      "trimStrings": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "placement": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        }
+      },
+      "disabled": {
+        "type": "boolean"
+      },
+      "markdownOnly": {
+        "type": "boolean"
+      },
+      "promptOnly": {
+        "type": "boolean"
+      },
+      "runOnEdit": {
+        "type": "boolean"
+      },
+      "substituteRegex": {
+        "type": "integer",
+        "minimum": -9007199254740991,
+        "maximum": 9007199254740991
+      },
+      "minDepth": {
+        "anyOf": [
+          {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "maxDepth": {
+        "anyOf": [
+          {
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "scriptName",
+      "findRegex",
+      "replaceString",
+      "trimStrings",
+      "placement",
+      "disabled",
+      "markdownOnly",
+      "promptOnly",
+      "runOnEdit",
+      "substituteRegex"
+    ],
+    "additionalProperties": {}
+  },
+  "$comment": "Generated from schema.ts by scripts/generate-native-card-schemas.ts."
+}

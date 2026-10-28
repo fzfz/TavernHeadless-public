@@ -1,0 +1,29 @@
+{
+  "sessionId": "5ZoCR0MnbCwCCgPS7iQa9",
+  "branchId": "main",
+  "floorId": "kb_Dsy9u9t0fRWFGhBbCj",
+  "attemptId": "uHe1fuqmJJmdfcLMilglK:1",
+  "versionId": "HkdRM1AnnRgadXaEkJ4fT",
+  "snapshotId": "6fb790d9-bd43-4553-bac1-a46670bf0219",
+  "parentSnapshotId": "d97883c2-00d6-4801-aa78-0e29c4966d4a",
+  "variables": {
+    "世界": {
+      "当前地址": "旧教学楼三楼活动室",
+      "当前时间": "2025年12月15日18:35",
+      "事件状态": "无"
+    },
+    "顾声慢": {
+      "情感连结度": 8,
+      "创作完成度": 18,
+      "心象映射": {
+        "当前心声": "他说最高处先留一点安静，再让小提琴接进来。留白……老师也讲过。我卡了三天，他一句话就点破了。这个人到底什么耳朵。",
+        "当前脑内旋律": "《One Summer's Day》"
+      }
+    }
+  },
+  "source": {
+    "kind": "floor",
+    "runId": "uHe1fuqmJJmdfcLMilglK",
+    "jobId": null
+  }
+}

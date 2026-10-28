@@ -1,0 +1,25 @@
+{
+  "inherit": "沿用默认值",
+  "enabled": "启用",
+  "disabled": "停用",
+  "invalid": "参数格式或数值不符合要求。请修改此项后再保存。",
+  "fields": {
+    "max_context_tokens": "最大上下文 Token",
+    "max_output_tokens": "最大输出 Token",
+    "temperature": "Temperature",
+    "top_p": "Top P",
+    "top_k": "Top K",
+    "frequency_penalty": "频率惩罚",
+    "presence_penalty": "存在惩罚",
+    "stop_sequences": "停止序列（JSON 数组）",
+    "seed": "随机种子",
+    "repetition_penalty": "重复惩罚",
+    "min_p": "Min P",
+    "logit_bias": "Token 偏置（JSON 对象）",
+    "response_format": "响应格式（JSON 对象）",
+    "stream": "流式生成",
+    "timeout_ms": "请求超时（毫秒）",
+    "max_retries": "最大重试次数",
+    "reasoning_effort": "推理强度"
+  }
+}

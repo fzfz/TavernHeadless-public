@@ -1,0 +1,129 @@
+{
+  "passed": false,
+  "status": "incomplete",
+  "observed": [
+    {
+      "url": "http://127.0.0.1:55487/sessions/80eI72P_yuirRX74pEg1K/role-view",
+      "body": {
+        "data": {
+          "character_id": "W0bk0LXvxx1HnYZb2DBWa",
+          "character_version_id": "Tr2RKD9RdKPe-eUCoGX3G",
+          "name": "Gracie",
+          "delivery": {
+            "html": "<h1 id=\"heading\"></h1><p id=\"user\"><span data-page-macro=\"user\"></span></p>\n<p id=\"space\"><span data-page-macro=\"space\"></span></p>\n<p id=\"newline\"><span data-page-macro=\"newline\"></span></p>\n<p id=\"noop\"><span data-page-macro=\"noop\"></span></p>\n<p id=\"trim\"><span data-page-macro=\"trim\"></span></p>\n<p id=\"if\"><span data-page-macro=\"if\"></span></p>\n<p id=\"else\"><span data-page-macro=\"else\"></span></p>\n<p id=\"reverse\"><span data-page-macro=\"reverse\"></span></p>\n<p id=\"comment\"><span data-page-macro=\"comment\"></span></p>\n<p id=\"roll\"><span data-page-macro=\"roll\"></span></p>\n<p id=\"random\"><span data-page-macro=\"random\"></span></p>\n<p id=\"char\"><span data-page-macro=\"char\"></span></p>\n<p id=\"group\"><span data-page-macro=\"group\"></span></p>\n<p id=\"groupNotMuted\"><span data-page-macro=\"groupNotMuted\"></span></p>\n<p id=\"notChar\"><span data-page-macro=\"notChar\"></span></p>\n<p id=\"charDescription\"><span data-page-macro=\"charDescription\"></span></p>\n<p id=\"charPersonality\"><span data-page-macro=\"charPersonality\"></span></p>\n<p id=\"charScenario\"><span data-page-macro=\"charScenario\"></span></p>\n<p id=\"mesExamplesRaw\"><span data-page-macro=\"mesExamplesRaw\"></span></p>\n<p id=\"charDepthPrompt\"><span data-page-macro=\"charDepthPrompt\"></span></p>\n<p id=\"charCreatorNotes\"><span data-page-macro=\"charCreatorNotes\"></span></p>\n<p id=\"charFirstMessage\"><span data-page-macro=\"charFirstMessage\"></span></p>\n<p id=\"charVersion\"><span data-page-macro=\"charVersion\"></span></p>\n<p id=\"isMobile\"><span data-page-macro=\"isMobile\"></span></p>\n<p id=\"time\"><span data-page-macro=\"time\"></span></p>\n<p id=\"date\"><span data-page-macro=\"date\"></span></p>\n<p id=\"weekday\"><span data-page-macro=\"weekday\"></span></p>\n<p id=\"isotime\"><span data-page-macro=\"isotime\"></span></p>\n<p id=\"isodate\"><span data-page-macro=\"isodate\"></span></p>\n<p id=\"datetimeformat\"><span data-page-macro=\"datetimeformat\"></span></p>\n<p id=\"timeDiff\"><span data-page-macro=\"timeDiff\"></span></p>\n<p id=\"getvar\"><span data-page-macro=\"getvar\"></span></p>\n<p id=\"hasvar\"><span data-page-macro=\"hasvar\"></span></p>\n<p id=\"lastMessage\"><span data-page-macro=\"lastMessage\"></span></p>\n<p id=\"lastUserMessage\"><span data-page-macro=\"lastUserMessage\"></span></p>\n<p id=\"lastCharMessage\"><span data-page-macro=\"lastCharMessage\"></span></p>",
+            "css": "p { white-space: pre-wrap; }",
+            "floorHtml": null,
+            "assets": {},
+            "data": {
+              "pageMacroCard": {
+                "name": "Gracie",
+                "description": "这份资料属于{{char}}。姓名：{{user}}。",
+                "personality": "沉着",
+                "scenario": "资料核对",
+                "mes_example": "示例：{{char}}。",
+                "extensions": {
+                  "depth_prompt": {
+                    "prompt": "深度：{{user}}。"
+                  }
+                },
+                "creator_notes": "作者说明",
+                "first_mes": "姓名：{{user}}，请核对当前资料。",
+                "alternate_greetings": ["候选开场：{{user}}。"],
+                "character_version": " 1.2.3 "
+              },
+              "opening": "姓名：沈知夏 $ <林&>，请核对当前资料。",
+              "performerName": "沈知夏 $ <林&>"
+            },
+            "scriptUrl": "/role-assets/Tr2RKD9RdKPe-eUCoGX3G/frontend/page-macro-entry.js",
+            "htmlUrl": "/role-assets/Tr2RKD9RdKPe-eUCoGX3G/frontend/index.html",
+            "htmlAssetOriginOffsets": [],
+            "dataUrls": {
+              "pageMacroCard": "/role-assets/Tr2RKD9RdKPe-eUCoGX3G/data/page-macro-card.json"
+            },
+            "cssUrl": "/role-assets/Tr2RKD9RdKPe-eUCoGX3G/frontend/style.css",
+            "mode": "custom"
+          },
+          "initial": {
+            "sessionId": "80eI72P_yuirRX74pEg1K",
+            "branchId": "main",
+            "floorId": null,
+            "attemptId": null,
+            "versionId": "Tr2RKD9RdKPe-eUCoGX3G",
+            "snapshotId": "b86bd75c-f79c-4cfd-af60-fc2deb77f8d4",
+            "parentSnapshotId": null,
+            "variables": {
+              "score": false,
+              "details": {
+                "address": "沈知夏 $ <林&>与Gracie的资料室"
+              },
+              "labels": ["沈知夏 $ <林&>", "Gracie"]
+            },
+            "source": {
+              "kind": "initial",
+              "runId": null,
+              "jobId": null
+            }
+          },
+          "current": {
+            "sessionId": "80eI72P_yuirRX74pEg1K",
+            "branchId": "main",
+            "floorId": null,
+            "attemptId": null,
+            "versionId": "Tr2RKD9RdKPe-eUCoGX3G",
+            "snapshotId": "b86bd75c-f79c-4cfd-af60-fc2deb77f8d4",
+            "parentSnapshotId": null,
+            "variables": {
+              "score": false,
+              "details": {
+                "address": "沈知夏 $ <林&>与Gracie的资料室"
+              },
+              "labels": ["沈知夏 $ <林&>", "Gracie"]
+            },
+            "source": {
+              "kind": "initial",
+              "runId": null,
+              "jobId": null
+            }
+          },
+          "processing": {
+            "pendingMain": null,
+            "pendingFollowups": false,
+            "pendingStateFloorId": "GUlhBZEhZ2lQAJ8coRNBN"
+          },
+          "capabilities": {
+            "send": false,
+            "history": true,
+            "customFloors": false
+          }
+        }
+      }
+    },
+    {
+      "url": "http://127.0.0.1:55480/health",
+      "body": {
+        "status": "ready",
+        "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Qcny0D/preview-runs/2026-10-09T08-48-16-830Z-7184737c-d74e-44a6-b660-b78e115f5457/offline-replay/replay-MN0DEQ",
+        "schemaVersion": 1,
+        "host": "127.0.0.1",
+        "port": 55480,
+        "baseUrl": "http://127.0.0.1:55480/v1",
+        "startedAt": "2026-10-09T08:48:16.877Z",
+        "updatedAt": "2026-10-09T08:58:22.473Z",
+        "configuredSteps": 2,
+        "allStepsConsumed": false,
+        "requestCount": 3,
+        "callCount": 1,
+        "stepsConsumed": 1,
+        "jsonResponses": 0,
+        "streamedResponses": 1,
+        "plannedFailures": 0,
+        "requestErrors": 0,
+        "modelMismatches": 0,
+        "unexpectedCalls": 0,
+        "errors": []
+      }
+    }
+  ],
+  "reason": "已保存正文后，变量更新仍处于pendingStateFloorId，score保持初值；本次端到端更新未完成。",
+  "evidenceDirectory": ".tmp/native-card-conversion/run-Qcny0D/preview-runs/2026-10-09T08-48-16-830Z-7184737c-d74e-44a6-b660-b78e115f5457"
+}

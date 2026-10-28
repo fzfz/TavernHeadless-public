@@ -1,0 +1,5 @@
+{
+  "defaultLimit": 20,
+  "maxLimit": 100,
+  "maxCursorLength": 2048
+}

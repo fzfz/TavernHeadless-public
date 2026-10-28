@@ -1,0 +1,24 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> tavern-headless@0.1.0 typecheck /srv/tavern/TavernHeadless-remove-preview-credentials
+> pnpm -r --if-present typecheck
+
+Scope: 10 of 11 workspace projects
+packages/shared typecheck$ tsc -b
+packages/shared typecheck: Done
+packages/core typecheck$ tsc -b
+packages/official-integration-kit/sdk typecheck$ tsc -b
+packages/core typecheck: Done
+packages/official-integration-kit/sdk typecheck: Done
+apps/user-web typecheck$ vue-tsc --noEmit
+.../client-helpers typecheck$ tsc -b
+packages/adapters-sillytavern typecheck$ tsc -b
+.../client-helpers typecheck: Done
+packages/adapters-sillytavern typecheck: Done
+apps/user-web typecheck: Done
+apps/api typecheck$ tsc -p tsconfig.json --noEmit
+apps/studio typecheck$ vue-tsc --noEmit
+apps/web typecheck$ vue-tsc --noEmit
+apps/api typecheck: Done
+apps/studio typecheck: Done
+apps/web typecheck: Done

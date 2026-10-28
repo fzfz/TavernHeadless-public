@@ -1,0 +1,2358 @@
+import { PROMPT_RUNTIME_INJECTION_LIMITS } from "../../services/prompt-runtime/injection-governance.js";
+import {
+  DERIVED_NO_ASSISTANT_STRUCTURE_WARNING,
+  PROMPT_RUNTIME_POLICY_SOURCES,
+  PROMPT_RUNTIME_SUPPORTED_SOURCE_EXCLUSION_REASON_CODES,
+  PROMPT_RUNTIME_SUPPORTED_SOURCE_SELECTION_HISTORY_MODES,
+  PROMPT_RUNTIME_SUPPORTED_SOURCE_SELECTION_SOURCES,
+  PROMPT_RUNTIME_SUPPORTED_ASSISTANT_REWRITE_STRATEGIES,
+  PROMPT_RUNTIME_SUPPORTED_STRUCTURE_MODES,
+  PROMPT_RUNTIME_SUPPORTED_TRIM_REASON_CODES,
+  PROMPT_RUNTIME_SUPPORTED_VISIBILITY_MODES,
+  PROMPT_RUNTIME_HISTORICAL_EXPLAIN_LIMITATIONS,
+  PROMPT_RUNTIME_LIMITATIONS,
+  PROMPT_RUNTIME_GOVERNED_POLICY_FIELDS,
+  PROMPT_RUNTIME_UNSUPPORTED_ROUTES,
+} from "../../services/prompt-runtime-control-service.js";
+import { DEFAULT_PROMPT_MODE, PROMPT_MODE_VALUES } from "../../services/prompt-assembler.js";
+import {
+  dryRunVisibilityJsonSchema,
+  floorVisibilityRangeJsonSchema,
+  generationParamsJsonSchema,
+  liveDebugOptionsJsonSchema,
+  promptBudgetJsonSchema,
+  livePromptSnapshotExample,
+  livePromptSnapshotJsonSchema,
+  promptDeliveryJsonSchema,
+  promptIntentValues,
+  promptSourceSelectionJsonSchema,
+  promptStructureJsonSchema,
+  turnConfigJsonSchema,
+  dryRunRuntimeTraceJsonSchema,
+  historyNormalizationExample,
+  runtimeTraceMemoryJsonSchema,
+  runtimeTraceHistoryNormalizationJsonSchema,
+  turnSessionStateWritesJsonSchema,
+} from "./chat-schemas.js";
+
+const promptRuntimePersistentStructureExample = {
+  mode: "strict_alternating",
+} as const;
+
+const promptRuntimePersistentDeliveryExample = {
+  require_last_user: true,
+} as const;
+
+export const promptRuntimePolicyPatchBodyExample = {
+  structure: {
+    mode: "strict_alternating",
+    preserve_system_messages: true,
+  },
+  delivery: {
+    require_last_user: true,
+  },
+} as const;
+
+const promptRuntimeBudgetExample = {
+  max_input_tokens: 4096,
+  reserved_completion_tokens: 1024,
+} as const;
+
+const promptRuntimeSourceSelectionExample = {
+  history: { mode: "windowed", max_messages: 24 },
+  memory: { enabled: true },
+  worldbook: { enabled: true }, examples: { enabled: false },
+} as const;
+
+const promptRuntimeVisibilityExample = {
+  mode: "allow_all_except_hidden",
+  hidden_floor_ranges: [{ start_floor_no: 1, end_floor_no: 2 }],
+} as const;
+
+export const promptRuntimeModeViewExample = {
+  prompt_mode: "native",
+  session_prompt_mode: null,
+  effective_prompt_mode: "native",
+  default_prompt_mode: DEFAULT_PROMPT_MODE,
+  legacy_fallback: true,
+  source: "legacy_metadata",
+} as const;
+
+export const promptRuntimeModePatchBodyExample = {
+  prompt_mode: "native",
+} as const;
+
+const promptRuntimeModePatchBodyClearExample = { prompt_mode: null } as const;
+
+export const promptRuntimePreviewBodyExample = {
+  text: "{{setvar::资产.金币::3}}{{getvar::资产}}",
+  branch_id: "alt-preview",
+  source_floor_id: "floor-source",
+  delivery: {
+    no_assistant: true,
+  },
+  budget: promptRuntimeBudgetExample,
+  source_selection: promptRuntimeSourceSelectionExample,
+  visibility: promptRuntimeVisibilityExample,
+} as const;
+
+const promptRuntimeScopeExample = {
+  session_id: "session-1",
+  target_branch_id: "alt-branch",
+  branch_exists: true,
+  source_floor_id: null,
+  history_source_branch_id: "alt-branch",
+  history_source_mode: "existing_branch",
+} as const;
+
+const promptRuntimeResolvedStructureExample = {
+  mode: "no_assistant",
+  merge_adjacent_same_role: true,
+  preserve_system_messages: true,
+  assistant_rewrite_strategy: "to_system",
+} as const;
+
+const promptRuntimeResolvedDeliveryExample = {
+  allow_assistant_prefill: true,
+  require_last_user: true,
+  no_assistant: true,
+} as const;
+
+const promptRuntimeResolvedVisibilityExample = {
+  ...promptRuntimeVisibilityExample,
+} as const;
+
+const promptRuntimeDebugPolicyExample = {
+  include_prompt_snapshot: false,
+  include_runtime_trace: false,
+  include_worldbook_matches: false,
+} as const;
+
+const promptRuntimeAssetsExample = {
+  preset: {
+    id: "preset-1",
+    name: "Story Preset",
+    version_id: "preset-ver-3",
+    version_no: 3,
+    content_hash: "sha256:preset-v3",
+  },
+  character_card: {
+    id: "char-hero",
+    name: "Hero",
+  },
+  worldbook: {
+    id: "worldbook-1",
+    name: "Campfire Worldbook",
+    version_id: "worldbook-ver-5",
+    version_no: 5,
+    content_hash: "sha256:worldbook-v5",
+  },
+  regex_profile: {
+    id: "regex-1",
+    name: "Safety Regex",
+    version_id: "regex-ver-2",
+    version_no: 2,
+    content_hash: "sha256:regex-v2",
+  },
+} as const;
+
+const promptRuntimeBranchPersistentPolicyExample = {
+  delivery: {
+    no_assistant: true,
+  },
+} as const;
+
+const promptRuntimePersistentPolicyEnvelopeExample = {
+  version: 2,
+  updated_at: 1710000004500,
+  updated_by: "user-1",
+  value: {
+    delivery: {
+      no_assistant: true,
+    },
+    budget: promptRuntimeBudgetExample,
+    source_selection: promptRuntimeSourceSelectionExample,
+    visibility: promptRuntimeVisibilityExample,
+  },
+} as const;
+
+const promptRuntimeInjectionSummaryExample = {
+  session: { total: 1, enabled: 1 },
+  branch: { total: 2, enabled: 1 },
+} as const;
+
+const promptRuntimePersistedInjectionExample = {
+  id: "inj_1",
+  scope: "session",
+  source_kind: "client_injection",
+  title: "History guard",
+  content: "Keep the north pass in focus.",
+  placement: "before_history",
+  placement_params: null,
+  order: 100,
+  enabled: true,
+  mode_scope: null,
+  ttl_ms: null,
+  created_by: "user-1",
+  created_at: 1710000004600,
+  updated_at: 1710000004700,
+} as const;
+
+const promptRuntimeSectionStatsExample = [
+  { section_name: "history", token_count: 320 },
+  { section_name: "main", token_count: 96 },
+] as const;
+
+const promptRuntimeGovernanceExample = {
+  entries: [
+    {
+      source_kind: "history",
+      declared_level: "budget_prunable",
+      registered: true,
+      effective_retention: "budget_prunable",
+      pinned: false,
+      prunable: true,
+      budget_groups: ["history"],
+      section_names: ["chatHistory"],
+      token_count: 320,
+      retained_token_count: 256,
+      pruned_token_count: 64,
+    },
+    {
+      source_kind: "memory",
+      declared_level: "soft_required",
+      registered: true,
+      effective_retention: "soft_required",
+      pinned: false,
+      prunable: false,
+      budget_groups: ["memory"],
+      section_names: ["memory"],
+      token_count: 64,
+      retained_token_count: 64,
+      pruned_token_count: 0,
+    },
+  ],
+  mismatches: [],
+  limitations: [],
+} as const;
+
+const promptRuntimeDiagnosticsExample = [
+  {
+    code: "derived_no_assistant_structure",
+    message: DERIVED_NO_ASSISTANT_STRUCTURE_WARNING,
+    severity: "warning",
+    source: "policy",
+    field_path: "policy.structure.mode",
+  },
+] as const;
+
+const promptRuntimeLimitationsExample = [...PROMPT_RUNTIME_LIMITATIONS] as const;
+
+const promptRuntimeSourceMapExample = {
+  structure: {
+    mode: "branch_policy",
+    merge_adjacent_same_role: "branch_policy",
+    preserve_system_messages: "system_default",
+    assistant_rewrite_strategy: "system_default",
+  },
+  delivery: {
+    allow_assistant_prefill: "system_default",
+    require_last_user: "session_policy",
+    no_assistant: "branch_policy",
+  },
+  budget: {
+    max_input_tokens: "request_override",
+    reserved_completion_tokens: "request_override",
+  },
+  source_selection: {
+    history: {
+      mode: "request_override",
+      max_messages: "request_override",
+    },
+    memory: { enabled: "system_default" },
+    worldbook: { enabled: "system_default" },
+    examples: { enabled: "request_override" },
+  },
+  visibility: {
+    mode: "request_override",
+    hidden_floor_ranges: "request_override",
+  },
+  history: {
+    source_branch_id: "alt-branch",
+    source_mode: "existing_branch",
+  },
+} as const;
+
+const promptRuntimeMemoryInjectionExample = {
+  items: [
+    {
+      id: "memory-branch-fact-1",
+      scope: "branch",
+      scope_id: "memscope:session-1:main",
+      type: "fact",
+      summary_tier: null,
+      content: "Bob still holds the vault key.",
+      fact_key: "vault_key_owner",
+      importance: 0.82,
+      confidence: 1,
+      source_floor_id: null,
+      source_message_id: null,
+      status: "active",
+      token_count_estimate: 18,
+      created_at: 1710000000100,
+      updated_at: 1710000000200,
+    },
+    {
+      id: "memory-branch-summary-1",
+      scope: "branch",
+      scope_id: "memscope:session-1:main",
+      type: "summary",
+      summary_tier: "micro",
+      content: "Alice had started to distrust Bob.",
+      fact_key: null,
+      importance: 0.64,
+      confidence: 1,
+      source_floor_id: null,
+      source_message_id: null,
+      status: "active",
+      token_count_estimate: 14,
+      created_at: 1710000000300,
+      updated_at: 1710000000400,
+    },
+  ],
+  formatted_text: "[Memory]\n- Bob still holds the vault key.\n- Alice had started to distrust Bob.",
+  token_count: 64,
+  scope_resolution: {
+    mode: "visible_refs",
+    strict: false,
+    scope_refs: [
+      { scope: "global", scopeId: "default-admin" },
+      { scope: "branch", scopeId: "memscope:session-1:main" },
+    ],
+  },
+} as const;
+
+export const promptRuntimeInspectBodyExample = {
+  message: "Please continue the campfire scene.",
+  branch_id: "alt-branch",
+  source_floor_id: "floor-source",
+  prompt_intent: "normal",
+  config: {
+    enableTools: false,
+    enableDirector: false,
+    enableVerifier: false,
+  },
+  generation_params: {
+    temperature: 0.7,
+    max_output_tokens: 256,
+  },
+  session_state_writes: [
+    {
+      namespace: "quest_flags",
+      slot: "companion",
+      value: { mood: "ally" },
+    },
+  ],
+  debug_options: {
+    include_worldbook_matches: true,
+  },
+  visibility: promptRuntimeVisibilityExample,
+  structure: promptRuntimeResolvedStructureExample,
+  delivery: promptRuntimeResolvedDeliveryExample,
+  budget: promptRuntimeBudgetExample,
+  source_selection: promptRuntimeSourceSelectionExample,
+} as const;
+
+export const promptRuntimePreviewResponseExample = {
+  scope: {
+    session_id: "session-1",
+    target_branch_id: "alt-preview",
+    branch_exists: false,
+    source_floor_id: "floor-source",
+    history_source_branch_id: "fork-branch",
+    history_source_mode: "source_floor_branch",
+  },
+  policy: {
+    structure: promptRuntimeResolvedStructureExample,
+    delivery: promptRuntimeResolvedDeliveryExample,
+    budget: promptRuntimeBudgetExample,
+    source_selection: promptRuntimeSourceSelectionExample,
+    visibility: promptRuntimeResolvedVisibilityExample,
+    debug: promptRuntimeDebugPolicyExample,
+  },
+  source_map: {
+    structure: {
+      mode: "request_override",
+      merge_adjacent_same_role: "request_override",
+      preserve_system_messages: "system_default",
+      assistant_rewrite_strategy: "system_default",
+    },
+    delivery: {
+      allow_assistant_prefill: "system_default",
+      require_last_user: "session_policy",
+      no_assistant: "request_override",
+    },
+    budget: {
+      max_input_tokens: "request_override",
+      reserved_completion_tokens: "request_override",
+    },
+    source_selection: {
+      history: {
+        mode: "request_override",
+        max_messages: "request_override",
+      },
+      memory: { enabled: "system_default" },
+      worldbook: { enabled: "system_default" },
+      examples: { enabled: "request_override" },
+    },
+    visibility: {
+      mode: "request_override",
+      hidden_floor_ranges: "request_override",
+    },
+    history: {
+      source_branch_id: "fork-branch",
+      source_mode: "source_floor_branch",
+    },
+  },
+  memory_injection: promptRuntimeMemoryInjectionExample,
+  memory: {
+    summary_injected: true,
+    runtime_mode: "async_primary",
+    requested_write: false,
+    effective_write: false,
+    strategy: "dual_summary",
+    summary_text: "[Memory]\n- Bob still holds the vault key.\n- Alice had started to distrust Bob.",
+    summary_text_hash: "sha256:8b210f3247804d17f0e22171db253f411f4ca9bb9da6c69b75837b086d11c2fa",
+    selected_items: [
+      {
+        memory_id: "memory-branch-fact-1",
+        scope: "branch",
+        scope_id: "memscope:session-1:main",
+        branch_id: "main",
+        kind: "fact",
+        source: "store",
+        score: 0.82,
+        token_count: 18,
+        selected_reason: null,
+      },
+      {
+        memory_id: "memory-branch-summary-1",
+        scope: "branch",
+        scope_id: "memscope:session-1:main",
+        branch_id: "main",
+        kind: "micro_summary",
+        source: "summary",
+        score: 0.64,
+        token_count: 14,
+      },
+    ],
+    token_stats: { budget: 500, used: 64, micro_summary: 14, macro_summary: 0, direct_items: 50 },
+    scope_resolution: { mode: "branch_aware", requested_scopes: ["global", "branch"], resolved_scopes: ["global", "branch"], requested_branch_id: "main", resolved_branch_id: "main", fallback_reason: null },
+  },
+  text: '{"资产":3}',
+  runtime_trace: {
+    macro: {
+      warnings: [],
+      used_names: ["setvar", "getvar"],
+      mutation_preview: [{ kind: "set", scope: "branch", key: "资产.金币", value: "3" }],
+      staged_mutations: [],
+      traces: [
+        {
+          macro_name: "setvar",
+          raw_text: "{{setvar::资产.金币::3}}",
+          resolved_text: "",
+          phase: "preview",
+          source_kind: "macro",
+        },
+        {
+          macro_name: "getvar",
+          raw_text: "{{getvar::资产}}",
+          resolved_text: "{\"金币\":3}",
+          phase: "preview",
+          source_kind: "macro",
+        },
+      ],
+    },
+    history_normalization: historyNormalizationExample,
+    generation_params_resolution: [
+      {
+        name: "temperature",
+        final_state: "sent",
+        origin: "default",
+        value_from: "default",
+      },
+      {
+        name: "maxOutputTokens",
+        final_state: "sent",
+        origin: "request",
+        value_from: "request",
+      },
+      {
+        name: "topP",
+        final_state: "cancelled",
+        origin: "request",
+        cancelled_at: "request",
+      },
+    ],
+    visibility: {
+      hidden_floor_ranges: [{ start_floor_no: 1, end_floor_no: 2 }],
+      filtered_floor_nos: [1, 2],
+    },
+    source_selection: {
+      excluded_sources: [
+        {
+          source: "examples",
+          reason: "disabled_by_policy",
+          detail: "sourceSelection.examples.enabled=false removed example dialogue from prompt assembly.",
+        },
+      ],
+    },
+    tool_transport: {
+      selection: {
+        transport: "text_protocol",
+        reason_code: "explicit_override",
+        reason_detail: "Tool transport was explicitly overridden to 'text_protocol'.",
+      },
+      tool_list: {
+        injected: true,
+        contributor_id: "builtin:tool_list",
+        placement_mode: "contributor_chain",
+        tool_count: 2,
+        token_count: 96,
+        budget_group: "tool_list",
+      },
+      parsing: {
+        block_count: 1,
+        accepted_count: 1,
+        rejected_count: 0,
+        diagnostics: [],
+        diagnostics_by_reason: {},
+      },
+      tool_result: {
+        written_back: true,
+        block_count: 1,
+        token_count: 128,
+        budget_group: "tool_result",
+      },
+    },
+  },
+  diagnostics: promptRuntimeDiagnosticsExample,
+  limitations: promptRuntimeLimitationsExample,
+} as const;
+
+const promptRuntimePolicyViewExample = {
+  resolved_policy: promptRuntimePreviewResponseExample.policy,
+  source_map: promptRuntimeSourceMapExample,
+  supported_fields: [...PROMPT_RUNTIME_GOVERNED_POLICY_FIELDS],
+  sources: [...PROMPT_RUNTIME_POLICY_SOURCES],
+  session_policy: promptRuntimePersistentPolicyEnvelopeExample.value,
+  branch_policy: promptRuntimeBranchPersistentPolicyExample,
+} as const;
+
+export const promptRuntimeHistoricalExplainResponseExample = {
+  floor: {
+    id: "floor-12",
+    session_id: "session-1",
+    floor_no: 12,
+    branch_id: "main",
+    parent_floor_id: "floor-11",
+    state: "committed",
+    prompt_snapshot_created_at: 1710000003000,
+    committed_at: 1710000004000,
+  },
+  scope: {
+    session_id: "session-1",
+    target_branch_id: "main",
+    branch_exists: true,
+    source_floor_id: null,
+    history_source_branch_id: "main",
+    history_source_mode: "existing_branch",
+  },
+  snapshot_available: true,
+  assets: promptRuntimeAssetsExample,
+  prompt_snapshot: livePromptSnapshotExample,
+  memory: {
+    summary_injected: true,
+    runtime_mode: "async_primary",
+    requested_write: true,
+    effective_write: true,
+    strategy: "dual_summary",
+    summary_text_hash: "sha256:8b210f3247804d17f0e22171db253f411f4ca9bb9da6c69b75837b086d11c2fa",
+    selected_items: [
+      {
+        memory_id: "memory-branch-fact-1",
+        scope: "branch",
+        scope_id: "memscope:session-1:main",
+        branch_id: "main",
+        kind: "fact",
+      },
+    ],
+    token_stats: { budget: 500, used: 64, micro_summary: 14, macro_summary: 0, direct_items: 50 },
+    scope_resolution: { mode: "branch_aware", requested_scopes: ["global", "branch"], resolved_scopes: ["global", "branch"], requested_branch_id: "main", resolved_branch_id: "main", fallback_reason: null },
+    page_id: "page-output-12",
+    proposal_batch_id: "memory-proposal:page-output-12",
+    proposal_status: "promoted",
+    promotion_status: "promoted",
+  },
+  resolved_policy: promptRuntimePolicyViewExample.resolved_policy,
+  source_map: promptRuntimeSourceMapExample,
+  trim_reasons: [
+    {
+      group: "section:main",
+      reason: "budget_exceeded",
+      detail: "Prompt runtime pruned 128 tokens from budget group 'section:main'.",
+      pruned_token_count: 128,
+    },
+  ],
+  excluded_sources: [
+    {
+      source: "examples",
+      reason: "disabled_by_policy",
+      detail: "sourceSelection.examples.enabled=false removed example dialogue from prompt assembly.",
+    },
+  ],
+  section_stats: promptRuntimeSectionStatsExample,
+  diagnostics: promptRuntimeDiagnosticsExample,
+  limitations: promptRuntimeLimitationsExample,
+  result: {
+    output_page_id: "page-output-12",
+    assistant_message_id: "msg-assistant-12",
+    generated_text: "The firelight wavers as the next part of the story begins.",
+    summaries: ["The group resumes the campfire planning scene."],
+    usage: {
+      prompt_tokens: 320,
+      completion_tokens: 128,
+      total_tokens: 448,
+    },
+    verifier: null,
+    committed_at: 1710000004000,
+  },
+  governance: promptRuntimeGovernanceExample,
+} as const;
+
+export const promptRuntimeInspectResponseExample = {
+  scope: promptRuntimeScopeExample,
+  mode: promptRuntimeModeViewExample,
+  policy: promptRuntimePolicyViewExample.resolved_policy,
+  source_map: promptRuntimeSourceMapExample,
+  diagnostics: promptRuntimeDiagnosticsExample,
+  history_normalization: historyNormalizationExample,
+  trim_reasons: [
+    {
+      group: "history",
+      reason: "group_limit_exceeded",
+      detail: "Prompt runtime pruned 64 tokens from budget group 'history'.",
+      pruned_token_count: 64,
+    },
+  ],
+  excluded_sources: [
+    {
+      source: "examples",
+      reason: "disabled_by_policy",
+      detail: "sourceSelection.examples.enabled=false removed example dialogue from prompt assembly.",
+    },
+  ],
+  section_stats: promptRuntimeSectionStatsExample,
+  limitations: promptRuntimeLimitationsExample,
+  prepared_turn: {
+    messages: [
+      { role: "system", content: "Stay in character and keep the tone warm." },
+      { role: "user", content: "Please continue the campfire scene." },
+    ],
+    token_estimate: 512,
+    available_for_reply: 1536,
+    preprocessed_user_message: "Please continue the campfire scene.",
+    prompt_snapshot: promptRuntimeHistoricalExplainResponseExample.prompt_snapshot,
+    runtime_trace: promptRuntimePreviewResponseExample.runtime_trace,
+    memory_injection: promptRuntimeMemoryInjectionExample,
+    memory_summary: "The party recently agreed to search the northern pass.",
+    memory: promptRuntimeHistoricalExplainResponseExample.memory,
+    generation_params: { temperature: 0.7, max_output_tokens: 256 },
+    requested_turn_config: { enable_tools: false, enable_director: false, enable_verifier: false },
+    turn_config: { enable_tools: false, enable_director: false, enable_verifier: false },
+    session_state_writes: { total: 1, writes: [{ namespace: "quest_flags", slot: "companion", operation: "set" }] },
+    contributors: [
+      {
+        id: "builtin:memory_projection",
+        kind: "memory_projection",
+        source_kind: "memory",
+        mode_scope: "compat_plus",
+        prompt_renderable: {
+          title: "Memory summary",
+          content: "The party recently agreed to search the northern pass.",
+        },
+        deterministic: true,
+        cache_scope: "floor",
+      },
+    ],
+    prepare_phase_trace: [
+      { phase: "conversation_resolve", detail: { history_count: 2, selected_turn_count: 2, effective_turn_count: 2 } },
+      { phase: "source_resolve", detail: { memory_summary_injected: true, history_count: 2 } },
+      { phase: "pre_response", detail: { contributor_count: 1, contributor_kinds: ["memory_projection"] } },
+      { phase: "assemble", detail: { message_count: 2, token_estimate: 512 } },
+      { phase: "materialize", detail: { message_count: 2 } },
+      { phase: "inspect", detail: { diagnostics_count: 0 } },
+    ],
+  },
+  governance: promptRuntimeGovernanceExample,
+} as const;
+
+export const promptRuntimeCapabilitiesExample = {
+  default_prompt_mode: DEFAULT_PROMPT_MODE,
+  prompt_modes: [
+    {
+      name: "compat_strict",
+      description: "Strict SillyTavern-compatible prompt assembly. No Agentic or NodeGraph behavior should leak into this mode.",
+      agentic_scope: "none",
+    },
+    {
+      name: "compat_plus",
+      description: "Compatibility-first prompt assembly with light augmentation only.",
+      agentic_scope: "limited",
+    },
+    {
+      name: "native",
+      description: "Native prompt pipeline entry for richer NodeGraph and Agentic evolution.",
+      agentic_scope: "primary",
+    },
+  ],
+  structure: {
+    modes: [...PROMPT_RUNTIME_SUPPORTED_STRUCTURE_MODES],
+    defaults: {
+      mode: "default",
+      merge_adjacent_same_role: false,
+      preserve_system_messages: true,
+    },
+  },
+  delivery: {
+    defaults: {
+      allow_assistant_prefill: true,
+      require_last_user: false,
+      no_assistant: false,
+    },
+  },
+  budget: {
+    defaults: {},
+    request_override_supported: true,
+    persistent_patch_supported: true,
+    supported_fields: ["maxInputTokens", "reservedCompletionTokens"],
+    trim_reason_codes: [...PROMPT_RUNTIME_SUPPORTED_TRIM_REASON_CODES],
+  },
+  source_selection: {
+    defaults: {
+      history: { mode: "full" },
+      memory: { enabled: true },
+      worldbook: { enabled: true },
+      examples: { enabled: true },
+    },
+    request_override_supported: true,
+    persistent_patch_supported: true,
+    supported_sources: [...PROMPT_RUNTIME_SUPPORTED_SOURCE_SELECTION_SOURCES],
+    history_modes: [...PROMPT_RUNTIME_SUPPORTED_SOURCE_SELECTION_HISTORY_MODES],
+    exclusion_reason_codes: [...PROMPT_RUNTIME_SUPPORTED_SOURCE_EXCLUSION_REASON_CODES],
+  },
+  governance: {
+    session: {
+      envelope_metadata: true,
+      null_clears_field: true,
+      object_patch: "deep_merge",
+      supported_fields: [...PROMPT_RUNTIME_GOVERNED_POLICY_FIELDS],
+    },
+    branch: {
+      envelope_metadata: true,
+      materialized_branches_only: true,
+      null_clears_field: true,
+      object_patch: "deep_merge",
+      supported_fields: [...PROMPT_RUNTIME_GOVERNED_POLICY_FIELDS],
+    },
+  },
+  compare: {
+    enabled: true,
+    committed_floors_only: true,
+    mixed_preview_supported: false,
+    limitations_instead_of_recompute: true,
+  },
+  observability: {
+    live: {
+      enabled: true,
+      default_off: true,
+      request_scoped_only: true,
+      include_prompt_snapshot: true,
+      include_runtime_trace: true,
+      include_worldbook_matches: true,
+      worldbook_matches_requires_runtime_trace: true,
+      worldbook_matches_requires_opt_in: true,
+      visibility_request_supported: false,
+    },
+    dry_run: {
+      enabled: true,
+      returns_assembly: true,
+      returns_runtime_trace: true,
+      supports_visibility: true,
+      include_worldbook_matches: true,
+    },
+    inspect: {
+      enabled: true,
+      mode: "prepared_turn",
+      supports_branch: true,
+      supports_source_floor: true,
+      supports_visibility: true,
+      returns_contributors: true,
+      returns_prepare_phase_trace: true,
+      returns_prepared_turn: true,
+      returns_governance: true,
+      llm_call: false,
+      creates_floor: false,
+      writes_prompt_snapshot: false,
+      writes_explain_snapshot: false,
+      commits_side_effects: false,
+    },
+    preview: {
+      enabled: true,
+      mode: "macro_text_preview",
+      returns_runtime_trace: true,
+      returns_assembly_truth: false,
+      supports_visibility: true,
+      single_text_only: true,
+      llm_call: false,
+      creates_floor: false,
+      writes_prompt_snapshot: false,
+      commits_side_effects: false,
+      trace_subset: ["macro", "source_selection", "visibility", "history_normalization"],
+    },
+    explain: {
+      enabled: true,
+      read_only: true,
+      returns_governance: true,
+      requires_committed_floor: true,
+      persisted_truth_only: true,
+      recompute: false,
+      snapshot_supported: true,
+      legacy_floor_fallback: true,
+      snapshot_availability_field: "snapshot_available",
+    },
+    stream: {
+      enabled: true,
+      prompt_debug_payload: "done_only",
+      new_sse_event_family: false,
+    },
+  },
+  macro: {
+    built_in_read_only_values_persistable: false,
+    st_compatibility_snapshots_persistable: false,
+    run_kind_persistable: false,
+    diagnostics_surface: "unified_observability",
+    dedicated_macros_route: false,
+    recent_message_respects_visibility: true,
+  },
+  unsupported: [...PROMPT_RUNTIME_UNSUPPORTED_ROUTES],
+} as const;
+
+const promptRuntimeModeViewSchema = {
+  type: "object",
+  required: ["prompt_mode", "session_prompt_mode", "effective_prompt_mode", "default_prompt_mode", "legacy_fallback", "source"],
+  properties: {
+    prompt_mode: { type: "string", enum: [...PROMPT_MODE_VALUES] },
+    session_prompt_mode: { anyOf: [{ type: "string", enum: [...PROMPT_MODE_VALUES] }, { type: "null" }] },
+    effective_prompt_mode: { type: "string", enum: [...PROMPT_MODE_VALUES] },
+    default_prompt_mode: { type: "string", enum: [...PROMPT_MODE_VALUES] },
+    legacy_fallback: { type: "boolean" },
+    source: { type: "string", enum: ["session", "legacy_metadata", "default"] },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimePersistentStructureJsonSchema = {
+  type: "object",
+  properties: {
+    mode: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_STRUCTURE_MODES] },
+    merge_adjacent_same_role: { type: "boolean" },
+    preserve_system_messages: { type: "boolean" },
+    assistant_rewrite_strategy: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_ASSISTANT_REWRITE_STRATEGIES] },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimePersistentDeliveryJsonSchema = {
+  type: "object",
+  properties: {
+    allow_assistant_prefill: { type: "boolean" },
+    require_last_user: { type: "boolean" },
+    no_assistant: { type: "boolean" },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeSourceSelectionHistoryJsonSchema = {
+  type: "object",
+  properties: {
+    mode: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_SOURCE_SELECTION_HISTORY_MODES] },
+    max_messages: { type: "integer", minimum: 1 },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimePersistentSourceSelectionJsonSchema = {
+  type: "object",
+  properties: {
+    history: promptRuntimeSourceSelectionHistoryJsonSchema,
+    memory: { type: "object", properties: { enabled: { type: "boolean" } }, additionalProperties: false },
+    worldbook: { type: "object", properties: { enabled: { type: "boolean" } }, additionalProperties: false },
+    examples: { type: "object", properties: { enabled: { type: "boolean" } }, additionalProperties: false },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimePolicySourceJsonSchema = {
+  type: "string",
+  enum: [...PROMPT_RUNTIME_POLICY_SOURCES],
+} as const;
+
+const promptRuntimeSourceMapJsonSchema = {
+  type: "object",
+  properties: {
+    structure: {
+      type: "object",
+      properties: {
+        mode: promptRuntimePolicySourceJsonSchema,
+        merge_adjacent_same_role: promptRuntimePolicySourceJsonSchema,
+        preserve_system_messages: promptRuntimePolicySourceJsonSchema,
+        assistant_rewrite_strategy: promptRuntimePolicySourceJsonSchema,
+      },
+      additionalProperties: false,
+    },
+    delivery: {
+      type: "object",
+      properties: {
+        allow_assistant_prefill: promptRuntimePolicySourceJsonSchema,
+        require_last_user: promptRuntimePolicySourceJsonSchema,
+        no_assistant: promptRuntimePolicySourceJsonSchema,
+      },
+      additionalProperties: false,
+    },
+    budget: {
+      type: "object",
+      properties: {
+        max_input_tokens: promptRuntimePolicySourceJsonSchema,
+        reserved_completion_tokens: promptRuntimePolicySourceJsonSchema,
+      },
+      additionalProperties: false,
+    },
+    source_selection: {
+      type: "object",
+      properties: {
+        history: {
+          type: "object",
+          properties: {
+            mode: promptRuntimePolicySourceJsonSchema,
+            max_messages: promptRuntimePolicySourceJsonSchema,
+          },
+          additionalProperties: false,
+        },
+        memory: { type: "object", properties: { enabled: promptRuntimePolicySourceJsonSchema }, additionalProperties: false },
+        worldbook: { type: "object", properties: { enabled: promptRuntimePolicySourceJsonSchema }, additionalProperties: false },
+        examples: { type: "object", properties: { enabled: promptRuntimePolicySourceJsonSchema }, additionalProperties: false },
+      },
+      additionalProperties: false,
+    },
+    visibility: {
+      type: "object",
+      properties: {
+        mode: promptRuntimePolicySourceJsonSchema,
+        hidden_floor_ranges: promptRuntimePolicySourceJsonSchema,
+        visible_floor_ranges: promptRuntimePolicySourceJsonSchema,
+        hidden_floor_ids: promptRuntimePolicySourceJsonSchema,
+      },
+      additionalProperties: false,
+    },
+    history: {
+      type: "object",
+      required: ["source_branch_id", "source_mode"],
+      properties: {
+        source_branch_id: { type: "string" },
+        source_mode: { type: "string", enum: ["existing_branch", "source_floor_branch", "main_fallback"] },
+      },
+      additionalProperties: false,
+    },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeDiagnosticJsonSchema = {
+  type: "object",
+  required: ["code", "message", "severity"],
+  properties: {
+    code: { type: "string" },
+    message: { type: "string" },
+    severity: { type: "string", enum: ["info", "warning", "error"] },
+    source: { type: "string" },
+    field_path: { type: "string" },
+    phase: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeScopeJsonSchema = {
+  type: "object",
+  required: ["session_id", "target_branch_id", "branch_exists", "source_floor_id", "history_source_branch_id", "history_source_mode"],
+  properties: {
+    session_id: { type: "string" },
+    target_branch_id: { type: "string" },
+    branch_exists: { type: "boolean" },
+    source_floor_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    history_source_branch_id: { type: "string" },
+    history_source_mode: { type: "string", enum: ["existing_branch", "source_floor_branch", "main_fallback"] },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeResolvedPolicyJsonSchema = {
+  type: "object",
+  required: ["structure", "delivery", "budget", "visibility", "source_selection", "debug"],
+  properties: {
+    structure: {
+      type: "object",
+      required: ["mode", "merge_adjacent_same_role", "preserve_system_messages"],
+      properties: {
+        mode: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_STRUCTURE_MODES] },
+        merge_adjacent_same_role: { type: "boolean" },
+        preserve_system_messages: { type: "boolean" },
+        assistant_rewrite_strategy: { anyOf: [{ type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_ASSISTANT_REWRITE_STRATEGIES] }, { type: "null" }] },
+      },
+      additionalProperties: false,
+    },
+    delivery: {
+      type: "object",
+      required: ["allow_assistant_prefill", "require_last_user", "no_assistant"],
+      properties: {
+        allow_assistant_prefill: { type: "boolean" },
+        require_last_user: { type: "boolean" },
+        no_assistant: { type: "boolean" },
+      },
+      additionalProperties: false,
+    },
+    budget: {
+      type: "object",
+      properties: {
+        max_input_tokens: { type: "integer", minimum: 1 },
+        reserved_completion_tokens: { type: "integer", minimum: 1 },
+      },
+      additionalProperties: false,
+    },
+    visibility: {
+      type: "object",
+      required: ["mode"],
+      properties: {
+        mode: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_VISIBILITY_MODES] },
+        hidden_floor_ranges: { type: "array", items: floorVisibilityRangeJsonSchema },
+        visible_floor_ranges: { type: "array", items: floorVisibilityRangeJsonSchema },
+        hidden_floor_ids: { type: "array", items: { type: "string" } },
+      },
+      additionalProperties: false,
+    },
+    source_selection: {
+      type: "object",
+      required: ["history", "memory", "worldbook", "examples"],
+      properties: {
+        history: {
+          type: "object",
+          required: ["mode"],
+          properties: {
+            mode: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_SOURCE_SELECTION_HISTORY_MODES] },
+            max_messages: { type: "integer", minimum: 1 },
+          },
+          additionalProperties: false,
+        },
+        memory: { type: "object", required: ["enabled"], properties: { enabled: { type: "boolean" } }, additionalProperties: false },
+        worldbook: { type: "object", required: ["enabled"], properties: { enabled: { type: "boolean" } }, additionalProperties: false },
+        examples: { type: "object", required: ["enabled"], properties: { enabled: { type: "boolean" } }, additionalProperties: false },
+      },
+      additionalProperties: false,
+    },
+    debug: {
+      type: "object",
+      required: ["include_prompt_snapshot", "include_runtime_trace", "include_worldbook_matches"],
+      properties: {
+        include_prompt_snapshot: { type: "boolean" },
+        include_runtime_trace: { type: "boolean" },
+        include_worldbook_matches: { type: "boolean" },
+      },
+      additionalProperties: false,
+    },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimePolicyViewJsonSchema = {
+  type: "object",
+  required: ["resolved_policy", "warnings"],
+  properties: {
+    persistent_policy: {
+      type: "object",
+      properties: {
+        structure: promptRuntimePersistentStructureJsonSchema,
+        delivery: promptRuntimePersistentDeliveryJsonSchema,
+        budget: promptBudgetJsonSchema,
+        source_selection: promptRuntimePersistentSourceSelectionJsonSchema,
+        visibility: dryRunVisibilityJsonSchema,
+      },
+      additionalProperties: false,
+    },
+    persistent_policy_envelope: {
+      anyOf: [
+        {
+          type: "object",
+          required: ["version", "updated_at", "updated_by", "value"],
+          properties: {
+            version: { type: "integer", minimum: 1 },
+            updated_at: { type: "integer", minimum: 0 },
+            updated_by: { anyOf: [{ type: "string" }, { type: "null" }] },
+            value: {
+              type: "object",
+              properties: {
+                structure: promptRuntimePersistentStructureJsonSchema,
+                delivery: promptRuntimePersistentDeliveryJsonSchema,
+                budget: promptBudgetJsonSchema,
+                source_selection: promptRuntimePersistentSourceSelectionJsonSchema,
+                visibility: dryRunVisibilityJsonSchema,
+              },
+              additionalProperties: false,
+            },
+          },
+          additionalProperties: false,
+        },
+        { type: "null" },
+      ],
+    },
+    resolved_policy: promptRuntimeResolvedPolicyJsonSchema,
+    warnings: { type: "array", items: { type: "string" } },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeSectionStatJsonSchema = {
+  type: "object",
+  required: ["section_name", "token_count"],
+  properties: {
+    section_name: { type: "string" },
+    token_count: { type: "integer", minimum: 0 },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeGovernanceJsonSchema = {
+  type: "object",
+  required: ["entries", "mismatches", "limitations"],
+  properties: {
+    entries: {
+      type: "array",
+      items: {
+        type: "object",
+        required: ["source_kind", "declared_level", "registered", "effective_retention", "pinned", "prunable", "budget_groups", "section_names", "token_count", "retained_token_count", "pruned_token_count"],
+        properties: {
+          source_kind: { type: "string" },
+          declared_level: { anyOf: [{ type: "string" }, { type: "null" }] },
+          registered: { type: "boolean" },
+          effective_retention: { type: "string" },
+          pinned: { anyOf: [{ type: "boolean" }, { type: "null" }] },
+          prunable: { anyOf: [{ type: "boolean" }, { type: "null" }] },
+          budget_groups: { type: "array", items: { type: "string" } },
+          section_names: { type: "array", items: { type: "string" } },
+          token_count: { type: "integer", minimum: 0 },
+          retained_token_count: { type: "integer", minimum: 0 },
+          pruned_token_count: { type: "integer", minimum: 0 },
+        },
+        additionalProperties: false,
+      },
+    },
+    mismatches: {
+      type: "array",
+      items: {
+        type: "object",
+        required: ["code", "source_kind", "declared_level", "effective_retention", "budget_groups", "message"],
+        properties: {
+          code: { type: "string" },
+          source_kind: { type: "string" },
+          declared_level: { anyOf: [{ type: "string" }, { type: "null" }] },
+          effective_retention: { type: "string" },
+          budget_groups: { type: "array", items: { type: "string" } },
+          message: { type: "string" },
+        },
+        additionalProperties: false,
+      },
+    },
+    limitations: { type: "array", items: { type: "string" } },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeHistoricalPromptSnapshotJsonSchema = livePromptSnapshotJsonSchema;
+
+const promptRuntimeHistoricalExplainTrimReasonJsonSchema = {
+  type: "object",
+  required: ["group", "reason"],
+  properties: {
+    group: { type: "string" },
+    reason: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_TRIM_REASON_CODES] },
+    detail: { type: "string" },
+    pruned_token_count: { type: "integer", minimum: 0 },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeHistoricalExplainSourceExclusionJsonSchema = {
+  type: "object",
+  required: ["source", "reason"],
+  properties: {
+    source: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_SOURCE_SELECTION_SOURCES] },
+    reason: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_SOURCE_EXCLUSION_REASON_CODES] },
+    detail: { type: "string" },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeHistoricalExplainResultJsonSchema = {
+  type: "object",
+  required: ["output_page_id", "assistant_message_id", "generated_text", "summaries", "usage", "verifier", "committed_at"],
+  properties: {
+    output_page_id: { type: "string" },
+    assistant_message_id: { type: "string" },
+    generated_text: { type: "string" },
+    summaries: { type: "array", items: { type: "string" } },
+    usage: {
+      type: "object",
+      required: ["prompt_tokens", "completion_tokens", "total_tokens"],
+      properties: {
+        prompt_tokens: { type: "integer", minimum: 0 },
+        completion_tokens: { type: "integer", minimum: 0 },
+        total_tokens: { type: "integer", minimum: 0 },
+      },
+      additionalProperties: false,
+    },
+    verifier: {
+      anyOf: [
+        {
+          type: "object",
+          required: ["status", "suggestion", "issues"],
+          properties: {
+            status: { type: "string" },
+            suggestion: { anyOf: [{ type: "string" }, { type: "null" }] },
+            issues: {
+              anyOf: [
+                {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    required: ["description", "severity"],
+                    properties: {
+                      description: { type: "string" },
+                      severity: { type: "string", enum: ["warning", "error"] },
+                    },
+                    additionalProperties: false,
+                  },
+                },
+                { type: "null" },
+              ],
+            },
+          },
+          additionalProperties: false,
+        },
+        { type: "null" },
+      ],
+    },
+    committed_at: { type: "integer", minimum: 0 },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeHistoricalExplainFloorJsonSchema = {
+  type: "object",
+  required: ["id", "session_id", "floor_no", "branch_id", "parent_floor_id", "state", "prompt_snapshot_created_at", "committed_at"],
+  properties: {
+    id: { type: "string" },
+    session_id: { type: "string" },
+    floor_no: { type: "integer", minimum: 0 },
+    branch_id: { type: "string" },
+    parent_floor_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    state: { type: "string", enum: ["committed"] },
+    prompt_snapshot_created_at: { type: "integer", minimum: 0 },
+    committed_at: { type: "integer", minimum: 0 },
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimePreviewRuntimeTraceJsonSchema = {
+  type: "object",
+  properties: {
+    macro: dryRunRuntimeTraceJsonSchema.properties.macro,
+    history_normalization: runtimeTraceHistoryNormalizationJsonSchema,
+    generation_params_resolution:
+      dryRunRuntimeTraceJsonSchema.properties.generation_params_resolution,
+    visibility: {
+      type: "object",
+      required: ["filtered_floor_nos"],
+      properties: {
+        hidden_floor_ranges: { type: "array", items: floorVisibilityRangeJsonSchema },
+        filtered_floor_nos: { type: "array", items: { type: "integer" } },
+      },
+      additionalProperties: false,
+    },
+    source_selection: {
+      type: "object",
+      required: ["excluded_sources"],
+      properties: {
+        excluded_sources: { type: "array", items: promptRuntimeHistoricalExplainSourceExclusionJsonSchema },
+      },
+      additionalProperties: false,
+    },
+    tool_transport: dryRunRuntimeTraceJsonSchema.properties.tool_transport,
+    injection: dryRunRuntimeTraceJsonSchema.properties.injection,
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeMemoryInjectionJsonSchema = {
+  type: "object",
+  required: ["items", "formatted_text", "token_count", "scope_resolution"],
+  properties: {
+    items: {
+      type: "array",
+      items: {
+        type: "object",
+        required: ["id", "scope", "scope_id", "type", "summary_tier", "content", "fact_key", "importance", "confidence", "source_floor_id", "source_message_id", "status", "token_count_estimate", "created_at", "updated_at"],
+        properties: {
+          id: { type: "string" },
+          scope: { type: "string", enum: ["global", "chat", "branch", "floor"] },
+          scope_id: { type: "string" },
+          type: { type: "string", enum: ["fact", "summary", "open_loop"] },
+          summary_tier: { anyOf: [{ type: "string", enum: ["micro", "macro"] }, { type: "null" }] },
+          content: { type: "string" },
+          fact_key: { anyOf: [{ type: "string" }, { type: "null" }] },
+          importance: { type: "number", minimum: 0, maximum: 1 },
+          confidence: { type: "number", minimum: 0, maximum: 1 },
+          source_floor_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+          source_message_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+          status: { type: "string" },
+          token_count_estimate: { anyOf: [{ type: "integer", minimum: 0 }, { type: "null" }] },
+          created_at: { type: "integer", minimum: 0 },
+          updated_at: { type: "integer", minimum: 0 },
+        },
+        additionalProperties: false,
+      },
+    },
+    formatted_text: { type: "string" },
+    token_count: { type: "integer", minimum: 0 },
+    scope_resolution: {
+      anyOf: [
+        {
+          type: "object",
+          required: ["mode", "strict"],
+          properties: {
+            mode: { type: "string", enum: ["visible_refs", "explicit_scope", "direct_scope_fallback", "strict_empty", "resolver_error"] },
+            strict: { type: "boolean" },
+            scope_refs: {
+              type: "array",
+              items: {
+                type: "object",
+                required: ["scope", "scopeId"],
+                properties: {
+                  scope: { type: "string", enum: ["global", "chat", "branch", "floor"] },
+                  scopeId: { type: "string" },
+                },
+                additionalProperties: false,
+              },
+            },
+            explicit_scope: {
+              type: "object",
+              required: ["scope", "scopeId"],
+              properties: {
+                scope: { type: "string", enum: ["global", "chat", "branch", "floor"] },
+                scopeId: { type: "string" },
+              },
+              additionalProperties: false,
+            },
+            fallback_scope_id: { type: "string" },
+            error: {
+              type: "object",
+              required: ["name", "message"],
+              properties: {
+                name: { type: "string" },
+                message: { type: "string" },
+              },
+              additionalProperties: false,
+            },
+          },
+          additionalProperties: false,
+        },
+        { type: "null" },
+      ],
+    },
+  },
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeCapabilitiesResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: {
+      type: "object",
+      required: ["default_prompt_mode", "prompt_modes", "structure", "delivery", "budget", "source_selection", "governance", "compare", "observability", "macro", "unsupported"],
+      properties: {
+        default_prompt_mode: { type: "string", enum: [...PROMPT_MODE_VALUES] },
+        prompt_modes: {
+          type: "array",
+          items: {
+            type: "object",
+            required: ["name", "description", "agentic_scope"],
+            properties: {
+              name: { type: "string", enum: [...PROMPT_MODE_VALUES] },
+              description: { type: "string" },
+              agentic_scope: { type: "string", enum: ["none", "limited", "primary"] },
+            },
+            additionalProperties: false,
+          },
+        },
+        structure: {
+          type: "object",
+          required: ["modes", "defaults"],
+          properties: {
+            modes: { type: "array", items: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_STRUCTURE_MODES] } },
+            defaults: {
+              type: "object",
+              required: ["mode", "merge_adjacent_same_role", "preserve_system_messages"],
+              properties: {
+                mode: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_STRUCTURE_MODES] },
+                merge_adjacent_same_role: { type: "boolean" },
+                preserve_system_messages: { type: "boolean" },
+              },
+              additionalProperties: false,
+            },
+          },
+          additionalProperties: false,
+        },
+        delivery: {
+          type: "object",
+          required: ["defaults"],
+          properties: {
+            defaults: {
+              type: "object",
+              required: ["allow_assistant_prefill", "require_last_user", "no_assistant"],
+              properties: {
+                allow_assistant_prefill: { type: "boolean" },
+                require_last_user: { type: "boolean" },
+                no_assistant: { type: "boolean" },
+              },
+              additionalProperties: false,
+            },
+          },
+          additionalProperties: false,
+        },
+        budget: {
+          type: "object",
+          required: ["defaults", "request_override_supported", "persistent_patch_supported", "supported_fields", "trim_reason_codes"],
+          properties: {
+            defaults: { type: "object", additionalProperties: false },
+            request_override_supported: { type: "boolean" },
+            persistent_patch_supported: { type: "boolean" },
+            supported_fields: { type: "array", items: { type: "string" } },
+            trim_reason_codes: { type: "array", items: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_TRIM_REASON_CODES] } },
+          },
+          additionalProperties: false,
+        },
+        source_selection: {
+          type: "object",
+          required: ["defaults", "request_override_supported", "persistent_patch_supported", "supported_sources", "history_modes", "exclusion_reason_codes"],
+          properties: {
+            defaults: {
+              type: "object",
+              required: ["history", "memory", "worldbook", "examples"],
+              properties: {
+                history: { type: "object", required: ["mode"], properties: { mode: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_SOURCE_SELECTION_HISTORY_MODES] } }, additionalProperties: false },
+                memory: { type: "object", required: ["enabled"], properties: { enabled: { type: "boolean" } }, additionalProperties: false },
+                worldbook: { type: "object", required: ["enabled"], properties: { enabled: { type: "boolean" } }, additionalProperties: false },
+                examples: { type: "object", required: ["enabled"], properties: { enabled: { type: "boolean" } }, additionalProperties: false },
+              },
+              additionalProperties: false,
+            },
+            request_override_supported: { type: "boolean" },
+            persistent_patch_supported: { type: "boolean" },
+            supported_sources: { type: "array", items: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_SOURCE_SELECTION_SOURCES] } },
+            history_modes: { type: "array", items: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_SOURCE_SELECTION_HISTORY_MODES] } },
+            exclusion_reason_codes: { type: "array", items: { type: "string", enum: [...PROMPT_RUNTIME_SUPPORTED_SOURCE_EXCLUSION_REASON_CODES] } },
+          },
+          additionalProperties: false,
+        },
+        governance: {
+          type: "object",
+          required: ["session", "branch"],
+          properties: {
+            session: {
+              type: "object",
+              required: ["envelope_metadata", "null_clears_field", "object_patch", "supported_fields"],
+              properties: {
+                envelope_metadata: { type: "boolean" },
+                null_clears_field: { type: "boolean" },
+                object_patch: { type: "string", enum: ["deep_merge"] },
+                supported_fields: { type: "array", items: { type: "string", enum: [...PROMPT_RUNTIME_GOVERNED_POLICY_FIELDS] } },
+              },
+              additionalProperties: false,
+            },
+            branch: {
+              type: "object",
+              required: ["envelope_metadata", "materialized_branches_only", "null_clears_field", "object_patch", "supported_fields"],
+              properties: {
+                envelope_metadata: { type: "boolean" },
+                materialized_branches_only: { type: "boolean" },
+                null_clears_field: { type: "boolean" },
+                object_patch: { type: "string", enum: ["deep_merge"] },
+                supported_fields: { type: "array", items: { type: "string", enum: [...PROMPT_RUNTIME_GOVERNED_POLICY_FIELDS] } },
+              },
+              additionalProperties: false,
+            },
+          },
+          additionalProperties: false,
+        },
+        compare: {
+          type: "object",
+          required: ["enabled", "committed_floors_only", "mixed_preview_supported", "limitations_instead_of_recompute"],
+          properties: {
+            enabled: { type: "boolean" },
+            committed_floors_only: { type: "boolean" },
+            mixed_preview_supported: { type: "boolean" },
+            limitations_instead_of_recompute: { type: "boolean" },
+          },
+          additionalProperties: false,
+        },
+        observability: {
+          type: "object",
+          required: ["live", "dry_run", "inspect", "preview", "explain", "stream"],
+          properties: {
+            live: {
+              type: "object",
+              required: ["enabled", "default_off", "request_scoped_only", "include_prompt_snapshot", "include_runtime_trace", "include_worldbook_matches", "worldbook_matches_requires_runtime_trace", "worldbook_matches_requires_opt_in", "visibility_request_supported"],
+              properties: {
+                enabled: { type: "boolean" },
+                default_off: { type: "boolean" },
+                request_scoped_only: { type: "boolean" },
+                include_prompt_snapshot: { type: "boolean" },
+                include_runtime_trace: { type: "boolean" },
+                include_worldbook_matches: { type: "boolean" },
+                worldbook_matches_requires_runtime_trace: { type: "boolean" },
+                worldbook_matches_requires_opt_in: { type: "boolean" },
+                visibility_request_supported: { type: "boolean" },
+              },
+              additionalProperties: false,
+            },
+            dry_run: {
+              type: "object",
+              required: ["enabled", "returns_assembly", "returns_runtime_trace", "supports_visibility", "include_worldbook_matches"],
+              properties: {
+                enabled: { type: "boolean" },
+                returns_assembly: { type: "boolean" },
+                returns_runtime_trace: { type: "boolean" },
+                supports_visibility: { type: "boolean" },
+                include_worldbook_matches: { type: "boolean" },
+              },
+              additionalProperties: false,
+            },
+            inspect: {
+              type: "object",
+              required: ["enabled", "mode", "supports_branch", "supports_source_floor", "supports_visibility", "returns_contributors", "returns_prepare_phase_trace", "returns_prepared_turn", "returns_governance", "llm_call", "creates_floor", "writes_prompt_snapshot", "writes_explain_snapshot", "commits_side_effects"],
+              properties: {
+                enabled: { type: "boolean" },
+                mode: { type: "string", enum: ["prepared_turn"] },
+                supports_branch: { type: "boolean" },
+                supports_source_floor: { type: "boolean" },
+                supports_visibility: { type: "boolean" },
+                returns_contributors: { type: "boolean" },
+                returns_prepare_phase_trace: { type: "boolean" },
+                returns_prepared_turn: { type: "boolean" },
+                returns_governance: { type: "boolean" },
+                llm_call: { type: "boolean" },
+                creates_floor: { type: "boolean" },
+                writes_prompt_snapshot: { type: "boolean" },
+                writes_explain_snapshot: { type: "boolean" },
+                commits_side_effects: { type: "boolean" },
+              },
+              additionalProperties: false,
+            },
+            preview: {
+              type: "object",
+              required: ["enabled", "mode", "returns_runtime_trace", "returns_assembly_truth", "supports_visibility", "single_text_only", "llm_call", "creates_floor", "writes_prompt_snapshot", "commits_side_effects", "trace_subset"],
+              properties: {
+                enabled: { type: "boolean" },
+                mode: { type: "string", enum: ["macro_text_preview"] },
+                returns_runtime_trace: { type: "boolean" },
+                returns_assembly_truth: { type: "boolean" },
+                supports_visibility: { type: "boolean" },
+                single_text_only: { type: "boolean" },
+                llm_call: { type: "boolean" },
+                creates_floor: { type: "boolean" },
+                writes_prompt_snapshot: { type: "boolean" },
+                commits_side_effects: { type: "boolean" },
+                trace_subset: { type: "array", items: { type: "string" } },
+              },
+              additionalProperties: false,
+            },
+            explain: {
+              type: "object",
+              required: ["enabled", "read_only", "returns_governance", "requires_committed_floor", "persisted_truth_only", "recompute", "snapshot_supported", "legacy_floor_fallback", "snapshot_availability_field"],
+              properties: {
+                enabled: { type: "boolean" },
+                read_only: { type: "boolean" },
+                returns_governance: { type: "boolean" },
+                requires_committed_floor: { type: "boolean" },
+                persisted_truth_only: { type: "boolean" },
+                recompute: { type: "boolean" },
+                snapshot_supported: { type: "boolean" },
+                legacy_floor_fallback: { type: "boolean" },
+                snapshot_availability_field: { type: "string" },
+              },
+              additionalProperties: false,
+            },
+            stream: {
+              type: "object",
+              required: ["enabled", "prompt_debug_payload", "new_sse_event_family"],
+              properties: {
+                enabled: { type: "boolean" },
+                prompt_debug_payload: { type: "string" },
+                new_sse_event_family: { type: "boolean" },
+              },
+              additionalProperties: false,
+            },
+          },
+          additionalProperties: false,
+        },
+        macro: {
+          type: "object",
+          required: ["built_in_read_only_values_persistable", "st_compatibility_snapshots_persistable", "run_kind_persistable", "diagnostics_surface", "dedicated_macros_route", "recent_message_respects_visibility"],
+          properties: {
+            built_in_read_only_values_persistable: { type: "boolean" },
+            st_compatibility_snapshots_persistable: { type: "boolean" },
+            run_kind_persistable: { type: "boolean" },
+            diagnostics_surface: { type: "string" },
+            dedicated_macros_route: { type: "boolean" },
+            recent_message_respects_visibility: { type: "boolean" },
+          },
+          additionalProperties: false,
+        },
+        unsupported: { type: "array", items: { type: "string" } },
+      },
+      additionalProperties: false,
+    },
+  },
+  examples: [{ data: promptRuntimeCapabilitiesExample }],
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeModeResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: promptRuntimeModeViewSchema,
+  },
+  examples: [{ data: promptRuntimeModeViewExample }],
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimePolicyViewResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: promptRuntimePolicyViewJsonSchema,
+  },
+  examples: [{ data: {
+    persistent_policy: promptRuntimePersistentPolicyEnvelopeExample.value,
+    persistent_policy_envelope: promptRuntimePersistentPolicyEnvelopeExample,
+    resolved_policy: {
+      structure: promptRuntimeResolvedStructureExample,
+      delivery: promptRuntimeResolvedDeliveryExample,
+      budget: promptRuntimeBudgetExample,
+      visibility: promptRuntimeResolvedVisibilityExample,
+      source_selection: promptRuntimeSourceSelectionExample,
+      debug: promptRuntimeDebugPolicyExample,
+    },
+    warnings: [],
+  } }],
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeModePatchBodyJsonSchema = {
+  type: "object",
+  required: ["prompt_mode"],
+  properties: {
+    prompt_mode: { anyOf: [{ type: "string", enum: [...PROMPT_MODE_VALUES] }, { type: "null" }] },
+  },
+  examples: [promptRuntimeModePatchBodyExample, promptRuntimeModePatchBodyClearExample],
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimePolicyPatchBodyJsonSchema = {
+  type: "object",
+  properties: {
+    structure: { anyOf: [promptRuntimePersistentStructureJsonSchema, { type: "null" }] },
+    delivery: { anyOf: [promptRuntimePersistentDeliveryJsonSchema, { type: "null" }] },
+    budget: { anyOf: [promptBudgetJsonSchema, { type: "null" }] },
+    source_selection: { anyOf: [promptRuntimePersistentSourceSelectionJsonSchema, { type: "null" }] },
+    visibility: { anyOf: [dryRunVisibilityJsonSchema, { type: "null" }] },
+  },
+  examples: [promptRuntimePolicyPatchBodyExample],
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimePreviewBodyJsonSchema = {
+  type: "object",
+  required: ["text"],
+  properties: {
+    text: { type: "string", minLength: 1 },
+    branch_id: { type: "string", minLength: 1 },
+    source_floor_id: { type: "string", minLength: 1 },
+    visibility: dryRunVisibilityJsonSchema,
+    structure: promptRuntimePersistentStructureJsonSchema,
+    delivery: promptRuntimePersistentDeliveryJsonSchema,
+    budget: promptBudgetJsonSchema,
+    source_selection: promptSourceSelectionJsonSchema,
+    prompt_runtime_injections: {
+      type: "array",
+      maxItems: PROMPT_RUNTIME_INJECTION_LIMITS.requestMaxCount,
+      items: {
+        type: "object",
+        required: ["source_kind", "title", "content", "placement"],
+        properties: {
+          source_kind: { type: "string", enum: ["client_injection"] },
+          title: { type: "string", maxLength: PROMPT_RUNTIME_INJECTION_LIMITS.titleMaxLength },
+            content: { type: "string", maxLength: PROMPT_RUNTIME_INJECTION_LIMITS.contentMaxLength },
+          placement: { type: "string", minLength: 1 },
+          placement_params: {
+            type: "object",
+            properties: {
+              floor_no: { type: "integer", minimum:0 },
+              offset: { type: "integer", minimum: 0 },
+              depth: { type: "integer", minimum: 0 },
+            },
+            additionalProperties: false,
+          },
+          order: { type: "integer" },
+          scope: { type: "string", enum: ["request"] },
+        },
+        additionalProperties: false,
+      },
+    },
+  },
+  examples: [promptRuntimePreviewBodyExample],
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeInspectBodyJsonSchema = {
+  type: "object",
+  required: ["message"],
+  properties: {
+    message: { type: "string", minLength: 1 },
+    branch_id: { type: "string", minLength: 1 },
+    source_floor_id: { type: "string", minLength: 1 },
+    prompt_intent: { type: "string", enum: promptIntentValues },
+    config: turnConfigJsonSchema,
+    generation_params: generationParamsJsonSchema,
+    session_state_writes: turnSessionStateWritesJsonSchema,
+    debug_options: liveDebugOptionsJsonSchema,
+    visibility: dryRunVisibilityJsonSchema,
+    structure: promptRuntimePersistentStructureJsonSchema,
+    delivery: promptRuntimePersistentDeliveryJsonSchema,
+    budget: promptBudgetJsonSchema,
+    source_selection: promptSourceSelectionJsonSchema,
+    prompt_runtime_injections: {
+      type: "array",
+      maxItems: PROMPT_RUNTIME_INJECTION_LIMITS.requestMaxCount,
+      items: {
+        type: "object",
+        required: ["source_kind", "title", "content", "placement"],
+        properties: {
+          source_kind: { type: "string", enum: ["client_injection"] },
+          title: { type: "string", maxLength: PROMPT_RUNTIME_INJECTION_LIMITS.titleMaxLength },
+          content: { type: "string", maxLength: PROMPT_RUNTIME_INJECTION_LIMITS.contentMaxLength },
+       placement: { type: "string", minLength: 1 },
+          placement_params: {
+            type: "object",
+            properties: {
+              floor_no: { type: "integer", minimum: 0 },
+              offset: { type: "integer", minimum: 0 },
+              depth: { type: "integer", minimum: 0 },
+            },
+            additionalProperties: false,
+          },
+          order: { type: "integer" },
+          scope: { type: "string", enum: ["request"] },
+        },
+        additionalProperties: false,
+      },
+    },
+    include_restricted_injection_content: { type: "boolean" },
+  },
+  examples: [promptRuntimeInspectBodyExample],
+  additionalProperties: false,
+} as const;
+
+const promptRuntimePersistentPolicyResponseJsonSchema = {
+  type: "object",
+  properties: {
+    structure: promptRuntimePersistentStructureJsonSchema,
+    delivery: promptRuntimePersistentDeliveryJsonSchema,
+    budget: promptBudgetJsonSchema,
+    source_selection: promptRuntimePersistentSourceSelectionJsonSchema,
+    visibility: dryRunVisibilityJsonSchema,
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimePersistentPolicyEnvelopeResponseJsonSchema = {
+  type: "object",
+  required: ["version", "updated_at", "updated_by", "value"],
+  properties: {
+    version: { type: "integer", minimum: 1 },
+    updated_at: { type: "integer", minimum: 0 },
+    updated_by: { anyOf: [{ type: "string" }, { type: "null" }] },
+    value: promptRuntimePersistentPolicyResponseJsonSchema,
+  },
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeInjectionScopeSummaryJsonSchema = {
+  type: "object",
+  required: ["total", "enabled"],
+  properties: {
+    total: { type: "integer", minimum: 0 },
+    enabled: { type: "integer", minimum: 0 },
+  },
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeInjectionResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: {
+      type: "object",
+      required: [
+        "id",
+        "scope",
+        "source_kind",
+             "title",
+        "content",
+        "placement",
+        "placement_params",
+        "order",
+        "enabled",
+        "mode_scope",
+        "ttl_ms",
+        "created_by",
+        "created_at",
+        "updated_at",
+      ],
+      properties: {
+        id: { type: "string" },
+        scope: { type: "string", enum: ["session", "branch"] },
+        source_kind: { type: "string", enum: ["client_injection"] },
+        title: { type: "string" },
+        content: { type: "string" },
+        placement: { type: "string" },
+        placement_params: {
+          anyOf: [
+            {
+              type: "object",
+              properties: {
+            floor_no: { type: "integer", minimum: 0 },
+                offset: { type: "integer", minimum: 0 },
+                depth: { type: "integer", minimum: 0 },
+              },
+              additionalProperties: false,
+            },
+            { type: "null" },
+          ],
+        },
+        order: { type: "integer" },
+        enabled: { type: "boolean" },
+        mode_scope: { anyOf: [{ type: "string", enum: ["compat_strict", "compat_plus", "native"] }, { type: "null" }] },
+        ttl_ms: { anyOf: [{ type: "integer", minimum: 0 }, { type: "null" }] },
+        created_by: { anyOf: [{ type: "string" }, { type: "null" }] },
+        created_at: { type: "integer", minimum: 0 },
+        updated_at: { type: "integer", minimum: 0 },
+      },
+      additionalProperties: false,
+    },
+  },
+  examples: [{ data: promptRuntimePersistedInjectionExample }],
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeInjectionListResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: {
+      type: "array",
+      items: promptRuntimeInjectionResponseJsonSchema.properties.data,
+    },
+  },
+  examples: [{ data: [promptRuntimePersistedInjectionExample] }],
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeInjectionCreateBodyJsonSchema = {
+  type: "object",
+  required: ["source_kind", "title", "content", "placement"],
+  properties: {
+    source_kind:{type: "string", enum: ["client_injection"] },
+    title: { type: "string", minLength: 1, maxLength: PROMPT_RUNTIME_INJECTION_LIMITS.titleMaxLength },
+    content: { type: "string", minLength: 1, maxLength: PROMPT_RUNTIME_INJECTION_LIMITS.contentMaxLength },
+    placement: { type: "string", minLength: 1 },
+    placement_params: {
+      type: "object",
+  properties: {
+        floor_no: { type: "integer", minimum: 0 },
+        offset: { type: "integer", minimum: 0 },
+        depth: { type: "integer", minimum: 0 },
+      },
+      additionalProperties: false,
+    },
+    order: { type: "integer" },
+    enabled: { type: "boolean" },
+    mode_scope: { anyOf: [{ type: "string", enum: ["compat_strict", "compat_plus", "native"] }, { type: "null" }] },
+    ttl_ms: { anyOf: [{ type: "integer", minimum: 0 }, { type: "null" }] },
+  },
+  examples: [{
+    source_kind: "client_injection",
+    title: "History guard",
+    content: "Keep the north pass in focus.",
+    placement: "before_history",
+    placement_params: { floor_no: 12 },
+    order: 100,
+    enabled: true,
+    mode_scope: null,
+    ttl_ms: null,
+    }],
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeInjectionPatchBodyJsonSchema = {
+  type: "object",
+  properties: {
+    source_kind: { type: "string", enum: ["client_injection"] },
+    title: { type: "string", minLength: 1, maxLength: PROMPT_RUNTIME_INJECTION_LIMITS.titleMaxLength },
+    content: { type: "string", minLength: 1, maxLength: PROMPT_RUNTIME_INJECTION_LIMITS.contentMaxLength },
+    placement: { type: "string", minLength: 1 },
+    placement_params: {
+      anyOf: [
+        {
+          type: "object",
+          properties: {
+            floor_no: { type: "integer", minimum: 0 },
+            offset: { type: "integer", minimum: 0 },
+            depth: { type: "integer", minimum: 0 },
+          },
+          additionalProperties: false,
+        },
+        { type: "null" },
+      ],
+    },
+    order: { type: "integer" },
+    enabled: { type: "boolean" },
+    mode_scope: { anyOf: [{ type: "string", enum: ["compat_strict", "compat_plus", "native"] }, { type: "null" }] },
+    ttl_ms: { anyOf: [{ type: "integer", minimum: 0 }, { type: "null" }] },
+  },
+  examples: [{ enabled: false, mode_scope: "native", ttl_ms: 60000 }],
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeAssetSummaryResponseJsonSchema = {
+  type: "object",
+  required: ["id", "name"],
+  properties: {
+    id: { type: "string" },
+    name: { anyOf: [{ type: "string" }, { type: "null" }] },
+    version_id: { anyOf: [{ type: "string" }, { type: "null" }] },
+    version_no: { anyOf: [{ type: "integer", minimum: 1 }, { type: "null" }] },
+    content_hash: { anyOf: [{ type: "string" }, { type: "null" }] },
+  },
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeResolvedStateResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: {
+      type: "object",
+      required: ["scope", "mode", "policy", "branch_persistent_policy", "assets", "injections", "warnings", "diagnostics", "limitations"],
+      properties: {
+        scope: promptRuntimeScopeJsonSchema,
+        mode: promptRuntimeModeViewSchema,
+        policy: promptRuntimeResolvedPolicyJsonSchema,
+        persistent_policy: promptRuntimePersistentPolicyResponseJsonSchema,
+        persistent_policy_envelope: { anyOf: [promptRuntimePersistentPolicyEnvelopeResponseJsonSchema, { type: "null" }] },
+        branch_persistent_policy: { anyOf: [promptRuntimePersistentPolicyResponseJsonSchema, { type: "null" }] },
+        branch_persistent_policy_envelope: { anyOf: [promptRuntimePersistentPolicyEnvelopeResponseJsonSchema, { type: "null" }] },
+        injections: {
+          type: "object",
+          required: ["session", "branch"],
+          properties: {
+            session: promptRuntimeInjectionScopeSummaryJsonSchema,
+            branch: promptRuntimeInjectionScopeSummaryJsonSchema,
+          },
+          additionalProperties: false,
+        },
+        source_map: promptRuntimeSourceMapJsonSchema,
+        assets: {
+          type: "object",
+          required: ["preset", "character_card", "worldbook", "regex_profile"],
+          properties: {
+            preset: { anyOf: [promptRuntimeAssetSummaryResponseJsonSchema, { type: "null" }] },
+            character_card: { anyOf: [promptRuntimeAssetSummaryResponseJsonSchema, { type: "null" }] },
+            worldbook: { anyOf: [promptRuntimeAssetSummaryResponseJsonSchema, { type: "null" }] },
+            regex_profile: { anyOf: [promptRuntimeAssetSummaryResponseJsonSchema, { type: "null" }] },
+          },
+          additionalProperties: false,
+        },
+        warnings: { type: "array", items: { type: "string" } },
+        diagnostics: { type: "array", items: promptRuntimeDiagnosticJsonSchema },
+        limitations: { type: "array", items: { type: "string" } },
+      },
+      additionalProperties: false,
+    },
+  },
+  examples: [{ data: {
+    scope: promptRuntimeScopeExample,
+    mode: promptRuntimeModeViewExample,
+    resolved_policy: {
+      structure: promptRuntimeResolvedStructureExample,
+      delivery: promptRuntimeResolvedDeliveryExample,
+      budget: promptRuntimeBudgetExample,
+      visibility: promptRuntimeResolvedVisibilityExample,
+      source_selection: promptRuntimeSourceSelectionExample,
+      debug: promptRuntimeDebugPolicyExample,
+    },
+    source_map: promptRuntimeSourceMapExample,
+    assets: promptRuntimeAssetsExample,
+    injections: promptRuntimeInjectionSummaryExample,
+    capabilities: promptRuntimeCapabilitiesExample,
+    limitations: promptRuntimeLimitationsExample,
+  } }],
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeInspectTurnConfigResponseJsonSchema = {
+  type: "object",
+  properties: {
+    enable_tools: { type: "boolean" },
+    enable_director: { type: "boolean" },
+    enable_verifier: { type: "boolean" },
+    enable_memory_consolidation: { type: "boolean" },
+    tool_mode: { type: "string", enum: ["inline", "standalone", "both"] },
+    verifier_fail_strategy: { type: "string", enum: ["warn", "block", "retry"] },
+    max_retries: { type: "integer", minimum: 0, maximum: 5 },
+  },
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimePreviewResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: {
+      type: "object",
+      required: ["scope", "policy", "text", "runtime_trace", "diagnostics", "limitations"],
+      properties: {
+        scope: promptRuntimeScopeJsonSchema,
+        policy: promptRuntimeResolvedPolicyJsonSchema,
+        source_map: promptRuntimeSourceMapJsonSchema,
+        memory_injection: promptRuntimeMemoryInjectionJsonSchema,
+        memory: runtimeTraceMemoryJsonSchema,
+        text: { type: "string" },
+        runtime_trace: promptRuntimePreviewRuntimeTraceJsonSchema,
+        diagnostics: { type: "array", items: promptRuntimeDiagnosticJsonSchema },
+        limitations: {
+          type: "array",
+          items: { type: "string" },
+        },
+      },
+      additionalProperties: false,
+    },
+  },
+  examples: [{ data: promptRuntimePreviewResponseExample }],
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeInspectResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: {
+      type: "object",
+      required: ["scope", "mode", "policy", "source_map", "diagnostics", "history_normalization", "trim_reasons", "excluded_sources", "section_stats", "limitations", "injections", "prepared_turn", "governance"],
+      properties: {
+        scope: promptRuntimeScopeJsonSchema,
+        mode: promptRuntimeModeViewSchema,
+        policy: promptRuntimeResolvedPolicyJsonSchema,
+        source_map: promptRuntimeSourceMapJsonSchema,
+        diagnostics: { type: "array", items: promptRuntimeDiagnosticJsonSchema },
+        history_normalization: runtimeTraceHistoryNormalizationJsonSchema,
+        trim_reasons: { type: "array", items: promptRuntimeHistoricalExplainTrimReasonJsonSchema },
+        excluded_sources: { type: "array", items: promptRuntimeHistoricalExplainSourceExclusionJsonSchema },
+        section_stats: { type: "array", items: promptRuntimeSectionStatJsonSchema },
+        limitations: { type: "array", items: { type: "string" } },
+        injections: {
+          type: "array",
+          items: dryRunRuntimeTraceJsonSchema.properties.injection.properties.items.items,
+        },
+        prepared_turn: {
+          type: "object",
+          required: ["messages", "token_estimate", "available_for_reply", "preprocessed_user_message", "prompt_snapshot", "runtime_trace", "memory_summary", "generation_params", "requested_turn_config", "turn_config", "session_state_writes", "contributors", "prepare_phase_trace"],
+          properties: {
+            messages: { type: "array", items: { type: "object", required: ["role", "content"], properties: { role: { type: "string", enum: ["system", "user", "assistant"] }, content: { type: "string" } }, additionalProperties: false } },
+            token_estimate: { type: "integer", minimum: 0 },
+            available_for_reply: { type: "integer", minimum: 0 },
+            preprocessed_user_message: { anyOf: [{ type: "string" }, { type: "null" }] },
+            prompt_snapshot: { anyOf: [promptRuntimeHistoricalPromptSnapshotJsonSchema, { type: "null" }] },
+            runtime_trace: { anyOf: [dryRunRuntimeTraceJsonSchema, { type: "null" }] },
+            memory_injection: promptRuntimeMemoryInjectionJsonSchema,
+            memory_summary: { anyOf: [{ type: "string" }, { type: "null" }] },
+            memory: runtimeTraceMemoryJsonSchema,
+            generation_params: generationParamsJsonSchema,
+            requested_turn_config: { anyOf: [promptRuntimeInspectTurnConfigResponseJsonSchema, { type: "null" }] },
+            turn_config: { anyOf: [promptRuntimeInspectTurnConfigResponseJsonSchema, { type: "null" }] },
+            session_state_writes: {
+              type: "object",
+              required: ["total", "writes"],
+              properties: {
+                total: { type: "integer", minimum: 0 },
+                writes: { type: "array", items: { type: "object", required: ["namespace", "slot", "operation"], properties: { namespace: { type: "string" }, slot: { type: "string" }, operation: { type: "string", enum: ["set", "delete"] } }, additionalProperties: false } },
+              },
+              additionalProperties: false,
+            },
+            contributors: {
+              type: "array",
+              items: {
+                type: "object",
+                required: ["id", "kind", "source_kind", "mode_scope", "prompt_renderable", "deterministic", "cache_scope"],
+                properties: {
+                  id: { type: "string" },
+                  kind: { type: "string" },
+                  source_kind: { type: "string" },
+                  mode_scope: { type: "string", enum: ["compat_plus", "native"] },
+                  prompt_renderable: {
+                    anyOf: [
+                      {
+                        type: "object",
+                        required: ["title", "content"],
+                        properties: {
+                          title: { type: "string" },
+                          content: { type: "string" },
+                        },
+                        additionalProperties: false,
+                      },
+                      { type: "null" },
+                    ],
+                  },
+                  deterministic: { type: "boolean" },
+                  cache_scope: { type: "string", enum: ["floor", "page", "none"] },
+                },
+                additionalProperties: false,
+              },
+            },
+            prepare_phase_trace: {
+              type: "array",
+              items: {
+                type: "object",
+                required: ["phase", "detail"],
+                properties: {
+                  phase: {
+                    type: "string",
+                    enum: ["conversation_resolve", "source_resolve", "injection", "pre_response", "assemble", "materialize", "inspect"],
+                  },
+                  detail: {
+                    anyOf: [
+                      {
+                        type: "object",
+                        additionalProperties: true,
+                      },
+                      { type: "null" },
+                    ],
+                  },
+                },
+                additionalProperties: false,
+              },
+            },
+          },
+          additionalProperties: false,
+        },
+        governance: promptRuntimeGovernanceJsonSchema,
+      },
+      additionalProperties: false,
+    },
+  },
+  examples: [{ data: promptRuntimeInspectResponseExample }],
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeHistoricalExplainResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: {
+      type: "object",
+      required: ["floor", "scope", "snapshot_available", "assets", "prompt_snapshot", "resolved_policy", "governance", "trim_reasons", "excluded_sources", "section_stats", "diagnostics", "limitations", "result"],
+      properties: {
+        floor: promptRuntimeHistoricalExplainFloorJsonSchema,
+        scope: promptRuntimeScopeJsonSchema,
+        snapshot_available: { type: "boolean" },
+        memory: { anyOf: [runtimeTraceMemoryJsonSchema, { type: "null" }] },
+        assets: { anyOf: [promptRuntimeResolvedStateResponseJsonSchema.properties.data.properties.assets, { type: "null" }] },
+        prompt_snapshot: promptRuntimeHistoricalPromptSnapshotJsonSchema,
+        resolved_policy: { anyOf: [promptRuntimeResolvedPolicyJsonSchema, { type: "null" }] },
+        governance: { anyOf: [promptRuntimeGovernanceJsonSchema, { type: "null" }] },
+        source_map: promptRuntimeSourceMapJsonSchema,
+        trim_reasons: { anyOf: [{ type: "array", items: promptRuntimeHistoricalExplainTrimReasonJsonSchema }, { type: "null" }] },
+        excluded_sources: { anyOf: [{ type: "array", items: promptRuntimeHistoricalExplainSourceExclusionJsonSchema }, { type: "null" }] },
+        section_stats: { anyOf: [{ type: "array", items: promptRuntimeSectionStatJsonSchema }, { type: "null" }] },
+        diagnostics: { type: "array", items: promptRuntimeDiagnosticJsonSchema },
+        limitations: { type: "array", items: { type: "string" } },
+        result: promptRuntimeHistoricalExplainResultJsonSchema,
+      },
+      additionalProperties: false,
+    },
+  },
+  examples: [{ data: promptRuntimeHistoricalExplainResponseExample }],
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeDiffEntryJsonSchema = {
+  type: "object",
+  required: ["path", "change_type"],
+  properties: {
+    path: { type: "string" },
+    change_type: { type: "string", enum: ["added", "removed", "changed"] },
+    left: {},
+    right: {},
+  },
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeCompareBodyJsonSchema = {
+  type: "object",
+  required: ["left", "right"],
+  properties: {
+    left: {
+      type: "object",
+      required: ["floor_id"],
+      properties: {
+        floor_id: { type: "string", minLength: 1 },
+      },
+      additionalProperties: false,
+    },
+    right: {
+      type: "object",
+      required: ["floor_id"],
+      properties: {
+        floor_id: { type: "string", minLength: 1 },
+      },
+      additionalProperties: false,
+    },
+  },
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeCompareResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: {
+      type: "object",
+      required: ["left", "right", "scope_changes", "policy_changes", "asset_changes", "diagnostics_changes", "trim_changes", "exclusion_changes", "governance_changes", "limitations"],
+      properties: {
+        left: {
+          type: "object",
+          required: ["floor_id", "snapshot_available"],
+          properties: {
+            floor_id: { type: "string" },
+            snapshot_available: { type: "boolean" },
+          },
+          additionalProperties: false,
+        },
+        right: {
+          type: "object",
+          required: ["floor_id", "snapshot_available"],
+          properties: {
+            floor_id: { type: "string" },
+            snapshot_available: { type: "boolean" },
+          },
+          additionalProperties: false,
+        },
+        scope_changes: { type: "array", items: promptRuntimeDiffEntryJsonSchema },
+        policy_changes: { type: "array", items: promptRuntimeDiffEntryJsonSchema },
+        asset_changes: { type: "array", items: promptRuntimeDiffEntryJsonSchema },
+        diagnostics_changes: { type: "array", items: promptRuntimeDiffEntryJsonSchema },
+        trim_changes: { type: "array", items: promptRuntimeDiffEntryJsonSchema },
+        exclusion_changes: { type: "array", items: promptRuntimeDiffEntryJsonSchema },
+        governance_changes: { type: "array", items: promptRuntimeDiffEntryJsonSchema },
+        limitations: { type: "array", items: { type: "string" } },
+      },
+      additionalProperties: false,
+    },
+  },
+  examples: [{ data: {
+    left: { floor_id: "floor-11", snapshot_available: true },
+    right: { floor_id: "floor-12", snapshot_available: true },
+    scope_changes: [],
+    policy_changes: [
+      {
+        path: "policy.resolved_policy.delivery.no_assistant",
+        change_type: "changed",
+        left: false,
+        right: true,
+      },
+    ],
+    asset_changes: [],
+    diagnostics_changes: [],
+    trim_changes: [
+      {
+        path: "trim_reasons",
+        change_type: "changed",
+        left: [{ group: "section:main", reason: "group_limit_exceeded", pruned_token_count: 32 }],
+        right: [{ group: "section:main", reason: "group_limit_exceeded", pruned_token_count: 64 }],
+      },
+    ],
+    exclusion_changes: [
+      {
+        path: "excluded_sources",
+        change_type: "changed",
+        left: [{ source: "history", reason: "visibility_filtered" }],
+        right: [{ source: "examples", reason: "disabled_by_policy" }],
+      },
+    ],
+    governance_changes: [],
+    limitations: promptRuntimeLimitationsExample,
+  } }],
+  additionalProperties: false,
+} as const;
+
+const promptRuntimeAssetsViewJsonSchema = {
+  type: "object",
+  required: ["preset", "character_card", "worldbook", "regex_profile"],
+  properties: {
+    preset: { anyOf: [promptRuntimeAssetSummaryResponseJsonSchema, { type: "null" }] },
+    character_card: { anyOf: [promptRuntimeAssetSummaryResponseJsonSchema, { type: "null" }] },
+    worldbook: { anyOf: [promptRuntimeAssetSummaryResponseJsonSchema, { type: "null" }] },
+    regex_profile: { anyOf: [promptRuntimeAssetSummaryResponseJsonSchema, { type: "null" }] },
+  },
+  additionalProperties: false,
+} as const;
+
+export const promptRuntimeAssetsResponseJsonSchema = {
+  type: "object",
+  required: ["data"],
+  properties: {
+    data: promptRuntimeAssetsViewJsonSchema,
+  },
+  examples: [{ data: promptRuntimeAssetsExample }],
+  additionalProperties: false,
+} as const;

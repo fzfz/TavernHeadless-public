@@ -1,0 +1,16 @@
+{
+  "$schema": "./preview-runtime.schema.json",
+  "host": "127.0.0.1",
+  "apiPort": 0,
+  "frontendPort": 0,
+  "enableSseChat": true,
+  "testMasterKey": "native-maintenance-isolated-test-key",
+  "offlineProvider": {
+    "provider": "openai-compatible",
+    "apiMode": "chat",
+    "presetName": "Native conversion isolated preview",
+    "defaultModelId": "offline-assembly-only",
+    "baseUrl": "http://127.0.0.1:9/v1",
+    "apiKey": "offline-placeholder"
+  }
+}

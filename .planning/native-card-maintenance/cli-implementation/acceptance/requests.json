@@ -1,0 +1,900 @@
+[
+  {
+    "at": "2026-10-06T18:44:48.924Z",
+    "method": "POST",
+    "url": "/native-cards/imports?fileName=role.zip",
+    "request": null,
+    "headers": {
+      "content-type": "application/zip"
+    },
+    "bodyReference": "request-bodies/000.bin",
+    "bodyByteLength": 9452,
+    "statusCode": 200,
+    "response": {
+      "data": {
+        "id": "6MfsToe_5uNvOsxnsw97s",
+        "fileName": "role.zip",
+        "packageId": "run-Ji4ISc",
+        "name": "雾港来信",
+        "summary": {
+          "formatVersion": "1.0.0",
+          "worldbookCount": 2,
+          "openingCount": 2,
+          "initialStateCount": 2,
+          "stateUpdate": {
+            "rules": true,
+            "schema": true,
+            "validators": true,
+            "tools": true
+          },
+          "promptController": true,
+          "frontend": {
+            "page": true,
+            "script": true,
+            "style": true,
+            "media": true
+          },
+          "regexProfileCount": 2
+        },
+        "files": [
+          {
+            "path": "manifest.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 3540
+          },
+          {
+            "path": "agents/state-update/profile.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 409
+          },
+          {
+            "path": "agents/state-update/rules.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 229
+          },
+          {
+            "path": "assets/portrait.svg",
+            "mediaType": "image/svg+xml",
+            "purpose": "media",
+            "byteSize": 314
+          },
+          {
+            "path": "backend/controllers/config.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 219
+          },
+          {
+            "path": "backend/controllers/prompt.js",
+            "mediaType": "text/javascript",
+            "purpose": "server_script",
+            "byteSize": 114
+          },
+          {
+            "path": "backend/validators/validate.js",
+            "mediaType": "text/javascript",
+            "purpose": "server_script",
+            "byteSize": 123
+          },
+          {
+            "path": "backend/variable-tools/derive.js",
+            "mediaType": "text/javascript",
+            "purpose": "server_script",
+            "byteSize": 69
+          },
+          {
+            "path": "character.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 1124
+          },
+          {
+            "path": "data/case.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 58
+          },
+          {
+            "path": "frontend/index.html",
+            "mediaType": "text/html",
+            "purpose": "template",
+            "byteSize": 196
+          },
+          {
+            "path": "frontend/main.js",
+            "mediaType": "text/javascript",
+            "purpose": "browser_script",
+            "byteSize": 390
+          },
+          {
+            "path": "frontend/manifest.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 339
+          },
+          {
+            "path": "frontend/style.css",
+            "mediaType": "text/css",
+            "purpose": "template",
+            "byteSize": 116
+          },
+          {
+            "path": "openings/first.txt",
+            "mediaType": "text/plain",
+            "purpose": "data",
+            "byteSize": 188
+          },
+          {
+            "path": "openings/second.txt",
+            "mediaType": "text/plain",
+            "purpose": "data",
+            "byteSize": 54
+          },
+          {
+            "path": "openings.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 621
+          },
+          {
+            "path": "regex/first.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 358
+          },
+          {
+            "path": "regex/second.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 366
+          },
+          {
+            "path": "state/initial/first.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 61
+          },
+          {
+            "path": "state/initial/second.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 61
+          },
+          {
+            "path": "state/schema.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 421
+          },
+          {
+            "path": "worldbooks/book-0/book.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 206
+          },
+          {
+            "path": "worldbooks/book-0/entries/e0.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 438
+          },
+          {
+            "path": "worldbooks/harbor/book.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 254
+          },
+          {
+            "path": "worldbooks/harbor/entries/110.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 450
+          },
+          {
+            "path": "worldbooks/harbor/entries/120.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 420
+          },
+          {
+            "path": "worldbooks/people/book.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 212
+          },
+          {
+            "path": "worldbooks/people/entries/110.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 436
+          }
+        ],
+        "issues": [],
+        "status": "ready"
+      }
+    }
+  },
+  {
+    "at": "2026-10-06T18:44:48.987Z",
+    "method": "POST",
+    "url": "/native-cards/imports/6MfsToe_5uNvOsxnsw97s/confirm",
+    "request": null,
+    "headers": {},
+    "statusCode": 201,
+    "response": {
+      "data": {
+        "id": "Yd5QHuDtNZK5rAX8mT_Lt",
+        "characterId": "AuXcX-7TwgwOuDn7zveyr",
+        "packageId": "run-Ji4ISc",
+        "name": "雾港来信",
+        "revision": 1,
+        "createdAt": 1791312288945,
+        "updatedAt": 1791312288945,
+        "files": [
+          {
+            "path": "manifest.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 3540
+          },
+          {
+            "path": "agents/state-update/profile.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 409
+          },
+          {
+            "path": "agents/state-update/rules.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 229
+          },
+          {
+            "path": "assets/portrait.svg",
+            "mediaType": "image/svg+xml",
+            "purpose": "media",
+            "byteSize": 314
+          },
+          {
+            "path": "backend/controllers/config.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 219
+          },
+          {
+            "path": "backend/controllers/prompt.js",
+            "mediaType": "text/javascript",
+            "purpose": "server_script",
+            "byteSize": 114
+          },
+          {
+            "path": "backend/validators/validate.js",
+            "mediaType": "text/javascript",
+            "purpose": "server_script",
+            "byteSize": 123
+          },
+          {
+            "path": "backend/variable-tools/derive.js",
+            "mediaType": "text/javascript",
+            "purpose": "server_script",
+            "byteSize": 69
+          },
+          {
+            "path": "character.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 1124
+          },
+          {
+            "path": "data/case.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 58
+          },
+          {
+            "path": "frontend/index.html",
+            "mediaType": "text/html",
+            "purpose": "template",
+            "byteSize": 196
+          },
+          {
+            "path": "frontend/main.js",
+            "mediaType": "text/javascript",
+            "purpose": "browser_script",
+            "byteSize": 390
+          },
+          {
+            "path": "frontend/manifest.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 339
+          },
+          {
+            "path": "frontend/style.css",
+            "mediaType": "text/css",
+            "purpose": "template",
+            "byteSize": 116
+          },
+          {
+            "path": "openings/first.txt",
+            "mediaType": "text/plain",
+            "purpose": "data",
+            "byteSize": 188
+          },
+          {
+            "path": "openings/second.txt",
+            "mediaType": "text/plain",
+            "purpose": "data",
+            "byteSize": 54
+          },
+          {
+            "path": "openings.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 621
+          },
+          {
+            "path": "regex/first.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 358
+          },
+          {
+            "path": "regex/second.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 366
+          },
+          {
+            "path": "state/initial/first.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 61
+          },
+          {
+            "path": "state/initial/second.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 61
+          },
+          {
+            "path": "state/schema.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 421
+          },
+          {
+            "path": "worldbooks/book-0/book.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 206
+          },
+          {
+            "path": "worldbooks/book-0/entries/e0.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 438
+          },
+          {
+            "path": "worldbooks/harbor/book.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 254
+          },
+          {
+            "path": "worldbooks/harbor/entries/110.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 450
+          },
+          {
+            "path": "worldbooks/harbor/entries/120.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 420
+          },
+          {
+            "path": "worldbooks/people/book.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 212
+          },
+          {
+            "path": "worldbooks/people/entries/110.json",
+            "mediaType": "application/json",
+            "purpose": "data",
+            "byteSize": 436
+          }
+        ],
+        "versions": []
+      }
+    }
+  },
+  {
+    "at": "2026-10-06T18:44:49.180Z",
+    "method": "POST",
+    "url": "/native-cards/Yd5QHuDtNZK5rAX8mT_Lt/preview-sessions",
+    "request": {
+      "revision": 1,
+      "openingId": "first",
+      "userId": "preview-persona-a9f5d12c-4279-45b0-b7c4-5f82b3980423",
+      "sessionType": "individual",
+      "configuration": {
+        "presetId": "preview-preset-19bf8abe-f544-4ba5-8173-de8c02c532cc",
+        "presetVersionId": "preview-preset-version-e30ac8aa-aae5-491e-85da-e80acb5d01d2",
+        "defaultUserId": "preview-persona-a9f5d12c-4279-45b0-b7c4-5f82b3980423",
+        "promptMode": "native",
+        "modelSlots": [
+          {
+            "slot": "narrator",
+            "profile_id": "Wr2y4f3w717seVLNvtz18",
+            "params": {
+              "max_context_tokens": 16384,
+              "max_output_tokens": 512,
+              "temperature": 0.3,
+              "top_p": 0.9,
+              "top_k": 40,
+              "frequency_penalty": 0,
+              "presence_penalty": 0,
+              "stop_sequences": null,
+              "seed": 20260930,
+              "repetition_penalty": 1.05,
+              "min_p": 0.05,
+              "logit_bias": null,
+              "response_format": {
+                "type": "text"
+              },
+              "stream": true,
+              "timeout_ms": 30000,
+              "max_retries": 0,
+              "reasoning_effort": "none"
+            }
+          },
+          {
+            "slot": "state_updater",
+            "profile_id": "NLC_n42qWHECCrv-dpZ5r",
+            "params": {
+              "max_context_tokens": 16384,
+              "max_output_tokens": 512,
+              "temperature": 0.3,
+              "top_p": 0.9,
+              "top_k": 40,
+              "frequency_penalty": 0,
+              "presence_penalty": 0,
+              "stop_sequences": null,
+              "seed": 20260930,
+              "repetition_penalty": 1.05,
+              "min_p": 0.05,
+              "logit_bias": null,
+              "response_format": {
+                "type": "text"
+              },
+              "stream": true,
+              "timeout_ms": 30000,
+              "max_retries": 0,
+              "reasoning_effort": "none"
+            }
+          }
+        ],
+        "statePresetId": "preview-state-preset-64860a62-f51e-4fe8-95be-5d8ac3bf0472",
+        "statePresetVersionId": "preview-state-preset-version-3c84fa53-50ab-4342-8258-1a392f9f8408"
+      }
+    },
+    "headers": {},
+    "statusCode": 201,
+    "response": {
+      "data": {
+        "cardId": "Yd5QHuDtNZK5rAX8mT_Lt",
+        "revision": 1,
+        "sessionId": "G3zo_y21aMFSk7NYWQVW3",
+        "openingId": "first"
+      }
+    }
+  },
+  {
+    "at": "2026-10-06T18:44:49.279Z",
+    "method": "GET",
+    "url": "/sessions/G3zo_y21aMFSk7NYWQVW3/role-view",
+    "request": null,
+    "headers": {},
+    "statusCode": 200,
+    "response": {
+      "data": {
+        "character_id": "AuXcX-7TwgwOuDn7zveyr",
+        "character_version_id": "XN5DuQpgCdV9ZuJgMq9Eu",
+        "name": "雾港来信",
+        "delivery": {
+          "html": "<section class=\"story\"><h1>雾港来信</h1><img src=\"/role-assets/XN5DuQpgCdV9ZuJgMq9Eu/assets/portrait.svg\" alt=\"雾港夜景\"><p id=\"location\"></p><button id=\"latest\">返回最新状态</button><div id=\"chat\"></div></section>",
+          "css": ".story {color:#d4e1df;background:#132c30;padding:24px;} .story img{width:240px;max-width:100%;} button{padding:8px;}",
+          "floorHtml": null,
+          "assets": {
+            "cover": {
+              "kind": "image",
+              "url": "/role-assets/XN5DuQpgCdV9ZuJgMq9Eu/assets/portrait.svg",
+              "label": "雾港夜景",
+              "tags": [
+                "封面"
+              ]
+            }
+          },
+          "data": {
+            "caseFile": {
+              "location": "雾港邮局",
+              "clue": "灯塔素描"
+            },
+            "opening": "钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”",
+            "performerName": "裴修远"
+          },
+          "scriptUrl": "/role-assets/XN5DuQpgCdV9ZuJgMq9Eu/frontend/main.js",
+          "htmlUrl": "/role-assets/XN5DuQpgCdV9ZuJgMq9Eu/frontend/index.html",
+          "htmlAssetOriginOffsets": [
+            46
+          ],
+          "dataUrls": {
+            "caseFile": "/role-assets/XN5DuQpgCdV9ZuJgMq9Eu/data/case.json"
+          },
+          "cssUrl": "/role-assets/XN5DuQpgCdV9ZuJgMq9Eu/frontend/style.css",
+          "mode": "custom"
+        },
+        "initial": {
+          "sessionId": "G3zo_y21aMFSk7NYWQVW3",
+          "branchId": "main",
+          "floorId": null,
+          "attemptId": null,
+          "versionId": "XN5DuQpgCdV9ZuJgMq9Eu",
+          "snapshotId": "29ed496b-1141-4407-840d-315eb119e503",
+          "parentSnapshotId": null,
+          "variables": {
+            "location": "夜间邮局",
+            "hour": 23,
+            "trust": 20
+          },
+          "source": {
+            "kind": "initial",
+            "runId": null,
+            "jobId": null
+          }
+        },
+        "current": {
+          "sessionId": "G3zo_y21aMFSk7NYWQVW3",
+          "branchId": "main",
+          "floorId": null,
+          "attemptId": null,
+          "versionId": "XN5DuQpgCdV9ZuJgMq9Eu",
+          "snapshotId": "29ed496b-1141-4407-840d-315eb119e503",
+          "parentSnapshotId": null,
+          "variables": {
+            "location": "夜间邮局",
+            "hour": 23,
+            "trust": 20
+          },
+          "source": {
+            "kind": "initial",
+            "runId": null,
+            "jobId": null
+          }
+        },
+        "processing": {
+          "pendingMain": null,
+          "pendingFollowups": false,
+          "pendingStateFloorId": null
+        },
+        "capabilities": {
+          "send": true,
+          "history": true,
+          "customFloors": false
+        }
+      }
+    }
+  },
+  {
+    "at": "2026-10-06T18:44:49.485Z",
+    "method": "POST",
+    "url": "/sessions/G3zo_y21aMFSk7NYWQVW3/respond/dry-run",
+    "request": {
+      "message": "“港口还有其他信件吗？”"
+    },
+    "headers": {},
+    "statusCode": 200,
+    "response": {
+      "data": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "角色设定：雾港来信。用户姓名：裴修远；完整用户人设：裴修远是成年男性港务职员，谨慎、坦率，正在港口询问信件。。叙述使用第三人称。\n\n你在雾港经营一家深夜邮局。来往旅人留下信件与秘密；值夜的向导沈知夏会陪你追查一封没有收件人的信。\n\nPersonality: 沈知夏，29 岁，雾港的夜间向导。说话温和直接，擅长观察街道的细微变化。她会说明自己知道的事情，也会坦承不确定之处。\n\nScenario: 秋夜，邮局即将关门。一封潮湿的信被塞进门缝，信封上只有灯塔的素描。\n\nThe user is 裴修远: 裴修远是成年男性港务职员，谨慎、坦率，正在港口询问信件。\n\n当前地点：夜间邮局。\n\n旧灯塔位于北岬。通往灯塔的石阶在涨潮时会被海水淹没。\n\n守灯人每晚会到码头买一份报纸。他认识沈知夏，但从不主动谈起灯塔的旧事。"
+          },
+          {
+            "role": "assistant",
+            "content": "雾港来信: 钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”"
+          },
+          {
+            "role": "user",
+            "content": "裴修远: “港口还有其他信件吗？”"
+          }
+        ],
+        "token_estimate": 112,
+        "available_for_reply": 16272,
+        "memory": {
+          "summary_injected": false,
+          "runtime_mode": "disabled",
+          "requested_write": false,
+          "effective_write": false,
+          "strategy": "none"
+        },
+        "memory_summary": null,
+        "prompt_snapshot": {
+          "preset_id": "preview-preset-19bf8abe-f544-4ba5-8173-de8c02c532cc",
+          "preset_updated_at": 1791312288987,
+          "preset_version": 1,
+          "preset_version_id": "preview-preset-version-e30ac8aa-aae5-491e-85da-e80acb5d01d2",
+          "preset_content_hash": "isolated-preview-preset",
+          "worldbook_id": null,
+          "worldbook_updated_at": null,
+          "worldbook_version": null,
+          "worldbook_version_id": null,
+          "worldbook_content_hash": null,
+          "regex_profile_id": null,
+          "regex_profile_updated_at": null,
+          "regex_profile_version": null,
+          "regex_profile_version_id": null,
+          "regex_profile_content_hash": null,
+          "character_id": "AuXcX-7TwgwOuDn7zveyr",
+          "character_version_id": "XN5DuQpgCdV9ZuJgMq9Eu",
+          "character_imported_format": null,
+          "character_content_hash": "b6df7e4ae2c3289c4a4333c2b0ef0b2e7bfcfc2c3c36fa38dae4494d2861803d",
+          "worldbook_activated_entry_uids": [
+            110,
+            120,
+            110
+          ],
+          "worldbook_activated_entries": [
+            {
+              "uid": 110,
+              "activation_key": "worldbook:bc0p6WzlqS8FjE405oWhe:1:entry:110",
+              "source": {
+                "kind": "session_worldbook",
+                "worldbook_id": "bc0p6WzlqS8FjE405oWhe",
+                "worldbook_name": "雾港地理",
+                "asset_scope_id": "worldbook:bc0p6WzlqS8FjE405oWhe:1"
+              },
+              "insertion": {
+                "position": "before"
+              }
+            },
+            {
+              "uid": 120,
+              "activation_key": "worldbook:bc0p6WzlqS8FjE405oWhe:1:entry:120",
+              "source": {
+                "kind": "session_worldbook",
+                "worldbook_id": "bc0p6WzlqS8FjE405oWhe",
+                "worldbook_name": "雾港地理",
+                "asset_scope_id": "worldbook:bc0p6WzlqS8FjE405oWhe:1"
+              },
+              "insertion": {
+                "position": "before"
+              }
+            },
+            {
+              "uid": 110,
+              "activation_key": "worldbook:pxE1l1hAZDEv6WL77ccAX:1:entry:110",
+              "source": {
+                "kind": "session_worldbook",
+                "worldbook_id": "pxE1l1hAZDEv6WL77ccAX",
+                "worldbook_name": "雾港人物",
+                "asset_scope_id": "worldbook:pxE1l1hAZDEv6WL77ccAX:1"
+              },
+              "insertion": {
+                "position": "before"
+              }
+            }
+          ],
+          "regex_pre_rule_names": [],
+          "regex_post_rule_names": [
+            "first",
+            "second"
+          ],
+          "prompt_mode": "native",
+          "asset_manifest_digest": "9c824a96d72fcd2c6af36ad1e41bd5014ba34af40b67b254a342a3af34e9fbda",
+          "prompt_digest": "5027ccc2ab8dc55793201fadf3568ab6f2106368d0b74123157b8e75df50dc0b",
+          "token_estimate": 112
+        },
+        "assembly": {
+          "mode": "preset",
+          "prompt_intent": "normal",
+          "assistant_prefill_applied": false,
+          "assistant_prefill_strategy": "none",
+          "preset_used": true,
+          "worldbook_hits": 3,
+          "selected_prompt_order_character_id": 100000,
+          "ignored_prompt_order_character_ids": [],
+          "regex_pre_rules": [],
+          "regex_post_rules": [
+            "first",
+            "second"
+          ],
+          "memory_summary_injected": false,
+          "reserved_variable_collisions": [],
+          "unsupported_preset_fields": [],
+          "ignored_preset_fields": [],
+          "unresolved_preset_markers": [],
+          "preset_warnings": [],
+          "continue_nudge_applied": false,
+          "continue_nudge_text": null,
+          "names_behavior_applied": "always",
+          "trigger_filtered_entry_ids": [],
+          "in_chat_inserted_entry_ids": [],
+          "preprocessed_user_message": "“港口还有其他信件吗？”"
+        },
+        "runtime_trace": {
+          "preset": {
+            "selected_prompt_order_character_id": 100000,
+            "ignored_prompt_order_character_ids": [],
+            "unsupported_fields": [],
+            "ignored_fields": [],
+            "unresolved_markers": [],
+            "warnings": [],
+            "trigger_filtered_entry_ids": [],
+            "in_chat_inserted_entry_ids": [],
+            "continue_nudge_applied": false,
+            "continue_nudge_text": null,
+            "names_behavior_applied": "always"
+          },
+          "worldbook": {
+            "hit_count": 3
+          },
+          "regex": {
+            "user_input_rules": [],
+            "ai_output_rules": [
+              "first",
+              "second"
+            ],
+            "preprocessed_user_message": "“港口还有其他信件吗？”",
+            "phases": [
+              {
+                "phase_id": "persist.user_input",
+                "placement": 1,
+                "channel": "persist",
+                "status": "executed",
+                "changed": false,
+                "depth": 0,
+                "input_text_hash": "951fcdada9812f67db97972da069562099938c078e1e7dd0eecfeb82655c9b48",
+                "output_text_hash": "951fcdada9812f67db97972da069562099938c078e1e7dd0eecfeb82655c9b48",
+                "candidate_rule_names": [],
+                "matched_rule_names": [],
+                "skipped_rules": []
+              },
+              {
+                "phase_id": "prompt.user_input",
+                "placement": 1,
+                "channel": "prompt",
+                "status": "executed",
+                "changed": false,
+                "depth": 0,
+                "input_text_hash": "951fcdada9812f67db97972da069562099938c078e1e7dd0eecfeb82655c9b48",
+                "output_text_hash": "951fcdada9812f67db97972da069562099938c078e1e7dd0eecfeb82655c9b48",
+                "candidate_rule_names": [],
+                "matched_rule_names": [],
+                "skipped_rules": []
+              }
+            ],
+            "substitution_mode": "bare_variable_only"
+          },
+          "budgets": {
+            "by_group": [
+              {
+                "group": "history",
+                "token_count": 23
+              },
+              {
+                "group": "section:character",
+                "token_count": 41
+              },
+              {
+                "group": "section:用户人设",
+                "token_count": 12
+              },
+              {
+                "group": "section:角色、用户与测试状态",
+                "token_count": 16
+              },
+              {
+                "group": "worldbook",
+                "token_count": 19
+              }
+            ]
+          },
+          "memory": {
+            "summary_injected": false,
+            "runtime_mode": "disabled",
+            "requested_write": false,
+            "effective_write": false,
+            "strategy": "none"
+          },
+          "macro": {
+            "warnings": [
+              {
+                "code": "macro_value_missing",
+                "message": "Macro authorsNote has no resolved value and fell back to empty string.",
+                "macro_name": "authorsNote"
+              },
+              {
+                "code": "macro_value_missing",
+                "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+                "macro_name": "defaultAuthorsNote"
+              },
+              {
+                "code": "macro_value_missing",
+                "message": "Macro model has no resolved value and fell back to empty string.",
+                "macro_name": "model"
+              }
+            ],
+            "used_names": [
+              "char",
+              "user",
+              "persona"
+            ],
+            "mutation_preview": [],
+            "staged_mutations": [],
+            "traces": [
+              {
+                "macro_name": "char",
+                "raw_text": "{{char}}",
+                "resolved_text": "雾港来信",
+                "phase": "dry_run",
+                "source_kind": "macro"
+              },
+              {
+                "macro_name": "user",
+                "raw_text": "{{user}}",
+                "resolved_text": "裴修远",
+                "phase": "dry_run",
+                "source_kind": "macro"
+              },
+              {
+                "macro_name": "persona",
+                "raw_text": "{{persona}}",
+                "resolved_text": "裴修远是成年男性港务职员，谨慎、坦率，正在港口询问信件。",
+                "phase": "dry_run",
+                "source_kind": "macro"
+              }
+            ]
+          },
+          "delivery": {
+            "assistant_prefill_requested": false,
+            "assistant_prefill_applied": false,
+            "assistant_prefill_strategy": "none",
+            "allow_assistant_prefill": true,
+            "require_last_user": false,
+            "no_assistant": false,
+            "last_message_role": "user",
+            "ends_with_user": true,
+            "degraded": false,
+            "degrade_reasons": []
+          },
+          "history_normalization": {
+            "raw_entry_count": 2,
+            "effective_turn_count": 2,
+            "selected_turn_count": 2,
+            "trailing_user_source_floor_ids": [],
+            "merged_user_groups": [],
+            "violations": []
+          },
+          "tool_transport": {
+            "selection": {
+              "transport": "none",
+              "reason_code": "tools_disabled",
+              "reason_detail": "No callable tools are enabled for the current turn."
+            },
+            "tool_list": {
+              "injected": false,
+              "tool_count": 0
+            }
+          }
+        }
+      }
+    }
+  }
+]

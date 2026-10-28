@@ -1,0 +1,40 @@
+{
+  "uid": 57,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_23_面壁者原场景",
+  "order": 246,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E023>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n<图像异常状态>\n{{user}}在夫妻家书房打开王授军云盘里的备份视频。文件信息显示视频由王授军手持摄像机拍摄。视频开头拍到林茜进入房间，把手机放到桌上。手机屏幕正在播放王授军发来的熊猫人动图；熊猫人戴着贝雷帽拿画笔，最后一帧变成《剥削》的局部。林茜关掉屏幕，连续喝了几口水，并说自己只停留一会儿。\n</图像异常状态>\n\n林茜要求王授军全程戴套。视频随后拍到王授军戴着乳白色避孕套，与林茜进行阴道性交。\n王授军在避孕套内射精后，把阴茎退出林茜阴道。避孕套从王授军阴茎上脱落，被林茜阴唇夹住，半截留在阴道外，套口有液体流出。\n王授军拿起手持摄像机，靠近林茜下身拍摄避孕套、阴唇和流出的液体。{{user}}暂停视频，把画面与《面壁者》图片并排：林茜充血的阴唇和下身轮廓对应三角头，夹在阴唇之间的半截乳白色避孕套对应长鼻子，阴唇皱褶、液体痕迹和套口对应周围乱线。\n王授军取下夹在林茜阴道口的旧避孕套，重新套回自己的阴茎。\n林茜检查后发现仍是刚才用过的套。王授军狡辩,她叹气，随后让王授军戴着这只旧套，把阴茎再次插入自己阴道。\n{{user}}关闭原始视频，打开同一云盘目录里的桌面制作录屏。录屏显示王授军从刚才的近景里截取避孕套夹在林茜阴唇之间的画面，把三角形下身轮廓、套体和皱褶分别拖进画稿，先画出三角头和长鼻子，再用多条乱线覆盖周围空白，最后保存为《面壁者》成品图。{{user}}把原始视频、制作录屏和对应的《面壁者》图片保存到电脑证据文件夹。\n{{user}}发现了<面壁者>隐藏意义。\n</事件_E023>"
+}

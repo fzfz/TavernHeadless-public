@@ -1,0 +1,292 @@
+{
+  "$schema": "skill-mapping.schema.json",
+  "contractVersion": 1,
+  "checkedAt": "2026-09-14",
+  "upstreamCommit": "654dd1979cf872403bea874559ab0edd6cfaebf9",
+  "upstreamSkillSnapshots": [
+    "docs/provenance/upstream/654dd1979cf872403bea874559ab0edd6cfaebf9/agent/skills/tavern-client-integration.json",
+    "docs/provenance/upstream/654dd1979cf872403bea874559ab0edd6cfaebf9/agent/skills/tavern-project-contributing.json"
+  ],
+  "mappings": [
+    {
+      "id": "client-sdk-boundary",
+      "skillId": "tavern-client-integration",
+      "sourcePointer": "/decisionRules/0",
+      "constraint": "公开资源请求、HTTP、SSE 和统一错误优先使用 @tavern/sdk。",
+      "handling": "preserved",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-client-integration/references/workflow.json",
+          "pointer": "/decisionRules/1",
+          "purpose": "定义 SDK 的公开资源访问职责。"
+        }
+      ]
+    },
+    {
+      "id": "client-helpers-boundary",
+      "skillId": "tavern-client-integration",
+      "sourcePointer": "/decisionRules/1",
+      "constraint": "共享客户端语义整理优先使用 @tavern/client-helpers。",
+      "handling": "preserved",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-client-integration/references/workflow.json",
+          "pointer": "/decisionRules/2",
+          "purpose": "定义 client-helpers 的语义整理职责。"
+        }
+      ]
+    },
+    {
+      "id": "client-shared-boundary",
+      "skillId": "tavern-client-integration",
+      "sourcePointer": "/decisionRules/2",
+      "constraint": "客户端公开接入面使用官方集成包，@tavern/shared 保持内部包边界。",
+      "handling": "moved-to-project-doc",
+      "localTargets": [
+        {
+          "path": "docs/contributing.md",
+          "pointer": "/3-依赖方向与公开边界/公开边界",
+          "purpose": "由仓库协作文档维护内部包与公开包边界。"
+        }
+      ]
+    },
+    {
+      "id": "client-raw-protocol-gap",
+      "skillId": "tavern-client-integration",
+      "sourcePointer": "/decisionRules/3",
+      "constraint": "官方包缺少目标能力时，在应用层集中封装原始 HTTP 或 SSE。",
+      "handling": "adapted",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-client-integration/references/workflow.json",
+          "pointer": "/decisionRules/4",
+          "purpose": "增加单点封装和能力缺口记录。"
+        }
+      ]
+    },
+    {
+      "id": "client-read-agent-entry",
+      "skillId": "tavern-client-integration",
+      "sourcePointer": "/workflow/0",
+      "constraint": "上游工作流从 latest 与 manifest 确认发布版本。",
+      "handling": "version-gated",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-client-integration/references/workflow.json",
+          "pointer": "/decisionRules/5",
+          "purpose": "普通本地任务使用 worktree，升级任务读取发布资料。"
+        }
+      ]
+    },
+    {
+      "id": "client-read-manifest",
+      "skillId": "tavern-client-integration",
+      "sourcePointer": "/workflow/1",
+      "constraint": "升级任务检查 OpenAPI、SDK 与 client-helpers 的发布变化。",
+      "handling": "version-gated",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-client-integration/references/workflow.json",
+          "pointer": "/workflow/2",
+          "purpose": "限定 manifest 读取条件并保留影响字段。"
+        }
+      ]
+    },
+    {
+      "id": "client-impacted-symbols",
+      "skillId": "tavern-client-integration",
+      "sourcePointer": "/workflow/2",
+      "constraint": "升级任务定位受影响导出、模块和消费者。",
+      "handling": "preserved",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-client-integration/references/workflow.json",
+          "pointer": "/workflow/2/relatedAgentFields",
+          "purpose": "保留 manifest 影响字段。"
+        }
+      ]
+    },
+    {
+      "id": "client-select-package",
+      "skillId": "tavern-client-integration",
+      "sourcePointer": "/workflow/3",
+      "constraint": "资源访问、共享语义和框架绑定分别落在 SDK、helpers 与应用层。",
+      "handling": "adapted",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-client-integration/references/workflow.json",
+          "pointer": "/workflow/3",
+          "purpose": "加入应用层职责并明确映射动作。"
+        }
+      ]
+    },
+    {
+      "id": "client-verify",
+      "skillId": "tavern-client-integration",
+      "sourcePointer": "/workflow/4",
+      "constraint": "接入完成后执行类型检查和测试。",
+      "handling": "adapted",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-client-integration/references/workflow.json",
+          "pointer": "/workflow/5",
+          "purpose": "增加用户可见协议结果核对与未验证项报告。"
+        }
+      ]
+    },
+    {
+      "id": "client-checks",
+      "skillId": "tavern-client-integration",
+      "sourcePointer": "/checks",
+      "constraint": "类型、测试与文档检查按接入影响范围执行。",
+      "handling": "moved-to-project-doc",
+      "localTargets": [
+        {
+          "path": "docs/agents/development-checks.json",
+          "pointer": "/",
+          "purpose": "实际命令由项目配置维护；Skill checks.command 只引用对应键。"
+        }
+      ]
+    },
+    {
+      "id": "project-layer-boundary",
+      "skillId": "tavern-project-contributing",
+      "sourcePointer": "/decisionRules/0",
+      "constraint": "实现前先确定改动所属层。",
+      "handling": "adapted",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-project-contributing/references/workflow.json",
+          "pointer": "/decisionRules/1",
+          "purpose": "要求先读取项目规则、开发入口和领域证据。"
+        }
+      ]
+    },
+    {
+      "id": "project-public-packages",
+      "skillId": "tavern-project-contributing",
+      "sourcePointer": "/decisionRules/1",
+      "constraint": "公开接入能力评估进入 @tavern/sdk 或 @tavern/client-helpers。",
+      "handling": "preserved",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-project-contributing/references/workflow.json",
+          "pointer": "/decisionRules/2",
+          "purpose": "按资源访问与共享语义区分两个官方包。"
+        }
+      ]
+    },
+    {
+      "id": "project-public-semantics",
+      "skillId": "tavern-project-contributing",
+      "sourcePointer": "/decisionRules/2",
+      "constraint": "外部可见语义变化同步核对官方包与文档。",
+      "handling": "preserved",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-project-contributing/references/workflow.json",
+          "pointer": "/decisionRules/3",
+          "purpose": "列明路由、OpenAPI、SSE、错误和公开行为。"
+        }
+      ]
+    },
+    {
+      "id": "project-validation-scope",
+      "skillId": "tavern-project-contributing",
+      "sourcePointer": "/decisionRules/3",
+      "constraint": "验证范围覆盖代码与生成面变化。",
+      "handling": "adapted",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-project-contributing/references/workflow.json",
+          "pointer": "/decisionRules/4",
+          "purpose": "以项目规则和实际改动选择检查。"
+        }
+      ]
+    },
+    {
+      "id": "project-read-rules",
+      "skillId": "tavern-project-contributing",
+      "sourcePointer": "/workflow/0",
+      "constraint": "开发前读取当前仓库协作、测试和文档规则。",
+      "handling": "moved-to-project-doc",
+      "localTargets": [
+        {
+          "path": "AGENTS.md",
+          "pointer": "/Agent skills/Development documentation",
+          "purpose": "由仓库规则提供开发文档入口。"
+        }
+      ]
+    },
+    {
+      "id": "project-determine-impact",
+      "skillId": "tavern-project-contributing",
+      "sourcePointer": "/workflow/1",
+      "constraint": "写代码前确定模块与公开面影响。",
+      "handling": "adapted",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-project-contributing/references/workflow.json",
+          "pointer": "/workflow/2",
+          "purpose": "列出 OpenAPI、官方包、应用和文档影响。"
+        }
+      ]
+    },
+    {
+      "id": "project-read-release",
+      "skillId": "tavern-project-contributing",
+      "sourcePointer": "/workflow/2",
+      "constraint": "跟进主干外部变更时读取 latest 与 manifest。",
+      "handling": "version-gated",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-project-contributing/references/workflow.json",
+          "pointer": "/workflow/3",
+          "purpose": "限定为发布跟进或升级任务，并要求与 worktree 比较。"
+        }
+      ]
+    },
+    {
+      "id": "project-sync-docs",
+      "skillId": "tavern-project-contributing",
+      "sourcePointer": "/workflow/3",
+      "constraint": "公开行为变化同步更新接入层、文档和示例。",
+      "handling": "preserved",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-project-contributing/references/workflow.json",
+          "pointer": "/workflow/4",
+          "purpose": "在已授权实施步骤中同步代码、schema、测试和文档。"
+        }
+      ]
+    },
+    {
+      "id": "project-report-validation",
+      "skillId": "tavern-project-contributing",
+      "sourcePointer": "/workflow/4",
+      "constraint": "完成验证并报告影响范围。",
+      "handling": "adapted",
+      "localTargets": [
+        {
+          "path": ".agents/skills/tavern-project-contributing/references/workflow.json",
+          "pointer": "/workflow/5",
+          "purpose": "增加用户可见结果核对与未验证项报告。"
+        }
+      ]
+    },
+    {
+      "id": "project-checks",
+      "skillId": "tavern-project-contributing",
+      "sourcePointer": "/checks",
+      "constraint": "lint、typecheck、测试、SDK 生成和文档构建按改动范围执行。",
+      "handling": "moved-to-project-doc",
+      "localTargets": [
+        {
+          "path": "docs/agents/development-checks.json",
+          "pointer": "/",
+          "purpose": "实际命令由项目配置维护；Skill checks.command 只引用对应键。"
+        }
+      ]
+    }
+  ]
+}

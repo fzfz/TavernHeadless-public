@@ -1,0 +1,211 @@
+{
+  "maximumUsd": 1,
+  "reservedUsd": 0.13876589999999994,
+  "actualUsd": 0.06129465329999999,
+  "calls": [
+    {
+      "number": 1,
+      "label": "gushengman-primary-state-update-r1-body",
+      "reservedUsd": 0.025241699999999995,
+      "actualUsd": 0.002524599
+    },
+    {
+      "number": 2,
+      "label": "gushengman-primary-state-update-r1-state",
+      "reservedUsd": 0.027208200000000002,
+      "actualUsd": null
+    },
+    {
+      "number": 3,
+      "label": "gushengman-primary-state-update-r1-state-deepseek",
+      "reservedUsd": 0.0272067,
+      "actualUsd": null
+    },
+    {
+      "number": 4,
+      "label": "gushengman-primary-state-update-r1-state-morph",
+      "reservedUsd": 0.027207000000000002,
+      "actualUsd": 0.001105653
+    },
+    {
+      "number": 5,
+      "label": "linqian-primary-state-update-r1-body",
+      "reservedUsd": 0.0372408,
+      "actualUsd": 0.00192087126
+    },
+    {
+      "number": 6,
+      "label": "linqian-primary-state-update-r1-state",
+      "reservedUsd": 0.07272509999999999,
+      "actualUsd": 0.0031946409
+    },
+    {
+      "number": 7,
+      "label": "linqian-backup-mvu-state-update-r1-body",
+      "reservedUsd": 0.0372408,
+      "actualUsd": 0.00066842226
+    },
+    {
+      "number": 8,
+      "label": "linqian-backup-mvu-state-update-r1-state",
+      "reservedUsd": 0.0722862,
+      "actualUsd": 0.00317698524
+    },
+    {
+      "number": 9,
+      "label": "gushengman-backup-mvu-state-update-r1-body",
+      "reservedUsd": 0.0252405,
+      "actualUsd": 0.00112723578
+    },
+    {
+      "number": 10,
+      "label": "gushengman-backup-mvu-state-update-r1-state",
+      "reservedUsd": 0.027976799999999996,
+      "actualUsd": 0.00112374702
+    },
+    {
+      "number": 11,
+      "label": "linqian-primary-state-update-r2-body",
+      "reservedUsd": 0.04038,
+      "actualUsd": 0.00232350426
+    },
+    {
+      "number": 12,
+      "label": "linqian-primary-state-update-r2-state",
+      "reservedUsd": 0.07945409999999999,
+      "actualUsd": 0.0034992342
+    },
+    {
+      "number": 13,
+      "label": "linqian-backup-mvu-state-update-r2-body",
+      "reservedUsd": 0.0397185,
+      "actualUsd": 0.00125147484
+    },
+    {
+      "number": 14,
+      "label": "linqian-backup-mvu-state-update-r2-state",
+      "reservedUsd": 0.07891829999999998,
+      "actualUsd": 0.00344275668
+    },
+    {
+      "number": 15,
+      "label": "gushengman-primary-state-update-r2-body",
+      "reservedUsd": 0.0294381,
+      "actualUsd": 0.00148886298
+    },
+    {
+      "number": 16,
+      "label": "gushengman-primary-state-update-r2-state",
+      "reservedUsd": 0.030674399999999998,
+      "actualUsd": 0.00126126198
+    },
+    {
+      "number": 17,
+      "label": "gushengman-backup-mvu-state-update-r2-body",
+      "reservedUsd": 0.0283911,
+      "actualUsd": 0.00093323736
+    },
+    {
+      "number": 18,
+      "label": "gushengman-backup-mvu-state-update-r2-state",
+      "reservedUsd": 0.0298125,
+      "actualUsd": 0.0011623392
+    },
+    {
+      "number": 19,
+      "label": "gushengman-primary-state-update-r3-body",
+      "reservedUsd": 0.030988199999999997,
+      "actualUsd": 0.00157340106
+    },
+    {
+      "number": 20,
+      "label": "gushengman-primary-state-update-r3-state",
+      "reservedUsd": 0.0328323,
+      "actualUsd": 0.00131278554
+    },
+    {
+      "number": 21,
+      "label": "gushengman-primary-state-update-r4-body",
+      "reservedUsd": 0.0326022,
+      "actualUsd": 0.00133276374
+    },
+    {
+      "number": 22,
+      "label": "gushengman-primary-state-update-r4-state",
+      "reservedUsd": 0.035774099999999996,
+      "actualUsd": 0.00144757998
+    },
+    {
+      "number": 23,
+      "label": "gushengman-primary-state-update-r5-body",
+      "reservedUsd": 0.0346455,
+      "actualUsd": 0.00209443608
+    },
+    {
+      "number": 24,
+      "label": "gushengman-primary-state-update-r5-state",
+      "reservedUsd": 0.038411999999999995,
+      "actualUsd": 0.0015743574
+    },
+    {
+      "number": 25,
+      "label": "gushengman-primary-state-update-r6-body",
+      "reservedUsd": 0.0374439,
+      "actualUsd": 0.00157160322
+    },
+    {
+      "number": 26,
+      "label": "gushengman-primary-state-update-r6-state",
+      "reservedUsd": 0.0421434,
+      "actualUsd": 0.0017749413
+    },
+    {
+      "number": 27,
+      "label": "gushengman-primary-state-update-r7-body",
+      "reservedUsd": 0.0397419,
+      "actualUsd": 0.0015851187
+    },
+    {
+      "number": 28,
+      "label": "gushengman-primary-state-update-r7-state",
+      "reservedUsd": 0.044740499999999996,
+      "actualUsd": 0.00184921902
+    },
+    {
+      "number": 29,
+      "label": "gushengman-primary-state-update-r8-body",
+      "reservedUsd": 0.0421755,
+      "actualUsd": null
+    },
+    {
+      "number": 30,
+      "label": "gushengman-primary-state-update-r8-body-retry-timeout",
+      "reservedUsd": 0.0421755,
+      "actualUsd": null
+    },
+    {
+      "number": 31,
+      "label": "gushengman-primary-state-update-r8-body-deepinfra",
+      "reservedUsd": 0.0421767,
+      "actualUsd": 0.0044805222
+    },
+    {
+      "number": 32,
+      "label": "gushengman-primary-state-update-r8-state",
+      "reservedUsd": 0.0487728,
+      "actualUsd": 0.00205495488
+    },
+    {
+      "number": 33,
+      "label": "linqian-primary-state-update-r3-body",
+      "reservedUsd": 0.0434472,
+      "actualUsd": 0.004535685
+    },
+    {
+      "number": 34,
+      "label": "linqian-primary-state-update-r3-state",
+      "reservedUsd": 0.0874152,
+      "actualUsd": 0.00390245922
+    }
+  ]
+}

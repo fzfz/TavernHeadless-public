@@ -1,0 +1,550 @@
+[
+  {
+    "characterId": "b3Id-65IZCJRSS2Y4n8wV",
+    "releaseId": "HzAk_yR2F9HDAI_pWmpKf",
+    "regexVersionId": "WOj16jtGs2lenu8r2nNU6",
+    "audit": [
+      {
+        "id": "59a0328b-c30a-52cc-95bf-04049945f0da",
+        "name": "页面隐藏变量更新块",
+        "decision": "keep",
+        "reason": "显示通道隐藏变量更新文本。",
+        "source": {
+          "kind": "character",
+          "name": "林茜_妻心如刀_v1.3.32",
+          "ruleId": "59a0328b-c30a-52cc-95bf-04049945f0da",
+          "index": 0,
+          "resourceId": "b3Id-65IZCJRSS2Y4n8wV",
+          "versionId": "84is64jEYxOZt3Ad0Xa0b"
+        }
+      },
+      {
+        "id": "e3e60295-a806-52b8-abf2-bd917800b904",
+        "name": "对模型隐藏历史Analysis",
+        "decision": "keep",
+        "reason": "提示词通道移除历史 Analysis，保留持久化正文作为 Agent 证据。",
+        "source": {
+          "kind": "character",
+          "name": "林茜_妻心如刀_v1.3.32",
+          "ruleId": "e3e60295-a806-52b8-abf2-bd917800b904",
+          "index": 1,
+          "resourceId": "b3Id-65IZCJRSS2Y4n8wV",
+          "versionId": "84is64jEYxOZt3Ad0Xa0b"
+        }
+      },
+      {
+        "id": "1c5ee016-4a42-5f2f-a136-8228e2ea37c1",
+        "name": "提示词历史裁剪3楼前的变量更新块",
+        "decision": "keep",
+        "reason": "提示词深度 6 起裁剪更新块，近轮保留。",
+        "source": {
+          "kind": "character",
+          "name": "林茜_妻心如刀_v1.3.32",
+          "ruleId": "1c5ee016-4a42-5f2f-a136-8228e2ea37c1",
+          "index": 2,
+          "resourceId": "b3Id-65IZCJRSS2Y4n8wV",
+          "versionId": "84is64jEYxOZt3Ad0Xa0b"
+        }
+      },
+      {
+        "id": "8cd5fc5e-5c9f-5153-9726-8e5ba2cdbca7",
+        "name": "对AI隐藏行动选项_逐项更新",
+        "decision": "keep",
+        "reason": "提示词通道删除行动选项路径的旧补丁。",
+        "source": {
+          "kind": "character",
+          "name": "林茜_妻心如刀_v1.3.32",
+          "ruleId": "8cd5fc5e-5c9f-5153-9726-8e5ba2cdbca7",
+          "index": 3,
+          "resourceId": "b3Id-65IZCJRSS2Y4n8wV",
+          "versionId": "84is64jEYxOZt3Ad0Xa0b"
+        }
+      },
+      {
+        "id": "3e2e54d2-79f8-5a45-bfa8-90b131d89b89",
+        "name": "对AI隐藏状态栏",
+        "decision": "keep",
+        "reason": "提示词通道清理历史占位符。",
+        "source": {
+          "kind": "character",
+          "name": "林茜_妻心如刀_v1.3.32",
+          "ruleId": "3e2e54d2-79f8-5a45-bfa8-90b131d89b89",
+          "index": 4,
+          "resourceId": "b3Id-65IZCJRSS2Y4n8wV",
+          "versionId": "84is64jEYxOZt3Ad0Xa0b"
+        }
+      },
+      {
+        "id": "e2910614-bef3-5c59-a8da-1f3d37918285",
+        "name": "状态栏渲染",
+        "decision": "remove",
+        "reason": "Runtime 的状态组件直接读取变量快照。",
+        "source": {
+          "kind": "character",
+          "name": "林茜_妻心如刀_v1.3.32",
+          "ruleId": "e2910614-bef3-5c59-a8da-1f3d37918285",
+          "index": 5,
+          "resourceId": "b3Id-65IZCJRSS2Y4n8wV",
+          "versionId": "84is64jEYxOZt3Ad0Xa0b"
+        }
+      },
+      {
+        "id": "6a93c71b-e392-5847-b5df-c58dcb441f4e",
+        "name": "回复修复_补正文闭合标签",
+        "decision": "keep",
+        "reason": "持久化通道补齐正文闭合标签。",
+        "source": {
+          "kind": "character",
+          "name": "林茜_妻心如刀_v1.3.32",
+          "ruleId": "6a93c71b-e392-5847-b5df-c58dcb441f4e",
+          "index": 6,
+          "resourceId": "b3Id-65IZCJRSS2Y4n8wV",
+          "versionId": "84is64jEYxOZt3Ad0Xa0b"
+        }
+      },
+      {
+        "id": "7f1c5126-9b4e-5a05-a6f6-83d13fe49016",
+        "name": "回复修复_追加状态栏占位符",
+        "decision": "remove",
+        "reason": "Runtime 不依赖状态栏占位符。",
+        "source": {
+          "kind": "character",
+          "name": "林茜_妻心如刀_v1.3.32",
+          "ruleId": "7f1c5126-9b4e-5a05-a6f6-83d13fe49016",
+          "index": 7,
+          "resourceId": "b3Id-65IZCJRSS2Y4n8wV",
+          "versionId": "84is64jEYxOZt3Ad0Xa0b"
+        }
+      },
+      {
+        "id": "51b3f4a5-ee72-4980-abda-8d8fb67479be",
+        "name": "【云瑾】包裹最新指示",
+        "decision": "keep",
+        "reason": "包装近期用户输入，保持预设约定。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "51b3f4a5-ee72-4980-abda-8d8fb67479be",
+          "index": 0,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "d0939a86-4170-44d8-8968-b6148a5c2ed6",
+        "name": "【云瑾】移除额外tag_1.5",
+        "decision": "keep",
+        "reason": "清理显示和提示词中的预设输出标签。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "d0939a86-4170-44d8-8968-b6148a5c2ed6",
+          "index": 1,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "b713fbff-47ae-4616-8d7a-655c4ba407e2",
+        "name": "【云瑾】八股抹除 - 4.24",
+        "decision": "keep",
+        "reason": "保留预设的文本修辞处理。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "b713fbff-47ae-4616-8d7a-655c4ba407e2",
+          "index": 2,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "30c53ab4-0c58-4df8-8d3c-e1ba24abcb92",
+        "name": "【云瑾】切除10楼以内小总结",
+        "decision": "keep",
+        "reason": "深度 9 以内移除小总结。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "30c53ab4-0c58-4df8-8d3c-e1ba24abcb92",
+          "index": 3,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "4c56b336-bfb1-4766-a053-6f072bfd57c9",
+        "name": "【云瑾】切除10楼以上正文&仅保留小总结",
+        "decision": "keep",
+        "reason": "深度 10 起保留小总结并裁剪正文。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "4c56b336-bfb1-4766-a053-6f072bfd57c9",
+          "index": 4,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "14c836a8-2b8c-40ee-a476-83f17a7b8772",
+        "name": "【夏瑾】底部正则",
+        "decision": "keep",
+        "reason": "原预设停用的规则保持停用。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "14c836a8-2b8c-40ee-a476-83f17a7b8772",
+          "index": 5,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "7861fbe0-ed5f-40af-91c1-17f6a3a1a690",
+        "name": "【夏瑾】语气正则",
+        "decision": "keep",
+        "reason": "保留预设的语气文本处理。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "7861fbe0-ed5f-40af-91c1-17f6a3a1a690",
+          "index": 6,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "2112de1c-3a68-45bb-a389-1fd17dc09931",
+        "name": "【夏瑾】破折号处理",
+        "decision": "keep",
+        "reason": "保留预设的标点处理。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "2112de1c-3a68-45bb-a389-1fd17dc09931",
+          "index": 7,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "85b2b65a-3762-4006-965c-69eda41ea80b",
+        "name": "【夏瑾】比喻正则",
+        "decision": "keep",
+        "reason": "保留预设的比喻文本处理。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "85b2b65a-3762-4006-965c-69eda41ea80b",
+          "index": 8,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "aba7227b-cb05-4a52-b899-604d7bb0a492",
+        "name": "【夏瑾】行动选项2",
+        "decision": "keep",
+        "reason": "深度 1 起清理旧 SUOT 文本。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "aba7227b-cb05-4a52-b899-604d7bb0a492",
+          "index": 9,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "f1108fce-1300-4315-acdd-dca0399f2afc",
+        "name": "【夏瑾】行动选项1",
+        "decision": "remove",
+        "reason": "角色 Runtime 提供行动选项，替代 SUOT HTML 页面。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "f1108fce-1300-4315-acdd-dca0399f2afc",
+          "index": 10,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      }
+    ],
+    "unchanged": true
+  },
+  {
+    "characterId": "XoBoeL6-DuqKdMwyPdu2y",
+    "releaseId": "RWc041KCFEPZTOCz-PsP7",
+    "regexVersionId": "J8PHPM-FrPYR7VdWPhk-y",
+    "audit": [
+      {
+        "id": "c2655a16-d93d-491c-b79c-4ec59df53a18",
+        "name": "[美化]变量更新中-夜空诗意",
+        "decision": "remove",
+        "reason": "Runtime 展示独立 Agent 更新状态，不渲染内嵌 MVU HTML。",
+        "source": {
+          "kind": "character",
+          "name": "顾声慢",
+          "ruleId": "c2655a16-d93d-491c-b79c-4ec59df53a18",
+          "index": 0,
+          "resourceId": "XoBoeL6-DuqKdMwyPdu2y",
+          "versionId": "hlElbZk62oCDmOtmz_v3A"
+        }
+      },
+      {
+        "id": "00c7b472-1430-4120-b010-56cb8e74ff33",
+        "name": "[美化]完整变量完成-夜空诗意",
+        "decision": "remove",
+        "reason": "Runtime 展示独立 Agent 更新状态，不渲染内嵌 MVU HTML。",
+        "source": {
+          "kind": "character",
+          "name": "顾声慢",
+          "ruleId": "00c7b472-1430-4120-b010-56cb8e74ff33",
+          "index": 1,
+          "resourceId": "XoBoeL6-DuqKdMwyPdu2y",
+          "versionId": "hlElbZk62oCDmOtmz_v3A"
+        }
+      },
+      {
+        "id": "daa6cb6f-e0f0-4a7a-b4f8-4d1b3a4989da",
+        "name": "对 AI 隐藏状态栏",
+        "decision": "keep",
+        "reason": "提示词通道清理历史占位符。",
+        "source": {
+          "kind": "character",
+          "name": "顾声慢",
+          "ruleId": "daa6cb6f-e0f0-4a7a-b4f8-4d1b3a4989da",
+          "index": 2,
+          "resourceId": "XoBoeL6-DuqKdMwyPdu2y",
+          "versionId": "hlElbZk62oCDmOtmz_v3A"
+        }
+      },
+      {
+        "id": "374a2149-7c7d-44f5-9afe-f299a7aac301",
+        "name": "仅格式思维链",
+        "decision": "keep",
+        "reason": "提示词通道清理历史 Analysis。",
+        "source": {
+          "kind": "character",
+          "name": "顾声慢",
+          "ruleId": "374a2149-7c7d-44f5-9afe-f299a7aac301",
+          "index": 3,
+          "resourceId": "XoBoeL6-DuqKdMwyPdu2y",
+          "versionId": "hlElbZk62oCDmOtmz_v3A"
+        }
+      },
+      {
+        "id": "79a0e4b4-eb5d-4ecd-ab44-37bc55b085ad",
+        "name": "只发送最新3楼的变量更新",
+        "decision": "keep",
+        "reason": "提示词深度 6 起裁剪旧更新块。",
+        "source": {
+          "kind": "character",
+          "name": "顾声慢",
+          "ruleId": "79a0e4b4-eb5d-4ecd-ab44-37bc55b085ad",
+          "index": 4,
+          "resourceId": "XoBoeL6-DuqKdMwyPdu2y",
+          "versionId": "hlElbZk62oCDmOtmz_v3A"
+        }
+      },
+      {
+        "id": "7da9a4c8-d7d1-420c-886f-c736998b4c1b",
+        "name": "删除",
+        "decision": "remove",
+        "reason": "角色 Runtime 需要读取 gametext 正文，旧规则会删除整段正文。",
+        "source": {
+          "kind": "character",
+          "name": "顾声慢",
+          "ruleId": "7da9a4c8-d7d1-420c-886f-c736998b4c1b",
+          "index": 5,
+          "resourceId": "XoBoeL6-DuqKdMwyPdu2y",
+          "versionId": "hlElbZk62oCDmOtmz_v3A"
+        }
+      },
+      {
+        "id": "76985818-ab64-49fe-96b0-b842d45ae4cf",
+        "name": "状态栏美化",
+        "decision": "remove",
+        "reason": "Runtime 自行渲染状态面板。",
+        "source": {
+          "kind": "character",
+          "name": "顾声慢",
+          "ruleId": "76985818-ab64-49fe-96b0-b842d45ae4cf",
+          "index": 6,
+          "resourceId": "XoBoeL6-DuqKdMwyPdu2y",
+          "versionId": "hlElbZk62oCDmOtmz_v3A"
+        }
+      },
+      {
+        "id": "04d3a536-469a-4c5e-939e-4c90c541bed0",
+        "name": "背景替换",
+        "decision": "remove",
+        "reason": "角色 Runtime 根据 bg 标记选择背景资源。",
+        "source": {
+          "kind": "character",
+          "name": "顾声慢",
+          "ruleId": "04d3a536-469a-4c5e-939e-4c90c541bed0",
+          "index": 7,
+          "resourceId": "XoBoeL6-DuqKdMwyPdu2y",
+          "versionId": "hlElbZk62oCDmOtmz_v3A"
+        }
+      },
+      {
+        "id": "51b3f4a5-ee72-4980-abda-8d8fb67479be",
+        "name": "【云瑾】包裹最新指示",
+        "decision": "keep",
+        "reason": "包装近期用户输入，保持预设约定。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "51b3f4a5-ee72-4980-abda-8d8fb67479be",
+          "index": 0,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "d0939a86-4170-44d8-8968-b6148a5c2ed6",
+        "name": "【云瑾】移除额外tag_1.5",
+        "decision": "keep",
+        "reason": "清理显示和提示词中的预设输出标签。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "d0939a86-4170-44d8-8968-b6148a5c2ed6",
+          "index": 1,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "b713fbff-47ae-4616-8d7a-655c4ba407e2",
+        "name": "【云瑾】八股抹除 - 4.24",
+        "decision": "keep",
+        "reason": "保留预设的文本修辞处理。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "b713fbff-47ae-4616-8d7a-655c4ba407e2",
+          "index": 2,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "30c53ab4-0c58-4df8-8d3c-e1ba24abcb92",
+        "name": "【云瑾】切除10楼以内小总结",
+        "decision": "keep",
+        "reason": "深度 9 以内移除小总结。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "30c53ab4-0c58-4df8-8d3c-e1ba24abcb92",
+          "index": 3,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "4c56b336-bfb1-4766-a053-6f072bfd57c9",
+        "name": "【云瑾】切除10楼以上正文&仅保留小总结",
+        "decision": "keep",
+        "reason": "深度 10 起保留小总结并裁剪正文。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "4c56b336-bfb1-4766-a053-6f072bfd57c9",
+          "index": 4,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "14c836a8-2b8c-40ee-a476-83f17a7b8772",
+        "name": "【夏瑾】底部正则",
+        "decision": "keep",
+        "reason": "原预设停用的规则保持停用。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "14c836a8-2b8c-40ee-a476-83f17a7b8772",
+          "index": 5,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "7861fbe0-ed5f-40af-91c1-17f6a3a1a690",
+        "name": "【夏瑾】语气正则",
+        "decision": "keep",
+        "reason": "保留预设的语气文本处理。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "7861fbe0-ed5f-40af-91c1-17f6a3a1a690",
+          "index": 6,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "2112de1c-3a68-45bb-a389-1fd17dc09931",
+        "name": "【夏瑾】破折号处理",
+        "decision": "keep",
+        "reason": "保留预设的标点处理。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "2112de1c-3a68-45bb-a389-1fd17dc09931",
+          "index": 7,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "85b2b65a-3762-4006-965c-69eda41ea80b",
+        "name": "【夏瑾】比喻正则",
+        "decision": "keep",
+        "reason": "保留预设的比喻文本处理。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "85b2b65a-3762-4006-965c-69eda41ea80b",
+          "index": 8,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "aba7227b-cb05-4a52-b899-604d7bb0a492",
+        "name": "【夏瑾】行动选项2",
+        "decision": "keep",
+        "reason": "深度 1 起清理旧 SUOT 文本。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "aba7227b-cb05-4a52-b899-604d7bb0a492",
+          "index": 9,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      },
+      {
+        "id": "f1108fce-1300-4315-acdd-dca0399f2afc",
+        "name": "【夏瑾】行动选项1",
+        "decision": "remove",
+        "reason": "角色 Runtime 提供行动选项，替代 SUOT HTML 页面。",
+        "source": {
+          "kind": "preset",
+          "name": "夏瑾 天琴座 Beta 3.9（泛国模）",
+          "ruleId": "f1108fce-1300-4315-acdd-dca0399f2afc",
+          "index": 10,
+          "resourceId": "OhM8_-MzGiaUDXw7Ode3j",
+          "versionId": "Uwuj9xBEojqrBHTMPh8NG"
+        }
+      }
+    ],
+    "unchanged": true
+  }
+]

@@ -1,0 +1,89 @@
+{
+  "status": "complete",
+  "session": {
+    "id": "F2RPXUKfy_jjpt3R8Htir",
+    "title": "雾港来信 · 真实模型",
+    "status": "active",
+    "character_binding": {
+      "character_id": "ZrVnxjsDEkmZLXRwErLuW",
+      "character_version_id": "wlgC8XMXciW3LGwxM9QEZ",
+      "sync_policy": "pin",
+      "snapshot_summary": {
+        "name": "雾港来信 · 真实模型",
+        "has_greeting": true
+      }
+    },
+    "user_binding": {
+      "user_id": "FM0st8ZpU3DUULgk82a4d",
+      "snapshot": {
+        "name": "裴修远",
+        "description": "裴修远，31岁，男性，雾港深夜邮局的管理员。性格谨慎，熟悉邮政记录，与向导沈知夏刚开始调查一封没有收件人的信。"
+      },
+      "snapshot_summary": {
+        "name": "裴修远"
+      }
+    },
+    "preset_id": "lXxY23afy6tQpRXUXy30J",
+    "regex_profile_id": null,
+    "worldbook_profile_id": null,
+    "deep_binding": true,
+    "preset_version_id": "DbkjlseDSG0QSgJOzXjqB",
+    "regex_profile_version_id": null,
+    "worldbook_version_id": null,
+    "model_provider": null,
+    "model_name": null,
+    "model_params": null,
+    "prompt_mode": "compat_plus",
+    "metadata": {
+      "opening_id": "first",
+      "statePrompt": {
+        "presetId": "e9CvumE9XAX4aD0FsUrRc",
+        "presetVersionId": "H9JS6zkb5wACZq5XXs6qW",
+        "historyTurns": 5
+      },
+      "role_release_id": "0WJY0bnRlBqzr_82yNB0C",
+      "model_capabilities": null
+    },
+    "tool_preset_key": null,
+    "created_at": 1792496502672,
+    "updated_at": 1792496502676
+  },
+  "release": {
+    "id": "0WJY0bnRlBqzr_82yNB0C",
+    "character_id": "ZrVnxjsDEkmZLXRwErLuW",
+    "name": "雾港来信 · 真实模型",
+    "description": "你在雾港经营一家深夜邮局。来往旅人留下信件与秘密；值夜的向导沈知夏会陪你追查一封没有收件人的信。",
+    "creator": "示例作者",
+    "tags": [
+      "悬疑",
+      "城市探索",
+      "慢节奏"
+    ],
+    "openings": [
+      {
+        "id": "first",
+        "title": "一封没有收件人的信",
+        "summary": "从邮局开始调查",
+        "kind": "story",
+        "display_text": "钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”",
+        "is_default": true,
+        "default_for": [
+          "individual"
+        ]
+      },
+      {
+        "id": "second",
+        "title": "花园会面",
+        "summary": "从花园开始调查",
+        "kind": "story",
+        "display_text": "沈知夏在花园门口等候裴修远和同行者。",
+        "is_default": true,
+        "default_for": [
+          "group"
+        ]
+      }
+    ],
+    "created_at": 1792496383059
+  },
+  "opening_id": "first"
+}

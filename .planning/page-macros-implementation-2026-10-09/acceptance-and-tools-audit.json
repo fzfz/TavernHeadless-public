@@ -1,0 +1,36 @@
+{
+  "scope": [
+    ".planning/page-macros-implementation-2026-10-09/acceptance.md",
+    ".agents/skills/native-card-conversion/references/tools.md"
+  ],
+  "reviewType": "独立逐行文字审计",
+  "externalFactsChecked": false,
+  "targetsModified": false,
+  "findings": [
+    {
+      "severity": "medium",
+      "file": ".planning/page-macros-implementation-2026-10-09/acceptance.md",
+      "lines": [
+        23,
+        25,
+        49
+      ],
+      "issue": "“五份专项包”的组成和验收用途在首次使用之后才说明。",
+      "evidence": "第23行以“五份专项包的180项对照通过”报告验收，第25行继续报告这五份包的导入结果；第49行才说明专项包使用五张卡的角色名称和单独登记的受控正文，并区分专项包验收与整卡结果。",
+      "impact": "读者阅读第2节时无法确定五份专项包是否就是完整角色卡，必须读到第3节末尾才能准确理解第2节的验收范围。该顺序不符合定义先于用法的要求。",
+      "recommendation": "在第2节表格之前集中说明宏专项包的组成及验收范围；第3节仅引用该说明，保留整卡结果。"
+    }
+  ],
+  "perFileConclusions": [
+    {
+      "file": ".planning/page-macros-implementation-2026-10-09/acceptance.md",
+      "findingCount": 1
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/tools.md",
+      "findingCount": 0,
+      "conclusion": "在指定文字规范范围内未发现实质问题。"
+    }
+  ],
+  "crossFileConclusion": "两份文档分别承担验收结果与命令使用说明，未发现两者重复定义规范的问题。"
+}

@@ -1,0 +1,24 @@
+{
+  "reviewer": "state_assembly_proposal_semantic_review",
+  "scope": ["task_plan.md", "progress.md"],
+  "rules": "../document-restructure-closeout/audit-rules.txt",
+  "input_boundary": "本次仅阅读两份待审成果和指定审计规则；未读取其他参考资料、背景、实施方案或实现。",
+  "overall_status": "通过",
+  "acceptance_checklist": [
+    {"criterion": "规则使用正向句式，明确执行者、动作、对象和条件", "status": "通过", "evidence": "task_plan.md:9-11 指明主代理与独立审阅者的动作；第20、36行明确精确提交本次文件及保留其他修改的要求和完成状态。"},
+    {"criterion": "排除成年内容、NSFW、政治正确及道德审查规范", "status": "通过", "evidence": "两份文档均未增加内容审核步骤或规范。"},
+    {"criterion": "完整表达成果所要求的指定内容", "status": "通过", "evidence": "task_plan.md:9-10 通过最高原则引用明确修订要求，并完整列出方案的七类输入及交付内容；progress.md:9-11 对应记录完成结果。"},
+    {"criterion": "句子通顺、主体动作完整，结果清楚", "status": "通过", "evidence": "两份文档的正文分别明确任务主体、成果及当前完成状态；progress.md:13-15 记录审阅、检查及提交均已完成，并说明未执行新转换和后端改动。"},
+    {"criterion": "使用常用词和专业术语，任务名称明确", "status": "通过", "evidence": "Skill、API、schema 所属工作通过路径或方案引用确定；n 为变量历史轮数，可由 task_plan.md:10 的前 n 轮表述理解。未引入需要另行定义的任务专用名称。"},
+    {"criterion": "对象所属文件、接口或模块明确", "status": "通过", "evidence": "task_plan.md:9-10 明确 Skill 目录及 architecture-proposal.md；progress.md:9、11 明确 before/、方案文件及核对的系统入口。"},
+    {"criterion": "每章用途明确，正文匹配用途，要求仅完整定义一次", "status": "通过", "evidence": "task_plan.md:7、13、22、26、30 分别组织目标、验收、范围、授权及进度；第9行引用最高原则。progress.md 以实际完成记录为用途。"},
+    {"criterion": "抽象空话、重复解释、无关说明和评论清理", "status": "通过", "evidence": "目标和验收分别表达实施动作与完成条件，进度陈述提供完成状态及检查范围；未发现需删除的重复规则或无关句子。"},
+    {"criterion": "UI 与接口错误文案说明具体情况和用户操作", "status": "通过", "evidence": "两份待审成果未新增 UI 或接口错误文案，此项没有待审实例。"},
+    {"criterion": "用途、读者、层次、标题、引用、职责和执行顺序明确", "status": "通过", "evidence": "task_plan.md:5、9-11、28 明确读者、执行顺序和授权；progress.md:5、15 明确维护者及提交结果。task_plan.md:36 与 progress.md:15 均记录已完成精确提交，两份文档状态一致。"},
+    {"criterion": "计划具备四个规定章节", "status": "通过", "evidence": "task_plan.md:7、13、22、26 包含必须要实现的目标、验收清单、非本次目标和已获得的授权。"},
+    {"criterion": "Skill 文档专项规则适用性", "status": "通过", "evidence": "本次成果为维护计划与进度记录，未包含待审 Skill 文档；Skill 专项规则没有待审实例。"}
+  ],
+  "findings": [],
+  "deletion_suggestions": [],
+  "limitations": "本报告判断文档表达与内部一致性，不核验所述测试、审阅及实现事实。"
+}

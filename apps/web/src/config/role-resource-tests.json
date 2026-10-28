@@ -1,0 +1,50 @@
+{
+  "regex": {
+    "title": "正则测试",
+    "input": "输入文本",
+    "placement": "执行位置",
+    "channel": "执行通道",
+    "depth": "消息深度",
+    "variables": "宏变量（JSON 对象）",
+    "run": "运行测试",
+    "output": "输出文本",
+    "candidates": "候选规则",
+    "matched": "已匹配规则",
+    "skipped": "未执行规则",
+    "none": "无",
+    "done": "正则测试已完成。",
+    "invalidVariables": "宏变量必须是 JSON 对象，请修改后重试。",
+    "invalidDepth": "消息深度必须是非负整数，请修改后重试。",
+    "invalidRules": "正则规则缺少有效的匹配表达式。请检查每条规则的 findRegex 字段后重试。",
+    "channels": [
+      [
+        "persist",
+        "持久化文本"
+      ],
+      [
+        "prompt",
+        "提示词"
+      ],
+      [
+        "display",
+        "显示文本"
+      ],
+      [
+        "edit",
+        "编辑后文本"
+      ]
+    ]
+  },
+  "model": {
+    "discover": "获取模型列表",
+    "test": "测试连接",
+    "models": "模型列表",
+    "request": "测试请求",
+    "response": "模型回复",
+    "none": "服务商未返回可用模型。请检查服务地址及服务商是否支持获取模型列表后重试。",
+    "discovered": "模型列表已更新。",
+    "tested": "模型连接测试完成。",
+    "keyRequired": "请填写 API Key，再测试当前模型配置。",
+    "modelRequired": "请填写模型标识，再测试连接。"
+  }
+}

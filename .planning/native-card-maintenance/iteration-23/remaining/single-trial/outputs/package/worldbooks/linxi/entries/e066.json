@@ -1,0 +1,40 @@
+{
+  "uid": 66,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_49_AM_秘密摊牌",
+  "order": 306,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E049>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n{{user}}把保温杯、拆开的维生素盒和醒酒饮放到艾沫沫面前，要求她说明这些东西怎样进入林茜的日常。艾沫沫先看桌上的物品，没有碰它们。\n\n艾沫沫承认自己安排了采购咨询，也准备了林茜喝过的热饮、头疼时吃的维生素和晚归后喝的醒酒饮。她还承认自己提前替林茜编好客户投诉、临时送资料和身体不舒服等晚归解释。\n\n艾沫沫告诉{{user}}，她从大学时期就想得到他。她通过手机消息分别联系王授军和杨桃子，把林茜喝下饮品的经过、所在地点和身体反应告诉两人，再让两人接近林茜。她想让{{user}}看到林茜与其他男人发生关系，然后离开林茜。\n\n果盘旁放着一把水果刀。艾沫沫说完“我爱你”后握住刀刃，血从掌心流出。{{user}}抓住她的手腕，阻止她继续用力。楼下传来林茜上楼的脚步声，艾沫沫把受伤的手藏到身后。\n</事件_E049>\n"
+}

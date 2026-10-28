@@ -1,0 +1,40 @@
+{
+  "url": "http://127.0.0.1:52160/?sessionId=G3zo_y21aMFSk7NYWQVW3",
+  "apiUrl": "http://127.0.0.1:52158",
+  "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/preview-runs/2026-10-06T18-44-47-942Z-89ce0909-c3da-40f1-966f-4667ccf539d6",
+  "sessionId": "G3zo_y21aMFSk7NYWQVW3",
+  "cardId": "Yd5QHuDtNZK5rAX8mT_Lt",
+  "persona": {
+    "name": "裴修远",
+    "description": "裴修远是成年男性港务职员，谨慎、坦率，正在港口询问信件。"
+  },
+  "preset": {
+    "name": "示例：角色身份、历史与状态更新",
+    "id": "preview-preset-19bf8abe-f544-4ba5-8173-de8c02c532cc",
+    "versionId": "preview-preset-version-e30ac8aa-aae5-491e-85da-e80acb5d01d2"
+  },
+  "statePreset": {
+    "name": "独立状态更新预设",
+    "id": "preview-state-preset-64860a62-f51e-4fe8-95be-5d8ac3bf0472",
+    "versionId": "preview-state-preset-version-3c84fa53-50ab-4342-8258-1a392f9f8408"
+  },
+  "dryRunCount": 1,
+  "dryRuns": [
+    {
+      "id": "cli-dry-run",
+      "passed": true,
+      "status": 200,
+      "checks": {
+        "assembledMessageCount": 3,
+        "personaDescriptionIncluded": true,
+        "personaNameInRoleView": true
+      }
+    }
+  ],
+  "generationMode": "unavailable",
+  "storageDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/preview-runs/2026-10-06T18-44-47-942Z-89ce0909-c3da-40f1-966f-4667ccf539d6/storage",
+  "sourceZipFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/pack-4OecrY/role.zip",
+  "boundHost": "127.0.0.1",
+  "boundApiPort": "52158",
+  "boundFrontendPort": 52160
+}

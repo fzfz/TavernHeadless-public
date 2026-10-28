@@ -1,0 +1,20 @@
+/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/iteration-9/run-vJ6Px7/test-core.mjs
+  23:325  error  'l' is defined but never used   @typescript-eslint/no-unused-vars
+  23:327  error  'id' is defined but never used  @typescript-eslint/no-unused-vars
+
+/srv/tavern/TavernHeadless-remove-preview-credentials/apps/api/src/debug/file-debug-sink.ts
+  69:5  warning  Unused eslint-disable directive (no problems were reported from 'no-console')
+
+/srv/tavern/TavernHeadless-remove-preview-credentials/apps/studio/src/modules/graph/assistant/AssistantMarkdown.vue
+  79:28  warning  'v-html' directive can lead to XSS attack  vue/no-v-html
+
+/srv/tavern/TavernHeadless-remove-preview-credentials/apps/web/src/components/workspace/MarkdownBlock.vue
+  28:35  warning  'v-html' directive can lead to XSS attack  vue/no-v-html
+
+/srv/tavern/TavernHeadless-remove-preview-credentials/packages/core/src/llm/provider-registry.ts
+  48:3  warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-require-imports')
+
+✖ 15766 problems (15756 errors, 10 warnings)
+  579 errors and 8 warnings potentially fixable with the `--fix` option.
+
+ ELIFECYCLE  Command failed with exit code 1.

@@ -1,0 +1,177 @@
+import type { CoreEventBus } from "@tavern/core";
+import type { FastifyInstance } from "fastify";
+
+import type { DatabaseConnection } from "../db/client.js";
+import type { ClientDataConfig } from "../client-data/client-data-service.js";
+import type { SessionToolRegistryService } from "../services/tooling/session-tool-registry-service.js";
+import type { FloorRunServiceOptions } from "../services/floor-run-service.js";
+import type { McpConnectionManager } from "../services/tooling/mcp/mcp-connection-manager.js";
+import type { MutationRuntime } from "../services/runtime-mutation-types.js";
+import type { ProjectEventLiveHub } from "../services/project-event-live-hub.js";
+import type { SessionStateObservationService } from "../session-state/session-state-observation-service.js";
+import { registerCharacterRoutes } from "./characters.js";
+import { registerFloorRoutes } from "./floors.js";
+import { registerImportRoutes } from "./imports.js";
+import { registerMemoryRoutes } from "./memories.js";
+import {
+  registerMemoryJobRoutes,
+  type MemoryJobRoutesOptions,
+} from "./memory-jobs.js";
+import { registerMessageRoutes } from "./messages.js";
+import { registerWorldbookEntryRoutes } from "./worldbook-entries.js";
+import { registerPresetEntryRoutes } from "./preset-entries.js";
+import { registerMessagePageRoutes } from "./pages.js";
+import {
+  registerChatTransferJobRoutes,
+  type ChatTransferJobRoutesOptions,
+} from "./chat-transfer-jobs.js";
+import { registerLlmProfileRoutes } from "./llm-profiles.js";
+import { registerLlmInstanceRoutes } from "./llm-instances.js";
+import { registerBackupRoutes, type BackupRoutesOptions } from "./backup.js";
+import {
+  registerBackupJobRoutes,
+  type BackupJobRoutesOptions,
+} from "./backup-jobs.js";
+import { registerSessionRoutes } from "./sessions.js";
+import {
+  registerMcpConfigRoutes,
+  registerSessionRuntimeToolRoutes,
+  registerToolRoutes,
+} from "./tooling/index.js";
+import { registerVariableRoutes } from "./variables.js";
+import { registerAccountRoutes } from "./accounts.js";
+import { registerUserRoutes } from "./users.js";
+import { registerExportRoutes } from "./exports.js";
+import { registerClientDataRoutes } from "../client-data/client-data-routes.js";
+import { registerClientRoutes } from "./clients.js";
+import { registerAssetVersionRoutes } from "./asset-versions.js";
+import { registerBranchVcRoutes } from "./branch-vc.js";
+import { registerOperationLogRoutes } from "./operation-logs.js";
+import { registerScopeIntegrityRoutes } from "./scope-integrity.js";
+import { registerProjectRoutes } from "./projects.js";
+import { registerWorkspaceRoutes } from "./workspaces.js";
+import { registerProjectAgentBindingRoutes } from "./project-agent-bindings.js";
+import { registerProjectAgentJobRoutes } from "./project-agent-jobs.js";
+import { registerProjectFloorGraphBindingRoutes } from "./project-floor-graph-bindings.js";
+import { registerNodeGraphRoutes } from "./node-graphs.js";
+import { registerGraphAssistantToolPolicyRoutes } from "./graph-assistant-tool-policy.js";
+import { registerGraphAssistantPromptConfigRoutes } from "./graph-assistant-prompt-config.js";
+import { registerToolPolicyPresetRoutes } from "./tool-policy-presets.js";
+import { registerSessionTodoListRoutes } from "./session-todo-list.js";
+import { registerVcTagRoutes } from "./vc-tags.js";
+import type { AccountMode } from "../accounts/constants.js";
+
+export interface CrudRoutesOptions {
+  variableEventBus?: CoreEventBus;
+  memoryEventBus?: CoreEventBus;
+  sessionToolRegistryService?: SessionToolRegistryService;
+  memoryJobs?: MemoryJobRoutesOptions;
+  chatTransferJobs?: ChatTransferJobRoutesOptions & {
+    importMaxBytes?: number;
+    exportSyncMaxMessages?: number;
+    exportArtifactTtlMs?: number;
+  };
+  backupJobs?: BackupRoutesOptions &
+    BackupJobRoutesOptions & {
+      importMaxBytes?: number;
+      exportArtifactTtlMs?: number;
+    };
+  mutationRuntime?: MutationRuntime;
+  mcpManager?: McpConnectionManager;
+  enableUnsafeScriptHandler?: boolean;
+  accountMode?: AccountMode;
+  enableClientData?: boolean;
+  clientData?: ClientDataConfig;
+  floorRun?: FloorRunServiceOptions;
+  projectEventLiveHub?: ProjectEventLiveHub;
+  sessionStateObservationService?: SessionStateObservationService;
+  /** R6-3（缺口 7）：NodeGraph worker 是否启用，仅用于 /run 响应的运维提示。 */
+  nodeGraphWorkerEnabled?: boolean;
+}
+
+export async function registerCrudRoutes(
+  app: FastifyInstance,
+  connection: DatabaseConnection,
+  options: CrudRoutesOptions = {},
+): Promise<void> {
+  await registerAccountRoutes(app, connection, {
+    accountMode: options.accountMode,
+  });
+  await registerClientRoutes(app, connection);
+  await registerSessionRoutes(app, connection, {
+    clientData: options.enableClientData ? options.clientData : undefined,
+    floorRun: options.floorRun,
+    projectEventLiveHub: options.projectEventLiveHub,
+  });
+  await registerSessionRuntimeToolRoutes(app, {
+    sessionToolRegistryService: options.sessionToolRegistryService,
+  });
+  await registerProjectRoutes(app, connection, {
+    projectEventLiveHub: options.projectEventLiveHub,
+  });
+  await registerWorkspaceRoutes(app, connection);
+  await registerProjectAgentBindingRoutes(app, connection);
+  await registerProjectAgentJobRoutes(app, connection);
+  await registerProjectFloorGraphBindingRoutes(app, connection);
+  await registerNodeGraphRoutes(app, connection, {
+    workerEnabled: options.nodeGraphWorkerEnabled === true,
+  });
+  await registerGraphAssistantToolPolicyRoutes(app, connection);
+  await registerGraphAssistantPromptConfigRoutes(app, connection);
+  await registerToolPolicyPresetRoutes(app, connection);
+  await registerSessionTodoListRoutes(app, connection);
+  await registerCharacterRoutes(app, connection);
+  await registerFloorRoutes(app, connection, {
+    floorRun: options.floorRun,
+  });
+  await registerUserRoutes(app, connection);
+  await registerMessagePageRoutes(app, connection, {
+    sessionStateObservationService: options.sessionStateObservationService,
+  });
+  await registerMessageRoutes(app, connection);
+  await registerVariableRoutes(app, connection, {
+    eventBus: options.variableEventBus,
+    mutationRuntime: options.mutationRuntime,
+  });
+  await registerMemoryRoutes(app, connection, {
+    eventBus: options.memoryEventBus,
+  });
+  await registerMemoryJobRoutes(app, connection, options.memoryJobs);
+  await registerImportRoutes(app, connection, options.chatTransferJobs);
+  await registerLlmProfileRoutes(app, connection, {
+    mutationRuntime: options.mutationRuntime,
+    accountMode: options.accountMode,
+  });
+  await registerBackupRoutes(app, connection, options.backupJobs);
+  await registerLlmInstanceRoutes(app, connection, {
+    mutationRuntime: options.mutationRuntime,
+  });
+  await registerChatTransferJobRoutes(
+    app,
+    connection,
+    options.chatTransferJobs,
+  );
+  await registerWorldbookEntryRoutes(app, connection);
+  await registerPresetEntryRoutes(app, connection);
+  await registerAssetVersionRoutes(app, connection);
+  await registerBranchVcRoutes(app, connection, {
+    floorRun: options.floorRun,
+  });
+  await registerOperationLogRoutes(app, connection);
+  await registerScopeIntegrityRoutes(app, connection);
+  await registerVcTagRoutes(app, connection);
+  await registerToolRoutes(app, connection, {
+    enableUnsafeScriptHandler: options.enableUnsafeScriptHandler,
+  });
+  await registerBackupJobRoutes(app, connection, options.backupJobs);
+  await registerMcpConfigRoutes(app, connection, {
+    mcpManager: options.mcpManager,
+  });
+  await registerExportRoutes(app, connection, options.chatTransferJobs);
+
+  if (options.enableClientData && options.clientData) {
+    await registerClientDataRoutes(app, connection, {
+      clientData: options.clientData,
+    });
+  }
+}

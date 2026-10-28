@@ -1,0 +1,1056 @@
+{
+  "skill_name": "native-card-conversion",
+  "evals": [
+    {
+      "id": 1,
+      "name": "USER002",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "USER001",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/Users/developer/Downloads/林茜_妻心如刀_v1.3.01.json。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": ["/Users/developer/Downloads/林茜_妻心如刀_v1.3.01.json"]
+    },
+    {
+      "id": 3,
+      "name": "C005",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e1e75326a168c10f2502dcb8353ac6d3a07657b6f519a40046b09208e33741de。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e1e75326a168c10f2502dcb8353ac6d3a07657b6f519a40046b09208e33741de"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "C011",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/5b2bee10d450a23655879484f733b430ea6f9e971fcbe8ba47d28b06372f1b51。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/5b2bee10d450a23655879484f733b430ea6f9e971fcbe8ba47d28b06372f1b51"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "C058",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9714c3532f4839e3c0bcb7706924cc8036b202ddfab0f7504d208ea08f090401。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9714c3532f4839e3c0bcb7706924cc8036b202ddfab0f7504d208ea08f090401"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "C083",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/02dcd558ddda05882ea77a5ef41f3fca67e51868622b73f0085363a9c8136171。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/02dcd558ddda05882ea77a5ef41f3fca67e51868622b73f0085363a9c8136171"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "C087",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b7f81e2cdba3c62b2de954bd8035e4807d938de1b4059fd5d16cdcb17920d0d2。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b7f81e2cdba3c62b2de954bd8035e4807d938de1b4059fd5d16cdcb17920d0d2"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "C091",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ae59599e963ceb4ff336f3e683f88cd84d4ffaaae0e73d3977a9a53805fd577a。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ae59599e963ceb4ff336f3e683f88cd84d4ffaaae0e73d3977a9a53805fd577a"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "C001",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c532184a7efc8cd37ea5216bdf9e64a81be98054f56c5ae51cab51512d970158。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c532184a7efc8cd37ea5216bdf9e64a81be98054f56c5ae51cab51512d970158"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "C002",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f6841beb0e5371e7ff66a39308dfaa3adf017bb32798b77306725dead1dd4805。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f6841beb0e5371e7ff66a39308dfaa3adf017bb32798b77306725dead1dd4805"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "C003",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/33d16dc2927290734b1165dc2d10085f2e94f49f2455dc4abb27c01383b0dac9。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/33d16dc2927290734b1165dc2d10085f2e94f49f2455dc4abb27c01383b0dac9"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "C004",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ed88ceb91ea118871e3d92ded0f92b9d78ca33edb082dac8dccdf4aaae7b1708。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ed88ceb91ea118871e3d92ded0f92b9d78ca33edb082dac8dccdf4aaae7b1708"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "C006",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9be4e470d79ca41c0320eccc32c02ec295a9e2bb153d580531468220959d28c7。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9be4e470d79ca41c0320eccc32c02ec295a9e2bb153d580531468220959d28c7"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "C007",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/05bcbc04ff85cb9aa7c259382e8e8e5034df80ec320805345fcffeff48f0924d。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/05bcbc04ff85cb9aa7c259382e8e8e5034df80ec320805345fcffeff48f0924d"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "C008",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/92441866eb8b77616865703b54f92b60ce48dac5f20bbabb1a3c40c5b45c24f2。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/92441866eb8b77616865703b54f92b60ce48dac5f20bbabb1a3c40c5b45c24f2"
+      ]
+    },
+    {
+      "id": 16,
+      "name": "C009",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1880e10b2f2dd8dfa4ad2404501defc14bc6268cc42f6770232230b2809c9050。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1880e10b2f2dd8dfa4ad2404501defc14bc6268cc42f6770232230b2809c9050"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "C010",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/fe065061fb258f21c41b73a9cc1230e0fd3b444ed49137d8708fbef873dbf656。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/fe065061fb258f21c41b73a9cc1230e0fd3b444ed49137d8708fbef873dbf656"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "C012",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/94ced566cb829e71abbb14e25569ef5dcc5a48873f103cc94ea315cd81d75406。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/94ced566cb829e71abbb14e25569ef5dcc5a48873f103cc94ea315cd81d75406"
+      ]
+    },
+    {
+      "id": 19,
+      "name": "C013",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/a3f72a9177e78c42db2c1eba80d3050ae0bc33ed631cd07e950433a778268f73。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/a3f72a9177e78c42db2c1eba80d3050ae0bc33ed631cd07e950433a778268f73"
+      ]
+    },
+    {
+      "id": 20,
+      "name": "C014",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ba00a251a3cf31a5b9f0dc4bc5958af73e4b9fec3fe4cedec12463fcb93e032c。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ba00a251a3cf31a5b9f0dc4bc5958af73e4b9fec3fe4cedec12463fcb93e032c"
+      ]
+    },
+    {
+      "id": 21,
+      "name": "C015",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1438f42b7e61d38b3b1440d4f2fffc4e605a47eccc2688c54a3035231db4a817。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1438f42b7e61d38b3b1440d4f2fffc4e605a47eccc2688c54a3035231db4a817"
+      ]
+    },
+    {
+      "id": 22,
+      "name": "C016",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f0c59917b3e7eef9281fc0d049b28eda6e8b9843052a7efe1d54c792283b17e1。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f0c59917b3e7eef9281fc0d049b28eda6e8b9843052a7efe1d54c792283b17e1"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "C017",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/98d77b0c164e6bdb02ad864563f72e2565a65a452692a0c2cdf0bdb93ec4a2e1。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/98d77b0c164e6bdb02ad864563f72e2565a65a452692a0c2cdf0bdb93ec4a2e1"
+      ]
+    },
+    {
+      "id": 24,
+      "name": "C018",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f37a9e2a927cb13a2afd18df669bec3a384dfa96abae4a3993278866c7537793。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f37a9e2a927cb13a2afd18df669bec3a384dfa96abae4a3993278866c7537793"
+      ]
+    },
+    {
+      "id": 25,
+      "name": "C019",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/2a475c1d6d0821b1986392cf1ba47ab248c5bbc8142728cd75d35a4c5572bb8e。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/2a475c1d6d0821b1986392cf1ba47ab248c5bbc8142728cd75d35a4c5572bb8e"
+      ]
+    },
+    {
+      "id": 26,
+      "name": "C020",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/aab5ee383f4159783baeccdd77f7d33d4f1e0f39ee82e3d6dc34fc1298db66f5。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/aab5ee383f4159783baeccdd77f7d33d4f1e0f39ee82e3d6dc34fc1298db66f5"
+      ]
+    },
+    {
+      "id": 27,
+      "name": "C021",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f55019a3f6ed1cff58bfad0e32a33423791f57de1a1eeebe95a74c6947b17721。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f55019a3f6ed1cff58bfad0e32a33423791f57de1a1eeebe95a74c6947b17721"
+      ]
+    },
+    {
+      "id": 28,
+      "name": "C022",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/581191abc392b34da8f74a41eb5947a85b21a971757b9fb539f5b47bd84800f1。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/581191abc392b34da8f74a41eb5947a85b21a971757b9fb539f5b47bd84800f1"
+      ]
+    },
+    {
+      "id": 29,
+      "name": "C023",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/bc590619d559a6313dd48cdf3fb1a035cfe339788841848e5a9f3b271f488098。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/bc590619d559a6313dd48cdf3fb1a035cfe339788841848e5a9f3b271f488098"
+      ]
+    },
+    {
+      "id": 30,
+      "name": "C024",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/480d293daedb65aa38298af23ccdb504493ac891c6ee22e3ba763eab3e44063a。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/480d293daedb65aa38298af23ccdb504493ac891c6ee22e3ba763eab3e44063a"
+      ]
+    },
+    {
+      "id": 31,
+      "name": "C025",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/93856b88683ef32ea1e7b5243cc7375d9cd27a9aebf8d1e6d3fab83aba5014e1。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/93856b88683ef32ea1e7b5243cc7375d9cd27a9aebf8d1e6d3fab83aba5014e1"
+      ]
+    },
+    {
+      "id": 32,
+      "name": "C026",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/79e42a67355615e2d2a98d19a7f55fe8c42cd23d62d9cadcffcc450af35f2ba0。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/79e42a67355615e2d2a98d19a7f55fe8c42cd23d62d9cadcffcc450af35f2ba0"
+      ]
+    },
+    {
+      "id": 33,
+      "name": "C027",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b1f76e5c6f357942f2cb96fc1551f933f0e1dc1b757bb0705df040376047bde4。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b1f76e5c6f357942f2cb96fc1551f933f0e1dc1b757bb0705df040376047bde4"
+      ]
+    },
+    {
+      "id": 34,
+      "name": "C028",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/36e62f57538df7c0c7d6a48f50cabee25086b8e081678fa69f91b42c1fb7f2b5。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/36e62f57538df7c0c7d6a48f50cabee25086b8e081678fa69f91b42c1fb7f2b5"
+      ]
+    },
+    {
+      "id": 35,
+      "name": "C029",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/d12ae2158fe1b0294376743a4ff63643e8b06f195aa367658d6bf7dfc0bcb3c2。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/d12ae2158fe1b0294376743a4ff63643e8b06f195aa367658d6bf7dfc0bcb3c2"
+      ]
+    },
+    {
+      "id": 36,
+      "name": "C030",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/99ad8026b8ddada8021390dc98773eeb3d0765830af4bc58d0dfbecee98a1e52。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/99ad8026b8ddada8021390dc98773eeb3d0765830af4bc58d0dfbecee98a1e52"
+      ]
+    },
+    {
+      "id": 37,
+      "name": "C031",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c7d678ece2888452b895b7d872551b4cf51cec0892d7fde3cea4785031762b87。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c7d678ece2888452b895b7d872551b4cf51cec0892d7fde3cea4785031762b87"
+      ]
+    },
+    {
+      "id": 38,
+      "name": "C032",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/4185eea7f8ff031a321c785b7ec238fa3e73c6db96255b881863acfeae712b77。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/4185eea7f8ff031a321c785b7ec238fa3e73c6db96255b881863acfeae712b77"
+      ]
+    },
+    {
+      "id": 39,
+      "name": "C033",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/8d9c5a550cd1e1c0bb8f32472c0e147179be6ad31042dd9498a4b5369ebaf8ca。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/8d9c5a550cd1e1c0bb8f32472c0e147179be6ad31042dd9498a4b5369ebaf8ca"
+      ]
+    },
+    {
+      "id": 40,
+      "name": "C034",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b071d44b0b91e9e2a2b2b296e884a679eebf251720a423f7395731e20fe21d65。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b071d44b0b91e9e2a2b2b296e884a679eebf251720a423f7395731e20fe21d65"
+      ]
+    },
+    {
+      "id": 41,
+      "name": "C035",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b8f57d770f4ed67ecffb027910b47c686ace29dc65834402b857f975cbae5da3。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b8f57d770f4ed67ecffb027910b47c686ace29dc65834402b857f975cbae5da3"
+      ]
+    },
+    {
+      "id": 42,
+      "name": "C036",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ec132f5710b0e3d4134c471f39892982c7af4e53cab80486e2cd704673327816。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ec132f5710b0e3d4134c471f39892982c7af4e53cab80486e2cd704673327816"
+      ]
+    },
+    {
+      "id": 43,
+      "name": "C037",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/eddb8624ca59c39861808aa92ab1c5cb3949f08bf09720357d6af71176ab0533。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/eddb8624ca59c39861808aa92ab1c5cb3949f08bf09720357d6af71176ab0533"
+      ]
+    },
+    {
+      "id": 44,
+      "name": "C038",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/6926eb3597c8fe921ebc59e2863633a4f32679a10d16fbbf122034e785ff56fd。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/6926eb3597c8fe921ebc59e2863633a4f32679a10d16fbbf122034e785ff56fd"
+      ]
+    },
+    {
+      "id": 45,
+      "name": "C039",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/47c9d92180616eabaeed16024446fed4bc94f5c71b0539f0e9072be6a85ea841。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/47c9d92180616eabaeed16024446fed4bc94f5c71b0539f0e9072be6a85ea841"
+      ]
+    },
+    {
+      "id": 46,
+      "name": "C040",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/6d91072aeb5ea245801f610bdcb861396ca46f0f62d25e3254e6048b9cf6df6e。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/6d91072aeb5ea245801f610bdcb861396ca46f0f62d25e3254e6048b9cf6df6e"
+      ]
+    },
+    {
+      "id": 47,
+      "name": "C041",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c4cae5fe68804ee34bd19d69337af318c98f96a234f9fa2754075728d57b7c39。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c4cae5fe68804ee34bd19d69337af318c98f96a234f9fa2754075728d57b7c39"
+      ]
+    },
+    {
+      "id": 48,
+      "name": "C042",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c55f6cc7e172a65946a36ff7c6350c4e86d04cd4d13986773c64d67be3d86e8c。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c55f6cc7e172a65946a36ff7c6350c4e86d04cd4d13986773c64d67be3d86e8c"
+      ]
+    },
+    {
+      "id": 49,
+      "name": "C043",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9cc300207c3fcab18b5376c300254268d20393653e63d5b62f02bfe97cba9a9d。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9cc300207c3fcab18b5376c300254268d20393653e63d5b62f02bfe97cba9a9d"
+      ]
+    },
+    {
+      "id": 50,
+      "name": "C044",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9a52bec2a7fa83b4a42c88c5b5398797b48c85372e9dfe1cc427d305c07e4bfb。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9a52bec2a7fa83b4a42c88c5b5398797b48c85372e9dfe1cc427d305c07e4bfb"
+      ]
+    },
+    {
+      "id": 51,
+      "name": "C045",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f916ee3a14006367babab9532962807994cb80bd596443253d6eea3ca3d69fce。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f916ee3a14006367babab9532962807994cb80bd596443253d6eea3ca3d69fce"
+      ]
+    },
+    {
+      "id": 52,
+      "name": "C046",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9336f3d2b2740e6bfc69574bfa432ce1418e53135fd2994172c3539a0f4e1bd3。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9336f3d2b2740e6bfc69574bfa432ce1418e53135fd2994172c3539a0f4e1bd3"
+      ]
+    },
+    {
+      "id": 53,
+      "name": "C047",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/15e5df433e4aa3cb8d26c5b8fbf30b5a18f8fee0cf64cd857e2a1e0ff12d3cf7。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/15e5df433e4aa3cb8d26c5b8fbf30b5a18f8fee0cf64cd857e2a1e0ff12d3cf7"
+      ]
+    },
+    {
+      "id": 54,
+      "name": "C048",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/aaf96bf203a1257974cff0a93a943d6f1026a9b2fc84dc913e5744115dd81805。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/aaf96bf203a1257974cff0a93a943d6f1026a9b2fc84dc913e5744115dd81805"
+      ]
+    },
+    {
+      "id": 55,
+      "name": "C049",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/3f0e5f38e46dd8bdf81e94288f4764c851fa3e34b0f9c2e6c48b1c99bc7efae3。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/3f0e5f38e46dd8bdf81e94288f4764c851fa3e34b0f9c2e6c48b1c99bc7efae3"
+      ]
+    },
+    {
+      "id": 56,
+      "name": "C050",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c6e0baaf75c3e03d4efd224c56827fc9de042779dbd09e7450382ab008755b5b。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c6e0baaf75c3e03d4efd224c56827fc9de042779dbd09e7450382ab008755b5b"
+      ]
+    },
+    {
+      "id": 57,
+      "name": "C051",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/565aa913633979f7c7bfe1d8086f7c289f8bbc340af7b1441b8b67dc626fee6c。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/565aa913633979f7c7bfe1d8086f7c289f8bbc340af7b1441b8b67dc626fee6c"
+      ]
+    },
+    {
+      "id": 58,
+      "name": "C052",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/216e2b1001b7835241396a9279e0c7a6aa7e3d0471510f6d0fe1e201f899abd8。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/216e2b1001b7835241396a9279e0c7a6aa7e3d0471510f6d0fe1e201f899abd8"
+      ]
+    },
+    {
+      "id": 59,
+      "name": "C053",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/3257d0db2b75349bbc43d5af344a1809d8c32ef7daf1654196ea3a3e715bdd8f。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/3257d0db2b75349bbc43d5af344a1809d8c32ef7daf1654196ea3a3e715bdd8f"
+      ]
+    },
+    {
+      "id": 60,
+      "name": "C054",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/8a11d09b492572526b163e2518e874fa3ee0c9b38fb9e7e55cba032f98ebe055。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/8a11d09b492572526b163e2518e874fa3ee0c9b38fb9e7e55cba032f98ebe055"
+      ]
+    },
+    {
+      "id": 61,
+      "name": "C055",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c40b95f35ad4c183ecca51f90ac82d5b5bc910a13613bff32fc89331e02b787d。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c40b95f35ad4c183ecca51f90ac82d5b5bc910a13613bff32fc89331e02b787d"
+      ]
+    },
+    {
+      "id": 62,
+      "name": "C056",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e595c6cf18668d867c1af956cd262d83ee3faee5f5e96dfe2de75fee70a5f30a。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e595c6cf18668d867c1af956cd262d83ee3faee5f5e96dfe2de75fee70a5f30a"
+      ]
+    },
+    {
+      "id": 63,
+      "name": "C057",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/21b4543d32d464993d51cead04bf09b88c646c1f679a9821938e1e86cc8ae3d6。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/21b4543d32d464993d51cead04bf09b88c646c1f679a9821938e1e86cc8ae3d6"
+      ]
+    },
+    {
+      "id": 64,
+      "name": "C059",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/09f0694b1427a519d55ac306e41498f2545e01bd79d3b810b278ceb4d8cf7a99。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/09f0694b1427a519d55ac306e41498f2545e01bd79d3b810b278ceb4d8cf7a99"
+      ]
+    },
+    {
+      "id": 65,
+      "name": "C060",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/01b422a2b9f74a9ed44b2e3b3e4dd87f826fcda641f494db3ace51c6299115e6。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/01b422a2b9f74a9ed44b2e3b3e4dd87f826fcda641f494db3ace51c6299115e6"
+      ]
+    },
+    {
+      "id": 66,
+      "name": "C061",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/258a8a92a8f4df9e61e945c6301d9fd7f6d147cd25cca0c82105548704461b85。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/258a8a92a8f4df9e61e945c6301d9fd7f6d147cd25cca0c82105548704461b85"
+      ]
+    },
+    {
+      "id": 67,
+      "name": "C062",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b6ad238508c3f9f094bce83de554f2480d7ae63a5e183483b0082701af45a2f3。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b6ad238508c3f9f094bce83de554f2480d7ae63a5e183483b0082701af45a2f3"
+      ]
+    },
+    {
+      "id": 68,
+      "name": "C063",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1fe9334db64c02ef29bc1db4b71b1dc01c43974ab5eea5485dcc5e6a7af491b8。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1fe9334db64c02ef29bc1db4b71b1dc01c43974ab5eea5485dcc5e6a7af491b8"
+      ]
+    },
+    {
+      "id": 69,
+      "name": "C064",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ecb2a53b9751d6f0e35e1765df3ab5e957eca68db6e880d1ed7dae0ce1420cfe。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ecb2a53b9751d6f0e35e1765df3ab5e957eca68db6e880d1ed7dae0ce1420cfe"
+      ]
+    },
+    {
+      "id": 70,
+      "name": "C065",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/15fba217c2c551e234d621ca985543e9529a3ad6d5505664b2927b43f90733f3。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/15fba217c2c551e234d621ca985543e9529a3ad6d5505664b2927b43f90733f3"
+      ]
+    },
+    {
+      "id": 71,
+      "name": "C066",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1e618eb416d00541084da52c8378dda274fb0e68e805fcaf9b8568d2605ff75b。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1e618eb416d00541084da52c8378dda274fb0e68e805fcaf9b8568d2605ff75b"
+      ]
+    },
+    {
+      "id": 72,
+      "name": "C067",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/dfee11c935f9fbaad8d5ed0683246a90361faa4e73c2e43fa57919c00e0298cb。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/dfee11c935f9fbaad8d5ed0683246a90361faa4e73c2e43fa57919c00e0298cb"
+      ]
+    },
+    {
+      "id": 73,
+      "name": "C068",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ca2cb240ec833242c46028c3ddb1e3325bdaac54f0220e759484eea9b86a8107。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ca2cb240ec833242c46028c3ddb1e3325bdaac54f0220e759484eea9b86a8107"
+      ]
+    },
+    {
+      "id": 74,
+      "name": "C069",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/a71fd7e2663880828e6e4d5f3a67b3b3977c3360a4ce1db4c2a76af62335eff7。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/a71fd7e2663880828e6e4d5f3a67b3b3977c3360a4ce1db4c2a76af62335eff7"
+      ]
+    },
+    {
+      "id": 75,
+      "name": "C070",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/91fec449009d9cd0e3e7e1305567ad96af54a8804eee645978cf34bf722e33f6。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/91fec449009d9cd0e3e7e1305567ad96af54a8804eee645978cf34bf722e33f6"
+      ]
+    },
+    {
+      "id": 76,
+      "name": "C071",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/790cbfdb93b638de3593ec4a84814476c07cce4c2f37ecb6074fe109cf1617cd。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/790cbfdb93b638de3593ec4a84814476c07cce4c2f37ecb6074fe109cf1617cd"
+      ]
+    },
+    {
+      "id": 77,
+      "name": "C072",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ee0d91c68c8346032040e87b6d9b967a3eb04d0d882500c708cc5268b3e3a0c4。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ee0d91c68c8346032040e87b6d9b967a3eb04d0d882500c708cc5268b3e3a0c4"
+      ]
+    },
+    {
+      "id": 78,
+      "name": "C073",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1cf221843999cef3445db70f065b7845129bea2abc9ff572ce207c6ea8953e2d。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1cf221843999cef3445db70f065b7845129bea2abc9ff572ce207c6ea8953e2d"
+      ]
+    },
+    {
+      "id": 79,
+      "name": "C074",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/57cde6890add0da6bacc17e010c4508a989a220ac3fd6066a685f32e2f45e236。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/57cde6890add0da6bacc17e010c4508a989a220ac3fd6066a685f32e2f45e236"
+      ]
+    },
+    {
+      "id": 80,
+      "name": "C075",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/35b8761b8f445920b8db3bce217a4c7c0abb8fc1abe6dbd39c43d4f1cc2b6160。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/35b8761b8f445920b8db3bce217a4c7c0abb8fc1abe6dbd39c43d4f1cc2b6160"
+      ]
+    },
+    {
+      "id": 81,
+      "name": "C076",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e4244b142c975519b2d4a11639a0750733d1e9de9b02118d54c37ec7dd1f3496。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e4244b142c975519b2d4a11639a0750733d1e9de9b02118d54c37ec7dd1f3496"
+      ]
+    },
+    {
+      "id": 82,
+      "name": "C077",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/d385bfbe04bbf07d66730d37aa8240b3511ba72381a7ad49d349858e66f2c4bc。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/d385bfbe04bbf07d66730d37aa8240b3511ba72381a7ad49d349858e66f2c4bc"
+      ]
+    },
+    {
+      "id": 83,
+      "name": "C078",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/4eaa12b5100c9cb4cbd56033456e917862c71d079f796adfb2637b182cec9cd3。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/4eaa12b5100c9cb4cbd56033456e917862c71d079f796adfb2637b182cec9cd3"
+      ]
+    },
+    {
+      "id": 84,
+      "name": "C079",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1f9c803f1336d4ddf5d11754885a7ae8d966c2ffd48aea6eff157f137d760de7。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1f9c803f1336d4ddf5d11754885a7ae8d966c2ffd48aea6eff157f137d760de7"
+      ]
+    },
+    {
+      "id": 85,
+      "name": "C080",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b8f851c0e620adb2058aa014c363c9b3aa87ff61476d6b43c49bfa55c31b4eeb。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b8f851c0e620adb2058aa014c363c9b3aa87ff61476d6b43c49bfa55c31b4eeb"
+      ]
+    },
+    {
+      "id": 86,
+      "name": "C081",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/4499b9b266bfa183f0977af512427a49f1a6ab7a4f8a71aa5fbad104a91ae78f。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/4499b9b266bfa183f0977af512427a49f1a6ab7a4f8a71aa5fbad104a91ae78f"
+      ]
+    },
+    {
+      "id": 87,
+      "name": "C082",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/3c72adc08c1b943a460ac2aa5c4b5a22f4d4ac38575d85559ad5dca7719305ec。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/3c72adc08c1b943a460ac2aa5c4b5a22f4d4ac38575d85559ad5dca7719305ec"
+      ]
+    },
+    {
+      "id": 88,
+      "name": "C084",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/cefd940e007584f9edcf843fd7f585b88962777073a168b2c1930d24c8c58281。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/cefd940e007584f9edcf843fd7f585b88962777073a168b2c1930d24c8c58281"
+      ]
+    },
+    {
+      "id": 89,
+      "name": "C085",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f4aae151f83e1dd5605020b85d81cfd0c6cecaa28a86147926fe8fec67c992ae。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f4aae151f83e1dd5605020b85d81cfd0c6cecaa28a86147926fe8fec67c992ae"
+      ]
+    },
+    {
+      "id": 90,
+      "name": "C086",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c63634d9344438795bbba4182cff9ddb86f388110e07599c28301edd7b3ff2e8。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c63634d9344438795bbba4182cff9ddb86f388110e07599c28301edd7b3ff2e8"
+      ]
+    },
+    {
+      "id": 91,
+      "name": "C088",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/570a3ee8ddfa08db9ca0e54968536d2d63459f0128fdb1c13b188416981acecb。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/570a3ee8ddfa08db9ca0e54968536d2d63459f0128fdb1c13b188416981acecb"
+      ]
+    },
+    {
+      "id": 92,
+      "name": "C089",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/bf212d985dac8e5c6207e38951fc9864baeb8c54bd11aff24a4be180be29468b。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/bf212d985dac8e5c6207e38951fc9864baeb8c54bd11aff24a4be180be29468b"
+      ]
+    },
+    {
+      "id": 93,
+      "name": "C090",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/8480f29c92057a8c0cb3275a6d08cfbbe26728413fb9c807e2c53e9053c813f8。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/8480f29c92057a8c0cb3275a6d08cfbbe26728413fb9c807e2c53e9053c813f8"
+      ]
+    },
+    {
+      "id": 94,
+      "name": "C092",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9db719ee23b3594c2d0408d169d65cc13762272a6713c8d4cd3ceeba942d21f2。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9db719ee23b3594c2d0408d169d65cc13762272a6713c8d4cd3ceeba942d21f2"
+      ]
+    },
+    {
+      "id": 95,
+      "name": "C093",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/6d75491d1294785fe4682cc88d37198fc044ef6e6bac355e7be192f7ddfb60f2。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/6d75491d1294785fe4682cc88d37198fc044ef6e6bac355e7be192f7ddfb60f2"
+      ]
+    },
+    {
+      "id": 96,
+      "name": "C094",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/27a7a75c6b8f3d304e75fb37ae53c6523ff0c083752b265f8eb1431096350ba2。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/27a7a75c6b8f3d304e75fb37ae53c6523ff0c083752b265f8eb1431096350ba2"
+      ]
+    },
+    {
+      "id": 97,
+      "name": "C095",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/731b8a778b695cdd2734aa559f79a8b6939ac710b56026020fb04cc79239cef9。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/731b8a778b695cdd2734aa559f79a8b6939ac710b56026020fb04cc79239cef9"
+      ]
+    },
+    {
+      "id": 98,
+      "name": "C096",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/86d3707ceba7e3b7c25b8a7899fd73c6f03fc4fc0fc3a213f46c8b2a7bc3462e。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/86d3707ceba7e3b7c25b8a7899fd73c6f03fc4fc0fc3a213f46c8b2a7bc3462e"
+      ]
+    },
+    {
+      "id": 99,
+      "name": "C097",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/3e8f7e643c4e897417f202c73bca8a1c7d2d13ce72c2f8c60bac19098308d67b。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/3e8f7e643c4e897417f202c73bca8a1c7d2d13ce72c2f8c60bac19098308d67b"
+      ]
+    },
+    {
+      "id": 100,
+      "name": "C098",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c0e879337d3d52356ccd708c6e82510c32771b06391ca9df47e82c96a2a1d7d5。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c0e879337d3d52356ccd708c6e82510c32771b06391ca9df47e82c96a2a1d7d5"
+      ]
+    },
+    {
+      "id": 101,
+      "name": "C099",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/cfddc25892f2d8f496eb97842c5087a4e8e549f902f0df6bad667f11959565b2。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/cfddc25892f2d8f496eb97842c5087a4e8e549f902f0df6bad667f11959565b2"
+      ]
+    },
+    {
+      "id": 102,
+      "name": "C100",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/a9c404353bf37606c385941cae4bd0aca6169430052a9f58717531afa54b7084。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/a9c404353bf37606c385941cae4bd0aca6169430052a9f58717531afa54b7084"
+      ]
+    },
+    {
+      "id": 103,
+      "name": "C101",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/055228e2cfcd13d211d9b04307e3ae9eff9d3dde532514ff2808400216d40fc1。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/055228e2cfcd13d211d9b04307e3ae9eff9d3dde532514ff2808400216d40fc1"
+      ]
+    },
+    {
+      "id": 104,
+      "name": "C102",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c8c4c36cdf6733ecaa6867efe228cc274d083c59a4dee85247044d7304229345。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c8c4c36cdf6733ecaa6867efe228cc274d083c59a4dee85247044d7304229345"
+      ]
+    },
+    {
+      "id": 105,
+      "name": "C103",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/140ea6b2c35e888cdd099304c97adcc6aa2ef43a255639027fea9d3313db768d。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/140ea6b2c35e888cdd099304c97adcc6aa2ef43a255639027fea9d3313db768d"
+      ]
+    },
+    {
+      "id": 106,
+      "name": "C104",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/00c3fbb368e21b5cd8cee5ce30e6872efabb091e71b1fd85969d0716012e3b61。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/00c3fbb368e21b5cd8cee5ce30e6872efabb091e71b1fd85969d0716012e3b61"
+      ]
+    },
+    {
+      "id": 107,
+      "name": "C105",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b3239bee4f2659ae41d0695edb359687228895c750d12859487be1ddbaa24580。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b3239bee4f2659ae41d0695edb359687228895c750d12859487be1ddbaa24580"
+      ]
+    },
+    {
+      "id": 108,
+      "name": "C106",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/0dbe6e4ce6f81a2e20dc969b80428f753f47135af05709882f077a5fa65e3b0f。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/0dbe6e4ce6f81a2e20dc969b80428f753f47135af05709882f077a5fa65e3b0f"
+      ]
+    },
+    {
+      "id": 109,
+      "name": "C107",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/713df3b25c6b09abc93836e6212c937f57ccd2b3821637ab5577342fd4fdaf83。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/713df3b25c6b09abc93836e6212c937f57ccd2b3821637ab5577342fd4fdaf83"
+      ]
+    },
+    {
+      "id": 110,
+      "name": "C108",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/46270dec2b4041d01c0f94ae301625bf433f9dbc54fe9b97e9bb6a23ccb6fc16。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/46270dec2b4041d01c0f94ae301625bf433f9dbc54fe9b97e9bb6a23ccb6fc16"
+      ]
+    },
+    {
+      "id": 111,
+      "name": "C109",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e7651f871efb86d01af356b9232efc117959ae546d98893ff8c82592823fe88b。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e7651f871efb86d01af356b9232efc117959ae546d98893ff8c82592823fe88b"
+      ]
+    },
+    {
+      "id": 112,
+      "name": "C110",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b5437c31b2d11b6866bdd3540d203355abbd726656d4c5938e93477ad1708bd2。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b5437c31b2d11b6866bdd3540d203355abbd726656d4c5938e93477ad1708bd2"
+      ]
+    },
+    {
+      "id": 113,
+      "name": "C111",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/97fdcc8a805a5b5a9e952acba435af2647128d597e62ad1d440ae36f4593b069。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/97fdcc8a805a5b5a9e952acba435af2647128d597e62ad1d440ae36f4593b069"
+      ]
+    },
+    {
+      "id": 114,
+      "name": "C112",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/441bbace0d20026363f10f1f71f18ca5806bdc0cbfa3770d1185f024fadeb277。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/441bbace0d20026363f10f1f71f18ca5806bdc0cbfa3770d1185f024fadeb277"
+      ]
+    },
+    {
+      "id": 115,
+      "name": "C113",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1f20f1e9c1c7b998b313ff0614d7615510f2a542bb7fac8305e1551eefe2d51b。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1f20f1e9c1c7b998b313ff0614d7615510f2a542bb7fac8305e1551eefe2d51b"
+      ]
+    },
+    {
+      "id": 116,
+      "name": "C114",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/344c1ba04781c337407ad3d67dcfe6bb6272dd42b6af874f6fa1126130337de0。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/344c1ba04781c337407ad3d67dcfe6bb6272dd42b6af874f6fa1126130337de0"
+      ]
+    },
+    {
+      "id": 117,
+      "name": "C115",
+      "prompt": "调用 $native-card-conversion（Skill：/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion/SKILL.md）转换角色卡/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/205c57f16f0369e87005c3e3624401f18e9ddfcf4d963c81a10c5893084809d8。",
+      "expected_output": "原生ZIP、逐项行为映射及正式导入、回读、运行与视觉验收证据",
+      "files": [
+        "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/205c57f16f0369e87005c3e3624401f18e9ddfcf4d963c81a10c5893084809d8"
+      ]
+    }
+  ]
+}

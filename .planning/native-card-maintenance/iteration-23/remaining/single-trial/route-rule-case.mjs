@@ -1,0 +1,11 @@
+import { readFile, writeFile } from 'node:fs/promises';
+import { pathToFileURL } from 'node:url';
+import { resolve } from 'node:path';
+const root=resolve('.tmp/native-card-conversion/run-pdG3cp/package');
+const before=JSON.parse(await readFile(resolve(root,'state/initial/first.json'),'utf8'));
+const {derive}=await import(pathToFileURL(resolve(root,'backend/variable-tools/derive.js')));
+const facts={ending:{routeRulesLoaded:true,formedRoute:'结局一_离婚',explicitReselection:false,divorceFormed:true,completedStage:null}};
+const candidate=derive({before,candidate:structuredClone(before),facts,priorFacts:[],floorBefore:before});
+const result={scope:'direct converted derive; source rule105 is not activated while E032=false; target profile contains that rule unconditionally',beforeE032:before.世界.已触发事件.事件_E032,beforeRoute:before.世界.终局路线,facts,afterRoute:candidate.世界.终局路线,afterDivorced:candidate.世界.已离婚};
+await writeFile(resolve('.planning/native-card-maintenance/iteration-23/remaining/single-trial/route-rule-result.json'),JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify(result));

@@ -1,0 +1,5 @@
+{
+  "status": 200,
+  "elapsedMs": 1355,
+  "text": "{\"id\":\"gen-1791285203-BQdfT0LX8hwrptqXlDlA\",\"error\":{\"message\":\"Upstream error from Nvidia: ValueError: Grammar error: Unimplemented keys: [\\\"uniqueItems\\\"]\",\"code\":400,\"metadata\":{\"error_type\":\"invalid_request\"}}}"
+}

@@ -1,0 +1,45 @@
+{
+  "audit_scope": [
+    "acceptance-report.md",
+    "next-improvement-plan.md"
+  ],
+  "method": "仅逐行读取两份目标文档，按派发的文字规范审计；未读取参考资料、链接目标或代码，未修改目标文件。",
+  "result": "需要修改",
+  "findings": [
+    {
+      "id": "A1",
+      "file": "acceptance-report.md",
+      "lines": [14, 14],
+      "severity": "low",
+      "problem": "“正式 script-api.md 原有的同一文档修改”把文件指代与已有修改拼接在一起，表述不通顺。",
+      "minimal_suggestion": "将该句改为“正式 script-api.md 的已有修改与本次结构整理共同纳入提交。”"
+    },
+    {
+      "id": "P1",
+      "file": "next-improvement-plan.md",
+      "lines": [117, 117],
+      "related_lines": [38, 38],
+      "severity": "medium",
+      "problem": "第4.9节再次解释“仅供状态 Agent 使用的规则写入状态规则文件”，与第4.1节的写入指令重复；两节分别修改不同 Skill 文件，重复内容还会进入相关联的文档。",
+      "minimal_suggestion": "删除第117行的最后一句。第4.9节保留共享规则通过世界书承载的指令；状态专用规则的写入方法保留在第4.1节。"
+    },
+    {
+      "id": "P2",
+      "file": "next-improvement-plan.md",
+      "lines": [125, 126],
+      "severity": "medium",
+      "problem": "第125行要求计划执行者另写接口修复方案，第126行却直接要求“方案测试”覆盖分支，没有说明本轮执行者应将测试要求写入方案，还是应立即运行接口修复测试。执行阶段与主体不明确。",
+      "minimal_suggestion": "将第126行改为“计划执行者在接口修复方案中列出六个来源全部展开、未知 marker 仍未展开及正文预设不受影响的测试，并要求接口修复执行者逐项对照最终 messages、未解析清单和警告。”"
+    },
+    {
+      "id": "P3",
+      "file": "next-improvement-plan.md",
+      "lines": [135, 138],
+      "related_sections": ["4.4", "4.7", "4.8", "4.9", "4.10"],
+      "severity": "medium",
+      "problem": "验收清单未要求核对终局重选例外、缺失项恢复与文本规范化、同一状态请求的规则次数，也未要求交付第4.7节和第4.10节的接口方案。执行者完成现有清单后，仍可能遗漏这些实施方案规定的产物或结果。",
+      "minimal_suggestion": "在第6节补充验收项：计划执行者保存终局重选、缺失项恢复和文本规范化的逐项结果，确认状态请求中的共享规则各出现一次，并交付供应商发送格式方案和状态预设追踪修复方案。"
+    }
+  ],
+  "remaining_review": "两份文档均具备用途与读取时机，标题及有序列表结构清晰；除列出的问题外，未发现其他影响理解或执行的文字问题。"
+}

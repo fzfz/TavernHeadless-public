@@ -1,0 +1,64 @@
+{
+  "axis": "Spec",
+  "base": "e965c9f",
+  "status": "passed",
+  "findings": [],
+  "reviewMethod": "独立阅读七份已跟踪文件的差异及九份成果的当前正文，核对引用承接与具体职责。只读检查工具入口的任务路径和返回证据字段，未执行转换或启动预览。",
+  "checks": [
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "status": "通过",
+      "locations": [16, 18, 22, 30, 50, 56, 62, 68, 78],
+      "conclusion": "有效文字、HTML、CSS 原文及代码输入、条件、分支、顺序、状态来源和结果仍由最高原则定义。单个 JSON、只读依据和能力扩充等待批准的边界保持完整。字段映射、字符串转义、宏绑定和发送锁的操作对象明确；删去用途未决的尾句后仍引用转换记录格式。"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/acceptance.md",
+      "status": "通过",
+      "locations": [22, 41, 47, 49, 57, 63, 65, 67],
+      "conclusion": "原文与代码核对引用最高原则，继续验收实际读取位置、分支成立与不成立样本以及模型取得事实。离线重放的适用范围完整保留在重放节；删除其他节中的重复说明没有扩大验收结论。"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "status": "通过",
+      "locations": [49, 61, 65, 73, 83, 85, 87],
+      "conclusion": "已按最新正文复核。组件职责、状态输入、计算校验顺序、正式能力检查和同轮结果回传仍完整。第85行分别指明正文模型读取工具结果、后端保存成功正文；删去未指明对象的两种协议尾句后仍保留调用与续写时序，参数契约由 API 引用取得。"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "status": "通过",
+      "locations": [7, 13, 19, 20, 32, 49, 69, 75],
+      "conclusion": "格式容器和版本字段移入格式节，来源依据移至文档开头，平台扩展改为引用对应章节。字段判定、提示实际注入、资源取得授权及目标格式职责仍保留；删除重复原文要求没有撤销最高原则。"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/conversion-map.md",
+      "status": "通过",
+      "locations": [9, 55, 59, 65, 68, 76, 82, 89, 93],
+      "conclusion": "具体目录、固定和可选文件名、格式、创建责任及消费绑定保持明确。文件登记统一在第3章定义，第2章通过引用取得；ruleFiles 全文消费仍保留。状态规则条件、定义及实际输入验收由语义归属和验收文档承接。"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/extension-fields.md",
+      "status": "通过",
+      "locations": [5, 26, 38, 40, 48, 50, 56, 60],
+      "conclusion": "源字段消费者、执行条件、按钮前端职责及实际初始化消费仍保留。自定义字段统一按实际消费者判断；缺失外部资料通过输入读取规则处理。原文、程序转写和目标文件格式由主流程与引用文档取得。"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/semantic-experience.md",
+      "status": "通过",
+      "locations": [5, 7, 16, 20, 26, 35, 39, 46, 58, 65, 72],
+      "conclusion": "表中保留职责、目标文件和执行者，动态条件、算法、标签边界及退出内容的有效部分仍有具体归属。用途未决改为引用记录格式；删去重复原文原则后未增加改写有效文字或删除有效逻辑的权限。"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/tools.md",
+      "status": "通过",
+      "locations": [9, 22, 24, 25, 27, 31, 33, 43, 49, 53, 59],
+      "conclusion": "begin、validate、pack、formal、preview 和 resume 的参数、时机、产物及证据对象明确。语义检查引用核心验收；任务目录与包目录分工保持一致。未赋予源卡、API 或 schema 修改权限。"
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/worldbook-fields.md",
+      "status": "通过",
+      "locations": [11, 13, 26, 28, 54, 71, 73, 95, 101],
+      "conclusion": "读取对象限定为单个源 JSON 内的世界书内容；缺失引用按主流程处理。书级职责、条目触发、扫描、概率组时序及编辑字段各在对应章节说明；明确区分提示扫描与插件显式读取，并把目标格式、能力组合及未决记录交由引用取得。"
+    }
+  ],
+  "summary": "九项通过，未发现本次去重和章节移动造成的需求遗漏、错误设计或未授权范围。完整原文原则与代码等价要求集中在主文档；具体格式、运行关系和验收方式分别由对应章节定义。原报告与待审成果均保持原样。"
+}

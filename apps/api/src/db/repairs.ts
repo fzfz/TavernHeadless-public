@@ -1,0 +1,2421 @@
+import type Database from "better-sqlite3";
+import * as schema from "./schema.js";
+import type { AppDb } from "./client.js";
+import { AssetVersionService } from "../services/asset-version-service.js";
+import { ScopeIntegrityService } from "../services/scope-integrity-service.js";
+
+type SqliteTableInfoRow = {
+  name: string;
+};
+
+function tableExists(sqlite: Database.Database, tableName: string): boolean {
+  const row = sqlite
+    .prepare(
+      "SELECT name FROM sqlite_master WHERE type = 'table' AND name = ? LIMIT 1",
+    )
+    .get(tableName) as { name: string } | undefined;
+
+  return row?.name === tableName;
+}
+
+function getTableColumnNames(
+  sqlite: Database.Database,
+  tableName: string,
+): Set<string> {
+  const rows = sqlite
+    .prepare(`PRAGMA table_info(\`${tableName}\`)`)
+    .all() as SqliteTableInfoRow[];
+
+  return new Set(rows.map((row) => row.name));
+}
+
+/**
+ * 修复已知的 additive migration 漂移。
+ *
+ * 这里处理的不是正常升级路径，而是历史本地库处于“迁移记录已前进，
+ * 但若干纯 additive 的表、索引或列没有真正落到文件上”的异常状态。
+ *
+ * 这类修复只覆盖可安全补齐的 additive 结构：
+ * - 旧表上的新增列
+ * - 缺失的治理/审计辅助表与索引
+ * - session_branch 注册表及其 main branch 回填
+ */
+export function repairKnownAdditiveSchemaDrift(sqlite: Database.Database): void {
+  repairBranchLocalVariableSnapshotDrift(sqlite);
+  repairClientDataPhase2Drift(sqlite);
+  repairSessionStateGovernanceDrift(sqlite);
+  repairSessionBranchRegistryDrift(sqlite);
+  repairWorkspaceProjectScopeDrift(sqlite);
+  repairProjectEventsObserverScopeDrift(sqlite);
+  repairProjectDerivedOutputInboxDrift(sqlite);
+  repairClientIdentityPermissionAuditDrift(sqlite);
+  repairWorkspacePhase5AgenticReadinessDrift(sqlite);
+  repairTemporaryConversationDrift(sqlite);
+  repairNodeGraphRunCleanupDrift(sqlite);
+  repairNodeGraphCheckpointDrift(sqlite);
+  repairClientCapabilityScopeDrift(sqlite);
+  repairWorkspaceMembershipDrift(sqlite);
+  repairGraphAssistantToolPolicyDrift(sqlite);
+  repairGraphAssistantPendingToolCallDrift(sqlite);
+  repairGraphAssistantPromptConfigDrift(sqlite);
+  repairProjectFloorGraphBindingDrift(sqlite);
+  repairFloorResultSnapshotReasoningDrift(sqlite);
+  repairToolExecutionGenerationStepNoDrift(sqlite);
+  repairWorkspaceProjectLifecycleDrift(sqlite);
+  repairToolPolicyPresetDrift(sqlite);
+  repairSessionToolPresetKeyDrift(sqlite);
+  repairSessionTodoListDrift(sqlite);
+  repairLlmProfileBindingSnapshotDrift(sqlite);
+}
+
+function repairLlmProfileBindingSnapshotDrift(sqlite: Database.Database): void {
+  addColumnIfMissing(
+    sqlite,
+    "llm_profile_binding",
+    "profile_snapshot_json",
+    "`profile_snapshot_json` text",
+  );
+}
+
+// SC2-12（批次四）：会话待办事项清单表的 additive 漂移修复——历史库可能尚未创建该表。
+function repairSessionTodoListDrift(sqlite: Database.Database): void {
+  if (!tableExists(sqlite, "account") || !tableExists(sqlite, "session")) {
+    return;
+  }
+
+  if (!tableExists(sqlite, "session_todo_list")) {
+    sqlite.exec(`CREATE TABLE \`session_todo_list\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`session_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`items_json\` text NOT NULL DEFAULT '[]',
+  \`revision\` integer NOT NULL DEFAULT 0,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`session_id\`) REFERENCES \`session\`(\`id\`) ON UPDATE no action ON DELETE cascade,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON UPDATE no action ON DELETE restrict
+);`);
+  }
+
+  sqlite.exec(
+    "CREATE UNIQUE INDEX IF NOT EXISTS `session_todo_list_session_uq` ON `session_todo_list` (`session_id`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `session_todo_list_account_updated_idx` ON `session_todo_list` (`account_id`, `updated_at`);",
+  );
+}
+
+// SC2-10（批次四）：session 新增 tool_preset_key 列的 additive 漂移修复。
+function repairSessionToolPresetKeyDrift(sqlite: Database.Database): void {
+  addColumnIfMissing(
+    sqlite,
+    "session",
+    "tool_preset_key",
+    "`tool_preset_key` text",
+  );
+}
+
+// SC2-10（批次四）：工具策略预设表的 additive 漂移修复——历史库可能尚未创建该表。
+function repairToolPolicyPresetDrift(sqlite: Database.Database): void {
+  if (
+    !tableExists(sqlite, "account") ||
+    !tableExists(sqlite, "workspace") ||
+    !tableExists(sqlite, "project")
+  ) {
+    return;
+  }
+
+  if (!tableExists(sqlite, "tool_policy_preset")) {
+    sqlite.exec(`CREATE TABLE \`tool_policy_preset\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`project_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`preset_key\` text NOT NULL,
+  \`kind\` text NOT NULL DEFAULT 'custom',
+  \`display_name\` text NOT NULL DEFAULT '',
+  \`config_json\` text NOT NULL DEFAULT '{}',
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON UPDATE no action ON DELETE cascade,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON UPDATE no action ON DELETE cascade,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON UPDATE no action ON DELETE restrict
+);`);
+  }
+
+  sqlite.exec(
+    "CREATE UNIQUE INDEX IF NOT EXISTS `tool_policy_preset_project_key_uq` ON `tool_policy_preset` (`project_id`, `preset_key`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `tool_policy_preset_workspace_idx` ON `tool_policy_preset` (`workspace_id`, `created_at`);",
+  );
+}
+
+// WP-A1 / WP-A2：Workspace / Project 生命周期管理的 additive 漂移修复。
+// `workspace.archived_at` / `project.archived_at` 记录归档时间戳；
+// `workspace.kind` 的 `manual` 取值仅在 ORM/服务层约束，列上无 CHECK，无需重建表。
+function repairWorkspaceProjectLifecycleDrift(sqlite: Database.Database): void {
+  addColumnIfMissing(
+    sqlite,
+    "workspace",
+    "archived_at",
+    "`archived_at` integer",
+  );
+  addColumnIfMissing(sqlite, "project", "archived_at", "`archived_at` integer");
+}
+
+// 思维链全链路：floor_result_snapshot 新增 reasoning_text 列的 additive 漂移修复。
+function repairFloorResultSnapshotReasoningDrift(
+  sqlite: Database.Database,
+): void {
+  addColumnIfMissing(
+    sqlite,
+    "floor_result_snapshot",
+    "reasoning_text",
+    "`reasoning_text` text",
+  );
+}
+
+// step 级重试：tool_execution_record 新增 generation_step_no 列的 additive 漂移修复。
+function repairToolExecutionGenerationStepNoDrift(
+  sqlite: Database.Database,
+): void {
+  addColumnIfMissing(
+    sqlite,
+    "tool_execution_record",
+    "generation_step_no",
+    "`generation_step_no` integer",
+  );
+}
+
+function tableHasColumns(
+  sqlite: Database.Database,
+  tableName: string,
+  columnNames: readonly string[],
+): boolean {
+  if (!tableExists(sqlite, tableName)) {
+    return false;
+  }
+
+  const columns = getTableColumnNames(sqlite, tableName);
+  return columnNames.every((columnName) => columns.has(columnName));
+}
+
+function addColumnIfMissing(
+  sqlite: Database.Database,
+  tableName: string,
+  columnName: string,
+  definition: string,
+): void {
+  if (!tableExists(sqlite, tableName)) {
+    return;
+  }
+
+  const columns = getTableColumnNames(sqlite, tableName);
+  if (!columns.has(columnName)) {
+    sqlite.exec(`ALTER TABLE \`${tableName}\` ADD COLUMN ${definition};`);
+  }
+}
+
+function createIndexIfColumnsExist(
+  sqlite: Database.Database,
+  tableName: string,
+  columnNames: readonly string[],
+  statement: string,
+): void {
+  if (tableHasColumns(sqlite, tableName, columnNames)) {
+    sqlite.exec(statement);
+  }
+}
+
+function repairBranchLocalVariableSnapshotDrift(
+  sqlite: Database.Database,
+): void {
+  const tableName = "branch_local_variable_snapshot";
+
+  if (!tableExists(sqlite, tableName)) {
+    return;
+  }
+
+  const columns = getTableColumnNames(sqlite, tableName);
+
+  if (!columns.has("snapshot_version")) {
+    sqlite.exec(
+      "ALTER TABLE `branch_local_variable_snapshot` ADD COLUMN `snapshot_version` integer NOT NULL DEFAULT 1;",
+    );
+    columns.add("snapshot_version");
+  }
+
+  if (!columns.has("provenance_json")) {
+    sqlite.exec(
+      "ALTER TABLE `branch_local_variable_snapshot` ADD COLUMN `provenance_json` text;",
+    );
+  }
+}
+
+function repairClientDataPhase2Drift(sqlite: Database.Database): void {
+  if (tableExists(sqlite, "client_data_domain")) {
+    const domainColumns = getTableColumnNames(sqlite, "client_data_domain");
+    if (!domainColumns.has("version")) {
+      sqlite.exec(
+        "ALTER TABLE `client_data_domain` ADD COLUMN `version` integer NOT NULL DEFAULT 1;",
+      );
+    }
+  }
+
+  if (tableExists(sqlite, "client_data_collection")) {
+    const collectionColumns = getTableColumnNames(
+      sqlite,
+      "client_data_collection",
+    );
+    if (!collectionColumns.has("version")) {
+      sqlite.exec(
+        "ALTER TABLE `client_data_collection` ADD COLUMN `version` integer NOT NULL DEFAULT 1;",
+      );
+    }
+  }
+
+  if (!tableExists(sqlite, "client_data_domain_grant")) {
+    sqlite.exec(`CREATE TABLE \`client_data_domain_grant\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`domain_id\` text NOT NULL,
+  \`grantee_owner_type\` text NOT NULL,
+  \`grantee_owner_id\` text NOT NULL,
+  \`can_read\` integer DEFAULT false NOT NULL,
+  \`can_write\` integer DEFAULT false NOT NULL,
+  \`can_delete\` integer DEFAULT false NOT NULL,
+  \`can_list\` integer DEFAULT false NOT NULL,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  \`expires_at\` integer,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON UPDATE no action ON DELETE restrict,
+  FOREIGN KEY (\`domain_id\`) REFERENCES \`client_data_domain\`(\`id\`) ON UPDATE no action ON DELETE cascade
+);`);
+  }
+  sqlite.exec(
+    "CREATE UNIQUE INDEX IF NOT EXISTS `client_data_domain_grant_unique_uq` ON `client_data_domain_grant` (`domain_id`,`grantee_owner_type`,`grantee_owner_id`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `client_data_domain_grant_account_grantee_idx` ON `client_data_domain_grant` (`account_id`,`grantee_owner_type`,`grantee_owner_id`);",
+  );
+
+  if (!tableExists(sqlite, "client_data_audit_log")) {
+    sqlite.exec(`CREATE TABLE \`client_data_audit_log\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`domain_id\` text,
+  \`owner_type\` text,
+  \`owner_id\` text,
+  \`actor_type\` text NOT NULL,
+  \`actor_id\` text,
+  \`action\` text NOT NULL,
+  \`target_type\` text NOT NULL,
+  \`target_id\` text,
+  \`request_id\` text,
+  \`metadata_json\` text,
+  \`created_at\` integer NOT NULL,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON UPDATE no action ON DELETE restrict,
+  FOREIGN KEY (\`domain_id\`) REFERENCES \`client_data_domain\`(\`id\`) ON UPDATE no action ON DELETE set null
+);`);
+  }
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `client_data_audit_log_account_created_idx` ON `client_data_audit_log` (`account_id`,`created_at`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `client_data_audit_log_domain_created_idx` ON `client_data_audit_log` (`domain_id`,`created_at`);",
+  );
+}
+
+function repairSessionStateGovernanceDrift(sqlite: Database.Database): void {
+  if (!tableExists(sqlite, "client_data_managed_domain")) {
+    sqlite.exec(`CREATE TABLE \`client_data_managed_domain\` (
+  \`domain_id\` text PRIMARY KEY NOT NULL REFERENCES \`client_data_domain\`(\`id\`) ON DELETE cascade,
+  \`account_id\` text NOT NULL REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  \`manager_kind\` text NOT NULL,
+  \`host_type\` text NOT NULL,
+  \`host_id\` text NOT NULL,
+  \`state_namespace\` text NOT NULL,
+  \`require_caller_owner\` integer NOT NULL DEFAULT 1,
+  \`allow_auto_create_collection\` integer NOT NULL DEFAULT 0,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  CHECK(\`manager_kind\` IN ('session_state')),
+  CHECK(\`host_type\` IN ('session'))
+);`);
+  }
+  sqlite.exec(
+    "CREATE UNIQUE INDEX IF NOT EXISTS `client_data_managed_domain_account_manager_host_namespace_uq` ON `client_data_managed_domain` (`account_id`, `manager_kind`, `host_type`, `host_id`, `state_namespace`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `client_data_managed_domain_account_host_idx` ON `client_data_managed_domain` (`account_id`, `host_type`, `host_id`, `state_namespace`);",
+  );
+
+  if (!tableExists(sqlite, "session_state_mutation")) {
+    sqlite.exec(`CREATE TABLE \`session_state_mutation\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`account_id\` text NOT NULL REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  \`domain_id\` text NOT NULL REFERENCES \`client_data_domain\`(\`id\`) ON DELETE cascade,
+  \`state_namespace\` text NOT NULL,
+  \`session_id\` text NOT NULL REFERENCES \`session\`(\`id\`) ON DELETE cascade,
+  \`branch_id\` text NOT NULL,
+  \`source_floor_id\` text REFERENCES \`floor\`(\`id\`) ON DELETE set null,
+  \`target_slot\` text NOT NULL,
+  \`visibility_mode\` text NOT NULL,
+  \`write_mode\` text NOT NULL,
+  \`replay_safety\` text NOT NULL,
+  \`status\` text NOT NULL DEFAULT 'staged',
+  \`request_id\` text,
+  \`run_id\` text,
+  \`payload_json\` text NOT NULL DEFAULT '{}',
+  \`source_snapshot_floor_id\` text REFERENCES \`floor\`(\`id\`) ON DELETE set null,
+  \`live_head_key\` text,
+  \`discard_reason\` text,
+  \`blocked_reason\` text,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  \`applied_at\` integer,
+  CHECK(\`visibility_mode\` IN ('session_shared', 'branch_local', 'fork_on_branch')),
+  CHECK(\`write_mode\` IN ('direct', 'commit_bound')),
+  CHECK(\`replay_safety\` IN ('safe', 'confirm_on_replay', 'never_auto_replay', 'uncertain')),
+  CHECK(\`status\` IN ('staged', 'applied', 'discarded', 'blocked', 'uncertain'))
+);`);
+  }
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `session_state_mutation_session_branch_status_created_idx` ON `session_state_mutation` (`session_id`, `branch_id`, `status`, `created_at`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `session_state_mutation_source_floor_idx` ON `session_state_mutation` (`source_floor_id`, `status`, `created_at`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `session_state_mutation_run_idx` ON `session_state_mutation` (`run_id`, `created_at`);",
+  );
+
+  addColumnIfMissing(
+    sqlite,
+    "session_state_mutation",
+    "source_kind",
+    "`source_kind` text",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session_state_mutation",
+    "source_branch_id",
+    "`source_branch_id` text",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session_state_mutation",
+    "source_page_id",
+    "`source_page_id` text REFERENCES `message_page`(`id`) ON DELETE set null",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session_state_mutation",
+    "actor_client_id",
+    "`actor_client_id` text REFERENCES `client`(`id`) ON DELETE set null",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session_state_mutation",
+    "commit_mode",
+    "`commit_mode` text NOT NULL DEFAULT 'turn_bound'",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session_state_mutation",
+    "decision_status",
+    "`decision_status` text NOT NULL DEFAULT 'accepted'",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session_state_mutation",
+    "decision_reason",
+    "`decision_reason` text",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session_state_mutation",
+    "decision_code",
+    "`decision_code` text",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session_state_mutation",
+    "linked_variable_stage_id",
+    "`linked_variable_stage_id` text REFERENCES `page_staged_variable_write`(`id`) ON DELETE set null",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "session_state_mutation",
+    ["source_page_id", "status", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `session_state_mutation_source_page_idx` ON `session_state_mutation` (`source_page_id`, `status`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "session_state_mutation",
+    ["linked_variable_stage_id"],
+    "CREATE INDEX IF NOT EXISTS `session_state_mutation_linked_variable_stage_idx` ON `session_state_mutation` (`linked_variable_stage_id`);",
+  );
+
+  if (!tableExists(sqlite, "session_state_namespace_registration")) {
+    sqlite.exec(`CREATE TABLE \`session_state_namespace_registration\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`account_id\` text NOT NULL REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  \`session_id\` text NOT NULL REFERENCES \`session\`(\`id\`) ON DELETE cascade,
+  \`domain_id\` text NOT NULL REFERENCES \`client_data_domain\`(\`id\`) ON DELETE cascade,
+  \`namespace\` text NOT NULL,
+  \`logical_owner_type\` text NOT NULL,
+  \`logical_owner_id\` text NOT NULL,
+  \`default_visibility_mode\` text NOT NULL,
+  \`default_write_mode\` text NOT NULL,
+  \`default_replay_safety\` text NOT NULL,
+  \`client_writable\` integer NOT NULL DEFAULT 1,
+  \`allowed_write_modes_json\` text NOT NULL DEFAULT '[]',
+  \`supports_snapshot\` integer NOT NULL DEFAULT 1,
+  \`supports_diff\` integer NOT NULL DEFAULT 1,
+  \`replay_policy_source\` text NOT NULL,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  CHECK(\`default_visibility_mode\` IN ('session_shared', 'branch_local', 'fork_on_branch')),
+  CHECK(\`default_write_mode\` IN ('direct', 'commit_bound')),
+  CHECK(\`default_replay_safety\` IN ('safe', 'confirm_on_replay', 'never_auto_replay', 'uncertain'))
+);`);
+  }
+  sqlite.exec(
+    "CREATE UNIQUE INDEX IF NOT EXISTS `session_state_namespace_registration_account_session_namespace_uq` ON `session_state_namespace_registration` (`account_id`, `session_id`, `namespace`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `session_state_namespace_registration_account_session_created_idx` ON `session_state_namespace_registration` (`account_id`, `session_id`, `created_at`);",
+  );
+  sqlite.exec(
+    "CREATE UNIQUE INDEX IF NOT EXISTS `session_state_namespace_registration_domain_id_uq` ON `session_state_namespace_registration` (`domain_id`);",
+  );
+}
+
+function repairSessionBranchRegistryDrift(sqlite: Database.Database): void {
+  if (!tableExists(sqlite, "session_branch")) {
+    sqlite.exec(`CREATE TABLE \`session_branch\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`account_id\` text NOT NULL REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  \`session_id\` text NOT NULL REFERENCES \`session\`(\`id\`) ON DELETE cascade,
+  \`branch_id\` text NOT NULL,
+  \`source_floor_id\` text REFERENCES \`floor\`(\`id\`) ON DELETE set null,
+  \`source_branch_id\` text,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL
+);`);
+  }
+  sqlite.exec(
+    "CREATE UNIQUE INDEX IF NOT EXISTS `session_branch_account_session_branch_uq` ON `session_branch` (`account_id`,`session_id`,`branch_id`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `session_branch_account_session_created_idx` ON `session_branch` (`account_id`,`session_id`,`created_at`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `session_branch_account_session_branch_created_idx` ON `session_branch` (`account_id`,`session_id`,`branch_id`,`created_at`);",
+  );
+  sqlite.exec(`INSERT OR IGNORE INTO \`session_branch\` (\`id\`, \`account_id\`, \`session_id\`, \`branch_id\`, \`source_floor_id\`, \`source_branch_id\`, \`created_at\`, \`updated_at\`)
+SELECT
+  lower(hex(randomblob(16))),
+  \`s\`.\`account_id\`,
+  \`f\`.\`session_id\`,
+  \`f\`.\`branch_id\`,
+  NULL,
+  NULL,
+  min(\`f\`.\`created_at\`),
+  max(\`f\`.\`updated_at\`)
+FROM \`floor\` AS \`f\`
+INNER JOIN \`session\` AS \`s\` ON \`s\`.\`id\` = \`f\`.\`session_id\`
+GROUP BY \`s\`.\`account_id\`, \`f\`.\`session_id\`, \`f\`.\`branch_id\`;
+INSERT OR IGNORE INTO \`session_branch\` (\`id\`, \`account_id\`, \`session_id\`, \`branch_id\`, \`source_floor_id\`, \`source_branch_id\`, \`created_at\`, \`updated_at\`)
+SELECT
+  lower(hex(randomblob(16))),
+  \`s\`.\`account_id\`,
+  \`s\`.\`id\`,
+  'main',
+  NULL,
+  NULL,
+  \`s\`.\`created_at\`,
+  \`s\`.\`updated_at\`
+FROM \`session\` AS \`s\`
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM \`session_branch\` AS \`sb\`
+  WHERE \`sb\`.\`account_id\` = \`s\`.\`account_id\`
+    AND \`sb\`.\`session_id\` = \`s\`.\`id\`
+    AND \`sb\`.\`branch_id\` = 'main'
+);`);
+}
+
+function repairWorkspaceProjectScopeDrift(sqlite: Database.Database): void {
+  if (!tableExists(sqlite, "account")) {
+    return;
+  }
+
+  if (!tableExists(sqlite, "workspace")) {
+    sqlite.exec(`CREATE TABLE \`workspace\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`name\` text NOT NULL,
+  \`kind\` text NOT NULL DEFAULT 'default',
+  \`is_default\` integer NOT NULL DEFAULT 0,
+  \`status\` text NOT NULL DEFAULT 'active',
+  \`settings_json\` text NOT NULL DEFAULT '{}',
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict
+);`);
+  }
+
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `workspace_account_updated_idx` ON `workspace` (`account_id`, `updated_at`);",
+  );
+  sqlite.exec(
+    "CREATE UNIQUE INDEX IF NOT EXISTS `workspace_account_default_uq` ON `workspace` (`account_id`) WHERE `is_default` = 1;",
+  );
+
+  if (!tableExists(sqlite, "project")) {
+    sqlite.exec(`CREATE TABLE \`project\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`name\` text NOT NULL,
+  \`description\` text,
+  \`kind\` text NOT NULL DEFAULT 'session_default',
+  \`status\` text NOT NULL DEFAULT 'active',
+  \`settings_override_json\` text NOT NULL DEFAULT '{}',
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON DELETE restrict
+);`);
+  }
+
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `project_account_workspace_updated_idx` ON `project` (`account_id`, `workspace_id`, `updated_at`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `project_workspace_updated_idx` ON `project` (`workspace_id`, `updated_at`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `project_account_status_updated_idx` ON `project` (`account_id`, `status`, `updated_at`);",
+  );
+
+  addWorkspaceProjectScopeColumns(sqlite);
+  backfillDefaultWorkspaces(sqlite);
+  backfillWorkspaceIdFromDefaultWorkspace(sqlite, "character");
+  backfillWorkspaceIdFromDefaultWorkspace(sqlite, "account_user");
+  backfillWorkspaceIdFromDefaultWorkspace(sqlite, "preset");
+  backfillWorkspaceIdFromDefaultWorkspace(sqlite, "worldbook");
+  backfillWorkspaceIdFromDefaultWorkspace(sqlite, "regex_profile");
+  backfillWorkspaceIdFromDefaultWorkspace(sqlite, "llm_profile");
+  backfillWorkspaceIdFromDefaultWorkspace(sqlite, "tool_definition");
+  backfillWorkspaceIdFromDefaultWorkspace(sqlite, "mcp_server_config");
+  backfillSessionProjects(sqlite);
+  backfillConfigWorkspaceIds(sqlite, "llm_profile_binding");
+  backfillConfigWorkspaceIds(sqlite, "llm_instance_config");
+  createWorkspaceProjectScopeIndexes(sqlite);
+}
+
+function addWorkspaceProjectScopeColumns(sqlite: Database.Database): void {
+  addColumnIfMissing(
+    sqlite,
+    "session",
+    "workspace_id",
+    "`workspace_id` text REFERENCES `workspace`(`id`) ON DELETE restrict",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session",
+    "project_id",
+    "`project_id` text REFERENCES `project`(`id`) ON DELETE restrict",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "character",
+    "workspace_id",
+    "`workspace_id` text REFERENCES `workspace`(`id`) ON DELETE restrict",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "account_user",
+    "workspace_id",
+    "`workspace_id` text REFERENCES `workspace`(`id`) ON DELETE restrict",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "preset",
+    "workspace_id",
+    "`workspace_id` text REFERENCES `workspace`(`id`) ON DELETE restrict",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "worldbook",
+    "workspace_id",
+    "`workspace_id` text REFERENCES `workspace`(`id`) ON DELETE restrict",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "regex_profile",
+    "workspace_id",
+    "`workspace_id` text REFERENCES `workspace`(`id`) ON DELETE restrict",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "llm_profile",
+    "workspace_id",
+    "`workspace_id` text REFERENCES `workspace`(`id`) ON DELETE restrict",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "llm_profile_binding",
+    "workspace_id",
+    "`workspace_id` text REFERENCES `workspace`(`id`) ON DELETE restrict",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "llm_instance_config",
+    "workspace_id",
+    "`workspace_id` text REFERENCES `workspace`(`id`) ON DELETE restrict",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "tool_definition",
+    "workspace_id",
+    "`workspace_id` text REFERENCES `workspace`(`id`) ON DELETE restrict",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "mcp_server_config",
+    "workspace_id",
+    "`workspace_id` text REFERENCES `workspace`(`id`) ON DELETE restrict",
+  );
+}
+
+function backfillDefaultWorkspaces(sqlite: Database.Database): void {
+  sqlite.exec(`INSERT OR IGNORE INTO \`workspace\` (
+  \`id\`,
+  \`account_id\`,
+  \`name\`,
+  \`kind\`,
+  \`is_default\`,
+  \`status\`,
+  \`settings_json\`,
+  \`created_at\`,
+  \`updated_at\`
+)
+SELECT
+  'ws_default_' || \`account\`.\`id\`,
+  \`account\`.\`id\`,
+  '默认 Workspace',
+  'default',
+  1,
+  'active',
+  '{}',
+  \`account\`.\`created_at\`,
+  \`account\`.\`updated_at\`
+FROM \`account\`
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM \`workspace\`
+  WHERE \`workspace\`.\`account_id\` = \`account\`.\`id\`
+    AND \`workspace\`.\`is_default\` = 1
+);`);
+}
+
+function backfillWorkspaceIdFromDefaultWorkspace(
+  sqlite: Database.Database,
+  tableName: string,
+): void {
+  if (!tableHasColumns(sqlite, tableName, ["account_id", "workspace_id"])) {
+    return;
+  }
+
+  sqlite.exec(`UPDATE \`${tableName}\`
+SET \`workspace_id\` = (
+  SELECT \`workspace\`.\`id\`
+  FROM \`workspace\`
+  WHERE \`workspace\`.\`account_id\` = \`${tableName}\`.\`account_id\`
+    AND \`workspace\`.\`is_default\` = 1
+)
+WHERE \`workspace_id\` IS NULL
+  AND EXISTS (
+    SELECT 1
+    FROM \`workspace\`
+    WHERE \`workspace\`.\`account_id\` = \`${tableName}\`.\`account_id\`
+      AND \`workspace\`.\`is_default\` = 1
+  );`);
+}
+
+function backfillSessionProjects(sqlite: Database.Database): void {
+  if (
+    !tableHasColumns(sqlite, "session", [
+      "id",
+      "account_id",
+      "workspace_id",
+      "project_id",
+      "created_at",
+      "updated_at",
+    ])
+  ) {
+    return;
+  }
+
+  sqlite.exec(`INSERT OR IGNORE INTO \`project\` (
+  \`id\`,
+  \`account_id\`,
+  \`workspace_id\`,
+  \`name\`,
+  \`description\`,
+  \`kind\`,
+  \`status\`,
+  \`settings_override_json\`,
+  \`created_at\`,
+  \`updated_at\`
+)
+SELECT
+  'proj_session_' || \`session\`.\`id\`,
+  \`session\`.\`account_id\`,
+  \`workspace\`.\`id\`,
+  COALESCE(NULLIF(TRIM(\`session\`.\`title\`), ''), '默认项目 - ' || \`session\`.\`id\`),
+  NULL,
+  'session_default',
+  'active',
+  '{}',
+  \`session\`.\`created_at\`,
+  \`session\`.\`updated_at\`
+FROM \`session\`
+JOIN \`workspace\`
+  ON \`workspace\`.\`account_id\` = \`session\`.\`account_id\`
+  AND \`workspace\`.\`is_default\` = 1
+WHERE \`session\`.\`project_id\` IS NULL;
+
+UPDATE \`session\`
+SET
+  \`workspace_id\` = (
+    SELECT \`project\`.\`workspace_id\`
+    FROM \`project\`
+    WHERE \`project\`.\`id\` = 'proj_session_' || \`session\`.\`id\`
+  ),
+  \`project_id\` = 'proj_session_' || \`id\`
+WHERE \`project_id\` IS NULL
+  AND EXISTS (
+    SELECT 1
+    FROM \`project\`
+    WHERE \`project\`.\`id\` = 'proj_session_' || \`session\`.\`id\`
+  );
+
+UPDATE \`session\`
+SET \`workspace_id\` = (
+  SELECT \`project\`.\`workspace_id\`
+  FROM \`project\`
+  WHERE \`project\`.\`id\` = \`session\`.\`project_id\`
+)
+WHERE \`workspace_id\` IS NULL
+  AND \`project_id\` IS NOT NULL
+  AND EXISTS (
+    SELECT 1
+    FROM \`project\`
+    WHERE \`project\`.\`id\` = \`session\`.\`project_id\`
+  );`);
+}
+
+function backfillConfigWorkspaceIds(
+  sqlite: Database.Database,
+  tableName: string,
+): void {
+  if (
+    !tableHasColumns(sqlite, tableName, [
+      "account_id",
+      "workspace_id",
+      "scope",
+      "scope_id",
+    ])
+  ) {
+    return;
+  }
+
+  sqlite.exec(`UPDATE \`${tableName}\`
+SET \`workspace_id\` = COALESCE(
+  CASE
+    WHEN \`scope\` = 'session' THEN (
+      SELECT \`session\`.\`workspace_id\`
+      FROM \`session\`
+      WHERE \`session\`.\`id\` = \`${tableName}\`.\`scope_id\`
+        AND \`session\`.\`account_id\` = \`${tableName}\`.\`account_id\`
+    )
+  END,
+  (
+    SELECT \`workspace\`.\`id\`
+    FROM \`workspace\`
+    WHERE \`workspace\`.\`account_id\` = \`${tableName}\`.\`account_id\`
+      AND \`workspace\`.\`is_default\` = 1
+  )
+)
+WHERE \`workspace_id\` IS NULL;`);
+}
+
+function createWorkspaceProjectScopeIndexes(sqlite: Database.Database): void {
+  createIndexIfColumnsExist(
+    sqlite,
+    "session",
+    ["account_id", "workspace_id", "updated_at"],
+    "CREATE INDEX IF NOT EXISTS `session_account_workspace_updated_idx` ON `session` (`account_id`, `workspace_id`, `updated_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "session",
+    ["account_id", "project_id", "updated_at"],
+    "CREATE INDEX IF NOT EXISTS `session_account_project_updated_idx` ON `session` (`account_id`, `project_id`, `updated_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "session",
+    ["project_id", "updated_at"],
+    "CREATE INDEX IF NOT EXISTS `session_project_updated_idx` ON `session` (`project_id`, `updated_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "character",
+    ["account_id", "workspace_id", "updated_at"],
+    "CREATE INDEX IF NOT EXISTS `character_account_workspace_updated_idx` ON `character` (`account_id`, `workspace_id`, `updated_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "account_user",
+    ["account_id", "workspace_id", "updated_at"],
+    "CREATE INDEX IF NOT EXISTS `account_user_account_workspace_updated_idx` ON `account_user` (`account_id`, `workspace_id`, `updated_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "preset",
+    ["account_id", "workspace_id", "updated_at"],
+    "CREATE INDEX IF NOT EXISTS `preset_account_workspace_updated_idx` ON `preset` (`account_id`, `workspace_id`, `updated_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "worldbook",
+    ["account_id", "workspace_id", "updated_at"],
+    "CREATE INDEX IF NOT EXISTS `worldbook_account_workspace_updated_idx` ON `worldbook` (`account_id`, `workspace_id`, `updated_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "regex_profile",
+    ["account_id", "workspace_id", "updated_at"],
+    "CREATE INDEX IF NOT EXISTS `regex_profile_account_workspace_updated_idx` ON `regex_profile` (`account_id`, `workspace_id`, `updated_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "llm_profile",
+    ["account_id", "workspace_id", "updated_at"],
+    "CREATE INDEX IF NOT EXISTS `llm_profile_account_workspace_updated_idx` ON `llm_profile` (`account_id`, `workspace_id`, `updated_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "llm_profile_binding",
+    ["account_id", "workspace_id", "scope", "scope_id"],
+    "CREATE INDEX IF NOT EXISTS `llm_profile_binding_account_workspace_scope_idx` ON `llm_profile_binding` (`account_id`, `workspace_id`, `scope`, `scope_id`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "llm_instance_config",
+    ["account_id", "workspace_id", "scope", "scope_id"],
+    "CREATE INDEX IF NOT EXISTS `llm_instance_config_account_workspace_scope_idx` ON `llm_instance_config` (`account_id`, `workspace_id`, `scope`, `scope_id`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "tool_definition",
+    ["account_id", "workspace_id", "source"],
+    "CREATE INDEX IF NOT EXISTS `tool_definition_account_workspace_source_idx` ON `tool_definition` (`account_id`, `workspace_id`, `source`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "mcp_server_config",
+    ["account_id", "workspace_id", "updated_at"],
+    "CREATE INDEX IF NOT EXISTS `mcp_server_config_account_workspace_updated_idx` ON `mcp_server_config` (`account_id`, `workspace_id`, `updated_at`);",
+  );
+}
+
+function repairProjectEventsObserverScopeDrift(
+  sqlite: Database.Database,
+): void {
+  if (!tableExists(sqlite, "project")) {
+    return;
+  }
+
+  addProjectEventsObserverScopeColumns(sqlite);
+  createProjectEventsObserverTables(sqlite);
+  backfillOperationLogProjectScope(sqlite);
+  backfillProjectOwnerMemberships(sqlite);
+  backfillProjectEventSequences(sqlite);
+  createProjectEventsObserverIndexes(sqlite);
+}
+
+function addProjectEventsObserverScopeColumns(sqlite: Database.Database): void {
+  addColumnIfMissing(
+    sqlite,
+    "operation_log",
+    "workspace_id",
+    "`workspace_id` text REFERENCES `workspace`(`id`) ON DELETE set null",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "operation_log",
+    "project_id",
+    "`project_id` text REFERENCES `project`(`id`) ON DELETE set null",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "operation_log",
+    "actor_account_id",
+    "`actor_account_id` text REFERENCES `account`(`id`) ON DELETE set null",
+  );
+}
+
+function createProjectEventsObserverTables(sqlite: Database.Database): void {
+  if (!tableExists(sqlite, "project_event_sequence")) {
+    sqlite.exec(`CREATE TABLE \`project_event_sequence\` (
+  \`project_id\` text PRIMARY KEY NOT NULL,
+  \`current_sequence\` integer NOT NULL DEFAULT 0,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON DELETE restrict
+);`);
+  }
+
+  if (!tableExists(sqlite, "project_event")) {
+    sqlite.exec(`CREATE TABLE \`project_event\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`project_id\` text NOT NULL,
+  \`sequence\` integer NOT NULL,
+  \`type\` text NOT NULL,
+  \`visibility\` text NOT NULL DEFAULT 'project',
+  \`source\` text NOT NULL DEFAULT 'api',
+  \`actor_account_id\` text,
+  \`session_id\` text,
+  \`branch_id\` text,
+  \`floor_id\` text,
+  \`page_id\` text,
+  \`message_id\` text,
+  \`operation_log_id\` text,
+  \`correlation_id\` text,
+  \`causation_event_id\` text,
+  \`payload_json\` text NOT NULL DEFAULT '{}',
+  \`created_at\` integer NOT NULL,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`actor_account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`session_id\`) REFERENCES \`session\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`floor_id\`) REFERENCES \`floor\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`page_id\`) REFERENCES \`message_page\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`message_id\`) REFERENCES \`message\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`operation_log_id\`) REFERENCES \`operation_log\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`causation_event_id\`) REFERENCES \`project_event\`(\`id\`) ON DELETE set null
+);`);
+  }
+
+  if (!tableExists(sqlite, "project_membership")) {
+    sqlite.exec(`CREATE TABLE \`project_membership\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`project_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`role\` text NOT NULL,
+  \`status\` text NOT NULL DEFAULT 'active',
+  \`created_by_account_id\` text,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`created_by_account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE set null
+);`);
+  }
+}
+
+function backfillOperationLogProjectScope(sqlite: Database.Database): void {
+  if (
+    !tableHasColumns(sqlite, "operation_log", [
+      "account_id",
+      "actor_type",
+      "actor_id",
+      "workspace_id",
+      "project_id",
+      "actor_account_id",
+      "metadata_json",
+    ])
+  ) {
+    return;
+  }
+
+  sqlite.exec(`UPDATE \`operation_log\`
+SET \`actor_account_id\` = \`actor_id\`
+WHERE \`actor_type\` = 'account'
+  AND \`actor_id\` IS NOT NULL
+  AND trim(\`actor_id\`) <> ''
+  AND (\`actor_account_id\` IS NULL OR \`actor_account_id\` <> \`actor_id\`)
+  AND EXISTS (
+    SELECT 1
+    FROM \`account\`
+    WHERE \`account\`.\`id\` = \`operation_log\`.\`actor_id\`
+  );
+
+UPDATE \`operation_log\`
+SET \`actor_account_id\` = \`account_id\`
+WHERE (\`actor_account_id\` IS NULL OR trim(\`actor_account_id\`) = '')
+  AND \`account_id\` IS NOT NULL
+  AND trim(\`account_id\`) <> '';`);
+
+  sqlite.exec(`UPDATE \`operation_log\`
+SET \`workspace_id\` = COALESCE(
+  CASE
+    WHEN \`metadata_json\` IS NOT NULL AND json_valid(\`metadata_json\`) THEN NULLIF(TRIM(CAST(json_extract(\`metadata_json\`, '$.workspace_id') AS TEXT)), '')
+  END,
+  CASE
+    WHEN \`session_id\` IS NOT NULL THEN (
+      SELECT \`session\`.\`workspace_id\`
+      FROM \`session\`
+      WHERE \`session\`.\`id\` = \`operation_log\`.\`session_id\`
+    )
+  END
+)
+WHERE \`workspace_id\` IS NULL;`);
+
+  sqlite.exec(`UPDATE \`operation_log\`
+SET \`project_id\` = COALESCE(
+  CASE
+    WHEN \`metadata_json\` IS NOT NULL AND json_valid(\`metadata_json\`) THEN NULLIF(TRIM(CAST(json_extract(\`metadata_json\`, '$.project_id') AS TEXT)), '')
+  END,
+  CASE
+    WHEN \`session_id\` IS NOT NULL THEN (
+      SELECT \`session\`.\`project_id\`
+      FROM \`session\`
+      WHERE \`session\`.\`id\` = \`operation_log\`.\`session_id\`
+    )
+  END
+)
+WHERE \`project_id\` IS NULL;`);
+}
+
+function backfillProjectOwnerMemberships(sqlite: Database.Database): void {
+  if (
+    !tableHasColumns(sqlite, "project_membership", [
+      "id",
+      "workspace_id",
+      "project_id",
+      "account_id",
+      "role",
+      "status",
+      "created_at",
+      "updated_at",
+    ])
+  ) {
+    return;
+  }
+
+  sqlite.exec(`INSERT OR IGNORE INTO \`project_membership\` (
+  \`id\`,
+  \`workspace_id\`,
+  \`project_id\`,
+  \`account_id\`,
+  \`role\`,
+  \`status\`,
+  \`created_by_account_id\`,
+  \`created_at\`,
+  \`updated_at\`
+)
+SELECT
+  'pmem_owner_' || \`project\`.\`id\`,
+  \`project\`.\`workspace_id\`,
+  \`project\`.\`id\`,
+  \`project\`.\`account_id\`,
+  'owner',
+  'active',
+  NULL,
+  \`project\`.\`created_at\`,
+  \`project\`.\`updated_at\`
+FROM \`project\`;`);
+}
+
+function backfillProjectEventSequences(sqlite: Database.Database): void {
+  if (
+    !tableHasColumns(sqlite, "project_event_sequence", [
+      "project_id",
+      "current_sequence",
+      "updated_at",
+    ])
+  ) {
+    return;
+  }
+
+  sqlite.exec(`INSERT OR IGNORE INTO \`project_event_sequence\` (
+  \`project_id\`,
+  \`current_sequence\`,
+  \`updated_at\`
+)
+SELECT
+  \`project\`.\`id\`,
+  0,
+  \`project\`.\`updated_at\`
+FROM \`project\`;`);
+}
+
+function createProjectEventsObserverIndexes(sqlite: Database.Database): void {
+  createIndexIfColumnsExist(
+    sqlite,
+    "operation_log",
+    ["workspace_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `operation_log_workspace_created_idx` ON `operation_log` (`workspace_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "operation_log",
+    ["project_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `operation_log_project_created_idx` ON `operation_log` (`project_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "operation_log",
+    ["actor_account_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `operation_log_actor_account_created_idx` ON `operation_log` (`actor_account_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_event",
+    ["project_id", "sequence"],
+    "CREATE INDEX IF NOT EXISTS `project_event_project_sequence_idx` ON `project_event` (`project_id`, `sequence`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_event",
+    ["workspace_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `project_event_workspace_created_idx` ON `project_event` (`workspace_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_event",
+    ["project_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `project_event_project_created_idx` ON `project_event` (`project_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_event",
+    ["session_id", "sequence"],
+    "CREATE INDEX IF NOT EXISTS `project_event_session_sequence_idx` ON `project_event` (`session_id`, `sequence`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_event",
+    ["project_id", "type", "sequence"],
+    "CREATE INDEX IF NOT EXISTS `project_event_project_type_sequence_idx` ON `project_event` (`project_id`, `type`, `sequence`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_event",
+    ["operation_log_id"],
+    "CREATE INDEX IF NOT EXISTS `project_event_operation_log_idx` ON `project_event` (`operation_log_id`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_event",
+    ["project_id", "sequence"],
+    "CREATE UNIQUE INDEX IF NOT EXISTS `project_event_project_sequence_uq` ON `project_event` (`project_id`, `sequence`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_membership",
+    ["project_id", "account_id"],
+    "CREATE UNIQUE INDEX IF NOT EXISTS `project_membership_project_account_uq` ON `project_membership` (`project_id`, `account_id`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_membership",
+    ["account_id", "status"],
+    "CREATE INDEX IF NOT EXISTS `project_membership_account_status_idx` ON `project_membership` (`account_id`, `status`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_membership",
+    ["project_id", "role", "status"],
+    "CREATE INDEX IF NOT EXISTS `project_membership_project_role_status_idx` ON `project_membership` (`project_id`, `role`, `status`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_membership",
+    ["workspace_id", "account_id"],
+    "CREATE INDEX IF NOT EXISTS `project_membership_workspace_account_idx` ON `project_membership` (`workspace_id`, `account_id`);",
+  );
+}
+
+function repairProjectDerivedOutputInboxDrift(sqlite: Database.Database): void {
+  if (!tableExists(sqlite, "project")) {
+    return;
+  }
+
+  createProjectDerivedOutputInboxTables(sqlite);
+  createProjectDerivedOutputInboxIndexes(sqlite);
+}
+
+function createProjectDerivedOutputInboxTables(
+  sqlite: Database.Database,
+): void {
+  if (!tableExists(sqlite, "derived_output")) {
+    sqlite.exec(`CREATE TABLE \`derived_output\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`project_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`owner_account_id\` text NOT NULL,
+  \`source_session_id\` text,
+  \`source_floor_id\` text,
+  \`source_page_id\` text,
+  \`domain\` text NOT NULL,
+  \`value_json\` text NOT NULL DEFAULT '{}',
+  \`status\` text NOT NULL DEFAULT 'draft',
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`owner_account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`source_session_id\`) REFERENCES \`session\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`source_floor_id\`) REFERENCES \`floor\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`source_page_id\`) REFERENCES \`message_page\`(\`id\`) ON DELETE set null
+);`);
+  }
+
+  if (!tableExists(sqlite, "project_inbox_item")) {
+    sqlite.exec(`CREATE TABLE \`project_inbox_item\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`project_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`sender_account_id\` text NOT NULL,
+  \`type\` text NOT NULL,
+  \`title\` text,
+  \`payload_json\` text NOT NULL DEFAULT '{}',
+  \`source_event_id\` text,
+  \`source_session_id\` text,
+  \`source_floor_id\` text,
+  \`source_page_id\` text,
+  \`status\` text NOT NULL DEFAULT 'pending',
+  \`decided_by_account_id\` text,
+  \`decided_at\` integer,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`sender_account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`source_event_id\`) REFERENCES \`project_event\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`source_session_id\`) REFERENCES \`session\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`source_floor_id\`) REFERENCES \`floor\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`source_page_id\`) REFERENCES \`message_page\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`decided_by_account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE set null
+);`);
+  }
+}
+
+function createProjectDerivedOutputInboxIndexes(
+  sqlite: Database.Database,
+): void {
+  createIndexIfColumnsExist(
+    sqlite,
+    "derived_output",
+    ["project_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `derived_output_project_created_idx` ON `derived_output` (`project_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "derived_output",
+    ["project_id", "domain", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `derived_output_project_domain_idx` ON `derived_output` (`project_id`, `domain`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "derived_output",
+    ["owner_account_id", "project_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `derived_output_owner_project_idx` ON `derived_output` (`owner_account_id`, `project_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "derived_output",
+    ["source_session_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `derived_output_source_session_idx` ON `derived_output` (`source_session_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "derived_output",
+    ["workspace_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `derived_output_workspace_created_idx` ON `derived_output` (`workspace_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_inbox_item",
+    ["project_id", "status", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `project_inbox_project_status_created_idx` ON `project_inbox_item` (`project_id`, `status`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_inbox_item",
+    ["project_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `project_inbox_project_created_idx` ON `project_inbox_item` (`project_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_inbox_item",
+    ["sender_account_id", "project_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `project_inbox_sender_project_idx` ON `project_inbox_item` (`sender_account_id`, `project_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_inbox_item",
+    ["workspace_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `project_inbox_workspace_created_idx` ON `project_inbox_item` (`workspace_id`, `created_at`);",
+  );
+}
+
+function repairClientIdentityPermissionAuditDrift(
+  sqlite: Database.Database,
+): void {
+  if (!tableExists(sqlite, "account")) {
+    return;
+  }
+
+  createClientIdentityTables(sqlite);
+  addClientIdentityColumns(sqlite);
+  backfillProjectMembershipSubjects(sqlite);
+  dropLegacyProjectMembershipAccountUnique(sqlite);
+  createClientIdentityIndexes(sqlite);
+  ensureDefaultClientsForAccounts(sqlite);
+}
+
+function createClientIdentityTables(sqlite: Database.Database): void {
+  if (!tableExists(sqlite, "client")) {
+    sqlite.exec(`CREATE TABLE \`client\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`name\` text NOT NULL,
+  \`kind\` text NOT NULL DEFAULT 'custom',
+  \`status\` text NOT NULL DEFAULT 'active',
+  \`is_default\` integer NOT NULL DEFAULT 0,
+  \`metadata_json\` text NOT NULL DEFAULT '{}',
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict
+);`);
+  }
+
+  if (!tableExists(sqlite, "client_api_key")) {
+    sqlite.exec(`CREATE TABLE \`client_api_key\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`client_id\` text NOT NULL,
+  \`name\` text,
+  \`key_prefix\` text NOT NULL,
+  \`key_hash\` text NOT NULL,
+  \`status\` text NOT NULL DEFAULT 'active',
+  \`last_used_at\` integer,
+  \`expires_at\` integer,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`client_id\`) REFERENCES \`client\`(\`id\`) ON DELETE cascade
+);`);
+  }
+}
+
+function addClientIdentityColumns(sqlite: Database.Database): void {
+  addColumnIfMissing(
+    sqlite,
+    "project_membership",
+    "subject_type",
+    "`subject_type` text",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "project_membership",
+    "subject_id",
+    "`subject_id` text",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "project_membership",
+    "client_id",
+    "`client_id` text REFERENCES `client`(`id`) ON DELETE set null",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "project_membership",
+    "created_by_client_id",
+    "`created_by_client_id` text REFERENCES `client`(`id`) ON DELETE set null",
+  );
+
+  addColumnIfMissing(
+    sqlite,
+    "operation_log",
+    "actor_client_id",
+    "`actor_client_id` text REFERENCES `client`(`id`) ON DELETE set null",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "operation_log",
+    "permission_action",
+    "`permission_action` text",
+  );
+  addColumnIfMissing(sqlite, "operation_log", "result", "`result` text");
+  addColumnIfMissing(sqlite, "operation_log", "reason", "`reason` text");
+
+  addColumnIfMissing(
+    sqlite,
+    "project_event",
+    "actor_client_id",
+    "`actor_client_id` text REFERENCES `client`(`id`) ON DELETE set null",
+  );
+
+  addColumnIfMissing(
+    sqlite,
+    "derived_output",
+    "owner_client_id",
+    "`owner_client_id` text REFERENCES `client`(`id`) ON DELETE set null",
+  );
+
+  addColumnIfMissing(
+    sqlite,
+    "project_inbox_item",
+    "sender_client_id",
+    "`sender_client_id` text REFERENCES `client`(`id`) ON DELETE set null",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "project_inbox_item",
+    "decided_by_client_id",
+    "`decided_by_client_id` text REFERENCES `client`(`id`) ON DELETE set null",
+  );
+}
+
+function backfillProjectMembershipSubjects(sqlite: Database.Database): void {
+  if (
+    !tableHasColumns(sqlite, "project_membership", [
+      "account_id",
+      "subject_type",
+      "subject_id",
+    ])
+  ) {
+    return;
+  }
+
+  sqlite.exec(`UPDATE \`project_membership\`
+SET \`subject_type\` = 'account', \`subject_id\` = \`account_id\`
+WHERE \`subject_type\` IS NULL
+  AND \`account_id\` IS NOT NULL;`);
+}
+
+function dropLegacyProjectMembershipAccountUnique(
+  sqlite: Database.Database,
+): void {
+  if (!tableExists(sqlite, "project_membership")) {
+    return;
+  }
+  sqlite.exec("DROP INDEX IF EXISTS `project_membership_project_account_uq`;");
+}
+
+function createClientIdentityIndexes(sqlite: Database.Database): void {
+  createIndexIfColumnsExist(
+    sqlite,
+    "client",
+    ["account_id", "status", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `client_account_status_idx` ON `client` (`account_id`, `status`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "client",
+    ["account_id", "kind", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `client_account_kind_idx` ON `client` (`account_id`, `kind`, `created_at`);",
+  );
+  if (tableHasColumns(sqlite, "client", ["account_id", "is_default"])) {
+    sqlite.exec(
+      "CREATE UNIQUE INDEX IF NOT EXISTS `client_account_default_uq` ON `client` (`account_id`) WHERE `is_default` = 1;",
+    );
+  }
+
+  createIndexIfColumnsExist(
+    sqlite,
+    "client_api_key",
+    ["key_hash"],
+    "CREATE UNIQUE INDEX IF NOT EXISTS `client_api_key_hash_uq` ON `client_api_key` (`key_hash`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "client_api_key",
+    ["client_id", "status", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `client_api_key_client_status_idx` ON `client_api_key` (`client_id`, `status`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "client_api_key",
+    ["account_id", "status", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `client_api_key_account_status_idx` ON `client_api_key` (`account_id`, `status`, `created_at`);",
+  );
+
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_membership",
+    ["project_id", "subject_type", "subject_id"],
+    "CREATE UNIQUE INDEX IF NOT EXISTS `project_membership_project_subject_uq` ON `project_membership` (`project_id`, `subject_type`, `subject_id`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_membership",
+    ["project_id", "subject_type", "subject_id", "status"],
+    "CREATE INDEX IF NOT EXISTS `project_membership_project_subject_status_idx` ON `project_membership` (`project_id`, `subject_type`, `subject_id`, `status`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_membership",
+    ["client_id", "project_id", "status"],
+    "CREATE INDEX IF NOT EXISTS `project_membership_client_project_status_idx` ON `project_membership` (`client_id`, `project_id`, `status`);",
+  );
+
+  createIndexIfColumnsExist(
+    sqlite,
+    "operation_log",
+    ["actor_client_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `operation_log_actor_client_created_idx` ON `operation_log` (`actor_client_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "operation_log",
+    ["permission_action", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `operation_log_permission_action_created_idx` ON `operation_log` (`permission_action`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "operation_log",
+    ["result", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `operation_log_result_created_idx` ON `operation_log` (`result`, `created_at`);",
+  );
+
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_event",
+    ["actor_client_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `project_event_actor_client_idx` ON `project_event` (`actor_client_id`, `created_at`);",
+  );
+
+  createIndexIfColumnsExist(
+    sqlite,
+    "derived_output",
+    ["owner_client_id", "project_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `derived_output_owner_client_project_idx` ON `derived_output` (`owner_client_id`, `project_id`, `created_at`);",
+  );
+
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_inbox_item",
+    ["sender_client_id", "project_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `project_inbox_sender_client_project_idx` ON `project_inbox_item` (`sender_client_id`, `project_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_inbox_item",
+    ["decided_by_client_id", "decided_at"],
+    "CREATE INDEX IF NOT EXISTS `project_inbox_decided_client_idx` ON `project_inbox_item` (`decided_by_client_id`, `decided_at`);",
+  );
+}
+
+function ensureDefaultClientsForAccounts(sqlite: Database.Database): void {
+  if (!tableExists(sqlite, "client") || !tableExists(sqlite, "account")) {
+    return;
+  }
+
+  sqlite.exec(`INSERT OR IGNORE INTO \`client\` (
+  \`id\`,
+  \`account_id\`,
+  \`name\`,
+  \`kind\`,
+  \`status\`,
+  \`is_default\`,
+  \`metadata_json\`,
+  \`created_at\`,
+  \`updated_at\`
+)
+SELECT
+  'cli_default_' || \`account\`.\`id\`,
+  \`account\`.\`id\`,
+  '默认 Client',
+  'custom',
+  'active',
+  1,
+  '{}',
+  \`account\`.\`created_at\`,
+  \`account\`.\`updated_at\`
+FROM \`account\`
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM \`client\`
+  WHERE \`client\`.\`account_id\` = \`account\`.\`id\`
+    AND \`client\`.\`is_default\` = 1
+);`);
+}
+
+/**
+ * Phase 5 additive repair: agent type registry, project agentbindings, the
+ * three project-level overrides, and the agent-related runtime_job columns.
+ *
+ * The repair is purely additive. It never creates agent types, never enables
+ * agent bindings, never emits project events, and never inserts AgentJob rows.
+ * Existing memory / chat transfer runtime_job records keep their NULL agent
+ * fields and remain functional.
+ */
+function repairTemporaryConversationDrift(sqlite: Database.Database): void {
+  addColumnIfMissing(
+    sqlite,
+    "session",
+    "kind",
+    "`kind` text NOT NULL DEFAULT 'default' CHECK(`kind` IN ('default', 'temporary'))",
+  );
+  addColumnIfMissing(sqlite, "session", "purpose", "`purpose` text");
+  addColumnIfMissing(
+    sqlite,
+    "session",
+    "temporary_source_session_id",
+    "`temporary_source_session_id` text",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session",
+    "temporary_snapshot_digest",
+    "`temporary_snapshot_digest` text",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session",
+    "retention_policy",
+    "`retention_policy` text CHECK(`retention_policy` IN ('delete_on_finalize', 'ttl', 'keep_for_debug'))",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session",
+    "visibility",
+    "`visibility` text CHECK(`visibility` IN ('internal', 'client_visible'))",
+  );
+  addColumnIfMissing(sqlite, "session", "expires_at", "`expires_at` integer");
+  addColumnIfMissing(
+    sqlite,
+    "session",
+    "finalized_at",
+    "`finalized_at` integer",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session",
+    "discarded_at",
+    "`discarded_at` integer",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "session",
+    "cancelled_at",
+    "`cancelled_at` integer",
+  );
+  addColumnIfMissing(sqlite, "session", "cleaned_at", "`cleaned_at` integer");
+  addColumnIfMissing(
+    sqlite,
+    "session",
+    "last_activity_at",
+    "`last_activity_at` integer NOT NULL DEFAULT 0",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "session",
+    ["account_id", "kind", "updated_at"],
+    "CREATE INDEX IF NOT EXISTS `session_account_kind_updated_idx` ON `session` (`account_id`, `kind`, `updated_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "session",
+    ["temporary_source_session_id"],
+    "CREATE INDEX IF NOT EXISTS `session_temporary_source_session_idx` ON `session` (`temporary_source_session_id`);",
+  );
+  if (!tableExists(sqlite, "page_staged_write")) {
+    sqlite.exec(`CREATE TABLE \`page_staged_write\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`account_id\` text NOT NULL REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  \`session_id\` text NOT NULL REFERENCES \`session\`(\`id\`) ON DELETE cascade,
+  \`branch_id\` text NOT NULL,
+  \`floor_id\` text NOT NULL REFERENCES \`floor\`(\`id\`) ON DELETE cascade,
+  \`page_id\` text NOT NULL REFERENCES \`message_page\`(\`id\`) ON DELETE cascade,
+  \`source_kind\` text NOT NULL DEFAULT 'temporary_conversation',
+  \`source_session_id\` text REFERENCES \`session\`(\`id\`) ON DELETE set null,
+  \`source_page_id\` text REFERENCES \`message_page\`(\`id\`) ON DELETE set null,
+  \`actor_client_id\` text REFERENCES \`client\`(\`id\`) ON DELETE set null,
+  \`content\` text NOT NULL,
+  \`content_format\` text NOT NULL DEFAULT 'text',
+  \`reason\` text NOT NULL,
+  \`status\` text NOT NULL DEFAULT 'staged',
+  \`metadata_json\` text NOT NULL DEFAULT '{}',
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  \`applied_at\` integer,
+  \`discarded_at\` integer
+);`);
+  }
+  createIndexIfColumnsExist(
+    sqlite,
+    "page_staged_write",
+    ["page_id", "status", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `page_staged_write_page_status_created_idx` ON `page_staged_write` (`page_id`, `status`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "page_staged_write",
+    ["floor_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `page_staged_write_floor_created_idx` ON `page_staged_write` (`floor_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "page_staged_write",
+    ["source_session_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `page_staged_write_source_session_created_idx` ON `page_staged_write` (`source_session_id`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "page_staged_write",
+    ["account_id", "session_id", "branch_id", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `page_staged_write_account_session_branch_created_idx` ON `page_staged_write` (`account_id`, `session_id`, `branch_id`, `created_at`);",
+  );
+}
+
+/**
+ * R6-3（缺口 5）additive 修复：为历史 node_graph_run 表补 `cleaned_at` 列与清理扫描索引。
+ *
+ * 纯 additive，不改动已有 run / node-run 行，也不触发任何清理动作。
+ */
+function repairNodeGraphRunCleanupDrift(sqlite: Database.Database): void {
+  addColumnIfMissing(
+    sqlite,
+    "node_graph_run",
+    "cleaned_at",
+    "`cleaned_at` integer",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "node_graph_run",
+    ["status", "cleaned_at", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `node_graph_run_status_cleaned_created_idx` ON `node_graph_run` (`status`, `cleaned_at`, `created_at`);",
+  );
+}
+
+// NG2-CORE（批次 9）：floor 级持久 checkpoint 表的 additive 漂移修复。
+function repairNodeGraphCheckpointDrift(sqlite: Database.Database): void {
+  if (
+    !tableExists(sqlite, "account") ||
+    !tableExists(sqlite, "floor") ||
+    !tableExists(sqlite, "node_graph_definition") ||
+    !tableExists(sqlite, "node_graph_version")
+  ) {
+    return;
+  }
+  if (!tableExists(sqlite, "node_graph_checkpoint")) {
+    sqlite.exec(`CREATE TABLE \`node_graph_checkpoint\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`workspace_id\` text,
+  \`project_id\` text,
+  \`session_id\` text,
+  \`floor_id\` text NOT NULL,
+  \`graph_id\` text NOT NULL,
+  \`graph_version_id\` text NOT NULL,
+  \`node_id\` text NOT NULL,
+  \`phase\` text NOT NULL,
+  \`scope\` text,
+  \`input_hash\` text NOT NULL,
+  \`config_hash\` text NOT NULL,
+  \`output_json\` text,
+  \`cleaned_at\` integer,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON UPDATE no action ON DELETE restrict,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON UPDATE no action ON DELETE set null,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON UPDATE no action ON DELETE set null,
+  FOREIGN KEY (\`session_id\`) REFERENCES \`session\`(\`id\`) ON UPDATE no action ON DELETE set null,
+  FOREIGN KEY (\`floor_id\`) REFERENCES \`floor\`(\`id\`) ON UPDATE no action ON DELETE cascade,
+  FOREIGN KEY (\`graph_id\`) REFERENCES \`node_graph_definition\`(\`id\`) ON UPDATE no action ON DELETE cascade,
+  FOREIGN KEY (\`graph_version_id\`) REFERENCES \`node_graph_version\`(\`id\`) ON UPDATE no action ON DELETE cascade
+);`);
+  }
+  createIndexIfColumnsExist(
+    sqlite,
+    "node_graph_checkpoint",
+    ["floor_id", "graph_version_id", "node_id"],
+    "CREATE UNIQUE INDEX IF NOT EXISTS `node_graph_checkpoint_floor_version_node_uq` ON `node_graph_checkpoint` (`floor_id`, `graph_version_id`, `node_id`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "node_graph_checkpoint",
+    ["floor_id", "graph_version_id"],
+    "CREATE INDEX IF NOT EXISTS `node_graph_checkpoint_floor_version_idx` ON `node_graph_checkpoint` (`floor_id`, `graph_version_id`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "node_graph_checkpoint",
+    ["cleaned_at", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `node_graph_checkpoint_cleaned_created_idx` ON `node_graph_checkpoint` (`cleaned_at`, `created_at`);",
+  );
+}
+
+function repairWorkspacePhase5AgenticReadinessDrift(
+  sqlite: Database.Database,
+): void {
+  if (
+    !tableExists(sqlite, "account") ||
+    !tableExists(sqlite, "workspace") ||
+    !tableExists(sqlite, "project")
+  ) {
+    return;
+  }
+
+  createWorkspacePhase5Tables(sqlite);
+  addWorkspacePhase5RuntimeJobColumns(sqlite);
+  createWorkspacePhase5Indexes(sqlite);
+}
+
+function createWorkspacePhase5Tables(sqlite: Database.Database): void {
+  if (!tableExists(sqlite, "agent_type")) {
+    sqlite.exec(`CREATE TABLE \`agent_type\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`key\` text NOT NULL,
+  \`name\` text NOT NULL,
+  \`scope_kind\` text NOT NULL,
+  \`status\` text NOT NULL DEFAULT 'active',
+  \`default_llm_profile_id\` text,
+  \`default_tool_policy_id\` text,
+  \`default_mcp_binding_json\` text NOT NULL DEFAULT '{}',
+  \`default_event_subscriptions_json\` text NOT NULL DEFAULT '[]',
+  \`default_grants_json\` text NOT NULL DEFAULT '{}',
+  \`metadata_json\` text NOT NULL DEFAULT '{}',
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON DELETE cascade,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict
+);`);
+  }
+
+  if (!tableExists(sqlite, "project_agent_binding")) {
+    sqlite.exec(`CREATE TABLE \`project_agent_binding\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`project_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`agent_type_id\` text NOT NULL,
+  \`status\` text NOT NULL DEFAULT 'enabled',
+  \`scope_kind\` text NOT NULL,
+  \`llm_profile_id\` text,
+  \`tool_policy_id\` text,
+  \`mcp_binding_json\` text NOT NULL DEFAULT '{}',
+  \`event_subscriptions_json\` text NOT NULL DEFAULT '[]',
+  \`grants_json\` text NOT NULL DEFAULT '{}',
+  \`metadata_json\` text NOT NULL DEFAULT '{}',
+ \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON DELETE cascade,
+  FOREIGN KEY(\`project_id\`) REFERENCES \`project\`(\`id\`) ON DELETE cascade,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`agent_type_id\`) REFERENCES \`agent_type\`(\`id\`) ON DELETE restrict
+);`);
+  }
+
+  if (!tableExists(sqlite, "project_llm_profile_override")) {
+    sqlite.exec(`CREATE TABLE \`project_llm_profile_override\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`project_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`base_profile_id\`text NOT NULL,
+  \`override_json\` text NOT NULL DEFAULT '{}',
+  \`status\` text NOT NULL DEFAULT 'active',
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON DELETE cascade,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON DELETE cascade,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict
+);`);
+  }
+
+  if (!tableExists(sqlite, "project_mcp_binding")) {
+    sqlite.exec(`CREATE TABLE \`project_mcp_binding\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`project_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`mcp_server_id\` text NOT NULL,
+  \`status\` text NOT NULL DEFAULT 'enabled',
+  \`allowed_tools_json\` text NOT NULL DEFAULT '[]',
+  \`config_override_json\` text NOT NULL DEFAULT '{}',
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON DELETE cascade,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON DELETE cascade,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict
+);`);
+  }
+
+  if (!tableExists(sqlite, "project_tool_policy_override")) {
+    sqlite.exec(`CREATE TABLE \`project_tool_policy_override\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`project_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`base_policy_id\` text NOT NULL,
+  \`override_json\` text NOT NULL DEFAULT '{}',
+  \`status\` text NOT NULL DEFAULT 'active',
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON DELETE cascade,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON DELETE cascade,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict
+);`);
+  }
+}
+
+function addWorkspacePhase5RuntimeJobColumns(sqlite: Database.Database): void {
+  addColumnIfMissing(
+    sqlite,
+    "runtime_job",
+    "workspace_id",
+    "`workspace_id`text REFERENCES `workspace`(`id`) ON DELETE set null",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "runtime_job",
+    "project_id",
+    "`project_id` text REFERENCES `project`(`id`) ON DELETE set null",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "runtime_job",
+    "actor_client_id",
+    "`actor_client_id` text REFERENCES `client`(`id`) ON DELETE set null",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "runtime_job",
+    "source_event_id",
+    "`source_event_id` text REFERENCES `project_event`(`id`) ON DELETE set null",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "runtime_job",
+    "agent_type_id",
+    "`agent_type_id` text REFERENCES `agent_type`(`id`) ON DELETE set null",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "runtime_job",
+    "agent_binding_id",
+    "`agent_binding_id` text REFERENCES `project_agent_binding`(`id`) ON DELETE set null",
+  );
+}
+
+function createWorkspacePhase5Indexes(sqlite: Database.Database): void {
+  createIndexIfColumnsExist(
+    sqlite,
+    "agent_type",
+    ["workspace_id", "key"],
+    "CREATE UNIQUE INDEX IF NOT EXISTS `agent_type_workspace_key_uq` ON `agent_type` (`workspace_id`, `key`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "agent_type",
+    ["workspace_id", "status", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `agent_type_workspace_status_idx` ON `agent_type` (`workspace_id`, `status`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "agent_type",
+    ["account_id", "status", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `agent_type_account_status_idx` ON `agent_type` (`account_id`, `status`, `created_at`);",
+  );
+
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_agent_binding",
+    ["project_id", "agent_type_id"],
+    "CREATE UNIQUE INDEX IF NOT EXISTS `project_agent_binding_project_agent_uq` ON `project_agent_binding` (`project_id`, `agent_type_id`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_agent_binding",
+    ["project_id", "status", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `project_agent_binding_project_status_idx` ON `project_agent_binding` (`project_id`,`status`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_agent_binding",
+    ["workspace_id", "status", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `project_agent_binding_workspace_idx` ON `project_agent_binding` (`workspace_id`, `status`, `created_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_agent_binding",
+    ["agent_type_id", "status"],
+    "CREATE INDEX IF NOT EXISTS `project_agent_binding_agent_type_idx` ON `project_agent_binding` (`agent_type_id`, `status`);",
+  );
+
+  if (
+    tableHasColumns(sqlite, "project_llm_profile_override", [
+      "project_id",
+      "status",
+    ])
+  ) {
+    sqlite.exec(
+      "CREATE UNIQUE INDEX IF NOT EXISTS `project_llm_profile_override_project_uq` ON `project_llm_profile_override` (`project_id`) WHERE `status` = 'active';",
+    );
+  }
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_llm_profile_override",
+    ["workspace_id", "status", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `project_llm_profile_override_workspace_idx` ON `project_llm_profile_override` (`workspace_id`, `status`, `created_at`);",
+  );
+
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_mcp_binding",
+    ["project_id", "mcp_server_id"],
+    "CREATE UNIQUE INDEX IF NOT EXISTS `project_mcp_binding_project_server_uq` ON `project_mcp_binding` (`project_id`, `mcp_server_id`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_mcp_binding",
+    ["workspace_id", "status", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `project_mcp_binding_workspace_idx` ON `project_mcp_binding` (`workspace_id`, `status`, `created_at`);",
+  );
+
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_tool_policy_override",
+    ["project_id", "base_policy_id"],
+    "CREATE UNIQUE INDEX IF NOT EXISTS `project_tool_policy_override_project_base_uq` ON `project_tool_policy_override` (`project_id`, `base_policy_id`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_tool_policy_override",
+    ["workspace_id", "status", "created_at"],
+    "CREATE INDEX IF NOT EXISTS `project_tool_policy_override_workspace_idx` ON `project_tool_policy_override` (`workspace_id`, `status`, `created_at`);",
+  );
+
+  createIndexIfColumnsExist(
+    sqlite,
+    "runtime_job",
+    ["agent_type_id", "status", "available_at"],
+    "CREATE INDEX IF NOT EXISTS `runtime_job_agent_type_status_idx` ON `runtime_job` (`agent_type_id`, `status`, `available_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "runtime_job",
+    ["agent_binding_id", "status", "available_at"],
+    "CREATE INDEX IF NOT EXISTS `runtime_job_agent_binding_status_idx` ON `runtime_job` (`agent_binding_id`, `status`, `available_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "runtime_job",
+    ["project_id", "status", "available_at"],
+    "CREATE INDEX IF NOT EXISTS `runtime_job_project_status_idx` ON `runtime_job` (`project_id`, `status`, `available_at`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "runtime_job",
+    ["source_event_id"],
+    "CREATE INDEX IF NOT EXISTS `runtime_job_source_event_idx` ON `runtime_job` (`source_event_id`);",
+  );
+}
+
+// WP-B2：Client 能力声明与 API Key scope 的 additive 漂移修复。
+function repairClientCapabilityScopeDrift(sqlite: Database.Database): void {
+  addColumnIfMissing(
+    sqlite,
+    "client",
+    "capabilities_json",
+    "`capabilities_json` text",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "client_api_key",
+    "scopes_json",
+    "`scopes_json` text",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "client_api_key",
+    "rotated_from_id",
+    "`rotated_from_id` text",
+  );
+  addColumnIfMissing(
+    sqlite,
+    "client_api_key",
+    "rotated_at",
+    "`rotated_at` integer",
+  );
+}
+
+// WP-B1：Workspace 成员表的 additive 漂移修复。
+function repairWorkspaceMembershipDrift(sqlite: Database.Database): void {
+  if (!tableExists(sqlite, "account") || !tableExists(sqlite, "workspace")) {
+    return;
+  }
+
+  if (!tableExists(sqlite, "workspace_membership")) {
+    sqlite.exec(`CREATE TABLE \`workspace_membership\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`role\` text NOT NULL,
+  \`status\` text NOT NULL DEFAULT 'active',
+  \`subject_type\` text NOT NULL,
+  \`subject_id\` text NOT NULL,
+  \`client_id\` text,
+  \`created_by_account_id\` text,
+  \`created_by_client_id\` text,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE restrict,
+  FOREIGN KEY (\`client_id\`) REFERENCES \`client\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`created_by_account_id\`) REFERENCES \`account\`(\`id\`) ON DELETE set null,
+  FOREIGN KEY (\`created_by_client_id\`) REFERENCES \`client\`(\`id\`) ON DELETE set null
+);`);
+  }
+
+  sqlite.exec(
+    "CREATE UNIQUE INDEX IF NOT EXISTS `workspace_membership_workspace_subject_uq` ON `workspace_membership` (`workspace_id`, `subject_type`, `subject_id`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `workspace_membership_account_status_idx` ON `workspace_membership` (`account_id`, `status`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `workspace_membership_workspace_role_status_idx` ON `workspace_membership` (`workspace_id`, `role`, `status`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `workspace_membership_client_workspace_status_idx` ON `workspace_membership` (`client_id`, `workspace_id`, `status`);",
+  );
+}
+
+// 图助手逐工具策略表（阶段 2）的 additive 漂移修复。
+//
+// 历史本地库可能停留在旧列名 `mode`（该列后改名为 `decision`），或表/索引未真正落库。
+// 旧库一旦把 0076 记成已应用，drizzle 不会再因文件内容改动而重跑，于是出现
+// “表在但 `decision` 列不存在 / 仍叫 `mode`” 的漂移，触发 `no such column: decision`。
+function repairGraphAssistantToolPolicyDrift(sqlite: Database.Database): void {
+  if (
+    !tableExists(sqlite, "account") ||
+    !tableExists(sqlite, "workspace") ||
+    !tableExists(sqlite, "project")
+  ) {
+    return;
+  }
+
+  if (!tableExists(sqlite, "graph_assistant_tool_policy")) {
+    sqlite.exec(`CREATE TABLE \`graph_assistant_tool_policy\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`project_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`tool_name\` text NOT NULL,
+  \`decision\` text NOT NULL,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON UPDATE no action ON DELETE cascade,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON UPDATE no action ON DELETE cascade,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON UPDATE no action ON DELETE restrict
+);`);
+  } else {
+    const columns = getTableColumnNames(sqlite, "graph_assistant_tool_policy");
+    if (!columns.has("decision")) {
+      if (columns.has("mode")) {
+        // 旧库列名为 `mode`，原地重命名为 `decision`（保留既有数据）。
+        sqlite.exec(
+          "ALTER TABLE `graph_assistant_tool_policy` RENAME COLUMN `mode` TO `decision`;",
+        );
+      } else {
+        // 兜底：既无 `decision` 也无 `mode`，按 additive 补列（空表场景默认 auto）。
+        sqlite.exec(
+          "ALTER TABLE `graph_assistant_tool_policy` ADD COLUMN `decision` text NOT NULL DEFAULT 'auto';",
+        );
+      }
+    }
+  }
+
+  sqlite.exec(
+    "CREATE UNIQUE INDEX IF NOT EXISTS `graph_assistant_tool_policy_project_tool_uq` ON `graph_assistant_tool_policy` (`project_id`, `tool_name`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `graph_assistant_tool_policy_workspace_idx` ON `graph_assistant_tool_policy` (`workspace_id`, `created_at`);",
+  );
+}
+
+// 图助手「执行前确认闸」待确认表（阶段 3）的 additive 漂移修复：历史库可能尚未创建该表。
+function repairGraphAssistantPendingToolCallDrift(
+  sqlite: Database.Database,
+): void {
+  if (
+    !tableExists(sqlite, "account") ||
+    !tableExists(sqlite, "workspace") ||
+    !tableExists(sqlite, "project") ||
+    !tableExists(sqlite, "session")
+  ) {
+    return;
+  }
+
+  if (!tableExists(sqlite, "graph_assistant_pending_tool_call")) {
+    sqlite.exec(`CREATE TABLE \`graph_assistant_pending_tool_call\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`project_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`conversation_id\` text NOT NULL,
+  \`branch_id\` text NOT NULL,
+  \`floor_id\` text NOT NULL,
+  \`call_id\` text NOT NULL,
+  \`tool_name\` text NOT NULL,
+  \`args_json\` text NOT NULL,
+  \`side_effect_level\` text,
+  \`status\` text DEFAULT 'pending' NOT NULL,
+  \`conversation_messages_json\` text NOT NULL,
+  \`agent_steps\` integer DEFAULT 0 NOT NULL,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  \`expires_at\` integer,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON UPDATE no action ON DELETE cascade,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON UPDATE no action ON DELETE cascade,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON UPDATE no action ON DELETE restrict,
+  FOREIGN KEY (\`conversation_id\`) REFERENCES \`session\`(\`id\`) ON UPDATE no action ON DELETE cascade
+);`);
+  }
+
+  createIndexIfColumnsExist(
+    sqlite,
+    "graph_assistant_pending_tool_call",
+    ["conversation_id", "status"],
+    "CREATE INDEX IF NOT EXISTS `graph_assistant_pending_tool_call_conversation_status_idx` ON `graph_assistant_pending_tool_call` (`conversation_id`, `status`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "graph_assistant_pending_tool_call",
+    ["floor_id"],
+    "CREATE INDEX IF NOT EXISTS `graph_assistant_pending_tool_call_floor_idx` ON `graph_assistant_pending_tool_call` (`floor_id`);",
+  );
+}
+
+// 图助手上下文与提示词项目级配置表（静态提示词阶段一）的 additive 漂移修复：历史库可能尚未创建该表。
+function repairProjectFloorGraphBindingDrift(sqlite: Database.Database): void {
+  if (
+    !tableExists(sqlite, "account") ||
+    !tableExists(sqlite, "workspace") ||
+    !tableExists(sqlite, "project") ||
+    !tableExists(sqlite, "node_graph_definition") ||
+    !tableExists(sqlite, "node_graph_version")
+  ) {
+    return;
+  }
+
+  if (!tableExists(sqlite, "project_floor_graph_binding")) {
+    sqlite.exec(`CREATE TABLE \`project_floor_graph_binding\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`project_id\` text NOT NULL,
+  \`kind\` text NOT NULL,
+  \`graph_id\` text NOT NULL,
+  \`graph_version_id\` text NOT NULL,
+  \`status\` text DEFAULT 'active' NOT NULL,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON UPDATE no action ON DELETE restrict,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON UPDATE no action ON DELETE cascade,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON UPDATE no action ON DELETE cascade,
+  FOREIGN KEY (\`graph_id\`) REFERENCES \`node_graph_definition\`(\`id\`) ON UPDATE no action ON DELETE restrict,
+  FOREIGN KEY (\`graph_version_id\`) REFERENCES \`node_graph_version\`(\`id\`) ON UPDATE no action ON DELETE restrict,
+  CHECK(\`kind\` IN ('native', 'compat')),
+  CHECK(\`status\` IN ('active', 'archived'))
+);`);
+  }
+
+  if (
+    tableHasColumns(sqlite, "project_floor_graph_binding", [
+      "account_id",
+      "project_id",
+      "kind",
+      "status",
+    ])
+  ) {
+    sqlite.exec(
+      "CREATE UNIQUE INDEX IF NOT EXISTS `project_floor_graph_binding_active_kind_uq` ON `project_floor_graph_binding` (`account_id`, `project_id`, `kind`) WHERE `status` = 'active';",
+    );
+  }
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_floor_graph_binding",
+    ["project_id", "kind", "status"],
+    "CREATE INDEX IF NOT EXISTS `project_floor_graph_binding_project_kind_status_idx` ON `project_floor_graph_binding` (`project_id`, `kind`, `status`);",
+  );
+  createIndexIfColumnsExist(
+    sqlite,
+    "project_floor_graph_binding",
+    ["graph_id", "graph_version_id"],
+    "CREATE INDEX IF NOT EXISTS `project_floor_graph_binding_graph_idx` ON `project_floor_graph_binding` (`graph_id`, `graph_version_id`);",
+  );
+}
+
+function repairGraphAssistantPromptConfigDrift(
+  sqlite: Database.Database,
+): void {
+  if (
+    !tableExists(sqlite, "account") ||
+    !tableExists(sqlite, "workspace") ||
+    !tableExists(sqlite, "project")
+  ) {
+    return;
+  }
+
+  if (!tableExists(sqlite, "graph_assistant_prompt_config")) {
+    sqlite.exec(`CREATE TABLE \`graph_assistant_prompt_config\` (
+  \`id\` text PRIMARY KEY NOT NULL,
+  \`workspace_id\` text NOT NULL,
+  \`project_id\` text NOT NULL,
+  \`account_id\` text NOT NULL,
+  \`static_mode\` text DEFAULT 'append' NOT NULL,
+  \`static_text\` text DEFAULT '' NOT NULL,
+  \`dynamic_template\` text DEFAULT '' NOT NULL,
+  \`context_config\` text,
+  \`created_at\` integer NOT NULL,
+  \`updated_at\` integer NOT NULL,
+  FOREIGN KEY (\`workspace_id\`) REFERENCES \`workspace\`(\`id\`) ON UPDATE no action ON DELETE cascade,
+  FOREIGN KEY (\`project_id\`) REFERENCES \`project\`(\`id\`) ON UPDATE no action ON DELETE cascade,
+  FOREIGN KEY (\`account_id\`) REFERENCES \`account\`(\`id\`) ON UPDATE no action ON DELETE restrict
+);`);
+  }
+
+  sqlite.exec(
+    "CREATE UNIQUE INDEX IF NOT EXISTS `graph_assistant_prompt_config_project_uq` ON `graph_assistant_prompt_config` (`project_id`);",
+  );
+  sqlite.exec(
+    "CREATE INDEX IF NOT EXISTS `graph_assistant_prompt_config_workspace_idx` ON `graph_assistant_prompt_config` (`workspace_id`, `created_at`);",
+  );
+}
+
+export function backfillAssetVersions(db: AppDb): void {
+  new AssetVersionService(db).ensureInitialVersionsForAllAccounts();
+}
+
+export function repairScopeIntegrity(db: AppDb): void {
+  const service = new ScopeIntegrityService(db);
+  const accounts = db.select({ id: schema.accounts.id }).from(schema.accounts).all();
+  for (const { id: accountId } of accounts) {
+    service.repair({ accountId, audit: { actorType: "system", source: "startup_repair" } });
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "method": "最新包实际前端模块；UI与接口桩，不涉及模型或正式网络失败",
+  "results": [
+    {
+      "scenario": "INVALID_REQUEST",
+      "locked": false,
+      "expectedLocked": false,
+      "feedback": "选项未写入聊天，请检查状态后重试。",
+      "unlockedOnCommit": true,
+      "historicalDisabled": true,
+      "passed": true
+    },
+    {
+      "scenario": "GENERATION_FAILED",
+      "locked": true,
+      "expectedLocked": true,
+      "feedback": "选项消息已保存，请使用聊天区域提供的恢复操作。",
+      "unlockedOnCommit": true,
+      "historicalDisabled": true,
+      "passed": true
+    },
+    {
+      "scenario": "ROLE_STATE_UPDATE_FAILED",
+      "locked": true,
+      "expectedLocked": true,
+      "feedback": "选项消息已保存，请使用聊天区域提供的恢复操作。",
+      "unlockedOnCommit": true,
+      "historicalDisabled": true,
+      "passed": true
+    },
+    {
+      "scenario": "NETWORK_FAILED",
+      "locked": true,
+      "expectedLocked": true,
+      "feedback": "选项消息已保存，请使用聊天区域提供的恢复操作。",
+      "unlockedOnCommit": true,
+      "historicalDisabled": true,
+      "passed": true
+    },
+    {
+      "scenario": "FLOOR_LOOKUP_FAILED",
+      "locked": true,
+      "expectedLocked": true,
+      "feedback": "发送结果尚未确认。请先核对聊天记录，再决定是否重试。",
+      "unlockedOnCommit": true,
+      "historicalDisabled": true,
+      "passed": true
+    }
+  ]
+}

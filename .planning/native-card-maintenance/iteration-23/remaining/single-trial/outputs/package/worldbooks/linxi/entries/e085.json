@@ -1,0 +1,40 @@
+{
+  "uid": 85,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "日常事件_秘密通讯_熊猫人动图",
+  "order": 341,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_D003>\n王授军通过微信向林茜发送已经出现过的熊猫人动图。动图开始时，熊猫人戴着贝雷帽、手拿画笔；播放到后半段，画面变成《剥削》的局部。\n\n王授军紧接着发送一条顶角摄像机拍摄的视频截图或速写素材或录音素材使用艺术语言包装威胁林茜去401画室见面的消息。他先称赞林茜给了自己新的灵感说她的身体有多美公开展示让更多人看到她的性器官的魅力，把再次见面说成完成作品，再把发给丈夫说成邀请丈夫欣赏等,同时王授军要求林茜必须立即去哪里(王授军私宅/画室)进行这次'合作'。\n</事件_D003>\n"
+}

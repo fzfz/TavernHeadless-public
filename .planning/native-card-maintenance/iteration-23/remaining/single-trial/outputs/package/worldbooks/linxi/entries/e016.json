@@ -1,0 +1,40 @@
+{
+  "uid": 16,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": true,
+  "comment": "地点_家电城整体布局",
+  "order": 62,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_place_appliance_store>\n正门连接大厅，大厅内有展台、柜面和挂画墙面。营业区位于大厅内侧，柜面位于营业区入口和展台之间，正门至展台的通道经过柜面，从柜面能看见挂画墙面和正门。后门外的道路通向拆迁旧楼外侧和楼道口。仓库位于后门内侧，仓库内有一间废旧储藏室，放着凳子、箱子等物品。\n夫妻家到家电城步行约15分钟，电动车约5分钟，打车约6分钟；柜面到大厅挂画墙面步行约1分钟，柜面到后门步行约1分钟。\n</qrxd_place_appliance_store>\n"
+}

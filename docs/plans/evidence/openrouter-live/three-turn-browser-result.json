@@ -1,0 +1,144 @@
+{
+  "checks": [
+    {
+      "name": "actual text updates received",
+      "passed": true
+    },
+    {
+      "name": "one committed floor",
+      "passed": true
+    },
+    {
+      "name": "new snapshot committed",
+      "passed": true
+    },
+    {
+      "name": "state value rendered",
+      "passed": true
+    },
+    {
+      "name": "background loaded",
+      "passed": true
+    },
+    {
+      "name": "no browser runtime exceptions",
+      "passed": true
+    }
+  ],
+  "before": {
+    "sessionId": "script-gushengman",
+    "branchId": "branch-gushengman",
+    "floorId": "script-gushengman:floor:2",
+    "attemptId": "script-gushengman:floor:2:attempt:3",
+    "versionId": "Z0DLBhTcQ6Hd9b-BT85Pl",
+    "snapshotId": "script-gushengman:floor:2:attempt:3:snapshot",
+    "parentSnapshotId": "script-gushengman:floor:1:attempt:1:snapshot",
+    "variables": {
+      "世界": {
+        "当前地址": "轻音社活动室",
+        "当前时间": "2025年12月15日17:35",
+        "事件状态": "与访客听琴交流中"
+      },
+      "顾声慢": {
+        "情感连结度": 3,
+        "创作完成度": 10,
+        "心象映射": {
+          "当前心声": "他听得出来……原来真的有人能听懂我想表达的东西。",
+          "当前脑内旋律": "《白羽》"
+        }
+      }
+    },
+    "source": {
+      "kind": "floor",
+      "runId": "script-gushengman:floor:2:run:3",
+      "jobId": null
+    }
+  },
+  "after": {
+    "checks": {
+      "updates": 163,
+      "ends": 1,
+      "commits": 1,
+      "samples": [
+        "<gam",
+        "<gamet",
+        "<gametext",
+        "<gametext>"
+      ]
+    },
+    "current": {
+      "sessionId": "script-gushengman",
+      "branchId": "branch-gushengman",
+      "floorId": "script-gushengman:floor:3",
+      "attemptId": "script-gushengman:floor:3:attempt:4",
+      "versionId": "Z0DLBhTcQ6Hd9b-BT85Pl",
+      "snapshotId": "script-gushengman:floor:3:attempt:4:snapshot",
+      "parentSnapshotId": "script-gushengman:floor:2:attempt:3:snapshot",
+      "variables": {
+        "世界": {
+          "当前地址": "旧教学楼走廊",
+          "当前时间": "2025年12月15日17:37",
+          "事件状态": "与访客道别，约定明天再听琴"
+        },
+        "顾声慢": {
+          "情感连结度": 4,
+          "创作完成度": 10,
+          "心象映射": {
+            "当前心声": "明天见……等我把那段整理好，再一起听《白羽》。",
+            "当前脑内旋律": "《白羽》"
+          }
+        }
+      },
+      "source": {
+        "kind": "floor",
+        "runId": "script-gushengman:floor:3:run:4",
+        "jobId": null
+      }
+    },
+    "diagnostics": {
+      "busy": false,
+      "chatWidgets": 1,
+      "activeStreams": 0,
+      "listeners": {
+        "current": 0,
+        "view": 1,
+        "commit": 2,
+        "text": 3
+      },
+      "history": {
+        "entries": 0,
+        "bytes": 0
+      },
+      "settled": {
+        "entries": 0,
+        "bytes": 0
+      },
+      "diagnostics": {
+        "entries": 0,
+        "bytes": 0
+      },
+      "lists": [
+        {
+          "items": 3,
+          "mounted": 0,
+          "visibleStart": 0,
+          "visibleEnd": -1,
+          "firstVisibleFloorId": "script-gushengman:floor:1",
+          "lastVisibleFloorId": null,
+          "followTail": true,
+          "cached": 0,
+          "cacheBytes": 0,
+          "hasNextPage": false
+        }
+      ]
+    },
+    "feedback": "",
+    "text": "17:35至17:37"
+  },
+  "rendered": {
+    "affection": "4",
+    "backgroundLoaded": true,
+    "status": "\n    \n      ✦ 顾声慢状态\n      ×\n    \n    \n      \n        情感连结度 4\n        \n        创作完成度 10\n        \n      \n      \n        ✦ 心象映射\n        《白羽》\n        明天见……等我把那段整理好，再一起听《白羽》。\n      \n      \n        ✦ 世界状态\n        \n          当前时间2025年12月15日17:37\n          当前地址旧教学楼走廊\n          事件状态与访客道别，约定明天再听琴\n        \n        本轮：情感连结度 +1，创作完成度未变化\n      \n    \n  "
+  },
+  "errors": []
+}

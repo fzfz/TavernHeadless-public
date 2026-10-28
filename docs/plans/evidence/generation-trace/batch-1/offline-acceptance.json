@@ -1,0 +1,254 @@
+{
+  "status": "offline_passed_real_model_semantics_pending",
+  "externalModelRequests": 0,
+  "recordedSyntheticCalls": 24,
+  "dryRuns": 12,
+  "flows": [
+    {
+      "role": "linqian",
+      "mode": "formal",
+      "sessionId": "V9c9a0QQJ85SWigUxQqd2",
+      "completedTurns": 3,
+      "dryRuns": [
+        {
+          "turn": 1,
+          "personaPresent": true,
+          "currentInputWrapped": true
+        },
+        {
+          "turn": 2,
+          "personaPresent": true,
+          "currentInputWrapped": true
+        },
+        {
+          "turn": 3,
+          "personaPresent": true,
+          "currentInputWrapped": true
+        }
+      ]
+    },
+    {
+      "role": "linqian",
+      "mode": "preview",
+      "sessionId": "dxOx-_i-Gu8MgGAc-Ur8-",
+      "completedTurns": 3,
+      "dryRuns": [
+        {
+          "turn": 1,
+          "personaPresent": true,
+          "currentInputWrapped": true
+        },
+        {
+          "turn": 2,
+          "personaPresent": true,
+          "currentInputWrapped": true
+        },
+        {
+          "turn": 3,
+          "personaPresent": true,
+          "currentInputWrapped": true
+        }
+      ]
+    },
+    {
+      "role": "gushengman",
+      "mode": "formal",
+      "sessionId": "HFYL05vv8SdkEe1r83JcI",
+      "completedTurns": 3,
+      "dryRuns": [
+        {
+          "turn": 1,
+          "personaPresent": true,
+          "currentInputWrapped": true
+        },
+        {
+          "turn": 2,
+          "personaPresent": true,
+          "currentInputWrapped": true
+        },
+        {
+          "turn": 3,
+          "personaPresent": true,
+          "currentInputWrapped": true
+        }
+      ]
+    },
+    {
+      "role": "gushengman",
+      "mode": "preview",
+      "sessionId": "5lCGc071l20-vT97D6mVG",
+      "completedTurns": 3,
+      "dryRuns": [
+        {
+          "turn": 1,
+          "personaPresent": true,
+          "currentInputWrapped": true
+        },
+        {
+          "turn": 2,
+          "personaPresent": true,
+          "currentInputWrapped": true
+        },
+        {
+          "turn": 3,
+          "personaPresent": true,
+          "currentInputWrapped": true
+        }
+      ]
+    }
+  ],
+  "restoration": {
+    "externalModelRequests": 0,
+    "restoredDataRoot": ".tmp/full-offline/restored-data",
+    "flows": [
+      {
+        "role": "linqian",
+        "mode": "formal",
+        "sessionId": "V9c9a0QQJ85SWigUxQqd2",
+        "turnsVerified": 3,
+        "snapshotEqual": true,
+        "messagesEqual": true,
+        "callsReadable": true
+      },
+      {
+        "role": "linqian",
+        "mode": "preview",
+        "sessionId": "dxOx-_i-Gu8MgGAc-Ur8-",
+        "turnsVerified": 3,
+        "snapshotEqual": true,
+        "messagesEqual": true,
+        "callsReadable": true
+      },
+      {
+        "role": "gushengman",
+        "mode": "formal",
+        "sessionId": "HFYL05vv8SdkEe1r83JcI",
+        "turnsVerified": 3,
+        "snapshotEqual": true,
+        "messagesEqual": true,
+        "callsReadable": true
+      },
+      {
+        "role": "gushengman",
+        "mode": "preview",
+        "sessionId": "5lCGc071l20-vT97D6mVG",
+        "turnsVerified": 3,
+        "snapshotEqual": true,
+        "messagesEqual": true,
+        "callsReadable": true
+      }
+    ],
+    "status": "passed"
+  },
+  "targetedTests": {
+    "files": 4,
+    "passed": 83
+  },
+  "ui": {
+    "gushengmanDesktop": [
+      918,
+      884
+    ],
+    "gushengmanMobile": [
+      390,
+      844
+    ],
+    "linqianHistoryAndState": "read_only_verified",
+    "adminStoredCallDetail": "verified"
+  },
+  "semanticAcceptance": "pending; fixed responses and unchanged state proposals test transport, persistence and rendering only",
+  "dryRunWireEquality": [
+    {
+      "role": "linqian",
+      "mode": "formal",
+      "turn": 1,
+      "messagesEqual": true
+    },
+    {
+      "role": "linqian",
+      "mode": "formal",
+      "turn": 2,
+      "messagesEqual": true
+    },
+    {
+      "role": "linqian",
+      "mode": "preview",
+      "turn": 1,
+      "messagesEqual": true
+    },
+    {
+      "role": "linqian",
+      "mode": "preview",
+      "turn": 2,
+      "messagesEqual": true
+    },
+    {
+      "role": "gushengman",
+      "mode": "formal",
+      "turn": 1,
+      "messagesEqual": true
+    },
+    {
+      "role": "gushengman",
+      "mode": "formal",
+      "turn": 2,
+      "messagesEqual": true
+    },
+    {
+      "role": "gushengman",
+      "mode": "preview",
+      "turn": 1,
+      "messagesEqual": true
+    },
+    {
+      "role": "gushengman",
+      "mode": "preview",
+      "turn": 2,
+      "messagesEqual": true
+    },
+    {
+      "role": "linqian",
+      "mode": "formal",
+      "turn": 3,
+      "messagesEqual": true
+    },
+    {
+      "role": "linqian",
+      "mode": "preview",
+      "turn": 3,
+      "messagesEqual": true
+    },
+    {
+      "role": "gushengman",
+      "mode": "formal",
+      "turn": 3,
+      "messagesEqual": true
+    },
+    {
+      "role": "gushengman",
+      "mode": "preview",
+      "turn": 3,
+      "messagesEqual": true
+    }
+  ],
+  "services": {
+    "status": "stopped",
+    "portsClosed": [
+      43980,
+      43981,
+      43982
+    ]
+  },
+  "semanticReview": {
+    "reviewer": "offline_acceptance_semantics",
+    "result": "passed",
+    "correctedFinding": "Screenshot dimensions now identify their acceptance stage."
+  },
+  "fullRegression": {
+    "command": "pnpm exec vitest run --reporter=dot",
+    "passedFiles": 472,
+    "passedTests": 4200,
+    "durationSeconds": 191.73,
+    "result": "passed"
+  }
+}

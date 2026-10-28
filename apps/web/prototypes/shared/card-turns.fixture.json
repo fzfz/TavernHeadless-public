@@ -1,0 +1,62 @@
+{
+  "card-bookshop": [
+    {
+      "variables": {
+        "trust": 35,
+        "location": "旧灯塔",
+        "background": "harbor",
+        "portrait": "person",
+        "clue": "找到值夜记录",
+        "expanded": true,
+        "actionLabel": "追问信件来源",
+        "actionText": "请继续解释这条线索。",
+        "gallery": ["shop", "harbor"]
+      },
+      "text": "她展开了值夜记录。\n\n“看，这里有新的线索。”"
+    },
+    {
+      "variables": {
+        "trust": 75,
+        "location": "书店阁楼",
+        "background": "shop",
+        "portrait": "person",
+        "clue": "确认信件来源",
+        "expanded": false,
+        "actionLabel": "整理线索",
+        "actionText": "请继续解释这条线索。",
+        "gallery": ["shop", "harbor"]
+      },
+      "text": "她把两封信放在一起。\n\n“我们终于知道是谁留下了它们。”"
+    }
+  ],
+  "card-novel": [
+    {
+      "variables": {
+        "courage": 35,
+        "location": "旧灯塔",
+        "background": "harbor",
+        "portrait": "person",
+        "clue": "找到值夜记录",
+        "expanded": true,
+        "actionLabel": "追问信件来源",
+        "actionText": "请继续解释这条线索。",
+        "gallery": ["shop", "harbor"]
+      },
+      "text": "她展开了值夜记录。\n\n“看，这里有新的线索。”"
+    },
+    {
+      "variables": {
+        "courage": 75,
+        "location": "书店阁楼",
+        "background": "shop",
+        "portrait": "person",
+        "clue": "确认信件来源",
+        "expanded": false,
+        "actionLabel": "整理线索",
+        "actionText": "请继续解释这条线索。",
+        "gallery": ["shop", "harbor"]
+      },
+      "text": "她把两封信放在一起。\n\n“我们终于知道是谁留下了它们。”"
+    }
+  ]
+}

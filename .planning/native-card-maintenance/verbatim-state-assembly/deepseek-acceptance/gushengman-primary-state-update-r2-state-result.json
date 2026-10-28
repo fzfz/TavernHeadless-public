@@ -1,0 +1,29 @@
+{
+  "sessionId": "5ZoCR0MnbCwCCgPS7iQa9",
+  "branchId": "main",
+  "floorId": "bmhMWEq-Fdz9CZnNsA1ld",
+  "attemptId": "MTDWk42jRvUILX2X8G7R4:1",
+  "versionId": "HkdRM1AnnRgadXaEkJ4fT",
+  "snapshotId": "e62ea4b4-6bae-46e2-a47e-7762055687cc",
+  "parentSnapshotId": "dd62e688-e919-4803-9e40-d821a2836dd8",
+  "variables": {
+    "世界": {
+      "当前地址": "旧教学楼三楼活动室",
+      "当前时间": "2025年12月15日17:50",
+      "事件状态": "无"
+    },
+    "顾声慢": {
+      "情感连结度": 3,
+      "创作完成度": 8,
+      "心象映射": {
+        "当前心声": "他给的解法一按就通了……这段卡了一周的地方，居然被一个刚认识的人一句话点破。这个人，好像真的能听见我弹的东西。",
+        "当前脑内旋律": "《God knows...》"
+      }
+    }
+  },
+  "source": {
+    "kind": "floor",
+    "runId": "MTDWk42jRvUILX2X8G7R4",
+    "jobId": null
+  }
+}

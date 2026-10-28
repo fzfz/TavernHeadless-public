@@ -1,0 +1,1015 @@
+{
+  "purpose": "Planning contract fixtures; semantic expectations require future executor tests, not schema validation alone.",
+  "calls": [
+    {
+      "id": "dice",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 1,
+            "max": 6
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": 2,
+          "replacement": true
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "weighted_choices",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "choices",
+            "values": ["A", "B", "C"]
+          },
+          "distribution": {
+            "kind": "weighted",
+            "weights": [0, 3, 1]
+          },
+          "count": 2,
+          "replacement": false
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "single_point",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 4,
+            "max": 4
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": 1,
+          "replacement": false
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "duplicate_values",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "choices",
+            "values": ["A", "A"]
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": 2,
+          "replacement": false
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "missing_count",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 1,
+            "max": 6
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "replacement": true
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "range_weighted",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 1,
+            "max": 6
+          },
+          "distribution": {
+            "kind": "weighted",
+            "weights": [1]
+          },
+          "count": 1,
+          "replacement": true
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "empty_choices",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "choices",
+            "values": []
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": 1,
+          "replacement": true
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "unknown_parameter",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 1,
+            "max": 6
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": 1,
+          "replacement": true,
+          "seed": 1
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "string_count",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 1,
+            "max": 6
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": "2",
+          "replacement": true
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "reversed_range",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 6,
+            "max": 1
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": 1,
+          "replacement": true
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "INVALID_RANGE",
+      "rule": "min <= max"
+    },
+    {
+      "id": "weight_length",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "choices",
+            "values": ["A", "B"]
+          },
+          "distribution": {
+            "kind": "weighted",
+            "weights": [1]
+          },
+          "count": 1,
+          "replacement": true
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "INVALID_WEIGHTS",
+      "rule": "weights length equals values length"
+    },
+    {
+      "id": "zero_weights",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "choices",
+            "values": ["A", "B"]
+          },
+          "distribution": {
+            "kind": "weighted",
+            "weights": [0, 0]
+          },
+          "count": 1,
+          "replacement": true
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "INVALID_WEIGHTS",
+      "rule": "positive finite weight sum"
+    },
+    {
+      "id": "insufficient_positive",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "choices",
+            "values": ["A", "B"]
+          },
+          "distribution": {
+            "kind": "weighted",
+            "weights": [1, 0]
+          },
+          "count": 2,
+          "replacement": false
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "INSUFFICIENT_POPULATION",
+      "rule": "count <= positive-weight entries"
+    },
+    {
+      "id": "sample_limit",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 1,
+            "max": 6
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": 33,
+          "replacement": true
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "LIMIT_EXCEEDED",
+      "rule": "initial single-call sample limit 32"
+    },
+    {
+      "id": "damage",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "max",
+            "args": [
+              0,
+              {
+                "op": "sub",
+                "args": [28, 10]
+              }
+            ]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "compare",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "lte",
+            "args": [
+              {
+                "op": "sub",
+                "args": [12, 18]
+              },
+              0
+            ]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "literal",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": 3
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "truncation",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "trunc",
+            "args": [-2.8]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "wrong_arity",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "div",
+            "args": [1]
+          }
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "nested_comparison",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "add",
+            "args": [
+              1,
+              {
+                "op": "lt",
+                "args": [1, 2]
+              }
+            ]
+          }
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "string_expression",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": "28 - 10"
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "variable_path",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "path": "stats.hp"
+          }
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "division_zero",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "div",
+            "args": [1, 0]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "DIVISION_BY_ZERO",
+      "rule": "divisor != 0"
+    },
+    {
+      "id": "overflow",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "mul",
+            "args": [1e308, 1e308]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "NUMERIC_OVERFLOW",
+      "rule": "each intermediate finite"
+    },
+    {
+      "id": "count_zero",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 1,
+            "max": 6
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": 0,
+          "replacement": true
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "sample_limit_exact",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 1,
+            "max": 6
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": 32,
+          "replacement": true
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "fractional_bound",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 1.5,
+            "max": 6
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": 1,
+          "replacement": true
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "unsafe_integer",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 1,
+            "max": 9007199254740992
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": 1,
+          "replacement": true
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "negative_range",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": -3,
+            "max": -1
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": 1,
+          "replacement": true
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "insufficient_range",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 1,
+            "max": 6
+          },
+          "distribution": {
+            "kind": "uniform"
+          },
+          "count": 7,
+          "replacement": false
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "INSUFFICIENT_POPULATION"
+    },
+    {
+      "id": "invalid_distribution_fields",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "integer_range",
+            "min": 1,
+            "max": 6
+          },
+          "distribution": {
+            "kind": "uniform",
+            "weights": [1]
+          },
+          "count": 1,
+          "replacement": true
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "negative_weight",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "choices",
+            "values": ["A"]
+          },
+          "distribution": {
+            "kind": "weighted",
+            "weights": [-1]
+          },
+          "count": 1,
+          "replacement": true
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "operator_add",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "add",
+            "args": [6, 2]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_mul",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "mul",
+            "args": [6, 2]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_min",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "min",
+            "args": [6, 2]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_max",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "max",
+            "args": [6, 2]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_sub",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "sub",
+            "args": [6, 2]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_div",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "div",
+            "args": [6, 2]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_eq",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "eq",
+            "args": [6, 2]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_ne",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "ne",
+            "args": [6, 2]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_lt",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "lt",
+            "args": [6, 2]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_lte",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "lte",
+            "args": [6, 2]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_gt",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "gt",
+            "args": [6, 2]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_gte",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "gte",
+            "args": [6, 2]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_floor",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "floor",
+            "args": [-2.8]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_ceil",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "ceil",
+            "args": [-2.8]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "operator_trunc",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "trunc",
+            "args": [-2.8]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "valid"
+    },
+    {
+      "id": "unknown_operator",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "eval",
+            "args": [1, 2]
+          }
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "extra_operand",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "sub",
+            "args": [3, 2, 1]
+          }
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "unknown_expression_field",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "add",
+            "args": [1, 2],
+            "name": "damage"
+          }
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "negative_zero_division",
+      "value": {
+        "toolName": "calculate",
+        "arguments": {
+          "expression": {
+            "op": "div",
+            "args": [1, -0.0]
+          }
+        }
+      },
+      "schemaValid": true,
+      "semanticExpectation": "DIVISION_BY_ZERO",
+      "rule": "zero divisor includes negative zero"
+    },
+    {
+      "id": "empty_weights",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "choices",
+            "values": ["A"]
+          },
+          "distribution": {
+            "kind": "weighted",
+            "weights": []
+          },
+          "count": 1,
+          "replacement": true
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    },
+    {
+      "id": "string_weight",
+      "value": {
+        "toolName": "random",
+        "arguments": {
+          "domain": {
+            "kind": "choices",
+            "values": ["A"]
+          },
+          "distribution": {
+            "kind": "weighted",
+            "weights": ["1"]
+          },
+          "count": 1,
+          "replacement": true
+        }
+      },
+      "schemaValid": false,
+      "semanticExpectation": "INVALID_ARGUMENT"
+    }
+  ],
+  "results": [
+    {
+      "id": "random_success",
+      "definition": "randomResult",
+      "value": {
+        "ok": true,
+        "data": {
+          "samples": [2, 5],
+          "indices": null
+        }
+      },
+      "schemaValid": true
+    },
+    {
+      "id": "choice_success",
+      "definition": "randomResult",
+      "value": {
+        "ok": true,
+        "data": {
+          "samples": ["B", "C"],
+          "indices": [1, 2]
+        }
+      },
+      "schemaValid": true
+    },
+    {
+      "id": "number_success",
+      "definition": "calculateResult",
+      "value": {
+        "ok": true,
+        "data": {
+          "type": "number",
+          "value": 18
+        }
+      },
+      "schemaValid": true
+    },
+    {
+      "id": "boolean_success",
+      "definition": "calculateResult",
+      "value": {
+        "ok": true,
+        "data": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "schemaValid": true
+    },
+    {
+      "id": "type_mismatch",
+      "definition": "calculateResult",
+      "value": {
+        "ok": true,
+        "data": {
+          "type": "number",
+          "value": true
+        }
+      },
+      "schemaValid": false
+    },
+    {
+      "id": "structured_error",
+      "definition": "errorResult",
+      "value": {
+        "ok": false,
+        "error": {
+          "code": "DIVISION_BY_ZERO",
+          "message": "除数为0，请修改expression中的除数。"
+        }
+      },
+      "schemaValid": true
+    }
+  ],
+  "executionAcceptance": [
+    {
+      "target": "random",
+      "check": "Every returned index is in the original list; samples match those indices; samples length equals count; without replacement indices are distinct."
+    },
+    {
+      "target": "random",
+      "check": "Uniform and weighted probability follow section 3.1; zero weights are never selected; survivors determine each weighted draw."
+    },
+    {
+      "target": "calculate",
+      "check": "All listed operators match section 3.2, including negative integer rounding, floating-point comparison and left-to-right arithmetic."
+    },
+    {
+      "target": "both",
+      "check": "For each single-call input, result or data-size quota in section 5, test exact limit and limit plus one; expected results are success and LIMIT_EXCEEDED."
+    },
+    {
+      "target": "both",
+      "check": "Native and text transports return the same success or error object to the model; code and execution identity stay traceable."
+    },
+    {
+      "target": "both",
+      "check": "Use Buffer.byteLength(JSON.stringify(value), \"utf8\") to measure arguments and complete model results. Under initial quotas test arguments and random success envelopes at 65536/65537 bytes; test error envelopes against the 1024-byte error bound. Exclude tool name, call ID and transport wrappers."
+    },
+    {
+      "target": "orchestration",
+      "check": "Test model-step and total tool-call quotas separately under section 4: reaching the quota with incomplete generation ends with generation failure and preserves execution evidence."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "ok": false,
+  "label": "linqian-primary-state-update-r1-body",
+  "count": 3,
+  "error": "TavernApiError: Turn orchestration failed: Generation failed: LLM call failed: Provider returned error",
+  "code": "orchestration_failed",
+  "status": 200
+}

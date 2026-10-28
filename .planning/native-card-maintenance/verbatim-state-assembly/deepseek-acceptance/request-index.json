@@ -1,0 +1,620 @@
+{
+  "count": 34,
+  "requests": [
+    {
+      "number": 1,
+      "label": "gushengman-primary-state-update-r1-body",
+      "reservedUsd": 0.025241699999999995,
+      "actualUsd": 0.002524599,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "deepinfra/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "01-gushengman-primary-state-update-r1-body-provider-request.json",
+      "evidence": [
+        "01-gushengman-primary-state-update-r1-body-billing.json",
+        "01-gushengman-primary-state-update-r1-body-provider-request.json",
+        "01-gushengman-primary-state-update-r1-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 2,
+      "label": "gushengman-primary-state-update-r1-state",
+      "reservedUsd": 0.027208200000000002,
+      "actualUsd": null,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "deepinfra/fp8"
+      ],
+      "modelCallStatus": "failed",
+      "request": "02-gushengman-primary-state-update-r1-state-provider-request.json",
+      "evidence": [
+        "02-gushengman-primary-state-update-r1-state-billing.json",
+        "02-gushengman-primary-state-update-r1-state-final-billing.json",
+        "02-gushengman-primary-state-update-r1-state-provider-request.json",
+        "02-gushengman-primary-state-update-r1-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 3,
+      "label": "gushengman-primary-state-update-r1-state-deepseek",
+      "reservedUsd": 0.0272067,
+      "actualUsd": null,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "deepseek"
+      ],
+      "modelCallStatus": "failed",
+      "request": "03-gushengman-primary-state-update-r1-state-deepseek-provider-request.json",
+      "evidence": [
+        "03-gushengman-primary-state-update-r1-state-deepseek-provider-request.json",
+        "03-gushengman-primary-state-update-r1-state-deepseek-provider-response.json"
+      ]
+    },
+    {
+      "number": 4,
+      "label": "gushengman-primary-state-update-r1-state-morph",
+      "reservedUsd": 0.027207000000000002,
+      "actualUsd": 0.001105653,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "04-gushengman-primary-state-update-r1-state-morph-provider-request.json",
+      "evidence": [
+        "04-gushengman-primary-state-update-r1-state-morph-billing.json",
+        "04-gushengman-primary-state-update-r1-state-morph-provider-request.json",
+        "04-gushengman-primary-state-update-r1-state-morph-provider-response.json"
+      ]
+    },
+    {
+      "number": 5,
+      "label": "linqian-primary-state-update-r1-body",
+      "reservedUsd": 0.0372408,
+      "actualUsd": 0.00192087126,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "05-linqian-primary-state-update-r1-body-provider-request.json",
+      "evidence": [
+        "05-linqian-primary-state-update-r1-body-billing.json",
+        "05-linqian-primary-state-update-r1-body-provider-request.json",
+        "05-linqian-primary-state-update-r1-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 6,
+      "label": "linqian-primary-state-update-r1-state",
+      "reservedUsd": 0.07272509999999999,
+      "actualUsd": 0.0031946409,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "06-linqian-primary-state-update-r1-state-provider-request.json",
+      "evidence": [
+        "06-linqian-primary-state-update-r1-state-billing.json",
+        "06-linqian-primary-state-update-r1-state-provider-request.json",
+        "06-linqian-primary-state-update-r1-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 7,
+      "label": "linqian-backup-mvu-state-update-r1-body",
+      "reservedUsd": 0.0372408,
+      "actualUsd": 0.00066842226,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "07-linqian-backup-mvu-state-update-r1-body-provider-request.json",
+      "evidence": [
+        "07-linqian-backup-mvu-state-update-r1-body-billing.json",
+        "07-linqian-backup-mvu-state-update-r1-body-provider-request.json",
+        "07-linqian-backup-mvu-state-update-r1-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 8,
+      "label": "linqian-backup-mvu-state-update-r1-state",
+      "reservedUsd": 0.0722862,
+      "actualUsd": 0.00317698524,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "08-linqian-backup-mvu-state-update-r1-state-provider-request.json",
+      "evidence": [
+        "08-linqian-backup-mvu-state-update-r1-state-billing.json",
+        "08-linqian-backup-mvu-state-update-r1-state-provider-request.json",
+        "08-linqian-backup-mvu-state-update-r1-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 9,
+      "label": "gushengman-backup-mvu-state-update-r1-body",
+      "reservedUsd": 0.0252405,
+      "actualUsd": 0.00112723578,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "09-gushengman-backup-mvu-state-update-r1-body-provider-request.json",
+      "evidence": [
+        "09-gushengman-backup-mvu-state-update-r1-body-billing.json",
+        "09-gushengman-backup-mvu-state-update-r1-body-provider-request.json",
+        "09-gushengman-backup-mvu-state-update-r1-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 10,
+      "label": "gushengman-backup-mvu-state-update-r1-state",
+      "reservedUsd": 0.027976799999999996,
+      "actualUsd": 0.00112374702,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "10-gushengman-backup-mvu-state-update-r1-state-provider-request.json",
+      "evidence": [
+        "10-gushengman-backup-mvu-state-update-r1-state-billing.json",
+        "10-gushengman-backup-mvu-state-update-r1-state-provider-request.json",
+        "10-gushengman-backup-mvu-state-update-r1-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 11,
+      "label": "linqian-primary-state-update-r2-body",
+      "reservedUsd": 0.04038,
+      "actualUsd": 0.00232350426,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "11-linqian-primary-state-update-r2-body-provider-request.json",
+      "evidence": [
+        "11-linqian-primary-state-update-r2-body-billing.json",
+        "11-linqian-primary-state-update-r2-body-provider-request.json",
+        "11-linqian-primary-state-update-r2-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 12,
+      "label": "linqian-primary-state-update-r2-state",
+      "reservedUsd": 0.07945409999999999,
+      "actualUsd": 0.0034992342,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "12-linqian-primary-state-update-r2-state-provider-request.json",
+      "evidence": [
+        "12-linqian-primary-state-update-r2-state-billing.json",
+        "12-linqian-primary-state-update-r2-state-provider-request.json",
+        "12-linqian-primary-state-update-r2-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 13,
+      "label": "linqian-backup-mvu-state-update-r2-body",
+      "reservedUsd": 0.0397185,
+      "actualUsd": 0.00125147484,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "13-linqian-backup-mvu-state-update-r2-body-provider-request.json",
+      "evidence": [
+        "13-linqian-backup-mvu-state-update-r2-body-billing.json",
+        "13-linqian-backup-mvu-state-update-r2-body-provider-request.json",
+        "13-linqian-backup-mvu-state-update-r2-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 14,
+      "label": "linqian-backup-mvu-state-update-r2-state",
+      "reservedUsd": 0.07891829999999998,
+      "actualUsd": 0.00344275668,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "14-linqian-backup-mvu-state-update-r2-state-provider-request.json",
+      "evidence": [
+        "14-linqian-backup-mvu-state-update-r2-state-billing.json",
+        "14-linqian-backup-mvu-state-update-r2-state-provider-request.json",
+        "14-linqian-backup-mvu-state-update-r2-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 15,
+      "label": "gushengman-primary-state-update-r2-body",
+      "reservedUsd": 0.0294381,
+      "actualUsd": 0.00148886298,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "15-gushengman-primary-state-update-r2-body-provider-request.json",
+      "evidence": [
+        "15-gushengman-primary-state-update-r2-body-billing.json",
+        "15-gushengman-primary-state-update-r2-body-provider-request.json",
+        "15-gushengman-primary-state-update-r2-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 16,
+      "label": "gushengman-primary-state-update-r2-state",
+      "reservedUsd": 0.030674399999999998,
+      "actualUsd": 0.00126126198,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "16-gushengman-primary-state-update-r2-state-provider-request.json",
+      "evidence": [
+        "16-gushengman-primary-state-update-r2-state-billing.json",
+        "16-gushengman-primary-state-update-r2-state-provider-request.json",
+        "16-gushengman-primary-state-update-r2-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 17,
+      "label": "gushengman-backup-mvu-state-update-r2-body",
+      "reservedUsd": 0.0283911,
+      "actualUsd": 0.00093323736,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "17-gushengman-backup-mvu-state-update-r2-body-provider-request.json",
+      "evidence": [
+        "17-gushengman-backup-mvu-state-update-r2-body-billing.json",
+        "17-gushengman-backup-mvu-state-update-r2-body-provider-request.json",
+        "17-gushengman-backup-mvu-state-update-r2-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 18,
+      "label": "gushengman-backup-mvu-state-update-r2-state",
+      "reservedUsd": 0.0298125,
+      "actualUsd": 0.0011623392,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "18-gushengman-backup-mvu-state-update-r2-state-provider-request.json",
+      "evidence": [
+        "18-gushengman-backup-mvu-state-update-r2-state-billing.json",
+        "18-gushengman-backup-mvu-state-update-r2-state-provider-request.json",
+        "18-gushengman-backup-mvu-state-update-r2-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 19,
+      "label": "gushengman-primary-state-update-r3-body",
+      "reservedUsd": 0.030988199999999997,
+      "actualUsd": 0.00157340106,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "19-gushengman-primary-state-update-r3-body-provider-request.json",
+      "evidence": [
+        "19-gushengman-primary-state-update-r3-body-billing.json",
+        "19-gushengman-primary-state-update-r3-body-provider-request.json",
+        "19-gushengman-primary-state-update-r3-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 20,
+      "label": "gushengman-primary-state-update-r3-state",
+      "reservedUsd": 0.0328323,
+      "actualUsd": 0.00131278554,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "20-gushengman-primary-state-update-r3-state-provider-request.json",
+      "evidence": [
+        "20-gushengman-primary-state-update-r3-state-billing.json",
+        "20-gushengman-primary-state-update-r3-state-provider-request.json",
+        "20-gushengman-primary-state-update-r3-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 21,
+      "label": "gushengman-primary-state-update-r4-body",
+      "reservedUsd": 0.0326022,
+      "actualUsd": 0.00133276374,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "21-gushengman-primary-state-update-r4-body-provider-request.json",
+      "evidence": [
+        "21-gushengman-primary-state-update-r4-body-billing.json",
+        "21-gushengman-primary-state-update-r4-body-provider-request.json",
+        "21-gushengman-primary-state-update-r4-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 22,
+      "label": "gushengman-primary-state-update-r4-state",
+      "reservedUsd": 0.035774099999999996,
+      "actualUsd": 0.00144757998,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "22-gushengman-primary-state-update-r4-state-provider-request.json",
+      "evidence": [
+        "22-gushengman-primary-state-update-r4-state-billing.json",
+        "22-gushengman-primary-state-update-r4-state-provider-request.json",
+        "22-gushengman-primary-state-update-r4-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 23,
+      "label": "gushengman-primary-state-update-r5-body",
+      "reservedUsd": 0.0346455,
+      "actualUsd": 0.00209443608,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "23-gushengman-primary-state-update-r5-body-provider-request.json",
+      "evidence": [
+        "23-gushengman-primary-state-update-r5-body-billing.json",
+        "23-gushengman-primary-state-update-r5-body-provider-request.json",
+        "23-gushengman-primary-state-update-r5-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 24,
+      "label": "gushengman-primary-state-update-r5-state",
+      "reservedUsd": 0.038411999999999995,
+      "actualUsd": 0.0015743574,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "24-gushengman-primary-state-update-r5-state-provider-request.json",
+      "evidence": [
+        "24-gushengman-primary-state-update-r5-state-billing.json",
+        "24-gushengman-primary-state-update-r5-state-provider-request.json",
+        "24-gushengman-primary-state-update-r5-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 25,
+      "label": "gushengman-primary-state-update-r6-body",
+      "reservedUsd": 0.0374439,
+      "actualUsd": 0.00157160322,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "25-gushengman-primary-state-update-r6-body-provider-request.json",
+      "evidence": [
+        "25-gushengman-primary-state-update-r6-body-billing.json",
+        "25-gushengman-primary-state-update-r6-body-provider-request.json",
+        "25-gushengman-primary-state-update-r6-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 26,
+      "label": "gushengman-primary-state-update-r6-state",
+      "reservedUsd": 0.0421434,
+      "actualUsd": 0.0017749413,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "26-gushengman-primary-state-update-r6-state-provider-request.json",
+      "evidence": [
+        "26-gushengman-primary-state-update-r6-state-billing.json",
+        "26-gushengman-primary-state-update-r6-state-provider-request.json",
+        "26-gushengman-primary-state-update-r6-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 27,
+      "label": "gushengman-primary-state-update-r7-body",
+      "reservedUsd": 0.0397419,
+      "actualUsd": 0.0015851187,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "27-gushengman-primary-state-update-r7-body-provider-request.json",
+      "evidence": [
+        "27-gushengman-primary-state-update-r7-body-billing.json",
+        "27-gushengman-primary-state-update-r7-body-provider-request.json",
+        "27-gushengman-primary-state-update-r7-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 28,
+      "label": "gushengman-primary-state-update-r7-state",
+      "reservedUsd": 0.044740499999999996,
+      "actualUsd": 0.00184921902,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "28-gushengman-primary-state-update-r7-state-provider-request.json",
+      "evidence": [
+        "28-gushengman-primary-state-update-r7-state-billing.json",
+        "28-gushengman-primary-state-update-r7-state-provider-request.json",
+        "28-gushengman-primary-state-update-r7-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 29,
+      "label": "gushengman-primary-state-update-r8-body",
+      "reservedUsd": 0.0421755,
+      "actualUsd": null,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "interrupted",
+      "request": "29-gushengman-primary-state-update-r8-body-provider-request.json",
+      "evidence": [
+        "29-gushengman-primary-state-update-r8-body-capture-error.json",
+        "29-gushengman-primary-state-update-r8-body-partial-provider-response.json",
+        "29-gushengman-primary-state-update-r8-body-provider-request.json"
+      ]
+    },
+    {
+      "number": 30,
+      "label": "gushengman-primary-state-update-r8-body-retry-timeout",
+      "reservedUsd": 0.0421755,
+      "actualUsd": null,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "interrupted",
+      "request": "30-gushengman-primary-state-update-r8-body-retry-timeout-provider-request.json",
+      "evidence": [
+        "30-gushengman-primary-state-update-r8-body-retry-timeout-billing.json",
+        "30-gushengman-primary-state-update-r8-body-retry-timeout-final-billing.json",
+        "30-gushengman-primary-state-update-r8-body-retry-timeout-interruption.json",
+        "30-gushengman-primary-state-update-r8-body-retry-timeout-partial-provider-response.json",
+        "30-gushengman-primary-state-update-r8-body-retry-timeout-provider-request.json",
+        "30-gushengman-primary-state-update-r8-body-retry-timeout-provider-response.json"
+      ]
+    },
+    {
+      "number": 31,
+      "label": "gushengman-primary-state-update-r8-body-deepinfra",
+      "reservedUsd": 0.0421767,
+      "actualUsd": 0.0044805222,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "deepinfra/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "31-gushengman-primary-state-update-r8-body-deepinfra-provider-request.json",
+      "evidence": [
+        "31-gushengman-primary-state-update-r8-body-deepinfra-billing.json",
+        "31-gushengman-primary-state-update-r8-body-deepinfra-provider-request.json",
+        "31-gushengman-primary-state-update-r8-body-deepinfra-provider-response.json"
+      ]
+    },
+    {
+      "number": 32,
+      "label": "gushengman-primary-state-update-r8-state",
+      "reservedUsd": 0.0487728,
+      "actualUsd": 0.00205495488,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "32-gushengman-primary-state-update-r8-state-provider-request.json",
+      "evidence": [
+        "32-gushengman-primary-state-update-r8-state-billing.json",
+        "32-gushengman-primary-state-update-r8-state-provider-request.json",
+        "32-gushengman-primary-state-update-r8-state-provider-response.json"
+      ]
+    },
+    {
+      "number": 33,
+      "label": "linqian-primary-state-update-r3-body",
+      "reservedUsd": 0.0434472,
+      "actualUsd": 0.004535685,
+      "phase": "body",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "deepinfra/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "33-linqian-primary-state-update-r3-body-provider-request.json",
+      "evidence": [
+        "33-linqian-primary-state-update-r3-body-billing.json",
+        "33-linqian-primary-state-update-r3-body-provider-request.json",
+        "33-linqian-primary-state-update-r3-body-provider-response.json"
+      ]
+    },
+    {
+      "number": 34,
+      "label": "linqian-primary-state-update-r3-state",
+      "reservedUsd": 0.0874152,
+      "actualUsd": 0.00390245922,
+      "phase": "state",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "providers": [
+        "morph/fp8"
+      ],
+      "modelCallStatus": "succeeded",
+      "request": "34-linqian-primary-state-update-r3-state-provider-request.json",
+      "evidence": [
+        "34-linqian-primary-state-update-r3-state-billing.json",
+        "34-linqian-primary-state-update-r3-state-provider-request.json",
+        "34-linqian-primary-state-update-r3-state-provider-response.json"
+      ]
+    }
+  ]
+}

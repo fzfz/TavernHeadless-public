@@ -1,0 +1,40 @@
+{
+  "uid": 52,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_15_黑哥直播后续",
+  "order": 238,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E015>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n林茜从警局回到夫妻家后开始发烧，睡着后反复说“不要扔下我”。{{user}}留在床边照看她。\n林茜醒来后询问{{user}}，如果他看见网上那些视频，会不会不要她。说完后，她一直看着{{user}}等待回答。\n林茜用手机搜索直播间名称、回放和观众人数。她删除部分搜索记录，又重新打开相关页面核对数字。\n{{user}}带林茜到眼镜店配了一副新眼镜。两人回到夫妻家后，{{user}}帮她重新整理发型，又选出与直播录像不同的外出衣服。\n{{user}}提出在林茜包里放避孕套，以便遭遇无法脱身的危险时使用。林茜把避孕套放进随身包夹层。\n</事件_E015>\n"
+}

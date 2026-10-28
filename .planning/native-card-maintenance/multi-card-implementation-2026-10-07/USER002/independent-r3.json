@@ -1,0 +1,292 @@
+{
+  "reviewer": "USER002 independent-r3",
+  "result": "material_findings",
+  "reviewMode": "独立只读验收；仅写入本报告。源脚本采用静态阅读；目标纯计算模块及前端入口采用内存测试。",
+  "scope": {
+    "sourceFile": "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json",
+    "packageDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-0H4RDx/package",
+    "zipFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-0H4RDx/pack-kEjn5H/role.zip",
+    "apiRepository": "/srv/tavern/TavernHeadless-remove-preview-credentials"
+  },
+  "summary": {
+    "findingCount": 4,
+    "P1": 1,
+    "P2": 3,
+    "packageZipFileCount": 149,
+    "checkedJsonFileCount": 140,
+    "preservedWorldbookEntryCount": 129,
+    "initialStateCount": 2,
+    "portraitGalleryItemCount": 50
+  },
+  "findings": [
+    {
+      "id": "R3-01",
+      "priority": "P1",
+      "category": "转换生成错误",
+      "title": "变量列表将36个事件布尔值输出为代码字符串",
+      "sourceLocations": [
+        {
+          "file": "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json",
+          "pointer": "/data/character_book/entries/107/content",
+          "contentLines": "27至62",
+          "expression": "事件_E001: {{format_message_variable::stat_data.世界.已触发事件.事件_E001}}，其余事件使用同类宏。"
+        }
+      ],
+      "targetLocations": [
+        {
+          "file": "backend/controllers/index.js",
+          "lines": "35至70"
+        },
+        {
+          "file": "backend/controllers/config.json",
+          "pointer": "/controllerEntries/2"
+        }
+      ],
+      "expected": "控制器按当前变量输出每个事件的 true 或 false，使正文模型能够读取已经完成的事件。",
+      "actual": "目标将 yamlScalar(...) 放进完整字符串字面量，输出代码表达式和末尾逗号。36个事件全部受到影响。",
+      "reproduction": {
+        "call": "renderController({bookId:\"book-0\",entryId:107,variables:openingDefaultInitial,characterBook})",
+        "observedEventLine": "    事件_E001: yamlScalar(world['已触发事件']?.[\"事件_E001\"]),",
+        "observedLiteralEventCount": 36
+      },
+      "impact": "源卡把当前变量列表规定为全部模型写入字段当前值的唯一依据。该文本没有提供事件当前值，会妨碍正文模型判断事件完成状态和连续剧情。",
+      "apiEvidence": [
+        {
+          "file": "apps/api/src/services/role-prompt-controller.ts",
+          "lines": "34至58",
+          "behavior": "正式调用方用 renderController 返回的 text 替换条目正文。"
+        }
+      ]
+    },
+    {
+      "id": "R3-02",
+      "priority": "P2",
+      "category": "源规则例外丢失",
+      "title": "终局路线校验器拒绝源卡允许的用户明确重选",
+      "sourceLocations": [
+        {
+          "file": "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json",
+          "pointer": "/data/character_book/entries/105/content",
+          "expression": "/世界/终局路线 已经进入任一路线时，保持该值；只有用户明确重选结局时，才更新该变量。"
+        },
+        {
+          "file": "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json",
+          "pointer": "/data/character_book/entries/110/content",
+          "expression": "确定后禁止改写，除非用户明确重选。"
+        }
+      ],
+      "targetLocations": [
+        {
+          "file": "backend/validators/validate-state.js",
+          "lines": "86至87"
+        },
+        {
+          "file": "agents/state-update/rules.json",
+          "pointer": "/rules/0/instruction"
+        }
+      ],
+      "expected": "用户明确重选结局且满足源规则要求时，可以更新已有终局路线。",
+      "actual": "目标规则文本仍保留该例外，但校验器仅比较前后路线，所有已有路线变化都会返回 ENDING_ROUTE_LOCKED。校验器没有接收或判断明确重选的结构化证据。",
+      "reproduction": {
+        "beforeRoute": "结局三_隔离守婚",
+        "candidateRoute": "结局一_离婚",
+        "candidateDivorced": true,
+        "otherState": "合法初值，行动选项已展开用户姓名。",
+        "observedIssues": [
+          {
+            "path": "/世界/终局路线",
+            "code": "ENDING_ROUTE_LOCKED",
+            "message": "终局路线确定后不能改写；如需重选，请建立新的剧情分支。"
+          }
+        ]
+      },
+      "impact": "正文及更新模型即使正确执行用户的重选要求，变量提交仍会失败。目标提出另建分支，改变了源卡的重选操作。"
+    },
+    {
+      "id": "R3-03",
+      "priority": "P2",
+      "category": "转换改写行为",
+      "title": "历史行动选项的逐项恢复改成每轮必须提供完整四项",
+      "sourceLocations": [
+        {
+          "file": "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json",
+          "pointer": "/data/extensions/regex_scripts/5/replaceString",
+          "contentLines": "180至247",
+          "functions": [
+            "currentOptionEvidence",
+            "mergeOptionEvidence",
+            "optionMessageHistory",
+            "currentOptionValues"
+          ]
+        }
+      ],
+      "targetLocations": [
+        {
+          "file": "agents/state-update/profile.json",
+          "lines": "103至119"
+        },
+        {
+          "file": "backend/variable-tools/normalize-state.js",
+          "lines": "24至25及43"
+        },
+        {
+          "file": "frontend/main.js",
+          "lines": "287至314及366至369"
+        }
+      ],
+      "expected": "源UI从第0条助手消息建立四项基线，随后按历史消息逐项合并有效且不重复的 replace 证据。缺失JSONPatch、缺失项、重复路径或无效项可以保留上一份有效值；合并后无效时保留原基线。",
+      "actual": "目标不读取或合并历史逐项证据。factsSchema要求四项候选数组全部存在，derive也要求长度为4并整体覆盖当前选项。缺失或部分有效的选项结果会使整个变量更新失败。",
+      "reproduction": {
+        "sourceCase": "已存在有效基线；后续助手回复只提供索引0的一项有效replace。",
+        "sourceExpected": "索引0更新，索引1至3沿用基线。",
+        "targetFacts": {
+          "行动选项候选值": [
+            "元指令:细腻演绎接下来5分钟。"
+          ]
+        },
+        "targetFactsSchemaResult": false,
+        "targetSchemaError": "/行动选项候选值 must NOT have fewer than 4 items"
+      },
+      "impact": "源卡已经实现的缺失项与无效项恢复分支没有迁移，用户需要重试整个状态更新。正式API没有要求角色必须放弃该恢复分支。",
+      "apiEvidence": [
+        {
+          "file": "docs/character-authoring/backend-api.md",
+          "section": "第3至5章",
+          "behavior": "角色可自行定义 factsSchema 和 derive；当前正式API支持基于 before、candidate、facts 生成候选状态。"
+        }
+      ]
+    },
+    {
+      "id": "R3-04",
+      "priority": "P2",
+      "category": "目标校验与界面语义不一致",
+      "title": "后端允许去除首尾空白后重复的选项，前端会禁用整组",
+      "sourceLocations": [
+        {
+          "file": "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json",
+          "pointer": "/data/extensions/regex_scripts/5/replaceString",
+          "contentLines": "169至177及194至204",
+          "expression": "源UI先 trim，再判断值是否重复；合并无效时保留有效基线。"
+        }
+      ],
+      "targetLocations": [
+        {
+          "file": "backend/validators/validate-state.js",
+          "lines": "90至96"
+        },
+        {
+          "file": "backend/variable-tools/normalize-state.js",
+          "line": "43"
+        },
+        {
+          "file": "frontend/main.js",
+          "lines": "25至31及309至314"
+        }
+      ],
+      "expected": "后端与前端应对相同选项使用一致的规范化和互异性判定，使已提交的选项能够被用户使用。",
+      "actual": "后端用原字符串 new Set(options) 检查互异，derive保留空白；前端用 trim 后的字符串检查互异。",
+      "reproduction": {
+        "candidateOptions": [
+          "元指令:细腻演绎林茜接下来5分钟的剧情。",
+          "裴修远叫林茜回家。",
+          " 裴修远叫林茜回家。 ",
+          "元指令:时间推进到第二天清晨7:30，夫妻家，重置当日变量。"
+        ],
+        "factsSchemaValid": true,
+        "backendValidatorIssues": [],
+        "frontendAllOptionsDisabled": true,
+        "frontendFeedback": "当前行动选项格式无效，请检查角色状态。"
+      },
+      "impact": "目标能够成功提交一组前端不能使用的行动选项；界面只要求检查状态，用户不能直接选择任何选项。"
+    }
+  ],
+  "verified": [
+    {
+      "area": "ZIP一致性",
+      "result": "通过",
+      "evidence": "ZIP与package目录均包含149个文件，文件名集合及全部文件字节一致。"
+    },
+    {
+      "area": "正式包schema",
+      "result": "通过",
+      "evidence": "140个JSON文件通过当前 packages/shared/src/schemas/native-card-package/schema.ts 对应Zod schema；两份初值通过当前包状态JSON Schema。"
+    },
+    {
+      "area": "人物文字字段",
+      "result": "通过",
+      "evidence": "人物名称、空描述字段、创作者、版本与创建信息具有源字段依据；作者说明原文保留。"
+    },
+    {
+      "area": "开场正文与初值",
+      "result": "通过",
+      "evidence": "删除源开场的状态占位符和UpdateVariable块后，两份剧情正文与目标txt相同；按源各自initvar初始化并执行其四项JSONPatch后，两份完整状态与目标初值相同。"
+    },
+    {
+      "area": "世界书文字与启用状态",
+      "result": "通过",
+      "evidence": "129个保留条目的content与源正文相同；目标disable为源enabled反值。移出的四项为initvar和三个mvu_update条目。"
+    },
+    {
+      "area": "身体边界控制器104",
+      "result": "通过静态核心对照",
+      "evidence": "目标函数中的源主体代码完整保留；当前默认初值实调用返回条目89、92、93、94、98的正文引用。"
+    },
+    {
+      "area": "关键事件控制器106",
+      "result": "通过核心对照，存在实现改写",
+      "evidence": "源分支、顺序、阈值与引用主体保留；目标将Date.UTC日期合法性检查改成闰年和月份天数计算。2025年至当前剧情日期范围语义相同；0000至0099年的行为不等同。默认初值调用返回空文本，符合未达到首个事件阈值且当日日常已占用的源条件。"
+    },
+    {
+      "area": "开局前提控制器122",
+      "result": "通过静态和默认实例对照",
+      "evidence": "11种开局模式映射保留，默认初值对应原始首次撞见并引用条目112。"
+    },
+    {
+      "area": "图库配置",
+      "result": "通过",
+      "evidence": "50项图库数据在移除unlock.path的stat_data根前缀后与源配置相同。图片仍使用源HTTPS地址。"
+    },
+    {
+      "area": "普通变量规则",
+      "result": "部分原样保留，行动选项协议改写",
+      "evidence": "条目110中从当前值依据至堕落规则的主体文字保留，删除原规则头；行动选项契约改成文字指令并使用facts数组，增加五个数值候选字段说明。条目105正文原样保留，但R3-02中的目标校验器改变其例外。"
+    },
+    {
+      "area": "行动选项发送失败",
+      "result": "通过目标内存分支测试",
+      "evidence": "api.chat.send失败后，未找到保存用户消息时解锁并允许重试；找到保存消息时保持锁定并提示系统聊天恢复；记录查询失败时保持锁定并提示核对消息。源发送前失败解锁、发送后失败保持禁用的主要边界保留。"
+    },
+    {
+      "area": "正式前端API调用",
+      "result": "通过静态核对",
+      "evidence": "ui.register、panel.bind/on/update、widgets.mountChat、variables.get/watch、messages.listFloors/getFloor/onTextStream、chat.send和data.get的调用签名与当前script-runtime及transport一致；listFloors取第一页的最新楼层与正式路由降序实现一致。"
+    }
+  ],
+  "textDisposition": [
+    {
+      "sourcePointer": "/data/first_mes 与 /data/alternate_greetings/0",
+      "disposition": "剧情文字原样保存，initvar与JSONPatch迁移到初值，状态占位符由原生前端替代。"
+    },
+    {
+      "sourcePointer": "/data/character_book/entries/2/content",
+      "disposition": "源禁用初始化条目移出世界书；有效开场初值来自每个开场自己的initvar，已分别验证。"
+    },
+    {
+      "sourcePointer": "/data/character_book/entries/108/content、109/content 与 /data/post_history_instructions",
+      "disposition": "源模型追加UpdateVariable协议未原样保存，目标改用正式独立状态更新。报告把这项登记为协议替换；具体源恢复行为变化见R3-03。"
+    },
+    {
+      "sourcePointer": "/data/character_book/entries/110/content",
+      "disposition": "普通更新规则主体原样保留，行动选项契约改写；该部分不满足全文逐字保留。"
+    },
+    {
+      "sourcePointer": "/data/extensions/regex_scripts/5/replaceString",
+      "disposition": "源HTML/CSS/JS重建为原生前端；行动选项标签和图库数据有源依据，历史逐项恢复未保留。"
+    }
+  ],
+  "limits": [
+    "本次没有执行源卡中的远程导入脚本，没有安装依赖，没有调用真实模型。",
+    "本次没有创建正式导入会话或数据库记录，没有进行浏览器视觉截图；正式导入、完整历史分支及真实模型联调属于尚未验收范围。",
+    "本次仅检查图库地址的保留，没有请求远程图像以确认资源可达性。"
+  ]
+}

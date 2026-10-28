@@ -1,0 +1,24 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';
+import {compileMvuController} from './mvu-controller-migration.mjs';
+import {mergeControllerState} from '../../../api/src/services/role-mvu-migration.mjs';
+const book=JSON.parse(fs.readFileSync(new URL('../characters/gushengman/snapshot.json',import.meta.url))).characterBook;
+const source=compileMvuController(book.entries,[8,15,16,17,20]);
+const {renderController}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
+const state=(composition,affection,status='无',time='12月15日',place='活动室')=>({世界:{事件状态:status,当前时间:time,当前地址:place},顾声慢:{创作完成度:composition,情感连结度:affection}});
+const render=(id,variables)=>renderController({entryId:id,variables,characterBook:book});
+for(const affection of [0,40,41,80,81,100]){const r=await render(15,state(0,affection));assert.equal(r.referencedEntryIds.length,1);assert(!r.text.includes('<%'));}
+assert(!(await render(8,state(99,50))).text.includes('setvar'));
+assert((await render(8,state(100,50))).text.includes('{{setvar::stat_data.世界.事件状态::演出结束_等待追逐}}'));
+assert(!(await render(8,state(100,50,'演出结束_等待追逐'))).text.includes('setvar'));
+assert((await render(16,state(100,50,'演出结束_等待追逐'))).text.includes('白羽祭完美演出条件达成'));
+assert(!(await render(16,state(0,50))).text.includes('setvar'));
+assert((await render(15,state(10,50,'无','1月20日'))).text.includes('普通结局达成'));
+assert((await render(17,state(10,50,'无','1月20日','礼堂'))).text.includes('普通结局已归档'));
+assert(!(await render(17,state(10,50,'普通结局已归档','1月20日','礼堂'))).text.includes('setvar'));
+assert(!(await render(17,state(100,50,'无','1月20日','礼堂'))).text.includes('setvar'));
+for(const status of ['无','演出结束_等待追逐','普通结局已归档'])assert(!(await render(20,state(100,50,status))).text.includes('<%'));
+const before=state(0,0);const next=mergeControllerState(before,state(0,0,'演出结束_等待追逐'),['/世界/事件状态']);assert.equal(next.世界.事件状态,'演出结束_等待追逐');assert.equal(before.世界.事件状态,'无');
+assert.throws(()=>mergeControllerState(before,{},['/世界/事件状态']),/PATH_MISSING/);
+assert.throws(()=>mergeControllerState(before,before,['bad']));
+assert.throws(()=>compileMvuController([], [8]),/ENTRY_MISSING/);
+console.log('PASS: controller phase boundaries, perfect/ordinary events, no repeated writes, preserved source text and owned-state merge');

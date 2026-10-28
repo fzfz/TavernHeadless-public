@@ -1,0 +1,132 @@
+{
+  "releaseId": "9K4D6JlZBWHD69dnhzNqA",
+  "sessionId": "EU1b6OVJuWd0YsCDv7SGs",
+  "requests": [
+    "/sessions/EU1b6OVJuWd0YsCDv7SGs",
+    "/sessions/EU1b6OVJuWd0YsCDv7SGs/role-view",
+    "/variables/resolve?session_id=EU1b6OVJuWd0YsCDv7SGs&branch_id=main",
+    "/sessions/EU1b6OVJuWd0YsCDv7SGs/respond/stream",
+    "/floors/ylGKqi6NEN7ADo4es4sT4/run",
+    "/sessions/EU1b6OVJuWd0YsCDv7SGs/role-messages?floor_id=ylGKqi6NEN7ADo4es4sT4",
+    "/sessions/EU1b6OVJuWd0YsCDv7SGs/role-state/updates"
+  ],
+  "events": [
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "EU1b6OVJuWd0YsCDv7SGs",
+        "branchId": "main",
+        "floorId": "ylGKqi6NEN7ADo4es4sT4",
+        "attemptId": "yvCPuSCzvQlqqOD1wLBrn:1",
+        "streamId": "response:ylGKqi6NEN7ADo4es4sT4",
+        "runId": "yvCPuSCzvQlqqOD1wLBrn",
+        "jobId": null,
+        "messageId": null,
+        "revision": 0,
+        "type": "start",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "EU1b6OVJuWd0YsCDv7SGs",
+        "branchId": "main",
+        "floorId": "ylGKqi6NEN7ADo4es4sT4",
+        "attemptId": "yvCPuSCzvQlqqOD1wLBrn:1",
+        "streamId": "response:ylGKqi6NEN7ADo4es4sT4",
+        "runId": "yvCPuSCzvQlqqOD1wLBrn",
+        "jobId": null,
+        "messageId": null,
+        "revision": 1,
+        "type": "update",
+        "status": "streaming",
+        "text": "<gametext>\n[bg|学校楼梯夜晚开灯]\n[bgm|学校]\n旁白|||应急灯刚亮，顾声慢还保持着转身的姿势。她显然没料到会被反问，耳尖比刚才更红，指尖却在身侧悄悄蜷了蜷。被人听见弹琴已经够难为情了，居然还被当场抓住重点。\n旁白|||她把垂到脸侧的碎发别到耳后，视线落向楼梯下方，又很快抬回来。\n顾声慢|C|棒球服害羞|……原来你刚才一直在听啊。[action|顾声慢|near]\n旁白|||走廊重新安静下来。远处体育馆传来社团收拾器材的动静，隔着墙和几道门，只剩模糊的拖拽声。顾声慢低头看了眼活动室敞开的门，又看了眼面前的人，终于把那句练习时反复琢磨的话说了出来。\n顾声慢|C|棒球服平静|曲子叫《白羽》。还没做完，过渡段也还差些东西……不过，如果你愿意听，我可以再弹一遍。\n旁白|||她说完便转身往回走，步子不快，却明显在等着身后的人跟上。走到活动室门口，她又停住，回头时神情已经恢复了平日的沉静。\n顾声慢|C|棒球服平静|刚才那段，其实是我临时改的。弹到那里时，我忽然觉得，一直卡住的地方也许不该硬接过去。\n旁白|||她抬手示意对方先进去，自己跟在后面，顺手把门掩上了些，免得走廊里的脚步声扰了琴声。\n顾声慢|C|棒球服平静|坐哪里都行。你要是听累了，直接告诉我就好。[action|顾声慢|near]\n旁白|||琴盖已经打开，谱架上的《白羽》还留着密密麻麻的批注。顾声慢在琴凳上坐下，双手悬在琴键上方，迟迟没有落下。\n旁白|||她像是在确认身后的位置，又像是在给自己争取最后几秒的镇定。片刻后，她轻轻吸了口气，指尖终于落下。\n顾声慢|C|棒球服平静|这次，你帮我听听看。哪里还缺东西，就直接说。\n[choice|坐到她身边，认真听完|先问她为什么每天傍晚都来这里|指出过渡段里最想改的地方]\n</gametext>",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "EU1b6OVJuWd0YsCDv7SGs",
+        "branchId": "main",
+        "floorId": "ylGKqi6NEN7ADo4es4sT4",
+        "attemptId": "yvCPuSCzvQlqqOD1wLBrn:1",
+        "streamId": "response:ylGKqi6NEN7ADo4es4sT4",
+        "runId": "yvCPuSCzvQlqqOD1wLBrn",
+        "jobId": null,
+        "messageId": "epsIViBMvuPsdM5GeNTJO",
+        "revision": 2,
+        "type": "end",
+        "status": "completed",
+        "text": "<gametext>\n[bg|学校楼梯夜晚开灯]\n[bgm|学校]\n旁白|||应急灯刚亮，顾声慢还保持着转身的姿势。她显然没料到会被反问，耳尖比刚才更红，指尖却在身侧悄悄蜷了蜷。被人听见弹琴已经够难为情了，居然还被当场抓住重点。\n旁白|||她把垂到脸侧的碎发别到耳后，视线落向楼梯下方，又很快抬回来。\n顾声慢|C|棒球服害羞|……原来你刚才一直在听啊。[action|顾声慢|near]\n旁白|||走廊重新安静下来。远处体育馆传来社团收拾器材的动静，隔着墙和几道门，只剩模糊的拖拽声。顾声慢低头看了眼活动室敞开的门，又看了眼面前的人，终于把那句练习时反复琢磨的话说了出来。\n顾声慢|C|棒球服平静|曲子叫《白羽》。还没做完，过渡段也还差些东西……不过，如果你愿意听，我可以再弹一遍。\n旁白|||她说完便转身往回走，步子不快，却明显在等着身后的人跟上。走到活动室门口，她又停住，回头时神情已经恢复了平日的沉静。\n顾声慢|C|棒球服平静|刚才那段，其实是我临时改的。弹到那里时，我忽然觉得，一直卡住的地方也许不该硬接过去。\n旁白|||她抬手示意对方先进去，自己跟在后面，顺手把门掩上了些，免得走廊里的脚步声扰了琴声。\n顾声慢|C|棒球服平静|坐哪里都行。你要是听累了，直接告诉我就好。[action|顾声慢|near]\n旁白|||琴盖已经打开，谱架上的《白羽》还留着密密麻麻的批注。顾声慢在琴凳上坐下，双手悬在琴键上方，迟迟没有落下。\n旁白|||她像是在确认身后的位置，又像是在给自己争取最后几秒的镇定。片刻后，她轻轻吸了口气，指尖终于落下。\n顾声慢|C|棒球服平静|这次，你帮我听听看。哪里还缺东西，就直接说。\n[choice|坐到她身边，认真听完|先问她为什么每天傍晚都来这里|指出过渡段里最想改的地方]\n</gametext>",
+        "error": null
+      }
+    }
+  ],
+  "success": false,
+  "error": {
+    "message": "State update failed. Retry the state update.",
+    "code": "role_state_update_failed"
+  },
+  "verification": {
+    "success": true,
+    "snapshot": {
+      "sessionId": "EU1b6OVJuWd0YsCDv7SGs",
+      "branchId": "main",
+      "floorId": "ylGKqi6NEN7ADo4es4sT4",
+      "attemptId": "yvCPuSCzvQlqqOD1wLBrn:1",
+      "versionId": "4dJ-iMfIM-6DgvnpKWKKB",
+      "snapshotId": "f6d1fffe-8b4d-4e95-b2f3-587e57738708",
+      "parentSnapshotId": "97a8eb64-feec-483b-b2bd-07fb6cb6a3c1",
+      "variables": {
+        "世界": {
+          "当前地址": "轻音社活动室",
+          "当前时间": "2025年12月15日17:40",
+          "事件状态": "无"
+        },
+        "顾声慢": {
+          "情感连结度": 1,
+          "创作完成度": 13,
+          "心象映射": {
+            "当前心声": "《白羽》……他真的愿意留下来听吗？希望这段旋律能被他接住。",
+            "当前脑内旋律": "《One more time, One more chance》"
+          }
+        }
+      },
+      "source": {
+        "kind": "floor",
+        "runId": "yvCPuSCzvQlqqOD1wLBrn",
+        "jobId": null
+      }
+    },
+    "requests": [
+      "/sessions/EU1b6OVJuWd0YsCDv7SGs",
+      "/sessions/EU1b6OVJuWd0YsCDv7SGs/role-view",
+      "/pages?floor_id=ylGKqi6NEN7ADo4es4sT4&is_active=true&sort_by=page_no&sort_order=asc&limit=100",
+      "/variables/resolve?session_id=EU1b6OVJuWd0YsCDv7SGs&branch_id=main&floor_id=ylGKqi6NEN7ADo4es4sT4&page_id=rnZEk6H8GhOHM09fb4wwu",
+      "/variables/resolve?session_id=EU1b6OVJuWd0YsCDv7SGs&branch_id=main",
+      "/sessions/EU1b6OVJuWd0YsCDv7SGs/role-messages?floor_id=ylGKqi6NEN7ADo4es4sT4"
+    ],
+    "frames": 12,
+    "completedAndHistoryEqual": true
+  },
+  "retryVerification": {
+    "endpoint": "POST /sessions/EU1b6OVJuWd0YsCDv7SGs/role-state/updates",
+    "floorId": "ylGKqi6NEN7ADo4es4sT4",
+    "success": true,
+    "snapshotId": "f6d1fffe-8b4d-4e95-b2f3-587e57738708"
+  },
+  "browserVerification": {
+    "nextFrame": "1/12 -> 2/12",
+    "statePanel": {
+      "emotion": 1,
+      "creation": 13
+    },
+    "skip": "12/12",
+    "visibleChoices": 3,
+    "choiceSubmissionTested": false
+  }
+}

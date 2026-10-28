@@ -1,0 +1,1135 @@
+import { readFileSync } from "node:fs";
+
+import { loadModelCallRecordingConfig } from "./model-call-recording-config.js";
+import type { ModelCallRecordingConfig } from "./model-call-recording.schema.js";
+import {
+  loadUserSessionCookieConfig,
+  type UserSessionCookieConfig,
+} from "./user-session-cookie-config.js";
+/**
+ * Configuration
+ *
+ * 从环境变量加载应用配置，构造 OrchestrationConfig。
+ *
+ * 支持的环境变量：
+ * - LLM_PROVIDER: 提供商类型（默认 openai-compatible）
+ * - LLM_API_KEY: API 密钥（必须）
+ * - LLM_BASE_URL: 自定义 Base URL
+ * - LLM_MODEL: 默认模型 ID（默认 gpt-4o-mini）
+ * - OPENAI_API_MODE: OpenAI 兼容端点的 API 形态（chat | responses | completion，可选）。
+ *     缺省保持 SDK 默认（@ai-sdk/openai v3 默认走 Responses）。当自部署端点
+ *     （vLLM / LM Studio 等）的 Responses API 实现不完整时，设为 chat 回退到 Chat Completions。
+ * - LLM_DIRECTOR_MODEL: Director 模型（可选）
+ * - LLM_VERIFIER_MODEL: Verifier 模型（可选）
+ * - LLM_MEMORY_MODEL: Memory 模型（可选）
+ * - LLM_DEFAULT_TIMEOUT_MS: 服务端默认生成超时（毫秒，默认 60000）
+ * - TURN_COMMIT_MAX_RETRIES: commit 的 SQLITE_BUSY / SQLITE_LOCKED 有限重试次数（默认 2）
+ * - TURN_COMMIT_RETRY_BASE_DELAY_MS: commit 重试基础退避时间（毫秒，默认 100）
+ * - GENERATION_QUEUE_MODE: 同一 session + branch 的生成并发策略（reject | queue，默认 reject）
+ * - GENERATION_QUEUE_TIMEOUT_MS: queue 模式下的排队等待超时（毫秒，可选）
+ * - ENABLE_SSE_CHAT: 是否启用 SSE 流式聊天端点（默认 false）
+ * - ENABLE_PROMPT_DRY_RUN: 是否启用 Prompt Dry-run 调试端点（默认 false）
+ * - CHAT_HISTORY_MAX_FLOORS: 可选历史楼层上限（最近 N 层）
+ * - ENABLE_MEMORY_CONSOLIDATION: 是否默认启用 MemoryConsolidator（默认 false）
+ * - ENABLE_ASYNC_MEMORY_INGEST: 是否启用异步记忆入队主路径（默认 false）
+ * - ENABLE_MACRO_COMPACTION: 是否启用 macro summary 压缩能力（默认 false）
+ * - ENABLE_DUAL_SUMMARY_INJECTION: 是否启用 micro/macro 双层摘要注入预算（默认 false）
+ * - ENABLE_DEFERRED_IRREVERSIBLE_TOOLS: 是否启用 deferred irreversible tool runtime 入口（默认 false）
+ * - DEFERRED_IRREVERSIBLE_MCP_TOOLS: 允许 deferred 执行的 MCP 工具白名单，格式为 `serverId/toolName`，逗号分隔
+ * - MEMORY_INJECTION_DECAY_HALF_LIFE_DAYS: 可选，启用记忆注入衰减排序的半衰期（天）
+ * - MEMORY_INJECTION_DECAY_MIN_FACTOR: 可选，衰减因子下限（0-1，默认 0.05）
+ * - MEMORY_INJECTION_DECAY_BY: 可选，衰减使用的时间字段（updatedAt | createdAt，默认 updatedAt）
+ * - ENABLE_MEMORY_MAINTENANCE: 可选，启用记忆维护任务（deprecate / purge）
+ * - MEMORY_MAINTENANCE_INTERVAL_MINUTES: 可选，维护任务运行间隔（分钟，默认 60）
+ * - MEMORY_MAINTENANCE_BATCH_SIZE: 可选，批处理大小（默认 500）
+ * - MEMORY_MAINTENANCE_DEPRECATE_SUMMARY_DAYS: 可选，summary 超过 N 天自动 deprecated（默认 30，设为 0 禁用）
+ * - MEMORY_MAINTENANCE_DEPRECATE_OPEN_LOOP_DAYS: 可选，open_loop 超过 N 天自动 deprecated（默认 7，设为 0 禁用）
+ * - MEMORY_MAINTENANCE_PURGE_DEPRECATED_DAYS: 可选，deprecated 且自上次更新后超过 N 天自动删除（以 updatedAt 作为最后变更时间，默认 90，设为 0 禁用）
+ * - MEMORY_MAINTENANCE_DRY_RUN: 可选，仅统计不执行写入/删除（默认 false）
+ * - ENABLE_RUNTIME_MAINTENANCE: 可选，启用通用运行时维护任务（默认 false）
+ * - RUNTIME_MAINTENANCE_INTERVAL_MS: 可选，通用运行时维护间隔（毫秒，默认 3600000）
+ * - ENABLE_PROMPT_RUNTIME_INJECTION_CLEANUP: 可选，通用维护中是否清理过期 Prompt Runtime Injection（默认 true）
+ * - ENABLE_TEMPORARY_CONVERSATION_CLEANUP: 可选，通用维护中是否清理终态临时对话正文与过期 TTL 临时对话（默认 true）
+ * - TEMPORARY_CONVERSATION_CLEANUP_GRACE_MS: 可选，临时对话进入终态后到正文清理之间的审计保留宽限期（毫秒，默认 0）
+ * - ENABLE_NODE_GRAPH_RUN_CLEANUP: 可选，通用维护中是否裁剪终态 NodeGraph 运行的 node-run 正文（默认 true）
+ * - NODE_GRAPH_RUN_CLEANUP_GRACE_MS: 可选，NodeGraph 运行进入终态后到 node-run 正文裁剪之间的审计保留宽限期（毫秒，默认 0）
+ * - MEMORY_WORKER_POLL_INTERVAL_MS: 可选，MemoryWorker 轮询间隔（默认 2000）
+ * - MEMORY_WORKER_LEASE_TTL_MS: 可选，MemoryWorker lease TTL（默认 120000）
+ * - MEMORY_WORKER_MAX_CONCURRENT_JOBS: 可选，MemoryWorker 最大并发作业数（默认 4）
+ * - MEMORY_WORKER_RETRY_BASE_DELAY_MS: 可选，MemoryWorker 重试基础退避（默认 1000）
+ * - MEMORY_WORKER_MAX_RETRY_DELAY_MS: 可选，MemoryWorker 最大重试退避（默认 30000）
+ * - MEMORY_WORKER_CANDIDATE_SCAN_LIMIT: 可选，MemoryWorker 单轮候选扫描上限（默认 32）
+ * - ENABLE_MCP: 是否启用 MCP 工具集成（默认 false）
+ * - ENABLE_UNSAFE_SCRIPT_HANDLER: 是否允许不安全的 script handler 创建与执行（默认 false，仅限受信环境）
+ * - ENABLE_CLIENT_DATA: 是否启用客户端专属数据域（默认 false）
+ * - CLIENT_DATA_EXPIRATION_INTERVAL_MS: 过期条目清理间隔（毫秒，默认 300000）
+ * - CLIENT_DATA_DOMAIN_PURGE_GRACE_PERIOD_MS: 已删除域的硬删除宽限期（毫秒，默认 604800000）
+ * - CLIENT_DATA_DEFAULT_MAX_ITEM_SIZE_BYTES: 默认单条目最大字节数（默认 1048576）
+ * - CLIENT_DATA_DEFAULT_QUOTA_MAX_ENTRIES: 默认域级最大条目数（默认 10000）
+ * - CLIENT_DATA_DEFAULT_QUOTA_MAX_BYTES: 默认域级最大字节数（默认 10485760）
+ * - CLIENT_DATA_MAX_DOMAINS_PER_ACCOUNT: 单账号最大域数（默认 1024）
+ * - CLIENT_DATA_MAX_TOTAL_ENTRIES_PER_ACCOUNT: 单账号客户端数据总条目数（默认 100000）
+ * - CLIENT_DATA_MAX_TOTAL_BYTES_PER_ACCOUNT: 单账号客户端数据总字节数（默认 104857600）
+ * - ENABLE_NODE_GRAPH_WORKER: 是否启用 NodeGraph worker（默认 false）
+ * - NODE_GRAPH_WORKER_POLL_INTERVAL_MS: 可选，NodeGraphWorker 轮询间隔
+ * - NODE_GRAPH_WORKER_LEASE_TTL_MS: 可选，NodeGraphWorker lease TTL
+ * - NODE_GRAPH_WORKER_MAX_CONCURRENT_JOBS: 可选，NodeGraphWorker 最大并发
+ * - NODE_GRAPH_WORKER_RETRY_BASE_DELAY_MS: 可选，NodeGraphWorker 重试基础退避
+ * - NODE_GRAPH_WORKER_MAX_RETRY_DELAY_MS: 可选，NodeGraphWorker 最大重试退避
+ * - NODE_GRAPH_WORKER_CANDIDATE_SCAN_LIMIT: 可选，NodeGraphWorker 扫描候选数量
+ * - ENABLE_BACKUP_WORKER: 是否启用 backup worker（默认 false）
+ * - BACKUP_WORKER_POLL_INTERVAL_MS: 可选，BackupWorker 轮询间隔（默认沿用 RuntimeWorker 默认值）
+ * - BACKUP_WORKER_LEASE_TTL_MS: 可选，BackupWorker lease TTL
+ * - BACKUP_WORKER_MAX_CONCURRENT_JOBS: 可选，BackupWorker 最大并发作业数（默认 1）
+ * - BACKUP_WORKER_RETRY_BASE_DELAY_MS: 可选，BackupWorker 重试基础退避
+ * - BACKUP_WORKER_MAX_RETRY_DELAY_MS: 可选，BackupWorker 最大重试退避
+ * - BACKUP_WORKER_CANDIDATE_SCAN_LIMIT: 可选，BackupWorker 单轮候选扫描上限
+ * - BACKUP_ARTIFACT_DIR: backup 产物目录（默认 data/backup-artifacts）
+ * - BACKUP_IMPORT_MAX_BYTES: backup preview / restore JSON 请求体大小上限（默认 50000000）
+ * - BACKUP_EXPORT_ARTIFACT_TTL_MS: backup 导出产物 TTL（默认 86400000）
+ * - AUTH_MODE: 认证模式（off | api_key | jwt，默认 off）
+ * - AUTH_API_KEYS: API Key 模式下的 key 列表（逗号分隔）
+ * - AUTH_API_KEY_ACCOUNTS: 多账号 + API Key 模式下的账号映射（key:account_id，逗号分隔）
+ * - AUTH_JWT_SECRET: JWT 模式下的签名密钥
+ * - AUTH_JWT_ACCOUNT_CLAIM: 多账号 + JWT 模式的账号 claim 字段名（默认 account_id）
+ * - DATABASE_URL / DB_PATH: SQLite 数据库路径（DATABASE_URL 优先，DB_PATH 为兼容别名）
+ * - ACCOUNT_MODE: 账号模式（single | multi，默认 single）
+ * - CORS_ORIGINS / CORS_ORIGIN: 允许的跨域来源（逗号分隔，默认本地 Vite 地址）
+ * - CORS_CREDENTIALS: 是否允许携带凭据（true | false，默认 false）
+ */
+
+import { loadStorageConfig } from "./storage-config.js";
+import type { ResolvedStorageConfig } from "./storage-config.schema.js";
+
+import type { MemoryInjectionOptions, ProviderType } from "@tavern/core";
+
+import type { MemoryMaintenancePolicy } from "./services/memory-maintenance-service.js";
+
+import type { OrchestrationConfig } from "./services/orchestration-factory.js";
+import type { AuthConfig, AuthMode } from "./plugins/auth.js";
+import type { AccountMode } from "./accounts/constants.js";
+import { parseCorsOrigins, type CorsConfig } from "./plugins/cors.js";
+import type { GenerationExecutionMode } from "./services/generation-guard-service.js";
+import {
+  roleModelCapabilitiesSystemConfigSchema,
+  type RoleModelCapabilitiesSystemConfig,
+} from "@tavern/shared";
+
+// ── 类型 ──────────────────────────────────────────────
+
+export interface AppConfig {
+  userSessionCookie: UserSessionCookieConfig;
+  storage: ResolvedStorageConfig;
+  modelCallRecording: ModelCallRecordingConfig;
+  /** 系统模型能力目录许可、错误文案和执行上限 */
+  roleModelCapabilities: RoleModelCapabilitiesSystemConfig;
+  /** 服务端口 */
+  port: number;
+  llmProfileApiMode?: "chat" | "responses" | "completion";
+  /** 数据库路径 */
+  databasePath?: string;
+  /** 编排配置（如果提供了 LLM_API_KEY） */
+  orchestration?: OrchestrationConfig;
+  /** 是否启用 WebSocket */
+  enableWebSocket: boolean;
+  /** 可选：限制进入 prompt 的历史楼层数（最近 N 层） */
+  chatHistoryMaxFloors?: number;
+  /** 是否启用记忆系统（摘要注入 + 持久化） */
+  enableMemory: boolean;
+  /** 可选：记忆注入衰减配置（不设置则不启用） */
+  memoryInjectionDecay?: MemoryInjectionOptions["decay"];
+  /** 可选：记忆维护任务配置（不设置则不启用） */
+  memoryMaintenance?: {
+    intervalMs: number;
+    batchSize?: number;
+    policy?: MemoryMaintenancePolicy;
+    dryRun?: boolean;
+  };
+  /** 可选：通用运行时维护任务配置（不设置则不启用） */
+  runtimeMaintenance?: {
+    intervalMs: number;
+    promptRuntimeInjection?: {
+      enabled?: boolean;
+    };
+    temporaryConversation?: {
+      enabled?: boolean;
+      retentionGraceMs?: number;
+    };
+    nodeGraphRun?: {
+      enabled?: boolean;
+      retentionGraceMs?: number;
+    };
+  };
+  /** 是否启用 SSE 流式聊天端点 */
+  enableSseChat: boolean;
+  /** 是否启用 Prompt Dry-run 端点 */
+  enablePromptDryRun: boolean;
+  /** 是否默认启用 MemoryConsolidator */
+  enableMemoryConsolidation: boolean;
+  /** 是否启用异步记忆入队主路径 */
+  enableAsyncMemoryIngest: boolean;
+  /** 是否启用 macro summary 压缩 */
+  enableMacroCompaction: boolean;
+  /** 是否启用 micro/macro 双层摘要注入 */
+  enableDualSummaryInjection: boolean;
+  /** 是否启用 deferred irreversible tool runtime 入口 */
+  enableDeferredIrreversibleTools: boolean;
+  /** 允许 deferred 执行的 MCP 工具白名单 */
+  deferredIrreversibleMcpTools: string[];
+  /** 可选：MemoryWorker 运行参数 */
+  memoryWorker?: {
+    pollIntervalMs?: number;
+    leaseTtlMs?: number;
+    maxConcurrentJobs?: number;
+    retryBaseDelayMs?: number;
+    maxRetryDelayMs?: number;
+    candidateScanLimit?: number;
+  };
+  /** 是否启用后台 Agent worker（默认关闭，保证可回退） */
+  enableAgentRuntimeWorker: boolean;
+  /** 可选：AgentRuntimeWorker 运行参数 */
+  agentRuntimeWorker?: {
+    pollIntervalMs?: number;
+    leaseTtlMs?: number;
+    maxConcurrentJobs?: number;
+    retryBaseDelayMs?: number;
+    maxRetryDelayMs?: number;
+    candidateScanLimit?: number;
+  };
+  /** 是否启用 NodeGraph worker（默认关闭，保证可回退） */
+  enableNodeGraphWorker: boolean;
+  /** 可选：NodeGraphWorker 运行参数 */
+  nodeGraphWorker?: {
+    pollIntervalMs?: number;
+    leaseTtlMs?: number;
+    maxConcurrentJobs?: number;
+    retryBaseDelayMs?: number;
+    maxRetryDelayMs?: number;
+    candidateScanLimit?: number;
+  };
+  /** 是否启用聊天 transfer worker（供独立 worker 进程或可选内嵌模式使用） */
+  enableChatTransferWorker: boolean;
+  /** 可选：ChatTransferWorker 运行参数 */
+  chatTransferWorker?: {
+    pollIntervalMs?: number;
+    leaseTtlMs?: number;
+    maxConcurrentJobs?: number;
+    retryBaseDelayMs?: number;
+    maxRetryDelayMs?: number;
+    candidateScanLimit?: number;
+  };
+  /** 聊天 transfer 产物目录 */
+  chatTransferArtifactDir: string;
+  /** 聊天导入最大字节数 */
+  chatImportMaxBytes?: number;
+  /** 同步聊天导出消息阈值 */
+  chatExportSyncMaxMessages?: number;
+  /** 导出产物 TTL（毫秒） */
+  chatExportArtifactTtlMs?: number;
+  /** 是否启用 backup worker（供独立 worker 进程使用） */
+  enableBackupWorker: boolean;
+  /** 可选：BackupWorker 运行参数 */
+  backupWorker?: {
+    pollIntervalMs?: number;
+    leaseTtlMs?: number;
+    maxConcurrentJobs?: number;
+    retryBaseDelayMs?: number;
+    maxRetryDelayMs?: number;
+    candidateScanLimit?: number;
+  };
+  /** backup 产物目录 */
+  backupArtifactDir: string;
+  /** backup preview / restore 请求体大小上限 */
+  backupImportMaxBytes: number;
+  /** backup 导出产物 TTL（毫秒） */
+  backupExportArtifactTtlMs: number;
+  /** 服务端默认生成超时（毫秒） */
+  llmDefaultTimeoutMs: number;
+  /** commit 的 SQLITE_BUSY / SQLITE_LOCKED 有限重试次数 */
+  turnCommitMaxRetries: number;
+  /** 同一 session + branch 的生成并发策略 */
+  generationQueueMode: GenerationExecutionMode;
+  /** queue 模式下的排队等待超时（毫秒） */
+  generationQueueTimeoutMs?: number;
+  /** commit 重试基础退避时间（毫秒） */
+  turnCommitRetryBaseDelayMs: number;
+  /** 认证配置 */
+  auth: AuthConfig;
+  /** 账号模式 */
+  accountMode: AccountMode;
+  /** CORS 配置 */
+  cors: CorsConfig;
+  /** 是否启用 MCP 工具集成 */
+  enableMcp: boolean;
+  /** 是否允许不安全的 script handler 创建与执行 */
+  enableUnsafeScriptHandler: boolean;
+  /** 是否启用客户端专属数据域 */
+  enableClientData: boolean;
+  /** 客户端数据维护配置 */
+  clientData: {
+    expirationIntervalMs: number;
+    domainPurgeGracePeriodMs: number;
+    defaultMaxItemSizeBytes: number;
+    defaultQuotaMaxEntries: number;
+    defaultQuotaMaxBytes: number;
+    maxDomainsPerAccount: number;
+    maxTotalEntriesPerAccount: number;
+    maxTotalBytesPerAccount: number;
+  };
+}
+
+// ── 加载函数 ──────────────────────────────────────────
+
+/**
+ * 从环境变量加载应用配置。
+ *
+ * 如果未配置 LLM_API_KEY，orchestration 为 undefined，
+ * 聊天路由不会启用（仅 CRUD 可用）。
+ */
+export function loadConfig(): AppConfig {
+  const port = Number(process.env.PORT ?? 3000);
+  const apiMode = parseOpenAIApiMode(process.env.OPENAI_API_MODE);
+  const userSessionCookie = loadUserSessionCookieConfig();
+  const storage = loadStorageConfig();
+  const modelCallRecording = loadModelCallRecordingConfig();
+  const roleModelCapabilities = loadRoleModelCapabilitiesSystemConfig();
+  const databasePath = storage.databasePath;
+  const enableWebSocket = process.env.ENABLE_WEBSOCKET !== "false";
+  const chatHistoryMaxFloors = parsePositiveInt(
+    process.env.CHAT_HISTORY_MAX_FLOORS,
+  );
+  const enableMemory = process.env.ENABLE_MEMORY === "true";
+  const enableSseChat = process.env.ENABLE_SSE_CHAT === "true";
+  const enablePromptDryRun = process.env.ENABLE_PROMPT_DRY_RUN === "true";
+  const accountMode = parseAccountMode(process.env.ACCOUNT_MODE);
+  const enableMemoryConsolidation =
+    process.env.ENABLE_MEMORY_CONSOLIDATION === "true";
+  const enableAsyncMemoryIngest =
+    process.env.ENABLE_ASYNC_MEMORY_INGEST === "true";
+  const enableMacroCompaction = process.env.ENABLE_MACRO_COMPACTION === "true";
+  const enableDualSummaryInjection =
+    process.env.ENABLE_DUAL_SUMMARY_INJECTION === "true";
+  const enableDeferredIrreversibleTools =
+    process.env.ENABLE_DEFERRED_IRREVERSIBLE_TOOLS === "true";
+  const deferredIrreversibleMcpTools = parseDelimitedStrings(
+    process.env.DEFERRED_IRREVERSIBLE_MCP_TOOLS,
+  );
+  const llmDefaultTimeoutMs =
+    parsePositiveInt(process.env.LLM_DEFAULT_TIMEOUT_MS) ?? 60_000;
+  const turnCommitMaxRetries =
+    parseNonNegativeInt(process.env.TURN_COMMIT_MAX_RETRIES) ?? 2;
+  const turnCommitRetryBaseDelayMs =
+    parsePositiveInt(process.env.TURN_COMMIT_RETRY_BASE_DELAY_MS) ?? 100;
+  const generationQueueMode = parseGenerationQueueMode(
+    process.env.GENERATION_QUEUE_MODE,
+  );
+  const generationQueueTimeoutMs = parsePositiveInt(
+    process.env.GENERATION_QUEUE_TIMEOUT_MS,
+  );
+  const cors = parseCorsConfig(
+    process.env.CORS_ORIGINS ?? process.env.CORS_ORIGIN,
+    process.env.CORS_CREDENTIALS,
+  );
+  const enableMcp = process.env.ENABLE_MCP === "true";
+  const enableUnsafeScriptHandler =
+    process.env.ENABLE_UNSAFE_SCRIPT_HANDLER === "true";
+  const enableClientData = process.env.ENABLE_CLIENT_DATA === "true";
+  const clientData = {
+    expirationIntervalMs:
+      parsePositiveInt(process.env.CLIENT_DATA_EXPIRATION_INTERVAL_MS) ??
+      300_000,
+    domainPurgeGracePeriodMs:
+      parsePositiveInt(process.env.CLIENT_DATA_DOMAIN_PURGE_GRACE_PERIOD_MS) ??
+      604_800_000,
+    defaultMaxItemSizeBytes:
+      parsePositiveInt(process.env.CLIENT_DATA_DEFAULT_MAX_ITEM_SIZE_BYTES) ??
+      1_048_576,
+    defaultQuotaMaxEntries:
+      parsePositiveInt(process.env.CLIENT_DATA_DEFAULT_QUOTA_MAX_ENTRIES) ??
+      10_000,
+    defaultQuotaMaxBytes:
+      parsePositiveInt(process.env.CLIENT_DATA_DEFAULT_QUOTA_MAX_BYTES) ??
+      10_485_760,
+    maxDomainsPerAccount:
+      parsePositiveInt(process.env.CLIENT_DATA_MAX_DOMAINS_PER_ACCOUNT) ?? 1024,
+    maxTotalEntriesPerAccount:
+      parsePositiveInt(process.env.CLIENT_DATA_MAX_TOTAL_ENTRIES_PER_ACCOUNT) ??
+      100_000,
+    maxTotalBytesPerAccount:
+      parsePositiveInt(process.env.CLIENT_DATA_MAX_TOTAL_BYTES_PER_ACCOUNT) ??
+      104_857_600,
+  };
+  const memoryInjectionDecay = parseMemoryInjectionDecay(
+    process.env.MEMORY_INJECTION_DECAY_HALF_LIFE_DAYS,
+    process.env.MEMORY_INJECTION_DECAY_MIN_FACTOR,
+    process.env.MEMORY_INJECTION_DECAY_BY,
+  );
+  const memoryWorker = parseMemoryWorkerConfig(
+    process.env.MEMORY_WORKER_POLL_INTERVAL_MS,
+    process.env.MEMORY_WORKER_LEASE_TTL_MS,
+    process.env.MEMORY_WORKER_MAX_CONCURRENT_JOBS,
+    process.env.MEMORY_WORKER_RETRY_BASE_DELAY_MS,
+    process.env.MEMORY_WORKER_MAX_RETRY_DELAY_MS,
+    process.env.MEMORY_WORKER_CANDIDATE_SCAN_LIMIT,
+  );
+  const enableAgentRuntimeWorker =
+    process.env.ENABLE_AGENT_RUNTIME_WORKER === "true";
+  const agentRuntimeWorker = parseAgentRuntimeWorkerConfig(
+    process.env.AGENT_RUNTIME_WORKER_POLL_INTERVAL_MS,
+    process.env.AGENT_RUNTIME_WORKER_LEASE_TTL_MS,
+    process.env.AGENT_RUNTIME_WORKER_MAX_CONCURRENT_JOBS,
+    process.env.AGENT_RUNTIME_WORKER_RETRY_BASE_DELAY_MS,
+    process.env.AGENT_RUNTIME_WORKER_MAX_RETRY_DELAY_MS,
+    process.env.AGENT_RUNTIME_WORKER_CANDIDATE_SCAN_LIMIT,
+  );
+  const enableNodeGraphWorker = process.env.ENABLE_NODE_GRAPH_WORKER === "true";
+  const nodeGraphWorker = parseNodeGraphWorkerConfig(
+    process.env.NODE_GRAPH_WORKER_POLL_INTERVAL_MS,
+    process.env.NODE_GRAPH_WORKER_LEASE_TTL_MS,
+    process.env.NODE_GRAPH_WORKER_MAX_CONCURRENT_JOBS,
+    process.env.NODE_GRAPH_WORKER_RETRY_BASE_DELAY_MS,
+    process.env.NODE_GRAPH_WORKER_MAX_RETRY_DELAY_MS,
+    process.env.NODE_GRAPH_WORKER_CANDIDATE_SCAN_LIMIT,
+  );
+  const enableChatTransferWorker =
+    process.env.ENABLE_CHAT_TRANSFER_WORKER === "true";
+  const chatTransferWorker = parseChatTransferWorkerConfig(
+    process.env.CHAT_TRANSFER_WORKER_POLL_INTERVAL_MS,
+    process.env.CHAT_TRANSFER_WORKER_LEASE_TTL_MS,
+    process.env.CHAT_TRANSFER_WORKER_MAX_CONCURRENT_JOBS,
+    process.env.CHAT_TRANSFER_WORKER_RETRY_BASE_DELAY_MS,
+    process.env.CHAT_TRANSFER_WORKER_MAX_RETRY_DELAY_MS,
+    process.env.CHAT_TRANSFER_WORKER_CANDIDATE_SCAN_LIMIT,
+  );
+  const chatTransferArtifactDir = storage.chatTransferArtifactDir;
+  const chatImportMaxBytes = parsePositiveInt(
+    process.env.CHAT_IMPORT_MAX_BYTES,
+  );
+  const chatExportSyncMaxMessages = parsePositiveInt(
+    process.env.CHAT_EXPORT_SYNC_MAX_MESSAGES,
+  );
+  const chatExportArtifactTtlMs = parsePositiveInt(
+    process.env.CHAT_EXPORT_ARTIFACT_TTL_MS,
+  );
+  const enableBackupWorker = process.env.ENABLE_BACKUP_WORKER === "true";
+  const backupWorker = parseBackupWorkerConfig(
+    process.env.BACKUP_WORKER_POLL_INTERVAL_MS,
+    process.env.BACKUP_WORKER_LEASE_TTL_MS,
+    process.env.BACKUP_WORKER_MAX_CONCURRENT_JOBS,
+    process.env.BACKUP_WORKER_RETRY_BASE_DELAY_MS,
+    process.env.BACKUP_WORKER_MAX_RETRY_DELAY_MS,
+    process.env.BACKUP_WORKER_CANDIDATE_SCAN_LIMIT,
+  );
+  const backupArtifactDir = storage.backupArtifactDir;
+  const backupImportMaxBytes =
+    parsePositiveInt(process.env.BACKUP_IMPORT_MAX_BYTES) ?? 50_000_000;
+  const backupExportArtifactTtlMs =
+    parsePositiveInt(process.env.BACKUP_EXPORT_ARTIFACT_TTL_MS) ?? 86_400_000;
+
+  const memoryMaintenance = parseMemoryMaintenanceConfig(
+    process.env.ENABLE_MEMORY_MAINTENANCE,
+    process.env.MEMORY_MAINTENANCE_INTERVAL_MINUTES,
+    process.env.MEMORY_MAINTENANCE_BATCH_SIZE,
+    process.env.MEMORY_MAINTENANCE_DEPRECATE_SUMMARY_DAYS,
+    process.env.MEMORY_MAINTENANCE_DEPRECATE_OPEN_LOOP_DAYS,
+    process.env.MEMORY_MAINTENANCE_PURGE_DEPRECATED_DAYS,
+    process.env.MEMORY_MAINTENANCE_DRY_RUN,
+  );
+  const runtimeMaintenance = parseRuntimeMaintenanceConfig(
+    process.env.ENABLE_RUNTIME_MAINTENANCE,
+    process.env.RUNTIME_MAINTENANCE_INTERVAL_MS,
+    process.env.ENABLE_PROMPT_RUNTIME_INJECTION_CLEANUP,
+    process.env.ENABLE_TEMPORARY_CONVERSATION_CLEANUP,
+    process.env.TEMPORARY_CONVERSATION_CLEANUP_GRACE_MS,
+    process.env.ENABLE_NODE_GRAPH_RUN_CLEANUP,
+    process.env.NODE_GRAPH_RUN_CLEANUP_GRACE_MS,
+  );
+
+  const auth = parseAuthConfig(
+    process.env.AUTH_MODE,
+    process.env.AUTH_API_KEYS,
+    process.env.AUTH_JWT_SECRET,
+    process.env.AUTH_API_KEY_ACCOUNTS,
+    process.env.AUTH_JWT_ACCOUNT_CLAIM,
+  );
+
+  if (accountMode === "multi" && auth.mode === "off") {
+    throw new Error(
+      "ACCOUNT_MODE=multi requires AUTH_MODE to be api_key or jwt",
+    );
+  }
+
+  if (process.env.NODE_ENV === "production" && auth.mode === "off") {
+    throw new Error("AUTH_MODE=off is not allowed when NODE_ENV=production");
+  }
+
+  if (
+    accountMode === "multi" &&
+    auth.mode === "api_key" &&
+    !auth.apiKeyAccountMap
+  ) {
+    throw new Error(
+      "ACCOUNT_MODE=multi with AUTH_MODE=api_key requires AUTH_API_KEY_ACCOUNTS mapping",
+    );
+  }
+
+  // ── LLM 配置 ──
+  const apiKey = process.env.LLM_API_KEY;
+
+  if (!apiKey) {
+    return {
+      port,
+      userSessionCookie,
+      llmProfileApiMode: apiMode,
+      enableClientData,
+      clientData,
+      roleModelCapabilities,
+      modelCallRecording,
+      storage,
+      databasePath,
+      enableWebSocket,
+      chatHistoryMaxFloors,
+      enableMemory,
+      memoryInjectionDecay,
+      memoryMaintenance,
+      runtimeMaintenance,
+      enableSseChat,
+      enablePromptDryRun,
+      enableMemoryConsolidation,
+      enableAsyncMemoryIngest,
+      enableMacroCompaction,
+      enableDualSummaryInjection,
+      enableDeferredIrreversibleTools,
+      deferredIrreversibleMcpTools,
+      memoryWorker,
+      enableAgentRuntimeWorker,
+      agentRuntimeWorker,
+      enableNodeGraphWorker,
+      nodeGraphWorker,
+      enableChatTransferWorker,
+      chatTransferWorker,
+      chatTransferArtifactDir,
+      chatImportMaxBytes,
+      chatExportSyncMaxMessages,
+      chatExportArtifactTtlMs,
+      enableBackupWorker,
+      backupWorker,
+      backupArtifactDir,
+      backupImportMaxBytes,
+      backupExportArtifactTtlMs,
+      llmDefaultTimeoutMs,
+      turnCommitMaxRetries,
+      generationQueueMode,
+      generationQueueTimeoutMs,
+      turnCommitRetryBaseDelayMs,
+      auth,
+      accountMode,
+      cors,
+      enableMcp,
+      enableUnsafeScriptHandler,
+    };
+  }
+
+  const providerType = (process.env.LLM_PROVIDER ??
+    "openai-compatible") as ProviderType;
+  const baseURL = process.env.LLM_BASE_URL || undefined;
+  const modelId = process.env.LLM_MODEL ?? "gpt-4o-mini";
+
+  // Provider ID 从类型派生，加上 "default-" 前缀区分
+  const providerId = `default-${providerType}`;
+
+  const orchestration: OrchestrationConfig = {
+    providers: [
+      {
+        id: providerId,
+        type: providerType,
+        apiKey,
+        baseURL,
+        ...(apiMode ? { apiMode } : {}),
+      },
+    ],
+    defaultModel: {
+      providerId,
+      modelId,
+    },
+  };
+
+  // 可选：Director / Verifier / Memory 使用不同模型
+  const directorModel = process.env.LLM_DIRECTOR_MODEL;
+  if (directorModel) {
+    orchestration.directorModel = { providerId, modelId: directorModel };
+  }
+
+  const verifierModel = process.env.LLM_VERIFIER_MODEL;
+  if (verifierModel) {
+    orchestration.verifierModel = { providerId, modelId: verifierModel };
+  }
+
+  const memoryModel = process.env.LLM_MEMORY_MODEL;
+  if (memoryModel) {
+    orchestration.memoryModel = { providerId, modelId: memoryModel };
+  }
+
+  return {
+    port,
+    userSessionCookie,
+    llmProfileApiMode: apiMode,
+    modelCallRecording,
+    storage,
+    databasePath,
+    orchestration,
+    enableWebSocket,
+    chatHistoryMaxFloors,
+    enableMemory,
+    memoryInjectionDecay,
+    memoryMaintenance,
+    runtimeMaintenance,
+    enableSseChat,
+    enablePromptDryRun,
+    enableMemoryConsolidation,
+    enableAsyncMemoryIngest,
+    enableMacroCompaction,
+    enableDualSummaryInjection,
+    enableDeferredIrreversibleTools,
+    deferredIrreversibleMcpTools,
+    memoryWorker,
+    enableAgentRuntimeWorker,
+    agentRuntimeWorker,
+    enableNodeGraphWorker,
+    nodeGraphWorker,
+    enableChatTransferWorker,
+    chatTransferWorker,
+    chatTransferArtifactDir,
+    chatImportMaxBytes,
+    chatExportSyncMaxMessages,
+    chatExportArtifactTtlMs,
+    enableBackupWorker,
+    backupWorker,
+    backupArtifactDir,
+    backupImportMaxBytes,
+    backupExportArtifactTtlMs,
+    llmDefaultTimeoutMs,
+    turnCommitMaxRetries,
+    generationQueueMode,
+    generationQueueTimeoutMs,
+    turnCommitRetryBaseDelayMs,
+    auth,
+    accountMode,
+    cors,
+    enableMcp,
+    enableUnsafeScriptHandler,
+    enableClientData,
+    clientData,
+    roleModelCapabilities,
+  };
+}
+
+export function loadRoleModelCapabilitiesSystemConfig(): RoleModelCapabilitiesSystemConfig {
+  return roleModelCapabilitiesSystemConfigSchema.parse(
+    JSON.parse(
+      readFileSync(
+        new URL("../config/role-model-capabilities.json", import.meta.url),
+        "utf8",
+      ),
+    ),
+  );
+}
+
+function parseCorsConfig(
+  originsRaw: string | undefined,
+  credentialsRaw: string | undefined,
+): CorsConfig {
+  return {
+    origins: parseCorsOrigins(originsRaw),
+    credentials: credentialsRaw === "true",
+  };
+}
+
+function parsePositiveInt(value: string | undefined): number | undefined {
+  if (!value) {
+    return undefined;
+  }
+
+  const parsed = Number(value);
+  if (!Number.isInteger(parsed) || parsed <= 0) {
+    return undefined;
+  }
+
+  return parsed;
+}
+
+function parseNonNegativeInt(value: string | undefined): number | undefined {
+  if (!value) {
+    return undefined;
+  }
+
+  const parsed = Number(value);
+  if (!Number.isInteger(parsed) || parsed < 0) {
+    return undefined;
+  }
+
+  return parsed;
+}
+
+function parsePositiveNumber(value: string | undefined): number | undefined {
+  if (!value) {
+    return undefined;
+  }
+
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed) || parsed <= 0) {
+    return undefined;
+  }
+
+  return parsed;
+}
+
+function parseGenerationQueueMode(
+  raw: string | undefined,
+): GenerationExecutionMode {
+  if (!raw || raw.trim().length === 0) {
+    return "reject";
+  }
+
+  const normalized = raw.trim();
+
+  if (normalized === "reject" || normalized === "queue") {
+    return normalized;
+  }
+
+  throw new Error(`Unsupported GENERATION_QUEUE_MODE: ${raw}`);
+}
+
+function parseMemoryInjectionDecay(
+  halfLifeDaysRaw: string | undefined,
+  minFactorRaw: string | undefined,
+  byRaw: string | undefined,
+): MemoryInjectionOptions["decay"] | undefined {
+  const halfLifeDays = parsePositiveNumber(halfLifeDaysRaw);
+  if (!halfLifeDays) {
+    return undefined;
+  }
+
+  const halfLifeMs = Math.round(halfLifeDays * 24 * 60 * 60 * 1000);
+
+  let minFactor: number | undefined;
+  if (minFactorRaw !== undefined && minFactorRaw.trim().length > 0) {
+    const parsed = Number(minFactorRaw);
+    if (Number.isFinite(parsed) && parsed >= 0 && parsed <= 1) {
+      minFactor = parsed;
+    }
+  }
+
+  const byNormalized = byRaw?.trim();
+  const by =
+    byNormalized === "createdAt" || byNormalized === "updatedAt"
+      ? byNormalized
+      : undefined;
+
+  return {
+    halfLifeMs,
+    ...(minFactor !== undefined ? { minFactor } : {}),
+    ...(by ? { by } : {}),
+  };
+}
+
+function parseMemoryMaintenanceConfig(
+  enabledRaw: string | undefined,
+  intervalMinutesRaw: string | undefined,
+  batchSizeRaw: string | undefined,
+  deprecateSummaryDaysRaw: string | undefined,
+  deprecateOpenLoopDaysRaw: string | undefined,
+  purgeDeprecatedDaysRaw: string | undefined,
+  dryRunRaw: string | undefined,
+): AppConfig["memoryMaintenance"] | undefined {
+  const enabled = enabledRaw === "true";
+  if (!enabled) {
+    return undefined;
+  }
+
+  const dayMs = 24 * 60 * 60 * 1000;
+  const intervalMinutes = parsePositiveInt(intervalMinutesRaw) ?? 60;
+  const batchSize = parsePositiveInt(batchSizeRaw) ?? 500;
+  const deprecateSummaryDays =
+    parseNonNegativeInt(deprecateSummaryDaysRaw) ?? 30;
+  const deprecateOpenLoopDays =
+    parseNonNegativeInt(deprecateOpenLoopDaysRaw) ?? 7;
+  const purgeDeprecatedDays = parseNonNegativeInt(purgeDeprecatedDaysRaw) ?? 90;
+
+  const policy: MemoryMaintenancePolicy = {
+    ...(deprecateSummaryDays > 0
+      ? { summaryMaxAgeMs: deprecateSummaryDays * dayMs }
+      : {}),
+    ...(deprecateOpenLoopDays > 0
+      ? { openLoopMaxAgeMs: deprecateOpenLoopDays * dayMs }
+      : {}),
+    ...(purgeDeprecatedDays > 0
+      ? { deprecatedPurgeAgeMs: purgeDeprecatedDays * dayMs }
+      : {}),
+  };
+
+  return {
+    intervalMs: intervalMinutes * 60 * 1000,
+    batchSize,
+    policy,
+    dryRun: dryRunRaw === "true",
+  };
+}
+
+function parseRuntimeMaintenanceConfig(
+  enabledRaw: string | undefined,
+  intervalMsRaw: string | undefined,
+  promptRuntimeInjectionCleanupRaw: string | undefined,
+  temporaryConversationCleanupRaw: string | undefined,
+  temporaryConversationCleanupGraceMsRaw: string | undefined,
+  nodeGraphRunCleanupRaw: string | undefined,
+  nodeGraphRunCleanupGraceMsRaw: string | undefined,
+): AppConfig["runtimeMaintenance"] | undefined {
+  if (enabledRaw !== "true") {
+    return undefined;
+  }
+
+  return {
+    intervalMs: parsePositiveInt(intervalMsRaw) ?? 60 * 60 * 1000,
+    promptRuntimeInjection: {
+      enabled: promptRuntimeInjectionCleanupRaw !== "false",
+    },
+    temporaryConversation: {
+      enabled: temporaryConversationCleanupRaw !== "false",
+      retentionGraceMs:
+        parseNonNegativeInt(temporaryConversationCleanupGraceMsRaw) ?? 0,
+    },
+    nodeGraphRun: {
+      enabled: nodeGraphRunCleanupRaw !== "false",
+      retentionGraceMs: parseNonNegativeInt(nodeGraphRunCleanupGraceMsRaw) ?? 0,
+    },
+  };
+}
+
+function parseMemoryWorkerConfig(
+  pollIntervalMsRaw: string | undefined,
+  leaseTtlMsRaw: string | undefined,
+  maxConcurrentJobsRaw: string | undefined,
+  retryBaseDelayMsRaw: string | undefined,
+  maxRetryDelayMsRaw: string | undefined,
+  candidateScanLimitRaw: string | undefined,
+): AppConfig["memoryWorker"] | undefined {
+  const pollIntervalMs = parsePositiveInt(pollIntervalMsRaw);
+  const leaseTtlMs = parsePositiveInt(leaseTtlMsRaw);
+  const maxConcurrentJobs = parsePositiveInt(maxConcurrentJobsRaw);
+  const retryBaseDelayMs = parsePositiveInt(retryBaseDelayMsRaw);
+  const maxRetryDelayMs = parsePositiveInt(maxRetryDelayMsRaw);
+  const candidateScanLimit = parsePositiveInt(candidateScanLimitRaw);
+
+  if (
+    pollIntervalMs === undefined &&
+    leaseTtlMs === undefined &&
+    maxConcurrentJobs === undefined &&
+    retryBaseDelayMs === undefined &&
+    maxRetryDelayMs === undefined &&
+    candidateScanLimit === undefined
+  ) {
+    return undefined;
+  }
+
+  return {
+    ...(pollIntervalMs !== undefined ? { pollIntervalMs } : {}),
+    ...(leaseTtlMs !== undefined ? { leaseTtlMs } : {}),
+    ...(maxConcurrentJobs !== undefined ? { maxConcurrentJobs } : {}),
+    ...(retryBaseDelayMs !== undefined ? { retryBaseDelayMs } : {}),
+    ...(maxRetryDelayMs !== undefined ? { maxRetryDelayMs } : {}),
+    ...(candidateScanLimit !== undefined ? { candidateScanLimit } : {}),
+  };
+}
+
+function parseAgentRuntimeWorkerConfig(
+  pollIntervalMsRaw: string | undefined,
+  leaseTtlMsRaw: string | undefined,
+  maxConcurrentJobsRaw: string | undefined,
+  retryBaseDelayMsRaw: string | undefined,
+  maxRetryDelayMsRaw: string | undefined,
+  candidateScanLimitRaw: string | undefined,
+): AppConfig["agentRuntimeWorker"] | undefined {
+  const pollIntervalMs = parsePositiveInt(pollIntervalMsRaw);
+  const leaseTtlMs = parsePositiveInt(leaseTtlMsRaw);
+  const maxConcurrentJobs = parsePositiveInt(maxConcurrentJobsRaw);
+  const retryBaseDelayMs = parsePositiveInt(retryBaseDelayMsRaw);
+  const maxRetryDelayMs = parsePositiveInt(maxRetryDelayMsRaw);
+  const candidateScanLimit = parsePositiveInt(candidateScanLimitRaw);
+
+  if (
+    pollIntervalMs === undefined &&
+    leaseTtlMs === undefined &&
+    maxConcurrentJobs === undefined &&
+    retryBaseDelayMs === undefined &&
+    maxRetryDelayMs === undefined &&
+    candidateScanLimit === undefined
+  ) {
+    return undefined;
+  }
+
+  return {
+    ...(pollIntervalMs !== undefined ? { pollIntervalMs } : {}),
+    ...(leaseTtlMs !== undefined ? { leaseTtlMs } : {}),
+    ...(maxConcurrentJobs !== undefined ? { maxConcurrentJobs } : {}),
+    ...(retryBaseDelayMs !== undefined ? { retryBaseDelayMs } : {}),
+    ...(maxRetryDelayMs !== undefined ? { maxRetryDelayMs } : {}),
+    ...(candidateScanLimit !== undefined ? { candidateScanLimit } : {}),
+  };
+}
+
+function parseNodeGraphWorkerConfig(
+  pollIntervalMsRaw: string | undefined,
+  leaseTtlMsRaw: string | undefined,
+  maxConcurrentJobsRaw: string | undefined,
+  retryBaseDelayMsRaw: string | undefined,
+  maxRetryDelayMsRaw: string | undefined,
+  candidateScanLimitRaw: string | undefined,
+): AppConfig["nodeGraphWorker"] | undefined {
+  const pollIntervalMs = parsePositiveInt(pollIntervalMsRaw);
+  const leaseTtlMs = parsePositiveInt(leaseTtlMsRaw);
+  const maxConcurrentJobs = parsePositiveInt(maxConcurrentJobsRaw);
+  const retryBaseDelayMs = parsePositiveInt(retryBaseDelayMsRaw);
+  const maxRetryDelayMs = parsePositiveInt(maxRetryDelayMsRaw);
+  const candidateScanLimit = parsePositiveInt(candidateScanLimitRaw);
+
+  if (
+    pollIntervalMs === undefined &&
+    leaseTtlMs === undefined &&
+    maxConcurrentJobs === undefined &&
+    retryBaseDelayMs === undefined &&
+    maxRetryDelayMs === undefined &&
+    candidateScanLimit === undefined
+  ) {
+    return undefined;
+  }
+
+  return {
+    ...(pollIntervalMs !== undefined ? { pollIntervalMs } : {}),
+    ...(leaseTtlMs !== undefined ? { leaseTtlMs } : {}),
+    ...(maxConcurrentJobs !== undefined ? { maxConcurrentJobs } : {}),
+    ...(retryBaseDelayMs !== undefined ? { retryBaseDelayMs } : {}),
+    ...(maxRetryDelayMs !== undefined ? { maxRetryDelayMs } : {}),
+    ...(candidateScanLimit !== undefined ? { candidateScanLimit } : {}),
+  };
+}
+
+function parseChatTransferWorkerConfig(
+  pollIntervalMsRaw: string | undefined,
+  leaseTtlMsRaw: string | undefined,
+  maxConcurrentJobsRaw: string | undefined,
+  retryBaseDelayMsRaw: string | undefined,
+  maxRetryDelayMsRaw: string | undefined,
+  candidateScanLimitRaw: string | undefined,
+): AppConfig["chatTransferWorker"] | undefined {
+  const pollIntervalMs = parsePositiveInt(pollIntervalMsRaw);
+  const leaseTtlMs = parsePositiveInt(leaseTtlMsRaw);
+  const maxConcurrentJobs = parsePositiveInt(maxConcurrentJobsRaw);
+  const retryBaseDelayMs = parsePositiveInt(retryBaseDelayMsRaw);
+  const maxRetryDelayMs = parsePositiveInt(maxRetryDelayMsRaw);
+  const candidateScanLimit = parsePositiveInt(candidateScanLimitRaw);
+
+  if (
+    pollIntervalMs === undefined &&
+    leaseTtlMs === undefined &&
+    maxConcurrentJobs === undefined &&
+    retryBaseDelayMs === undefined &&
+    maxRetryDelayMs === undefined &&
+    candidateScanLimit === undefined
+  ) {
+    return undefined;
+  }
+
+  return {
+    ...(pollIntervalMs !== undefined ? { pollIntervalMs } : {}),
+    ...(leaseTtlMs !== undefined ? { leaseTtlMs } : {}),
+    ...(maxConcurrentJobs !== undefined ? { maxConcurrentJobs } : {}),
+    ...(retryBaseDelayMs !== undefined ? { retryBaseDelayMs } : {}),
+    ...(maxRetryDelayMs !== undefined ? { maxRetryDelayMs } : {}),
+    ...(candidateScanLimit !== undefined ? { candidateScanLimit } : {}),
+  };
+}
+
+function parseBackupWorkerConfig(
+  pollIntervalMsRaw: string | undefined,
+  leaseTtlMsRaw: string | undefined,
+  maxConcurrentJobsRaw: string | undefined,
+  retryBaseDelayMsRaw: string | undefined,
+  maxRetryDelayMsRaw: string | undefined,
+  candidateScanLimitRaw: string | undefined,
+): AppConfig["backupWorker"] | undefined {
+  const pollIntervalMs = parsePositiveInt(pollIntervalMsRaw);
+  const leaseTtlMs = parsePositiveInt(leaseTtlMsRaw);
+  const maxConcurrentJobs = parsePositiveInt(maxConcurrentJobsRaw);
+  const retryBaseDelayMs = parsePositiveInt(retryBaseDelayMsRaw);
+  const maxRetryDelayMs = parsePositiveInt(maxRetryDelayMsRaw);
+  const candidateScanLimit = parsePositiveInt(candidateScanLimitRaw);
+
+  if (
+    pollIntervalMs === undefined &&
+    leaseTtlMs === undefined &&
+    maxConcurrentJobs === undefined &&
+    retryBaseDelayMs === undefined &&
+    maxRetryDelayMs === undefined &&
+    candidateScanLimit === undefined
+  ) {
+    return undefined;
+  }
+
+  return {
+    ...(pollIntervalMs !== undefined ? { pollIntervalMs } : {}),
+    ...(leaseTtlMs !== undefined ? { leaseTtlMs } : {}),
+    ...(maxConcurrentJobs !== undefined ? { maxConcurrentJobs } : {}),
+    ...(retryBaseDelayMs !== undefined ? { retryBaseDelayMs } : {}),
+    ...(maxRetryDelayMs !== undefined ? { maxRetryDelayMs } : {}),
+    ...(candidateScanLimit !== undefined ? { candidateScanLimit } : {}),
+  };
+}
+
+function parseAuthConfig(
+  modeRaw: string | undefined,
+  apiKeysRaw: string | undefined,
+  jwtSecret: string | undefined,
+  apiKeyAccountsRaw: string | undefined,
+  jwtAccountClaimRaw: string | undefined,
+): AuthConfig {
+  const mode = parseAuthMode(modeRaw);
+
+  if (mode === "off") {
+    return { mode: "off" };
+  }
+
+  if (mode === "api_key") {
+    const apiKeys = (apiKeysRaw ?? "")
+      .split(",")
+      .map((item) => item.trim())
+      .filter((item) => item.length > 0);
+
+    if (apiKeys.length === 0) {
+      throw new Error("AUTH_MODE=api_key requires AUTH_API_KEYS to be set");
+    }
+
+    return {
+      mode: "api_key",
+      apiKeys: Array.from(new Set(apiKeys)),
+      apiKeyAccountMap: parseApiKeyAccountMap(apiKeyAccountsRaw),
+    };
+  }
+
+  if (!jwtSecret || jwtSecret.trim().length === 0) {
+    throw new Error("AUTH_MODE=jwt requires AUTH_JWT_SECRET to be set");
+  }
+
+  return {
+    mode: "jwt",
+    jwtSecret,
+    jwtAccountClaim: parseOptionalNonEmpty(jwtAccountClaimRaw),
+  };
+}
+
+function parseApiKeyAccountMap(
+  raw: string | undefined,
+): Record<string, string> | undefined {
+  if (!raw || raw.trim().length === 0) {
+    return undefined;
+  }
+
+  const map: Record<string, string> = {};
+  const pairs = raw
+    .split(",")
+    .map((item) => item.trim())
+    .filter((item) => item.length > 0);
+
+  for (const pair of pairs) {
+    const separatorIndex = pair.indexOf(":");
+    if (separatorIndex <= 0 || separatorIndex === pair.length - 1) {
+      throw new Error(`Invalid AUTH_API_KEY_ACCOUNTS pair: ${pair}`);
+    }
+
+    const key = pair.slice(0, separatorIndex).trim();
+    const accountId = pair.slice(separatorIndex + 1).trim();
+    if (!key || !accountId) {
+      throw new Error(`Invalid AUTH_API_KEY_ACCOUNTS pair: ${pair}`);
+    }
+
+    map[key] = accountId;
+  }
+
+  return Object.keys(map).length > 0 ? map : undefined;
+}
+
+/**
+ * 解析 OPENAI_API_MODE 环境变量。
+ *
+ * 只接受 chat | responses | completion（大小写不敏感，允许前后空白）；
+ * 缺省或非法值返回 undefined（保持 SDK 默认行为，零回归）。
+ */
+function parseOpenAIApiMode(
+  value: string | undefined,
+): "chat" | "responses" | "completion" | undefined {
+  const normalized = value?.trim().toLowerCase();
+  if (
+    normalized === "chat" ||
+    normalized === "responses" ||
+    normalized === "completion"
+  ) {
+    return normalized;
+  }
+  return undefined;
+}
+
+function parseDelimitedStrings(value: string | undefined): string[] {
+  if (!value) {
+    return [];
+  }
+
+  return Array.from(
+    new Set(
+      value
+        .split(",")
+        .map((item) => item.trim())
+        .filter((item) => item.length > 0),
+    ),
+  );
+}
+
+function parseOptionalNonEmpty(value: string | undefined): string | undefined {
+  if (!value) {
+    return undefined;
+  }
+
+  const normalized = value.trim();
+  return normalized.length > 0 ? normalized : undefined;
+}
+
+function parseAuthMode(raw: string | undefined): AuthMode {
+  if (!raw || raw.trim().length === 0) {
+    return "off";
+  }
+
+  const normalized = raw.trim();
+
+  if (normalized === "api_key" || normalized === "jwt") {
+    return normalized;
+  }
+
+  if (normalized === "off") {
+    return "off";
+  }
+
+  throw new Error(`Unsupported AUTH_MODE: ${raw}`);
+}
+
+function parseAccountMode(raw: string | undefined): AccountMode {
+  if (!raw || raw.trim().length === 0) {
+    return "single";
+  }
+
+  const normalized = raw.trim();
+
+  if (normalized === "single" || normalized === "multi") {
+    return normalized;
+  }
+
+  throw new Error(`Unsupported ACCOUNT_MODE: ${raw}`);
+}

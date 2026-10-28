@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "expected_snapshot_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "floor_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "floor_id",
+    "expected_snapshot_id"
+  ],
+  "type": "object"
+}

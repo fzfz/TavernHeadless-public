@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tavern-headless.local/native-card-maintenance/preview-runtime.schema.json",
+  "title": "Isolated loopback preview runtime settings",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "host",
+    "apiPort",
+    "frontendPort",
+    "enableSseChat",
+    "testMasterKey",
+    "offlineProvider"
+  ],
+  "properties": {
+    "$schema": { "const": "./preview-runtime.schema.json" },
+    "host": { "const": "127.0.0.1" },
+    "apiPort": { "const": 0 },
+    "frontendPort": { "const": 0 },
+    "enableSseChat": { "const": true },
+    "testMasterKey": { "const": "native-maintenance-isolated-test-key" },
+    "offlineProvider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "apiMode",
+        "presetName",
+        "defaultModelId",
+        "baseUrl",
+        "apiKey"
+      ],
+      "properties": {
+        "provider": { "const": "openai-compatible" },
+        "apiMode": { "const": "chat" },
+        "presetName": { "type": "string", "minLength": 1 },
+        "defaultModelId": { "const": "offline-assembly-only" },
+        "baseUrl": { "const": "http://127.0.0.1:9/v1" },
+        "apiKey": { "const": "offline-placeholder" }
+      }
+    }
+  }
+}

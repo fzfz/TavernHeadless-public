@@ -1,0 +1,8 @@
+{
+  "roleAdminWeb": { "frontend": "web", "filename": "role-apps.json" },
+  "roleUserWeb": { "frontend": "user-web", "filename": "application.json" },
+  "resourcePolicy": {
+    "frontend": "user-web",
+    "filename": "runtime-policy.json"
+  }
+}

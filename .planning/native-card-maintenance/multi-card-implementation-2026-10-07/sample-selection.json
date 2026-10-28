@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-07T21:10:50.445419",
+  "method": "按人工阅读后的类型候选池，使用系统随机源各抽一项",
+  "fixedBaseline": "USER002",
+  "pools": [
+    {
+      "type": "纯人物文字，无行动选项",
+      "ids": [
+        "C003",
+        "C008"
+      ]
+    },
+    {
+      "type": "世界书规则及显示，无行动选项",
+      "ids": [
+        "C024",
+        "C041"
+      ]
+    },
+    {
+      "type": "变量初始化及交互页面",
+      "ids": [
+        "C011",
+        "C058"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "USER002",
+      "inputFile": "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json"
+    },
+    {
+      "id": "C008",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/default_Assistant.png"
+    },
+    {
+      "id": "C024",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/双面恋人v1.0.png"
+    },
+    {
+      "id": "C058",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教授职业生涯.png"
+    }
+  ],
+  "replacement": {
+    "stoppedId": "C058",
+    "reason": "单文件缺少开场向导引用的阶段指导和状态更新规则正文",
+    "candidatePool": [
+      "C011"
+    ],
+    "selectedId": "C011",
+    "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/一定会NTR的世界：很容易或很难被NTR的人妻.png"
+  }
+}

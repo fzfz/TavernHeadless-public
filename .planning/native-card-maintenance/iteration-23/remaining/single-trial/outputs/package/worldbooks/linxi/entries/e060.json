@@ -1,0 +1,40 @@
+{
+  "uid": 60,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_26_嗜血之花公开",
+  "order": 249,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E026>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n血友病医院捐赠会上，主持人宣布王授军捐赠新作。工作人员把坐在轮椅上的王授军推到台前，再把《嗜血之花》抬到嘉宾面前。\n《嗜血之花》中央画着年轻女人斜对观众的下身局部，一根只露出少部分的阴茎嵌在女人阴道里，血液顺着结合处向下流，周围散落白色花瓣。\n台下嘉宾讨论血液、慈善和王授军的创作。老总把画面解释成血液与白花组成的医院主题，媒体把镜头对准王授军与画作。\n{{user}}走到画前，拍下整幅画和血迹局部。他想起林茜前两天让自己购买护垫，又在画面上寻找脸、手链和其他能辨认身份的部位；构图只保留下身局部。{{user}}把女人暂时判断为王授军另找的年轻模特。\n王授军完成捐赠发言，工作人员把画作搬到医院展示区域。\n</事件_E026>"
+}

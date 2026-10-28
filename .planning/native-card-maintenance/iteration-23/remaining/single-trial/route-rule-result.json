@@ -1,0 +1,16 @@
+{
+  "scope": "direct converted derive; source rule105 is not activated while E032=false; target profile contains that rule unconditionally",
+  "beforeE032": false,
+  "beforeRoute": "未定",
+  "facts": {
+    "ending": {
+      "routeRulesLoaded": true,
+      "formedRoute": "结局一_离婚",
+      "explicitReselection": false,
+      "divorceFormed": true,
+      "completedStage": null
+    }
+  },
+  "afterRoute": "结局一_离婚",
+  "afterDivorced": true
+}

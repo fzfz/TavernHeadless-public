@@ -1,0 +1,41 @@
+{
+  "审计范围": [
+    ".agents/skills/native-card-conversion/references/conversion-map.md 第3章",
+    "docs/character-authoring/script-api.md 第5.3.6节和第9.3.8节",
+    ".agents/skills/native-card-conversion/references/api/script-api.md 第5.3.6节和第9.3.8节",
+    "scripts/native-card-conversion/tool-config.ts replacementMessages 全部错误文字"
+  ],
+  "审计依据": "用户《markdown和文字内容规范》及删除后是否影响完整阅读、理解与执行的判断标准。",
+  "问题": [
+    {
+      "编号": "W1",
+      "级别": "一般",
+      "位置": [
+        {
+          "文件": "docs/character-authoring/script-api.md",
+          "行": 609,
+          "章节": "5.3.6 回调与时序"
+        },
+        {
+          "文件": ".agents/skills/native-card-conversion/references/api/script-api.md",
+          "行": 609,
+          "章节": "5.3.6 回调与时序"
+        }
+      ],
+      "原文": "所属视图释放时，Runtime 解除订阅。",
+      "问题说明": "第1章第95行已经统一说明所属角色或楼层视图释放时，Runtime 自动解除登记资源，并且明确包含订阅。第5.3.6节再次解释相同的资源释放规则，违反同一定义或规范解释只出现一次的要求。删除本句后，第1章仍完整提供该规则，第5.3.6节仍说明通知回调，阅读和执行均不受影响。",
+      "可执行修改建议": "在两份正文的第609行删除分号及其后的资源释放句，保留通知回调句并以句号结束。",
+      "建议修改后文字": "1. Runtime 在订阅成功后，按[第3.2节](#32-turncommit一轮变量提交完成的通知)将通知传入 callback。",
+      "依据位置": [
+        "docs/character-authoring/script-api.md:95",
+        ".agents/skills/native-card-conversion/references/api/script-api.md:95"
+      ]
+    }
+  ],
+  "其余结论": [
+    "conversion-map.md 第3章的主体、登记动作、引用检查和数据读取动作明确，未发现需要修改的文字问题。",
+    "两份 script-api.md 第9.3.8节分别说明初始化、翻页和末页点击的结果，内容符合标题，未发现需要修改的文字问题。",
+    "replacementMessages 的全部错误文字明确指出输入或文件问题，并给出修正动作；未发现需要修改的文字问题。"
+  ],
+  "目标修改情况": "审计队员只写入本报告。"
+}

@@ -1,0 +1,33 @@
+{
+  "status": "complete",
+  "result": "tool.validatePackageFiles and NativeCardService.checkPackage now share validateNativeCardStatePackage for state schema compilation, factsSchema compilation, and opening initial-state validation.",
+  "regression": {
+    "beforeFix": "The new tool regression test failed because validate passed mood=3 against a string schema.",
+    "afterFix": "The same test rejects the package with NATIVE_CARD_INITIAL_STATE_INVALID at state/initial/start.json#/mood."
+  },
+  "files": [
+    "apps/api/src/services/native-card/state-package-validator.ts",
+    "apps/api/src/services/native-card/native-card-service.ts",
+    "apps/api/src/services/native-card/__tests__/state-package-validator.test.ts",
+    "scripts/native-card-conversion/tool.ts",
+    "scripts/native-card-conversion/tool.test.ts"
+  ],
+  "checks": [
+    { "command": "pnpm exec vitest run --dir scripts/native-card-conversion tool.test.ts", "result": "passed", "tests": 22 },
+    { "command": "pnpm exec vitest run --dir apps/api/src/services/native-card/__tests__ state-package-validator.test.ts native-card-service.test.ts", "result": "passed", "tests": 32 },
+    { "command": "pnpm exec vitest run --dir scripts/native-card-conversion formal.test.ts -t 'imports through the formal API'", "result": "passed", "tests": 1 },
+    { "command": "pnpm exec vitest run --dir apps/api/test native-card.integration.test.ts -t 'imports full resources'", "result": "passed", "tests": 1 },
+    { "command": "pnpm --filter @tavern/api typecheck", "result": "passed" },
+    { "command": "pnpm exec tsc -p scripts/native-card-conversion/tsconfig.json --noEmit", "result": "passed" },
+    {
+      "command": "pnpm exec eslint apps/api/src/services/native-card/native-card-service.ts apps/api/src/services/native-card/state-package-validator.ts apps/api/src/services/native-card/__tests__/state-package-validator.test.ts scripts/native-card-conversion/tool.ts scripts/native-card-conversion/tool.test.ts",
+      "result": "passed"
+    },
+    {
+      "command": "pnpm exec prettier --check apps/api/src/services/native-card/state-package-validator.ts apps/api/src/services/native-card/__tests__/state-package-validator.test.ts scripts/native-card-conversion/tool.ts scripts/native-card-conversion/tool.test.ts",
+      "result": "passed"
+    },
+    { "command": "git diff --check (authorized files)", "result": "passed" }
+  ],
+  "remaining": []
+}

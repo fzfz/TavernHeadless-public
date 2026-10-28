@@ -1,0 +1,40 @@
+{
+  "uid": 9,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": true,
+  "comment": "地点_林茜家",
+  "order": 61,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_place_linqian_home>\n玄关位于入户门内侧，旁边有鞋柜。客厅连接玄关和卧室，靠玄关一侧有一只半人高的座机壁柜，柜面固定放着家用座机，听筒扣在主机上，电话线接入墙面接口；壁柜前方是连接客厅中央的平整空地。电视矮柜位于客厅一侧，下层有抽屉。卧室位于客厅内侧，房内有床和空调。\n\n夫妻家到{{user}}工作的公司步行60分钟，打车40分钟，电动车20分钟；家电城到夫妻家步行约15分钟，电动车约5分钟，打车约6分钟。\n</qrxd_place_linqian_home>\n"
+}

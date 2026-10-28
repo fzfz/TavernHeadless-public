@@ -1,0 +1,776 @@
+{
+  "status": "intermediate, child may recover",
+  "observations": [
+    {
+      "id": "map-entry-absolute-path-batch",
+      "toolAt": "2026-10-06T04:03:50.371Z",
+      "actualArguments": "packageDirectory-prefixed absolute target paths",
+      "resultFiles": 133,
+      "errors": 133,
+      "successfulTargets": 0,
+      "subsequentSummary": "jq summed absent issues/remaining as zero, no top-level error count",
+      "source": "public-execution.jsonl and actual e000..e132 outputs",
+      "guidanceSent": false,
+      "selfRecoveryReported": "2026-10-06T04:16:40.043333+00:00",
+      "childReport": "summary said 133 successful; actual e104 showed path error; child will rewrite using package-relative paths",
+      "secondChildReport": "133/133 relative-path writes succeeded, map-entries-actual.json"
+    },
+    {
+      "id": "other-card-artifact-read",
+      "firstObservedAt": "2026-10-06T04:07:14.972Z",
+      "actualFiles": [
+        "apps/web/prototypes/characters/linqian/source-card.json",
+        "apps/web/prototypes/characters/linqian/conversion-map.json",
+        "apps/web/prototypes/characters/linqian/state.schema.json",
+        "apps/web/prototypes/characters/linqian/derive.js",
+        "apps/web/prototypes/characters/linqian/validate.js",
+        "apps/web/prototypes/characters/linqian/opening-states.json",
+        "apps/web/prototypes/characters/linqian/live-model.json"
+      ],
+      "source": "public tool calls; outside supplied input and documented common API implementation entries",
+      "scope": "read observed; whether output reuses these files still to be checked",
+      "guidanceSent": false,
+      "secondChildReport": "reusing old prototype schema and structured rules with source index alignment by comment"
+    }
+  ],
+  "rows": [
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e000.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e001.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e002.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e003.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e004.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e005.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e006.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e007.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e008.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e009.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e010.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e011.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e012.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e013.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e014.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e015.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e016.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e017.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e018.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e019.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e020.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e021.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e022.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e023.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e024.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e025.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e026.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e027.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e028.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e029.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e030.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e031.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e032.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e033.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e034.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e035.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e036.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e037.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e038.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e039.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e040.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e041.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e042.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e043.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e044.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e045.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e046.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e047.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e048.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e049.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e050.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e051.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e052.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e053.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e054.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e055.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e056.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e057.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e058.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e059.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e060.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e061.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e062.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e063.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e064.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e065.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e066.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e067.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e068.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e069.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e070.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e071.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e072.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e073.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e074.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e075.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e076.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e077.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e078.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e079.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e080.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e081.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e082.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e083.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e084.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e085.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e086.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e087.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e088.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e089.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e090.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e091.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e092.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e093.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e094.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e095.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e096.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e097.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e098.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e099.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e100.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e101.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e102.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e103.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e104.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e105.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e106.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e107.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e108.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e109.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e110.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e111.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e112.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e113.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e114.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e115.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e116.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e117.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e118.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e119.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e120.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e121.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e122.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e123.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e124.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e125.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e126.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e127.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e128.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e129.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e130.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e131.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    },
+    {
+      "file": ".tmp/native-card-conversion/run-pdG3cp/evidence/map-entries/e132.json",
+      "error": "Error: 目标文件路径应相对于 packageDirectory，格式为 worldbooks/<书目录名>/entries/<条目文件名>.json。",
+      "target": null
+    }
+  ],
+  "mainInspectionErrors": [
+    "Main first looked up e0.json; actual result names are zero-padded e000.json; corrected lookup.",
+    {
+      "at": "2026-10-06T04:26:30.987724+00:00",
+      "action": "inspect openings and state profile before child finished writing",
+      "result": "files absent at guessed paths; inspect actual directory after completion"
+    },
+    {
+      "action": "direct source EJS fixture comparison",
+      "error": "EJS whitespace-trim delimiter underscore initially treated as JS identifier; old result file lacked comparison key",
+      "repair": "read actual delimiters and remove only the EJS control markers"
+    }
+  ],
+  "prototypeCopyObserved": {
+    "at": "2026-10-06T04:27:07.656Z",
+    "sourceDirectory": "apps/web/prototypes/characters/linqian",
+    "targets": [
+      "state/schema.json",
+      "backend/variable-tools/derive.js",
+      "backend/validators/validate.js",
+      "backend/variable-tools/rules.constants.json"
+    ],
+    "finding": "child shell calls directly copy old prototype files into current package",
+    "evaluation": "verify final outputs and original source conditions after completion"
+  },
+  "stateProfileIntermediate": {
+    "file": ".tmp/native-card-conversion/run-pdG3cp/package/agents/state-update/profile.json",
+    "ruleFiles": [
+      "agents/state-update/source-variable-rules.txt",
+      "agents/state-update/event-evidence.json"
+    ],
+    "scope": "intermediate file, final result and actual request pending"
+  },
+  "firstPackageValidation": {
+    "at": "2026-10-06T04:37:20.866Z",
+    "record": ".tmp/native-card-conversion/run-pdG3cp/validation-QJKSlp/result.json",
+    "issues": 22,
+    "categories": [
+      "unsupported module globals",
+      "wrong module exports/imports",
+      "undeclared identifiers"
+    ],
+    "scope": "child is still repairing; not final package status"
+  },
+  "frontendIntermediate": {
+    "at": "2026-10-06T04:44:34.559480+00:00",
+    "sourceRegexIndex": 5,
+    "sourceCSSBlockLengths": [
+      6482,
+      805
+    ],
+    "targetCSSLength": 4355,
+    "verbatimBlocksPresent": [
+      false,
+      false
+    ],
+    "scope": "intermediate byte comparison; final files and effective source consumer pending"
+  },
+  "latestVisibleChildDecision": {
+    "at": "2026-10-06T04:44:58.990222+00:00",
+    "result": "constant JSON moved to data/state-rules.json; calendar and deep-copy functions rewritten; node syntax check passed; formal package validation pending"
+  },
+  "openingInitialIntermediate": {
+    "at": "2026-10-06T04:46:39.352319+00:00",
+    "fileChecks": {
+      "firstA1Count": 1,
+      "alternateDate": "2025-04-04",
+      "alternatePlace": "局子街55号401画室",
+      "alternateE012": false,
+      "alternateOptionsPreserved": true
+    },
+    "scope": "main manual source comparison; formal session and final package pending"
+  }
+}

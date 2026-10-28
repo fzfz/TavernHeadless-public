@@ -1,0 +1,60 @@
+<main class="linxi-app">
+  <section class="linxi-chat" aria-label="林茜的演绎对话">
+    <header class="linxi-chat__header">
+      <span class="linxi-chat__eyebrow">角色对话</span>
+      <h1>妻心如刀 · 林茜</h1>
+    </header>
+    <div id="chat" class="linxi-chat__body"></div>
+  </section>
+  <aside class="linxi-sidebar">
+    <section class="linxi-panel" aria-label="当前状态">
+      <header class="linxi-panel__header">
+        <div class="linxi-avatar" aria-hidden="true">林</div>
+        <div>
+          <p class="linxi-panel__eyebrow">关系与场景</p>
+          <h2 id="status-title">当前状态</h2>
+        </div>
+      </header>
+      <p id="status-place" class="linxi-place">数据暂不可用</p>
+      <dl class="linxi-status-grid">
+        <div><dt>日期</dt><dd id="status-date">数据暂不可用</dd></div>
+        <div><dt>时间</dt><dd id="status-time">数据暂不可用</dd></div>
+        <div>
+          <dt>林茜感情</dt><dd id="status-affection">数据暂不可用</dd>
+          <progress id="status-affection-bar" max="999" value="0"></progress>
+        </div>
+        <div>
+          <dt>林茜堕落</dt><dd id="status-fall">数据暂不可用</dd>
+          <progress id="status-fall-bar" max="999" value="0"></progress>
+        </div>
+      </dl>
+      <div class="linxi-thought">
+        <h3>林茜的内心想法</h3>
+        <p id="status-thought">数据暂不可用</p>
+      </div>
+    </section>
+    <section class="linxi-panel linxi-actions" aria-label="行动选项">
+      <header class="linxi-panel__header linxi-panel__header--compact">
+        <div>
+          <p class="linxi-panel__eyebrow">接续当前剧情</p>
+          <h2 id="actions-title">行动选项</h2>
+        </div>
+      </header>
+      <div class="linxi-actions__list">
+        <button id="option-0" type="button"><span id="option-text-0"></span></button>
+        <button id="option-1" type="button"><span id="option-text-1"></span></button>
+        <button id="option-2" type="button"><span id="option-text-2"></span></button>
+        <button id="option-3" type="button"><span id="option-text-3"></span></button>
+      </div>
+      <p id="action-feedback" class="linxi-feedback" role="status" aria-live="polite"></p>
+      <div class="linxi-repair">
+        <h3 id="repair-title">状态修复</h3>
+        <div class="linxi-repair__actions">
+          <button id="repair-recalculate" type="button"><span id="repair-recalculate-text"></span></button>
+          <button id="repair-restore" type="button"><span id="repair-restore-text"></span></button>
+        </div>
+        <p id="repair-feedback" class="linxi-feedback" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </aside>
+</main>

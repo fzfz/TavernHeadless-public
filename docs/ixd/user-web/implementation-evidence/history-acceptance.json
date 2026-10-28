@@ -1,0 +1,36 @@
+[
+  {
+    "platform": "desktop",
+    "checks": [
+      "draft does not apply query",
+      "append failure preserves loaded range, retries offset, new rows unselected and mixed state",
+      "applied persona snapshot search and selection clear",
+      "continue/back restores loaded 23 and reading anchor",
+      "menu keyboard, Escape focus return and browser Back",
+      "rename through shared settings and row update",
+      "fixed two-target confirmation and close during submitted delete",
+      "account scoped receipt survives reload, unknown never resent, 404 verifies actual committed removal",
+      "real generation busy preserves continue, per-item partial results, retry submits only confirmed remaining item",
+      "no overflow or browser exceptions"
+    ],
+    "passed": true,
+    "fixture": "history-desktop-00669071-f485-4d83-b297-2d43d7d619a6@example.test"
+  },
+  {
+    "platform": "mobile",
+    "checks": [
+      "draft does not apply query",
+      "append failure preserves loaded range, retries offset, new rows unselected and mixed state",
+      "applied persona snapshot search and selection clear",
+      "continue/back restores loaded 23 and reading anchor",
+      "menu keyboard, Escape focus return and browser Back",
+      "rename through shared settings and row update",
+      "fixed two-target confirmation and close during submitted delete",
+      "account scoped receipt survives reload, unknown never resent, 404 verifies actual committed removal",
+      "real generation busy preserves continue, per-item partial results, retry submits only confirmed remaining item",
+      "no overflow or browser exceptions"
+    ],
+    "passed": true,
+    "fixture": "history-mobile-802d9328-79d7-4d60-8aec-9e1429fe8f31@example.test"
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "uid": 10,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "地点_林茜家_监控布局",
+  "order": 159,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<林茜家_监控布局>\n- 玄关鞋柜上方藏着针孔网络摄像头，镜头朝向入户门、门外站立位置和进入客厅的路线。\n- 客厅顶角藏着针孔网络摄像头，镜头覆盖沙发、电视柜、客厅中央和玄关方向。\n- 卧室空调出风口旁藏着针孔网络摄像头，镜头覆盖床、床边和卧室门口。\n三台摄像头的遮挡外壳只露出针孔；林茜没有发现摄像头，也不知道家中存在监控。\n</林茜家_监控布局>\n"
+}

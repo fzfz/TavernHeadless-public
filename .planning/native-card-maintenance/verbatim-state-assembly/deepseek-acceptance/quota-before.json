@@ -1,0 +1,13 @@
+{
+  "status": 200,
+  "data": {
+    "usage": 0.040084413,
+    "usage_daily": 0,
+    "limit_remaining": 10,
+    "free_model_daily_requests": {
+      "used": 6,
+      "limit": 1000,
+      "remaining": 994
+    }
+  }
+}

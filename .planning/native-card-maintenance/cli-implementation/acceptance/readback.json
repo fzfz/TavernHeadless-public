@@ -1,0 +1,295 @@
+{
+  "status": "passed",
+  "files": [
+    {
+      "path": "agents/state-update/profile.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=agents%2Fstate-update%2Fprofile.json",
+      "expectedByteLength": 409,
+      "requestIndex": 2,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 409,
+      "equal": true
+    },
+    {
+      "path": "agents/state-update/rules.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=agents%2Fstate-update%2Frules.json",
+      "expectedByteLength": 229,
+      "requestIndex": 3,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 229,
+      "equal": true
+    },
+    {
+      "path": "assets/portrait.svg",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=assets%2Fportrait.svg",
+      "expectedByteLength": 314,
+      "requestIndex": 4,
+      "statusCode": 200,
+      "encoding": "base64",
+      "actualByteLength": 314,
+      "equal": true
+    },
+    {
+      "path": "backend/controllers/config.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=backend%2Fcontrollers%2Fconfig.json",
+      "expectedByteLength": 219,
+      "requestIndex": 5,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 219,
+      "equal": true
+    },
+    {
+      "path": "backend/controllers/prompt.js",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=backend%2Fcontrollers%2Fprompt.js",
+      "expectedByteLength": 114,
+      "requestIndex": 6,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 114,
+      "equal": true
+    },
+    {
+      "path": "backend/validators/validate.js",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=backend%2Fvalidators%2Fvalidate.js",
+      "expectedByteLength": 123,
+      "requestIndex": 7,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 123,
+      "equal": true
+    },
+    {
+      "path": "backend/variable-tools/derive.js",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=backend%2Fvariable-tools%2Fderive.js",
+      "expectedByteLength": 69,
+      "requestIndex": 8,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 69,
+      "equal": true
+    },
+    {
+      "path": "character.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=character.json",
+      "expectedByteLength": 1124,
+      "requestIndex": 9,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 1124,
+      "equal": true
+    },
+    {
+      "path": "data/case.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=data%2Fcase.json",
+      "expectedByteLength": 58,
+      "requestIndex": 10,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 58,
+      "equal": true
+    },
+    {
+      "path": "frontend/index.html",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=frontend%2Findex.html",
+      "expectedByteLength": 196,
+      "requestIndex": 11,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 196,
+      "equal": true
+    },
+    {
+      "path": "frontend/main.js",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=frontend%2Fmain.js",
+      "expectedByteLength": 390,
+      "requestIndex": 12,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 390,
+      "equal": true
+    },
+    {
+      "path": "frontend/manifest.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=frontend%2Fmanifest.json",
+      "expectedByteLength": 339,
+      "requestIndex": 13,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 339,
+      "equal": true
+    },
+    {
+      "path": "frontend/style.css",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=frontend%2Fstyle.css",
+      "expectedByteLength": 116,
+      "requestIndex": 14,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 116,
+      "equal": true
+    },
+    {
+      "path": "manifest.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=manifest.json",
+      "expectedByteLength": 3540,
+      "requestIndex": 15,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 3540,
+      "equal": true
+    },
+    {
+      "path": "openings.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=openings.json",
+      "expectedByteLength": 621,
+      "requestIndex": 16,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 621,
+      "equal": true
+    },
+    {
+      "path": "openings/first.txt",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=openings%2Ffirst.txt",
+      "expectedByteLength": 188,
+      "requestIndex": 17,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 188,
+      "equal": true
+    },
+    {
+      "path": "openings/second.txt",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=openings%2Fsecond.txt",
+      "expectedByteLength": 54,
+      "requestIndex": 18,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 54,
+      "equal": true
+    },
+    {
+      "path": "regex/first.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=regex%2Ffirst.json",
+      "expectedByteLength": 358,
+      "requestIndex": 19,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 358,
+      "equal": true
+    },
+    {
+      "path": "regex/second.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=regex%2Fsecond.json",
+      "expectedByteLength": 366,
+      "requestIndex": 20,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 366,
+      "equal": true
+    },
+    {
+      "path": "state/initial/first.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=state%2Finitial%2Ffirst.json",
+      "expectedByteLength": 61,
+      "requestIndex": 21,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 61,
+      "equal": true
+    },
+    {
+      "path": "state/initial/second.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=state%2Finitial%2Fsecond.json",
+      "expectedByteLength": 61,
+      "requestIndex": 22,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 61,
+      "equal": true
+    },
+    {
+      "path": "state/schema.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=state%2Fschema.json",
+      "expectedByteLength": 421,
+      "requestIndex": 23,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 421,
+      "equal": true
+    },
+    {
+      "path": "worldbooks/book-0/book.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fbook-0%2Fbook.json",
+      "expectedByteLength": 206,
+      "requestIndex": 24,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 206,
+      "equal": true
+    },
+    {
+      "path": "worldbooks/book-0/entries/e0.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fbook-0%2Fentries%2Fe0.json",
+      "expectedByteLength": 438,
+      "requestIndex": 25,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 438,
+      "equal": true
+    },
+    {
+      "path": "worldbooks/harbor/book.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fharbor%2Fbook.json",
+      "expectedByteLength": 254,
+      "requestIndex": 26,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 254,
+      "equal": true
+    },
+    {
+      "path": "worldbooks/harbor/entries/110.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fharbor%2Fentries%2F110.json",
+      "expectedByteLength": 450,
+      "requestIndex": 27,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 450,
+      "equal": true
+    },
+    {
+      "path": "worldbooks/harbor/entries/120.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fharbor%2Fentries%2F120.json",
+      "expectedByteLength": 420,
+      "requestIndex": 28,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 420,
+      "equal": true
+    },
+    {
+      "path": "worldbooks/people/book.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fpeople%2Fbook.json",
+      "expectedByteLength": 212,
+      "requestIndex": 29,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 212,
+      "equal": true
+    },
+    {
+      "path": "worldbooks/people/entries/110.json",
+      "requestPath": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fpeople%2Fentries%2F110.json",
+      "expectedByteLength": 436,
+      "requestIndex": 30,
+      "statusCode": 200,
+      "encoding": "utf8",
+      "actualByteLength": 436,
+      "equal": true
+    }
+  ]
+}

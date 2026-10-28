@@ -1,0 +1,90 @@
+{
+  "axis": "Spec",
+  "reviewDate": "2026-10-07",
+  "repository": "/srv/tavern/TavernHeadless-remove-preview-credentials",
+  "fixedPoint": "c40db8b3221f1f710791f7367d2094187101cbf8",
+  "scope": {
+    "diffCommand": "git diff c40db8b3221f1f710791f7367d2094187101cbf8 -- scripts/native-card-conversion .agents/skills/native-card-conversion/scripts/convert.mjs",
+    "untrackedFiles": "检查 scripts/native-card-conversion 范围内未跟踪的新实现、配置和测试文件。",
+    "specification": ".planning/native-card-maintenance/cli-audit/implementation-plan.md",
+    "subsequentAuthorization": "用户已取消 resume 命令与中断恢复概念；复核采用该授权范围。",
+    "reviewBoundary": "独立核对缺失或部分实现、范围外行为及实现错误；Standards 由另一队员负责。"
+  },
+  "findings": [
+    {
+      "id": "SPEC-01",
+      "priority": "P2",
+      "title": "begin 没有准备关联原文文件",
+      "requirement": {
+        "section": "第4.4.4节第1—2项",
+        "lines": [180, 181],
+        "quote": "每项提供适用的关联原文路径或目标文件位置；完整原文及长文本分片由 begin 在同一次调用中准备。"
+      },
+      "locations": [
+        { "file": "scripts/native-card-conversion/source.ts", "line": 1027 },
+        { "file": "scripts/native-card-conversion/source.ts", "line": 1041 }
+      ],
+      "actualBehavior": "begin 只保存 item.pointer 的值，并将 contextPointers 原样放入事项索引，没有为关联 Pointer 生成内容文件。",
+      "reproduction": {
+        "input": {
+          "name": "测试人物",
+          "description": "abcdef",
+          "character_book": {
+            "name": "测试世界书",
+            "entries": [
+              {
+                "id": 0,
+                "keys": ["门"],
+                "content": "<div>待判断正文</div>",
+                "comment": "关联标题",
+                "insertion_order": 100
+              }
+            ]
+          }
+        },
+        "steps": [
+          "将输入写入临时 JSON 文件，调用 source.ts 导出的 begin。",
+          "读取返回的 workFile，并查看事项的 contextPointers、contentFile 与事项目录。"
+        ],
+        "observed": {
+          "pointer": "/character_book/entries/0/content",
+          "contextPointers": ["/character_book/entries/0"],
+          "itemDirectoryFiles": ["content.txt"]
+        },
+        "impact": "Agent 必须另外调用 extract，才能阅读该条目的关联标题和配置。"
+      }
+    },
+    {
+      "id": "SPEC-02",
+      "priority": "P2",
+      "title": "帮助中的片段默认值无法实际使用",
+      "requirement": {
+        "section": "第4.3节第1项",
+        "line": 126,
+        "quote": "参数解析、帮助及错误示例使用同一份定义。"
+      },
+      "locations": [
+        { "file": "scripts/native-card-conversion/tool-config.ts", "line": 220 },
+        { "file": "scripts/native-card-conversion/tool-config.ts", "line": 221 },
+        { "file": "scripts/native-card-conversion/write.ts", "line": 433 }
+      ],
+      "actualBehavior": "帮助声明 --start 默认0、--end 默认源字符串长度，但 sourceFragment 要求两个值同时存在。copy 与 parse 共用此逻辑。",
+      "reproduction": {
+        "sourceValue": "abcdef",
+        "steps": [
+          "使用 SPEC-01 的临时任务，调用 mapCopyFile(taskFile, '/description', 'data/slice.txt', { start: 2 })。",
+          "调用 mapCopyFile(taskFile, '/description', 'data/slice.txt', { end: 4 })。"
+        ],
+        "observed": "两次调用均报错：片段起点和终点应同时提供非负安全整数，起点不大于终点，终点不超过源字符串长度。",
+        "impact": "调用者按帮助省略另一边界时，命令失败。"
+      }
+    }
+  ],
+  "result": {
+    "findingCount": 2,
+    "otherMaterialSpecFindings": 0,
+    "verification": "两项发现均通过本机现有 tsx 运行环境直接调用导出函数复现。",
+    "cleanup": "复现创建的临时输入与任务目录均已删除。",
+    "implementationFilesChangedByReviewer": false
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "uid": 90,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "林茜_身体边界_用户_299以下",
+  "order": 851,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": true,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<林茜与user身体边界>\n林茜选择时间较短的面对面或侧卧性交，减少主动动作并观察{{user}}。她主动拿出高级避孕套，要求{{user}}戴好后再进入。她通常拒绝口交，或把口交改成接吻和手抚；口交已经发生时，她动作短、停止快，结束后擦嘴、沉默并移开视线。她通常拒绝无套性交；她决定接受无套后，仍会反复观察{{user}}的脸。性交结束后，她整理衣物并与{{user}}拉开距离。\n</林茜与user身体边界>\n"
+}

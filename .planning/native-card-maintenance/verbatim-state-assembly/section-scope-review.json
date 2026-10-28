@@ -1,0 +1,975 @@
+{
+  "reviewType": "独立逐节语义审阅",
+  "reviewRoot": "/srv/tavern/TavernHeadless-remove-preview-credentials/.agents/skills/native-card-conversion",
+  "rulesFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/native-card-maintenance/document-restructure-closeout/audit-rules.txt",
+  "scope": [
+    "SKILL.md",
+    "references/acceptance.md",
+    "references/architecture.md",
+    "references/character-fields.md",
+    "references/conversion-map.md",
+    "references/conversion-records.md",
+    "references/extension-fields.md",
+    "references/semantic-experience.md",
+    "references/sources.md",
+    "references/tools.md",
+    "references/worldbook-fields.md"
+  ],
+  "method": "仅读取指定11份 Markdown 成果及审计规则；逐节核对标题范围，并阅读全部正文判断主体、动作、对象、必要性和重复要求。未读取 API、schema、脚本、背景或其他参考材料，未改动待审成果。",
+  "overall": "需修改",
+  "summary": "发现7项具体问题：章节归属2项、对象或指代2项、重复定义及可删除文字3项。核心转换步骤、目标职责和验收职责总体明确。",
+  "ruleChecklist": [
+    {
+      "rule": "正向句式与明确主体、动作、对象和条件",
+      "status": "需修改",
+      "findingIds": [
+        "F03"
+      ],
+      "conclusion": "大多数要求使用明确或由表头确定的执行者；可更名对象表述存在具体歧义。"
+    },
+    {
+      "rule": "排除内容审核步骤并完整表达指定内容",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "指定成果没有加入内容审核前提，也没有删减其所涉及的指定内容表达。"
+    },
+    {
+      "rule": "句子通顺、主谓宾完整并写清结果",
+      "status": "需修改",
+      "findingIds": [
+        "F03",
+        "F07"
+      ],
+      "conclusion": "文件名与目录名的对象关系及“两种协议”的指代需要明确。"
+    },
+    {
+      "rule": "常用词、专业术语及任务名称先定义再使用",
+      "status": "需修改",
+      "findingIds": [
+        "F07"
+      ],
+      "conclusion": "转换 Agent、状态 Agent 与目标路径名称已有定义；两种协议未在所在节明确名称。"
+    },
+    {
+      "rule": "文件、接口、模块和字段归属明确",
+      "status": "需修改",
+      "findingIds": [
+        "F03"
+      ],
+      "conclusion": "多数对象具有具体文件或 API 引用；命名依据中的可更名对象需要澄清。"
+    },
+    {
+      "rule": "章节用途与标题范围对应",
+      "status": "需修改",
+      "findingIds": [
+        "F01",
+        "F02"
+      ],
+      "conclusion": "格式字段与整份文档的来源说明有具体章节归属问题。"
+    },
+    {
+      "rule": "要求只完整定义一次，其他位置引用",
+      "status": "需修改",
+      "findingIds": [
+        "F04",
+        "F05",
+        "F06"
+      ],
+      "conclusion": "缺失引用、未决记录和失败诊断要求存在重复定义。架构说明、字段契约、实现动作与验收动作的不同视角没有直接列为重复。"
+    },
+    {
+      "rule": "删除空话、重复解释及可删文字",
+      "status": "需修改",
+      "findingIds": [
+        "F04",
+        "F05",
+        "F06",
+        "F07"
+      ],
+      "conclusion": "报告给出可删的具体句子，同时保留专有字段、分支和必要证据路径。"
+    },
+    {
+      "rule": "UI 与接口错误文案包含具体情况和用户操作",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "acceptance.md 第4章明确要求检查失败操作、状态/输入、范围及修正或重试动作；指定成果没有另行提供待验收的产品错误文案。"
+    },
+    {
+      "rule": "资源可访问范围与 Skill 自身相对路径",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "文本中的 Skill 自身引用使用相对路径；任务路径由工具返回，目标实现依据以 repositoryRoot 定位。依据限于文本表达，未读取引用资源验证实际可访问性。"
+    },
+    {
+      "rule": "仅包含执行者需要的规范、步骤、资源、工具及契约",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "没有发现创建者开发流程、升级过程或宿主提交规则；源实现入口和时序解释用于判断源功能。"
+    },
+    {
+      "rule": "错误动作限制按需要使用正向动作",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "主要使用读取、记录、拆分、转换、删除和检查等执行动作；没有要求执行者增加未说明用途的限制。"
+    }
+  ],
+  "sectionChecklist": [
+    {
+      "file": "SKILL.md",
+      "section": "入口定义与目标",
+      "lines": "8-12",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "定义转换 Agent 与状态 Agent，并说明转换目的和目标消费者。"
+    },
+    {
+      "file": "SKILL.md",
+      "section": "转换最高原则：原文承接",
+      "lines": "14-18",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "分别规定有效文字、HTML、CSS 与程序代码的承接方式，标题与正文一致。"
+    },
+    {
+      "file": "SKILL.md",
+      "section": "1. 读取一个角色卡 JSON",
+      "lines": "20-40",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "定义输入、工具入口、输出位置、读取顺序与完成条件；缺失引用处理应作为通用要求唯一来源。"
+    },
+    {
+      "file": "SKILL.md",
+      "section": "2. 判断职责与保留、拆分、转写或删除",
+      "lines": "42-52",
+      "status": "需修改",
+      "findingIds": [
+        "F05"
+      ],
+      "conclusion": "职责判断和处理动作符合标题；未决记录要求需要以引用承接。"
+    },
+    {
+      "file": "SKILL.md",
+      "section": "3. 按判断生成原生文件",
+      "lines": "54-64",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "规定格式、API、状态配置、资源和发送流程的实现动作及完成条件。"
+    },
+    {
+      "file": "SKILL.md",
+      "section": "4. 验证核心逻辑并交付",
+      "lines": "66-72",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "引用检查详情，规定验证顺序、结果记录和交付条件。"
+    },
+    {
+      "file": "SKILL.md",
+      "section": "5. 排除项、能力缺口与执行条件",
+      "lines": "74-78",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "明确整卡排除条件、能力缺口方案及执行权限条件。"
+    },
+    {
+      "file": "references/acceptance.md",
+      "section": "用途说明",
+      "lines": "3-5",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "明确记录填写者、preview 的消费者和语义判断者。"
+    },
+    {
+      "file": "references/acceptance.md",
+      "section": "1. 验收记录",
+      "lines": "7-18",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "定义文件位置、字段、状态取值及交付引用。"
+    },
+    {
+      "file": "references/acceptance.md",
+      "section": "2. 正式页面与离线重放",
+      "lines": "20-22",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "规定测试配置、页面入口及前台进程关闭方法。"
+    },
+    {
+      "file": "references/acceptance.md",
+      "section": "2.1 测试配置",
+      "lines": "24-37",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "定义测试角色、各配置字段及填写依据。"
+    },
+    {
+      "file": "references/acceptance.md",
+      "section": "2.2 实际请求检查",
+      "lines": "39-41",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "区分工具保存请求与 Agent 判断组装结果的职责。"
+    },
+    {
+      "file": "references/acceptance.md",
+      "section": "2.3 离线响应",
+      "lines": "43-49",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "说明响应顺序、purpose、模型、输出字段、失败配置与工具回传验收。"
+    },
+    {
+      "file": "references/acceptance.md",
+      "section": "2.4 页面操作与结果",
+      "lines": "51-53",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "要求从实际页面入口触发操作并记录请求及状态证据。"
+    },
+    {
+      "file": "references/acceptance.md",
+      "section": "2.5 发送状态与历史快照",
+      "lines": "55-59",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "引用实现要求，分别定义发送锁和历史快照的验收动作。"
+    },
+    {
+      "file": "references/acceptance.md",
+      "section": "3. 原文与代码等价核对",
+      "lines": "61-67",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "引用原文原则，定义文字、分支和实际模型输入的不同验收对象。"
+    },
+    {
+      "file": "references/acceptance.md",
+      "section": "4. 操作反馈",
+      "lines": "69-71",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "规定反馈文案中的失败对象、实际条件和用户可采取的动作。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "用途说明",
+      "lines": "3-5",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "说明架构参考的读者与用途，并引用版本和格式资料。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "1. 源架构：SillyTavern 角色卡",
+      "lines": "7-9",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "描述源卡与预设、世界书、正则及插件的组成关系。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "1.1 正则是什么",
+      "lines": "11-15",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "解释源正则的匹配、替换、执行条件和页面挂载职责。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "1.2 世界书是什么",
+      "lines": "17-21",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "解释扫描激活与插件显式读取的不同关系。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "1.3 MVU 框架是什么",
+      "lines": "23-31",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "解释 MVU 初始化和路由标记的源运行关系，并引用具体初始化和归属资料。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "1.4 助手脚本是什么",
+      "lines": "33-39",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "解释浏览器调用、模型工具注册和脚本职责的识别依据。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "1.5 人物、开场与预设怎样参与运行",
+      "lines": "41-45",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "解释人物字段的实际组装与开场事实的作用。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "2. 目标架构：TavernHeadless 原生角色卡",
+      "lines": "47-49",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "概述目标组件并引用完整目录资料。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "2.1 人物、开场与提示组装",
+      "lines": "51-55",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "说明正文模型、提示组件和状态职责的关系。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "2.2 初始状态与独立状态 Agent",
+      "lines": "57-61",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "说明状态 Agent 的任务及实际请求来源，不把正文预设组装当作自动状态输入。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "2.3 后端计算、校验与正式保存",
+      "lines": "63-67",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "说明后端写入、计算、校验和保存顺序。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "2.4 原生世界书与提示控制器",
+      "lines": "69-73",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "说明静态触发、动态提示和组件消费者。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "2.5 原生前端与状态读取",
+      "lines": "75-79",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "说明前端作用域、局部状态及当前/历史状态的不同职责。"
+    },
+    {
+      "file": "references/architecture.md",
+      "section": "2.6 正文模型的工具调用",
+      "lines": "81-87",
+      "status": "需修改",
+      "findingIds": [
+        "F07"
+      ],
+      "conclusion": "工具调用授权、回传和状态证据属于标题范围；两种协议的指代需要明确或删除。"
+    },
+    {
+      "file": "references/character-fields.md",
+      "section": "用途说明",
+      "lines": "3-5",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "明确人物、开场、元数据及资源字段参考的用途。"
+    },
+    {
+      "file": "references/character-fields.md",
+      "section": "1. 格式与字段判断",
+      "lines": "7-13",
+      "status": "需修改",
+      "findingIds": [
+        "F05"
+      ],
+      "conclusion": "格式、决策动作和覆盖范围属于标题范围；未决记录要求与专门格式文档重复。"
+    },
+    {
+      "file": "references/character-fields.md",
+      "section": "2. 人物、提示与开场",
+      "lines": "15-38",
+      "status": "需修改",
+      "findingIds": [
+        "F01"
+      ],
+      "conclusion": "人物提示、开场及宏处理符合标题；格式标识和 data 容器应移到第1章。"
+    },
+    {
+      "file": "references/character-fields.md",
+      "section": "3. 元数据与资源",
+      "lines": "40-64",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "说明元数据、媒体字段与资源加载结果，并通过引用处理缺失内容和授权。"
+    },
+    {
+      "file": "references/character-fields.md",
+      "section": "4. 脚本与平台扩展",
+      "lines": "66-72",
+      "status": "需修改",
+      "findingIds": [
+        "F02"
+      ],
+      "conclusion": "脚本和平台自定义字段符合标题；整份角色字段的来源说明应移出本章。"
+    },
+    {
+      "file": "references/conversion-map.md",
+      "section": "用途说明",
+      "lines": "3-5",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "明确文件、格式、绑定和创建责任的查阅用途。"
+    },
+    {
+      "file": "references/conversion-map.md",
+      "section": "1. 包目录、命名与创建责任",
+      "lines": "7-51",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "目录树区分必需、条件、固定和可选文件。"
+    },
+    {
+      "file": "references/conversion-map.md",
+      "section": "1.1 名称与目录的依据",
+      "lines": "53-59",
+      "status": "需修改",
+      "findingIds": [
+        "F03"
+      ],
+      "conclusion": "命名规则与引用关系属于本节；可更名对象需要明确为文件或目录。"
+    },
+    {
+      "file": "references/conversion-map.md",
+      "section": "1.2 Agent 与现有脚本的分工",
+      "lines": "61-72",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "区分 Agent 的内容判断与工具的保存、检查、打包和正式接口动作。"
+    },
+    {
+      "file": "references/conversion-map.md",
+      "section": "2. 原生落点",
+      "lines": "74-89",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "按内容作用定义文件格式、字段和消费绑定。"
+    },
+    {
+      "file": "references/conversion-map.md",
+      "section": "3. 文件登记与引用",
+      "lines": "91-93",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "规定 manifest 登记、数据消费者及 extra 的实际消费者。"
+    },
+    {
+      "file": "references/conversion-records.md",
+      "section": "用途说明",
+      "lines": "3-5",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "明确两份 JSON 的填写者、校验消费者与语义核对用途。"
+    },
+    {
+      "file": "references/conversion-records.md",
+      "section": "1. 字段决策",
+      "lines": "7-36",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "定义实际字段、完整覆盖、未决处理、目标结构和多成员处理方式。"
+    },
+    {
+      "file": "references/conversion-records.md",
+      "section": "2. 行为映射",
+      "lines": "38-65",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "定义行为对象、API 记录路径和各状态的具体通过条件。"
+    },
+    {
+      "file": "references/extension-fields.md",
+      "section": "用途说明",
+      "lines": "3-5",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "明确扩展字段的源用途、读取入口及执行条件。"
+    },
+    {
+      "file": "references/extension-fields.md",
+      "section": "1. 正则字段",
+      "lines": "7-30",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "定义源正则字段、运行条件和目标转换引用。已弃用枚举用于解释输入字段，属于字段参考所需内容。"
+    },
+    {
+      "file": "references/extension-fields.md",
+      "section": "2. 助手与其他扩展",
+      "lines": "32-50",
+      "status": "需修改",
+      "findingIds": [
+        "F04"
+      ],
+      "conclusion": "容器、按钮、脚本、状态与其他扩展的处理符合标题；缺失外部引用处理重复入口要求。"
+    },
+    {
+      "file": "references/extension-fields.md",
+      "section": "3. MVU 初始化消费",
+      "lines": "52-62",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "说明初始化入口、消息来源、覆盖顺序、schema 变换和结果记录。实现入口与顺序用于判断源初值，属于执行者所需依据。"
+    },
+    {
+      "file": "references/semantic-experience.md",
+      "section": "用途与名称定义",
+      "lines": "3-7",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "定义处理表的读者、路径范围及状态规则、初始状态、正文资料等名称。"
+    },
+    {
+      "file": "references/semantic-experience.md",
+      "section": "1. 初值、变量规则与事件",
+      "lines": "9-20",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "按初值、结构约束、状态变化、事件事实和标签范围区分处理。"
+    },
+    {
+      "file": "references/semantic-experience.md",
+      "section": "2. 正则、页面与显示",
+      "lines": "22-29",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "区分页面、文本变换、显示格式和存储约束。"
+    },
+    {
+      "file": "references/semantic-experience.md",
+      "section": "3. 世界书读取与动态提示",
+      "lines": "31-39",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "按条目内容、路由、显式引用和动态条件判断目标消费者。"
+    },
+    {
+      "file": "references/semantic-experience.md",
+      "section": "4. 计算与工具调用",
+      "lines": "41-50",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "按输入形成与结果消费时点判断前端、后端和模型工具职责。"
+    },
+    {
+      "file": "references/semantic-experience.md",
+      "section": "5. 冲突内容的处理",
+      "lines": "52-54",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "规定先判断对象、条件及时点，再按源顺序和优先依据处理冲突。"
+    },
+    {
+      "file": "references/semantic-experience.md",
+      "section": "6. 删除与改写的判断",
+      "lines": "56-72",
+      "status": "需修改",
+      "findingIds": [
+        "F05"
+      ],
+      "conclusion": "删除对象及有效内容去向符合标题；用途未决记录要求需要引用专门记录格式。"
+    },
+    {
+      "file": "references/sources.md",
+      "section": "用途说明",
+      "lines": "3-5",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "明确版本、来源、只读实现入口和 API 资料选择的用途。"
+    },
+    {
+      "file": "references/sources.md",
+      "section": "1. 适用版本与正式来源",
+      "lines": "7-13",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "列出当前依据版本、格式与正式来源。"
+    },
+    {
+      "file": "references/sources.md",
+      "section": "2. 只读实现依据",
+      "lines": "15-29",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "用 begin 返回的 repositoryRoot 定位实现入口，表项供执行者按需只读核对。"
+    },
+    {
+      "file": "references/sources.md",
+      "section": "3. 转换 Agent 何时读取 API 资料",
+      "lines": "31-45",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "按功能条件列出 API 文档及消费目的。"
+    },
+    {
+      "file": "references/tools.md",
+      "section": "用途说明",
+      "lines": "3-5",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "说明命令参考的读者、用途及记录格式引用。"
+    },
+    {
+      "file": "references/tools.md",
+      "section": "1. 脚本与命令",
+      "lines": "7-18",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "给出 Skill 相对脚本路径、绝对参数路径和可调用命令。"
+    },
+    {
+      "file": "references/tools.md",
+      "section": "begin：开始转换一张卡",
+      "lines": "20-27",
+      "status": "需修改",
+      "findingIds": [
+        "F06"
+      ],
+      "conclusion": "输入输出与任务路径清楚；已由入口规定的读取及写入步骤可以删除。"
+    },
+    {
+      "file": "references/tools.md",
+      "section": "validate：检查转换文件的格式和引用",
+      "lines": "29-33",
+      "status": "需修改",
+      "findingIds": [
+        "F06"
+      ],
+      "conclusion": "检查对象、record 和完整诊断位置清楚；通用修正和语义判断重复定义。"
+    },
+    {
+      "file": "references/tools.md",
+      "section": "pack：生成交付 ZIP",
+      "lines": "35-39",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "说明打包条件、archive 路径和包修改后的重新打包动作。"
+    },
+    {
+      "file": "references/tools.md",
+      "section": "formal：验证 ZIP 能导入并完整保存",
+      "lines": "41-45",
+      "status": "需修改",
+      "findingIds": [
+        "F06"
+      ],
+      "conclusion": "正式导入、证据路径及特定诊断分支符合标题；通用诊断处理应引用第2章。"
+    },
+    {
+      "file": "references/tools.md",
+      "section": "preview：在正式页面测试角色卡",
+      "lines": "47-49",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "定义测试输入、正式页面和接口返回值及证据文件，测试配置通过引用承接。"
+    },
+    {
+      "file": "references/tools.md",
+      "section": "resume：继续一次中断的转换",
+      "lines": "51-55",
+      "status": "需修改",
+      "findingIds": [
+        "F06"
+      ],
+      "conclusion": "定义继续条件与返回位置；通用诊断后继续要求需要改为引用。"
+    },
+    {
+      "file": "references/tools.md",
+      "section": "2. 读取失败诊断",
+      "lines": "57-59",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "完整定义 JSON 诊断、退出状态、修正和接口失败记录，适合作为通用要求唯一来源。"
+    },
+    {
+      "file": "references/worldbook-fields.md",
+      "section": "用途说明",
+      "lines": "3-5",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "明确书级、条目字段、扫描及显式读取的参考范围。"
+    },
+    {
+      "file": "references/worldbook-fields.md",
+      "section": "1. 书级设置与内容职责",
+      "lines": "7-26",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "说明世界书输入、书级字段、正文职责及显式引用的原生承接。"
+    },
+    {
+      "file": "references/worldbook-fields.md",
+      "section": "2. 条目身份、触发与注入",
+      "lines": "28-52",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "解释源别名、条目身份、触发条件、位置及实际请求检查。"
+    },
+    {
+      "file": "references/worldbook-fields.md",
+      "section": "3. 扫描来源、递归与预算",
+      "lines": "54-71",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "定义扫描来源、递归和预算例外字段及实际追踪检查。"
+    },
+    {
+      "file": "references/worldbook-fields.md",
+      "section": "4. 概率、组和时序",
+      "lines": "73-93",
+      "status": "通过",
+      "findingIds": [],
+      "conclusion": "解释概率、互斥组、生成类型及持续/冷却等时序字段的当前消费边界。"
+    },
+    {
+      "file": "references/worldbook-fields.md",
+      "section": "5. 编辑信息与非标准字段",
+      "lines": "95-101",
+      "status": "需修改",
+      "findingIds": [
+        "F02",
+        "F05"
+      ],
+      "conclusion": "编辑和自定义字段符合标题；通用未决记录及整份文档来源说明需要引用或移位。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "status": "需修改",
+      "category": "章节范围",
+      "locations": [
+        {
+          "file": "references/character-fields.md",
+          "lines": "19-20",
+          "section": "2. 人物、提示与开场"
+        }
+      ],
+      "problem": "spec、spec_version 和 data 定义交换格式、版本标识及数据容器，属于第1章“格式与字段判断”，没有人物、提示或开场用途。",
+      "suggestion": "将两行移到第1章，保留第2章中实际参与人物、提示和开场处理的字段。",
+      "deletable_text": []
+    },
+    {
+      "id": "F02",
+      "status": "需修改",
+      "category": "章节范围",
+      "locations": [
+        {
+          "file": "references/character-fields.md",
+          "lines": "72",
+          "section": "4. 脚本与平台扩展"
+        },
+        {
+          "file": "references/worldbook-fields.md",
+          "lines": "101",
+          "section": "5. 编辑信息与非标准字段"
+        }
+      ],
+      "problem": "两段来源说明分别覆盖整份角色字段文档和整份世界书文档，其范围超出所在末章。角色字段段还定义 CCv3 新增字段的解释依据，并非脚本与平台扩展专用规则。",
+      "suggestion": "将整份文档的依据说明移到文档开头或 sources.md 对应来源项，在当前文档开头引用；各末章只保留该章字段的处理说明。",
+      "deletable_text": []
+    },
+    {
+      "id": "F03",
+      "status": "需修改",
+      "category": "对象表达",
+      "locations": [
+        {
+          "file": "references/conversion-map.md",
+          "lines": "59",
+          "section": "1.1 名称与目录的依据"
+        }
+      ],
+      "problem": "“文件规则允许状态规则、index.html、style.css 和 main.js 所在目录使用其他符合类型的名称”把“所在目录”写成可更名对象。目录树却将 HTML/CSS/JS 标为示例文件名，后句“这些名称”无法确定指文件名还是目录名。",
+      "suggestion": "明确写成“状态规则文件及前端 HTML、CSS、JavaScript 文件可以在对应目录内使用其他符合文件类型的名称；转换 Agent 同步第2章的文件引用”，并按正式规则保留允许更名的具体对象。",
+      "deletable_text": []
+    },
+    {
+      "id": "F04",
+      "status": "需修改",
+      "category": "重复定义",
+      "locations": [
+        {
+          "file": "SKILL.md",
+          "lines": "22",
+          "section": "1. 读取一个角色卡 JSON"
+        },
+        {
+          "file": "references/extension-fields.md",
+          "lines": "48",
+          "section": "2. 助手与其他扩展"
+        }
+      ],
+      "problem": "入口已经完整定义外部引用缺少正文或资源时记录位置、受影响功能并继续完整部分；扩展参考又完整定义缺失外部模块、资源或消费资料时记录引用、受影响功能并继续可确定部分。",
+      "suggestion": "在 SKILL.md 第1章保留通用缺失引用处理要求；extension-fields.md 保留适用于模块、资源和插件消费资料的对象说明，并引用该入口要求。",
+      "deletable_text": [
+        {
+          "file": "references/extension-fields.md",
+          "lines": "48",
+          "text": "缺失的外部模块、资源或插件消费资料，记录具体引用和受影响功能，并继续其他可确定内容。",
+          "reason": "改为指向输入读取规则的引用后，执行者仍能确定记录对象和继续条件。"
+        }
+      ]
+    },
+    {
+      "id": "F05",
+      "status": "需修改",
+      "category": "重复定义",
+      "locations": [
+        {
+          "file": "references/conversion-records.md",
+          "lines": "22",
+          "section": "1. 字段决策"
+        },
+        {
+          "file": "SKILL.md",
+          "lines": "50",
+          "section": "2. 判断职责与保留、拆分、转写或删除"
+        },
+        {
+          "file": "references/character-fields.md",
+          "lines": "13",
+          "section": "1. 格式与字段判断"
+        },
+        {
+          "file": "references/semantic-experience.md",
+          "lines": "58",
+          "section": "6. 删除与改写的判断"
+        },
+        {
+          "file": "references/worldbook-fields.md",
+          "lines": "99",
+          "section": "5. 编辑信息与非标准字段"
+        }
+      ],
+      "problem": "conversion-records.md 已完整规定用途未决时的记录文件、所缺依据、随后写入字段决策及覆盖检查状态；其他四处重新规定记录缺资料或未完成字段，却没有一致引用这项记录要求。",
+      "suggestion": "在 conversion-records.md 第1章保留完整记录要求；其余位置仅说明当前判断可能产生未决项，并引用该节。保留 semantic-experience.md 关于删除前核对生成者、读取者和作用的独立要求。",
+      "deletable_text": [
+        {
+          "file": "SKILL.md",
+          "lines": "50",
+          "text": "用途尚未确定时记录所缺资料。",
+          "reason": "同段已经引用转换记录格式，该格式定义了更完整的未决记录要求。"
+        },
+        {
+          "file": "references/character-fields.md",
+          "lines": "13",
+          "text": "缺少消费证据的扩展继续记录为未完成项，并指出所需资料。",
+          "reason": "该章已有转换记录格式引用，未决记录条件可以直接引用该格式。"
+        },
+        {
+          "file": "references/semantic-experience.md",
+          "lines": "58",
+          "text": "用途或引用关系未确定时，记录所缺资料与受影响功能。",
+          "reason": "改为未决记录要求的引用即可完整保留执行条件。"
+        },
+        {
+          "file": "references/worldbook-fields.md",
+          "lines": "99",
+          "text": "尚缺消费资料时，记录未完成字段及受影响功能。",
+          "reason": "改为转换记录第1章的引用即可。"
+        }
+      ]
+    },
+    {
+      "id": "F06",
+      "status": "需修改",
+      "category": "重复定义与可删除文字",
+      "locations": [
+        {
+          "file": "references/tools.md",
+          "lines": "27",
+          "section": "begin：开始转换一张卡"
+        },
+        {
+          "file": "references/tools.md",
+          "lines": "33",
+          "section": "validate：检查转换文件的格式和引用"
+        },
+        {
+          "file": "references/tools.md",
+          "lines": "45",
+          "section": "formal：验证 ZIP 能导入并完整保存"
+        },
+        {
+          "file": "references/tools.md",
+          "lines": "55",
+          "section": "resume：继续一次中断的转换"
+        },
+        {
+          "file": "references/tools.md",
+          "lines": "59",
+          "section": "2. 读取失败诊断"
+        },
+        {
+          "file": "SKILL.md",
+          "lines": "30,70",
+          "section": "1. 读取一个角色卡 JSON；4. 验证核心逻辑并交付"
+        }
+      ],
+      "problem": "工具参考的多个命令段落分别重述“根据诊断修正后重跑”，第2章又完整定义通用处理要求。begin 的读写步骤及 validate 的语义判断也重述入口已有步骤。命令专有诊断字段、产物路径、修复后重跑哪个命令等仍有必要。",
+      "suggestion": "第2章定义通用失败处理；各命令引用第2章并保留专有返回字段、具体失败分类及后续命令。begin 只定义输入输出路径和任务参数；语义判断引用入口或核心验收。",
+      "deletable_text": [
+        {
+          "file": "references/tools.md",
+          "lines": "27",
+          "text": "Agent 读取 outputDirectory/source.json；按当前步骤读写转换记录、测试数据及证据文件。",
+          "reason": "SKILL.md 第1章已经规定读取源卡和写入位置；本节24-25行已经说明目录用途。保留 task.json 参数、id 与 examples 的解释。"
+        },
+        {
+          "file": "references/tools.md",
+          "lines": "33",
+          "text": "Agent 根据返回的诊断修正文件，再调用此命令。",
+          "reason": "第2章完整定义通用修正与重跑要求。"
+        },
+        {
+          "file": "references/tools.md",
+          "lines": "33",
+          "text": "Agent 另行阅读源卡和目标内容，判断转换后的核心逻辑是否正确。",
+          "reason": "SKILL.md 第4章及 acceptance.md 已规定语义验收；本节应以引用承接。"
+        },
+        {
+          "file": "references/tools.md",
+          "lines": "55",
+          "text": "脚本报告输入或版本变化时，Agent 根据诊断处理后再继续。",
+          "reason": "可以替换为“输入或版本变化的诊断按第2章处理”，保留特殊诊断对象而不重复动作。"
+        }
+      ]
+    },
+    {
+      "id": "F07",
+      "status": "需修改",
+      "category": "指代与必要性",
+      "locations": [
+        {
+          "file": "references/architecture.md",
+          "lines": "85",
+          "section": "2.6 正文模型的工具调用"
+        }
+      ],
+      "problem": "“两种协议都采用这项时序”没有在该节指出这两种协议的名称。前文只介绍工具调用与同轮回传，读者无法从本节判断这句话覆盖哪些协议。",
+      "suggestion": "若协议差异是该架构节必须说明的边界，写出正式协议名称并引用对应契约；若没有需要区分的架构行为，删除该句，保留前两句的时序说明和 API 引用。",
+      "deletable_text": [
+        {
+          "file": "references/architecture.md",
+          "lines": "85",
+          "text": "两种协议都采用这项时序。",
+          "reason": "前两句已完整说明本节工具回传时序，末句未增加明确对象或执行动作。"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "仅审阅成果的语义与结构，不验证引用资源是否实际存在、API事实、脚本行为或执行授权。",
+    "表格中的字段契约与对应实现/验收动作具有不同用途；本报告只将重复规定同一执行动作的文字列为重复。"
+  ]
+}

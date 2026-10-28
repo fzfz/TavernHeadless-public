@@ -1,0 +1,38 @@
+[
+  {
+    "id": "script-linqian:floor:2:user",
+    "role": "user",
+    "text": "这轮只写日常对话：林茜在屋内整理书籍，我们一起用了五分钟，最后仍在房间内。请明确这一段经过五分钟，然后停在整理完成的时刻。",
+    "floorId": "script-linqian:floor:2",
+    "attemptId": "script-linqian:floor:2:attempt:3",
+    "streamId": "script-linqian:floor:2:input",
+    "status": "completed"
+  },
+  {
+    "id": "script-linqian:floor:2:assistant",
+    "role": "assistant",
+    "text": "屋内，书架前。\n\n林茜抽出一本书，轻声问：“这本放文学类，可以吗？”\n\n“可以。旧的放左边，常看的放在容易拿的位置。”\n\n你又递给她一摞，她沿着书架慢慢整理，偶尔抬头确认位置。\n\n“这本别夹回去了，书脊都压皱了。”\n\n“好，放下面吧。你递我那一摞。”\n\n短短五分钟后，散乱的书重新分好类别，整整齐齐地排回书架。\n\n“终于整理好了。”林茜拍了拍手上的灰。\n\n“嗯，看着舒服多了。”\n\n实际经过五分钟，你们始终在屋内。最后一幕停在整理完成的书架前。",
+    "floorId": "script-linqian:floor:2",
+    "attemptId": "script-linqian:floor:2:attempt:3",
+    "streamId": "script-linqian:floor:2:run:3:stream",
+    "status": "completed"
+  },
+  {
+    "id": "script-linqian:floor:2:run:3:job:linqian-followup-door:message",
+    "role": "agent",
+    "text": "书架前安静了片刻。\n\n林茜把最后几本散书装进纸箱，用胶带封好。你收拢书签和便签，确认再无遗漏，随后和她一起离开书架。\n\n你们提着杂物沿门厅走向门口。一分钟后，停在门前。林茜放下纸箱，伸手握住门把，回头看向你：“好了，走吧。”",
+    "floorId": "script-linqian:floor:2",
+    "attemptId": "script-linqian:floor:2:attempt:3",
+    "streamId": "script-linqian:floor:2:run:3:job:linqian-followup-door:stream",
+    "status": "completed"
+  },
+  {
+    "id": "script-linqian:floor:2:run:3:job:linqian-followup-street:message",
+    "role": "agent",
+    "text": "林茜关上门，与你并肩走下楼梯。楼道里的声控灯随着脚步一盏盏亮起，又在身后依次熄灭。\n\n刚走出单元门，她忽然停住，回头望了一眼那扇已经合拢的窗户。片刻后，她收回目光，轻轻拉了拉纸箱的提手。\n\n“走吧。”\n\n你们穿过马路，沿街角拐过弯。最后一幕停在街口，身后的旧楼逐渐被前方昏黄的路灯隔开。",
+    "floorId": "script-linqian:floor:2",
+    "attemptId": "script-linqian:floor:2:attempt:3",
+    "streamId": "script-linqian:floor:2:run:3:job:linqian-followup-street:stream",
+    "status": "completed"
+  }
+]

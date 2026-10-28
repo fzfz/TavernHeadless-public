@@ -1,0 +1,40 @@
+{
+  "uid": 122,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": true,
+  "comment": "开局前提控制器",
+  "order": 1030,
+  "disable": false,
+  "position": 4,
+  "selectiveLogic": 0,
+  "depth": 0,
+  "role": 1,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": false,
+  "preventRecursion": false,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": true,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<%_\nvar controllerWorldbook = charLoreBook || '林茜_世界书_v1.3.32';\nvar openingMode = getvar('stat_data.世界.开局模式');\n\nvar premiseMap = {\n  '默认拆迁旧楼': '开局前提_默认拆迁旧楼',\n  '旧楼电话纠缠': '开局前提_旧楼电话纠缠',\n  '原始首次撞见': '开局前提_原始首次撞见',\n  '远程监控': '开局前提_远程监控',\n  '画室监控': '开局前提_画室监控',\n  '302监控': '开局前提_302监控',\n  '王授军私宅3P': '开局前提_王授军私宅3P',\n  '黑哥逃脱': '开局前提_黑哥逃脱',\n  '跪倒屈服': '开局前提_跪倒屈服',\n  '繁衍': '开局前提_繁衍',\n  '画室赴约': '开局前提_画室赴约'\n};\n\nvar premiseKey = typeof openingMode === 'string' ? premiseMap[openingMode.trim()] : undefined;\n\nif (premiseKey) {\n  print(await getwi(controllerWorldbook, premiseKey));\n}\n_%>\n"
+}

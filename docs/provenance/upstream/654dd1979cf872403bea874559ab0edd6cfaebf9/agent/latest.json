@@ -1,0 +1,11 @@
+{
+  "repo": "HerSophia/TavernHeadless",
+  "branch": "main",
+  "commit": "654dd1979cf872403bea874559ab0edd6cfaebf9",
+  "workflow": "CI",
+  "workflowRunId": 28740112817,
+  "publishedAt": "2026-07-05T12:18:24.544Z",
+  "summary": "main branch ci snapshot published",
+  "breaking": false,
+  "latestManifest": "/TavernHeadless/agent/manifests/654dd1979cf872403bea874559ab0edd6cfaebf9.json"
+}

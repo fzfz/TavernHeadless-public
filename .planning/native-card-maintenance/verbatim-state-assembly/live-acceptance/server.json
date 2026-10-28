@@ -1,0 +1,12 @@
+{
+  "address": "http://127.0.0.1:56104",
+  "controlAddress": "http://127.0.0.1:56105",
+  "model": "liquid/lfm-2.5-2.6b:free",
+  "cap": 24,
+  "automaticRetries": 0,
+  "sourceCommit": "32df2e5d0354f76180f5cf742c99304d133d5e12",
+  "sourceChanges": [
+    "apps/api/src/routes/role-view.ts",
+    "apps/api/src/routes/__tests__/role-view.test.ts"
+  ]
+}

@@ -1,0 +1,567 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "format": {
+      "type": "string",
+      "const": "tavern_headless_role_package"
+    },
+    "frontendResourceAttributes": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "creationTemplates": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pathTemplate": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mediaType": {
+            "type": "string",
+            "minLength": 1
+          },
+          "purpose": {
+            "type": "string",
+            "enum": [
+              "manifest",
+              "template",
+              "browser_script",
+              "server_script",
+              "media",
+              "data"
+            ]
+          },
+          "content": {}
+        },
+        "required": [
+          "id",
+          "label",
+          "pathTemplate",
+          "mediaType",
+          "purpose",
+          "content"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "issueMessages": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "action": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "message",
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "assetMediaFormats": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mediaTypes": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "extensions": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "extension": {
+                  "type": "string",
+                  "pattern": "^\\.[a-z0-9]+$"
+                },
+                "mediaType": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "extension",
+                "mediaType"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "signatures": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "bytes": {
+                    "minItems": 1,
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 255
+                    }
+                  },
+                  "mask": {
+                    "minItems": 1,
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 255
+                    }
+                  }
+                },
+                "required": [
+                  "offset",
+                  "bytes"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "textPattern": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "mediaTypes",
+          "extensions"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "backendModuleApi": {
+      "type": "object",
+      "properties": {
+        "exports": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "directory": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contextFields": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "async": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "name",
+              "directory",
+              "contextFields",
+              "async"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "globals": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "blockedProperties": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "imports": {
+          "type": "object",
+          "properties": {
+            "relativeOnly": {
+              "type": "boolean",
+              "const": true
+            },
+            "extensions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "relativeOnly",
+            "extensions"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "exports",
+        "globals",
+        "blockedProperties",
+        "imports"
+      ],
+      "additionalProperties": false
+    },
+    "frontendModuleApi": {
+      "type": "object",
+      "properties": {
+        "entryExport": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contextFields": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "methods": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "minArguments": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "maxArguments": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "minArguments",
+                "maxArguments"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "layoutMethods": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "minArguments": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "maxArguments": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "minArguments",
+              "maxArguments"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "imports": {
+          "type": "object",
+          "properties": {
+            "relativeOnly": {
+              "type": "boolean",
+              "const": true
+            },
+            "extensions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "relativeOnly",
+            "extensions"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "entryExport",
+        "contextFields",
+        "methods",
+        "layoutMethods",
+        "imports"
+      ],
+      "additionalProperties": false
+    },
+    "versions": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "fixedFiles": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pathPattern": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "schema": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "purpose": {
+                  "type": "string",
+                  "enum": [
+                    "manifest",
+                    "template",
+                    "browser_script",
+                    "server_script",
+                    "media",
+                    "data"
+                  ]
+                },
+                "extensions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "mediaTypes": {
+                  "minItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "condition": {
+                  "type": "string",
+                  "enum": [
+                    "always",
+                    "worldbooks",
+                    "state",
+                    "stateUpdate",
+                    "promptController",
+                    "frontend"
+                  ]
+                },
+                "inManifestFiles": {
+                  "type": "boolean"
+                },
+                "creationTemplateId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "pathPattern",
+                "schema",
+                "purpose",
+                "extensions",
+                "mediaTypes",
+                "condition"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "directoryRules": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pathPattern": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "schema": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "purpose": {
+                  "type": "string",
+                  "enum": [
+                    "manifest",
+                    "template",
+                    "browser_script",
+                    "server_script",
+                    "media",
+                    "data"
+                  ]
+                },
+                "extensions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "mediaTypes": {
+                  "minItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "condition": {
+                  "type": "string",
+                  "enum": [
+                    "always",
+                    "worldbooks",
+                    "state",
+                    "stateUpdate",
+                    "promptController",
+                    "frontend"
+                  ]
+                },
+                "inManifestFiles": {
+                  "type": "boolean"
+                },
+                "creationTemplateId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "pathPattern",
+                "schema",
+                "purpose",
+                "extensions",
+                "mediaTypes",
+                "condition"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "referenceRules": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "schema": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "field": {
+                  "minItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "targets": {
+                  "minItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "required": [
+                "schema",
+                "field",
+                "targets"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "fixedFiles",
+          "directoryRules",
+          "referenceRules"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "format",
+    "frontendResourceAttributes",
+    "creationTemplates",
+    "issueMessages",
+    "assetMediaFormats",
+    "backendModuleApi",
+    "frontendModuleApi",
+    "versions"
+  ],
+  "additionalProperties": false,
+  "$comment": "Generated from schemas/native-card-package/schema.ts by scripts/generate-native-card-schemas.ts."
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "platform": "mobile",
+    "check": "登录校验、离线保留、待确认刷新、密码仅驻留内存",
+    "result": "pass"
+  },
+  {
+    "platform": "mobile",
+    "check": "资料和计数局部失败、离开确认、焦点循环、刷新恢复、昵称错误和结果核对",
+    "result": "pass"
+  },
+  {
+    "platform": "mobile",
+    "check": "跨标签页退出、迟到响应、注册结果刷新核对、新账号空集合、账号隔离和退出结果核对",
+    "result": "pass"
+  },
+  {
+    "platform": "desktop",
+    "check": "登录校验、离线保留、待确认刷新、密码仅驻留内存",
+    "result": "pass"
+  },
+  {
+    "platform": "desktop",
+    "check": "资料和计数局部失败、离开确认、焦点循环、刷新恢复、昵称错误和结果核对",
+    "result": "pass"
+  },
+  {
+    "platform": "desktop",
+    "check": "跨标签页退出、迟到响应、注册结果刷新核对、新账号空集合、账号隔离和退出结果核对",
+    "result": "pass"
+  }
+]

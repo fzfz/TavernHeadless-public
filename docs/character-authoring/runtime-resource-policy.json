@@ -1,0 +1,15 @@
+{
+  "overscanFloors": 2,
+  "historyCache": {
+    "maxEntries": 24,
+    "maxBytes": 8388608
+  },
+  "settledStreamCache": {
+    "maxEntries": 8,
+    "maxBytes": 2097152
+  },
+  "diagnosticsCache": {
+    "maxEntries": 100,
+    "maxBytes": 1048576
+  }
+}

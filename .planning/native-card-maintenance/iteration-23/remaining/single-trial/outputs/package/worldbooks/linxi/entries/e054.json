@@ -1,0 +1,40 @@
+{
+  "uid": 54,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_17_繁衍图像识别",
+  "order": 240,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E017>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n小龚通过手机聊天窗口把一组色情图片发送给{{user}}。{{user}}在手机上逐张查看，其中一张拍到女人张开的双腿、三角区、阴道和正对阴道的男性阴茎。\n{{user}}把这张图片放大，再打开自己拍下的《繁衍》照片。\n{{user}}先认出自己曾经怀疑的中央深色长线与图片里的男性阴茎方向一致，再逐项对照：百合外侧花瓣对应张开的双腿，花心对应阴道位置，中央线条对应正对阴道的男性阴茎，花心周围的白色晕染对应性交时留在皮肤上的液体。\n{{user}}把色情图片与《繁衍》照片并排保存到手机相册，随后回想自己两次端详中央长线，以及林茜挡画、按灭手机、脸红和催他去车里的动作。\n{{user}}确认《繁衍》描绘的是性交画面。\n</事件_E017>"
+}

@@ -1,0 +1,72 @@
+{
+  "cases": 3,
+  "parseCalls": 6,
+  "results": [
+    {
+      "id": "C006",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/task.json",
+      "read": {
+        "pointer": "/data/character_book/entries/35/content",
+        "valueType": "string",
+        "contentFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/read-content.txt",
+        "linesFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/read-lines.json"
+      },
+      "range": {
+        "start": 10,
+        "end": 782
+      },
+      "parsed": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/package/state/initial/source.json"
+      },
+      "field": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-1ivefB/package/data/parse.json",
+        "targetPointer": "/initial"
+      },
+      "expected": "2024年9月12日 星期四 14:30"
+    },
+    {
+      "id": "C012",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Xr3ENH/task.json",
+      "read": {
+        "pointer": "/data/character_book/entries/32/content",
+        "valueType": "string",
+        "contentFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Xr3ENH/read-content.txt",
+        "linesFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Xr3ENH/read-lines.json"
+      },
+      "range": {
+        "start": 0,
+        "end": 868
+      },
+      "parsed": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Xr3ENH/package/state/initial/source.json"
+      },
+      "field": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Xr3ENH/package/data/parse.json",
+        "targetPointer": "/initial"
+      },
+      "expected": "明渝大学-网球馆"
+    },
+    {
+      "id": "USER002",
+      "taskFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-fASNxk/task.json",
+      "read": {
+        "pointer": "/data/character_book/entries/2/content",
+        "valueType": "string",
+        "contentFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-fASNxk/read-content.txt",
+        "linesFile": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-fASNxk/read-lines.json"
+      },
+      "range": {
+        "start": 0,
+        "end": 1273
+      },
+      "parsed": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-fASNxk/package/state/initial/source.json"
+      },
+      "field": {
+        "file": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-fASNxk/package/data/parse.json",
+        "targetPointer": "/initial"
+      },
+      "expected": 504.85
+    }
+  ]
+}

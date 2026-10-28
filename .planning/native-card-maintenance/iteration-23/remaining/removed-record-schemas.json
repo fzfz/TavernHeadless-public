@@ -1,0 +1,14 @@
+{
+  "removed": [
+    "scripts/native-card-conversion/field-decisions.schema.json",
+    "scripts/native-card-conversion/behavior-map.schema.json",
+    "scripts/native-card-conversion/pack-result.schema.json",
+    "scripts/native-card-conversion/formal-evidence.schema.json",
+    "scripts/native-card-conversion/preview-request-evidence.schema.json",
+    "scripts/native-card-conversion/task.schema.json",
+    "scripts/native-card-conversion/source-input.schema.json",
+    ".agents/skills/native-card-conversion/references/formats/field-decisions.schema.json",
+    ".agents/skills/native-card-conversion/references/formats/behavior-map.schema.json"
+  ],
+  "reason": "No production consumers remain; remove obsolete conversion record and task gates."
+}

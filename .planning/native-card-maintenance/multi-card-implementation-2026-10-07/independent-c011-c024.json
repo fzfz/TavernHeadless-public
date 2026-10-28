@@ -1,0 +1,352 @@
+{
+  "reviewer": "independent-c011-c024",
+  "reviewDate": "2026-10-07",
+  "overall": "failed",
+  "scope": {
+    "sourceFiles": [
+      ".tmp/native-card-conversion/run-977T1H/source.json",
+      ".tmp/native-card-conversion/run-9kPLPr/source.json"
+    ],
+    "packageDirectories": [
+      ".tmp/native-card-conversion/run-977T1H/package",
+      ".tmp/native-card-conversion/run-9kPLPr/package"
+    ],
+    "evidenceDirectories": [
+      ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011",
+      ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024"
+    ],
+    "method": "只读比较当前产物、当前正式 ZIP、原始供应商响应、正式接口回读、dry-run 消息与页面记录；静态核对本机 API 实现和文字。未调用外部模型，未执行源卡外部导入脚本。"
+  },
+  "items": [
+    {
+      "id": "P01",
+      "card": "C011",
+      "status": "passed",
+      "stage": "package_import",
+      "title": "当前包与正式导入产物一致",
+      "evidence": [
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/role.zip",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/formal-result.json",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/formal/formal-runs/2026-10-07T13-56-28-991Z-c26c37cf-5484-4a88-8fef-bcb10b5378a8/readback.json"
+      ],
+      "detail": "当前 package 与 role.zip 的全部文件逐字节一致。61 个包文件通过正式导入、schema 校验和接口回读，回读记录均为 equal=true。"
+    },
+    {
+      "id": "P02",
+      "card": "C024",
+      "status": "passed",
+      "stage": "package_import",
+      "title": "当前包与正式导入产物一致",
+      "evidence": [
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/formal/acceptance-upTWgy/role.zip",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/formal/acceptance-upTWgy/formal-result.json",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/formal/acceptance-upTWgy/formal/formal-runs/2026-10-07T13-58-52-039Z-55da858d-03cc-4585-87d6-ebdb56cd2a4c/readback.json"
+      ],
+      "detail": "当前 package 与 role.zip 的全部文件逐字节一致。40 个包文件通过正式导入、schema 校验和接口回读，回读记录均为 equal=true。"
+    },
+    {
+      "id": "P03",
+      "card": "C011",
+      "status": "passed",
+      "stage": "source_conversion",
+      "title": "有效开场正文与保留世界书原文一致",
+      "evidence": [
+        ".tmp/native-card-conversion/run-977T1H/package/openings/opening-1.txt",
+        ".tmp/native-card-conversion/run-977T1H/package/worldbooks/book-0/entries/",
+        ".tmp/native-card-conversion/run-977T1H/source.json#/data/alternate_greetings"
+      ],
+      "detail": "七段剧情开场正文在移出 update 块、显示占位符并统一换行后与源文一致。29 个保留世界书条目的 content 均与源文一致。默认介绍占位符转换为原生介绍页面；源末尾空开场未登记。移出的变量路径、更新规则与格式要求分别有 profile、rules、原生正文及状态布局承接。"
+    },
+    {
+      "id": "P04",
+      "card": "C024",
+      "status": "passed",
+      "stage": "source_conversion",
+      "title": "有效开场正文与保留世界书原文一致",
+      "evidence": [
+        ".tmp/native-card-conversion/run-9kPLPr/package/openings/",
+        ".tmp/native-card-conversion/run-9kPLPr/package/worldbooks/book-0/entries/",
+        ".tmp/native-card-conversion/run-9kPLPr/source.json#/data/character_book/entries/10"
+      ],
+      "detail": "五段开场的 maintext 正文在统一换行后均与目标一致，11 个保留条目的 content 与源文一致。源 maintext/Status_block 输出包装改为正文消息与原生状态布局；原格式增强条目未继续注入。"
+    },
+    {
+      "id": "P05",
+      "card": "C011",
+      "status": "passed",
+      "stage": "prompt_assembly",
+      "title": "一次 dry-run 保留了具名人设、历史身份和当前输入身份",
+      "evidence": [
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/dry-runs.json#/0/response/data/messages",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/dry-runs.json#/0/response/data/assembly",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/dry-runs.json#/0/response/data/prompt_snapshot"
+      ],
+      "detail": "messages[0] 含沈宁的完整描述、女性、26岁与第三人称要求；messages[1] 含姓名宏已展开的原开场；messages[2] 以沈宁姓名为前缀；messages[3] 含实际变量 JSON 和阶段正文。names_behavior_applied=always，已读取历史与当前消息；实际 messages 未残留 EJS 标记或双花括号宏。此结论仅覆盖 opening-1 的该次组装。"
+    },
+    {
+      "id": "P06",
+      "card": "C024",
+      "status": "passed",
+      "stage": "prompt_assembly",
+      "title": "一次 dry-run 保留了具名人设、历史身份和当前输入身份",
+      "evidence": [
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/formal/acceptance-upTWgy/preview-runs/2026-10-07T13-58-55-169Z-d4d98767-0715-4dd7-905d-ca8b6e4635c5/dry-runs.json#/0/response/data/messages",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/formal/acceptance-upTWgy/preview-runs/2026-10-07T13-58-55-169Z-d4d98767-0715-4dd7-905d-ca8b6e4635c5/dry-runs.json#/0/response/data/assembly"
+      ],
+      "detail": "messages[0] 含李明远的完整描述、男性、27岁及第三人称要求；messages[1] 含姓名宏已展开的完整开场正文；messages[3] 以李明远姓名为前缀。messages[2] 实际注入初始 stat_data；未残留原输出包装或双花括号宏。此通过项仅说明身份组装，不证明测试输入接续有效。"
+    },
+    {
+      "id": "P07",
+      "card": "both",
+      "status": "passed",
+      "stage": "target_api",
+      "title": "前端与后端使用当前已有接口",
+      "evidence": [
+        ".tmp/native-card-conversion/run-977T1H/package/frontend/main.js",
+        ".tmp/native-card-conversion/run-9kPLPr/package/frontend/main.js",
+        "apps/user-web/src/runtime/script-runtime.ts:955",
+        "apps/user-web/src/runtime/script-runtime.ts:1087",
+        "apps/user-web/src/runtime/script-runtime.ts:1451",
+        "apps/api/src/services/role-runtime/state-update-service.ts:931",
+        "packages/shared/src/schemas/role-prompt-controller.ts:25"
+      ],
+      "detail": "ui.register、layout.update/bind/on、variables.watch/get/recalculateLatest、animateVisibility、widgets.mountChat 均有当前实现。deriveScript、validateScript、世界书范围的 controllerEntries 和 referencedEntryIds 均有正式契约及加载链路。注册资源由 Runtime 跟踪并在释放时清理。"
+    },
+    {
+      "id": "P08",
+      "card": "C011",
+      "status": "passed",
+      "stage": "provider_and_public_body",
+      "title": "本次正文保存及公开正文与原始响应一致",
+      "evidence": [
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/live-openrouter/request-01-response.json#/rawStreamingResponse",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/browser-requests.jsonl:196",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/browser-requests.jsonl:200",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/browser-requests.jsonl:206"
+      ],
+      "detail": "供应商返回 2208 字符正文。GET role-messages 中 assistant ID PS9QQzawns5hTNc9kRpSZ 的 content 与原始流式正文逐字相同，各返回均只保存一份。此通过项不包含正文语义和页面显示。"
+    },
+    {
+      "id": "F01",
+      "card": "C024",
+      "status": "failed",
+      "stage": "acceptance_input",
+      "title": "测试输入没有接续开场末尾",
+      "evidence": [
+        ".tmp/native-card-conversion/run-9kPLPr/package/openings/default.txt:78",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/scenario.json:449",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/formal/acceptance-upTWgy/preview-runs/2026-10-07T13-58-55-169Z-d4d98767-0715-4dd7-905d-ca8b6e4635c5/dry-runs.json#/0/request/message"
+      ],
+      "detail": "开场末尾写苏雨欣已经离开咖啡馆并拐过街角消失。测试台词仍当面让她喝水、询问来处，且未给出重新见面或远程交流事件。该次 dry-run 只能证明组装，不能作为开场连续性验收。",
+      "severity": "P2"
+    },
+    {
+      "id": "F02",
+      "card": "C024",
+      "status": "failed",
+      "stage": "source_inconsistency",
+      "title": "开场正文与状态栏的在场信息冲突",
+      "evidence": [
+        ".tmp/native-card-conversion/run-9kPLPr/source.json#/data/first_mes",
+        ".tmp/native-card-conversion/run-9kPLPr/package/openings/default.txt:78",
+        ".tmp/native-card-conversion/run-9kPLPr/package/state/initial/default.json:4",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/formal/acceptance-upTWgy/preview-runs/2026-10-07T13-58-55-169Z-d4d98767-0715-4dd7-905d-ca8b6e4635c5/dry-runs.json#/0/response/data/messages/2/content"
+      ],
+      "detail": "源正文已经写苏雨欣离开，但源状态栏仍写准备离开。目标保持正文，同时初值设置在场=true，实际请求也注入该值。冲突源于源卡，原生在场字段将它带入了运行状态；应明确采用哪个实际时点，再统一初值与验收输入。",
+      "severity": "P2"
+    },
+    {
+      "id": "F03",
+      "card": "C024",
+      "status": "failed",
+      "stage": "converted_state_logic",
+      "title": "身份显示与身份校验使用不同判据",
+      "evidence": [
+        ".tmp/native-card-conversion/run-9kPLPr/package/frontend/main.js:11",
+        ".tmp/native-card-conversion/run-9kPLPr/package/backend/validators/relationships.js:5",
+        ".tmp/native-card-conversion/run-9kPLPr/package/agents/state-update/status.txt:8",
+        ".tmp/native-card-conversion/run-9kPLPr/package/state/schema.json:16"
+      ],
+      "detail": "状态规则规定未揭晓时合一亲密度为 null。前端只按合一亲密度是否为 null 切换显示，校验器只按身份已揭晓布尔值跳过阶段约束。静态推导：从 default 初值只将合一亲密度提议为50，身份仍false、男友90、金主5，schema和校验器均接受，但页面会提前切换合一显示。当前 profile 允许写入该字段，未见一致性约束。应统一身份模式的判据并覆盖未揭晓、揭晓后以及互相矛盾的候选状态。",
+      "severity": "P2"
+    },
+    {
+      "id": "F04",
+      "card": "C011",
+      "status": "failed",
+      "stage": "provider_state_update",
+      "title": "本次供应商状态请求失败",
+      "evidence": [
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/live-openrouter/request-02-response.json#/rawStreamingResponse",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/browser-requests.jsonl:202",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/r3-after.json#/result/value/roots/2/errors"
+      ],
+      "detail": "原始响应报 Nvidia Grammar error: Unimplemented keys: uniqueItems。随后正式 role-state/updates 返回500，错误为 Invalid JSON response，页面显示变量更新失败。已定位供应商结构化输出接入失败；不能据此认定卡包 derive 有错误，也不能宣称此次变量提交成功。",
+      "severity": "P1"
+    },
+    {
+      "id": "F05",
+      "card": "C011",
+      "status": "failed",
+      "stage": "page_display",
+      "title": "页面重复显示同一份完整正文",
+      "evidence": [
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/browser-requests.jsonl:196",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/browser-requests.jsonl:206",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/r3-after.json#/result/value/roots/2/text",
+        ".tmp/native-card-conversion/run-977T1H/package/frontend/main.js:119"
+      ],
+      "detail": "供应商正文与公开 content 均只有一份，页面 roots[2].text 中完整2208字符正文出现两次。故障位于公开正文之后的页面显示阶段。卡包挂载正式系统聊天组件；现有证据尚未定位组件或其他宿主因素的根因。",
+      "severity": "P1"
+    },
+    {
+      "id": "F06",
+      "card": "C011",
+      "status": "failed",
+      "stage": "model_output_semantics",
+      "title": "本次模型正文违反用户行动边界及时间接续",
+      "evidence": [
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/live-openrouter/request-01-request.json#/request/messages/0/content",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/live-openrouter/request-01-response.json#/rawStreamingResponse",
+        ".tmp/native-card-conversion/run-977T1H/package/openings/opening-1.txt"
+      ],
+      "detail": "预设要求不代替用户决定行动。正文替沈宁决定开门、邀请夏阳进屋、递水、拆快递、再次挽留，并生成多段未由用户提交的台词。正文写陆泽离开第五天，与开场缺席整整一周不一致；还残留 gaze、nodding 等不通顺的中英混写。本项只判该次模型样本，不能泛化为模型整体结论。",
+      "severity": "P2"
+    },
+    {
+      "id": "F07",
+      "card": "C024",
+      "status": "failed",
+      "stage": "converted_text_single_source",
+      "title": "状态规则与世界书重复定义同一规则",
+      "evidence": [
+        ".tmp/native-card-conversion/run-9kPLPr/package/agents/state-update/relationships.txt:1",
+        ".tmp/native-card-conversion/run-9kPLPr/package/worldbooks/book-0/entries/e3.json#/content",
+        ".tmp/native-card-conversion/run-9kPLPr/package/agents/state-update/feedback.txt:1",
+        ".tmp/native-card-conversion/run-9kPLPr/package/worldbooks/book-0/entries/e4.json#/content",
+        ".tmp/native-card-conversion/run-9kPLPr/package/agents/state-update/personality.txt:1",
+        ".tmp/native-card-conversion/run-9kPLPr/package/worldbooks/book-0/entries/e6.json#/content"
+      ],
+      "detail": "三个新增规则文件分别逐字复制对应世界书的整段规则，违反相关文件中的定义与解释只出现一次的要求。需要让正文与状态组装从同一份规则正文读取；本项不要求修改源规则语义。",
+      "severity": "P2"
+    },
+    {
+      "id": "F08",
+      "card": "both",
+      "status": "failed",
+      "stage": "source_text_semantics",
+      "title": "源文存在未修复的句子缺项与指令冲突",
+      "evidence": [
+        ".tmp/native-card-conversion/run-9kPLPr/package/openings/default.txt:76",
+        ".tmp/native-card-conversion/run-9kPLPr/package/worldbooks/book-0/entries/e9.json#/content",
+        ".tmp/native-card-conversion/run-9kPLPr/package/worldbooks/book-0/entries/e11.json#/content",
+        ".tmp/native-card-conversion/run-977T1H/package/worldbooks/book-0/entries/e8.json#/content",
+        ".tmp/native-card-conversion/run-977T1H/package/worldbooks/book-0/entries/e24.json#/content"
+      ],
+      "detail": "C024默认开场“尽量让自己的语气听起来”缺少结果描述；文风条目禁止利益纠葛，与肉偿合约核心情节冲突；e11混入知识咨询、代码排查及项目延期示例，并要求遇到扮演要求改为提供帮助，妨碍演绎任务。C011 e8“如果{{user}}的回应”缺少条件动作，e24“讨好型人格下的”缺少中心词。这些文字与源文相同，属于源文语义问题，不能归因为转换改写。",
+      "severity": "P2"
+    },
+    {
+      "id": "U01",
+      "card": "C011",
+      "status": "unverified",
+      "stage": "source_behavior_mapping",
+      "title": "完整变量更新折叠视图的目标行为尚未证明",
+      "evidence": [
+        ".tmp/native-card-conversion/run-977T1H/source.json#/data/extensions/regex_scripts/3",
+        ".tmp/native-card-conversion/run-977T1H/package/frontend/index.html",
+        ".tmp/native-card-conversion/run-977T1H/package/frontend/main.js"
+      ],
+      "detail": "源 regex_scripts[3] 已启用并把完整 update 内容绘制为可展开的变量更新面板。当前目标前端未见对应面板或原 update 内容的读取；正式证据也未展示等价入口。需要明确该源显示行为的转换去向或获准改变的范围。"
+    },
+    {
+      "id": "U02",
+      "card": "C011",
+      "status": "unverified",
+      "stage": "controller_branch_coverage",
+      "title": "阶段控制器证据没有覆盖独立变量组合",
+      "evidence": [
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/controller-check.mjs:17",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/controller-check.json"
+      ],
+      "detail": "现有276个比较案例通过，但每个案例把全部数值字段设为同一数值；它没有独立改变怀疑度、性欲、五项破绽值。陆泽嵌套分支和 allExposed 中仅一项破绽未满的组合尚未由这些案例证明。测试中的源模板编译器也未实现 EJS 下划线空白修剪语义。"
+    },
+    {
+      "id": "U03",
+      "card": "both",
+      "status": "unverified",
+      "stage": "state_runtime",
+      "title": "连续提交、历史、重算及释放行为缺少通过证据",
+      "evidence": [
+        ".tmp/native-card-conversion/run-977T1H/package/backend/variable-tools/state.js",
+        ".tmp/native-card-conversion/run-9kPLPr/package/backend/validators/relationships.js",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/page.json",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/formal/acceptance-upTWgy/preview-runs/2026-10-07T13-58-55-169Z-d4d98767-0715-4dd7-905d-ca8b6e4635c5/page.json"
+      ],
+      "detail": "未见两个当前包的完整状态提案、成功保存的新快照、连续轮次、重试后恢复、历史回看、并发或释放断言。C011的真实状态请求失败；C024 generationMode=unavailable。静态 API 可用性和导入成功不能替代这些运行验收。"
+    },
+    {
+      "id": "U04",
+      "card": "both",
+      "status": "unverified",
+      "stage": "visual_interaction",
+      "title": "页面布局及交互等价性缺少充分证据",
+      "evidence": [
+        ".tmp/native-card-conversion/run-977T1H/package/frontend/main.js",
+        ".tmp/native-card-conversion/run-9kPLPr/package/frontend/main.js",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/r3-after.json",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/formal/acceptance-upTWgy/preview-runs/2026-10-07T13-58-55-169Z-d4d98767-0715-4dd7-905d-ca8b6e4635c5/page.json"
+      ],
+      "detail": "未见相同视口与状态下的源页面和目标页面对照，也未见全部角色选项卡、折叠动画、快速重复点击、状态在场隐藏、合一模式、媒体加载及失败恢复的逐项结果。现有页面文本只能证明部分文字已出现。"
+    },
+    {
+      "id": "U05",
+      "card": "both",
+      "status": "unverified",
+      "stage": "source_runtime",
+      "title": "外部 MVU 与提示词插件行为没有完整来源证据",
+      "evidence": [
+        ".tmp/native-card-conversion/run-977T1H/source.json#/data/extensions/tavern_helper",
+        ".tmp/native-card-conversion/run-977T1H/source.json#/data/character_book/entries/7"
+      ],
+      "detail": "源卡引用外部 MVU 脚本及 schema 注册资源；本次没有读取或运行外部代码。禁用 Initvar 条目的宿主实际读取方式、原插件按钮的重算完成语义以及字符串数字强制转换是否完全等价，仍需获授权的源运行或完整实现依据。"
+    },
+    {
+      "id": "U06",
+      "card": "both",
+      "status": "unverified",
+      "stage": "metamorphic_acceptance",
+      "title": "更换输入和改变逻辑的独立验收未见记录",
+      "evidence": [
+        ".tmp/native-card-conversion/run-977T1H/package",
+        ".tmp/native-card-conversion/run-9kPLPr/package"
+      ],
+      "detail": "未见对局部符号、角色名、变量路径、元素标识分别改变后保持行为，以及改变条件或运算后输出相应变化的当前包记录。现有固定卡运行证据不能覆盖该项。"
+    },
+    {
+      "id": "U07",
+      "card": "both",
+      "status": "unverified",
+      "stage": "model_sampling",
+      "title": "真实正文与通道稳定性未完成重复抽样",
+      "evidence": [
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C011/formal-r3/acceptance-4OPRd2/preview-runs/2026-10-07T13-56-35-388Z-0b1668be-515c-429c-aa51-85afcc72bb48/live-openrouter/",
+        ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/C024/formal/acceptance-upTWgy/preview-runs/2026-10-07T13-58-55-169Z-d4d98767-0715-4dd7-905d-ca8b6e4635c5/page.json"
+      ],
+      "detail": "当前C011证据包含一次真实正文与一次失败的状态请求；当前C024证据未包含真实正文。未见同一请求的重复采样及限流、超时和其他失败的分类样本，不能认定通道稳定性或模型适用性。"
+    }
+  ],
+  "textAudit": {
+    "status": "failed",
+    "findings": [
+      "F07",
+      "F08"
+    ],
+    "additionalSourceNotice": {
+      "location": ".tmp/native-card-conversion/run-977T1H/package/frontend/index.html:19",
+      "origin": ".tmp/native-card-conversion/run-977T1H/source.json#/data/extensions/regex_scripts/5/replaceString",
+      "detail": "介绍页保留源题材预警和免责段落。这些段落不说明开场选择、角色设定或页面操作，删除后不会妨碍消费者理解对应内容；按删除判据应单独处理。此问题来自源文。"
+    }
+  },
+  "completionBoundary": "两包均完成可导入文件与一次身份组装核对；当前证据不足以认定完整转换验收通过。失败项已区分源文、转换逻辑、验收输入、供应商、模型输出与页面显示阶段。"
+}

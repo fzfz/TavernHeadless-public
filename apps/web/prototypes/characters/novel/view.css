@@ -1,0 +1,360 @@
+:host {
+  display: block;
+  color: #e9eee9;
+  font:
+    14px/1.6 system-ui,
+    sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid #ffffff35;
+  background: #172b30;
+  color: inherit;
+  border-radius: 6px;
+  padding: 9px 14px;
+}
+button:hover {
+  background: #355052;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+button:focus-visible {
+  outline: 2px solid #e4bc78;
+  outline-offset: 3px;
+}
+[hidden] {
+  display: none !important;
+}
+.stage {
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100vh - 66px);
+  padding: 24px;
+  overflow: hidden;
+}
+.background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(0.45);
+}
+.stage:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #10232640, #071820b0);
+  z-index: -1;
+  pointer-events: none;
+}
+h1 {
+  font:
+    46px/1.2 Georgia,
+    serif;
+  letter-spacing: 5px;
+  margin: 12px 0;
+}
+header small {
+  color: #dfc595;
+  letter-spacing: 4px;
+}
+header p {
+  color: #bdcecd;
+}
+.harbor,
+.expedition {
+  display: grid;
+  grid-template-columns: minmax(310px, 0.85fr) minmax(430px, 1.15fr);
+  gap: 28px;
+}
+.scene,
+.map-side {
+  position: relative;
+  min-height: 730px;
+}
+.scene header {
+  position: relative;
+  z-index: 2;
+}
+.portrait {
+  object-fit: contain;
+  object-position: bottom;
+}
+.scene > .portrait {
+  position: absolute;
+  inset: 80px 0 150px;
+  width: 100%;
+  height: 65%;
+  filter: drop-shadow(0 15px 25px #0005);
+}
+.status {
+  background: #f7f4e9;
+  color: #233d40;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px #0002;
+  padding: 20px;
+  position: relative;
+}
+.scene > .status {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.status-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid #243c3822;
+  padding-bottom: 12px;
+}
+.status-head span {
+  font-size: 12px;
+}
+.values {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0;
+}
+.values small {
+  display: block;
+  color: #667e77;
+}
+.values b {
+  font-size: 23px;
+}
+.status progress {
+  width: 100%;
+  height: 7px;
+  accent-color: #a47c45;
+}
+.status p {
+  margin: 12px 0 0;
+}
+.conversation {
+  display: flex;
+  flex-direction: column;
+  background: #0b1a22eb;
+  border: 1px solid #cee6db30;
+  border-radius: 14px;
+  padding: 18px;
+  min-width: 0;
+}
+.conversation-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.conversation-head strong {
+  flex: 1;
+}
+.conversation-head button {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+.stream {
+  border-bottom: 1px solid #ffffff20;
+  padding: 12px 0;
+  min-height: 82px;
+}
+.stream small {
+  color: #a0b9b1;
+}
+.stream p {
+  margin: 4px 0;
+}
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 12px 0 0;
+}
+.feedback {
+  color: #e7bd80;
+  font-size: 12px;
+  min-height: 20px;
+  margin: 5px 0;
+}
+.chat-slot {
+  min-height: 360px;
+  flex: 1;
+}
+.journal {
+  border-top: 1px solid #ffffff22;
+  margin-top: 12px;
+  padding-top: 10px;
+}
+.journal summary {
+  cursor: pointer;
+  color: #b8cbc7;
+}
+.floor-list {
+  height: 230px;
+  overflow: auto;
+  margin-top: 10px;
+}
+.floor-card {
+  border-bottom: 1px solid #ffffff25;
+  padding: 12px;
+  min-height: 135px;
+}
+.floor-card p {
+  font-size: 12px;
+}
+.novel {
+  min-height: calc(100vh - 66px);
+  padding: 30px;
+}
+.novel .background {
+  filter: brightness(0.7);
+}
+.novel > .portrait {
+  position: absolute;
+  right: 28%;
+  top: 40px;
+  width: 35%;
+  height: 60%;
+  z-index: -1;
+}
+.novel-status {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  width: 280px;
+}
+.novel-dialogue {
+  margin-top: 210px;
+  background: #101c25ef;
+  border: 1px solid #eedcc34a;
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+}
+.novel-dialogue > .stream {
+  font:
+    21px/1.8 Georgia,
+    serif;
+  min-height: 100px;
+}
+.novel-dialogue nav {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+.novel .chat-slot {
+  min-height: 320px;
+}
+.expedition .background {
+  filter: brightness(0.35);
+}
+.map {
+  position: relative;
+  height: 260px;
+  background: #102c2aac;
+  border: 1px solid #acb79160;
+  border-radius: 16px;
+}
+.map svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.map path {
+  stroke: #a9bc8d;
+  stroke-width: 3;
+  stroke-dasharray: 8 8;
+  fill: none;
+}
+.map-point {
+  position: absolute;
+  background: #b9caa0;
+  color: #102521;
+  border: 4px solid #344a36;
+}
+.bridge {
+  left: 8%;
+  bottom: 15%;
+}
+.ridge {
+  right: 7%;
+  top: 8%;
+}
+.camp {
+  left: 45%;
+  top: 48%;
+}
+.map-hint {
+  color: #dbd8ab;
+}
+.companion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 15px 0;
+}
+.companion img {
+  height: 70px;
+  width: 60px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 8px;
+  background: #52605a;
+}
+.expedition h1 {
+  font-family: Georgia, serif;
+}
+.expedition .status {
+  margin-top: 18px;
+}
+.tired {
+  filter: grayscale(0.5) brightness(0.8);
+}
+@media (max-width: 780px) {
+  .harbor,
+  .expedition {
+    grid-template-columns: 1fr;
+  }
+  .scene {
+    min-height: 640px;
+  }
+  .stage {
+    padding: 14px;
+  }
+  h1 {
+    font-size: 36px;
+  }
+  .novel-status {
+    position: relative;
+    width: auto;
+    right: auto;
+    top: auto;
+    margin-top: 20px;
+  }
+  .novel-dialogue {
+    margin-top: 25px;
+  }
+  .novel > .portrait {
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 280px;
+  }
+  .conversation {
+    min-height: 650px;
+  }
+  .choices {
+    grid-template-columns: 1fr;
+  }
+  .novel-heading {
+    min-height: 180px;
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "review": "parse --apply-replacements 提交前独立代码审阅",
+  "repository": "/srv/tavern/TavernHeadless-remove-preview-credentials",
+  "scope": [
+    "scripts/native-card-conversion/write.ts:790-905",
+    "scripts/native-card-conversion/write-parse.test.ts:664-1116"
+  ],
+  "conclusion": "审阅未发现需要阻止提交的正确性问题。当前实现保持替换值独立，按源顺序执行，写入前验证相同操作可以重试，并在验证失败时保留目标文件原始字节。",
+  "materialFindings": [],
+  "verification": {
+    "command": "pnpm exec vitest run scripts/native-card-conversion/write-parse.test.ts --reporter=dot",
+    "exitCode": 0,
+    "passedTests": 66,
+    "failedTests": 0
+  },
+  "behaviorChecks": [
+    {
+      "behavior": "源操作值保持不变",
+      "locations": ["scripts/native-card-conversion/write.ts:873-879", "scripts/native-card-conversion/write.ts:886-892", "scripts/native-card-conversion/write-parse.test.ts:665-693"],
+      "reproduction": "初值为 {\"a\":null}，依次替换 /a 为 {\"b\":{\"c\":0}}、/a/b/c 为 1、/a/b 为 {} 或 2。首次结果为 {\"a\":{\"b\":最终值}}，再次调用保留相同字节。",
+      "result": "测试通过。首次执行和重试预演分别复制每项 value，后续后代路径写入不会改变源操作值。"
+    },
+    {
+      "behavior": "源顺序及祖先、后代关系",
+      "locations": ["scripts/native-card-conversion/write.ts:862-880", "scripts/native-card-conversion/write-parse.test.ts:729-803"],
+      "reproduction": "同一路径重复替换时保留最后一项值；先替换 /profile/name，再替换 /profile 为保留 name 的对象时保留祖先操作给出的最终姓名。",
+      "result": "测试通过。实现逐项执行当前输出中的路径，保留源数组顺序。"
+    },
+    {
+      "behavior": "可安全重试",
+      "locations": ["scripts/native-card-conversion/write.ts:881-902", "scripts/native-card-conversion/write-parse.test.ts:755-803", "scripts/native-card-conversion/write-parse.test.ts:882-907"],
+      "reproduction": "先替换 /profile/name，再用 {\"score\":2} 覆盖 /profile。第二轮执行第一项时缺少 name，调用失败且原始目标字节保持不变。",
+      "result": "测试通过。预演从首次完整结果开始，按源顺序重放操作；只有预演成功后才写入首次结果。"
+    },
+    {
+      "behavior": "失败不写入目标文件",
+      "locations": ["scripts/native-card-conversion/write.ts:862-904", "scripts/native-card-conversion/write-parse.test.ts:755-777", "scripts/native-card-conversion/write-parse.test.ts:947-1079"],
+      "reproduction": "源 JSON 无效、操作成员无效、路径缺失、目标 JSON 无效或重试预演路径缺失时，比较失败前后的目标文件字节。",
+      "result": "现有测试通过。唯一目标文件写入发生在两轮操作成功之后；序列化在原子替换之前完成。"
+    },
+    {
+      "behavior": "不同目标文件的并发边界",
+      "locations": ["scripts/native-card-conversion/write.ts:828-905", "scripts/native-card-conversion/write-parse.test.ts:909-945", "scripts/native-card-conversion/atomic-write.ts:62-81"],
+      "reproduction": "同一任务对 data/first.json 和 data/second.json 并发替换 /count 为 8，分别核对返回路径及文件结果。",
+      "result": "测试通过。操作数组与目标输出均由各次调用独立读取，原子写入使用独立临时文件。本结论的并发范围为不同目标文件。"
+    }
+  ],
+  "nonBlockingCoverageSuggestions": [
+    {
+      "location": "scripts/native-card-conversion/write-parse.test.ts:665-693",
+      "suggestion": "现有复制回归测试可增加数组容器分支。",
+      "reproduction": "初值为 {\"a\":null}，依次替换 /a 为 [{\"b\":0}]、/a/0/b 为 1、/a/0 为 {} 或 2；核对首次结果和再次调用的字节一致。",
+      "conclusion": "当前 structuredClone 同时覆盖对象与数组；该建议补充数组替换值的回归证据。"
+    },
+    {
+      "location": "scripts/native-card-conversion/write-parse.test.ts:947-1015",
+      "suggestion": "现有无效成员矩阵可增加首次执行过程中第二项失败的分支。",
+      "reproduction": "初值为 {\"count\":1}，第一项替换 /count 为 2，第二项替换 /missing 为 3；调用应失败，目标文件应逐字节保持原样。",
+      "conclusion": "现有矩阵的路径错误发生在第一项；当前写入位置已经保证后续项失败时也保留目标文件。"
+    }
+  ],
+  "behaviorPreservingSimplification": [
+    {
+      "location": "scripts/native-card-conversion/write.ts:826",
+      "suggestion": "将 !options.format || options.format !== \"json\" 简化为 options.format !== \"json\"。",
+      "reason": "后者已经覆盖 undefined、空字符串和其他格式，保持全部现有错误行为。"
+    }
+  ],
+  "unchangedReviewedFiles": true
+}

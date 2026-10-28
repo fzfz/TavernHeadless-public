@@ -1,0 +1,40 @@
+{
+  "uid": 14,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": true,
+  "comment": "地点_拆迁旧楼",
+  "order": 60,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_place_demolition_building>\n拆迁旧楼位于家电城后门外，楼体半拆，楼道潮湿，墙面掉灰，窗洞和破门较多。杨桃子的房间内有旧木箱、矮板凳、高背椅、破旧床铺和杂物，抽屉里有三个普通避孕套。相邻空房无人居住，墙上的空调圆洞和破孔能看见杨桃子房间内侧。旧楼背面和楼道阴暗，脚步声、门响和楼外风声容易传进房间。\n夫妻家到拆迁旧楼步行约15分钟，电动车约5分钟，打车约6分钟；家电城后门到拆迁旧楼步行约2分钟，家电城柜面到杨桃子房间步行约5分钟。\n</qrxd_place_demolition_building>\n"
+}

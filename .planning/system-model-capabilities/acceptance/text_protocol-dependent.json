@@ -1,0 +1,161 @@
+{
+  "userMessage": "“请给我两份药草，并计算三份药草的总价。”",
+  "requests": [
+    {
+      "model": "test-model",
+      "max_tokens": 4056,
+      "temperature": 0.7,
+      "messages": [
+        {
+          "role": "system",
+          "content": "作者必须使用第三人称叙述，台词中的我和你按照说话者和听话者解释。用户扮演裴修远，角色为林澄。\n\nThe user is 裴修远: 裴修远是二十八岁的男性药师，性格谨慎，正在向林澄询问药草的数量。\n\n林澄是药铺的店主。"
+        },
+        {
+          "role": "assistant",
+          "content": "林澄指着药柜，问裴修远：‘你想买几份药草？’"
+        },
+        {
+          "role": "user",
+          "content": "“请给我两份药草，并计算三份药草的总价。”"
+        }
+      ]
+    },
+    {
+      "model": "test-model",
+      "max_tokens": 4056,
+      "temperature": 0.7,
+      "messages": [
+        {
+          "role": "system",
+          "content": "作者必须使用第三人称叙述，台词中的我和你按照说话者和听话者解释。用户扮演裴修远，角色为林澄。\n\nThe user is 裴修远: 裴修远是二十八岁的男性药师，性格谨慎，正在向林澄询问药草的数量。\n\n林澄是药铺的店主。"
+        },
+        {
+          "role": "assistant",
+          "content": "林澄指着药柜，问裴修远：‘你想买几份药草？’"
+        },
+        {
+          "role": "user",
+          "content": "“请给我两份药草，并计算三份药草的总价。”"
+        },
+        {
+          "role": "assistant",
+          "content": "<tool_call id=\"capability-call\" name=\"random\">{\"args\":{\"domain\":{\"kind\":\"integer_range\",\"min\":3,\"max\":3},\"distribution\":{\"kind\":\"uniform\"},\"count\":1,\"replacement\":true}}</tool_call>"
+        },
+        {
+          "role": "user",
+          "content": "<tool_result id=\"capability-call\" name=\"random\" status=\"success\">\n{\n  \"ok\": true,\n  \"data\": {\n    \"samples\": [\n      3\n    ],\n    \"indices\": null\n  }\n}\n</tool_result>"
+        }
+      ]
+    },
+    {
+      "model": "test-model",
+      "max_tokens": 4056,
+      "temperature": 0.7,
+      "messages": [
+        {
+          "role": "system",
+          "content": "作者必须使用第三人称叙述，台词中的我和你按照说话者和听话者解释。用户扮演裴修远，角色为林澄。\n\nThe user is 裴修远: 裴修远是二十八岁的男性药师，性格谨慎，正在向林澄询问药草的数量。\n\n林澄是药铺的店主。"
+        },
+        {
+          "role": "assistant",
+          "content": "林澄指着药柜，问裴修远：‘你想买几份药草？’"
+        },
+        {
+          "role": "user",
+          "content": "“请给我两份药草，并计算三份药草的总价。”"
+        },
+        {
+          "role": "assistant",
+          "content": "<tool_call id=\"capability-call\" name=\"random\">{\"args\":{\"domain\":{\"kind\":\"integer_range\",\"min\":3,\"max\":3},\"distribution\":{\"kind\":\"uniform\"},\"count\":1,\"replacement\":true}}</tool_call>"
+        },
+        {
+          "role": "user",
+          "content": "<tool_result id=\"capability-call\" name=\"random\" status=\"success\">\n{\n  \"ok\": true,\n  \"data\": {\n    \"samples\": [\n      3\n    ],\n    \"indices\": null\n  }\n}\n</tool_result>"
+        },
+        {
+          "role": "assistant",
+          "content": "<tool_call id=\"dependent-call\" name=\"calculate\">{\"args\":{\"expression\":{\"op\":\"mul\",\"args\":[3,4]}}}</tool_call>"
+        },
+        {
+          "role": "user",
+          "content": "<tool_result id=\"dependent-call\" name=\"calculate\" status=\"success\">\n{\n  \"ok\": true,\n  \"data\": {\n    \"type\": \"number\",\n    \"value\": 12\n  }\n}\n</tool_result>"
+        }
+      ]
+    }
+  ],
+  "response": {
+    "data": {
+      "floor_id": "CZnulCk5Q7p0EBS0t8_rU",
+      "floor_no": 1,
+      "branch_id": "main",
+      "generated_text": "林澄取出两份药草，告诉裴修远：‘每份四枚铜钱，三份共十二枚。’",
+      "summaries": [],
+      "total_usage": {
+        "prompt_tokens": 60,
+        "completion_tokens": 30,
+        "total_tokens": 90
+      },
+      "final_state": "committed"
+    }
+  },
+  "executionRecords": [
+    {
+      "id": "ef21c6cd-cc3a-4361-8a30-7d328303a37d",
+      "runId": "bURlF-3TCw2ye-_m1TqUP",
+      "floorId": "CZnulCk5Q7p0EBS0t8_rU",
+      "pageId": "la-DFJrG6hmmeYbQbOx9-",
+      "callerSlot": "narrator",
+      "providerId": "system:role-model-capabilities",
+      "toolName": "random",
+      "providerType": "builtin",
+      "argsJson": "{\"domain\":{\"kind\":\"integer_range\",\"min\":3,\"max\":3},\"distribution\":{\"kind\":\"uniform\"},\"count\":1,\"replacement\":true}",
+      "resultJson": "{\"ok\":true,\"data\":{\"samples\":[3],\"indices\":null}}",
+      "status": "success",
+      "lifecycleState": "finished",
+      "commitOutcome": "committed",
+      "deliveryMode": "inline",
+      "runtimeJobId": null,
+      "sideEffectLevel": "none",
+      "errorMessage": null,
+      "durationMs": 1,
+      "startedAt": 1790926075587,
+      "finishedAt": 1790926075588,
+      "attemptNo": 1,
+      "replayParentExecutionId": null,
+      "generationStepNo": 1,
+      "callId": "capability-call",
+      "generationAttemptNo": 1,
+      "acceptedPageId": "ullzkpGrSLLSDQ07TkBJt",
+      "createdAt": 1790926075587
+    },
+    {
+      "id": "0cfd42dc-7b0f-4991-bcf7-795a825c2851",
+      "runId": "bURlF-3TCw2ye-_m1TqUP",
+      "floorId": "CZnulCk5Q7p0EBS0t8_rU",
+      "pageId": "la-DFJrG6hmmeYbQbOx9-",
+      "callerSlot": "narrator",
+      "providerId": "system:role-model-capabilities",
+      "toolName": "calculate",
+      "providerType": "builtin",
+      "argsJson": "{\"expression\":{\"op\":\"mul\",\"args\":[3,4]}}",
+      "resultJson": "{\"ok\":true,\"data\":{\"type\":\"number\",\"value\":12}}",
+      "status": "success",
+      "lifecycleState": "finished",
+      "commitOutcome": "committed",
+      "deliveryMode": "inline",
+      "runtimeJobId": null,
+      "sideEffectLevel": "none",
+      "errorMessage": null,
+      "durationMs": 0,
+      "startedAt": 1790926075591,
+      "finishedAt": 1790926075591,
+      "attemptNo": 2,
+      "replayParentExecutionId": null,
+      "generationStepNo": 2,
+      "callId": "dependent-call",
+      "generationAttemptNo": 1,
+      "acceptedPageId": "ullzkpGrSLLSDQ07TkBJt",
+      "createdAt": 1790926075591
+    }
+  ]
+}

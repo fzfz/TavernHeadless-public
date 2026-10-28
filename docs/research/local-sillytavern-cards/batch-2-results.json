@@ -1,0 +1,4487 @@
+{
+  "batch": 2,
+  "sourceRoot": "/srv/data/mac bookpro old/AI/SillyTavern",
+  "method": "Read cached JSON matched by PNG path and mtime. No card code execution, network requests, encoded-payload decoding or chat reads. Call tokens are deterministic navigation aids; summaries are manual source interpretation.",
+  "cards": [
+    {
+      "id": "C002",
+      "name": "91聊天群",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/91聊天群.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/f6841beb0e5371e7ff66a39308dfaa3adf017bb32798b77306725dead1dd4805",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C002.json",
+      "mtimeMs": 1782028602188.704,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "初始化任务通过 STscript 写四个聊天变量；三条显示正则。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 8,
+      "worldbookEnabled": 8,
+      "helperScriptCount": 0,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": ""
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": ""
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": ""
+        }
+      ],
+      "taskTriggers": [
+        {
+          "name": "",
+          "interval": 3,
+          "floorType": "all",
+          "triggerTiming": "initialization",
+          "disabled": false,
+          "buttonActivated": true
+        },
+        {
+          "name": "初始化群聊数据",
+          "interval": 3,
+          "floorType": "all",
+          "triggerTiming": "initialization",
+          "disabled": false,
+          "buttonActivated": false
+        }
+      ],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/xiaobaix-tasks/tasks/1/commands",
+          "callTokens": ["STscript("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C005",
+      "name": "Gracie",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/Gracie_1.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e1e75326a168c10f2502dcb8353ac6d3a07657b6f519a40046b09208e33741de",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C005.json",
+      "mtimeMs": 1777986014561.1697,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "基础人物描述与四个备选开场；无内嵌世界书和正则。",
+      "alternateGreetings": 4,
+      "worldbookEntries": 0,
+      "worldbookEnabled": 0,
+      "helperScriptCount": 0,
+      "regex": [],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C008",
+      "name": "Assistant",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/default_Assistant.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/92441866eb8b77616865703b54f92b60ce48dac5f20bbabb1a3c40c5b45c24f2",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C008.json",
+      "mtimeMs": 1778694737833.9622,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "空开场的基础 Assistant 卡；无内嵌世界书和正则。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 0,
+      "worldbookEnabled": 0,
+      "helperScriptCount": 0,
+      "regex": [],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C011",
+      "name": "一定会NTR的世界：很容易或很难被NTR的人妻",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/一定会NTR的世界：很容易或很难被NTR的人妻.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/5b2bee10d450a23655879484f733b430ea6f9e971fcbe8ba47d28b06372f1b51",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C011.json",
+      "mtimeMs": 1780318062978.767,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "EJS 按数值选择内容；MVU 导入、Zod 结构和轮询状态栏并存。",
+      "alternateGreetings": 8,
+      "worldbookEntries": 34,
+      "worldbookEnabled": 32,
+      "helperScriptCount": 2,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 5,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "[不发送]状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "2选1[隐藏]不显示完整变量",
+          "disabled": true,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<update(?:variable)?>\\s*(.*)\\s*<\\/update(?:variable)?>/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "2选1[美化]完整变量更新",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<update(?:variable)?>\\s*(.*)\\s*<\\/update(?:variable)?>/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "[不发送]",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<update>([\\s\\S]*?)<\\/update>/g"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "开场",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 10,
+          "findRegex": "【开场白0】"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/tavern_helper/0/1/1/content",
+          "callTokens": ["registerMvuSchema("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/0/replaceString",
+          "callTokens": ["getAllVariables(", "setInterval("]
+        },
+        {
+          "pointer": "/data/character_book/entries/8/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/10/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/11/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/12/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/13/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/14/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/17/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/19/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/21/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/23/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/25/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/30/content",
+          "callTokens": ["getvar("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C014",
+      "name": "七色光v1.10",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.10.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ba00a251a3cf31a5b9f0dc4bc5958af73e4b9fec3fe4cedec12463fcb93e032c",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C014.json",
+      "mtimeMs": 1779418798291.661,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "Zod 结构、EJS 控制器、事件驱动状态栏及发送开场的主页。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 113,
+      "worldbookEnabled": 22,
+      "helperScriptCount": 2,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "对 AI 隐藏状态栏",
+          "disabled": true,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "仅格式思维链",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<Analysis>[\\s\\S]+?<\\/Analysis>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "去除变量更新",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?</UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "只发送最新3楼的变量更新",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 6,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?</UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "去除检测",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<type>([\\s\\S]*?)<\\/type>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "状态栏*美化",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6",
+          "scriptName": "角色主页前端",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<前端主页>"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/0/content",
+          "callTokens": ["registerMvuSchema("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5/replaceString",
+          "callTokens": ["eventOn(", "getAllVariables("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6/replaceString",
+          "callTokens": ["triggerSlash("]
+        },
+        {
+          "pointer": "/data/character_book/entries/55/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/86/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/93/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/98/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/99/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/100/content",
+          "callTokens": ["getvar(", "getwi("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C017",
+      "name": "七色光v1.6",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.61.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/98d77b0c164e6bdb02ad864563f72e2565a65a452692a0c2cdf0bdb93ec4a2e1",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C017.json",
+      "mtimeMs": 1790349480706.5442,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "与七色光另一版本并存；另存停用的极简状态栏，不能按名称合并。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 121,
+      "worldbookEnabled": 23,
+      "helperScriptCount": 2,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "对 AI 隐藏状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "仅格式思维链",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<Analysis>[\\s\\S]+?<\\/Analysis>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "去除变量更新",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?</UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "只发送最新3楼的变量更新",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 6,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?</UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "去除检测",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<type>([\\s\\S]*?)<\\/type>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "状态栏*美化",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6",
+          "scriptName": "角色主页前端",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<前端主页>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/7",
+          "scriptName": "极简状态栏",
+          "disabled": true,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/8",
+          "scriptName": "去除检测2",
+          "disabled": true,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "\\[EVENT_.*?\\]"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/0/content",
+          "callTokens": ["registerMvuSchema("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5/replaceString",
+          "callTokens": ["eventOn(", "getAllVariables("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6/replaceString",
+          "callTokens": ["triggerSlash("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/7/replaceString",
+          "callTokens": ["eventOn(", "getAllVariables("]
+        },
+        {
+          "pointer": "/data/character_book/entries/55/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/86/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/93/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/98/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/99/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/100/content",
+          "callTokens": ["getvar(", "getwi("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C020",
+      "name": "偏航·三人座的公路夏天",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/偏航·三人座的公路夏天.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/aab5ee383f4159783baeccdd77f7d33d4f1e0f39ee82e3d6dc34fc1298db66f5",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C020.json",
+      "mtimeMs": 1780216420276.385,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "EJS 阶段控制器读取状态；MVU 事件更新显示。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 42,
+      "worldbookEnabled": 26,
+      "helperScriptCount": 2,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "状态栏美化",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "[美化]完整变量更新",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<(update(?:variable)?)>\\s*((?:(?!<\\1>).)*)\\s*<\\/\\1>/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "[美化]变量更新中",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<(update(?:variable)?)>(?!.*<\\/\\1>)\\s*((?:(?!<\\1>).)*)\\s*$/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "只发送最新3楼的变量更新",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 6,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?</UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "仅格式思维链",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<Analysis>[\\s\\S]+?<\\/Analysis>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "对 AI 隐藏状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/0/content",
+          "callTokens": ["registerMvuSchema("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/0/replaceString",
+          "callTokens": ["eventOn(", "getAllVariables("]
+        },
+        {
+          "pointer": "/data/character_book/entries/9/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/21/content",
+          "callTokens": ["getvar(", "getwi("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C023",
+      "name": "冒险大陆 1",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/冒险大陆 1.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/bc590619d559a6313dd48cdf3fb1a035cfe339788841848e5a9f3b271f488098",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C023.json",
+      "mtimeMs": 1778487116497.7256,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "世界书规定标签格式，四条显示正则把正文与人物信息分区。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 62,
+      "worldbookEnabled": 62,
+      "helperScriptCount": 0,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "正文",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<正文>([\\s\\S]*?)</正文>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "主角",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<主角面板>([\\s\\S]*?)</主角面板>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "配角",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<配角-([^>]+)>([\\s\\S]*?)</配角-\\1>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "1",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "^"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C026",
+      "name": "垃圾回收员",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/垃圾回收员.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/79e42a67355615e2d2a98d19a7f55fe8c42cd23d62d9cadcffcc450af35f2ba0",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C026.json",
+      "mtimeMs": 1778932326674.3142,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "状态栏读取 MVU；五种终端从当前消息解析结构信息。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 51,
+      "worldbookEnabled": 50,
+      "helperScriptCount": 2,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "[美化]变量更新中-夜空诗意",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable(?:variable)?>(?!.*<\\/UpdateVariable(?:variable)?>)\\s*(.*)\\s*$/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "[美化]完整变量完成-夜空诗意",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable(?:variable)?>\\s*(.*)\\s*<\\/UpdateVariable(?:variable)?>/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "对 AI 隐藏状态栏",
+          "disabled": true,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "仅格式思维链",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<Analysis>[\\s\\S]+?<\\/Analysis>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "只发送最新3楼的变量更新",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 6,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?</UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "状态栏美化",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6",
+          "scriptName": " [界面]回收评估报告",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "(?:<slave_recycle_report>[\\s\\S]*?<\\/slave_recycle_report>[\\s\\n]*)+"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/7",
+          "scriptName": " [界面]废土交易终端",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<trade_panel>[\\s\\S]*?<\\/trade_panel>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/8",
+          "scriptName": "[界面]内部拍卖终端",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": " <auction_panel>[\\s\\S]*?<\\/auction_panel>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/9",
+          "scriptName": "[界面]赛前报名终端",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<arena_registration>[\\s\\S]*?</arena_registration>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/10",
+          "scriptName": "[界面]赛后结算终端",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<match_result>[\\s\\S]*?<\\/match_result>"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/regex_scripts/5/replaceString",
+          "callTokens": ["eventOn(", "getAllVariables("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6/replaceString",
+          "callTokens": ["getChatMessages("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/7/replaceString",
+          "callTokens": ["getAllVariables(", "getChatMessages("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/8/replaceString",
+          "callTokens": ["getAllVariables(", "getChatMessages("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/9/replaceString",
+          "callTokens": ["getAllVariables(", "getChatMessages("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/10/replaceString",
+          "callTokens": ["getChatMessages("]
+        },
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/0/content",
+          "callTokens": ["registerMvuSchema("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C029",
+      "name": "堕落的女友璃儿",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/堕落的女友璃儿.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/d12ae2158fe1b0294376743a4ff63643e8b06f195aa367658d6bf7dfc0bcb3c2",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C029.json",
+      "mtimeMs": 1781020734618.5986,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "世界书保存设定和写作要求，helper 的 scripts 为空。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 7,
+      "worldbookEnabled": 7,
+      "helperScriptCount": 0,
+      "regex": [],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C032",
+      "name": "天龙小段誉",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/天龙小段誉.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/4185eea7f8ff031a321c785b7ec238fa3e73c6db96255b881863acfeae712b77",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C032.json",
+      "mtimeMs": 1779086276554.2012,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "MVU 远程导入与世界书 getvar 阶段控制；开场本身是提示词大纲。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 19,
+      "worldbookEnabled": 13,
+      "helperScriptCount": 1,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "[美化]变量更新中-夜空诗意",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable(?:variable)?>(?!.*<\\/UpdateVariable(?:variable)?>)\\s*(.*)\\s*$/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "[美化]完整变量完成-夜空诗意",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable(?:variable)?>\\s*(.*)\\s*<\\/UpdateVariable(?:variable)?>/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "对 AI 隐藏状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "仅格式思维链",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<Analysis>[\\s\\S]+?<\\/Analysis>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "只发送最新3楼的变量更新",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 6,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?</UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "状态栏美化",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/character_book/entries/17/content",
+          "callTokens": ["getvar(", "getwi("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C035",
+      "name": "妻悦论坛",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/妻悦论坛.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b8f57d770f4ed67ecffb027910b47c686ace29dc65834402b857f975cbae5da3",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C035.json",
+      "mtimeMs": 1778503674363.2583,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "论坛界面按钮发送消息并触发生成；浏览器保存主题和字号。",
+      "alternateGreetings": 3,
+      "worldbookEntries": 53,
+      "worldbookEnabled": 45,
+      "helperScriptCount": 7,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "0.[视觉屏蔽]显示6条",
+          "disabled": true,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": 6,
+          "maxDepth": null,
+          "findRegex": "/[\\s\\S]*/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "1.对AI隐藏状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "2.去除变量更新",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?<\\/UpdateVariable>|<status_current_variables>[\\s\\S]*?<\\/status_current_variables>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "3.状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "[论坛]主页",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<forum_data>([\\s\\S]*?)<\\/forum_data>/"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "[论坛]商城",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<forum_shop>(.*?)<\\/forum_shop>/s"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6",
+          "scriptName": "[论坛]私信页面",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<message_data>([\\s\\S]*?)<\\/message_data>/gi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/7",
+          "scriptName": "[论坛]约炮区主页",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<hookup_list_data>([\\s\\S]*?)<\\/hookup_list_data>/"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/8",
+          "scriptName": "[论坛]帖子详情页",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<post_data>([\\s\\S]*?)<\\/post_data>/"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/9",
+          "scriptName": "[论坛]单男详情页",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<profile_data>([\\s\\S]*?)<\\/profile_data>/"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/10",
+          "scriptName": "[论坛]文墨区详情页",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<literature_story>([\\s\\S]*?)<\\/literature_story>/"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/11",
+          "scriptName": "[论坛]约炮区详情页",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<hookup_data>([\\s\\S]*?)<\\/hookup_data>/"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/12",
+          "scriptName": "[论坛]个人资料页面",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<user_data>([\\s\\S]*?)<\\/user_data>/gi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/13",
+          "scriptName": "[论坛]搜索页面",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<search_page_data>([\\s\\S]*?)<\\/search_page_data>/gi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/14",
+          "scriptName": "[论坛]搜索结果页面",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<search_results_data>([\\s\\S]*?)<\\/search_results_data>/gi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/15",
+          "scriptName": "[论坛]热搜详情页面",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<hot_search_detail>([\\s\\S]*?)<\\/hot_search_detail>/gi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/16",
+          "scriptName": "[论坛]直播页面",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<live_room>([\\s\\S]*?)<\\/live_room>/"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/17",
+          "scriptName": "[论坛]直播筛选页",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<live_list>([\\s\\S]*?)<\\/live_list>/"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/18",
+          "scriptName": "[论坛]主播页面",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<live_room_streamer>([\\s\\S]*?)<\\/live_room_streamer>/"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/19",
+          "scriptName": "[选择器]界面",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 0,
+          "findRegex": "【选择器】"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/20",
+          "scriptName": "[选择器1]对AI隐藏",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": true,
+          "minDepth": 1,
+          "maxDepth": null,
+          "findRegex": "【开始选择】"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/21",
+          "scriptName": "[选择器2]对AI隐藏",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "【选择器】"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/22",
+          "scriptName": "[快速回复选项]论坛主题",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<options>((?:(?!<options>).)*?)</options>/gs"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/23",
+          "scriptName": "[快速回复选项]对AI隐藏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<options>(.*?)<\\/options>/s"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/24",
+          "scriptName": "[开场]主页",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 1,
+          "findRegex": "【主页】"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/regex_scripts/5/replaceString",
+          "callTokens": ["triggerSlash("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6/replaceString",
+          "callTokens": ["triggerSlash("]
+        },
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/1/content",
+          "callTokens": ["registerMvuSchema("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C038",
+      "name": "影像鉴定科",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/影像鉴定科.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/6926eb3597c8fe921ebc59e2863633a4f32679a10d16fbbf122034e785ff56fd",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C038.json",
+      "mtimeMs": 1780131292651.4373,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "无内嵌世界书、正则或 helper 脚本的描述型卡。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 0,
+      "worldbookEnabled": 0,
+      "helperScriptCount": 0,
+      "regex": [],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C041",
+      "name": "我的妻子好像不爱我",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我的妻子好像不爱我.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c4cae5fe68804ee34bd19d69337af318c98f96a234f9fa2754075728d57b7c39",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C041.json",
+      "mtimeMs": 1782051502761.4014,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "正则捕获 status_bar 的四个字段显示；世界书用文字定义情感阶段。",
+      "alternateGreetings": 3,
+      "worldbookEntries": 6,
+      "worldbookEnabled": 6,
+      "helperScriptCount": 0,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "状态栏林夕",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<status_bar>\\s*<current_outfit>([\\s\\S]*?)<\\/current_outfit>\\s*<current_action>([\\s\\S]*?)<\\/current_action>\\s*<current_status>([\\s\\S]*?)<\\/current_status>\\s*<phase_stage>([\\s\\S]*?)<\\/phase_stage>\\s*<\\/status_bar>"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C044",
+      "name": "我请的导师，在琴房享用我的未婚妻 1.1",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我请的导师，在琴房享用我的未婚妻 1.1.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9a52bec2a7fa83b4a42c88c5b5398797b48c85372e9dfe1cc427d305c07e4bfb",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C044.json",
+      "mtimeMs": 1786333521370.3616,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "提示词定义阶段与格式；正则分别处理 draft_notes 和后台日志。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 6,
+      "worldbookEnabled": 6,
+      "helperScriptCount": 0,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "- 不发送思维链 -",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": true,
+          "minDepth": 0,
+          "maxDepth": null,
+          "findRegex": "/<draft_notes>[\\s\\S]*?<\\/draft_notes>/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "- 后台日志封录 -",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<details>\\s*<summary>后台日志<\\/summary>[\\s\\S]*?<\\/details>"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C047",
+      "name": "扬州一梦1.5",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦1.5.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/15e5df433e4aa3cb8d26c5b8fbf30b5a18f8fee0cf64cd857e2a1e0ff12d3cf7",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C047.json",
+      "mtimeMs": 1779806958626.8677,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "EJS 读取状态与消息；UI 按钮、消息读取及本地偏好并存。",
+      "alternateGreetings": 9,
+      "worldbookEntries": 91,
+      "worldbookEnabled": 67,
+      "helperScriptCount": 2,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "角色卡介绍",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "\\[角色卡介绍\\]"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "自定义开局",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "\\[自定义开局\\]"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "开局信息美化",
+          "disabled": false,
+          "placement": [1],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<start>[\\s\\S]*?<\\/start>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "[美化]变量更新中-古风水墨",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable(?:variable)?>(?!.*<\\/UpdateVariable(?:variable)?>)\\s*(.*)\\s*$/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "只发送最新3楼的变量更新",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 6,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?</UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "仅格式思维链",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<Analysis>[\\s\\S]+?<\\/Analysis>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6",
+          "scriptName": "对 AI 隐藏状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/7",
+          "scriptName": "[美化]完整变量完成-古风水墨",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable(?:variable)?>\\s*(.*)\\s*<\\/UpdateVariable(?:variable)?>/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/8",
+          "scriptName": "状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/1/content",
+          "callTokens": ["registerMvuSchema("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1/replaceString",
+          "callTokens": ["triggerSlash("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2/replaceString",
+          "callTokens": ["getChatMessages("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/8/replaceString",
+          "callTokens": ["eventOn(", "getAllVariables("]
+        },
+        {
+          "pointer": "/data/character_book/entries/12/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/18/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/20/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/54/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/57/content",
+          "callTokens": ["getChatMessages(", "getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/67/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/68/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/85/content",
+          "callTokens": ["getvar(", "getwi("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C050",
+      "name": "折镜v1.6",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/折镜v1.6.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c6e0baaf75c3e03d4efd224c56827fc9de042779dbd09e7450382ab008755b5b",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C050.json",
+      "mtimeMs": 1781081424251.0881,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "Zod/EJS 状态控制加主页和状态栏按钮发送。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 95,
+      "worldbookEnabled": 64,
+      "helperScriptCount": 2,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "对 AI 隐藏状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "仅格式思维链",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<Analysis>[\\s\\S]+?<\\/Analysis>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "去除变量更新",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?</UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "只发送最新3楼的变量更新",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 6,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?</UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "去除检测",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<type>([\\s\\S]*?)<\\/type>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "状态栏*美化",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6",
+          "scriptName": "角色主页前端",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<前端主页>"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/0/content",
+          "callTokens": ["registerMvuSchema("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5/replaceString",
+          "callTokens": ["eventOn(", "getAllVariables(", "triggerSlash("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6/replaceString",
+          "callTokens": ["triggerSlash("]
+        },
+        {
+          "pointer": "/data/character_book/entries/29/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/55/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/86/content",
+          "callTokens": ["getvar(", "getwi("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C053",
+      "name": "收债人",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/收债人.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/3257d0db2b75349bbc43d5af344a1809d8c32ef7daf1654196ea3a3e715bdd8f",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C053.json",
+      "mtimeMs": 1777384001828.3477,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "世界书定义档案与状态栏，部分条目停用；无内嵌正则。",
+      "alternateGreetings": 1,
+      "worldbookEntries": 6,
+      "worldbookEnabled": 5,
+      "helperScriptCount": 0,
+      "regex": [],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C056",
+      "name": "教堂拆除计划 0.8",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教堂拆除计划 0.8.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e595c6cf18668d867c1af956cd262d83ee3faee5f5e96dfe2de75fee70a5f30a",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C056.json",
+      "mtimeMs": 1779444463762.7605,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "九阶段与后台日志均为世界书提示词；没有内嵌执行脚本。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 16,
+      "worldbookEnabled": 16,
+      "helperScriptCount": 0,
+      "regex": [],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C059",
+      "name": "日奈的秘密潜入",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/日奈的秘密潜入.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/09f0694b1427a519d55ac306e41498f2545e01bd79d3b810b278ceb4d8cf7a99",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C059.json",
+      "mtimeMs": 1783075890640.5972,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "EJS 随机事件和结局判定；标签捕获状态栏与变量更新块过滤。",
+      "alternateGreetings": 1,
+      "worldbookEntries": 50,
+      "worldbookEnabled": 45,
+      "helperScriptCount": 1,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "变量",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?</UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<state_data>\\s*<willpower>([\\s\\S]*?)<\\/willpower>\\s*<floor>([\\s\\S]*?)<\\/floor>\\s*<task_desc>([\\s\\S]*?)<\\/task_desc>\\s*<task_current>([\\s\\S]*?)<\\/task_current>\\s*<task_target>([\\s\\S]*?)<\\/task_target>\\s*<pleasure>([\\s\\S]*?)<\\/pleasure>\\s*<shame>([\\s\\S]*?)<\\/shame>\\s*<action_count>([\\s\\S]*?)<\\/action_count>\\s*<time_limit>([\\s\\S]*?)<\\/time_limit>\\s*<head_status>([\\s\\S]*?)<\\/head_status>\\s*<upper_body_status>([\\s\\S]*?)<\\/upper_body_status>\\s*<lower_body_status>([\\s\\S]*?)<\\/lower_body_status>\\s*<private_breasts>([\\s\\S]*?)<\\/private_breasts>\\s*<private_pussy>([\\s\\S]*?)<\\/private_pussy>\\s*<private_anus>([\\s\\S]*?)<\\/private_anus>\\s*<mental_state>([\\s\\S]*?)<\\/mental_state>\\s*<current_thought>([\\s\\S]*?)<\\/current_thought>\\s*<current_task>([\\s\\S]*?)<\\/current_task>\\s*<body_mod>([\\s\\S]*?)<\\/body_mod>\\s*<sense_mod>([\\s\\S]*?)<\\/sense_mod>\\s*<\\/state_data>/g"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "隐藏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 2,
+          "maxDepth": null,
+          "findRegex": "/<state_data>\\s*<willpower>([\\s\\S]*?)<\\/willpower>\\s*<floor>([\\s\\S]*?)<\\/floor>\\s*<task_desc>([\\s\\S]*?)<\\/task_desc>\\s*<task_current>([\\s\\S]*?)<\\/task_current>\\s*<task_target>([\\s\\S]*?)<\\/task_target>\\s*<pleasure>([\\s\\S]*?)<\\/pleasure>\\s*<shame>([\\s\\S]*?)<\\/shame>\\s*<action_count>([\\s\\S]*?)<\\/action_count>\\s*<time_limit>([\\s\\S]*?)<\\/time_limit>\\s*<head_status>([\\s\\S]*?)<\\/head_status>\\s*<upper_body_status>([\\s\\S]*?)<\\/upper_body_status>\\s*<lower_body_status>([\\s\\S]*?)<\\/lower_body_status>\\s*<private_breasts>([\\s\\S]*?)<\\/private_breasts>\\s*<private_pussy>([\\s\\S]*?)<\\/private_pussy>\\s*<private_anus>([\\s\\S]*?)<\\/private_anus>\\s*<mental_state>([\\s\\S]*?)<\\/mental_state>\\s*<current_thought>([\\s\\S]*?)<\\/current_thought>\\s*<current_task>([\\s\\S]*?)<\\/current_task>\\s*<body_mod>([\\s\\S]*?)<\\/body_mod>\\s*<sense_mod>([\\s\\S]*?)<\\/sense_mod>\\s*<\\/state_data>/g"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/character_book/entries/2/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/4/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/5/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/12/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/16/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/20/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/24/content",
+          "callTokens": ["getvar("]
+        }
+      ],
+      "worldbookTimingAndGroups": [
+        {
+          "pointer": "/data/character_book/entries/27",
+          "enabled": true,
+          "extensions": {
+            "delay": 1,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/28",
+          "enabled": true,
+          "extensions": {
+            "delay": 1,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/29",
+          "enabled": true,
+          "extensions": {
+            "delay": 1,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/31",
+          "enabled": true,
+          "extensions": {
+            "delay": 1,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/32",
+          "enabled": true,
+          "extensions": {
+            "delay": 1,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/35",
+          "enabled": true,
+          "extensions": {
+            "delay": 1,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/37",
+          "enabled": true,
+          "extensions": {
+            "delay": 1,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/39",
+          "enabled": true,
+          "extensions": {
+            "delay": 1,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/40",
+          "enabled": true,
+          "extensions": {
+            "delay": 1,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "",
+            "group_weight": 100,
+            "group_override": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "C062",
+      "name": "暗恋的学姐被黑皮体育生调教成反差母驴V0.3",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/暗恋的学姐被黑皮体育生调教成反差母驴V0.3.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b6ad238508c3f9f094bce83de554f2480d7ae63a5e183483b0082701af45a2f3",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C062.json",
+      "mtimeMs": 1781100465584.1152,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "132 条世界书包含启停不同的创作/游戏模式；37 备选开场；无内嵌正则。",
+      "alternateGreetings": 37,
+      "worldbookEntries": 132,
+      "worldbookEnabled": 17,
+      "helperScriptCount": 0,
+      "regex": [],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C065",
+      "name": "林筱墨",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林筱墨2.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/15fba217c2c551e234d621ca985543e9529a3ad6d5505664b2927b43f90733f3",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C065.json",
+      "mtimeMs": 1781340295311.7979,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "回复后 RUBY 分析读取历史、辅助生成并写聊天世界书；面板保存任务配置。",
+      "alternateGreetings": 1,
+      "worldbookEntries": 7,
+      "worldbookEnabled": 5,
+      "helperScriptCount": 0,
+      "regex": [],
+      "taskTriggers": [
+        {
+          "name": "RUBY 楼层修复",
+          "interval": 0,
+          "floorType": "all",
+          "triggerTiming": "after_ai",
+          "disabled": false,
+          "buttonActivated": true
+        },
+        {
+          "name": "RUBY面板",
+          "interval": 0,
+          "floorType": "all",
+          "triggerTiming": "after_ai",
+          "disabled": false,
+          "buttonActivated": true
+        },
+        {
+          "name": "RUBY分析",
+          "interval": 1,
+          "floorType": "llm",
+          "triggerTiming": "after_ai",
+          "disabled": false,
+          "buttonActivated": false
+        }
+      ],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/xiaobaix-tasks/tasks/0/commands",
+          "callTokens": ["STscript("]
+        },
+        {
+          "pointer": "/data/extensions/xiaobaix-tasks/tasks/1/commands",
+          "callTokens": ["STscript(", "fetch("]
+        },
+        {
+          "pointer": "/data/extensions/xiaobaix-tasks/tasks/2/commands",
+          "callTokens": ["STscript("]
+        }
+      ],
+      "worldbookTimingAndGroups": [],
+      "linkedWorldDifference": {
+        "path": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/worlds/林筱墨111.json",
+        "entryPointers": ["/entries/0", "/entries/2", "/entries/5"],
+        "entryCount": 3,
+        "embeddedEntryCount": 7,
+        "missingConfiguredPromptKeysInLinkedWorld": ["好感度规则", "压力规则"],
+        "chatWorldbookInspected": false
+      }
+    },
+    {
+      "id": "C068",
+      "name": "林茜_妻心如刀_v1.3.31",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜_妻心如刀_v1.3.31.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/ca2cb240ec833242c46028c3ddb1e3325bdaac54f0220e759484eea9b86a8107",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C068.json",
+      "mtimeMs": 1787746488310.3594,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "EJS 事件选择、Zod 状态约束、末条消息行动按钮与正文修复正则。",
+      "alternateGreetings": 1,
+      "worldbookEntries": 133,
+      "worldbookEnabled": 49,
+      "helperScriptCount": 2,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "页面隐藏变量更新块",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?<\\/UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "对模型隐藏历史Analysis",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<Analysis>[\\s\\S]*?<\\/Analysis>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "提示词历史裁剪3楼前的变量更新块",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 6,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?<\\/UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "对AI隐藏行动选项_逐项更新",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/(?:(?<=\\[)|,)\\s*(?:\\{(?=[^{}]*\"path\"\\s*:\\s*\"\\/行动选项\\/\\d+\")[^{}]*\\}\\s*,\\s*)*\\{(?=[^{}]*\"path\"\\s*:\\s*\"\\/行动选项\\/\\d+\")[^{}]*\\}(?=\\s*\\])|(?:\\{(?=[^{}]*\"path\"\\s*:\\s*\"\\/行动选项\\/\\d+\")[^{}]*\\}\\s*,\\s*)+/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "对AI隐藏状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<StatusPlaceHolderImpl\\s*\\/>/g"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "状态栏渲染",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<StatusPlaceHolderImpl\\s*\\/>/g"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6",
+          "scriptName": "回复修复_补正文闭合标签",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/^(?=[\\s\\S]*<正文>)(?![\\s\\S]*<\\/正文>)([\\s\\S]*?)(\\s*)(?=<[A-Za-z][A-Za-z0-9_]*>\\s*<Analysis>)/g"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/7",
+          "scriptName": "回复修复_追加状态栏占位符",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/^(?![\\s\\S]*<StatusPlaceHolderImpl\\s*\\/>)([\\s\\S]*<\\/JSONPatch>\\s*<\\/[A-Za-z][A-Za-z0-9_]*>)\\s*$/g"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/0/content",
+          "callTokens": ["registerMvuSchema("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5/replaceString",
+          "callTokens": [
+            "createChatMessages(",
+            "eventOn(",
+            "getAllVariables(",
+            "getChatMessages(",
+            "triggerSlash("
+          ]
+        },
+        {
+          "pointer": "/data/character_book/entries/104/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/106/content",
+          "callTokens": ["getvar(", "getwi("]
+        },
+        {
+          "pointer": "/data/character_book/entries/122/content",
+          "callTokens": ["getvar(", "getwi("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C071",
+      "name": "桃花村的公媳",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/桃花村的公媳.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/790cbfdb93b638de3593ec4a84814476c07cce4c2f37ecb6074fe109cf1617cd",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C071.json",
+      "mtimeMs": 1778572858658.0034,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "MVU、Zod 与阶段 EJS；插图正则存在启停不同的设备版本。",
+      "alternateGreetings": 6,
+      "worldbookEntries": 40,
+      "worldbookEnabled": 39,
+      "helperScriptCount": 7,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "0.[SFW插图]电脑适配",
+          "disabled": true,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<SFW_IMG>(.*?)<\\/SFW_IMG>/gi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "0.[NSFW插图]电脑适配",
+          "disabled": true,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<NSFW_IMG>(.*?)<\\/NSFW_IMG>/gi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "1.[SFW插图]手机适配",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<SFW_IMG>(.*?)<\\/SFW_IMG>/gi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "1.[NSFW插图]手机适配",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<NSFW_IMG>(.*?)<\\/NSFW_IMG>/gi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "2.[SFW插图]备用模式",
+          "disabled": true,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<SFW_IMG>(.*?)<\\/SFW_IMG>/gi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "2.[NSFW插图]备用模式",
+          "disabled": true,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<NSFW_IMG>(.*?)<\\/NSFW_IMG>/gi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6",
+          "scriptName": "对AI隐藏状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/7",
+          "scriptName": "去除变量更新",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?<\\/UpdateVariable>|<status_current_variables>[\\s\\S]*?<\\/status_current_variables>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/8",
+          "scriptName": "状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/9",
+          "scriptName": "[选项]儿媳主题",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<options>((?:(?!<options>).)*?)</options>/gs"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/10",
+          "scriptName": "[选项]对AI隐藏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<options>(.*?)<\\/options>/s"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/11",
+          "scriptName": "开场",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "【emo的lsp】"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/1/content",
+          "callTokens": ["registerMvuSchema("]
+        },
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/4/content",
+          "callTokens": ["eventOn("]
+        },
+        {
+          "pointer": "/data/character_book/entries/16/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/17/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/21/content",
+          "callTokens": ["getvar("]
+        },
+        {
+          "pointer": "/data/character_book/entries/22/content",
+          "callTokens": ["getvar("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C074",
+      "name": "欢迎来到成绩至上的世界",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/欢迎来到成绩至上的世界.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/57cde6890add0da6bacc17e010c4508a989a220ac3fd6066a685f32e2f45e236",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C074.json",
+      "mtimeMs": 1779802523103.2974,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "HTML 开场与提示词中的考试/积分规则；helper 的 scripts 为空。",
+      "alternateGreetings": 1,
+      "worldbookEntries": 19,
+      "worldbookEnabled": 19,
+      "helperScriptCount": 0,
+      "regex": [],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C077",
+      "name": "洁白jk1.3",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/洁白jk1.3.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/d385bfbe04bbf07d66730d37aa8240b3511ba72381a7ad49d349858e66f2c4bc",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C077.json",
+      "mtimeMs": 1781418880490.9138,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "七个备选开场与人物/场景知识；helper 的 scripts 为空。",
+      "alternateGreetings": 7,
+      "worldbookEntries": 26,
+      "worldbookEnabled": 26,
+      "helperScriptCount": 0,
+      "regex": [],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C080",
+      "name": "白给之家",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/白给之家1.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b8f851c0e620adb2058aa014c363c9b3aa87ff61476d6b43c49bfa55c31b4eeb",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C080.json",
+      "mtimeMs": 1782818580523.2612,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "MVU/Zod 状态栏、浏览器偏好和开局按钮发送。",
+      "alternateGreetings": 1,
+      "worldbookEntries": 28,
+      "worldbookEnabled": 24,
+      "helperScriptCount": 2,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "状态栏美化",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "只发送最新3楼的变量更新",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 6,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable>[\\s\\S]*?</UpdateVariable>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "仅格式思维链",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<Analysis>[\\s\\S]+?<\\/Analysis>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "对 AI 隐藏状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "[美化]完整变量完成-夜空诗意",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable(?:variable)?>\\s*(.*)\\s*<\\/UpdateVariable(?:variable)?>/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "[美化]变量更新中-夜空诗意",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<UpdateVariable(?:variable)?>(?!.*<\\/UpdateVariable(?:variable)?>)\\s*(.*)\\s*$/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6",
+          "scriptName": "开局美化",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 1,
+          "findRegex": "/【白给之家】/s"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0/replaceString",
+          "callTokens": ["getAllVariables("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6/replaceString",
+          "callTokens": ["getChatMessages(", "triggerSlash("]
+        },
+        {
+          "pointer": "/data/extensions/tavern_helper/0/1/1/content",
+          "callTokens": ["registerMvuSchema("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C083",
+      "name": "真实女友",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/真实女友.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/02dcd558ddda05882ea77a5ef41f3fca67e51868622b73f0085363a9c8136171",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C083.json",
+      "mtimeMs": 1781458210191.0188,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "手机按钮独立 generateRaw 会话；localStorage 记录可经 EJS 注入正文。",
+      "alternateGreetings": 4,
+      "worldbookEntries": 7,
+      "worldbookEnabled": 7,
+      "helperScriptCount": 1,
+      "regex": [],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/0/content",
+          "callTokens": ["eventOn(", "genRawFn("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C086",
+      "name": "禁果之间！0.5",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/禁果之间！0.5.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c63634d9344438795bbba4182cff9ddb86f388110e07599c28301edd7b3ff2e8",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C086.json",
+      "mtimeMs": 1782058901330.424,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "提示词驱动叙事阶段；显示正则折叠后台日志。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 8,
+      "worldbookEnabled": 8,
+      "helperScriptCount": 0,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "- 后台日志封录 -",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<details>\\s*<summary>后台日志<\\/summary>[\\s\\S]*?<\\/details>"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C089",
+      "name": "綾瀬 千晴",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/綾瀬 千晴.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/bf212d985dac8e5c6207e38951fc9864baeb8c54bd11aff24a4be180be29468b",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C089.json",
+      "mtimeMs": 1780155914843.1362,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "三条人物知识和普通开场；helper 的 scripts 为空。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 3,
+      "worldbookEnabled": 3,
+      "helperScriptCount": 0,
+      "regex": [],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C092",
+      "name": "绿之丘居委会的浅仓穗香",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/绿之丘居委会的浅仓穗香.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9db719ee23b3594c2d0408d169d65cc13762272a6713c8d4cd3ceeba942d21f2",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C092.json",
+      "mtimeMs": 1777099855414.381,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "两条包含交互代码的状态栏正则均停用，不能算当前启用界面。",
+      "alternateGreetings": 2,
+      "worldbookEntries": 25,
+      "worldbookEnabled": 24,
+      "helperScriptCount": 0,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "一体式美化状态栏[正文及状态栏]",
+          "disabled": true,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<maintext>[\\s\\S]*?<\\/Status_block>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "美化状态栏[只美化状态栏]",
+          "disabled": true,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": ".*?<Status_block>([\\s\\S]*?)<\\/Status_block>"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0/replaceString",
+          "callTokens": ["getChatMessages(", "triggerSlash("]
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1/replaceString",
+          "callTokens": ["getChatMessages(", "triggerSlash("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C095",
+      "name": "荆桁",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/荆桁.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/731b8a778b695cdd2734aa559f79a8b6939ac710b56026020fb04cc79239cef9",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C095.json",
+      "mtimeMs": 1781676115326.1172,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "卷宗主页读取消息，另有状态栏显示正则与十二备选开场。",
+      "alternateGreetings": 12,
+      "worldbookEntries": 7,
+      "worldbookEnabled": 7,
+      "helperScriptCount": 0,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<status_panel>\\s*\\[Environment\\|(.*?)\\|(.*?)\\|(.*?)\\]\\s*\\[JingHeng\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\]\\s*\\[LuYin\\|(.*?)\\|(.*?)\\]\\s*\\[LuJing\\|(.*?)\\|(.*?)\\]\\s*\\[Memory\\|(.*?)\\]\\s*<\\/status_panel>/s"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "荆桁_卷宗主页",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/【开启卷宗】/s"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/regex_scripts/1/replaceString",
+          "callTokens": ["getChatMessages("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C098",
+      "name": "萧谴写卡助手版_V4.5.1",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/萧谴写卡助手版_V4.5.1.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/c0e879337d3d52356ccd708c6e82510c32771b06391ca9df47e82c96a2a1d7d5",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C098.json",
+      "mtimeMs": 1778503341466.0933,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "大型写卡前端读取世界书及历史、拼发送指令；世界书附带界面模板。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 19,
+      "worldbookEnabled": 11,
+      "helperScriptCount": 0,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "隐藏第一条消息正则",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<function>([\\s\\S]*?)</function>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "萧谴写卡小助手",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "\\[萧谴写卡小助手\\]"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/regex_scripts/1/replaceString",
+          "callTokens": [
+            "fetch(",
+            "getChatMessages(",
+            "getWorldbook(",
+            "setInterval(",
+            "triggerSlash("
+          ]
+        },
+        {
+          "pointer": "/data/character_book/entries/16/content",
+          "callTokens": ["getChatMessages(", "triggerSlash("]
+        },
+        {
+          "pointer": "/data/character_book/entries/17/content",
+          "callTokens": ["getChatMessages(", "triggerSlash("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C101",
+      "name": "诸天无限壁尻中心",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/诸天无限壁尻中心.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/055228e2cfcd13d211d9b04307e3ae9eff9d3dde532514ff2808400216d40fc1",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C101.json",
+      "mtimeMs": 1781101333560.1409,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "MVU/Zod、消息和变量读取及事件监听脚本。",
+      "alternateGreetings": 0,
+      "worldbookEntries": 18,
+      "worldbookEnabled": 17,
+      "helperScriptCount": 3,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "对AI隐藏状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "状态栏界面",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl\\/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "对AI隐藏变量更新",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<(update(?:variable)?)>(?:(?!.*<\\/\\1>)(?:(?!<\\1>).)*$|(?:(?!<\\1>).)*<\\/\\1?>)/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "变量更新中美化",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<(update(?:variable)?)>(?!.*<\\/\\1>)\\s*((?:(?!<\\1>).)*)\\s*$/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "变量更新美化",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<(update(?:variable)?)>\\s*((?:(?!<\\1>).)*)\\s*<\\/\\1>/gsi"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/1/content",
+          "callTokens": ["registerMvuSchema("]
+        },
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/2/content",
+          "callTokens": ["eventOn(", "getChatMessages(", "getVariables("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C104",
+      "name": "赌狗美女的末路",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/赌狗美女的末路.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/00c3fbb368e21b5cd8cee5ce30e6872efabb091e71b1fd85969d0716012e3b61",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C104.json",
+      "mtimeMs": 1781503753062.5342,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "普通开场和人物知识；helper 的 scripts 为空。",
+      "alternateGreetings": 1,
+      "worldbookEntries": 18,
+      "worldbookEnabled": 18,
+      "helperScriptCount": 0,
+      "regex": [],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C107",
+      "name": "郝叔和他的女人V1",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/郝叔和他的女人V1.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/713df3b25c6b09abc93836e6212c937f57ccd2b3821637ab5577342fd4fdaf83",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C107.json",
+      "mtimeMs": 1786336384122.0251,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "大量人物/地点世界书；日期展示保存浏览器偏好，另有提示词隐藏正则。",
+      "alternateGreetings": 8,
+      "worldbookEntries": 130,
+      "worldbookEnabled": 129,
+      "helperScriptCount": 0,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "日期（大小固定优化适配）",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<calendar>\\s*([\\s\\S]*?)\\s*<\\/calendar>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "NPC状态栏",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<char_status>\\s*([\\s\\S]*?)\\s*<\\/char_status>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "对ai隐藏<NPC_status>",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 5,
+          "maxDepth": null,
+          "findRegex": "/<NPC_status>\\s*([\\s\\S]*?)\\s*<\\/NPC_status>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "NPC视角",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<NPC_action>([\\s\\S]*?)(?:<NPC_think>([\\s\\S]*?)<\\/NPC_think>([\\s\\S]*?))?<\\/NPC_action>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "对ai隐藏<AI_guide>",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 3,
+          "maxDepth": null,
+          "findRegex": "/<AI_guide>\\s*([\\s\\S]*?)\\s*<\\/AI_guide>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "对ai隐藏<NPC_perspective>",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 5,
+          "maxDepth": null,
+          "findRegex": "/<NPC_perspective>\\s*([\\s\\S]*?)\\s*<\\/NPC_perspective>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/6",
+          "scriptName": "对ai隐藏<user_options>",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": 0,
+          "maxDepth": null,
+          "findRegex": "/<user_options>\\s*([\\s\\S]*?)\\s*<\\/user_options>/gm"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [],
+      "worldbookTimingAndGroups": [
+        {
+          "pointer": "/data/character_book/entries/0",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 郝江化",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/2",
+          "enabled": false,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物:",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/8",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "角色设定细节",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/9",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 李萱诗",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/10",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 左京",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/11",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "背景人物",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/12",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/13",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 李萱诗",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/15",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 白颖",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/16",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 白颖",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/17",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "次要女性角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/18",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "次要女性角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/19",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "次要女性角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/20",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "次要女性角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/21",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "次要女性角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/22",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "次要女性角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/23",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "次要女性角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/24",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "次要男性角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/25",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "次要男性角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/26",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "次要男性角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/27",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "郝家子女",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/28",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "郝家子女",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/29",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "郝家子女",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/30",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "左家子女",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/31",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "左家子女",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/32",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "其他次要角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/33",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "郝家亲戚",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/34",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "郝家亲戚",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/35",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "郝家亲戚",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/36",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "郝家亲戚",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/37",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "郝家亲戚",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/38",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "郝家仆人与员工",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/39",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "R18道具与场景",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/40",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "R18道具与场景",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/41",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/42",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/43",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/44",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/45",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/46",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/47",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/48",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/49",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/50",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/51",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/52",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "重要事件",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/53",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "重要事件",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/54",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "重要事件",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/55",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "郝家子女",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/56",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "次要男性角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/57",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "次要男性角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/58",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "R18道具与场景",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/59",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "R18道具与场景",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/60",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "R18道具与场景",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/61",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "R18道具与场景",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/62",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "R18知识与技巧",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/63",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "R18知识与技巧",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/64",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "R18知识与技巧",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/65",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心情节元素",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/66",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心情节元素",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/67",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心情节元素",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/68",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心情节元素",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/69",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 李萱诗",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/70",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心情节元素",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/71",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "次要男性角色",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/72",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心R18事件",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/73",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "生活与文化",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/74",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "生活与文化",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/75",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "生活与文化",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/76",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "故事结局与走向",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/77",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "生活与文化",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/78",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "故事背景与设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/79",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "象征与隐喻",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/80",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "R18道具与场景",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/81",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "故事结局与走向",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/82",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 李萱诗",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/84",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 左京",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/85",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心R18事件",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/86",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 李萱诗",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/87",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "故事背景与设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/88",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "人物关系",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/89",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "重要道具与线索",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/90",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "生活与文化",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/91",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 李萱诗",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/92",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "人物关系",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/93",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心R18事件",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/94",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心R18事件",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/95",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心R18事件",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/96",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心R18事件",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/97",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "人物关系",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/98",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 郝小天",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/99",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/100",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "地点设定",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/101",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "组织与势力",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/102",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "生活与文化",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/103",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心R18事件",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/104",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 白颖",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/105",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "感官与细节描写",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/107",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主题与象征",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/108",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心R18事件",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/109",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主要人物: 李萱诗",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/110",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主题与象征",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/111",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主题与象征",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/112",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主题与象征",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/113",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主题与象征",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/115",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "主题与象征",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/116",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "象征与隐喻",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/117",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "R18知识与技巧",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/118",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "情感与心理",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/119",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "情感与心理",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/120",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "象征与隐喻",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/121",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心R18事件",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/122",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "核心R18事件",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/123",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "情感与心理",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/124",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "生活与文化",
+            "group_weight": 100,
+            "group_override": false
+          }
+        },
+        {
+          "pointer": "/data/character_book/entries/125",
+          "enabled": true,
+          "extensions": {
+            "delay": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "group": "生活与文化",
+            "group_weight": 100,
+            "group_override": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "C110",
+      "name": "韩警官之警妻沉沦（隐秘者）",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/韩警官之警妻沉沦（隐秘者）.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b5437c31b2d11b6866bdd3540d203355abbd726656d4c5938e93477ad1708bd2",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C110.json",
+      "mtimeMs": 1778933190467.514,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "当前消息状态栏解析及按钮 triggerSlash 发送；提示词隐藏状态数据。",
+      "alternateGreetings": 5,
+      "worldbookEntries": 49,
+      "worldbookEnabled": 43,
+      "helperScriptCount": 0,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "对AI隐藏状态数据",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<StatusData>[\\s\\S]*?<\\/StatusData>/gm"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "状态栏改",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "/<StatusData>([\\s\\S]*?)<\\/StatusData>/gm"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/regex_scripts/1/replaceString",
+          "callTokens": ["getChatMessages(", "triggerSlash("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    },
+    {
+      "id": "C113",
+      "name": "鹡鸰女神",
+      "file": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/鹡鸰女神.png",
+      "cacheFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/1f20f1e9c1c7b998b313ff0614d7615510f2a542bb7fac8305e1551eefe2d51b",
+      "extractedJson": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/local-card-research/C113.json",
+      "mtimeMs": 1781021026815.1382,
+      "cacheStatus": "mtime-matched",
+      "spec": "chara_card_v3",
+      "review": "static-source-read",
+      "summary": "开场 swipe 监听修改世界书启用；EJS 依模式和卷号选择条目。",
+      "alternateGreetings": 5,
+      "worldbookEntries": 89,
+      "worldbookEnabled": 84,
+      "helperScriptCount": 3,
+      "regex": [
+        {
+          "pointer": "/data/extensions/regex_scripts/0",
+          "scriptName": "[不发送]去除变量更新",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": true,
+          "minDepth": 4,
+          "maxDepth": null,
+          "findRegex": "/<(UpdateVariable|Analysis|JSONPatch|update(?:variable)?)>[\\s\\S]*?<\\/\\1>/gmi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/1",
+          "scriptName": "[美化]完整变量更新",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<(update(?:variable)?)>\\s*((?:(?!<\\1>).)*)\\s*<\\/\\1>/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/2",
+          "scriptName": "[美化]变量更新中",
+          "disabled": false,
+          "placement": [1, 2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "/<(update(?:variable)?)>(?!.*<\\/\\1>)\\s*((?:(?!<\\1>).)*)\\s*$/gsi"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/3",
+          "scriptName": "[界面]状态栏",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": 2,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/4",
+          "scriptName": "状态栏代码块",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": true,
+          "promptOnly": false,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        },
+        {
+          "pointer": "/data/extensions/regex_scripts/5",
+          "scriptName": "[不发送]界面占位符",
+          "disabled": false,
+          "placement": [2],
+          "markdownOnly": false,
+          "promptOnly": true,
+          "minDepth": null,
+          "maxDepth": null,
+          "findRegex": "<StatusPlaceHolderImpl/>"
+        }
+      ],
+      "taskTriggers": [],
+      "codeReferences": [
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/1/content",
+          "callTokens": ["registerMvuSchema("]
+        },
+        {
+          "pointer": "/data/extensions/tavern_helper/scripts/2/content",
+          "callTokens": ["eventOn(", "getChatMessages(", "setInterval("]
+        },
+        {
+          "pointer": "/data/character_book/entries/18/content",
+          "callTokens": ["getvar(", "getwi("]
+        }
+      ],
+      "worldbookTimingAndGroups": []
+    }
+  ],
+  "deepReadIds": [
+    "C002",
+    "C026",
+    "C035",
+    "C065",
+    "C068",
+    "C083",
+    "C098",
+    "C113"
+  ]
+}

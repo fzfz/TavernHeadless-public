@@ -1,0 +1,37 @@
+{
+  "axis": "Spec",
+  "baseline": "474174208fe1dcc99d2bcf46479d20d0b93f5e19",
+  "commitList": [],
+  "scope": "review-scope.json 中13文件的当前暂存差异；API原有WIP与本轮修改分别核对。",
+  "result": "changes_required",
+  "findings": [
+    {
+      "id": "SPEC-1",
+      "priority": "P1",
+      "category": "实施代码缺陷",
+      "location": "scripts/native-card-conversion/write.ts:873-889",
+      "spec": ".planning/native-card-maintenance/cli-sample-2026-10-07/next-improvement-plan.md:53-60",
+      "requirement": "脚本按JSON Pointer替换已有字段或数组成员，按源顺序执行；重复执行相同覆写得到相同内容。",
+      "finding": "第一遍将operation.value直接插入output，后续子路径覆写同时修改该源操作对象。重试检查使用被修改的值，错误拒绝合法且幂等的数组。基础为{a:null}，依次replace /a={b:{c:0}}、/a/b/c=1、/a/b={}，实际报第2项路径不存在；正确执行和重试都应得到{a:{b:{}}}。已直接调用runParse复现，目标保持原值。第一遍插入值也应复制，避免修改源操作。"
+    },
+    {
+      "id": "SPEC-2",
+      "priority": "P2",
+      "category": "转换Agent样本验收未通过",
+      "location": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/acceptance-report.md:23-37",
+      "spec": ".planning/native-card-maintenance/cli-sample-2026-10-07/next-improvement-plan.md:218-224",
+      "requirement": "核对每条有效业务规则及其条件是否完整保留；USER002须包含根因记录中的遗漏原文；逐卡核对实际运行结果。",
+      "finding": "USER002第三版仍改写或遗漏规则，且backend/controllers/index.js:35-70将36个事件值输出成代码字符串；C011改写公式原文；C024的frontend/main.js:11与backend/validators/relationships.js:5采用不同身份判据，允许未揭晓状态提前切换显示。规则修复及多卡适用性尚未验收通过。这些是转换产物错误，不能归因为本次CLI或供应商。"
+    },
+    {
+      "id": "SPEC-3",
+      "priority": "P2",
+      "category": "验收证据缺失",
+      "location": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/task_plan.md:42-43",
+      "spec": ".planning/native-card-maintenance/cli-sample-2026-10-07/next-improvement-plan.md:218-223",
+      "requirement": "变量更新规则通过状态dry-run核对实际请求；主代理对每张卡执行状态dry-run。",
+      "finding": "最新USER002与C024只保存正文dry-run，缺少状态更新dry-run及规则注入逐项结论。C011真实状态请求证据不能替代这两张卡的离线组装验收。应保存正式状态预览请求、实际messages和规则条件核对结果。"
+    }
+  ],
+  "boundaries": "两张免费模型卡已实际请求，供应商400、结构化格式拒绝和无返回分别记录，不能视为本次实施代码缺陷。随机抽样、干净上下文派发及上一版比较已有记录；没有发现明确的未授权行为。"
+}

@@ -1,0 +1,7 @@
+{
+  "nameMaxLength": 80,
+  "emailMaxLength": 254,
+  "passwordMinLength": 8,
+  "passwordMaxLength": 128,
+  "sessionMaxAgeSeconds": 604800
+}

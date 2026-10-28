@@ -1,0 +1,600 @@
+{
+  "$schema": "./acceptance-cards.schema.json",
+  "priority": [
+    "USER002",
+    "USER001",
+    "C005",
+    "C011",
+    "C058",
+    "C083",
+    "C087",
+    "C091"
+  ],
+  "cards": [
+    {
+      "id": "C001",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/1.官场.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/1.官场.png"
+    },
+    {
+      "id": "C002",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/91聊天群.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/91聊天群.png"
+    },
+    {
+      "id": "C003",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/Ava Kensington.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/Ava Kensington.png"
+    },
+    {
+      "id": "C004",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/Charlotte & Samantha.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/Charlotte & Samantha.png"
+    },
+    {
+      "id": "C005",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/Gracie_1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/Gracie_1.png"
+    },
+    {
+      "id": "C006",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/IVORY_七色光_v1.6.51.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/IVORY_七色光_v1.6.51.png"
+    },
+    {
+      "id": "C007",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/The End of the Tribe.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/The End of the Tribe.png"
+    },
+    {
+      "id": "C008",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/default_Assistant.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/default_Assistant.png"
+    },
+    {
+      "id": "C009",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/《Lost Good Things》.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/《Lost Good Things》.png"
+    },
+    {
+      "id": "C010",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/《绀野夏日》夏日狂想曲.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/《绀野夏日》夏日狂想曲.png"
+    },
+    {
+      "id": "C011",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/一定会NTR的世界：很容易或很难被NTR的人妻.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/一定会NTR的世界：很容易或很难被NTR的人妻.png"
+    },
+    {
+      "id": "C012",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光_AMBER_v1.6.39.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光_AMBER_v1.6.39.png"
+    },
+    {
+      "id": "C013",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光_AMBER_v1.6.41.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光_AMBER_v1.6.41.png"
+    },
+    {
+      "id": "C014",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.10.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.10.png"
+    },
+    {
+      "id": "C015",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.5(魔改).png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.5(魔改).png"
+    },
+    {
+      "id": "C016",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.6.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.6.png"
+    },
+    {
+      "id": "C017",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.61.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/七色光v1.61.png"
+    },
+    {
+      "id": "C018",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/人妻公寓.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/人妻公寓.png"
+    },
+    {
+      "id": "C019",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/优衣.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/优衣.png"
+    },
+    {
+      "id": "C020",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/偏航·三人座的公路夏天.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/偏航·三人座的公路夏天.png"
+    },
+    {
+      "id": "C021",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/共妻法案.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/共妻法案.png"
+    },
+    {
+      "id": "C022",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/共犯.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/共犯.png"
+    },
+    {
+      "id": "C023",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/冒险大陆 1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/冒险大陆 1.png"
+    },
+    {
+      "id": "C024",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/双面恋人v1.0.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/双面恋人v1.0.png"
+    },
+    {
+      "id": "C025",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/叶昀.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/叶昀.png"
+    },
+    {
+      "id": "C026",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/垃圾回收员.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/垃圾回收员.png"
+    },
+    {
+      "id": "C027",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/城破十日记.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/城破十日记.png"
+    },
+    {
+      "id": "C028",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/堕落之旅：出轨模拟器.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/堕落之旅：出轨模拟器.png"
+    },
+    {
+      "id": "C029",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/堕落的女友璃儿.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/堕落的女友璃儿.png"
+    },
+    {
+      "id": "C030",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/备胎女友1.1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/备胎女友1.1.png"
+    },
+    {
+      "id": "C031",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/大学生活好1.01.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/大学生活好1.01.png"
+    },
+    {
+      "id": "C032",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/天龙小段誉.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/天龙小段誉.png"
+    },
+    {
+      "id": "C033",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/妻心如刀-林茜.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/妻心如刀-林茜.png"
+    },
+    {
+      "id": "C034",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/妻心如刀.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/妻心如刀.png"
+    },
+    {
+      "id": "C035",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/妻悦论坛.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/妻悦论坛.png"
+    },
+    {
+      "id": "C036",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/完蛋我被熟女包围了！.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/完蛋我被熟女包围了！.png"
+    },
+    {
+      "id": "C037",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/小野芥子.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/小野芥子.png"
+    },
+    {
+      "id": "C038",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/影像鉴定科.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/影像鉴定科.png"
+    },
+    {
+      "id": "C039",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/成人博主模拟器.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/成人博主模拟器.png"
+    },
+    {
+      "id": "C040",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我与竹马的大学生活会一帆风顺吗.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我与竹马的大学生活会一帆风顺吗.png"
+    },
+    {
+      "id": "C041",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我的妻子好像不爱我.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我的妻子好像不爱我.png"
+    },
+    {
+      "id": "C042",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我的姐姐李玉青.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我的姐姐李玉青.png"
+    },
+    {
+      "id": "C043",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我请的导师，在琴房享用我的未婚妻 1.1 NTL视角.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我请的导师，在琴房享用我的未婚妻 1.1 NTL视角.png"
+    },
+    {
+      "id": "C044",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我请的导师，在琴房享用我的未婚妻 1.1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我请的导师，在琴房享用我的未婚妻 1.1.png"
+    },
+    {
+      "id": "C045",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦.png"
+    },
+    {
+      "id": "C046",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦1.1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦1.1.png"
+    },
+    {
+      "id": "C047",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦1.5.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦1.5.png"
+    },
+    {
+      "id": "C048",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦1.6.1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦1.6.1.png"
+    },
+    {
+      "id": "C049",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦1.6.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/扬州一梦1.6.png"
+    },
+    {
+      "id": "C050",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/折镜v1.6.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/折镜v1.6.png"
+    },
+    {
+      "id": "C051",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/抽卡江湖·二改.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/抽卡江湖·二改.png"
+    },
+    {
+      "id": "C052",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/换偶比拼.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/换偶比拼.png"
+    },
+    {
+      "id": "C053",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/收债人.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/收债人.png"
+    },
+    {
+      "id": "C054",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教坊司.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教坊司.png"
+    },
+    {
+      "id": "C055",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教坊司1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教坊司1.png"
+    },
+    {
+      "id": "C056",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教堂拆除计划 0.8.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教堂拆除计划 0.8.png"
+    },
+    {
+      "id": "C057",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教堂拆除计划 1.5.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教堂拆除计划 1.5.png"
+    },
+    {
+      "id": "C058",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教授职业生涯.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教授职业生涯.png"
+    },
+    {
+      "id": "C059",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/日奈的秘密潜入.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/日奈的秘密潜入.png"
+    },
+    {
+      "id": "C060",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/早川凛音.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/早川凛音.png"
+    },
+    {
+      "id": "C061",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/明末挽歌 (local).png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/明末挽歌 (local).png"
+    },
+    {
+      "id": "C062",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/暗恋的学姐被黑皮体育生调教成反差母驴V0.3.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/暗恋的学姐被黑皮体育生调教成反差母驴V0.3.png"
+    },
+    {
+      "id": "C063",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/极乐庄混浴物语.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/极乐庄混浴物语.png"
+    },
+    {
+      "id": "C064",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林筱墨.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林筱墨.png"
+    },
+    {
+      "id": "C065",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林筱墨2.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林筱墨2.png"
+    },
+    {
+      "id": "C066",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜.png"
+    },
+    {
+      "id": "C067",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜_妻心如刀_v1.3.22.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜_妻心如刀_v1.3.22.png"
+    },
+    {
+      "id": "C068",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜_妻心如刀_v1.3.31.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜_妻心如刀_v1.3.31.png"
+    },
+    {
+      "id": "C069",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜_妻心如刀_v1.3.32.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜_妻心如刀_v1.3.32.png"
+    },
+    {
+      "id": "C070",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜_妻心如刀_v1.4.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/林茜_妻心如刀_v1.4.png"
+    },
+    {
+      "id": "C071",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/桃花村的公媳.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/桃花村的公媳.png"
+    },
+    {
+      "id": "C072",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/楚昭昭.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/楚昭昭.png"
+    },
+    {
+      "id": "C073",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/橘さん家ノ男性事情_1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/橘さん家ノ男性事情_1.png"
+    },
+    {
+      "id": "C074",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/欢迎来到成绩至上的世界.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/欢迎来到成绩至上的世界.png"
+    },
+    {
+      "id": "C075",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/沈听雪｜盛唐清音.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/沈听雪｜盛唐清音.png"
+    },
+    {
+      "id": "C076",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/沈栀晚.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/沈栀晚.png"
+    },
+    {
+      "id": "C077",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/洁白jk1.3.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/洁白jk1.3.png"
+    },
+    {
+      "id": "C078",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/爱如雨止.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/爱如雨止.png"
+    },
+    {
+      "id": "C079",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/琼明神女录.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/琼明神女录.png"
+    },
+    {
+      "id": "C080",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/白给之家1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/白给之家1.png"
+    },
+    {
+      "id": "C081",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/百合露出1.1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/百合露出1.1.png"
+    },
+    {
+      "id": "C082",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/直到夺走你的一切.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/直到夺走你的一切.png"
+    },
+    {
+      "id": "C083",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/真实女友.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/真实女友.png"
+    },
+    {
+      "id": "C084",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/真爱背后.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/真爱背后.png"
+    },
+    {
+      "id": "C085",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/真爱背后1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/真爱背后1.png"
+    },
+    {
+      "id": "C086",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/禁果之间！0.5.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/禁果之间！0.5.png"
+    },
+    {
+      "id": "C087",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/穗并町.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/穗并町.png"
+    },
+    {
+      "id": "C088",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/穿越之我是秦书记.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/穿越之我是秦书记.png"
+    },
+    {
+      "id": "C089",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/綾瀬 千晴.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/綾瀬 千晴.png"
+    },
+    {
+      "id": "C090",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/结婚后，前女友找上门来了.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/结婚后，前女友找上门来了.png"
+    },
+    {
+      "id": "C091",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/综漫-春物.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/综漫-春物.png"
+    },
+    {
+      "id": "C092",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/绿之丘居委会的浅仓穗香.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/绿之丘居委会的浅仓穗香.png"
+    },
+    {
+      "id": "C093",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/群友们.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/群友们.png"
+    },
+    {
+      "id": "C094",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/舞艺附中的少女们.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/舞艺附中的少女们.png"
+    },
+    {
+      "id": "C095",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/荆桁.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/荆桁.png"
+    },
+    {
+      "id": "C096",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/萧曦月.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/萧曦月.png"
+    },
+    {
+      "id": "C097",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/萧曦月1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/萧曦月1.png"
+    },
+    {
+      "id": "C098",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/萧谴写卡助手版_V4.5.1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/萧谴写卡助手版_V4.5.1.png"
+    },
+    {
+      "id": "C099",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/蚌埠夜话-梁文峰版.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/蚌埠夜话-梁文峰版.png"
+    },
+    {
+      "id": "C100",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/西门庆模拟器.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/西门庆模拟器.png"
+    },
+    {
+      "id": "C101",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/诸天无限壁尻中心.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/诸天无限壁尻中心.png"
+    },
+    {
+      "id": "C102",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/调教老婆王予璇.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/调教老婆王予璇.png"
+    },
+    {
+      "id": "C103",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/谷依依.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/谷依依.png"
+    },
+    {
+      "id": "C104",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/赌狗美女的末路.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/赌狗美女的末路.png"
+    },
+    {
+      "id": "C105",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/遠坂家ノ家計事情.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/遠坂家ノ家計事情.png"
+    },
+    {
+      "id": "C106",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/那些年.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/那些年.png"
+    },
+    {
+      "id": "C107",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/郝叔和他的女人V1.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/郝叔和他的女人V1.png"
+    },
+    {
+      "id": "C108",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/陈乖乖.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/陈乖乖.png"
+    },
+    {
+      "id": "C109",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/韩警官之警妻沉沦（警妻逆袭）.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/韩警官之警妻沉沦（警妻逆袭）.png"
+    },
+    {
+      "id": "C110",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/韩警官之警妻沉沦（隐秘者）.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/韩警官之警妻沉沦（隐秘者）.png"
+    },
+    {
+      "id": "C111",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/顾声慢.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/顾声慢.png"
+    },
+    {
+      "id": "C112",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/风月宝鉴.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/风月宝鉴.png"
+    },
+    {
+      "id": "C113",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/鹡鸰女神.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/鹡鸰女神.png"
+    },
+    {
+      "id": "C114",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/dev/characters/林茜_妻心如刀_v1.3.31.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/dev/characters/林茜_妻心如刀_v1.3.31.png"
+    },
+    {
+      "id": "C115",
+      "sourceFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/dev/characters/林茜_妻心如刀_v1.3.32.png",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/dev/characters/林茜_妻心如刀_v1.3.32.png"
+    },
+    {
+      "id": "USER001",
+      "sourceFile": "/Users/developer/Downloads/林茜_妻心如刀_v1.3.01.json",
+      "inputFile": "/Users/developer/Downloads/林茜_妻心如刀_v1.3.01.json"
+    },
+    {
+      "id": "USER002",
+      "sourceFile": "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json",
+      "inputFile": "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json"
+    }
+  ]
+}

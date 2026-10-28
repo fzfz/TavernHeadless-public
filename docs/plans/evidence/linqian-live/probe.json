@@ -1,0 +1,118 @@
+{
+  "variables": {
+    "林茜": {
+      "感情": 504.85,
+      "堕落": 80,
+      "内心想法": "**书终于整理好了。和他一起安静做这点小事很踏实；我暂时不想再提外面的纠缠，也不想让老公知道。**"
+    },
+    "行动选项": [
+      "元指令:细腻演绎接下来5分钟内林茜整理完书后的反应。",
+      "你陪林茜在408室内坐一会儿，轻声问她最近为什么总来这里。",
+      "你检查屋内散落的书籍和书架，追问林茜哪些书与杨桃子有关。",
+      "元指令:简要收束当前整理后果后，时间推进到林茜第二天上午10:00在家电城柜台开始上班，并重置当日需重置的变量。"
+    ],
+    "世界": {
+      "日期": "2025-03-10",
+      "星期": "周一",
+      "小时": 12,
+      "分钟": 29,
+      "状态_A1_日期": "2025-03-10",
+      "时间": "中午",
+      "地点": "拆迁旧楼408室内",
+      "开局模式": "原始首次撞见",
+      "终局路线": "未定",
+      "终局阶段": "Z000",
+      "事件_D001记录日期": "2025-03-10",
+      "已触发事件": {
+        "事件_E001": false,
+        "事件_E002": false,
+        "事件_E003": false,
+        "事件_E004": false,
+        "事件_E005": false,
+        "事件_E006": false,
+        "事件_E008": false,
+        "事件_E009": false,
+        "事件_E010": false,
+        "事件_E011": false,
+        "事件_E012": false,
+        "事件_E013": false,
+        "事件_E014": false,
+        "事件_E015": false,
+        "事件_E016": false,
+        "事件_E017": false,
+        "事件_E018": false,
+        "事件_E019": false,
+        "事件_E020": false,
+        "事件_E021": false,
+        "事件_E022": false,
+        "事件_E023": false,
+        "事件_E024": false,
+        "事件_E025": false,
+        "事件_E026": false,
+        "事件_E027": false,
+        "事件_E028": false,
+        "事件_E029": false,
+        "事件_E030": false,
+        "事件_E031": false,
+        "事件_E032": false,
+        "事件_E033": false,
+        "事件_E034": false,
+        "事件_E035": false,
+        "事件_E048": false,
+        "事件_E049": false
+      },
+      "已离婚": false,
+      "状态_A1_计数": 1
+    }
+  },
+  "output": {
+    "changes": [
+      {
+        "op": "set",
+        "path": "/林茜/内心想法",
+        "value": "**书终于整理好了。和他一起安静做这点小事很踏实；我暂时不想再提外面的纠缠，也不想让老公知道。**"
+      },
+      {
+        "op": "set",
+        "path": "/行动选项",
+        "value": [
+          "元指令:细腻演绎接下来5分钟内林茜整理完书后的反应。",
+          "你陪林茜在408室内坐一会儿，轻声问她最近为什么总来这里。",
+          "你检查屋内散落的书籍和书架，追问林茜哪些书与杨桃子有关。",
+          "元指令:简要收束当前整理后果后，时间推进到林茜第二天上午10:00在家电城柜台开始上班，并重置当日需重置的变量。"
+        ]
+      }
+    ],
+    "evidenceMessageIds": [
+      "user",
+      "assistant"
+    ],
+    "facts": {
+      "elapsedMinutes": 5,
+      "finalLocation": "拆迁旧楼408室内",
+      "completedA1Events": [],
+      "d001Completed": false,
+      "completedOneTimeEvents": [],
+      "relationship": {
+        "dailyDelta": 1,
+        "intimacyTier": "none"
+      },
+      "corruptionSettlement": {
+        "eligible": false,
+        "specialStimulatorOnly": false,
+        "baseTier": "none",
+        "occurrences": 0,
+        "resultTier": "none",
+        "materialAnomaly": false
+      },
+      "ending": {
+        "routeRulesLoaded": true,
+        "formedRoute": null,
+        "explicitReselection": false,
+        "divorceFormed": false,
+        "completedStage": null
+      }
+    }
+  },
+  "updaterModel": "nex-agi/nex-n2.5-mini:free"
+}

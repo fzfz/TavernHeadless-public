@@ -1,0 +1,111 @@
+{
+  "floorId": "ghlA9qJn7wf_ZBQMmjYRk",
+  "sessionId": "NQpf17MY5hPIkU4OCZ5j6",
+  "sections": [
+    {
+      "key": "prompt",
+      "path": "/floors/ghlA9qJn7wf_ZBQMmjYRk/prompt-runtime/explain",
+      "error": null
+    },
+    {
+      "key": "tools",
+      "path": "/floors/ghlA9qJn7wf_ZBQMmjYRk/tool-executions",
+      "error": null
+    },
+    {
+      "key": "calls",
+      "path": "/tools/call-records?floor_id=ghlA9qJn7wf_ZBQMmjYRk",
+      "error": null
+    },
+    {
+      "key": "operations",
+      "path": "/floors/ghlA9qJn7wf_ZBQMmjYRk/operation-logs",
+      "error": null
+    },
+    {
+      "key": "state",
+      "path": "/sessions/NQpf17MY5hPIkU4OCZ5j6/state/floors/ghlA9qJn7wf_ZBQMmjYRk/snapshot",
+      "error": null
+    },
+    {
+      "key": "roleState",
+      "path": "/sessions/NQpf17MY5hPIkU4OCZ5j6/role-view/floors/ghlA9qJn7wf_ZBQMmjYRk",
+      "error": null
+    },
+    {
+      "key": "memoryJobs",
+      "path": "/memory/jobs?floor_id=ghlA9qJn7wf_ZBQMmjYRk",
+      "error": null
+    },
+    {
+      "key": "jnYXQX1zrHXRXPVtVlIY8:staged",
+      "path": "/pages/jnYXQX1zrHXRXPVtVlIY8/variables/staged",
+      "error": null
+    },
+    {
+      "key": "jnYXQX1zrHXRXPVtVlIY8:promotions",
+      "path": "/pages/jnYXQX1zrHXRXPVtVlIY8/variables/promotions",
+      "error": null
+    },
+    {
+      "key": "jnYXQX1zrHXRXPVtVlIY8:memoryProposals",
+      "path": "/pages/jnYXQX1zrHXRXPVtVlIY8/memory/proposals",
+      "error": null
+    },
+    {
+      "key": "jnYXQX1zrHXRXPVtVlIY8:memoryPromotions",
+      "path": "/pages/jnYXQX1zrHXRXPVtVlIY8/memory/promotions",
+      "error": null
+    },
+    {
+      "key": "jnYXQX1zrHXRXPVtVlIY8:mutations",
+      "path": "/pages/jnYXQX1zrHXRXPVtVlIY8/session-state/mutations",
+      "error": "feature_unavailable"
+    },
+    {
+      "key": "jnYXQX1zrHXRXPVtVlIY8:revisions",
+      "path": "/pages/jnYXQX1zrHXRXPVtVlIY8/manual-revisions",
+      "error": null
+    },
+    {
+      "key": "tAvSuY51DSEpn9UYBTOL6:staged",
+      "path": "/pages/tAvSuY51DSEpn9UYBTOL6/variables/staged",
+      "error": null
+    },
+    {
+      "key": "tAvSuY51DSEpn9UYBTOL6:promotions",
+      "path": "/pages/tAvSuY51DSEpn9UYBTOL6/variables/promotions",
+      "error": null
+    },
+    {
+      "key": "tAvSuY51DSEpn9UYBTOL6:memoryProposals",
+      "path": "/pages/tAvSuY51DSEpn9UYBTOL6/memory/proposals",
+      "error": null
+    },
+    {
+      "key": "tAvSuY51DSEpn9UYBTOL6:memoryPromotions",
+      "path": "/pages/tAvSuY51DSEpn9UYBTOL6/memory/promotions",
+      "error": null
+    },
+    {
+      "key": "tAvSuY51DSEpn9UYBTOL6:mutations",
+      "path": "/pages/tAvSuY51DSEpn9UYBTOL6/session-state/mutations",
+      "error": "feature_unavailable"
+    },
+    {
+      "key": "tAvSuY51DSEpn9UYBTOL6:revisions",
+      "path": "/pages/tAvSuY51DSEpn9UYBTOL6/manual-revisions",
+      "error": null
+    },
+    {
+      "key": "qJAOqyvFUBhB5WftaoDMk:messageRevisions",
+      "path": "/messages/qJAOqyvFUBhB5WftaoDMk/manual-revisions",
+      "error": null
+    },
+    {
+      "key": "3MvOKoW6F9YQ8LVNeXAVE:messageRevisions",
+      "path": "/messages/3MvOKoW6F9YQ8LVNeXAVE/manual-revisions",
+      "error": null
+    }
+  ]
+}

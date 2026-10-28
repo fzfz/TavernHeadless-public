@@ -1,0 +1,8 @@
+{
+  "beforeSnapshotId": "16d81929-58cc-40ef-ad3b-f58c3ffad14a",
+  "afterSnapshotId": "16d81929-58cc-40ef-ad3b-f58c3ffad14a",
+  "stateUnchanged": true,
+  "stateUpdateStatus": 422,
+  "bodySource": "正式接口重放正文；状态模型实际请求",
+  "dryRunStatus": 200
+}

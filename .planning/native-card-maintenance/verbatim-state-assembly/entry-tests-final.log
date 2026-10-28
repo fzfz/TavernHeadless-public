@@ -1,0 +1,16 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+ RUN  v2.1.9 /srv/tavern/TavernHeadless-remove-preview-credentials
+
+ ✓ scripts/native-card-conversion/tool.test.ts (50 tests | 46 skipped) 26ms
+ ✓ scripts/native-card-conversion/skill-entry.test.ts (9 tests | 4 skipped) 4257ms
+   ✓ runs the documented command from another directory and preserves paths with spaces 1472ms
+   ✓ preserves a failing CLI status and actionable diagnostics for %j 752ms
+   ✓ preserves a failing CLI status and actionable diagnostics for "unknown" 720ms
+   ✓ preserves a failing CLI status and actionable diagnostics for "inspect" 655ms
+   ✓ reports an inaccessible source through the same direct entry 657ms
+
+ Test Files  2 passed (2)
+      Tests  9 passed | 50 skipped (59)
+   Start at  10:36:14
+   Duration  6.04s (transform 771ms, setup 0ms, collect 2.49s, tests 4.28s, environment 0ms, prepare 91ms)

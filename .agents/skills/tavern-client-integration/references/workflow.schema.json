@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workflow.schema.json",
+  "title": "TavernHeadless repository skill workflow",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contractVersion",
+    "skillId",
+    "title",
+    "summary",
+    "status",
+    "audience",
+    "recommendedWhen",
+    "avoidWhen",
+    "decisionRules",
+    "workflow",
+    "checks",
+    "relatedAgentFields",
+    "relatedDocs",
+    "humanPage",
+    "json",
+    "lastReviewedAt"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "workflow.schema.json"
+    },
+    "contractVersion": {
+      "const": 1
+    },
+    "skillId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "title": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "summary": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "audience": {
+      "$ref": "#/$defs/nonEmptyStrings"
+    },
+    "recommendedWhen": {
+      "$ref": "#/$defs/nonEmptyStrings"
+    },
+    "avoidWhen": {
+      "$ref": "#/$defs/nonEmptyStrings"
+    },
+    "decisionRules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "rule"
+        ],
+        "properties": {
+          "title": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "rule": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        }
+      }
+    },
+    "workflow": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "step",
+          "title",
+          "action"
+        ],
+        "properties": {
+          "step": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "title": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "action": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "relatedAgentFields": {
+            "$ref": "#/$defs/nonEmptyStrings"
+          }
+        }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "command",
+          "purpose"
+        ],
+        "properties": {
+          "command": {
+            "type": "string",
+            "enum": [
+              "static",
+              "types",
+              "tests",
+              "generated",
+              "docs",
+              "clientTypes",
+              "clientTests"
+            ],
+            "description": "任务输入 projectChecks 中的键；Agent 读取该键对应的实际命令。"
+          },
+          "purpose": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        }
+      }
+    },
+    "relatedAgentFields": {
+      "$ref": "#/$defs/strings"
+    },
+    "relatedDocs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "path"
+        ],
+        "properties": {
+          "title": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "path": {
+            "$ref": "#/$defs/siteRelativePath"
+          }
+        }
+      }
+    },
+    "humanPage": {
+      "$ref": "#/$defs/siteRelativePath"
+    },
+    "json": {
+      "$ref": "#/$defs/siteRelativePath"
+    },
+    "lastReviewedAt": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "strings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "nonEmptyStrings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "siteRelativePath": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_-]+(?:/[a-zA-Z0-9_-]+)*(?:\\.json)?/?$"
+    }
+  }
+}

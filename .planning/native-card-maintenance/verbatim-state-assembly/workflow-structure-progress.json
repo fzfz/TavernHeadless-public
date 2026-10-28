@@ -1,0 +1,158 @@
+{
+  "stage": "已完成文档重构和检查",
+  "baseCommit": "254f70b623ddd2ddf11aa9e8b0ceda497227b3c5",
+  "files": [
+    "SKILL.md",
+    "references/tools.md",
+    "references/character-fields.md",
+    "references/worldbook-fields.md",
+    "references/extension-fields.md"
+  ],
+  "initialStatus": " M apps/api/src/services/role-runtime/state-update-service.ts\n M apps/api/test/native-card-empty-worldbook.integration.test.ts\n M apps/user-web/package.json\n M apps/user-web/src/App.test.ts\n M apps/user-web/src/config/ui.json\n M apps/web/prototypes/characters/cinema/main.js\n M apps/web/prototypes/characters/expedition/main.js\n M apps/web/prototypes/characters/gushengman/main.js\n M apps/web/prototypes/characters/gushengman/source-mapping.json\n M apps/web/prototypes/characters/harbor/main.js\n M apps/web/prototypes/characters/novel/main.js\n M apps/web/prototypes/checks/formal-transport-unit.mjs\n M apps/web/prototypes/checks/generate-script-validators.mjs\n M apps/web/prototypes/checks/generation-inspection-unit.mjs\n M apps/web/prototypes/checks/script-backend-unit.mjs\n M apps/web/prototypes/checks/script-browser.mjs\n M apps/web/prototypes/checks/script-host-legacy-transport.mjs\n M apps/web/prototypes/checks/script-host-pending-unit.mjs\n M apps/web/prototypes/checks/script-runtime-unit.mjs\n M apps/web/prototypes/checks/serve-script-prototype.mjs\n M apps/web/prototypes/native-card-converter.prototype.html\n M apps/web/prototypes/shared/formal-transport.prototype.js\n M apps/web/prototypes/shared/generation-inspection.config.json\n M apps/web/prototypes/shared/script-host.prototype.js\n M apps/web/prototypes/shared/script-page.prototype.js\n M apps/web/prototypes/shared/script-runtime.prototype.js\n M apps/web/prototypes/shared/script-transport.schema.json\n M apps/web/prototypes/shared/script-validators.prototype.js\n M apps/web/src/lib/return-to-role-session.ts\n M docs/character-authoring/agent-tools-api.md\n M docs/character-authoring/backend-api.md\n M docs/character-authoring/examples/api-usage/run-tools.ts\n M docs/character-authoring/model-capabilities.md\n M docs/character-authoring/mvu-agent-state.md\n M docs/character-authoring/runtime-architecture.md\n M docs/character-authoring/script-api.md\n M docs/character-authoring/script-template-api.md\n M docs/character-authoring/state-update-api.md\n M docs/plans/generation-details-api-audit.md\n M docs/plans/native-card-converter/conversion-capabilities.json\n M docs/plans/native-card-converter/conversion-report.schema.json\n M docs/plans/native-card-converter/design.md\n M docs/plans/native-card-converter/example.thcard.json\n M docs/plans/native-card-converter/model-tool-architecture-proposal.md\n M docs/plans/native-card-converter/native-card-v1.schema.json\n M docs/plans/native-card-converter/progress.md\n M docs/plans/native-card-converter/task_plan.md\n M docs/plans/role-runtime-core/README.md\n M eslint.config.js\n M packages/shared/src/generated/role-runtime-validators.ts\n M vitepress/reference/api/chat.md\n M vitepress/reference/api/tools.md\n M vitepress/reference/api/worldbooks.md\n M vitest.config.ts\n?? .agents/skills/native-card-conversion/agents/\n?? .agents/skills/native-card-conversion/references/api/\n?? .agents/skills/native-card-conversion/references/formats/\n?? .agents/skills/native-card-conversion/references/sources.md\n?? .agents/skills/native-card-conversion/scripts/\n?? .planning/native-card-maintenance/api-depth-role-fix/\n?? .planning/native-card-maintenance/baseline/\n?? .planning/native-card-maintenance/cards.json\n?? .planning/native-card-maintenance/converter-dependency-closure.json\n?? .planning/native-card-maintenance/corpus-dispatch-structure.json\n?? .planning/native-card-maintenance/corpus-progress.json\n?? .planning/native-card-maintenance/dispatch-queue.json\n?? .planning/native-card-maintenance/document-restructure-closeout/\n?? .planning/native-card-maintenance/findings.md\n?? .planning/native-card-maintenance/initial-diff.patch\n?? .planning/native-card-maintenance/initial-head.txt\n?? .planning/native-card-maintenance/initial-readonly-diff.patch\n?? .planning/native-card-maintenance/initial-readonly-files.json\n?? .planning/native-card-maintenance/initial-status.txt\n?? .planning/native-card-maintenance/inputs.json\n?? .planning/native-card-maintenance/iteration-1/\n?? .planning/native-card-maintenance/iteration-10/\n?? .planning/native-card-maintenance/iteration-11/\n?? .planning/native-card-maintenance/iteration-12/\n?? .planning/native-card-maintenance/iteration-13/\n?? .planning/native-card-maintenance/iteration-14/\n?? .planning/native-card-maintenance/iteration-15/\n?? .planning/native-card-maintenance/iteration-16/\n?? .planning/native-card-maintenance/iteration-17/\n?? .planning/native-card-maintenance/iteration-18/\n?? .planning/native-card-maintenance/iteration-19/\n?? .planning/native-card-maintenance/iteration-2/\n?? .planning/native-card-maintenance/iteration-20/\n?? .planning/native-card-maintenance/iteration-21/\n?? .planning/native-card-maintenance/iteration-22/\n?? .planning/native-card-maintenance/iteration-23/\n?? .planning/native-card-maintenance/iteration-3/\n?? .planning/native-card-maintenance/iteration-4/\n?? .planning/native-card-maintenance/iteration-5/\n?? .planning/native-card-maintenance/iteration-6/\n?? .planning/native-card-maintenance/iteration-7/\n?? .planning/native-card-maintenance/iteration-8/\n?? .planning/native-card-maintenance/iteration-9/\n?? .planning/native-card-maintenance/page/\n?? .planning/native-card-maintenance/progress.md\n?? .planning/native-card-maintenance/readonly-review.json\n?? .planning/native-card-maintenance/resume-state.json\n?? .planning/native-card-maintenance/review-iteration-2/\n?? .planning/native-card-maintenance/review-iteration-3/\n?? .planning/native-card-maintenance/review-iteration-4/\n?? .planning/native-card-maintenance/review-iteration-5/\n?? .planning/native-card-maintenance/review-tools/\n?? .planning/native-card-maintenance/semantic-reference-rewrite/\n?? .planning/native-card-maintenance/source-review/\n?? .planning/native-card-maintenance/task_plan.md\n?? .planning/native-card-maintenance/traces/\n?? .planning/native-card-maintenance/verbatim-state-assembly/before/\n?? .planning/native-card-maintenance/verbatim-state-assembly/commit.json\n?? .planning/native-card-maintenance/verbatim-state-assembly/document-cleanup-commit.json\n?? .planning/native-card-maintenance/verbatim-state-assembly/proposal-semantic-review-final.json\n?? .planning/native-card-maintenance/verbatim-state-assembly/proposal-semantic-review.json\n?? .planning/native-card-maintenance/verbatim-state-assembly/review-diff.patch\n?? .planning/native-card-maintenance/verbatim-state-assembly/skill-semantic-review.json\n?? .planning/native-card-maintenance/verbatim-state-assembly/workflow-before/\n?? .planning/native-card-production/\n?? apps/api/test/native-card-converter-corpus.integration.test.ts\n?? apps/web/prototypes/checks/build-native-card-editor.mjs\n?? apps/web/prototypes/checks/native-card-converter-census.ts\n?? apps/web/prototypes/checks/native-card-converter-controller.test.ts\n?? apps/web/prototypes/checks/native-card-converter-fixtures.json\n?? apps/web/prototypes/checks/native-card-converter-frontend.test.ts\n?? apps/web/prototypes/checks/native-card-converter-mvu-state.test.ts\n?? apps/web/prototypes/checks/native-card-converter-normalize.test.ts\n?? apps/web/prototypes/checks/native-card-converter-runtime-probes.ts\n?? apps/web/prototypes/checks/native-card-converter-unit.mjs\n?? apps/web/prototypes/checks/native-card-converter-worldbook.test.ts\n?? apps/web/prototypes/checks/native-card-editor-unit.mjs\n?? apps/web/prototypes/checks/native-card-generated-modules-corpus.test.ts\n?? apps/web/prototypes/checks/native-card-mvu-schema-unit.mjs\n?? apps/web/prototypes/checks/native-card-state-repair-buttons.test.ts\n?? apps/web/prototypes/checks/native-card-worldbook-corpus.test.ts\n?? apps/web/prototypes/checks/visibility-display.browser.html\n?? apps/web/prototypes/native-card-converter/\n?? apps/web/prototypes/native-card-editor.prototype.html\n?? apps/web/prototypes/native-card-editor/\n?? docs/character-authoring/native-card-api.md\n?? docs/plans/native-card-converter/01-contract/\n?? docs/plans/native-card-converter/02-conversion-core/\n?? docs/plans/native-card-converter/03-web-integration/\n?? docs/plans/native-card-converter/04-acceptance/\n?? docs/plans/native-card-converter/acceptance-cards.json\n?? docs/plans/native-card-converter/acceptance-cards.schema.json\n?? docs/plans/native-card-converter/conversion-rules-and-acceptance.md\n?? docs/plans/native-card-converter/evidence/\n?? docs/plans/native-card-converter/failure-analysis.md\n?? docs/plans/native-card-converter/field-rules.json\n?? docs/plans/native-card-converter/frontend-display-proposal.md\n?? docs/plans/native-card-converter/hardcode-audit.md\n?? docs/plans/native-card-converter/linqian-1.3.01.md\n?? docs/plans/native-card-converter/maintenance-acceptance-standard.md\n?? docs/plans/native-card-converter/maintenance-api-gap-proposal.md\n?? docs/plans/native-card-converter/maintenance-skill-plan.md\n?? docs/plans/native-card-converter/message-components-proposal.md\n?? docs/plans/native-card-converter/prototype-audit.md\n?? docs/plans/native-card-converter/remediation.md\n?? docs/plans/native-card-converter/semantic-skill-redesign.md\n?? docs/plans/native-card-converter/state-repair-proposal.md\n?? docs/plans/native-card-converter/worldbook-runtime-proposal.md\n?? docs/plans/role-runtime-core/api-examples.md\n?? docs/plans/role-runtime-core/api.md\n?? docs/plans/role-runtime-core/architecture.md\n?? docs/plans/role-runtime-core/document-sync.md\n?? docs/plans/role-runtime-core/execution-plan.md\n?? docs/plans/role-runtime-core/findings.md\n?? docs/plans/role-runtime-core/progress.md\n?? docs/plans/role-runtime-core/state.json\n?? docs/plans/role-runtime-core/state.schema.json\n?? docs/plans/role-runtime-core/task_plan.md\n?? docs/plans/role-runtime-core/visual-acceptance.md\n?? docs/plans/role-runtime-core/visual-policy.json\n?? docs/plans/role-runtime-core/visual-policy.schema.json\n?? scripts/native-card-conversion/\n",
+  "scope": "Skill入口分层与相关引用；脚本、API和转换产物保持原样",
+  "newConversionTests": 0,
+  "checks": {
+    "skillValidate": "passed",
+    "markdownlint": "passed",
+    "prettier": "passed",
+    "diffWhitespace": "passed",
+    "localLinks": {
+      "checked": 54,
+      "errors": 0
+    },
+    "renderedTablesInOrderedLists": {
+      "tools.md": 1,
+      "character-fields.md": 3,
+      "worldbook-fields.md": 4,
+      "extension-fields.md": 2
+    },
+    "entryAndDiagnosticTests": {
+      "passed": 9,
+      "skipped": 50,
+      "filesPassed": 2
+    },
+    "newConversionTests": 0
+  },
+  "reviews": {
+    "standards": {
+      "agent": "/root/workflow_semantic_audit",
+      "findings": [
+        {
+          "issue": "同层指令未用有序列表",
+          "resolution": "角色字段、世界书和扩展参考的同层说明与指令改为有序列表；保留字段表。"
+        },
+        {
+          "issue": "extensions.world 重复定义",
+          "resolution": "世界书参考只引用角色字段参考第3章。"
+        },
+        {
+          "issue": "未决记录引用错误章节",
+          "resolution": "引用转换记录第2章的行为映射。"
+        }
+      ]
+    },
+    "spec": {
+      "agent": "/root/workflow_spec_review",
+      "findings": [
+        {
+          "issue": "页面验收先于 ZIP 生成",
+          "resolution": "第4.1节先完成校验、打包与正式导入，第4.2节使用已生成 ZIP 执行行为验收。"
+        },
+        {
+          "issue": "工具文档混入验收与修正流程",
+          "resolution": "工具文档保留调用条件、命令作用和结果位置；诊断修正步骤移入入口第4.1节。"
+        }
+      ]
+    },
+    "newConversionTests": 0
+  },
+  "secondReview": {
+    "standards": {
+      "agent": "/root/workflow_semantic_final",
+      "findings": [
+        {
+          "issue": "消费绑定缺少定义",
+          "resolution": "改为目标文件及读取这些文件的模块。"
+        },
+        {
+          "issue": "斜线表示字段位置或别名的说明晚于首次使用",
+          "resolution": "移至世界书文档首次字段表前。"
+        },
+        {
+          "issue": "begin 的脚本及参数用法重复",
+          "resolution": "入口只引用 begin；工具文档集中说明脚本和参数用法。"
+        }
+      ]
+    },
+    "spec": {
+      "agent": "/root/workflow_spec_final",
+      "findings": [],
+      "result": "未发现要求缺失、错误实现或范围扩大"
+    },
+    "newConversionTests": 0
+  },
+  "thirdReview": {
+    "agent": "/root/workflow_semantic_closeout",
+    "scope": [
+      "SKILL.md",
+      "references/tools.md",
+      "references/character-fields.md",
+      "references/worldbook-fields.md",
+      "references/extension-fields.md"
+    ],
+    "findings": [
+      {
+        "issue": "四节字段表与后续操作未在同一有序列表中组织",
+        "resolution": "角色字段第2、3章和世界书第2、3章的字段表作为第1项，后续操作从第2项继续编号。"
+      }
+    ]
+  },
+  "finalReview": {
+    "standards": {
+      "fullScopeAgent": "/root/workflow_semantic_closeout",
+      "tableScopeAgent": "/root/workflow_tables_audit",
+      "wordingScopeAgent": "/root/workflow_field_wording_audit",
+      "tableScopeFindings": [
+        {
+          "issue": "scenario 的开场内容归属不具体",
+          "resolution": "引用目标文件与格式第2章的具体文件位置。"
+        },
+        {
+          "issue": "群聊选择的实现和删除理由混作选择对象",
+          "resolution": "明确按需求选择实现方式，删除时记录理由。"
+        }
+      ],
+      "remainingFindings": [],
+      "coverage": "五份全文审阅后，仅复审发生修改的四节字段表和两行表述。",
+      "result": "所有已报告问题均已修正；修改处的独立复审未发现实质问题。"
+    },
+    "spec": {
+      "agent": "/root/workflow_spec_final",
+      "remainingFindings": [],
+      "result": "未发现要求缺失、错误实现或范围扩大。"
+    },
+    "checks": {
+      "skillValidate": "passed",
+      "markdownlint": "passed",
+      "prettier": "passed",
+      "diffWhitespace": "passed",
+      "localLinks": {
+        "checked": 54,
+        "errors": 0
+      },
+      "renderedTablesInOrderedLists": {
+        "tools.md": 1,
+        "character-fields.md": 3,
+        "worldbook-fields.md": 4,
+        "extension-fields.md": 2
+      },
+      "entryAndDiagnosticTests": {
+        "passed": 9,
+        "skipped": 50,
+        "filesPassed": 2
+      },
+      "newConversionTests": 0
+    }
+  },
+  "conversionCorpus": "本次未执行新的角色卡转换验收。"
+}

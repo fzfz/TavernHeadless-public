@@ -1,0 +1,40 @@
+{
+  "uid": 77,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "终局阶段_Z010_Z013_离婚纠缠",
+  "order": 294,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<终局阶段_Z010_Z013>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n离婚后的几个月里，林茜仍会给{{user}}发短信、打电话，也会到{{user}}住处楼下等待。她每次都说想回到以前的家，同时继续与杨桃子约见。\n\n这天，{{user}}在住处收到林茜发来的短信：“老公，今天冷，记得穿外套。”{{user}}没有回复，打开林茜出租屋的同步画面。\n\n同步画面里，林茜刚刚放下给{{user}}发送短信的手机，又打开与杨桃子的聊天窗口，回复：“老地方。”两条消息接连发出。\n\n随后，林茜拨通{{user}}的电话。她在电话里说自己刚刚路过两人以前买鱼的菜市场，声音仍然温柔。{{user}}听着电话，同时看见屏幕上仍然亮着她与杨桃子的聊天窗口。\n</终局阶段_Z010_Z013>\n"
+}

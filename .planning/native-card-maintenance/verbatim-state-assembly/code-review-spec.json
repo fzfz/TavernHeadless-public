@@ -1,0 +1,77 @@
+{
+  "axis": "Spec",
+  "fixedPoint": ".planning/native-card-maintenance/verbatim-state-assembly/before/",
+  "diff": ".planning/native-card-maintenance/verbatim-state-assembly/review-diff.patch",
+  "spec": ".planning/native-card-maintenance/verbatim-state-assembly/spec.json",
+  "conclusion": "未发现实质性的要求遗漏、错误设计或未经要求的范围扩张。",
+  "findings": [],
+  "checklist": [
+    {
+      "requirement": 1,
+      "status": "通过",
+      "locations": [
+        ".agents/skills/native-card-conversion/SKILL.md:14-20",
+        ".agents/skills/native-card-conversion/references/acceptance.md:61-67"
+      ],
+      "assessment": "最高原则要求有效语义文字、HTML、CSS原文进入实际消费者；拆分、合并、技术转写和删除均受该原则约束。"
+    },
+    {
+      "requirement": 2,
+      "status": "通过",
+      "locations": [
+        ".agents/skills/native-card-conversion/SKILL.md:18",
+        ".agents/skills/native-card-conversion/references/acceptance.md:65"
+      ],
+      "assessment": "代码按正式API转写，核对输入、条件、分支、顺序、状态来源和结果。"
+    },
+    {
+      "requirement": 3,
+      "status": "通过",
+      "locations": [
+        ".planning/native-card-maintenance/verbatim-state-assembly/review-diff.patch"
+      ],
+      "assessment": "限定修订覆盖Skill入口及冲突说明，并新增架构方案；静态审阅不证明编辑动作的时间顺序。"
+    },
+    {
+      "requirement": 4,
+      "status": "通过",
+      "locations": [
+        ".planning/native-card-maintenance/verbatim-state-assembly/architecture-proposal.md:35-55",
+        ".planning/native-card-maintenance/verbatim-state-assembly/architecture-proposal.md:104-119",
+        ".planning/native-card-maintenance/verbatim-state-assembly/architecture-proposal.md:145-153"
+      ],
+      "assessment": "七类输入均定义来源、消费方式和验收；历史按轮次组织，当前成功结果只出现一次，首次更新和n为0有明确处理。"
+    },
+    {
+      "requirement": 5,
+      "status": "通过",
+      "locations": [
+        ".planning/native-card-maintenance/verbatim-state-assembly/architecture-proposal.md:21-31",
+        ".planning/native-card-maintenance/verbatim-state-assembly/architecture-proposal.md:80-84",
+        ".planning/native-card-maintenance/verbatim-state-assembly/architecture-proposal.md:127"
+      ],
+      "assessment": "模型型后端Agent约束复用系统组装器，状态Agent列明contributor、PromptIR、预设适配器及数据源接入；其他Agent重构明确排除于本次实施范围。"
+    },
+    {
+      "requirement": 6,
+      "status": "通过",
+      "locations": [
+        ".planning/native-card-maintenance/verbatim-state-assembly/architecture-proposal.md:5",
+        ".planning/native-card-maintenance/verbatim-state-assembly/architecture-proposal.md:160-168",
+        ".agents/skills/native-card-conversion/SKILL.md:32"
+      ],
+      "assessment": "架构实施等待批准；源卡及正式API资料保持只读。"
+    },
+    {
+      "requirement": 7,
+      "status": "通过",
+      "locations": [
+        ".planning/native-card-maintenance/verbatim-state-assembly/review-diff.patch",
+        ".agents/skills/native-card-conversion/SKILL.md:78"
+      ],
+      "assessment": "限定diff未新增转换测试或改动任务数据，整卡排除条件保持既有范围。"
+    }
+  ],
+  "pendingImplementation": "状态预设绑定、状态上下文schema、系统组装接入、历史准备、dry-run、错误语义及管理端同步均属于明确待批准的实施，未作为当前已实现功能验收。",
+  "evidenceLimit": "核对了assemblePrompt、PromptPreparationService、StateUpdateService、DisplaySnapshotService及相关schema；本次为文档Spec审阅，未执行转换、真实模型或后端实现测试。"
+}

@@ -1,0 +1,40 @@
+{
+  "uid": 132,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "刺激作用_画作繁衍",
+  "order": 253,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_stimulus_procreation>\n以下作用在{{user}}完成401画室录像查证后持续有效。\n\n只有林茜亲眼看见以下任一画面时，才触发本条作用：《繁衍》在手机消息中的局部、完整《繁衍》、百合花图、百合简笔画，或同一幅画尚未装裱的画面。仅提到作品名、仅看见文件名、仅由其他人物看见画面，或只听别人转述时，不触发本条作用。每次满足上述亲眼看见条件时，本条作用都重新发生。\n\n触发后，林茜会想起局子街55号401画室、王授军、百合图案和性交图案；她会脸红、发热、呼吸变乱、腿根发紧、阴道分泌物增加，并想要性交。\n\n林茜亲眼再次看见完整《繁衍》，或亲眼发现{{user}}站在完整《繁衍》前时，会脸红、发热、口渴，立即走到画前挡住画面，再催{{user}}离开。\n</qrxd_stimulus_procreation>\n"
+}

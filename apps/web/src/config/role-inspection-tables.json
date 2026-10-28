@@ -1,0 +1,97 @@
+{
+  "details": "查看详情",
+  "empty": "暂无记录。",
+  "variables": {
+    "title": "解析后的变量",
+    "columns": [
+      ["key", "名称"],
+      ["value", "值"],
+      ["sourceScope", "作用域"],
+      ["$detail", "来源"]
+    ]
+  },
+  "staged": {
+    "title": "变量暂存记录",
+    "columns": [
+      ["op", "操作"],
+      ["key", "变量"],
+      ["status", "状态"],
+      ["$detail", "来源与证据"]
+    ]
+  },
+  "promotions": {
+    "title": "变量跨作用域写入记录",
+    "columns": [
+      ["id", "写入记录 ID"],
+      ["status", "状态"],
+      ["targetScope", "目标作用域"],
+      ["$detail", "写入证据"]
+    ]
+  },
+  "memory": {
+    "title": "记忆条目",
+    "columns": [
+      ["type", "类型"],
+      ["status", "状态"],
+      ["content", "内容"],
+      ["importance", "重要性"],
+      ["confidence", "置信度"],
+      ["$detail", "来源与覆盖"]
+    ]
+  },
+  "memoryStats": {
+    "title": "记忆统计",
+    "columns": [
+      ["active", "有效"],
+      ["deprecated", "已弃用"],
+      ["summary", "摘要"],
+      ["fact", "事实"],
+      ["openLoop", "未完成事项"],
+      ["estimatedTokens", "估算 Token"]
+    ]
+  },
+  "memoryJobs": {
+    "title": "记忆任务",
+    "columns": [
+      ["id", "任务"],
+      ["status", "状态"],
+      ["attemptCount", "尝试次数"],
+      ["$detail", "错误与时间"]
+    ]
+  },
+  "branches": {
+    "title": "分支与历史",
+    "columns": [
+      ["branchId", "分支"],
+      ["floorCount", "轮次"],
+      ["latestState", "最新状态"],
+      ["$detail", "分支记录"]
+    ]
+  },
+  "live-tools": {
+    "title": "实时工具调用",
+    "columns": [
+      ["id", "调用 ID"],
+      ["toolName", "工具"],
+      ["status", "状态"],
+      ["$detail", "输入与输出"]
+    ]
+  },
+  "agent-types": {
+    "title": "工作区 Agent 类型",
+    "columns": [
+      ["name", "名称"],
+      ["key", "标识"],
+      ["status", "状态"],
+      ["$detail", "类型定义"]
+    ]
+  },
+  "agent-bindings": {
+    "title": "项目 Agent",
+    "columns": [
+      ["id", "绑定 ID"],
+      ["status", "状态"],
+      ["$detail", "绑定配置"]
+    ]
+  }
+}

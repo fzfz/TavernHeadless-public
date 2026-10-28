@@ -1,0 +1,43 @@
+{
+  "scope": "真实 Chrome 生产 widget，受控传输验证上下文、请求所有权及会话恢复。",
+  "cases": [
+    {
+      "name": "新增楼层后，已打开及保留的消息菜单更新权限且保持焦点",
+      "status": "passed"
+    },
+    {
+      "name": "过期刷新失败不覆盖已成功的新请求",
+      "status": "passed"
+    },
+    {
+      "name": "旧分页失败与finally保持新刷新loading的所有权",
+      "status": "passed"
+    },
+    {
+      "name": "卸载后迟到的分页失败不写入错误、按钮或报告",
+      "status": "passed"
+    },
+    {
+      "name": "零可见正文完成后显示消息空态",
+      "status": "passed"
+    },
+    {
+      "name": "候选切换按逻辑轮次恢复候选控件焦点，并在普通刷新后保留焦点",
+      "status": "passed"
+    },
+    {
+      "name": "真实刷新后自动加载并恢复较早消息阅读锚点，存储范围隔离",
+      "status": "passed"
+    },
+    {
+      "name": "真实刷新后自动定位较早消息编辑草稿并核对版本",
+      "status": "passed"
+    },
+    {
+      "name": "编辑草稿目标已删除时保留草稿并给出明确恢复反馈",
+      "status": "passed"
+    }
+  ],
+  "errors": [],
+  "status": "passed"
+}

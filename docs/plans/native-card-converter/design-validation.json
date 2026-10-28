@@ -1,0 +1,24 @@
+{
+  "status": "proposal",
+  "limits": {
+    "maxPackageBytes": 67108864,
+    "maxFiles": 4096,
+    "maxPathDepth": 16,
+    "temporaryWorkspaceBytes": 1073741824
+  },
+  "performance": {
+    "maxConversionSeconds": 30,
+    "maxProcessRssMiB": 512,
+    "sample": "maximum allowed package with text and media"
+  },
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ]
+}

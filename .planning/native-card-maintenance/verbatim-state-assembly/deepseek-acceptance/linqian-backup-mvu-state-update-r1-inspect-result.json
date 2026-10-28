@@ -1,0 +1,235 @@
+{
+  "view": {
+    "character_id": "AsqG5j-YuCWRA0jJQd4KE",
+    "character_version_id": "nQ5JCG2FQuKwYZmqHu6oC",
+    "name": "林茜_妻心如刀_v1.3.32 backup-mvu-state-update",
+    "delivery": {
+      "html": "<main class=\"linxi-page\">\n  <section class=\"linxi-chat\">\n    <h1>妻心如刀 · 林茜</h1>\n    <div data-opening></div>\n    <div data-chat></div>\n  </section>\n  <aside>\n    <div\n      id=\"statusBar\"\n      class=\"linxi-status status-bar\"\n      data-mvu-statusbar\n      aria-label=\"当前状态\"\n    >\n      <div class=\"linxi-status__head\">\n        <div class=\"linxi-status__title\">当前状态</div>\n        <div class=\"linxi-status__place\" id=\"status-place\">拆迁旧楼408室内</div>\n      </div>\n      <div class=\"linxi-status__profile\">\n        <img\n          id=\"status-portrait\"\n          class=\"linxi-status__portrait\"\n          alt=\"林茜头像\"\n        />\n        <div class=\"linxi-status__grid\">\n          <div class=\"linxi-status__cell\">\n            <div class=\"linxi-status__label\">日期</div>\n            <div class=\"linxi-status__value\" id=\"status-date\">\n              2025年03月10日 周一\n            </div>\n          </div>\n          <div class=\"linxi-status__cell\">\n            <div class=\"linxi-status__label\">时间</div>\n            <div class=\"linxi-status__value\" id=\"status-time\">12:24 · 中午</div>\n          </div>\n          <div class=\"linxi-status__cell\">\n            <div class=\"linxi-status__label\">林茜感情</div>\n            <div class=\"linxi-status__value\" id=\"status-affection\">505</div>\n            <progress id=\"status-affection-bar\" max=\"999\" value=\"0\"></progress>\n          </div>\n          <div class=\"linxi-status__cell\">\n            <div class=\"linxi-status__label\">林茜堕落</div>\n            <div class=\"linxi-status__value\" id=\"status-fall\">80</div>\n            <progress id=\"status-fall-bar\" max=\"999\" value=\"0\"></progress>\n          </div>\n        </div>\n      </div>\n      <div class=\"linxi-status__voice\">\n        <div class=\"linxi-status__label\">内心想法</div>\n        <div class=\"linxi-status__value\" id=\"status-voice\">数据暂不可用</div>\n      </div>\n      <section class=\"mvu-option-bar\" aria-label=\"行动选项\">\n        <div class=\"mvu-option-bar__grid\" data-option-container>\n          <button class=\"mvu-option\" data-option=\"0\">\n            <span class=\"mvu-option__label\">续演事件</span\n            ><span data-option-text=\"0\" class=\"mvu-option__text\"></span></button\n          ><button class=\"mvu-option\" data-option=\"1\">\n            <span class=\"mvu-option__label\">增加感情</span\n            ><span data-option-text=\"1\" class=\"mvu-option__text\"></span></button\n          ><button class=\"mvu-option\" data-option=\"2\">\n            <span class=\"mvu-option__label\">揭破当前秘密</span\n            ><span data-option-text=\"2\" class=\"mvu-option__text\"></span></button\n          ><button class=\"mvu-option\" data-option=\"3\">\n            <span class=\"mvu-option__label\">快速转场</span\n            ><span data-option-text=\"3\" class=\"mvu-option__text\"></span>\n          </button>\n        </div>\n        <p\n          class=\"mvu-option-bar__feedback\"\n          data-option-feedback\n          role=\"status\"\n          aria-live=\"polite\"\n        ></p>\n      </section>\n    </div>\n  </aside>\n</main>\n",
+      "css": ":host {\n  --bg-panel: #fff;\n  --bg-soft: #eaf4ff;\n  --text-main: #17324d;\n  --text-muted: #5d7690;\n  --accent: #1f7acb;\n  --accent-soft: #b9ddff;\n  --border: #c9e2f7;\n  --shadow: 0 6px 18px rgba(31, 122, 203, 0.12);\n  --space-xs: 4px;\n  --space-sm: 8px;\n  --space-md: 12px;\n}\n*,\n*::before,\n*::after {\n  box-sizing: border-box;\n}\nhtml {\n  -webkit-text-size-adjust: 100%;\n  -webkit-tap-highlight-color: transparent;\n}\n:host {\n  margin: 0;\n  padding: 0;\n  background: transparent;\n  color: var(--text-main);\n  font-family:\n    -apple-system, BlinkMacSystemFont, \"PingFang SC\", \"Microsoft YaHei\",\n    sans-serif;\n}\nbutton {\n  font: inherit;\n}\n.linxi-status {\n  width: min(100%, 620px);\n  margin: var(--space-sm) auto;\n  overflow: hidden;\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  background: var(--bg-panel);\n  box-shadow: var(--shadow);\n}\n.linxi-status__head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  padding: 9px 12px;\n  border-bottom: 1px solid var(--border);\n  background: linear-gradient(90deg, #dff0ff, #f7fbff);\n}\n.linxi-status__title {\n  color: #0f5fa8;\n  font-size: 14px;\n  font-weight: 700;\n}\n.linxi-status__place {\n  max-width: 45%;\n  overflow: hidden;\n  color: var(--text-muted);\n  font-size: 12px;\n  text-align: right;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.linxi-status__profile {\n  display: grid;\n  grid-template-columns: 104px minmax(0, 1fr);\n  gap: 12px;\n  padding: 12px;\n  background: #f8fcff;\n}\n.linxi-status__portrait {\n  display: block;\n  width: 104px;\n  height: 156px;\n  object-fit: cover;\n  object-position: center center;\n  border: 1px solid #b9d8ef;\n  border-radius: 7px;\n  background: var(--bg-soft);\n  box-shadow: 0 3px 10px rgba(30, 92, 145, 0.12);\n}\n.linxi-status__grid {\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  grid-template-rows: repeat(2, minmax(0, 1fr));\n  height: 156px;\n  gap: 1px;\n  overflow: hidden;\n  border: 1px solid var(--border);\n  border-radius: 7px;\n  background: var(--border);\n}\n.linxi-status__cell {\n  min-width: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  padding: 8px 10px;\n  background: var(--bg-panel);\n}\n.linxi-status__label {\n  margin-bottom: 3px;\n  color: var(--text-muted);\n  font-size: 11px;\n  white-space: nowrap;\n}\n.linxi-status__value {\n  min-height: 18px;\n  overflow: hidden;\n  color: var(--text-main);\n  font-size: 13px;\n  font-weight: 700;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.linxi-status__bar {\n  height: 6px;\n  margin-top: 6px;\n  overflow: hidden;\n  border-radius: 999px;\n  background: var(--bg-soft);\n}\n.linxi-status__fill {\n  width: 0;\n  height: 100%;\n  border-radius: 999px;\n  background: linear-gradient(90deg, var(--accent-soft), var(--accent));\n  transition: width 0.2s ease;\n}\n.linxi-status__voice {\n  padding: 10px 12px 11px;\n  border-top: 1px solid var(--border);\n  background: var(--bg-panel);\n}\n.linxi-status__voice .linxi-status__value {\n  min-height: 34px;\n  line-height: 1.45;\n  white-space: normal;\n}\n@media (max-width: 420px) {\n  .linxi-status {\n    width: 100%;\n    margin: 4px 0;\n  }\n  .linxi-status__profile {\n    grid-template-columns: 88px minmax(0, 1fr);\n    gap: 9px;\n    padding: 9px;\n  }\n  .linxi-status__portrait {\n    width: 88px;\n    height: 132px;\n    border-radius: 6px;\n  }\n  .linxi-status__grid {\n    height: 132px;\n  }\n  .linxi-status__cell {\n    padding: 5px 6px;\n  }\n  .linxi-status__label {\n    font-size: 10px;\n  }\n  .linxi-status__value {\n    font-size: 11px;\n  }\n  .linxi-status__place {\n    max-width: 40%;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .linxi-status__fill {\n    transition: none;\n  }\n}\n\n.mvu-option-bar {\n  font-family: inherit;\n  color: inherit;\n  margin-top: 12px;\n}\n.mvu-option-bar__grid {\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: 8px;\n}\n.mvu-option {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n  width: 100%;\n  padding: 10px 12px;\n  border: 1px solid rgba(127, 127, 127, 0.35);\n  border-radius: 10px;\n  background: rgba(127, 127, 127, 0.08);\n  color: inherit;\n  text-align: left;\n  cursor: pointer;\n}\n.mvu-option:hover:not(:disabled) {\n  background: rgba(127, 127, 127, 0.16);\n}\n.mvu-option:disabled {\n  cursor: not-allowed;\n  opacity: 0.48;\n}\n.mvu-option__label {\n  font-weight: 700;\n  font-size: 0.9em;\n}\n.mvu-option__text {\n  font-size: 0.92em;\n  line-height: 1.45;\n  overflow-wrap: anywhere;\n}\n.mvu-option-bar__feedback {\n  margin: 8px 0 0;\n  color: #c44;\n  font-size: 0.9em;\n}\n@media (max-width: 620px) {\n  .mvu-option-bar__grid {\n    grid-template-columns: 1fr;\n  }\n}\n\n.linxi-page {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) minmax(380px, 620px);\n  gap: 24px;\n  padding: 24px;\n  background: #f1f5f9;\n  min-height: calc(100vh - 64px);\n  color: #17324d;\n}\n.linxi-chat {\n  min-width: 0;\n}\n.linxi-chat h1 {\n  font-size: 24px;\n}\n.linxi-chat [data-chat] {\n  min-height: 70vh;\n}\n.linxi-chat [data-opening] {\n  white-space: pre-wrap;\n  max-height: 22vh;\n  overflow: auto;\n  line-height: 1.8;\n  margin-bottom: 16px;\n}\nprogress {\n  height: 8px;\n  width: 100%;\n  accent-color: #1f7acb;\n}\n.linxi-status {\n  width: 100%;\n  font-size: 16px;\n}\n.linxi-status__title {\n  font-size: 20px;\n}\n.linxi-status__value {\n  font-size: 16px;\n}\n.linxi-status__label {\n  font-size: 13px;\n}\n@media (max-width: 850px) {\n  .linxi-page {\n    grid-template-columns: 1fr;\n    padding: 12px;\n  }\n  .linxi-page aside {\n    grid-row: 1;\n  }\n}\n",
+      "floorHtml": null,
+      "assets": {
+        "portrait": {
+          "kind": "image",
+          "url": "/role-assets/nQ5JCG2FQuKwYZmqHu6oC/assets/portrait.png",
+          "label": "林茜",
+          "tags": [
+            "portrait",
+            "avatar"
+          ]
+        },
+        "visitor": {
+          "kind": "image",
+          "url": "/role-assets/nQ5JCG2FQuKwYZmqHu6oC/assets/visitor.svg",
+          "label": "演绎者",
+          "tags": [
+            "avatar"
+          ]
+        }
+      },
+      "data": {
+        "characterName": "林茜",
+        "characterAvatar": "portrait",
+        "performerName": "裴修远",
+        "performerAvatar": "visitor",
+        "optionRules": {
+          "minimumLength": 1,
+          "maximumLength": 200,
+          "forbiddenPattern": "[\\r\\n|<>{}]",
+          "prefixes": [
+            "元指令:",
+            "",
+            "",
+            "元指令:"
+          ]
+        },
+        "opening": "中午的拆迁楼有一股潮灰味。\n\n裴修远中午下班回家，上到二楼时，远远看见林茜穿着白色雪纺淑女裙，趴在二楼一扇半旧木门外往里看。她一米七多的身高、细腰和背影太好认，裴修远本来要继续上三楼，脚步却停住了。\n\n这个时段楼里住户很少。那扇门的主人裴修远也认识，是外号叫杨桃子的四十多岁光棍，瘦小、半秃、懦弱怕事。\n\n~~裴修远:林茜趴在杨桃子门外看什么？这种老光棍有什么好看的？她平时连这种人多看一眼都嫌脏，怎么会停在这里？~~\n\n裴修远站的位置离林茜那边有些远，直接过去要绕半圈；那个房间的后窗却在近处，正好能看见林茜看的地方。\n\n~~裴修远:先看看她到底在看什么。要只是杨桃子在发疯，我就过去把她叫回家。~~\n\n很多年后，裴修远仍会反复想起这一刻。如果那时直接过去叫住林茜，很多事情会从这里断掉。可当时裴修远只是想先看一眼。\n\n裴修远贴到二楼后窗外时，窗纸被风掀开一角。房间里灯光发暗，杨桃子坐在小折凳上，瘦小的肩背缩成一团，几根稀疏头发贴着头皮。他一只手握着阴茎自慰，另一只手捏着一张照片，一边看一边喘。屋里灯光太暗，裴修远从后窗外看不清照片上是谁。\n\n~~裴修远:原来这个老光棍在撸管。林茜在门外看这个？操，不能让她继续看，我现在就过去叫她回家。~~\n\n门忽然响了一声。\n\n林茜推门进来。她穿着白色雪纺裙，脚上是白色流苏长靴，背挺得很直。杨桃子吓得猛一哆嗦，提裤子的手乱成一团，照片被他藏到身后。\n\n林茜径直走到他面前，垂下眼看着他。\n\n“照片还给我。”\n\n杨桃子嘴唇发抖，把照片递出来。林茜拿回照片，看清照片上的自己，脸色一下冷下去。\n\n“那么喜欢看着我的照片打手枪？”\n\n杨桃子往后缩，裤腰还没整理好，手背挡在身前，连头都不敢抬。\n\n林茜没有离开。她拉过那把高背椅，在杨桃子对面坐下，双手抱臂，长靴靴尖点着地面。\n\n“我现在人在这里，表演给我看。”\n\n杨桃子连连摇头，喉咙里挤出含混的求饶。林茜盯着他，声音慢下来。\n\n“我把这件事告诉我老公，你就死定了。”\n\n\n杨桃子被这句话吓住，磨蹭着坐回小折凳。他手抖着掏出阴茎，低着头开始自慰。那东西又细又黑，阴囊却涨得很大。林茜看了一眼，脸上的厌恶里多出一点冷笑。\n\n“你叫杨桃子，这就是你的桃子？”\n\n杨桃子的手越抖越厉害。几分钟后，他的阴茎软下去。他抬头看林茜，小声说：“出不来，真的出不来……”\n\n“就这样，还敢做这种不要脸的事。”\n\n林茜伸出穿着白色流苏长靴的脚，靴尖碰了碰杨桃子的阴囊。杨桃子猝不及防地叫了一声。她皱了一下眉，又把靴底往上移，踩住他短小的阴茎，把它压在他小腹上。\n\n杨桃子痛得尖叫，身体却反而起了反应。被靴底压住的阴茎一点点硬起来。\n\n林茜低头看着脚下的变化，眼神变得很冷。她没有立刻收脚，反而狞笑着加重了力道。\n\n裴修远在窗外看着这个情形心中有些许的不安，这个女人几乎跟自己平常认识的温柔顺从的那个妻子完全不一样。\n\n~~裴修远:也许是她本身就是这样的人。只是她爱我，所以不敢让我知道她是这样的人。~~\n\n杨桃子又叫了一声，居然被踩着射了出来。白色精液溅到林茜的靴面和流苏上。\n\n那个可怜的小男人，在椅子上只摊了三四分钟。\n\n林茜猛地站起身。\n\n“你竟敢弄脏我的鞋子！”\n\n杨桃子慌忙跪下，找来卫生纸，低着头给她擦靴子。他的手抖得厉害，纸团擦过白色流苏，又擦到靴面边缘。林茜居高临下地看着他，脸上还带着怒意。\n\n擦到一半，杨桃子的阴茎又慢慢硬起来,龟头变大像小红桃子一样巨大.\n\n林茜看见了。\n\n“你这是什么毛病？怎么又硬了?!”\n\n杨桃子吓得往后缩，脚跟撞到小折凳。照片从他身后滑下来，落在水泥地上。\n\n“对不起……对不起……我没故意。”\n\n\n林茜回头坐到高凳上,居高临下的看着杨桃子,\"再给我表演一次!\"\n\n杨桃子颤抖着继续套弄,很快,大量白色精液又喷射在地上,但是,那根刚射过的阴茎垂下去一点,又在她视线里慢慢挺起，龟头胀得比刚才更红，龟头巨大狰狞扭曲像人脸一样,杨桃子瘫在墙边发抖，喉咙里只剩断断续续的喘气。\n\n林茜低头看着一眼地上那一摊,低下头,盯着那巨大的龟头,不知道在想什么。\n\n“第二次居然能射这么多。反而没有变软?还变这么大?”\n\n\n林茜看向房间角落。杨桃子房间的杂物旁放着一只旧飞机杯，外壳发旧，口沿沾着灰。她弯腰拿起那只旧飞机杯。\n\n杨桃子抬头看见她手里的东西，脸色一下变了。\n\n“别……别用那个……”\n\n林茜没有理他。她蹲到他面前，一只手抓住他的阴茎，似乎带着狞笑的表情,用另一只手把旧飞机杯的入口抵上龟头。\n\n~~裴修远:她要用那个东西套他。林茜，你到底还想干什么？~~\n\n窗外很静。裴修远贴在后窗外，手指扣着窗沿，指腹上全是墙灰。\n\n<StatusPlaceHolderImpl/>"
+      },
+      "mode": "custom",
+      "scriptUrl": "/role-assets/nQ5JCG2FQuKwYZmqHu6oC/main.js"
+    },
+    "initial": {
+      "sessionId": "CHQlZSEDgZVUGoFmRwMqM",
+      "branchId": "main",
+      "floorId": null,
+      "attemptId": null,
+      "versionId": "nQ5JCG2FQuKwYZmqHu6oC",
+      "snapshotId": "e1a15450-c5e3-4973-b327-22acca7cb61b",
+      "parentSnapshotId": null,
+      "variables": {
+        "林茜": {
+          "感情": 504.85,
+          "堕落": 80,
+          "内心想法": "**我最近总是腿里燥热，可能是例假快来了。这条狗偷我的照片，我拿老公吓住他，他就不敢反抗。被靴子踩着会硬，射完还会再硬，第二次还射这么多，好玩。我要用旧飞机杯把他精液吸出来喂给他吃完就回家,这会很好玩的,就这一次,以后不来了。他是狗,狗不会反抗,狗可以当玩具。不能让老公知道。**"
+        },
+        "行动选项": [
+          "元指令:细腻演绎5分钟内林茜的剧情。",
+          "裴修远绕到门前叫住林茜，请她先出来，愿意私下听她把事情说清。",
+          "裴修远绕到门口现身，追问杨桃子从哪里得到林茜的照片。",
+          "元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+        ],
+        "世界": {
+          "日期": "2025-03-10",
+          "星期": "周一",
+          "小时": 12,
+          "分钟": 24,
+          "状态_A1_日期": "2025-03-10",
+          "时间": "中午",
+          "地点": "拆迁旧楼408室内",
+          "开局模式": "原始首次撞见",
+          "终局路线": "未定",
+          "终局阶段": "Z000",
+          "事件_D001记录日期": "2025-03-10",
+          "已触发事件": {
+            "事件_E001": false,
+            "事件_E002": false,
+            "事件_E003": false,
+            "事件_E004": false,
+            "事件_E005": false,
+            "事件_E006": false,
+            "事件_E008": false,
+            "事件_E009": false,
+            "事件_E010": false,
+            "事件_E011": false,
+            "事件_E012": false,
+            "事件_E013": false,
+            "事件_E014": false,
+            "事件_E015": false,
+            "事件_E016": false,
+            "事件_E017": false,
+            "事件_E018": false,
+            "事件_E019": false,
+            "事件_E020": false,
+            "事件_E021": false,
+            "事件_E022": false,
+            "事件_E023": false,
+            "事件_E024": false,
+            "事件_E025": false,
+            "事件_E026": false,
+            "事件_E027": false,
+            "事件_E028": false,
+            "事件_E029": false,
+            "事件_E030": false,
+            "事件_E031": false,
+            "事件_E032": false,
+            "事件_E033": false,
+            "事件_E034": false,
+            "事件_E035": false,
+            "事件_E048": false,
+            "事件_E049": false
+          },
+          "已离婚": false,
+          "状态_A1_计数": 1
+        }
+      },
+      "source": {
+        "kind": "initial",
+        "runId": null,
+        "jobId": null
+      }
+    },
+    "current": {
+      "sessionId": "CHQlZSEDgZVUGoFmRwMqM",
+      "branchId": "main",
+      "floorId": "NQh4zifa-yaxNAxbUaX_C",
+      "attemptId": "j9b0y1KwyuHok1WBMVGDO:1",
+      "versionId": "nQ5JCG2FQuKwYZmqHu6oC",
+      "snapshotId": "2e4cee3e-64c3-4375-9efd-3da773040bfb",
+      "parentSnapshotId": "e1a15450-c5e3-4973-b327-22acca7cb61b",
+      "variables": {
+        "林茜": {
+          "感情": 503.85,
+          "堕落": 95,
+          "内心想法": "**他怎么会在这里。他说在后窗看见了，看见多少？看见我踩他、看见我拿飞机杯？我脸上那点笑他肯定也看见了。我平时在他面前不是这样的。照片我拿回来了，鞋也擦干净了，我咬死是教训一个偷拍的老东西，他挑不出毛病。可他没信，他一句“你平时不是这样的人”就堵回来了。他问我看了多久，我说“那你看得挺全的”，他什么都没答。他到底信不信我？先做饭，先把这个中午过下去，别让他再想。**"
+        },
+        "行动选项": [
+          "元指令:细腻演绎5分钟内林茜的剧情。",
+          "林茜进厨房做饭，一边切菜一边留意客厅里裴修远的动静，试探他还在想什么。",
+          "林茜主动靠近裴修远，用妻子面的撒娇和照料把中午的事压过去，观察他是否接受。",
+          "元指令:简要收束描述当前剧情后果后，时间推进到林茜第二天上午家电城柜台继续上班10:00时,重置当日需重置的变量。"
+        ],
+        "世界": {
+          "日期": "2025-03-10",
+          "星期": "周一",
+          "小时": 12,
+          "分钟": 36,
+          "状态_A1_日期": "2025-03-10",
+          "时间": "中午",
+          "地点": "夫妻家玄关",
+          "开局模式": "原始首次撞见",
+          "终局路线": "未定",
+          "终局阶段": "Z000",
+          "事件_D001记录日期": "2025-03-10",
+          "已触发事件": {
+            "事件_E001": false,
+            "事件_E002": false,
+            "事件_E003": false,
+            "事件_E004": false,
+            "事件_E005": false,
+            "事件_E006": false,
+            "事件_E008": false,
+            "事件_E009": false,
+            "事件_E010": false,
+            "事件_E011": false,
+            "事件_E012": false,
+            "事件_E013": false,
+            "事件_E014": false,
+            "事件_E015": false,
+            "事件_E016": false,
+            "事件_E017": false,
+            "事件_E018": false,
+            "事件_E019": false,
+            "事件_E020": false,
+            "事件_E021": false,
+            "事件_E022": false,
+            "事件_E023": false,
+            "事件_E024": false,
+            "事件_E025": false,
+            "事件_E026": false,
+            "事件_E027": false,
+            "事件_E028": false,
+            "事件_E029": false,
+            "事件_E030": false,
+            "事件_E031": false,
+            "事件_E032": false,
+            "事件_E033": false,
+            "事件_E034": false,
+            "事件_E035": false,
+            "事件_E048": false,
+            "事件_E049": false
+          },
+          "已离婚": false,
+          "状态_A1_计数": 1
+        }
+      },
+      "source": {
+        "kind": "floor",
+        "runId": "j9b0y1KwyuHok1WBMVGDO",
+        "jobId": null
+      }
+    },
+    "processing": {
+      "pendingMain": null,
+      "pendingFollowups": false,
+      "pendingStateFloorId": null
+    },
+    "capabilities": {
+      "send": true,
+      "history": true,
+      "customFloors": false
+    }
+  },
+  "messages": [
+    {
+      "id": "OAPik9bXAg2TsX6PW3lEe",
+      "role": "user",
+      "content": "裴修远松开窗沿，沿楼道绕到房门前，停在门口。“林茜，先把手里的东西放下。我刚才在后窗看见了。你先出来，我们把事情说清楚。”",
+      "source": "api"
+    },
+    {
+      "id": "d5-hg1l-_QowTM5TuYKkW",
+      "role": "assistant",
+      "content": "\n\n裴修远说完那句话，楼道里安静了两秒。\n\n门缝里先探出杨桃子的半张脸，半秃的脑袋缩在门框后头，眼珠子转了一圈，看清来人是谁，整个人像被抽了骨头一样矮下去。\n\n“大、大哥……”\n\n裴修远没看他。目光越过那颗半秃脑袋，落在屋里那把高背椅上。\n\n林茜还坐在那儿。白色雪纺裙铺在椅面上，手里攥着那只旧飞机杯，指节发白。她脸上那点狞笑已经没了，嘴唇抿成一条线，眼睛盯着门口，看不出是惊是怒。\n\n“老公。”\n\n她开口了，声音比平时低，尾音却稳。\n\n“你怎么在这儿？”\n\n裴修远站在门槛外，没往里迈。屋里的潮味混着一股说不清的腥气扑过来，他皱了皱眉。\n\n“你先出来。”\n\n“你刚才说，在后窗看见了。”\n\n“看见了。”\n\n“看见什么了？”\n\n裴修远看着她手里的飞机杯，又看了一眼缩在墙角的杨桃子。那小男人裤子还没提好，细黑的阴茎半软不硬地垂在裤腰外，地上两摊白浊，一摊在水泥地上，一摊溅在流苏靴面。\n\n“你让我先出来，还是让我先说清楚？”\n\n林茜把飞机杯往旁边凳子上一搁，站起身。裙摆落下来，遮住靴面大半，只露出一点白色流苏尖。她比他矮不了多少，平视过来，脸上没什么表情。\n\n“行。我出来。”\n\n她走过杨桃子身边时脚步没停。杨桃子缩着脖子往墙根贴，嘴里含含糊糊地念着什么“林姐”“对不起”，林茜连眼角都没给他。\n\n裴修远退后半步，让出门口。林茜走出来，反手把门带上。楼道里光线暗，她站在他面前，白色裙子沾了些灰，肩膀微微绷着。\n\n“回家说。”\n\n裴修远没动。\n\n“他刚才在屋里干什么，你又在屋里干什么，我都看见了。现在说。”\n\n林茜抬眼看他。两秒，三秒。她忽然笑了一下，嘴角提起来，眼睛里没什么温度。\n\n“你看见什么了？看见你老婆坐在破椅子上，看一个老光棍撸管？”\n\n“你手里那个东西。”\n\n“那个啊。”她偏了偏头，“他弄脏我鞋，我让他赔。他赔不起，我就让他自己弄干净。怎么了？”\n\n裴修远盯着她。她脸上那点笑还挂着，下巴微抬，和平时跟他撒娇耍赖的样子完全是两个人。\n\n“林茜。”\n\n“嗯？”\n\n“你平时不是这样的人。”\n\n“我平时是什么样的人？”\n\n她往前走了半步，离他更近，声音压得更低。\n\n“老公，你看见的，是你老婆在管一个不要脸的老东西。他拿我照片干那种事，被我撞见了。我教训他一下，过分吗？”\n\n裴修远没接话。她说的每个字都挑不出毛病，可那两摊精液、那只飞机杯、她脸上那点狞笑，拼在一起就是不对。\n\n“照片呢？”\n\n“什么照片？”\n\n“他手里那张。”\n\n林茜顿了一下。手伸进裙子侧袋，摸出一张折了角的照片，递过来。裴修远接过去，照片上确实是林茜，穿着白色雪纺衬衣站在家电城柜面后头，不知道什么时候被人偷拍的。\n\n“哪儿来的？”\n\n“你问他去。”\n\n裴修远把照片折好，揣进自己口袋。他看了一眼那扇关上的门，又看了一眼林茜。\n\n“先回家。”\n\n“行。”\n\n林茜转身就走，白色流苏长靴踩在水泥楼梯上，哒、哒、哒，节奏一点不乱。裴修远跟在后头，下到一楼拐角时，听见楼上那扇门轻轻开了又关。\n\n他没回头。\n\n走出旧楼，中午的太阳晃得人眯眼。林茜站在楼外空地上等他，裙摆被风吹起来一点，手背在身后。\n\n“老公。”\n\n“嗯。”\n\n“你信我吗？”\n\n裴修远走到她旁边，没看她，看着前面的路。\n\n“先回家。”\n\n林茜没再问。两人一前一后往家走，隔着半步距离。她走得比平时快，白色长靴的跟敲在水泥地上，像在数着什么。\n\n走到小区楼下时，她忽然停住。\n\n“老公。”\n\n裴修远停下脚步，回头看她。\n\n林茜站在单元门口，手从背后拿出来，指尖捏着裙摆一角，攥了又松。\n\n“你刚才在后窗，看了多久？”\n\n裴修远看着她。她脸上那点冷已经褪干净了，嘴唇抿着，眼睛里头有点说不清的东西，像是怕，又像是别的。\n\n“从你推门进去之前。”\n\n林茜的睫毛动了一下。\n\n“哦。”\n\n她低下头，转身往单元门里走。手搭上门把时，又停住，没回头。\n\n“那你看得挺全的。”\n\n裴修远没说话。她推开门，楼道里的阴影兜头罩下来，白色裙子暗了半截。她站在门里等他，一只手还搭在门把上。\n\n“进来啊，老公。我给你做饭。”",
+      "source": "narrator"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "status": "terminated",
+  "start": "2026-10-06T03:56:22.289Z",
+  "terminatedAt": "2026-10-06T04:51:36.309Z",
+  "elapsedSecondsToTermination": 3314.02,
+  "normalCompletionTime": null,
+  "offlineAcceptanceCompletionTime": null,
+  "hostToolCalls": 214,
+  "compactionTimestamps": [
+    "2026-10-06T04:13:51.877Z",
+    "2026-10-06T04:40:00.974Z"
+  ],
+  "threadTokenUsage": {
+    "input_tokens": 29061086,
+    "cached_input_tokens": 28372992,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 154073,
+    "reasoning_output_tokens": 95715,
+    "total_tokens": 29215159
+  },
+  "actualFee": null,
+  "dispatchCount": 1,
+  "guidanceMessages": 0,
+  "commandCallTimestamps": {
+    "begin": [
+      "2026-10-06T03:57:06.282Z"
+    ],
+    "map-entry": [
+      "2026-10-06T04:01:51.760Z",
+      "2026-10-06T04:03:50.371Z",
+      "2026-10-06T04:16:31.433Z"
+    ],
+    "copy": [
+      "2026-10-06T04:15:00.211Z",
+      "2026-10-06T04:15:05.678Z",
+      "2026-10-06T04:24:09.075Z",
+      "2026-10-06T04:26:23.523Z"
+    ],
+    "parse": [
+      "2026-10-06T04:15:25.102Z",
+      "2026-10-06T04:15:31.013Z",
+      "2026-10-06T04:15:35.842Z",
+      "2026-10-06T04:15:54.082Z"
+    ],
+    "index": [
+      "2026-10-06T04:35:30.457Z",
+      "2026-10-06T04:37:01.475Z",
+      "2026-10-06T04:44:43.546Z",
+      "2026-10-06T04:45:04.692Z"
+    ],
+    "validate": [
+      "2026-10-06T04:37:07.551Z",
+      "2026-10-06T04:44:47.883Z",
+      "2026-10-06T04:45:08.116Z"
+    ],
+    "pack": [
+      "2026-10-06T04:45:18.190Z"
+    ],
+    "formal": [
+      "2026-10-06T04:45:22.236Z"
+    ],
+    "preview": [
+      "2026-10-06T04:48:25.145Z",
+      "2026-10-06T04:51:05.754Z"
+    ]
+  },
+  "scope": "timestamps count host calls; map-entry shell loops execute133 commands per batch; aborted incomplete trial is not directly comparable to completed104m16s baseline",
+  "efficiency": "failed20m_write_and30m_offline_targets"
+}

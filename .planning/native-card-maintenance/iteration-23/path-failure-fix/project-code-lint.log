@@ -1,0 +1,20 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> tavern-headless@0.1.0 lint /srv/tavern/TavernHeadless-remove-preview-credentials
+> eslint . "--ignore-pattern" "**/.planning/**"
+
+
+/srv/tavern/TavernHeadless-remove-preview-credentials/apps/api/src/debug/file-debug-sink.ts
+  69:5  warning  Unused eslint-disable directive (no problems were reported from 'no-console')
+
+/srv/tavern/TavernHeadless-remove-preview-credentials/apps/studio/src/modules/graph/assistant/AssistantMarkdown.vue
+  79:28  warning  'v-html' directive can lead to XSS attack  vue/no-v-html
+
+/srv/tavern/TavernHeadless-remove-preview-credentials/apps/web/src/components/workspace/MarkdownBlock.vue
+  28:35  warning  'v-html' directive can lead to XSS attack  vue/no-v-html
+
+/srv/tavern/TavernHeadless-remove-preview-credentials/packages/core/src/llm/provider-registry.ts
+  48:3  warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-require-imports')
+
+✖ 4 problems (0 errors, 4 warnings)
+  0 errors and 2 warnings potentially fixable with the `--fix` option.

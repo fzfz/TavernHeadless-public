@@ -1,0 +1,1267 @@
+import {
+  findModelCallPersistenceError,
+  modelCallPersistenceDetails,
+} from "@tavern/core";
+import { apiErrorMessages } from "@tavern/shared";
+import { WorldbookTriggerError } from "@tavern/adapters-sillytavern";
+/**
+ * Chat Routes
+ *
+ * 业务路由：核心聊天接口。
+ *
+ * POST /sessions/:id/respond         — 发送消息并获取 AI 回复
+ * POST /sessions/:id/respond/stream  — SSE 流式聊天
+ * POST /sessions/:id/respond/dry-run — Prompt 组装调试（无副作用）
+ * POST /sessions/:id/regenerate      — 重新生成最后一轮 AI 回复
+ */
+
+import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+
+import {
+  type DryRunRequest,
+  type EditAndRegenerateRequest,
+  type RegenerateRequest,
+  type RespondRequest,
+  type RespondRuntimeOptions,
+  type RetryFloorRequest,
+  type RetryStepRequest,
+} from "../../services/chat/contracts.js";
+import { ChatService } from "../../services/chat/chat-service.js";
+import { ChatServiceError } from "../../services/chat/errors.js";
+import {
+  ensureOptionalObjectBody,
+  parseWithSchema,
+  sendError,
+} from "../../lib/http.js";
+import {
+  type ProjectAccessService,
+  ProjectAccessServiceError,
+  type ProjectAction,
+  type ProjectActorInput,
+} from "../../services/project-access-service.js";
+import { getRequestAuthContext } from "../../plugins/auth.js";
+import { applyCorsHeaders } from "../../plugins/cors.js";
+import {
+  operationActorFromRequest,
+  operationRequestIdFromRequest,
+} from "../../services/operation-log-service.js";
+import type { SessionStateOperationLogContext } from "../../session-state/session-state-operation-log.js";
+import type { TurnCommitOperationLogContext } from "../../services/turn-commit-service.js";
+
+import {
+  chatMutationErrorResponses,
+  dryRunBodyJsonSchema,
+  dryRunBodySchema,
+  dryRunSuccessResponseJsonSchema,
+  editAndRegenerateBodyJsonSchema,
+  editAndRegenerateBodySchema,
+  editAndRegenerateSuccessResponseJsonSchema,
+  floorIdParamsSchema,
+  idParamsJsonSchema,
+  messageIdParamsSchema,
+  regenerateBodyJsonSchema,
+  regenerateBodySchema,
+  regenerateSuccessResponseJsonSchema,
+  respondBodyJsonSchema,
+  respondBodySchema,
+  respondSuccessResponseJsonSchema,
+  retryFloorBodyJsonSchema,
+  retryFloorBodySchema,
+  retryStepBodyJsonSchema,
+  retryStepBodySchema,
+  retryStepSuccessResponseJsonSchema,
+  sessionIdParamsJsonSchema,
+  sessionIdParamsSchema,
+  streamResponseExample,
+} from "./schemas.js";
+import type { RegisterChatRoutesOptions } from "./schemas.js";
+import {
+  ensureTurnSessionStateWritesEnabled,
+  mapDryRunDebugOptionsRequest,
+  mapDryRunVisibilityRequest,
+  mapGenerationParams,
+  mapLiveDebugOptionsRequest,
+  mapPromptBudgetRequest,
+  mapPromptDeliveryRequest,
+  mapPromptRuntimeInjectionsRequest,
+  mapPromptSourceSelectionRequest,
+  mapPromptStructureRequest,
+  mapTurnSessionStateWritesRequest,
+} from "./mappers.js";
+import {
+  handleChatError,
+  logNativePipelineError,
+  mapChatServiceError,
+  mapMemoryToSnakeCase,
+  mapPromptRuntimeMemoryTraceToSnakeCase,
+  mapOptionalPromptDebugResponseFields,
+  mapPromptSnapshotToSnakeCase,
+  mapRunToSnakeCase,
+  mapUsageToSnakeCase,
+  mapWorldbookMatchDetail,
+} from "./presenters.js";
+import { writeSse } from "./sse-writer.js";
+
+export async function registerChatRoutes(
+  app: FastifyInstance,
+  chatService: ChatService,
+  options: RegisterChatRoutesOptions = {},
+): Promise<void> {
+  const enableSseChat = options.enableSseChat === true;
+  app.get<{ Params: { id: string; operationId: string } }>("/sessions/:id/respond/operations/:operationId", {
+    schema: { tags: ["chat"], operationId: "getResponseOperation", params: { type: "object", required: ["id", "operationId"], properties: { id: { type: "string", minLength: 1 }, operationId: { type: "string", minLength: 1, maxLength: 200 } }, additionalProperties: false }, response: { 200: { type: "object", required: ["data"], properties: { data: { type: "object", required: ["operationId", "sessionId", "branchId", "floorId", "floorState", "runStatus", "publicPhase", "intent"], properties: { intent: { type: "string", enum: ["send", "continue", "regenerate"] }, operationId: { type: "string" }, sessionId: { type: "string" }, branchId: { type: "string" }, floorId: { type: "string" }, floorState: { type: "string" }, runStatus: { type: ["string", "null"] }, publicPhase: { type: ["string", "null"] } }, additionalProperties: false } } }, 404: chatMutationErrorResponses[404] } },
+  }, async (request, reply) => {
+    try { return { data: await chatService.getResponseOperation(getRequestAuthContext(request).accountId, request.params.id, request.params.operationId) }; }
+    catch (error) { return handleChatError(error, request, reply); }
+  });
+  const enablePromptDryRun = options.enablePromptDryRun === true;
+  app.post<{ Params: { id: string; operationId: string } }>("/sessions/:id/respond/operations/:operationId/stop", {
+    schema: { tags: ["chat"], operationId: "stopResponseOperation", params: { type: "object", required: ["id", "operationId"], properties: { id: { type: "string", minLength: 1 }, operationId: { type: "string", minLength: 1, maxLength: 200 } }, additionalProperties: false }, response: { 200: { type: "object", required: ["data"], properties: { data: { type: "object", required: ["operationId", "requested"], properties: { operationId: { type: "string" }, requested: { type: "boolean" } }, additionalProperties: false } } }, 404: chatMutationErrorResponses[404] } },
+  }, async (request, reply) => {
+    try { return { data: await chatService.stopResponseOperation(getRequestAuthContext(request).accountId, request.params.id, request.params.operationId) }; }
+    catch (error) { return handleChatError(error, request, reply); }
+  });
+  const enableClientData = options.enableClientData === true;
+  const cors = options.cors ?? { origins: true, credentials: false };
+  function toActorInput(
+    auth: ReturnType<typeof getRequestAuthContext>,
+  ): ProjectActorInput {
+    return {
+      actorType: auth.actorType,
+      actorAccountId: auth.actorAccountId,
+      actorClientId: auth.actorClientId,
+    };
+  }
+
+  const projectAccessService = options.projectAccessService;
+
+  function authorizeProjectWriteBySessionId(
+    reply: FastifyReply,
+    auth: ReturnType<typeof getRequestAuthContext>,
+    sessionId: string,
+    action: ProjectAction,
+  ): boolean {
+    if (!projectAccessService) {
+      return true;
+    }
+    try {
+      projectAccessService.requireProjectActionBySessionIdForActor(
+        toActorInput(auth),
+        sessionId,
+        action,
+      );
+      return true;
+    } catch (error) {
+      if (error instanceof ProjectAccessServiceError) {
+        if (
+          error.code === "project_access_denied" &&
+          error.denyReason === "not_a_member"
+        ) {
+          sendError(reply, 404, "not_found", "Session not found");
+          return false;
+        }
+        sendError(reply, error.statusCode, error.code, error.message);
+        return false;
+      }
+      throw error;
+    }
+  }
+
+  function authorizeProjectWriteByFloorId(
+    reply: FastifyReply,
+    auth: ReturnType<typeof getRequestAuthContext>,
+    floorId: string,
+    action: ProjectAction,
+  ): boolean {
+    if (!projectAccessService) {
+      return true;
+    }
+    try {
+      projectAccessService.requireProjectActionByFloorIdForActor(
+        toActorInput(auth),
+        floorId,
+        action,
+      );
+      return true;
+    } catch (error) {
+      if (error instanceof ProjectAccessServiceError) {
+        if (
+          error.code === "project_access_denied" &&
+          error.denyReason === "not_a_member"
+        ) {
+          sendError(reply, 404, "not_found", "Floor not found");
+          return false;
+        }
+        sendError(reply, error.statusCode, error.code, error.message);
+        return false;
+      }
+      throw error;
+    }
+  }
+
+  function authorizeProjectWriteByMessageId(
+    reply: FastifyReply,
+    auth: ReturnType<typeof getRequestAuthContext>,
+    messageId: string,
+    action: ProjectAction,
+  ): boolean {
+    if (!projectAccessService) {
+      return true;
+    }
+    try {
+      projectAccessService.requireProjectActionByMessageIdForActor(
+        toActorInput(auth),
+        messageId,
+        action,
+      );
+      return true;
+    } catch (error) {
+      if (error instanceof ProjectAccessServiceError) {
+        if (
+          error.code === "project_access_denied" &&
+          error.denyReason === "not_a_member"
+        ) {
+          sendError(reply, 404, "not_found", "Message not found");
+          return false;
+        }
+        sendError(reply, error.statusCode, error.code, error.message);
+        return false;
+      }
+      throw error;
+    }
+  }
+
+  function hasSessionStateWritesField(body: unknown): boolean {
+    return (
+      typeof body === "object" &&
+      body !== null &&
+      "session_state_writes" in body
+    );
+  }
+
+  function validateTurnSessionStateWritesShape(
+    reply: FastifyReply,
+    body: unknown,
+  ): boolean {
+    if (!hasSessionStateWritesField(body)) {
+      return true;
+    }
+    const writes = (body as { session_state_writes?: unknown })
+      .session_state_writes;
+    if (!Array.isArray(writes)) {
+      return true;
+    }
+    for (const write of writes) {
+      if (typeof write !== "object" || write === null) {
+        continue;
+      }
+      const hasValue = Object.prototype.hasOwnProperty.call(write, "value");
+      const isDelete = (write as { delete?: unknown }).delete === true;
+      if (hasValue === isDelete) {
+        sendError(
+          reply,
+          400,
+          "validation_error",
+          "Each session_state_write must provide exactly one of 'value' or 'delete: true'",
+        );
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function buildTurnOperationLogContext(
+    request: FastifyRequest,
+    route: string,
+  ): TurnCommitOperationLogContext {
+    return { requestId: operationRequestIdFromRequest(request), route };
+  }
+
+  function buildSessionStateOperationLogContext(
+    request: FastifyRequest,
+    route: string,
+    writes: unknown[] | undefined,
+  ): SessionStateOperationLogContext | undefined {
+    if (!writes || writes.length === 0) {
+      return undefined;
+    }
+    return {
+      ...operationActorFromRequest(request),
+      requestId: operationRequestIdFromRequest(request),
+      sourceType: "http",
+      route,
+    };
+  }
+
+  app.post(
+    "/sessions/:id/respond/dry-run",
+    {
+      schema: {
+        tags: ["chat"],
+        summary: "Dry-run prompt assembly",
+        description:
+          "Assemble prompt and return debug metadata without calling LLM or writing turn data.",
+        params: sessionIdParamsJsonSchema,
+        body: dryRunBodyJsonSchema,
+        response: {
+          200: dryRunSuccessResponseJsonSchema,
+          400: chatMutationErrorResponses[400],
+          404: chatMutationErrorResponses[404],
+          422: chatMutationErrorResponses[422],
+          409: chatMutationErrorResponses[409],
+          500: chatMutationErrorResponses[500],
+        },
+      },
+      preValidation: async (request, reply) => {
+        if (hasSessionStateWritesField(request.body)) {
+          return sendError(
+            reply,
+            400,
+            "validation_error",
+            "Dry-run does not accept session_state_writes",
+          );
+        }
+      },
+    },
+    async (request, reply) => {
+      if (!enablePromptDryRun) {
+        return sendError(
+          reply,
+          404,
+          "not_found",
+          "Dry-run endpoint is disabled",
+        );
+      }
+
+      const parsedParams = parseWithSchema(
+        sessionIdParamsSchema,
+        request.params,
+        reply,
+      );
+      if (!parsedParams.ok) return;
+
+      const parsedBody = parseWithSchema(dryRunBodySchema, request.body, reply);
+      if (!parsedBody.ok) return;
+
+      const dryRunRequest: DryRunRequest = {
+        config: parsedBody.data.config,
+        message: parsedBody.data.message,
+        branchId: parsedBody.data.branch_id,
+        promptIntent: parsedBody.data.prompt_intent,
+        debugOptions: mapDryRunDebugOptionsRequest(
+          parsedBody.data.debug_options,
+        ),
+        visibility: mapDryRunVisibilityRequest(parsedBody.data.visibility),
+        structure: mapPromptStructureRequest(parsedBody.data.structure),
+        delivery: mapPromptDeliveryRequest(parsedBody.data.delivery),
+        budget: mapPromptBudgetRequest(parsedBody.data.budget),
+        sourceSelection: mapPromptSourceSelectionRequest(
+          parsedBody.data.source_selection,
+        ),
+        promptRuntimeInjections: mapPromptRuntimeInjectionsRequest(
+          parsedBody.data.prompt_runtime_injections,
+        ),
+      };
+      const accountId = getRequestAuthContext(request).accountId;
+
+      try {
+        const result = await chatService.dryRun(
+          parsedParams.data.id,
+          dryRunRequest,
+          accountId,
+        );
+        return reply.code(200).send({
+          data: {
+            messages: result.messages,
+            token_estimate: result.tokenEstimate,
+            available_for_reply: result.availableForReply,
+            memory_summary: result.memorySummary ?? null,
+            prompt_snapshot: mapPromptSnapshotToSnakeCase(
+              result.promptSnapshot,
+            ),
+            ...(result.memory
+              ? {
+                  memory: mapPromptRuntimeMemoryTraceToSnakeCase(result.memory),
+                }
+              : {}),
+            ...mapOptionalPromptDebugResponseFields({
+              runtimeTrace: result.runtimeTrace,
+            }),
+            assembly: {
+              mode: result.assembly.mode,
+              prompt_intent: result.assembly.promptIntent,
+              assistant_prefill_applied:
+                result.assembly.assistantPrefillApplied,
+              assistant_prefill_strategy:
+                result.assembly.assistantPrefillStrategy,
+              preset_used: result.assembly.presetUsed,
+              worldbook_hits: result.assembly.worldbookHits,
+              regex_pre_rules: result.assembly.regexPreRules,
+              regex_post_rules: result.assembly.regexPostRules,
+              memory_summary_injected: result.assembly.memorySummaryInjected,
+              reserved_variable_collisions:
+                result.assembly.reservedVariableCollisions,
+              selected_prompt_order_character_id:
+                result.assembly.selectedPromptOrderCharacterId,
+              ignored_prompt_order_character_ids:
+                result.assembly.ignoredPromptOrderCharacterIds,
+              unsupported_preset_fields:
+                result.assembly.unsupportedPresetFields,
+              ignored_preset_fields: result.assembly.ignoredPresetFields,
+              unresolved_preset_markers:
+                result.assembly.unresolvedPresetMarkers,
+              preset_warnings: result.assembly.presetWarnings,
+              continue_nudge_applied: result.assembly.continueNudgeApplied,
+              continue_nudge_text: result.assembly.continueNudgeText ?? null,
+              names_behavior_applied: result.assembly.namesBehaviorApplied,
+              trigger_filtered_entry_ids:
+                result.assembly.triggerFilteredEntryIds,
+              in_chat_inserted_entry_ids:
+                result.assembly.inChatInsertedEntryIds,
+              preprocessed_user_message:
+                result.assembly.preprocessedUserMessage ?? null,
+              ...(result.assembly.worldbookMatches
+                ? {
+                    worldbook_matches: result.assembly.worldbookMatches.map(
+                      mapWorldbookMatchDetail,
+                    ),
+                  }
+                : {}),
+            },
+          },
+        });
+      } catch (error) {
+        return handleChatError(error, request, reply);
+      }
+    },
+  );
+
+  app.post(
+    "/sessions/:id/respond/stream",
+    {
+      schema: {
+        tags: ["chat"],
+        summary: "Stream chat response via SSE",
+        description:
+          "Start a chat turn and stream generated chunks as Server-Sent Events.",
+        params: sessionIdParamsJsonSchema,
+        body: respondBodyJsonSchema,
+        response: {
+          200: {
+            type: "string",
+            description:
+              "SSE stream payload (start/chunk/summary/done/error events).",
+            examples: [streamResponseExample],
+          },
+          400: chatMutationErrorResponses[400],
+          404: chatMutationErrorResponses[404],
+          422: chatMutationErrorResponses[422],
+        },
+      },
+      preValidation: async (request, reply) => {
+        if (!validateTurnSessionStateWritesShape(reply, request.body)) {
+          return;
+        }
+      },
+    },
+    async (request, reply) => {
+      if (!enableSseChat) {
+        return sendError(
+          reply,
+          404,
+          "not_found",
+          "Stream endpoint is disabled",
+        );
+      }
+
+      const parsedParams = parseWithSchema(
+        sessionIdParamsSchema,
+        request.params,
+        reply,
+      );
+      if (!parsedParams.ok) return;
+
+      const parsedBody = parseWithSchema(
+        respondBodySchema,
+        request.body,
+        reply,
+      );
+      if (!parsedBody.ok) return;
+
+      if (
+        !ensureTurnSessionStateWritesEnabled(
+          reply,
+          parsedBody.data.session_state_writes,
+          enableClientData,
+        )
+      ) {
+        return;
+      }
+
+      const respondRequest: RespondRequest = {
+        clientOperationId: parsedBody.data.client_operation_id,
+        message: parsedBody.data.message,
+        config: parsedBody.data.config,
+        generationParams: parsedBody.data.generation_params
+          ? mapGenerationParams(parsedBody.data.generation_params)
+          : undefined,
+        branchId: parsedBody.data.branch_id,
+        sourceFloorId: parsedBody.data.source_floor_id,
+        promptIntent: parsedBody.data.prompt_intent,
+        structure: mapPromptStructureRequest(parsedBody.data.structure),
+        delivery: mapPromptDeliveryRequest(parsedBody.data.delivery),
+        sessionStateWrites: mapTurnSessionStateWritesRequest(
+          parsedBody.data.session_state_writes,
+        ),
+        promptRuntimeInjections: mapPromptRuntimeInjectionsRequest(
+          parsedBody.data.prompt_runtime_injections,
+        ),
+        sessionStateOperationLog: buildSessionStateOperationLogContext(
+          request,
+          "POST /sessions/:id/respond/stream",
+          parsedBody.data.session_state_writes,
+        ),
+        turnOperationLog: buildTurnOperationLogContext(
+          request,
+          "POST /sessions/:id/respond/stream",
+        ),
+        debugOptions: mapLiveDebugOptionsRequest(parsedBody.data.debug_options),
+      };
+      const auth = getRequestAuthContext(request);
+      const accountId = auth.accountId;
+
+      if (
+        !authorizeProjectWriteBySessionId(
+          reply,
+          auth,
+          parsedParams.data.id,
+          "session.respond",
+        )
+      ) {
+        return;
+      }
+
+      let roleText;
+      try {
+        roleText = chatService.getRoleTextProcessor(
+          parsedParams.data.id,
+          accountId,
+        );
+      } catch (error) {
+        return handleChatError(error, request, reply);
+      }
+      let roleRawText = "";
+      let lastRoleText = "";
+      reply.hijack();
+      reply.raw.statusCode = 200;
+      applyCorsHeaders(reply.raw, request.headers.origin, cors);
+      reply.raw.setHeader("Content-Type", "text/event-stream; charset=utf-8");
+      reply.raw.setHeader("Cache-Control", "no-cache, no-transform");
+      reply.raw.setHeader("Connection", "keep-alive");
+      reply.raw.setHeader("X-Accel-Buffering", "no");
+      reply.raw.flushHeaders?.();
+
+      const abortController = new AbortController();
+      let completed = false;
+      let clientClosed = false;
+
+      reply.raw.on("close", () => {
+        if (!completed) {
+          clientClosed = true;
+          abortController.abort();
+        }
+      });
+
+      const runtimeOptions: RespondRuntimeOptions = {
+        abortSignal: abortController.signal,
+        onStart: (start) => {
+          writeSse(reply.raw, "start", {
+            floor_id: start.floorId,
+            floor_no: start.floorNo,
+            branch_id: start.branchId,
+          });
+        },
+        onChunk: (chunk) => {
+          writeSse(reply.raw, "chunk", { chunk });
+          roleRawText += chunk;
+          const projected = roleText.project(roleRawText, "streaming");
+          if (projected !== lastRoleText) {
+            writeSse(reply.raw, "role_text", {
+              text: projected,
+              phase: "streaming",
+            });
+            lastRoleText = projected;
+          }
+        },
+        onTool: (tool) => {
+          writeSse(reply.raw, "tool", {
+            execution_id: tool.executionId,
+            tool_name: tool.toolName,
+            provider_id: tool.providerId,
+            provider_type: tool.providerType ?? null,
+            side_effect_level: tool.sideEffectLevel ?? null,
+            phase: tool.phase,
+            message: tool.message ?? null,
+            duration_ms: tool.durationMs ?? null,
+            replay_safety: tool.replaySafety,
+          });
+        },
+        onRun: (run) => {
+          writeSse(reply.raw, "run", mapRunToSnakeCase(run));
+        },
+      };
+
+      try {
+        const result = await chatService.respond(
+          parsedParams.data.id,
+          respondRequest,
+          runtimeOptions,
+          accountId,
+        );
+
+        if (clientClosed || reply.raw.destroyed || reply.raw.writableEnded) {
+          completed = true;
+          return;
+        }
+
+        if (result.summaries.length > 0) {
+          writeSse(reply.raw, "summary", { summaries: result.summaries });
+        }
+
+        writeSse(reply.raw, "role_text", {
+          text: roleText.project(result.generatedText, "completed"),
+          phase: "completed",
+        });
+        writeSse(reply.raw, "done", {
+          floor_id: result.floorId,
+          floor_no: result.floorNo,
+          branch_id: result.branchId,
+          generated_text: result.generatedText,
+          summaries: result.summaries,
+          total_usage: mapUsageToSnakeCase(result.totalUsage),
+          memory: mapMemoryToSnakeCase(result.memory),
+          final_state: result.finalState,
+          ...mapOptionalPromptDebugResponseFields(result),
+        });
+        completed = true;
+        reply.raw.end();
+      } catch (error) {
+        if (
+          clientClosed ||
+          abortController.signal.aborted ||
+          reply.raw.destroyed ||
+          reply.raw.writableEnded
+        ) {
+          completed = true;
+          return;
+        }
+
+        logNativePipelineError(error, request, "respond_stream");
+        const mapped = findModelCallPersistenceError(error)
+          ? {
+              statusCode: 503,
+              code: "MODEL_CALL_SAVE_FAILED",
+              message: apiErrorMessages.MODEL_CALL_SAVE_FAILED,
+            }
+          : error instanceof ChatServiceError
+            ? mapChatServiceError(error)
+            : error instanceof WorldbookTriggerError
+              ? {
+                  statusCode: error.code === "WORLDBOOK_TRIGGER_INPUT_INVALID" ? 400 : 500,
+                  code: error.code,
+                  message: error.message,
+                }
+            : {
+                statusCode: 500,
+                code: "internal_error",
+                message:
+                  error instanceof Error
+                    ? error.message
+                    : "Unexpected server error",
+              };
+        writeSse(reply.raw, "error", {
+          code: mapped.code,
+          message: mapped.message,
+          details: error instanceof WorldbookTriggerError
+            ? { path: error.path }
+            : modelCallPersistenceDetails(error),
+        });
+        completed = true;
+        reply.raw.end();
+      }
+    },
+  );
+
+  app.post(
+    "/sessions/:id/respond",
+    {
+      schema: {
+        tags: ["chat"],
+        summary: "Respond in a session",
+        description:
+          "Append user input and generate assistant response for the session.",
+        params: sessionIdParamsJsonSchema,
+        body: respondBodyJsonSchema,
+        response: {
+          200: respondSuccessResponseJsonSchema,
+          ...chatMutationErrorResponses,
+        },
+      },
+      preValidation: async (request, reply) => {
+        if (!validateTurnSessionStateWritesShape(reply, request.body)) {
+          return;
+        }
+      },
+    },
+    async (request, reply) => {
+      const parsedParams = parseWithSchema(
+        sessionIdParamsSchema,
+        request.params,
+        reply,
+      );
+      if (!parsedParams.ok) return;
+      if (
+        !authorizeProjectWriteBySessionId(
+          reply,
+          getRequestAuthContext(request),
+          parsedParams.data.id,
+          "session.respond",
+        )
+      ) {
+        return;
+      }
+
+      const parsedBody = parseWithSchema(
+        respondBodySchema,
+        request.body,
+        reply,
+      );
+      if (!parsedBody.ok) return;
+
+      if (
+        !ensureTurnSessionStateWritesEnabled(
+          reply,
+          parsedBody.data.session_state_writes,
+          enableClientData,
+        )
+      ) {
+        return;
+      }
+
+      const respondRequest: RespondRequest = {
+        clientOperationId: parsedBody.data.client_operation_id,
+        message: parsedBody.data.message,
+        config: parsedBody.data.config,
+        generationParams: parsedBody.data.generation_params
+          ? mapGenerationParams(parsedBody.data.generation_params)
+          : undefined,
+        branchId: parsedBody.data.branch_id,
+        sourceFloorId: parsedBody.data.source_floor_id,
+        promptIntent: parsedBody.data.prompt_intent,
+        structure: mapPromptStructureRequest(parsedBody.data.structure),
+        delivery: mapPromptDeliveryRequest(parsedBody.data.delivery),
+        sessionStateWrites: mapTurnSessionStateWritesRequest(
+          parsedBody.data.session_state_writes,
+        ),
+        promptRuntimeInjections: mapPromptRuntimeInjectionsRequest(
+          parsedBody.data.prompt_runtime_injections,
+        ),
+        sessionStateOperationLog: buildSessionStateOperationLogContext(
+          request,
+          "POST /sessions/:id/respond",
+          parsedBody.data.session_state_writes,
+        ),
+        turnOperationLog: buildTurnOperationLogContext(
+          request,
+          "POST /sessions/:id/respond",
+        ),
+        debugOptions: mapLiveDebugOptionsRequest(parsedBody.data.debug_options),
+      };
+      const accountId = getRequestAuthContext(request).accountId;
+
+      try {
+        const result = await chatService.respond(
+          parsedParams.data.id,
+          respondRequest,
+          {},
+          accountId,
+        );
+        return reply.code(200).send({
+          data: {
+            floor_id: result.floorId,
+            floor_no: result.floorNo,
+            branch_id: result.branchId,
+            generated_text: result.generatedText,
+            summaries: result.summaries,
+            total_usage: mapUsageToSnakeCase(result.totalUsage),
+            memory: mapMemoryToSnakeCase(result.memory),
+            final_state: result.finalState,
+            ...mapOptionalPromptDebugResponseFields(result),
+          },
+        });
+      } catch (error) {
+        return handleChatError(error, request, reply);
+      }
+    },
+  );
+
+  app.post(
+    "/sessions/:id/regenerate",
+    {
+      schema: {
+        tags: ["chat"],
+        summary: "Regenerate the last assistant response",
+        description:
+          "Regenerate the latest committed floor response and keep the previous floor as superseded branch.",
+        params: sessionIdParamsJsonSchema,
+        body: regenerateBodyJsonSchema,
+        response: {
+          200: regenerateSuccessResponseJsonSchema,
+          ...chatMutationErrorResponses,
+        },
+      },
+      preValidation: async (request, reply) => {
+        ensureOptionalObjectBody(request);
+        if (!validateTurnSessionStateWritesShape(reply, request.body)) {
+          return;
+        }
+      },
+    },
+    async (request, reply) => {
+      const parsedParams = parseWithSchema(
+        sessionIdParamsSchema,
+        request.params,
+        reply,
+      );
+      if (!parsedParams.ok) return;
+      if (
+        !authorizeProjectWriteBySessionId(
+          reply,
+          getRequestAuthContext(request),
+          parsedParams.data.id,
+          "session.regenerate",
+        )
+      ) {
+        return;
+      }
+
+      const body = request.body ?? {};
+      const parsedBody = parseWithSchema(regenerateBodySchema, body, reply);
+      if (!parsedBody.ok) return;
+
+      if (
+        !ensureTurnSessionStateWritesEnabled(
+          reply,
+          parsedBody.data.session_state_writes,
+          enableClientData,
+        )
+      ) {
+        return;
+      }
+
+      const regenerateRequest: RegenerateRequest = {
+        branchId: parsedBody.data.branch_id,
+        clientOperationId: parsedBody.data.client_operation_id,
+        config: parsedBody.data.config,
+        generationParams: parsedBody.data.generation_params
+          ? mapGenerationParams(parsedBody.data.generation_params)
+          : undefined,
+        structure: mapPromptStructureRequest(parsedBody.data.structure),
+        delivery: mapPromptDeliveryRequest(parsedBody.data.delivery),
+        debugOptions: mapLiveDebugOptionsRequest(parsedBody.data.debug_options),
+        confirmedExecutionIds: parsedBody.data.confirmed_execution_ids,
+        sessionStateWrites: mapTurnSessionStateWritesRequest(
+          parsedBody.data.session_state_writes,
+        ),
+        sessionStateOperationLog: buildSessionStateOperationLogContext(
+          request,
+          "POST /sessions/:id/regenerate",
+          parsedBody.data.session_state_writes,
+        ),
+        confirmedSessionStateMutationIds:
+          parsedBody.data.confirmed_session_state_mutation_ids,
+        turnOperationLog: buildTurnOperationLogContext(
+          request,
+          "POST /sessions/:id/regenerate",
+        ),
+        promptRuntimeInjections: mapPromptRuntimeInjectionsRequest(
+          parsedBody.data.prompt_runtime_injections,
+        ),
+      };
+      const accountId = getRequestAuthContext(request).accountId;
+
+      try {
+        const result = await chatService.regenerate(
+          parsedParams.data.id,
+          regenerateRequest,
+          accountId,
+        );
+        return reply.code(200).send({
+          data: {
+            floor_id: result.floorId,
+            floor_no: result.floorNo,
+            previous_floor_id: result.previousFloorId,
+            generated_text: result.generatedText,
+            summaries: result.summaries,
+            total_usage: mapUsageToSnakeCase(result.totalUsage),
+            memory: mapMemoryToSnakeCase(result.memory),
+            final_state: result.finalState,
+            ...mapOptionalPromptDebugResponseFields(result),
+          },
+        });
+      } catch (error) {
+        return handleChatError(error, request, reply);
+      }
+    },
+  );
+
+  app.post(
+    "/floors/:id/retry",
+    {
+      schema: {
+        tags: ["chat"],
+        summary: "Retry a committed floor in place",
+        description:
+          "Retry generation for an existing committed floor in place. " +
+          "The target floor must be in the 'committed' state. " +
+          "The current output page and assistant message are cleared, the floor is reset, " +
+          "and a new generation attempt is run under the same floor id. " +
+          "This endpoint is not a recovery path for failed floors.",
+        params: idParamsJsonSchema,
+        body: retryFloorBodyJsonSchema,
+        response: {
+          200: respondSuccessResponseJsonSchema,
+          ...chatMutationErrorResponses,
+        },
+      },
+      preValidation: async (request, reply) => {
+        ensureOptionalObjectBody(request);
+        if (!validateTurnSessionStateWritesShape(reply, request.body)) {
+          return;
+        }
+      },
+    },
+    async (request, reply) => {
+      const parsedParams = parseWithSchema(
+        floorIdParamsSchema,
+        request.params,
+        reply,
+      );
+      if (!parsedParams.ok) return;
+      if (
+        !authorizeProjectWriteByFloorId(
+          reply,
+          getRequestAuthContext(request),
+          parsedParams.data.id,
+          "floor.retry",
+        )
+      ) {
+        return;
+      }
+
+      const body = request.body ?? {};
+      const parsedBody = parseWithSchema(retryFloorBodySchema, body, reply);
+      if (!parsedBody.ok) return;
+
+      if (
+        !ensureTurnSessionStateWritesEnabled(
+          reply,
+          parsedBody.data.session_state_writes,
+          enableClientData,
+        )
+      ) {
+        return;
+      }
+
+      const retryRequest: RetryFloorRequest = {
+        config: parsedBody.data.config,
+        generationParams: parsedBody.data.generation_params
+          ? mapGenerationParams(parsedBody.data.generation_params)
+          : undefined,
+        structure: mapPromptStructureRequest(parsedBody.data.structure),
+        delivery: mapPromptDeliveryRequest(parsedBody.data.delivery),
+        debugOptions: mapLiveDebugOptionsRequest(parsedBody.data.debug_options),
+        confirmedExecutionIds: parsedBody.data.confirmed_execution_ids,
+        sessionStateWrites: mapTurnSessionStateWritesRequest(
+          parsedBody.data.session_state_writes,
+        ),
+        sessionStateOperationLog: buildSessionStateOperationLogContext(
+          request,
+          "POST /floors/:id/retry",
+          parsedBody.data.session_state_writes,
+        ),
+        confirmedSessionStateMutationIds:
+          parsedBody.data.confirmed_session_state_mutation_ids,
+        turnOperationLog: buildTurnOperationLogContext(
+          request,
+          "POST /floors/:id/retry",
+        ),
+        promptRuntimeInjections: mapPromptRuntimeInjectionsRequest(
+          parsedBody.data.prompt_runtime_injections,
+        ),
+      };
+
+      const accountId = getRequestAuthContext(request).accountId;
+
+      try {
+        const result = await chatService.retryFloor(
+          parsedParams.data.id,
+          retryRequest,
+          accountId,
+        );
+        return reply.code(200).send({
+          data: {
+            floor_id: result.floorId,
+            floor_no: result.floorNo,
+            branch_id: result.branchId,
+            generated_text: result.generatedText,
+            summaries: result.summaries,
+            total_usage: mapUsageToSnakeCase(result.totalUsage),
+            memory: mapMemoryToSnakeCase(result.memory),
+            final_state: result.finalState,
+            ...mapOptionalPromptDebugResponseFields(result),
+          },
+        });
+      } catch (error) {
+        return handleChatError(error, request, reply);
+      }
+    },
+  );
+  app.post(
+    "/floors/:id/retry-step",
+    {
+      schema: {
+        tags: ["chat"],
+        summary: "Retry a committed floor from a specific generation step",
+        description:
+          "Retry generation for an existing committed floor starting from a specificLLM generation step. " +
+          "Successful tool roundtrips before the start step are preserved and replayed; " +
+          "the start step and everything after it are regenerated under a new attempt on the same floor id. " +
+          "The start step tool must have no side effect; write-class side effects produced before the start step are not rolled back " +
+          "and are returned in irreversible_side_effects.",
+        params: idParamsJsonSchema,
+        body: retryStepBodyJsonSchema,
+        response: {
+          200: retryStepSuccessResponseJsonSchema,
+          ...chatMutationErrorResponses,
+        },
+      },
+      preValidation: async (request, reply) => {
+        ensureOptionalObjectBody(request);
+        if (!validateTurnSessionStateWritesShape(reply, request.body)) {
+          return;
+        }
+      },
+    },
+    async (request, reply) => {
+      const parsedParams = parseWithSchema(
+        floorIdParamsSchema,
+        request.params,
+        reply,
+      );
+      if (!parsedParams.ok) return;
+      if (
+        !authorizeProjectWriteByFloorId(
+          reply,
+          getRequestAuthContext(request),
+          parsedParams.data.id,
+          "floor.retry",
+        )
+      ) {
+        return;
+      }
+
+      const body = request.body ?? {};
+      const parsedBody = parseWithSchema(retryStepBodySchema, body, reply);
+      if (!parsedBody.ok) return;
+
+      if (
+        !ensureTurnSessionStateWritesEnabled(
+          reply,
+          parsedBody.data.session_state_writes,
+          enableClientData,
+        )
+      ) {
+        return;
+      }
+
+      const retryStepRequest: RetryStepRequest = {
+        fromStepIndex: parsedBody.data.from_step_index,
+        config: parsedBody.data.config,
+        generationParams: parsedBody.data.generation_params
+          ? mapGenerationParams(parsedBody.data.generation_params)
+          : undefined,
+        structure: mapPromptStructureRequest(parsedBody.data.structure),
+        delivery: mapPromptDeliveryRequest(parsedBody.data.delivery),
+        debugOptions: mapLiveDebugOptionsRequest(parsedBody.data.debug_options),
+        confirmedExecutionIds: parsedBody.data.confirmed_execution_ids,
+        sessionStateWrites: mapTurnSessionStateWritesRequest(
+          parsedBody.data.session_state_writes,
+        ),
+        sessionStateOperationLog: buildSessionStateOperationLogContext(
+          request,
+          "POST /floors/:id/retry-step",
+          parsedBody.data.session_state_writes,
+        ),
+        confirmedSessionStateMutationIds:
+          parsedBody.data.confirmed_session_state_mutation_ids,
+        turnOperationLog: buildTurnOperationLogContext(
+          request,
+          "POST /floors/:id/retry-step",
+        ),
+        promptRuntimeInjections: mapPromptRuntimeInjectionsRequest(
+          parsedBody.data.prompt_runtime_injections,
+        ),
+      };
+
+      const accountId = getRequestAuthContext(request).accountId;
+
+      try {
+        const result = await chatService.retryStep(
+          parsedParams.data.id,
+          retryStepRequest,
+          accountId,
+        );
+        return reply.code(200).send({
+          data: {
+            floor_id: result.floorId,
+            floor_no: result.floorNo,
+            branch_id: result.branchId,
+            generated_text: result.generatedText,
+            summaries: result.summaries,
+            total_usage: mapUsageToSnakeCase(result.totalUsage),
+            memory: mapMemoryToSnakeCase(result.memory),
+            final_state: result.finalState,
+            discarded_from_step_index: result.discardedFromStepIndex,
+            irreversible_side_effects: result.irreversibleSideEffects.map(
+              (item) => ({
+                execution_id: item.executionId,
+                tool_name: item.toolName,
+                side_effect_level: item.sideEffectLevel,
+                started_at: item.startedAt,
+                generation_step_no: item.generationStepNo,
+              }),
+            ),
+            ...mapOptionalPromptDebugResponseFields(result),
+          },
+        });
+      } catch (error) {
+        return handleChatError(error, request, reply);
+      }
+    },
+  );
+
+  app.post(
+    "/messages/:id/edit-and-regenerate",
+    {
+      schema: {
+        tags: ["chat"],
+        summary: "Edit a user message and regenerate",
+        description:
+          "Create a new branch floor from an edited user message and regenerate assistant response.",
+        params: idParamsJsonSchema,
+        body: editAndRegenerateBodyJsonSchema,
+        response: {
+          200: editAndRegenerateSuccessResponseJsonSchema,
+          ...chatMutationErrorResponses,
+        },
+      },
+      preValidation: async (request, reply) => {
+        if (!validateTurnSessionStateWritesShape(reply, request.body)) {
+          return;
+        }
+      },
+    },
+    async (request, reply) => {
+      const parsedParams = parseWithSchema(
+        messageIdParamsSchema,
+        request.params,
+        reply,
+      );
+      if (!parsedParams.ok) return;
+      if (
+        !authorizeProjectWriteByMessageId(
+          reply,
+          getRequestAuthContext(request),
+          parsedParams.data.id,
+          "message.edit_and_regenerate",
+        )
+      ) {
+        return;
+      }
+
+      const parsedBody = parseWithSchema(
+        editAndRegenerateBodySchema,
+        request.body,
+        reply,
+      );
+      if (!parsedBody.ok) return;
+
+      if (
+        !ensureTurnSessionStateWritesEnabled(
+          reply,
+          parsedBody.data.session_state_writes,
+          enableClientData,
+        )
+      ) {
+        return;
+      }
+
+      const editRequest: EditAndRegenerateRequest = {
+        content: parsedBody.data.content,
+        branchId: parsedBody.data.branch_id,
+        config: parsedBody.data.config,
+        generationParams: parsedBody.data.generation_params
+          ? mapGenerationParams(parsedBody.data.generation_params)
+          : undefined,
+        structure: mapPromptStructureRequest(parsedBody.data.structure),
+        delivery: mapPromptDeliveryRequest(parsedBody.data.delivery),
+        debugOptions: mapLiveDebugOptionsRequest(parsedBody.data.debug_options),
+        confirmedExecutionIds: parsedBody.data.confirmed_execution_ids,
+        sessionStateWrites: mapTurnSessionStateWritesRequest(
+          parsedBody.data.session_state_writes,
+        ),
+        sessionStateOperationLog: buildSessionStateOperationLogContext(
+          request,
+          "POST /messages/:id/edit-and-regenerate",
+          parsedBody.data.session_state_writes,
+        ),
+        confirmedSessionStateMutationIds:
+          parsedBody.data.confirmed_session_state_mutation_ids,
+        turnOperationLog: buildTurnOperationLogContext(
+          request,
+          "POST /messages/:id/edit-and-regenerate",
+        ),
+        promptRuntimeInjections: mapPromptRuntimeInjectionsRequest(
+          parsedBody.data.prompt_runtime_injections,
+        ),
+      };
+      const accountId = getRequestAuthContext(request).accountId;
+
+      try {
+        const result = await chatService.editAndRegenerate(
+          parsedParams.data.id,
+          editRequest,
+          accountId,
+        );
+        return reply.code(200).send({
+          data: {
+            floor_id: result.floorId,
+            floor_no: result.floorNo,
+            branch_id: result.branchId,
+            source_floor_id: result.sourceFloorId,
+            source_message_id: result.sourceMessageId,
+            generated_text: result.generatedText,
+            summaries: result.summaries,
+            total_usage: mapUsageToSnakeCase(result.totalUsage),
+            memory: mapMemoryToSnakeCase(result.memory),
+            final_state: result.finalState,
+            ...mapOptionalPromptDebugResponseFields(result),
+          },
+        });
+      } catch (error) {
+        return handleChatError(error, request, reply);
+      }
+    },
+  );
+}

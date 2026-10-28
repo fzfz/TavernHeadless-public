@@ -1,0 +1,839 @@
+{
+  "version": 1,
+  "runId": "2026-10-06T18-44-44-339Z-d17cb7b5-4c12-4abd-bff4-ac6261be6f2e",
+  "sourceZipPath": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/pack-4OecrY/role.zip",
+  "startedAt": "2026-10-06T18:44:44.341Z",
+  "status": "passed",
+  "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/formal/formal-runs/2026-10-06T18-44-44-339Z-d17cb7b5-4c12-4abd-bff4-ac6261be6f2e",
+  "readbackPath": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Ji4ISc/formal/formal-runs/2026-10-06T18-44-44-339Z-d17cb7b5-4c12-4abd-bff4-ac6261be6f2e/readback.json",
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/native-cards/imports?fileName=role.zip",
+      "headers": {
+        "content-type": "application/zip"
+      },
+      "bodyReference": "request-bodies/000.bin",
+      "bodyByteLength": 9452,
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "id": "56XimoMBYIOwVjR7iYtVn",
+          "fileName": "role.zip",
+          "packageId": "run-Ji4ISc",
+          "name": "雾港来信",
+          "summary": {
+            "formatVersion": "1.0.0",
+            "worldbookCount": 2,
+            "openingCount": 2,
+            "initialStateCount": 2,
+            "stateUpdate": {
+              "rules": true,
+              "schema": true,
+              "validators": true,
+              "tools": true
+            },
+            "promptController": true,
+            "frontend": {
+              "page": true,
+              "script": true,
+              "style": true,
+              "media": true
+            },
+            "regexProfileCount": 2
+          },
+          "files": [
+            {
+              "path": "manifest.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 3540
+            },
+            {
+              "path": "agents/state-update/profile.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 409
+            },
+            {
+              "path": "agents/state-update/rules.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 229
+            },
+            {
+              "path": "assets/portrait.svg",
+              "mediaType": "image/svg+xml",
+              "purpose": "media",
+              "byteSize": 314
+            },
+            {
+              "path": "backend/controllers/config.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 219
+            },
+            {
+              "path": "backend/controllers/prompt.js",
+              "mediaType": "text/javascript",
+              "purpose": "server_script",
+              "byteSize": 114
+            },
+            {
+              "path": "backend/validators/validate.js",
+              "mediaType": "text/javascript",
+              "purpose": "server_script",
+              "byteSize": 123
+            },
+            {
+              "path": "backend/variable-tools/derive.js",
+              "mediaType": "text/javascript",
+              "purpose": "server_script",
+              "byteSize": 69
+            },
+            {
+              "path": "character.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 1124
+            },
+            {
+              "path": "data/case.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 58
+            },
+            {
+              "path": "frontend/index.html",
+              "mediaType": "text/html",
+              "purpose": "template",
+              "byteSize": 196
+            },
+            {
+              "path": "frontend/main.js",
+              "mediaType": "text/javascript",
+              "purpose": "browser_script",
+              "byteSize": 390
+            },
+            {
+              "path": "frontend/manifest.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 339
+            },
+            {
+              "path": "frontend/style.css",
+              "mediaType": "text/css",
+              "purpose": "template",
+              "byteSize": 116
+            },
+            {
+              "path": "openings/first.txt",
+              "mediaType": "text/plain",
+              "purpose": "data",
+              "byteSize": 188
+            },
+            {
+              "path": "openings/second.txt",
+              "mediaType": "text/plain",
+              "purpose": "data",
+              "byteSize": 54
+            },
+            {
+              "path": "openings.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 621
+            },
+            {
+              "path": "regex/first.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 358
+            },
+            {
+              "path": "regex/second.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 366
+            },
+            {
+              "path": "state/initial/first.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 61
+            },
+            {
+              "path": "state/initial/second.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 61
+            },
+            {
+              "path": "state/schema.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 421
+            },
+            {
+              "path": "worldbooks/book-0/book.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 206
+            },
+            {
+              "path": "worldbooks/book-0/entries/e0.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 438
+            },
+            {
+              "path": "worldbooks/harbor/book.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 254
+            },
+            {
+              "path": "worldbooks/harbor/entries/110.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 450
+            },
+            {
+              "path": "worldbooks/harbor/entries/120.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 420
+            },
+            {
+              "path": "worldbooks/people/book.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 212
+            },
+            {
+              "path": "worldbooks/people/entries/110.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 436
+            }
+          ],
+          "issues": [],
+          "status": "ready"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/native-cards/imports/56XimoMBYIOwVjR7iYtVn/confirm",
+      "headers": {},
+      "statusCode": 201,
+      "response": {
+        "data": {
+          "id": "OG-8jpIM6G-5g8JQCVSf3",
+          "characterId": "KJEuqrQFG2YTMd3-i_Ltd",
+          "packageId": "run-Ji4ISc",
+          "name": "雾港来信",
+          "revision": 1,
+          "createdAt": 1791312285198,
+          "updatedAt": 1791312285198,
+          "files": [
+            {
+              "path": "manifest.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 3540
+            },
+            {
+              "path": "agents/state-update/profile.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 409
+            },
+            {
+              "path": "agents/state-update/rules.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 229
+            },
+            {
+              "path": "assets/portrait.svg",
+              "mediaType": "image/svg+xml",
+              "purpose": "media",
+              "byteSize": 314
+            },
+            {
+              "path": "backend/controllers/config.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 219
+            },
+            {
+              "path": "backend/controllers/prompt.js",
+              "mediaType": "text/javascript",
+              "purpose": "server_script",
+              "byteSize": 114
+            },
+            {
+              "path": "backend/validators/validate.js",
+              "mediaType": "text/javascript",
+              "purpose": "server_script",
+              "byteSize": 123
+            },
+            {
+              "path": "backend/variable-tools/derive.js",
+              "mediaType": "text/javascript",
+              "purpose": "server_script",
+              "byteSize": 69
+            },
+            {
+              "path": "character.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 1124
+            },
+            {
+              "path": "data/case.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 58
+            },
+            {
+              "path": "frontend/index.html",
+              "mediaType": "text/html",
+              "purpose": "template",
+              "byteSize": 196
+            },
+            {
+              "path": "frontend/main.js",
+              "mediaType": "text/javascript",
+              "purpose": "browser_script",
+              "byteSize": 390
+            },
+            {
+              "path": "frontend/manifest.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 339
+            },
+            {
+              "path": "frontend/style.css",
+              "mediaType": "text/css",
+              "purpose": "template",
+              "byteSize": 116
+            },
+            {
+              "path": "openings/first.txt",
+              "mediaType": "text/plain",
+              "purpose": "data",
+              "byteSize": 188
+            },
+            {
+              "path": "openings/second.txt",
+              "mediaType": "text/plain",
+              "purpose": "data",
+              "byteSize": 54
+            },
+            {
+              "path": "openings.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 621
+            },
+            {
+              "path": "regex/first.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 358
+            },
+            {
+              "path": "regex/second.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 366
+            },
+            {
+              "path": "state/initial/first.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 61
+            },
+            {
+              "path": "state/initial/second.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 61
+            },
+            {
+              "path": "state/schema.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 421
+            },
+            {
+              "path": "worldbooks/book-0/book.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 206
+            },
+            {
+              "path": "worldbooks/book-0/entries/e0.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 438
+            },
+            {
+              "path": "worldbooks/harbor/book.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 254
+            },
+            {
+              "path": "worldbooks/harbor/entries/110.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 450
+            },
+            {
+              "path": "worldbooks/harbor/entries/120.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 420
+            },
+            {
+              "path": "worldbooks/people/book.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 212
+            },
+            {
+              "path": "worldbooks/people/entries/110.json",
+              "mediaType": "application/json",
+              "purpose": "data",
+              "byteSize": 436
+            }
+          ],
+          "versions": []
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=agents%2Fstate-update%2Fprofile.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "agents/state-update/profile.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"updaterPrompt\": \"依据已经发生的消息更新地点、时间和信任，并引用消息标识。\",\n  \"writablePaths\": [\n    \"/location\",\n    \"/hour\",\n    \"/trust\"\n  ],\n  \"derivedPaths\": [],\n  \"stateSchemaFile\": \"state/schema.json\",\n  \"ruleFiles\": [\n    \"agents/state-update/rules.json\"\n  ],\n  \"deriveScript\": \"backend/variable-tools/derive.js\",\n  \"validateScript\": \"backend/validators/validate.js\"\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=agents%2Fstate-update%2Frules.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "agents/state-update/rules.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"rules\": [\n    {\n      \"id\": \"location\",\n      \"instruction\": \"人物明确抵达另一地点时更新location。\"\n    },\n    {\n      \"id\": \"trust\",\n      \"instruction\": \"发生友善互动时信任增加1至3。\"\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=assets%2Fportrait.svg",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "assets/portrait.svg",
+          "mediaType": "image/svg+xml",
+          "encoding": "base64",
+          "content": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iMzgwIj48cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjM4MCIgZmlsbD0iIzEzMmMzMCIvPjxjaXJjbGUgY3g9IjQyMCIgY3k9IjkwIiByPSIzMCIgZmlsbD0iI2I3YzZhOSIvPjxwYXRoIGQ9Ik0zNDAgMjgwTDM1NSAxMDBIMzgwTDM5NSAyODBaIiBmaWxsPSIjNDM2MDY1Ii8+PHBhdGggZD0iTTAgMzAwSDYwMCIgc3Ryb2tlPSIjNzY5YTk4Ii8+PHRleHQgeD0iNDAiIHk9IjcwIiBmaWxsPSIjYTZjOGJlIj5NSVNUIEhBUkJPUjwvdGV4dD48L3N2Zz4="
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=backend%2Fcontrollers%2Fconfig.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "backend/controllers/config.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"modulePath\": \"backend/controllers/prompt.js\",\n  \"controllerEntries\": [\n    {\n      \"bookId\": \"harbor\",\n      \"entryId\": 110\n    }\n  ],\n  \"updaterEntries\": [],\n  \"variableRoot\": \"stat_data\",\n  \"variableMacros\": []\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=backend%2Fcontrollers%2Fprompt.js",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "backend/controllers/prompt.js",
+          "mediaType": "text/javascript",
+          "encoding": "utf8",
+          "content": "export function renderController(context) { return { text: `当前地点：${context.variables.location}。` }; }\n"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=backend%2Fvalidators%2Fvalidate.js",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "backend/validators/validate.js",
+          "mediaType": "text/javascript",
+          "encoding": "utf8",
+          "content": "export function validate(context) { return { issues: context.candidate.trust < 0 ? [\"信任值应大于等于0\"] : [] }; }\n"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=backend%2Fvariable-tools%2Fderive.js",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "backend/variable-tools/derive.js",
+          "mediaType": "text/javascript",
+          "encoding": "utf8",
+          "content": "export function derive(context) { return { ...context.candidate }; }\n"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=character.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "character.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"name\": \"雾港来信\",\n  \"description\": \"你在雾港经营一家深夜邮局。来往旅人留下信件与秘密；值夜的向导沈知夏会陪你追查一封没有收件人的信。\",\n  \"personality\": \"沈知夏，29 岁，雾港的夜间向导。说话温和直接，擅长观察街道的细微变化。她会说明自己知道的事情，也会坦承不确定之处。\",\n  \"scenario\": \"秋夜，邮局即将关门。一封潮湿的信被塞进门缝，信封上只有灯塔的素描。\",\n  \"exampleDialogue\": \"“你在找什么？”\\n“一个没有署名的寄件人。”\",\n  \"creator\": \"示例作者\",\n  \"characterVersion\": \"1.0\",\n  \"tags\": [\n    \"悬疑\",\n    \"城市探索\",\n    \"慢节奏\"\n  ],\n  \"worldbooks\": [\n    {\n      \"id\": \"harbor\",\n      \"file\": \"worldbooks/harbor/book.json\",\n      \"enabled\": true\n    },\n    {\n      \"id\": \"people\",\n      \"file\": \"worldbooks/people/book.json\",\n      \"enabled\": true\n    }\n  ],\n  \"stateUpdate\": \"agents/state-update/profile.json\",\n  \"promptController\": \"backend/controllers/config.json\",\n  \"regexProfiles\": [\n    \"regex/first.json\",\n    \"regex/second.json\"\n  ]\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=data%2Fcase.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "data/case.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"location\": \"雾港邮局\",\n  \"clue\": \"灯塔素描\"\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=frontend%2Findex.html",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "frontend/index.html",
+          "mediaType": "text/html",
+          "encoding": "utf8",
+          "content": "<section class=\"story\"><h1>雾港来信</h1><img src=\"../assets/portrait.svg\" alt=\"雾港夜景\"><p id=\"location\"></p><button id=\"latest\">返回最新状态</button><div id=\"chat\"></div></section>"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=frontend%2Fmain.js",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "frontend/main.js",
+          "mediaType": "text/javascript",
+          "encoding": "utf8",
+          "content": "export function mount({ api }) {\n const panel=api.ui.register(\"panel\",{elements:{location:{selector:\"#location\",kind:\"text\"},latest:{selector:\"#latest\",kind:\"control\"},chat:{selector:\"#chat\",kind:\"container\"}}});\n panel.bind(\"view\",record=>({location:{text:String(record.variables.location)}}));\n panel.on(\"latest\",\"click\",()=>api.history.latest());\n api.widgets.mountChat(panel,\"chat\");\n}\n"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=frontend%2Fmanifest.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "frontend/manifest.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"apiVersion\": 1,\n  \"html\": \"frontend/index.html\",\n  \"css\": \"frontend/style.css\",\n  \"script\": \"frontend/main.js\",\n  \"assets\": {\n    \"cover\": {\n      \"kind\": \"image\",\n      \"file\": \"assets/portrait.svg\",\n      \"label\": \"雾港夜景\",\n      \"tags\": [\n        \"封面\"\n      ]\n    }\n  },\n  \"data\": {\n    \"caseFile\": \"data/case.json\"\n  }\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=frontend%2Fstyle.css",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "frontend/style.css",
+          "mediaType": "text/css",
+          "encoding": "utf8",
+          "content": ".story {color:#d4e1df;background:#132c30;padding:24px;} .story img{width:240px;max-width:100%;} button{padding:8px;}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=manifest.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "manifest.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"format\": \"tavern_headless_role_package\",\n  \"formatVersion\": \"1.0.0\",\n  \"packageId\": \"run-Ji4ISc\",\n  \"character\": \"character.json\",\n  \"openings\": \"openings.json\",\n  \"frontend\": \"frontend/manifest.json\",\n  \"files\": [\n    {\n      \"path\": \"agents/state-update/profile.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"agents/state-update/rules.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"assets/portrait.svg\",\n      \"mediaType\": \"image/svg+xml\",\n      \"purpose\": \"media\"\n    },\n    {\n      \"path\": \"backend/controllers/config.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"backend/controllers/prompt.js\",\n      \"mediaType\": \"text/javascript\",\n      \"purpose\": \"server_script\"\n    },\n    {\n      \"path\": \"backend/validators/validate.js\",\n      \"mediaType\": \"text/javascript\",\n      \"purpose\": \"server_script\"\n    },\n    {\n      \"path\": \"backend/variable-tools/derive.js\",\n      \"mediaType\": \"text/javascript\",\n      \"purpose\": \"server_script\"\n    },\n    {\n      \"path\": \"character.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"data/case.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"frontend/index.html\",\n      \"mediaType\": \"text/html\",\n      \"purpose\": \"template\"\n    },\n    {\n      \"path\": \"frontend/main.js\",\n      \"mediaType\": \"text/javascript\",\n      \"purpose\": \"browser_script\"\n    },\n    {\n      \"path\": \"frontend/manifest.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"frontend/style.css\",\n      \"mediaType\": \"text/css\",\n      \"purpose\": \"template\"\n    },\n    {\n      \"path\": \"openings/first.txt\",\n      \"mediaType\": \"text/plain\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"openings/second.txt\",\n      \"mediaType\": \"text/plain\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"openings.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"regex/first.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"regex/second.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"state/initial/first.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"state/initial/second.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"state/schema.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"worldbooks/book-0/book.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"worldbooks/book-0/entries/e0.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"worldbooks/harbor/book.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"worldbooks/harbor/entries/110.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"worldbooks/harbor/entries/120.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"worldbooks/people/book.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    },\n    {\n      \"path\": \"worldbooks/people/entries/110.json\",\n      \"mediaType\": \"application/json\",\n      \"purpose\": \"data\"\n    }\n  ]\n}\n"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=openings.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "openings.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"defaultOpeningIds\": {\n    \"individual\": \"first\",\n    \"group\": \"second\"\n  },\n  \"items\": [\n    {\n      \"id\": \"first\",\n      \"title\": \"一封没有收件人的信\",\n      \"summary\": \"从邮局开始调查\",\n      \"kind\": \"story\",\n      \"audience\": \"individual\",\n      \"textFile\": \"openings/first.txt\",\n      \"initialStateFile\": \"state/initial/first.json\"\n    },\n    {\n      \"id\": \"second\",\n      \"title\": \"花园会面\",\n      \"summary\": \"从花园开始调查\",\n      \"kind\": \"story\",\n      \"audience\": \"group\",\n      \"textFile\": \"openings/second.txt\",\n      \"initialStateFile\": \"state/initial/second.json\"\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=openings%2Ffirst.txt",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "openings/first.txt",
+          "mediaType": "text/plain",
+          "encoding": "utf8",
+          "content": "钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=openings%2Fsecond.txt",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "openings/second.txt",
+          "mediaType": "text/plain",
+          "encoding": "utf8",
+          "content": "沈知夏在花园门口等候裴修远和同行者。"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=regex%2Ffirst.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "regex/first.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "[\n  {\n    \"id\": \"first\",\n    \"scriptName\": \"first\",\n    \"findRegex\": \"蓝色印记\",\n    \"replaceString\": \"蓝色邮政印记\",\n    \"trimStrings\": [],\n    \"placement\": [\n      2\n    ],\n    \"disabled\": false,\n    \"markdownOnly\": false,\n    \"promptOnly\": false,\n    \"runOnEdit\": false,\n    \"substituteRegex\": 0,\n    \"minDepth\": null,\n    \"maxDepth\": null\n  }\n]"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=regex%2Fsecond.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "regex/second.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "[\n  {\n    \"id\": \"second\",\n    \"scriptName\": \"second\",\n    \"findRegex\": \"蓝色邮政印记\",\n    \"replaceString\": \"雾港邮政印记\",\n    \"trimStrings\": [],\n    \"placement\": [\n      2\n    ],\n    \"disabled\": false,\n    \"markdownOnly\": false,\n    \"promptOnly\": false,\n    \"runOnEdit\": false,\n    \"substituteRegex\": 0,\n    \"minDepth\": null,\n    \"maxDepth\": null\n  }\n]"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=state%2Finitial%2Ffirst.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "state/initial/first.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"location\": \"夜间邮局\",\n  \"hour\": 23,\n  \"trust\": 20\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=state%2Finitial%2Fsecond.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "state/initial/second.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"location\": \"花园门口\",\n  \"hour\": 18,\n  \"trust\": 30\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=state%2Fschema.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "state/schema.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"location\": {\n      \"type\": \"string\"\n    },\n    \"hour\": {\n      \"type\": \"integer\",\n      \"minimum\": 0,\n      \"maximum\": 23\n    },\n    \"trust\": {\n      \"type\": \"integer\",\n      \"minimum\": 0,\n      \"maximum\": 100\n    }\n  },\n  \"required\": [\n    \"location\",\n    \"hour\",\n    \"trust\"\n  ],\n  \"additionalProperties\": false\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fbook-0%2Fbook.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "worldbooks/book-0/book.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"name\": \"事实\",\n  \"entryFiles\": [\n    \"worldbooks/book-0/entries/e0.json\"\n  ],\n  \"scanDepth\": 2,\n  \"caseSensitive\": false,\n  \"matchWholeWords\": false,\n  \"recursive\": false,\n  \"maxRecursionSteps\": 1\n}\n"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fbook-0%2Fentries%2Fe0.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "worldbooks/book-0/entries/e0.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"uid\": 0,\n  \"key\": [\n    \"港口\"\n  ],\n  \"keysecondary\": [],\n  \"selective\": false,\n  \"constant\": false,\n  \"comment\": \"\",\n  \"order\": 0,\n  \"disable\": false,\n  \"position\": 1,\n  \"selectiveLogic\": 0,\n  \"depth\": 4,\n  \"role\": 0,\n  \"scanDepth\": null,\n  \"caseSensitive\": null,\n  \"matchWholeWords\": null,\n  \"excludeRecursion\": false,\n  \"preventRecursion\": false,\n  \"delayUntilRecursion\": 0,\n  \"outletName\": \"\",\n  \"content\": \"港口开放。\"\n}\n"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fharbor%2Fbook.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "worldbooks/harbor/book.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"name\": \"雾港地理\",\n  \"entryFiles\": [\n    \"worldbooks/harbor/entries/110.json\",\n    \"worldbooks/harbor/entries/120.json\"\n  ],\n  \"scanDepth\": 2,\n  \"caseSensitive\": false,\n  \"matchWholeWords\": false,\n  \"recursive\": false,\n  \"maxRecursionSteps\": 1\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fharbor%2Fentries%2F110.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "worldbooks/harbor/entries/110.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"uid\": 110,\n  \"comment\": \"夜间邮局\",\n  \"content\": \"邮局位于码头街尽头，午夜关闭。柜台下放着旧街区地图，门口有一盏铜制灯。\",\n  \"key\": [\n    \"邮局\",\n    \"信件\"\n  ],\n  \"constant\": true,\n  \"keysecondary\": [],\n  \"selective\": false,\n  \"selectiveLogic\": 0,\n  \"disable\": false,\n  \"position\": 0,\n  \"order\": 100,\n  \"depth\": 4,\n  \"role\": 0,\n  \"scanDepth\": null,\n  \"caseSensitive\": null,\n  \"matchWholeWords\": null\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fharbor%2Fentries%2F120.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "worldbooks/harbor/entries/120.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"uid\": 120,\n  \"comment\": \"旧灯塔\",\n  \"content\": \"旧灯塔位于北岬。通往灯塔的石阶在涨潮时会被海水淹没。\",\n  \"key\": [\n    \"灯塔\",\n    \"北岬\"\n  ],\n  \"constant\": true,\n  \"keysecondary\": [],\n  \"selective\": false,\n  \"selectiveLogic\": 0,\n  \"disable\": false,\n  \"position\": 0,\n  \"order\": 100,\n  \"depth\": 4,\n  \"role\": 0,\n  \"scanDepth\": null,\n  \"caseSensitive\": null,\n  \"matchWholeWords\": null\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fpeople%2Fbook.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "worldbooks/people/book.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"name\": \"雾港人物\",\n  \"entryFiles\": [\n    \"worldbooks/people/entries/110.json\"\n  ],\n  \"scanDepth\": 2,\n  \"caseSensitive\": false,\n  \"matchWholeWords\": false,\n  \"recursive\": false,\n  \"maxRecursionSteps\": 1\n}"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/native-cards/OG-8jpIM6G-5g8JQCVSf3/file?path=worldbooks%2Fpeople%2Fentries%2F110.json",
+      "headers": {},
+      "statusCode": 200,
+      "response": {
+        "data": {
+          "path": "worldbooks/people/entries/110.json",
+          "mediaType": "application/json",
+          "encoding": "utf8",
+          "content": "{\n  \"uid\": 110,\n  \"comment\": \"守灯人\",\n  \"content\": \"守灯人每晚会到码头买一份报纸。他认识沈知夏，但从不主动谈起灯塔的旧事。\",\n  \"key\": [\n    \"守灯人\"\n  ],\n  \"constant\": true,\n  \"keysecondary\": [],\n  \"selective\": false,\n  \"selectiveLogic\": 0,\n  \"disable\": false,\n  \"position\": 0,\n  \"order\": 100,\n  \"depth\": 4,\n  \"role\": 0,\n  \"scanDepth\": null,\n  \"caseSensitive\": null,\n  \"matchWholeWords\": null\n}"
+        }
+      }
+    }
+  ],
+  "importedCardId": "OG-8jpIM6G-5g8JQCVSf3",
+  "zipRead": {
+    "status": "passed",
+    "fileCount": 29
+  },
+  "schemaValidation": {
+    "status": "passed",
+    "valid": true,
+    "issues": []
+  },
+  "diagnostics": [],
+  "completedAt": "2026-10-06T18:44:46.225Z"
+}

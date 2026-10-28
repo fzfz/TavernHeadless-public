@@ -1,0 +1,230 @@
+{
+  "status": "proposal",
+  "targetSpec": "tavern_headless_card",
+  "targetVersion": "1.0.0",
+  "ruleSetVersion": "draft-1",
+  "containers": [
+    {
+      "id": "json",
+      "phase": "B"
+    },
+    {
+      "id": "png-apng",
+      "phase": "G",
+      "untilImplemented": "unsupported"
+    },
+    {
+      "id": "charx",
+      "phase": "G",
+      "untilImplemented": "unsupported"
+    }
+  ],
+  "features": [
+    {
+      "id": "identity",
+      "source": "ccv2/ccv3",
+      "sourcePointers": [
+        "/data/name",
+        "/data/description",
+        "/data/personality",
+        "/data/scenario",
+        "/data/mes_example"
+      ],
+      "plannedStatus": "direct",
+      "target": "character",
+      "supportedSubset": "字符串内容逐项保存；空值按目标schema报告",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "author-metadata",
+      "source": "ccv2/ccv3",
+      "sourcePointers": [
+        "/data/creator",
+        "/data/creator_notes",
+        "/data/tags",
+        "/data/character_version"
+      ],
+      "plannedStatus": "direct",
+      "target": "character/identity",
+      "supportedSubset": "作者说明与标签属于非执行资料",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "v3-metadata",
+      "source": "ccv3",
+      "sourcePointers": [
+        "/data/creator_notes_multilingual",
+        "/data/source",
+        "/data/creation_date",
+        "/data/modification_date"
+      ],
+      "plannedStatus": "convert",
+      "target": "character/identity/provenance",
+      "supportedSubset": "保留语言键和来源；时间单位显式转换",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "prompt-name",
+      "source": "ccv3",
+      "sourcePointers": ["/data/nickname"],
+      "plannedStatus": "convert",
+      "target": "character.promptName",
+      "supportedSubset": "姓名展示与宏称呼分开；空值行为记录在报告",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "openings",
+      "source": "ccv2/ccv3",
+      "sourcePointers": ["/data/first_mes", "/data/alternate_greetings"],
+      "plannedStatus": "convert",
+      "target": "openings",
+      "supportedSubset": "逐开场保存；初值和补丁按来源顺序展开并验证",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "group-opening",
+      "source": "ccv3",
+      "sourcePointers": ["/data/group_only_greetings"],
+      "plannedStatus": "unsupported",
+      "target": "provenance",
+      "supportedSubset": "非空群聊专用开场需要支持群聊或确认排除对应功能",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "lore-keyword",
+      "source": "ccv2/ccv3",
+      "sourcePointers": ["/data/character_book/entries/*"],
+      "plannedStatus": "convert",
+      "target": "worldbooks",
+      "supportedSubset": "主辅关键词、NOT_ANY/NOT_ALL/ANY/ALL、启停、常驻、大小写、全词、插入顺序与优先级；逐字段区分默认值和继承",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "lore-placement",
+      "source": "sillytavern",
+      "sourcePointers": [
+        "/data/character_book/entries/*/position",
+        "/data/character_book/entries/*/extensions/position",
+        "/data/character_book/entries/*/extensions/outlet_name"
+      ],
+      "plannedStatus": "convert",
+      "target": "worldbooks.entries.insertion",
+      "supportedSubset": "当前运行时的八种插入位置；扩展/顶层冲突必须展示实际解析优先级",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "lore-recursion",
+      "source": "sillytavern",
+      "sourcePointers": [
+        "/data/character_book/extensions",
+        "/data/character_book/entries/*/extensions"
+      ],
+      "plannedStatus": "convert",
+      "target": "worldbooks",
+      "supportedSubset": "独立扫描深度、递归步数、exclude/prevent/delay设置；未列明字段逐项报告",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "decorators",
+      "source": "ccv3",
+      "sourcePointers": ["/data/character_book/entries/*/content"],
+      "plannedStatus": "review",
+      "target": "worldbooks/provenance",
+      "supportedSubset": "含@@或@@@装饰器时逐个定位；首批尚无已验收装饰器映射，作为不支持项处理",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "card-instructions",
+      "source": "ccv2/ccv3",
+      "sourcePointers": [
+        "/data/system_prompt",
+        "/data/post_history_instructions"
+      ],
+      "plannedStatus": "convert",
+      "target": "prompting",
+      "supportedSubset": "保留独立指令与插入位置；original宏须补实际预设",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "regex",
+      "source": "plugin:regex",
+      "sourcePointers": ["/data/extensions/regex_scripts"],
+      "plannedStatus": "review",
+      "target": "prompting.regexFiles",
+      "supportedSubset": "显式正则、替换文本、启停、应用阶段和深度；未知flags/替换宏/宿主脚本分别阻塞或待处理",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "mvu-initial",
+      "source": "plugin:mvu",
+      "sourcePointers": ["/data/character_book/entries/*/content"],
+      "plannedStatus": "review",
+      "target": "openings.initialState",
+      "supportedSubset": "仅显式确认的初值与开场补丁；YAML/JSON结构验证，禁止用脚本猜测自然语言含义",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "mvu-rules",
+      "source": "plugin:mvu",
+      "sourcePointers": ["/data/character_book/entries/*/content"],
+      "plannedStatus": "review",
+      "target": "agents/state",
+      "supportedSubset": "业务规则与旧输出协议人工区分；混合条目按源范围拆分",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "ejs-known-subset",
+      "source": "plugin:ejs",
+      "sourcePointers": ["/data/character_book/entries/*/content"],
+      "plannedStatus": "review",
+      "target": "controllers",
+      "supportedSubset": "现有编译器只提供分隔符翻译；getvar/setvar/getwi控制流程逐项审阅并验收。toastr等界面副作用需人工确认迁移或排除，任意JavaScript不自动列为支持",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "v3-assets",
+      "source": "ccv3",
+      "sourcePointers": ["/data/assets/*"],
+      "plannedStatus": "review",
+      "target": "files/presentation",
+      "supportedSubset": "已提供的图片/音频文件按别名与引用保存；远程引用进入待补资源，ccdefault与包内路径由容器适配器解析",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "display",
+      "source": "extension",
+      "sourcePointers": ["/data/extensions"],
+      "plannedStatus": "review",
+      "target": "presentation",
+      "supportedSubset": "已支持模板/消息布局/runtime调用；宿主DOM访问与未知插件调用逐项报告",
+      "unmatched": "review_or_block",
+      "verified": false
+    },
+    {
+      "id": "unknown",
+      "source": "any",
+      "sourcePointers": ["/*"],
+      "plannedStatus": "review",
+      "target": "provenance",
+      "supportedSubset": "源节点覆盖清单列出所有未匹配字段；必需执行功能未解决时阻塞",
+      "unmatched": "review_or_block",
+      "verified": false
+    }
+  ]
+}

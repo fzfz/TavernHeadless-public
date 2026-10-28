@@ -1,0 +1,11 @@
+{
+  "repository": "fzfz/TavernHeadless",
+  "siteUrl": "https://fzfz.github.io/TavernHeadless-docs/",
+  "basePath": "/TavernHeadless-docs/",
+  "publishBranch": "main",
+  "title": "TavernHeadless · fzfz",
+  "upstreamRepository": "HerSophia/TavernHeadless",
+  "upstreamSiteUrl": "https://hersophia.github.io/TavernHeadless/",
+  "publicationRepository": "fzfz/TavernHeadless-docs",
+  "publicationBranch": "main"
+}

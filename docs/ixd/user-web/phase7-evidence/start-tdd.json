@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-20",
+  "boundary": "本机浏览器公开页面与控件",
+  "red": [
+    { "test": "start.test.cjs", "observation": "登录后等待 P14 超过 4000 毫秒，开始页尚未实现。" },
+    { "test": "start-edge.test.cjs source", "observation": "详情进入开始页并新建人格后，返回入口超过 5000 毫秒未到达 detail/c1。" },
+    { "test": "start-layout.test.cjs", "observation": "手机 320 像素宽度下，导航距离页面顶部 25 像素。" },
+    { "test": "start-edge.test.cjs repeat", "observation": "再次从详情开始同一角色时，等待开始按钮超过 5000 毫秒。" },
+    { "test": "acceptance.test.cjs", "observation": "等待原开始弹窗超过 4000 毫秒。" },
+    { "test": "persona-acceptance.test.cjs", "observation": "原历史条目与继续按钮选择器超过 5000 毫秒未找到元素。" }
+  ],
+  "green": {
+    "mainFlow": { "platforms": ["mobile", "desktop"], "result": "passed" },
+    "edgeCases": { "platforms": ["mobile", "desktop"], "casesPerPlatform": 19, "result": "passed", "logs": ["start-mobile.log", "start-desktop.log"] },
+    "layout": { "evidence": "start-layout.json", "result": "passed" },
+    "regressions": [
+      { "test": "acceptance.test.cjs", "platforms": ["mobile", "desktop"], "evidence": "acceptance.json", "result": "passed" },
+      { "test": "persona-acceptance.test.cjs", "platforms": ["mobile", "desktop"], "evidence": "batch3-acceptance.json", "result": "passed" }
+    ]
+  }
+}

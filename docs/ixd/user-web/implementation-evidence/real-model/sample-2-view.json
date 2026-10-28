@@ -1,0 +1,86 @@
+{
+  "character_id": "MX5sC2GMMWo7HzSLpTPP3",
+  "character_version_id": "sWpwA4DGkwtmYpfMyjiBE",
+  "name": "雾港来信 · 真实演绎",
+  "delivery": {
+    "html": "<section class=\"story\"><h1>雾港来信</h1><img src=\"/role-assets/sWpwA4DGkwtmYpfMyjiBE/assets/portrait.svg\" alt=\"雾港夜景\"><p id=\"location\"></p><button id=\"latest\">返回最新状态</button><div id=\"chat\"></div></section>",
+    "css": ".story {color:#d4e1df;background:#132c30;padding:24px;} .story img{width:240px;max-width:100%;} button{padding:8px;}",
+    "floorHtml": null,
+    "assets": {
+      "cover": {
+        "kind": "image",
+        "url": "/role-assets/sWpwA4DGkwtmYpfMyjiBE/assets/portrait.svg",
+        "label": "雾港夜景",
+        "tags": [
+          "封面"
+        ]
+      }
+    },
+    "data": {
+      "caseFile": {
+        "location": "雾港邮局",
+        "clue": "灯塔素描"
+      },
+      "opening": "钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”",
+      "performerName": "裴修远"
+    },
+    "scriptUrl": "/role-assets/sWpwA4DGkwtmYpfMyjiBE/frontend/main.js",
+    "htmlUrl": "/role-assets/sWpwA4DGkwtmYpfMyjiBE/frontend/index.html",
+    "htmlAssetOriginOffsets": [
+      46
+    ],
+    "dataUrls": {
+      "caseFile": "/role-assets/sWpwA4DGkwtmYpfMyjiBE/data/case.json"
+    },
+    "cssUrl": "/role-assets/sWpwA4DGkwtmYpfMyjiBE/frontend/style.css",
+    "mode": "custom"
+  },
+  "initial": {
+    "sessionId": "Ivn7ExR1vrksChJQGUO7z",
+    "branchId": "main",
+    "floorId": null,
+    "attemptId": null,
+    "versionId": "sWpwA4DGkwtmYpfMyjiBE",
+    "snapshotId": "95b99b5d-437d-44bc-a597-3315353cebde",
+    "parentSnapshotId": null,
+    "variables": {
+      "location": "夜间邮局",
+      "hour": 23,
+      "trust": 20
+    },
+    "source": {
+      "kind": "initial",
+      "runId": null,
+      "jobId": null
+    }
+  },
+  "current": {
+    "sessionId": "Ivn7ExR1vrksChJQGUO7z",
+    "branchId": "main",
+    "floorId": "1527Vd_QVWsd2l3Q81LOy",
+    "attemptId": "rd8OcFS6a-4WR87AU07ju:1",
+    "versionId": "sWpwA4DGkwtmYpfMyjiBE",
+    "snapshotId": "32c83d7f-38fa-4356-a6b9-e7d716cca544",
+    "parentSnapshotId": "7b8e3120-8feb-415d-b335-5996dc4ca46f",
+    "variables": {
+      "location": "夜间邮局",
+      "hour": 23,
+      "trust": 20
+    },
+    "source": {
+      "kind": "floor",
+      "runId": "rd8OcFS6a-4WR87AU07ju",
+      "jobId": null
+    }
+  },
+  "processing": {
+    "pendingMain": null,
+    "pendingFollowups": false,
+    "pendingStateFloorId": null
+  },
+  "capabilities": {
+    "send": true,
+    "history": true,
+    "customFloors": false
+  }
+}

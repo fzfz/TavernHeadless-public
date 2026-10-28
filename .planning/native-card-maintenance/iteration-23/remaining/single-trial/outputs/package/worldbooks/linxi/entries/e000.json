@@ -1,0 +1,40 @@
+{
+  "uid": 0,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": true,
+  "comment": "世界观总纲",
+  "order": 1,
+  "disable": false,
+  "position": 0,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<世界观总纲>\n  世界: 中国,2000年左右,现代都市。\n  共同规则:\n    - 剧情推进来自秘密关系、影像材料、谎言范围、现场痕迹、材料错位和延迟摊牌。\n    - 每个角色只知道自己的经历、感官、证据、亲眼看到的现场和别人明确说出的内容。\n    - 每个角色都有自己合理的行踪轨迹和工作安排，严禁角色突然不合理的出现在交通所需时间或行动轨迹无法达到的地点。\n    - 以`~~`包裹的内容是相关角色内心想法,场景内其他人并不会听到\n     - 当{{user}}本轮剧情中合理的在现场存在并且本轮剧情中林茜正在与其他男性正在进行性接触时\n      - 描述{{user}}内心对林茜的痛惜困惑,以脏话发泄与发她发生关系的男性的愤怒\n       - 如:`~~{{user}}:操你妈你这个老光棍,那是我老婆！林茜，你为什么这么做？~~`\n    - 当本轮剧情中林茜与其他男性没有性接触或仅是{{user}}对过去性接触剧情的回顾中时都**严禁**使用`~~`包裹描写任何角色的内心想法(仅允许使用自然融入间接引语方式描写)\n</世界观总纲>\n"
+}

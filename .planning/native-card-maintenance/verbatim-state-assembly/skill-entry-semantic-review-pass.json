@@ -1,0 +1,186 @@
+{
+  "reviewType": "独立入口文档语义复审",
+  "auditedFiles": [
+    ".agents/skills/native-card-conversion/SKILL.md"
+  ],
+  "rulesSource": ".planning/native-card-maintenance/document-restructure-closeout/audit-rules.txt",
+  "overall": "通过",
+  "findings": [],
+  "method": "本轮仅读取当前SKILL.md和指定审计规则，逐句审阅；未读取引用资料、背景、计划、实现或此前报告，待审文件保持原样。结论限定于当前入口文档的语义质量，引用资源的存在及API实现一致性不在本轮验收范围内。",
+  "checklist": [
+    {
+      "rule": "规则使用正向句式，执行者、动作、对象和条件明确",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:16-18",
+        "SKILL.md:24-80"
+      ],
+      "conclusion": "转换者先读取、再判断、生成和验收；排除条件、失败交付及能力缺口均给出具体动作。"
+    },
+    {
+      "rule": "排除成年内容、NSFW、政治正确、道德审判及其他内容审查前提",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:1-80"
+      ],
+      "conclusion": "全文没有加入上述内容审核步骤或规范。"
+    },
+    {
+      "rule": "完整表达成果要求的指定内容",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:12-20"
+      ],
+      "conclusion": "文档要求保留仍有效的人物、剧情、初值、变量规则、代码与页面原文，未对待转换内容设置额外内容省略条件。"
+    },
+    {
+      "rule": "句子通顺、可朗读，主体、动作和结果清楚",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:10-80"
+      ],
+      "conclusion": "句子能够定位转换Agent及实际消费者；各步骤完成条件明确描述结果。"
+    },
+    {
+      "rule": "使用常用词和专业术语，专用名称先定义",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:10",
+        "SKILL.md:26-32"
+      ],
+      "conclusion": "转换Agent和状态Agent在流程前定义；任务目录及工具返回路径在首次使用时解释。"
+    },
+    {
+      "rule": "对象所属文件、接口或模块明确",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:29-38",
+        "SKILL.md:48-64",
+        "SKILL.md:70-80"
+      ],
+      "conclusion": "输入、任务目录、目标文件、记录及消费者通过具体路径、字段或主题引用定位。"
+    },
+    {
+      "rule": "章节用途、结构、标题和执行顺序明确",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:14-80"
+      ],
+      "conclusion": "原则独立列出，五章分别用于读取、决定、生成、验收和排除处理；第40行明确在职责判断前执行整卡排除判断。"
+    },
+    {
+      "rule": "每条要求完整定义一次，其他位置引用",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:20",
+        "SKILL.md:34-38",
+        "SKILL.md:46-62",
+        "SKILL.md:70-74"
+      ],
+      "conclusion": "入口按主题指向详细判据、字段、格式及验收资料；原文承接原则通过引用复用，各章完成条件承担阶段验收用途。"
+    },
+    {
+      "rule": "删除抽象空话、重复解释、无关说明和规则",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:1-80"
+      ],
+      "conclusion": "正文均服务于转换动作或完成判据，无需要修改的空话及无关说明；一处可选精简见removableText。"
+    },
+    {
+      "rule": "UI和接口错误文案说明具体情况及可采取操作",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:74",
+        "SKILL.md:80"
+      ],
+      "conclusion": "当前文档未提供具体UI或接口错误文案；失败交付要求给出具体问题，能力缺口要求说明所需行为、接口不足和验收方法。"
+    },
+    {
+      "rule": "自身资源使用相对路径，依赖符合执行者用途",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:20-74"
+      ],
+      "conclusion": "自身脚本与引用文档均使用Skill相对路径；输入文件和输出目录使用用户路径及工具返回路径。资源实际存在与可访问性未作范围外验证。"
+    },
+    {
+      "rule": "内容限定为执行规范、步骤、资源、工具和契约，排除开发过程及宿主内部流程",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:1-80"
+      ],
+      "conclusion": "全文面向角色卡转换执行者，不含Skill创建者开发要求、升级过程、旧版叙述或宿主内部组织规范。"
+    },
+    {
+      "rule": "针对错误动作的限制使用正向句式规定允许动作",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:16-20",
+        "SKILL.md:32",
+        "SKILL.md:64",
+        "SKILL.md:78-80"
+      ],
+      "conclusion": "原文承接、只读依据、共享发送状态、整卡跳过和获准执行均写清具体行为及适用条件。"
+    },
+    {
+      "rule": "逐句检查并列出可删文字",
+      "status": "通过",
+      "locations": [
+        "SKILL.md:1-80"
+      ],
+      "conclusion": "全文已逐句检查；保留消费者、技术转写、实际读取与验收要求，非阻断精简建议见removableText。"
+    }
+  ],
+  "removableText": [
+    {
+      "file": "SKILL.md",
+      "lines": [
+        32,
+        32
+      ],
+      "optional": true,
+      "text": "按需读取本 Skill 引用的架构、字段、格式及 API 资料；",
+      "suggestion": "可删除该分句，保留其后的只读依据要求。第34-38、46、58、60和70行已经按具体执行阶段给出对应资料及读取条件，删除后仍能定位所需资料。这属于可选压缩，不影响通过结论。"
+    }
+  ],
+  "keyChecks": [
+    {
+      "status": "通过",
+      "file": "SKILL.md",
+      "lines": [
+        16,
+        18
+      ],
+      "conclusion": "原文承接与代码技术转写分别定义，代码转写仍保留输入、条件、分支、顺序、状态来源及结果。"
+    },
+    {
+      "status": "通过",
+      "file": "SKILL.md",
+      "lines": [
+        50,
+        66
+      ],
+      "conclusion": "状态规则需要的事实来源和完成判据仍明确；第66行继续要求保留内容写入实际消费者读取的文件，实际消费要求完整。"
+    },
+    {
+      "status": "通过",
+      "file": "SKILL.md",
+      "lines": [
+        70,
+        74
+      ],
+      "conclusion": "验收引用、工具顺序、语义判断、检查状态和交付条件明确。"
+    },
+    {
+      "status": "通过",
+      "file": "SKILL.md",
+      "lines": [
+        78,
+        80
+      ],
+      "conclusion": "整卡排除与继续转换的条件分界明确，能力缺口与获准执行步骤清楚。"
+    }
+  ],
+  "changedReviewedDocuments": false
+}

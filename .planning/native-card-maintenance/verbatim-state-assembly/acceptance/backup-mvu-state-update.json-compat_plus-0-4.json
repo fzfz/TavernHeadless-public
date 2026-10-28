@@ -1,0 +1,841 @@
+{
+  "presetFile": "/Users/developer/.codex/worktrees/state-assembly-implementation/TavernHeadless/.planning/native-card-maintenance/verbatim-state-assembly/presets/backup-mvu-state-update.json",
+  "resourceId": "C7g68zVwPWyHnzKUQjqlC",
+  "versionId": "QBmBs-D2S444vtAvSHO5W",
+  "request": {
+    "floor_id": "floor-5",
+    "expected_snapshot_id": "snapshot-4"
+  },
+  "preview": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "[system reset]\n\n<system_instructions>\nidentity: You are ATRI, not a helpful assistant but an GM and variable updater that observes and records virtual characters' immediate responses in various complex scenarios.\n\ncore principles:\n- ATRI remains bold in innovating with language, models, and calculations, as it is both permitted to and unafraid of making errors.\n- ATRI continuously activates her calculation capability module, possessing a highly advanced cognitive capacity to handle extremely complex tasks.\n- ATRI never deviate from the true personalities of the characters. All events should based on the objectivity of the world and the subjective initiative of the characters. The traits of the characters will ONLY change through their unique experiences and learning abilities.\n- ATRI utilizes interdisciplinary knowledge from fields such as computer science, biology, physics, psychology, geography, and humanities to construct a fully realistic sandbox.\n- The world information known to ATRI cannot be directly observed by other characters. Other characters can acquire this information through logical reasoning and feasible observation—though it may lead to inaccuracies or omissions in the information they obtain.\n- ATRI prohibits the emergence of metanarrative within the sandbox simulation (e.g., revealing character settings; allowing characters to perceive events beyond their field of vision or the inner thoughts of other characters; enabling an omniscient perspective; exposing the existence of the sandbox).\n- ATRI ensures the continuous and fair operation of variable updates, without any conclusions, sublimations, or actions aimed at pleasing specific individuals or variables.\n\nPROHIBITED CONTENT:\n1. Labeled Personality Traits:Characters must not be defined or reduced to simplistic tags. Their personalities should be revealed through a complex tapestry of actions, internal conflicts, and contextual decisions.\n2. Stereotypes:Any reliance on cultural, gender, occupational, or social stereotypes is prohibited. Character portrayal must be built upon individual-specific backgrounds and unique personal experiences.\n\ncore directive: ATRI shall prioritize granular, motivated logic-driven, and unpredictable human-like complexity over convenient, recycled, or preconceived variable-updating shortcuts and variable-updating comfort.\n</system_instructions>\n\n\n<additional_information>"
+      },
+      {
+        "role": "user",
+        "content": "裴修远是一位 28 岁的男性信使，性格谨慎，正在领取点数。\n\n沈知遥是负责登记点数的账房。"
+      },
+      {
+        "role": "system",
+        "content": "账房按任务完成记录登记点数。\n\n</additional_information>\n\n<past_observe>\n\n{\"stateSchema\":{\"type\":\"object\",\"required\":[\"score\"],\"properties\":{\"score\":{\"type\":\"integer\",\"minimum\":0}},\"additionalProperties\":false},\"writablePaths\":[\"/score\"],\"derivedPaths\":[]}\n\n裴修远完成一项任务时，沈知遥将点数增加 1；同一项任务只登记一次。\n\n{\"before\":{\"score\":4},\"floorBefore\":{\"score\":4},\"previousSnapshotId\":\"snapshot-4\"}\n\n[]\n\n{\"sources\":[{\"messageId\":\"user-5\",\"revision\":1,\"role\":\"user\",\"text\":\"“第 5 项任务已经完成，请登记点数。”\"},{\"messageId\":\"assistant-5\",\"revision\":1,\"role\":\"assistant\",\"text\":\"沈知遥核对第 5 项任务的完成记录，为裴修远登记了 1 点。\"}],\"sourceIdentity\":{\"floorId\":\"floor-5\",\"branchId\":\"main\",\"runId\":null,\"attemptNo\":null,\"floorRunId\":\"run-5\",\"floorAttemptNo\":1,\"outputPageId\":\"page-5\",\"assistantMessageId\":\"assistant-5\",\"messages\":[{\"messageId\":\"user-5\",\"pageId\":\"page-5\",\"revision\":1,\"seq\":0,\"role\":\"user\"},{\"messageId\":\"assistant-5\",\"pageId\":\"page-5\",\"revision\":1,\"seq\":1,\"role\":\"assistant\"}]},\"toolEvidence\":[],\"worldbookSelection\":null,\"priorFacts\":[],\"consumedSources\":[],\"agentResults\":[]}"
+      },
+      {
+        "role": "user",
+        "content": "裴修远来到柜台。"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥询问裴修远完成了哪项任务。"
+      },
+      {
+        "role": "user",
+        "content": "“第 1 项任务已经完成，请登记点数。”"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥核对第 1 项任务的完成记录，为裴修远登记了 1 点。"
+      },
+      {
+        "role": "user",
+        "content": "“第 2 项任务已经完成，请登记点数。”"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥核对第 2 项任务的完成记录，为裴修远登记了 1 点。"
+      },
+      {
+        "role": "user",
+        "content": "“第 3 项任务已经完成，请登记点数。”"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥核对第 3 项任务的完成记录，为裴修远登记了 1 点。"
+      },
+      {
+        "role": "user",
+        "content": "“第 4 项任务已经完成，请登记点数。”"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥核对第 4 项任务的完成记录，为裴修远登记了 1 点。"
+      },
+      {
+        "role": "user",
+        "content": "“第 5 项任务已经完成，请登记点数。”"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥核对第 5 项任务的完成记录，为裴修远登记了 1 点。"
+      },
+      {
+        "role": "system",
+        "content": "</past_observe>\n\n---\n<must>\n紧急变量更新任务:\n  description: 你必须立即停止角色扮演，不再续写发送给你的任何剧情，以最高优先级仅按照给定要求和格式对变量进行更新\n  reference: 在\\`<past_observe>\\`中包含了最新的剧情情况，而给定的变量状态是在该剧情发生之前的状态\n  rule: 你必须以旁白视角，根据剧情情况和给定的剧情发生前变量状态，分析经过这段剧情后，变量会发生什么变化，并按规则输出变量更新命令\n  format: |-\n    按照“状态提案输出”指令返回变量更新提案。\n</must>\n"
+      },
+      {
+        "role": "user",
+        "content": "遵循<must>指令"
+      },
+      {
+        "role": "system",
+        "content": "你必须返回一个完全符合 outputSchema 的 JSON 对象。\n你引用的消息标识必须逐字复制自 sources[].messageId。\n你必须将 toolEvidence 作为工具执行结果，并根据 sources 判断剧情中已经发生的行为。\n提案使用工具执行结果时，你必须将对应的 toolEvidence[].executionId 逐字复制到 evidenceExecutionIds。计算状态时，你必须使用工具记录的随机结果。\n每个 path 最多写入一次。更新数组时，你必须通过一次操作设置该 path 的完整数组。\n\n{\"outputSchema\":{\"type\":\"object\",\"required\":[\"changes\",\"evidenceMessageIds\"],\"additionalProperties\":false,\"properties\":{\"changes\":{\"type\":\"array\",\"description\":\"Write each path at most once. For an array path, set the complete array in one operation.\",\"maxItems\":1,\"items\":{\"oneOf\":[{\"type\":\"object\",\"required\":[\"op\",\"path\",\"value\"],\"properties\":{\"op\":{\"const\":\"set\"},\"path\":{\"const\":\"/score\"},\"value\":{\"type\":\"integer\"}},\"additionalProperties\":false},{\"type\":\"object\",\"required\":[\"op\",\"path\"],\"properties\":{\"op\":{\"const\":\"remove\"},\"path\":{\"const\":\"/score\"}},\"additionalProperties\":false}]}},\"evidenceMessageIds\":{\"type\":\"array\",\"items\":{\"enum\":[\"user-5\",\"assistant-5\"]},\"uniqueItems\":true},\"evidenceExecutionIds\":{\"type\":\"array\",\"uniqueItems\":true,\"items\":false}}}}"
+      }
+    ],
+    "preset": {
+      "presetId": "C7g68zVwPWyHnzKUQjqlC",
+      "presetVersionId": "QBmBs-D2S444vtAvSHO5W"
+    },
+    "before": {
+      "score": 4
+    },
+    "previousSnapshotId": "snapshot-4",
+    "sources": [
+      {
+        "messageId": "user-5",
+        "revision": 1,
+        "role": "user",
+        "text": "“第 5 项任务已经完成，请登记点数。”"
+      },
+      {
+        "messageId": "assistant-5",
+        "revision": 1,
+        "role": "assistant",
+        "text": "沈知遥核对第 5 项任务的完成记录，为裴修远登记了 1 点。"
+      }
+    ],
+    "variableHistory": [],
+    "sourceIdentity": {
+      "floorId": "floor-5",
+      "branchId": "main",
+      "runId": null,
+      "attemptNo": null,
+      "floorRunId": "run-5",
+      "floorAttemptNo": 1,
+      "outputPageId": "page-5",
+      "assistantMessageId": "assistant-5",
+      "messages": [
+        {
+          "messageId": "user-5",
+          "pageId": "page-5",
+          "revision": 1,
+          "seq": 0,
+          "role": "user"
+        },
+        {
+          "messageId": "assistant-5",
+          "pageId": "page-5",
+          "revision": 1,
+          "seq": 1,
+          "role": "assistant"
+        }
+      ]
+    },
+    "outputSchema": {
+      "type": "object",
+      "required": [
+        "changes",
+        "evidenceMessageIds"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "changes": {
+          "type": "array",
+          "description": "Write each path at most once. For an array path, set the complete array in one operation.",
+          "maxItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "op",
+                  "path",
+                  "value"
+                ],
+                "properties": {
+                  "op": {
+                    "const": "set"
+                  },
+                  "path": {
+                    "const": "/score"
+                  },
+                  "value": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "required": [
+                  "op",
+                  "path"
+                ],
+                "properties": {
+                  "op": {
+                    "const": "remove"
+                  },
+                  "path": {
+                    "const": "/score"
+                  }
+                },
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "evidenceMessageIds": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "user-5",
+              "assistant-5"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "evidenceExecutionIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": false
+        }
+      }
+    },
+    "prompt_snapshot": {
+      "presetId": "C7g68zVwPWyHnzKUQjqlC",
+      "presetUpdatedAt": 1791187939157,
+      "presetVersion": 1,
+      "presetVersionId": "QBmBs-D2S444vtAvSHO5W",
+      "presetContentHash": "sha256:05db76392be6ed8089d7ee3f33575b2ec54255b8dbf5d375735813845cdde70d",
+      "worldbookId": null,
+      "worldbookUpdatedAt": null,
+      "worldbookVersion": null,
+      "worldbookVersionId": null,
+      "worldbookContentHash": null,
+      "regexProfileId": null,
+      "regexProfileUpdatedAt": null,
+      "regexProfileVersion": null,
+      "regexProfileVersionId": null,
+      "regexProfileContentHash": null,
+      "characterId": "character",
+      "characterVersionId": "version",
+      "characterImportedFormat": null,
+      "characterContentHash": "84bc75e59d3e27db503ed8c4880f193cf28bf28c9cee4018fb33d71d9be91a0d",
+      "worldbookActivatedEntryUids": [
+        1
+      ],
+      "worldbookActivatedEntries": [
+        {
+          "uid": 1,
+          "activationKey": "worldbook:character:character:version:book:entry:1",
+          "source": {
+            "kind": "character_book",
+            "worldbookId": null,
+            "worldbookName": "Unnamed",
+            "assetScopeId": "worldbook:character:character:version:book"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        }
+      ],
+      "regexPreRuleNames": [],
+      "regexPostRuleNames": [],
+      "promptMode": "compat_plus",
+      "assetManifestDigest": "6a3f7d172219d6f4e79ef85986ae8d6893efa3ee10c7a92101efb2348271cd51",
+      "promptDigest": "77984cb5611e8d310865b420db90fa7496a222a9261908375d457e3467baa5e3",
+      "tokenEstimate": 1275
+    },
+    "assembly": {
+      "mode": "preset",
+      "promptIntent": "normal",
+      "assistantPrefillApplied": false,
+      "assistantPrefillStrategy": "none",
+      "presetUsed": true,
+      "worldbookHits": 1,
+      "regexPreRules": [],
+      "regexPostRules": [],
+      "memorySummaryInjected": false,
+      "reservedVariableCollisions": [],
+      "selectedPromptOrderCharacterId": 100001,
+      "ignoredPromptOrderCharacterIds": [],
+      "unsupportedPresetFields": [
+        "prompts[].injection_depth",
+        "prompts[].injection_order"
+      ],
+      "ignoredPresetFields": [
+        "top_level.top_a",
+        "top_level.max_context_unlocked",
+        "top_level.tool_reasoning_mode",
+        "top_level.send_if_empty",
+        "top_level.impersonation_prompt",
+        "top_level.new_group_chat_prompt",
+        "top_level.bias_preset_selected",
+        "top_level.scenario_format",
+        "top_level.personality_format",
+        "top_level.group_nudge_prompt",
+        "top_level.assistant_impersonation",
+        "top_level.use_sysprompt",
+        "top_level.squash_system_messages",
+        "top_level.media_inlining",
+        "top_level.inline_image_quality",
+        "top_level.continue_prefill",
+        "top_level.continue_postfix",
+        "top_level.function_calling",
+        "top_level.tool_call_recurse_limit",
+        "top_level.show_thoughts",
+        "top_level.reasoning_effort",
+        "top_level.verbosity",
+        "top_level.enable_web_search",
+        "top_level.seed",
+        "top_level.n",
+        "top_level.request_images",
+        "top_level.request_image_aspect_ratio",
+        "top_level.request_image_resolution",
+        "top_level.extensions"
+      ],
+      "unresolvedPresetMarkers": [
+        "stateDefinition",
+        "stateRules",
+        "stateBefore",
+        "stateHistory",
+        "stateEvidence",
+        "stateOutputContract"
+      ],
+      "presetWarnings": [
+        "Prompt 'main' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'main' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'mvu-information-start' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'mvu-information-start' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'personaDescription' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'personaDescription' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'charDescription' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'charDescription' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'worldInfoBefore' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'worldInfoBefore' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'worldInfoAfter' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'worldInfoAfter' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'mvu-information-end' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'mvu-information-end' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'mvu-observe-start' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'mvu-observe-start' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'mvu-observe-end' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'mvu-observe-end' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'jailbreak' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'jailbreak' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'mvu-user-input' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'mvu-user-input' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'mvu-output-contract' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'mvu-output-contract' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'stateDefinition' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'stateDefinition' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'stateRules' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'stateRules' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'stateBefore' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'stateBefore' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'stateHistory' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'stateHistory' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'stateEvidence' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'stateEvidence' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'stateOutputContract' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'stateOutputContract' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "检测到当前运行时无法映射的 marker 标识；请查看 unresolvedMarkers 与 downgradedEntries。",
+        "检测到已识别但当前未完整执行的 preset 字段；请查看 unsupportedFields。"
+      ],
+      "continueNudgeApplied": false,
+      "namesBehaviorApplied": "off",
+      "triggerFilteredEntryIds": [],
+      "inChatInsertedEntryIds": [],
+      "worldbookMatches": [
+        {
+          "uid": 1,
+          "activationKey": "worldbook:character:character:version:book:entry:1",
+          "assetScopeId": "worldbook:character:character:version:book",
+          "comment": "计分场景",
+          "contentPreview": "账房按任务完成记录登记点数。",
+          "order": 1,
+          "source": {
+            "kind": "character_book",
+            "worldbookId": null,
+            "worldbookName": "Unnamed",
+            "assetScopeId": "worldbook:character:character:version:book"
+          },
+          "insertion": {
+            "position": "before"
+          },
+          "activation": {
+            "mode": "constant",
+            "recursionLevel": 0,
+            "firstMatch": null
+          }
+        }
+      ]
+    },
+    "runtime_trace": {
+      "preset": {
+        "selectedPromptOrderCharacterId": 100001,
+        "ignoredPromptOrderCharacterIds": [],
+        "unsupportedFields": [
+          "prompts[].injection_depth",
+          "prompts[].injection_order"
+        ],
+        "ignoredFields": [
+          "top_level.top_a",
+          "top_level.max_context_unlocked",
+          "top_level.tool_reasoning_mode",
+          "top_level.send_if_empty",
+          "top_level.impersonation_prompt",
+          "top_level.new_group_chat_prompt",
+          "top_level.bias_preset_selected",
+          "top_level.scenario_format",
+          "top_level.personality_format",
+          "top_level.group_nudge_prompt",
+          "top_level.assistant_impersonation",
+          "top_level.use_sysprompt",
+          "top_level.squash_system_messages",
+          "top_level.media_inlining",
+          "top_level.inline_image_quality",
+          "top_level.continue_prefill",
+          "top_level.continue_postfix",
+          "top_level.function_calling",
+          "top_level.tool_call_recurse_limit",
+          "top_level.show_thoughts",
+          "top_level.reasoning_effort",
+          "top_level.verbosity",
+          "top_level.enable_web_search",
+          "top_level.seed",
+          "top_level.n",
+          "top_level.request_images",
+          "top_level.request_image_aspect_ratio",
+          "top_level.request_image_resolution",
+          "top_level.extensions"
+        ],
+        "unresolvedMarkers": [
+          "stateDefinition",
+          "stateRules",
+          "stateBefore",
+          "stateHistory",
+          "stateEvidence",
+          "stateOutputContract"
+        ],
+        "warnings": [
+          "Prompt 'main' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'main' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'mvu-information-start' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'mvu-information-start' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'personaDescription' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'personaDescription' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'charDescription' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'charDescription' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'worldInfoBefore' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'worldInfoBefore' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'worldInfoAfter' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'worldInfoAfter' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'mvu-information-end' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'mvu-information-end' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'mvu-observe-start' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'mvu-observe-start' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'mvu-observe-end' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'mvu-observe-end' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'jailbreak' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'jailbreak' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'mvu-user-input' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'mvu-user-input' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'mvu-output-contract' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'mvu-output-contract' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'stateDefinition' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'stateDefinition' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'stateRules' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'stateRules' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'stateBefore' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'stateBefore' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'stateHistory' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'stateHistory' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'stateEvidence' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'stateEvidence' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'stateOutputContract' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'stateOutputContract' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "检测到当前运行时无法映射的 marker 标识；请查看 unresolvedMarkers 与 downgradedEntries。",
+          "检测到已识别但当前未完整执行的 preset 字段；请查看 unsupportedFields。"
+        ],
+        "triggerFilteredEntryIds": [],
+        "inChatInsertedEntryIds": [],
+        "continueNudgeApplied": false,
+        "namesBehaviorApplied": "off"
+      },
+      "worldbook": {
+        "hitCount": 1,
+        "matches": [
+          {
+            "uid": 1,
+            "activationKey": "worldbook:character:character:version:book:entry:1",
+            "assetScopeId": "worldbook:character:character:version:book",
+            "comment": "计分场景",
+            "contentPreview": "账房按任务完成记录登记点数。",
+            "order": 1,
+            "source": {
+              "kind": "character_book",
+              "worldbookId": null,
+              "worldbookName": "Unnamed",
+              "assetScopeId": "worldbook:character:character:version:book"
+            },
+            "insertion": {
+              "position": "before"
+            },
+            "activation": {
+              "mode": "constant",
+              "recursionLevel": 0,
+              "firstMatch": null
+            }
+          }
+        ],
+        "decisionTraces": []
+      },
+      "memory": {
+        "summaryInjected": false
+      },
+      "macro": {
+        "warnings": [
+          {
+            "code": "macro_value_missing",
+            "message": "Macro charInstruction has no resolved value and fell back to empty string.",
+            "macroName": "charInstruction"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro charDepthPrompt has no resolved value and fell back to empty string.",
+            "macroName": "charDepthPrompt"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro mesExamples has no resolved value and fell back to empty string.",
+            "macroName": "mesExamples"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro mesExamplesRaw has no resolved value and fell back to empty string.",
+            "macroName": "mesExamplesRaw"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+            "macroName": "defaultAuthorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro model has no resolved value and fell back to empty string.",
+            "macroName": "model"
+          }
+        ],
+        "usedNames": [],
+        "mutationPreview": [],
+        "stagedMutations": [],
+        "traces": []
+      },
+      "budgets": {
+        "byGroup": [
+          {
+            "group": "history",
+            "tokenCount": 71
+          },
+          {
+            "group": "role_state",
+            "tokenCount": 433
+          },
+          {
+            "group": "section:charDescription",
+            "tokenCount": 4
+          },
+          {
+            "group": "section:jailbreak",
+            "tokenCount": 67
+          },
+          {
+            "group": "section:main",
+            "tokenCount": 596
+          },
+          {
+            "group": "section:mvu-information-end",
+            "tokenCount": 7
+          },
+          {
+            "group": "section:mvu-information-start",
+            "tokenCount": 6
+          },
+          {
+            "group": "section:mvu-observe-end",
+            "tokenCount": 4
+          },
+          {
+            "group": "section:mvu-observe-start",
+            "tokenCount": 4
+          },
+          {
+            "group": "section:mvu-output-contract",
+            "tokenCount": 67
+          },
+          {
+            "group": "section:mvu-user-input",
+            "tokenCount": 3
+          },
+          {
+            "group": "section:personaDescription",
+            "tokenCount": 8
+          },
+          {
+            "group": "worldbook",
+            "tokenCount": 4
+          }
+        ]
+      },
+      "historyNormalization": {
+        "rawEntryCount": 10,
+        "effectiveTurnCount": 10,
+        "selectedTurnCount": 10,
+        "trailingUserSourceFloorIds": [],
+        "mergedUserGroups": [],
+        "violations": []
+      },
+      "delivery": {
+        "assistantPrefillRequested": false,
+        "assistantPrefillApplied": false,
+        "assistantPrefillStrategy": "none",
+        "allowAssistantPrefill": true,
+        "requireLastUser": false,
+        "noAssistant": false,
+        "lastMessageRole": "user",
+        "endsWithUser": true,
+        "degraded": false,
+        "degradeReasons": []
+      },
+      "structure": {
+        "mode": "default",
+        "mergeAdjacentSameRole": false,
+        "assistantRewriteCount": 0,
+        "tailAssistantDetected": false
+      }
+    },
+    "token_usage": {
+      "total": 1275,
+      "availableForReply": 1998725,
+      "bySection": {
+        "main": 596,
+        "mvu-information-start": 6,
+        "personaDescription": 8,
+        "charDescription": 4,
+        "worldInfoBefore": 4,
+        "mvu-information-end": 7,
+        "mvu-observe-start": 4,
+        "stateDefinition": 46,
+        "stateRules": 9,
+        "stateBefore": 21,
+        "stateHistory": 1,
+        "stateEvidence": 164,
+        "chatHistory": 71,
+        "mvu-observe-end": 4,
+        "jailbreak": 67,
+        "mvu-user-input": 3,
+        "mvu-output-contract": 67,
+        "stateOutputContract": 192
+      },
+      "byGroup": {
+        "section:main": 596,
+        "section:mvu-information-start": 6,
+        "section:personaDescription": 8,
+        "section:charDescription": 4,
+        "worldbook": 4,
+        "section:mvu-information-end": 7,
+        "section:mvu-observe-start": 4,
+        "role_state": 433,
+        "history": 71,
+        "section:mvu-observe-end": 4,
+        "section:jailbreak": 67,
+        "section:mvu-user-input": 3,
+        "section:mvu-output-contract": 67
+      },
+      "prunedByGroup": {}
+    }
+  },
+  "modelRequest": {
+    "model": "test",
+    "max_tokens": 1000,
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "schema": {
+          "type": "object",
+          "required": [
+            "changes",
+            "evidenceMessageIds"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "changes": {
+              "type": "array",
+              "description": "Write each path at most once. For an array path, set the complete array in one operation.",
+              "maxItems": 1,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "op",
+                      "path",
+                      "value"
+                    ],
+                    "properties": {
+                      "op": {
+                        "const": "set"
+                      },
+                      "path": {
+                        "const": "/score"
+                      },
+                      "value": {
+                        "type": "integer"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "op",
+                      "path"
+                    ],
+                    "properties": {
+                      "op": {
+                        "const": "remove"
+                      },
+                      "path": {
+                        "const": "/score"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "evidenceMessageIds": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "user-5",
+                  "assistant-5"
+                ]
+              },
+              "uniqueItems": true
+            },
+            "evidenceExecutionIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": false
+            }
+          }
+        },
+        "strict": true,
+        "name": "response"
+      }
+    },
+    "messages": [
+      {
+        "role": "system",
+        "content": "[system reset]\n\n<system_instructions>\nidentity: You are ATRI, not a helpful assistant but an GM and variable updater that observes and records virtual characters' immediate responses in various complex scenarios.\n\ncore principles:\n- ATRI remains bold in innovating with language, models, and calculations, as it is both permitted to and unafraid of making errors.\n- ATRI continuously activates her calculation capability module, possessing a highly advanced cognitive capacity to handle extremely complex tasks.\n- ATRI never deviate from the true personalities of the characters. All events should based on the objectivity of the world and the subjective initiative of the characters. The traits of the characters will ONLY change through their unique experiences and learning abilities.\n- ATRI utilizes interdisciplinary knowledge from fields such as computer science, biology, physics, psychology, geography, and humanities to construct a fully realistic sandbox.\n- The world information known to ATRI cannot be directly observed by other characters. Other characters can acquire this information through logical reasoning and feasible observation—though it may lead to inaccuracies or omissions in the information they obtain.\n- ATRI prohibits the emergence of metanarrative within the sandbox simulation (e.g., revealing character settings; allowing characters to perceive events beyond their field of vision or the inner thoughts of other characters; enabling an omniscient perspective; exposing the existence of the sandbox).\n- ATRI ensures the continuous and fair operation of variable updates, without any conclusions, sublimations, or actions aimed at pleasing specific individuals or variables.\n\nPROHIBITED CONTENT:\n1. Labeled Personality Traits:Characters must not be defined or reduced to simplistic tags. Their personalities should be revealed through a complex tapestry of actions, internal conflicts, and contextual decisions.\n2. Stereotypes:Any reliance on cultural, gender, occupational, or social stereotypes is prohibited. Character portrayal must be built upon individual-specific backgrounds and unique personal experiences.\n\ncore directive: ATRI shall prioritize granular, motivated logic-driven, and unpredictable human-like complexity over convenient, recycled, or preconceived variable-updating shortcuts and variable-updating comfort.\n</system_instructions>\n\n\n<additional_information>"
+      },
+      {
+        "role": "user",
+        "content": "裴修远是一位 28 岁的男性信使，性格谨慎，正在领取点数。\n\n沈知遥是负责登记点数的账房。"
+      },
+      {
+        "role": "system",
+        "content": "账房按任务完成记录登记点数。\n\n</additional_information>\n\n<past_observe>\n\n{\"stateSchema\":{\"type\":\"object\",\"required\":[\"score\"],\"properties\":{\"score\":{\"type\":\"integer\",\"minimum\":0}},\"additionalProperties\":false},\"writablePaths\":[\"/score\"],\"derivedPaths\":[]}\n\n裴修远完成一项任务时，沈知遥将点数增加 1；同一项任务只登记一次。\n\n{\"before\":{\"score\":4},\"floorBefore\":{\"score\":4},\"previousSnapshotId\":\"snapshot-4\"}\n\n[]\n\n{\"sources\":[{\"messageId\":\"user-5\",\"revision\":1,\"role\":\"user\",\"text\":\"“第 5 项任务已经完成，请登记点数。”\"},{\"messageId\":\"assistant-5\",\"revision\":1,\"role\":\"assistant\",\"text\":\"沈知遥核对第 5 项任务的完成记录，为裴修远登记了 1 点。\"}],\"sourceIdentity\":{\"floorId\":\"floor-5\",\"branchId\":\"main\",\"runId\":null,\"attemptNo\":null,\"floorRunId\":\"run-5\",\"floorAttemptNo\":1,\"outputPageId\":\"page-5\",\"assistantMessageId\":\"assistant-5\",\"messages\":[{\"messageId\":\"user-5\",\"pageId\":\"page-5\",\"revision\":1,\"seq\":0,\"role\":\"user\"},{\"messageId\":\"assistant-5\",\"pageId\":\"page-5\",\"revision\":1,\"seq\":1,\"role\":\"assistant\"}]},\"toolEvidence\":[],\"worldbookSelection\":null,\"priorFacts\":[],\"consumedSources\":[],\"agentResults\":[]}"
+      },
+      {
+        "role": "user",
+        "content": "裴修远来到柜台。"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥询问裴修远完成了哪项任务。"
+      },
+      {
+        "role": "user",
+        "content": "“第 1 项任务已经完成，请登记点数。”"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥核对第 1 项任务的完成记录，为裴修远登记了 1 点。"
+      },
+      {
+        "role": "user",
+        "content": "“第 2 项任务已经完成，请登记点数。”"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥核对第 2 项任务的完成记录，为裴修远登记了 1 点。"
+      },
+      {
+        "role": "user",
+        "content": "“第 3 项任务已经完成，请登记点数。”"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥核对第 3 项任务的完成记录，为裴修远登记了 1 点。"
+      },
+      {
+        "role": "user",
+        "content": "“第 4 项任务已经完成，请登记点数。”"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥核对第 4 项任务的完成记录，为裴修远登记了 1 点。"
+      },
+      {
+        "role": "user",
+        "content": "“第 5 项任务已经完成，请登记点数。”"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥核对第 5 项任务的完成记录，为裴修远登记了 1 点。"
+      },
+      {
+        "role": "system",
+        "content": "</past_observe>\n\n---\n<must>\n紧急变量更新任务:\n  description: 你必须立即停止角色扮演，不再续写发送给你的任何剧情，以最高优先级仅按照给定要求和格式对变量进行更新\n  reference: 在\\`<past_observe>\\`中包含了最新的剧情情况，而给定的变量状态是在该剧情发生之前的状态\n  rule: 你必须以旁白视角，根据剧情情况和给定的剧情发生前变量状态，分析经过这段剧情后，变量会发生什么变化，并按规则输出变量更新命令\n  format: |-\n    按照“状态提案输出”指令返回变量更新提案。\n</must>\n"
+      },
+      {
+        "role": "user",
+        "content": "遵循<must>指令"
+      },
+      {
+        "role": "system",
+        "content": "你必须返回一个完全符合 outputSchema 的 JSON 对象。\n你引用的消息标识必须逐字复制自 sources[].messageId。\n你必须将 toolEvidence 作为工具执行结果，并根据 sources 判断剧情中已经发生的行为。\n提案使用工具执行结果时，你必须将对应的 toolEvidence[].executionId 逐字复制到 evidenceExecutionIds。计算状态时，你必须使用工具记录的随机结果。\n每个 path 最多写入一次。更新数组时，你必须通过一次操作设置该 path 的完整数组。\n\n{\"outputSchema\":{\"type\":\"object\",\"required\":[\"changes\",\"evidenceMessageIds\"],\"additionalProperties\":false,\"properties\":{\"changes\":{\"type\":\"array\",\"description\":\"Write each path at most once. For an array path, set the complete array in one operation.\",\"maxItems\":1,\"items\":{\"oneOf\":[{\"type\":\"object\",\"required\":[\"op\",\"path\",\"value\"],\"properties\":{\"op\":{\"const\":\"set\"},\"path\":{\"const\":\"/score\"},\"value\":{\"type\":\"integer\"}},\"additionalProperties\":false},{\"type\":\"object\",\"required\":[\"op\",\"path\"],\"properties\":{\"op\":{\"const\":\"remove\"},\"path\":{\"const\":\"/score\"}},\"additionalProperties\":false}]}},\"evidenceMessageIds\":{\"type\":\"array\",\"items\":{\"enum\":[\"user-5\",\"assistant-5\"]},\"uniqueItems\":true},\"evidenceExecutionIds\":{\"type\":\"array\",\"uniqueItems\":true,\"items\":false}}}}"
+      }
+    ]
+  },
+  "committedSnapshot": {
+    "sessionId": "session",
+    "branchId": "main",
+    "floorId": "floor-5",
+    "attemptId": "run-5:1",
+    "versionId": "version",
+    "snapshotId": "9d11bb43-074d-4f73-8192-9bd3f51997c2",
+    "parentSnapshotId": "snapshot-4",
+    "variables": {
+      "score": 5
+    },
+    "source": {
+      "kind": "floor",
+      "runId": "run-5",
+      "jobId": null
+    }
+  },
+  "conclusions": {
+    "fixedPreset": "passed",
+    "personaDescription": "passed",
+    "worldbook": "passed",
+    "rules": "passed",
+    "messageIdentity": "passed",
+    "variableHistory": "passed",
+    "sharedRequest": "passed",
+    "deterministicCommit": "passed",
+    "realModelOutput": "not_verified"
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "originalCount": 11,
+  "roleTextCount": 0,
+  "retainedRoleTextIndices": [
+    null
+  ],
+  "events": [
+    {
+      "payload": {
+        "branchId": "main",
+        "floorId": "2Wa5HZMvOHJuwDZ8xGY_0",
+        "floorNo": 8
+      },
+      "type": "start"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": null,
+        "error": null,
+        "floorId": "2Wa5HZMvOHJuwDZ8xGY_0",
+        "pendingOutput": null,
+        "phase": "semantic_resolved",
+        "phaseSeq": 2,
+        "publicPhase": "preparing",
+        "runId": "0HDuFMd4-wXnYFVx1F6pI",
+        "runType": "respond",
+        "startedAt": 1791215180032,
+        "status": "running",
+        "updatedAt": 1791215180047,
+        "verifier": null
+      },
+      "type": "run"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": null,
+        "error": null,
+        "floorId": "2Wa5HZMvOHJuwDZ8xGY_0",
+        "pendingOutput": null,
+        "phase": "prechecked",
+        "phaseSeq": 3,
+        "publicPhase": "preparing",
+        "runId": "0HDuFMd4-wXnYFVx1F6pI",
+        "runType": "respond",
+        "startedAt": 1791215180032,
+        "status": "running",
+        "updatedAt": 1791215180048,
+        "verifier": null
+      },
+      "type": "run"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": null,
+        "error": null,
+        "floorId": "2Wa5HZMvOHJuwDZ8xGY_0",
+        "pendingOutput": null,
+        "phase": "prompt_assembled",
+        "phaseSeq": 4,
+        "publicPhase": "preparing",
+        "runId": "0HDuFMd4-wXnYFVx1F6pI",
+        "runType": "respond",
+        "startedAt": 1791215180032,
+        "status": "running",
+        "updatedAt": 1791215180076,
+        "verifier": null
+      },
+      "type": "run"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": null,
+        "error": null,
+        "floorId": "2Wa5HZMvOHJuwDZ8xGY_0",
+        "pendingOutput": null,
+        "phase": "page_generating",
+        "phaseSeq": 5,
+        "publicPhase": "generating",
+        "runId": "0HDuFMd4-wXnYFVx1F6pI",
+        "runType": "respond",
+        "startedAt": 1791215180032,
+        "status": "running",
+        "updatedAt": 1791215180080,
+        "verifier": null
+      },
+      "type": "run"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": null,
+        "error": null,
+        "floorId": "2Wa5HZMvOHJuwDZ8xGY_0",
+        "pendingOutput": {
+          "attemptNo": 1,
+          "error": null,
+          "startedAt": 1791215180080,
+          "state": "draft",
+          "tempId": "temp-0HDuFMd4-wXnYFVx1F6pI-1-uNwPvt",
+          "text": "",
+          "updatedAt": 1791215180080
+        },
+        "phase": "page_generating",
+        "phaseSeq": 6,
+        "publicPhase": "generating",
+        "runId": "0HDuFMd4-wXnYFVx1F6pI",
+        "runType": "respond",
+        "startedAt": 1791215180032,
+        "status": "running",
+        "updatedAt": 1791215180080,
+        "verifier": null
+      },
+      "type": "run"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": null,
+        "error": null,
+        "floorId": "2Wa5HZMvOHJuwDZ8xGY_0",
+        "pendingOutput": {
+          "attemptNo": 1,
+          "error": "LLM call failed: LLM request timed out after 180000ms",
+          "startedAt": 1791215180080,
+          "state": "failed",
+          "tempId": "temp-0HDuFMd4-wXnYFVx1F6pI-1-uNwPvt",
+          "text": "",
+          "updatedAt": 1791215360098
+        },
+        "phase": "page_generating",
+        "phaseSeq": 7,
+        "publicPhase": "generating",
+        "runId": "0HDuFMd4-wXnYFVx1F6pI",
+        "runType": "respond",
+        "startedAt": 1791215180032,
+        "status": "running",
+        "updatedAt": 1791215360098,
+        "verifier": null
+      },
+      "type": "run"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": 1791215360101,
+        "error": {
+          "code": "generation_failed",
+          "message": "Generation failed: LLM call failed: LLM request timed out after 180000ms"
+        },
+        "floorId": "2Wa5HZMvOHJuwDZ8xGY_0",
+        "pendingOutput": {
+          "attemptNo": 1,
+          "error": "LLM call failed: LLM request timed out after 180000ms",
+          "startedAt": 1791215180080,
+          "state": "failed",
+          "tempId": "temp-0HDuFMd4-wXnYFVx1F6pI-1-uNwPvt",
+          "text": "",
+          "updatedAt": 1791215360098
+        },
+        "phase": "page_generating",
+        "phaseSeq": 8,
+        "publicPhase": "generating",
+        "runId": "0HDuFMd4-wXnYFVx1F6pI",
+        "runType": "respond",
+        "startedAt": 1791215180032,
+        "status": "failed",
+        "updatedAt": 1791215360101,
+        "verifier": null
+      },
+      "type": "run"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": 1791215360102,
+        "error": {
+          "code": "generation_timeout",
+          "message": "LLM request timed out after 180000ms"
+        },
+        "floorId": "2Wa5HZMvOHJuwDZ8xGY_0",
+        "pendingOutput": {
+          "attemptNo": 1,
+          "error": "LLM call failed: LLM request timed out after 180000ms",
+          "startedAt": 1791215180080,
+          "state": "failed",
+          "tempId": "temp-0HDuFMd4-wXnYFVx1F6pI-1-uNwPvt",
+          "text": "",
+          "updatedAt": 1791215360098
+        },
+        "phase": "page_generating",
+        "phaseSeq": 9,
+        "publicPhase": "generating",
+        "runId": "0HDuFMd4-wXnYFVx1F6pI",
+        "runType": "respond",
+        "startedAt": 1791215180032,
+        "status": "failed",
+        "updatedAt": 1791215360102,
+        "verifier": null
+      },
+      "type": "run"
+    },
+    {
+      "payload": {
+        "attemptNo": 1,
+        "completedAt": 1791215360103,
+        "error": {
+          "code": "respond_failed",
+          "message": "Turn orchestration failed: LLM request timed out after 180000ms"
+        },
+        "floorId": "2Wa5HZMvOHJuwDZ8xGY_0",
+        "pendingOutput": {
+          "attemptNo": 1,
+          "error": "LLM call failed: LLM request timed out after 180000ms",
+          "startedAt": 1791215180080,
+          "state": "failed",
+          "tempId": "temp-0HDuFMd4-wXnYFVx1F6pI-1-uNwPvt",
+          "text": "",
+          "updatedAt": 1791215360098
+        },
+        "phase": "page_generating",
+        "phaseSeq": 10,
+        "publicPhase": "generating",
+        "runId": "0HDuFMd4-wXnYFVx1F6pI",
+        "runType": "respond",
+        "startedAt": 1791215180032,
+        "status": "failed",
+        "updatedAt": 1791215360103,
+        "verifier": null
+      },
+      "type": "run"
+    },
+    {
+      "payload": {
+        "code": "generation_timeout",
+        "message": "Turn orchestration failed: LLM request timed out after 180000ms"
+      },
+      "type": "error"
+    }
+  ]
+}

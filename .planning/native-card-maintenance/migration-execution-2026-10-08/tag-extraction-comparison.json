@@ -1,0 +1,19 @@
+{
+  "scope": "直接调用当前正式摘要提取函数，验证显示标题改名；未修改或补写测试角色包。",
+  "original": {
+    "input": "<details><summary>后台日志</summary>当前场景：琴房</details>",
+    "result": {
+      "summaries": [
+        "后台日志"
+      ],
+      "cleanedText": "<details>当前场景：琴房</details>"
+    }
+  },
+  "renamed": {
+    "input": "<details><card-log-title>后台日志</card-log-title>当前场景：琴房</details>",
+    "result": {
+      "summaries": [],
+      "cleanedText": "<details><card-log-title>后台日志</card-log-title>当前场景：琴房</details>"
+    }
+  }
+}

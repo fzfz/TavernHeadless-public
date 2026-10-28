@@ -1,0 +1,309 @@
+{
+  "$schema": "./manifest.schema.json",
+  "documents": [
+    {
+      "file": "references/api/script-api.md",
+      "source": "docs/character-authoring/script-api.md",
+      "sourceCommit": "22e4b0055f0fac7a7e8a347c1767b70b2cb5a34c",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/backend-api.md",
+      "source": "docs/character-authoring/backend-api.md",
+      "sourceCommit": "32df2e5d0354f76180f5cf742c99304d133d5e12",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0",
+      "referenceReplacements": [
+        {
+          "from": "../../vitepress/reference/api/worldbooks.md#条目激活与筛选条件",
+          "to": "http/worldbooks.md#条目激活与筛选条件"
+        }
+      ]
+    },
+    {
+      "file": "references/api/agent-tools-api.md",
+      "source": "docs/character-authoring/agent-tools-api.md",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0",
+      "referenceReplacements": [
+        {
+          "from": "../../vitepress/reference/api/worldbooks.md#条目激活与筛选条件",
+          "to": "http/worldbooks.md#条目激活与筛选条件"
+        },
+        {
+          "from": "../../vitepress/reference/api/tools.md#查询楼层的工具执行记录",
+          "to": "http/tools.md#查询楼层的工具执行记录"
+        }
+      ]
+    },
+    {
+      "file": "references/api/examples/api-usage/backend-hooks.mjs",
+      "source": "docs/character-authoring/examples/api-usage/backend-hooks.mjs",
+      "sourceCommit": "8f85a4fc84806f6a13b263c32c4d707171b00e57",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/examples/api-usage/backend-input.json",
+      "source": "docs/character-authoring/examples/api-usage/backend-input.json",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/examples/api-usage/commit-panel.html",
+      "source": "docs/character-authoring/examples/api-usage/commit-panel.html",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/examples/api-usage/commit-panel.mjs",
+      "source": "docs/character-authoring/examples/api-usage/commit-panel.mjs",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/examples/api-usage/run-backend.mjs",
+      "source": "docs/character-authoring/examples/api-usage/run-backend.mjs",
+      "sourceCommit": "6088714dbe05721a7de8f04ae27e60263c685b1d",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/examples/api-usage/run-tools.ts",
+      "source": "docs/character-authoring/examples/api-usage/run-tools.ts",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0",
+      "referenceReplacements": [
+        {
+          "from": "../../../../apps/api/config/role-model-capabilities.json",
+          "to": "../../role-model-capabilities.config.json"
+        }
+      ]
+    },
+    {
+      "file": "references/api/examples/api-usage/tool-roundtrips.json",
+      "source": "docs/character-authoring/examples/api-usage/tool-roundtrips.json",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/script-runtime.schema.json",
+      "source": "docs/character-authoring/script-runtime.schema.json",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/script-template-api.md",
+      "source": "docs/character-authoring/script-template-api.md",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "source": "vitepress/reference/api/tools.md",
+      "file": "references/api/http/tools.md",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0",
+      "referenceReplacements": [
+        {
+          "from": "https://github.com/fzfz/TavernHeadless/blob/main/docs/character-authoring/model-capabilities.md#同轮结果和状态证据",
+          "to": "../model-capabilities.md#同轮结果和状态证据"
+        },
+        {
+          "from": "https://github.com/fzfz/TavernHeadless/blob/main/docs/character-authoring/model-capabilities.md",
+          "to": "../model-capabilities.md"
+        }
+      ]
+    },
+    {
+      "source": "vitepress/reference/api/worldbooks.md",
+      "file": "references/api/http/worldbooks.md",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "source": "vitepress/reference/api/chat.md",
+      "file": "references/api/http/chat.md",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0",
+      "referenceReplacements": [
+        {
+          "from": "https://github.com/fzfz/TavernHeadless/blob/main/docs/character-authoring/model-capabilities.md#额度配置",
+          "to": "../model-capabilities.md#额度配置"
+        }
+      ]
+    },
+    {
+      "file": "references/api/native-card-api.md",
+      "source": "docs/character-authoring/native-card-api.md",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/model-capabilities.md",
+      "source": "docs/character-authoring/model-capabilities.md",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0",
+      "referenceReplacements": [
+        {
+          "from": "../../packages/shared/src/schemas/role-model-capabilities.schema.json",
+          "to": "role-model-capabilities.schema.json"
+        },
+        {
+          "from": "../../apps/api/config/role-model-capabilities.json",
+          "to": "role-model-capabilities.config.json"
+        },
+        {
+          "from": "../../packages/shared/src/schemas/role-tool-evidence.schema.json",
+          "to": "role-tool-evidence.schema.json"
+        }
+      ]
+    },
+    {
+      "file": "references/api/role-model-capabilities.schema.json",
+      "source": "packages/shared/src/schemas/role-model-capabilities.schema.json",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/role-tool-evidence.schema.json",
+      "source": "packages/shared/src/schemas/role-tool-evidence.schema.json",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/role-model-capabilities.config.json",
+      "source": "apps/api/config/role-model-capabilities.json",
+      "sourceCommit": "44660453143753cd1152ab0fba6dfac484846f6b",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/state-update-api.md",
+      "source": "docs/character-authoring/state-update-api.md",
+      "sourceCommit": "32df2e5d0354f76180f5cf742c99304d133d5e12",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0",
+      "referenceReplacements": [
+        {
+          "from": "../plans/published-backend-reconnection.md",
+          "to": "../../../../../docs/plans/published-backend-reconnection.md"
+        },
+        {
+          "from": "mvu-agent-state.md",
+          "to": "../../../../../docs/character-authoring/mvu-agent-state.md"
+        },
+        {
+          "from": "../plans/role-runtime-core/native-card-production-acceptance.md",
+          "to": "../../../../../docs/plans/role-runtime-core/native-card-production-acceptance.md"
+        },
+        {
+          "from": "../plans/role-app-dual-web-plan.md",
+          "to": "../../../../../docs/plans/role-app-dual-web-plan.md"
+        },
+        {
+          "from": "../plans/role-runtime-core/findings.md",
+          "to": "../../../../../docs/plans/role-runtime-core/findings.md"
+        },
+        {
+          "from": "../plans/linqian-live-results.md",
+          "to": "../../../../../docs/plans/linqian-live-results.md"
+        },
+        {
+          "from": "../plans/mvu-execution/results.md",
+          "to": "../../../../../docs/plans/mvu-execution/results.md"
+        }
+      ]
+    },
+    {
+      "file": "references/api/state-prompt-assembly.md",
+      "source": "docs/character-authoring/state-prompt-assembly.md",
+      "sourceCommit": "32df2e5d0354f76180f5cf742c99304d133d5e12",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0",
+      "referenceReplacements": [
+        {
+          "from": "../../vitepress/reference/api/chat.md#prompt-dry-run",
+          "to": "http/chat.md#prompt-dry-run"
+        }
+      ]
+    },
+    {
+      "file": "references/api/state-update.schema.json",
+      "source": "docs/character-authoring/state-update.schema.json",
+      "sourceCommit": "32df2e5d0354f76180f5cf742c99304d133d5e12",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/state-update-profile.schema.json",
+      "source": "packages/shared/src/schemas/native-card-package/state-update-profile.schema.json",
+      "sourceCommit": "32df2e5d0354f76180f5cf742c99304d133d5e12",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/state-prompt-sources.json",
+      "source": "packages/shared/src/config/state-prompt-sources.json",
+      "sourceCommit": "32df2e5d0354f76180f5cf742c99304d133d5e12",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/state-prompt-dry-run-request.schema.json",
+      "source": "packages/shared/src/generated/openapi.json#/paths/~1sessions~1{id}~1role-state~1updates~1dry-run/post/requestBody/content/application~1json/schema",
+      "sourceCommit": "32df2e5d0354f76180f5cf742c99304d133d5e12",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    },
+    {
+      "file": "references/api/state-prompt-dry-run-response.schema.json",
+      "source": "packages/shared/src/generated/openapi.json#/paths/~1sessions~1{id}~1role-state~1updates~1dry-run/post/responses/200/content/application~1json/schema",
+      "sourceCommit": "32df2e5d0354f76180f5cf742c99304d133d5e12",
+      "sourceRevision": "working-tree",
+      "apiVersion": 1,
+      "packageVersion": "1.0.0"
+    }
+  ]
+}

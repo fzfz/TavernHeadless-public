@@ -1,0 +1,737 @@
+{
+  "presetFile": "/Users/developer/.codex/worktrees/state-assembly-implementation/TavernHeadless/.planning/native-card-maintenance/verbatim-state-assembly/presets/primary-state-update.json",
+  "resourceId": "g1zLrXYfzeYN0HoTCcjW5",
+  "versionId": "mIzTKHl9FqAP0FAteyu9U",
+  "request": {
+    "floor_id": "floor-1",
+    "expected_snapshot_id": "f7c872c4-8e0c-4b64-a69b-47fb72b5ce0f"
+  },
+  "preview": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "你负责根据已经成功保存的剧情消息判断变量变化。读取人物资料、世界书、更新规则、本次计算开始前的变量值和变量历史，区分人物行为、直接引语与叙述。依据实际发生的事件应用更新规则，并引用所提供的消息和工具执行证据。"
+      },
+      {
+        "role": "user",
+        "content": "裴修远是一位 28 岁的男性信使，性格谨慎，正在领取点数。"
+      },
+      {
+        "role": "system",
+        "content": "账房按任务完成记录登记点数。"
+      },
+      {
+        "role": "user",
+        "content": "沈知遥是负责登记点数的账房。\n\n沈知遥办事仔细。\n\n裴修远正在领取完成任务后获得的点数。"
+      },
+      {
+        "role": "system",
+        "content": "{\"stateSchema\":{\"type\":\"object\",\"required\":[\"score\"],\"properties\":{\"score\":{\"type\":\"integer\",\"minimum\":0}},\"additionalProperties\":false},\"writablePaths\":[\"/score\"],\"derivedPaths\":[]}\n\n裴修远完成一项任务时，沈知遥将点数增加 1；同一项任务只登记一次。\n\n{\"before\":{\"score\":0},\"floorBefore\":{\"score\":0},\"previousSnapshotId\":\"f7c872c4-8e0c-4b64-a69b-47fb72b5ce0f\"}\n\n[]\n\n{\"sources\":[{\"messageId\":\"user-1\",\"revision\":1,\"role\":\"user\",\"text\":\"“第 1 项任务已经完成，请登记点数。”\"},{\"messageId\":\"assistant-1\",\"revision\":1,\"role\":\"assistant\",\"text\":\"沈知遥核对第 1 项任务的完成记录，为裴修远登记了 1 点。\"}],\"sourceIdentity\":{\"floorId\":\"floor-1\",\"branchId\":\"main\",\"runId\":null,\"attemptNo\":null,\"floorRunId\":\"run-1\",\"floorAttemptNo\":1,\"outputPageId\":\"page-1\",\"assistantMessageId\":\"assistant-1\",\"messages\":[{\"messageId\":\"user-1\",\"pageId\":\"page-1\",\"revision\":1,\"seq\":0,\"role\":\"user\"},{\"messageId\":\"assistant-1\",\"pageId\":\"page-1\",\"revision\":1,\"seq\":1,\"role\":\"assistant\"}]},\"toolEvidence\":[],\"worldbookSelection\":null,\"priorFacts\":[],\"consumedSources\":[],\"agentResults\":[]}"
+      },
+      {
+        "role": "user",
+        "content": "裴修远来到柜台。"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥询问裴修远完成了哪项任务。"
+      },
+      {
+        "role": "user",
+        "content": "“第 1 项任务已经完成，请登记点数。”"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥核对第 1 项任务的完成记录，为裴修远登记了 1 点。"
+      },
+      {
+        "role": "system",
+        "content": "你必须返回一个完全符合 outputSchema 的 JSON 对象。\n你引用的消息标识必须逐字复制自 sources[].messageId。\n你必须将 toolEvidence 作为工具执行结果，并根据 sources 判断剧情中已经发生的行为。\n提案使用工具执行结果时，你必须将对应的 toolEvidence[].executionId 逐字复制到 evidenceExecutionIds。计算状态时，你必须使用工具记录的随机结果。\n每个 path 最多写入一次。更新数组时，你必须通过一次操作设置该 path 的完整数组。\n\n{\"outputSchema\":{\"type\":\"object\",\"required\":[\"changes\",\"evidenceMessageIds\"],\"additionalProperties\":false,\"properties\":{\"changes\":{\"type\":\"array\",\"description\":\"Write each path at most once. For an array path, set the complete array in one operation.\",\"maxItems\":1,\"items\":{\"oneOf\":[{\"type\":\"object\",\"required\":[\"op\",\"path\",\"value\"],\"properties\":{\"op\":{\"const\":\"set\"},\"path\":{\"const\":\"/score\"},\"value\":{\"type\":\"integer\"}},\"additionalProperties\":false},{\"type\":\"object\",\"required\":[\"op\",\"path\"],\"properties\":{\"op\":{\"const\":\"remove\"},\"path\":{\"const\":\"/score\"}},\"additionalProperties\":false}]}},\"evidenceMessageIds\":{\"type\":\"array\",\"items\":{\"enum\":[\"user-1\",\"assistant-1\"]},\"uniqueItems\":true},\"evidenceExecutionIds\":{\"type\":\"array\",\"uniqueItems\":true,\"items\":false}}}}"
+      }
+    ],
+    "preset": {
+      "presetId": "g1zLrXYfzeYN0HoTCcjW5",
+      "presetVersionId": "mIzTKHl9FqAP0FAteyu9U"
+    },
+    "before": {
+      "score": 0
+    },
+    "previousSnapshotId": "f7c872c4-8e0c-4b64-a69b-47fb72b5ce0f",
+    "sources": [
+      {
+        "messageId": "user-1",
+        "revision": 1,
+        "role": "user",
+        "text": "“第 1 项任务已经完成，请登记点数。”"
+      },
+      {
+        "messageId": "assistant-1",
+        "revision": 1,
+        "role": "assistant",
+        "text": "沈知遥核对第 1 项任务的完成记录，为裴修远登记了 1 点。"
+      }
+    ],
+    "variableHistory": [],
+    "sourceIdentity": {
+      "floorId": "floor-1",
+      "branchId": "main",
+      "runId": null,
+      "attemptNo": null,
+      "floorRunId": "run-1",
+      "floorAttemptNo": 1,
+      "outputPageId": "page-1",
+      "assistantMessageId": "assistant-1",
+      "messages": [
+        {
+          "messageId": "user-1",
+          "pageId": "page-1",
+          "revision": 1,
+          "seq": 0,
+          "role": "user"
+        },
+        {
+          "messageId": "assistant-1",
+          "pageId": "page-1",
+          "revision": 1,
+          "seq": 1,
+          "role": "assistant"
+        }
+      ]
+    },
+    "outputSchema": {
+      "type": "object",
+      "required": [
+        "changes",
+        "evidenceMessageIds"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "changes": {
+          "type": "array",
+          "description": "Write each path at most once. For an array path, set the complete array in one operation.",
+          "maxItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "op",
+                  "path",
+                  "value"
+                ],
+                "properties": {
+                  "op": {
+                    "const": "set"
+                  },
+                  "path": {
+                    "const": "/score"
+                  },
+                  "value": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "required": [
+                  "op",
+                  "path"
+                ],
+                "properties": {
+                  "op": {
+                    "const": "remove"
+                  },
+                  "path": {
+                    "const": "/score"
+                  }
+                },
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "evidenceMessageIds": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "user-1",
+              "assistant-1"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "evidenceExecutionIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": false
+        }
+      }
+    },
+    "prompt_snapshot": {
+      "presetId": "g1zLrXYfzeYN0HoTCcjW5",
+      "presetUpdatedAt": 1791187929341,
+      "presetVersion": 1,
+      "presetVersionId": "mIzTKHl9FqAP0FAteyu9U",
+      "presetContentHash": "sha256:304e3c2f5b3cb7e99332f87c4fc24d3e4f6c770c06d27052704cec682f8e9dcb",
+      "worldbookId": null,
+      "worldbookUpdatedAt": null,
+      "worldbookVersion": null,
+      "worldbookVersionId": null,
+      "worldbookContentHash": null,
+      "regexProfileId": null,
+      "regexProfileUpdatedAt": null,
+      "regexProfileVersion": null,
+      "regexProfileVersionId": null,
+      "regexProfileContentHash": null,
+      "characterId": "character",
+      "characterVersionId": "version",
+      "characterImportedFormat": null,
+      "characterContentHash": "84bc75e59d3e27db503ed8c4880f193cf28bf28c9cee4018fb33d71d9be91a0d",
+      "worldbookActivatedEntryUids": [
+        1
+      ],
+      "worldbookActivatedEntries": [
+        {
+          "uid": 1,
+          "activationKey": "worldbook:character:character:version:book:entry:1",
+          "source": {
+            "kind": "character_book",
+            "worldbookId": null,
+            "worldbookName": "Unnamed",
+            "assetScopeId": "worldbook:character:character:version:book"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        }
+      ],
+      "regexPreRuleNames": [],
+      "regexPostRuleNames": [],
+      "promptMode": "compat_plus",
+      "assetManifestDigest": "55d7878a7200b61d45cf9583ee6c597f0c7a47c2a979a074b951ca2f176ffc8b",
+      "promptDigest": "749bb6e1863045ea4dd529f77f4b7890f2ce5fc5c3b8892028db80c001f172f3",
+      "tokenEstimate": 574
+    },
+    "assembly": {
+      "mode": "preset",
+      "promptIntent": "normal",
+      "assistantPrefillApplied": false,
+      "assistantPrefillStrategy": "none",
+      "presetUsed": true,
+      "worldbookHits": 1,
+      "regexPreRules": [],
+      "regexPostRules": [],
+      "memorySummaryInjected": false,
+      "reservedVariableCollisions": [],
+      "selectedPromptOrderCharacterId": 100001,
+      "ignoredPromptOrderCharacterIds": [],
+      "unsupportedPresetFields": [
+        "prompts[].injection_depth",
+        "prompts[].injection_order"
+      ],
+      "ignoredPresetFields": [
+        "top_level.top_a",
+        "top_level.max_context_unlocked",
+        "top_level.tool_reasoning_mode",
+        "top_level.send_if_empty",
+        "top_level.impersonation_prompt",
+        "top_level.new_group_chat_prompt",
+        "top_level.bias_preset_selected",
+        "top_level.scenario_format",
+        "top_level.personality_format",
+        "top_level.group_nudge_prompt",
+        "top_level.assistant_impersonation",
+        "top_level.use_sysprompt",
+        "top_level.squash_system_messages",
+        "top_level.media_inlining",
+        "top_level.inline_image_quality",
+        "top_level.continue_prefill",
+        "top_level.continue_postfix",
+        "top_level.function_calling",
+        "top_level.tool_call_recurse_limit",
+        "top_level.show_thoughts",
+        "top_level.reasoning_effort",
+        "top_level.verbosity",
+        "top_level.enable_web_search",
+        "top_level.seed",
+        "top_level.n",
+        "top_level.request_images",
+        "top_level.request_image_aspect_ratio",
+        "top_level.request_image_resolution",
+        "top_level.extensions"
+      ],
+      "unresolvedPresetMarkers": [
+        "stateDefinition",
+        "stateRules",
+        "stateBefore",
+        "stateHistory",
+        "stateEvidence",
+        "stateOutputContract"
+      ],
+      "presetWarnings": [
+        "Prompt 'main' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'main' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'personaDescription' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'personaDescription' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'worldInfoBefore' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'worldInfoBefore' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'charDescription' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'charDescription' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'charPersonality' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'charPersonality' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'worldInfoAfter' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'worldInfoAfter' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'scenario' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'scenario' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'jailbreak' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'jailbreak' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'stateDefinition' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'stateDefinition' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'stateRules' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'stateRules' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'stateBefore' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'stateBefore' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'stateHistory' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'stateHistory' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'stateEvidence' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'stateEvidence' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "Prompt 'stateOutputContract' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+        "Prompt 'stateOutputContract' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+        "检测到当前运行时无法映射的 marker 标识；请查看 unresolvedMarkers 与 downgradedEntries。",
+        "检测到已识别但当前未完整执行的 preset 字段；请查看 unsupportedFields。"
+      ],
+      "continueNudgeApplied": false,
+      "namesBehaviorApplied": "off",
+      "triggerFilteredEntryIds": [],
+      "inChatInsertedEntryIds": [],
+      "worldbookMatches": [
+        {
+          "uid": 1,
+          "activationKey": "worldbook:character:character:version:book:entry:1",
+          "assetScopeId": "worldbook:character:character:version:book",
+          "comment": "计分场景",
+          "contentPreview": "账房按任务完成记录登记点数。",
+          "order": 1,
+          "source": {
+            "kind": "character_book",
+            "worldbookId": null,
+            "worldbookName": "Unnamed",
+            "assetScopeId": "worldbook:character:character:version:book"
+          },
+          "insertion": {
+            "position": "before"
+          },
+          "activation": {
+            "mode": "constant",
+            "recursionLevel": 0,
+            "firstMatch": null
+          }
+        }
+      ]
+    },
+    "runtime_trace": {
+      "preset": {
+        "selectedPromptOrderCharacterId": 100001,
+        "ignoredPromptOrderCharacterIds": [],
+        "unsupportedFields": [
+          "prompts[].injection_depth",
+          "prompts[].injection_order"
+        ],
+        "ignoredFields": [
+          "top_level.top_a",
+          "top_level.max_context_unlocked",
+          "top_level.tool_reasoning_mode",
+          "top_level.send_if_empty",
+          "top_level.impersonation_prompt",
+          "top_level.new_group_chat_prompt",
+          "top_level.bias_preset_selected",
+          "top_level.scenario_format",
+          "top_level.personality_format",
+          "top_level.group_nudge_prompt",
+          "top_level.assistant_impersonation",
+          "top_level.use_sysprompt",
+          "top_level.squash_system_messages",
+          "top_level.media_inlining",
+          "top_level.inline_image_quality",
+          "top_level.continue_prefill",
+          "top_level.continue_postfix",
+          "top_level.function_calling",
+          "top_level.tool_call_recurse_limit",
+          "top_level.show_thoughts",
+          "top_level.reasoning_effort",
+          "top_level.verbosity",
+          "top_level.enable_web_search",
+          "top_level.seed",
+          "top_level.n",
+          "top_level.request_images",
+          "top_level.request_image_aspect_ratio",
+          "top_level.request_image_resolution",
+          "top_level.extensions"
+        ],
+        "unresolvedMarkers": [
+          "stateDefinition",
+          "stateRules",
+          "stateBefore",
+          "stateHistory",
+          "stateEvidence",
+          "stateOutputContract"
+        ],
+        "warnings": [
+          "Prompt 'main' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'main' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'personaDescription' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'personaDescription' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'worldInfoBefore' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'worldInfoBefore' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'charDescription' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'charDescription' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'charPersonality' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'charPersonality' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'worldInfoAfter' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'worldInfoAfter' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'scenario' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'scenario' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'jailbreak' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'jailbreak' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'stateDefinition' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'stateDefinition' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'stateRules' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'stateRules' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'stateBefore' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'stateBefore' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'stateHistory' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'stateHistory' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'stateEvidence' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'stateEvidence' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "Prompt 'stateOutputContract' 提供了 injection_depth，但当前 position 为 relative；该深度值不会生效。",
+          "Prompt 'stateOutputContract' 提供了 injection_order，但当前 placement 不是 in_chat；该顺序值不会生效。",
+          "检测到当前运行时无法映射的 marker 标识；请查看 unresolvedMarkers 与 downgradedEntries。",
+          "检测到已识别但当前未完整执行的 preset 字段；请查看 unsupportedFields。"
+        ],
+        "triggerFilteredEntryIds": [],
+        "inChatInsertedEntryIds": [],
+        "continueNudgeApplied": false,
+        "namesBehaviorApplied": "off"
+      },
+      "worldbook": {
+        "hitCount": 1,
+        "matches": [
+          {
+            "uid": 1,
+            "activationKey": "worldbook:character:character:version:book:entry:1",
+            "assetScopeId": "worldbook:character:character:version:book",
+            "comment": "计分场景",
+            "contentPreview": "账房按任务完成记录登记点数。",
+            "order": 1,
+            "source": {
+              "kind": "character_book",
+              "worldbookId": null,
+              "worldbookName": "Unnamed",
+              "assetScopeId": "worldbook:character:character:version:book"
+            },
+            "insertion": {
+              "position": "before"
+            },
+            "activation": {
+              "mode": "constant",
+              "recursionLevel": 0,
+              "firstMatch": null
+            }
+          }
+        ],
+        "decisionTraces": []
+      },
+      "memory": {
+        "summaryInjected": false
+      },
+      "macro": {
+        "warnings": [
+          {
+            "code": "macro_value_missing",
+            "message": "Macro charInstruction has no resolved value and fell back to empty string.",
+            "macroName": "charInstruction"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro charDepthPrompt has no resolved value and fell back to empty string.",
+            "macroName": "charDepthPrompt"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro mesExamples has no resolved value and fell back to empty string.",
+            "macroName": "mesExamples"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro mesExamplesRaw has no resolved value and fell back to empty string.",
+            "macroName": "mesExamplesRaw"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+            "macroName": "defaultAuthorsNote"
+          },
+          {
+            "code": "macro_value_missing",
+            "message": "Macro model has no resolved value and fell back to empty string.",
+            "macroName": "model"
+          }
+        ],
+        "usedNames": [],
+        "mutationPreview": [],
+        "stagedMutations": [],
+        "traces": []
+      },
+      "budgets": {
+        "byGroup": [
+          {
+            "group": "history",
+            "tokenCount": 19
+          },
+          {
+            "group": "role_state",
+            "tokenCount": 439
+          },
+          {
+            "group": "section:charDescription",
+            "tokenCount": 4
+          },
+          {
+            "group": "section:charPersonality",
+            "tokenCount": 2
+          },
+          {
+            "group": "section:jailbreak",
+            "tokenCount": 67
+          },
+          {
+            "group": "section:main",
+            "tokenCount": 26
+          },
+          {
+            "group": "section:personaDescription",
+            "tokenCount": 8
+          },
+          {
+            "group": "section:scenario",
+            "tokenCount": 5
+          },
+          {
+            "group": "worldbook",
+            "tokenCount": 4
+          }
+        ]
+      },
+      "historyNormalization": {
+        "rawEntryCount": 2,
+        "effectiveTurnCount": 2,
+        "selectedTurnCount": 2,
+        "trailingUserSourceFloorIds": [],
+        "mergedUserGroups": [],
+        "violations": []
+      },
+      "delivery": {
+        "assistantPrefillRequested": false,
+        "assistantPrefillApplied": false,
+        "assistantPrefillStrategy": "none",
+        "allowAssistantPrefill": true,
+        "requireLastUser": false,
+        "noAssistant": false,
+        "lastMessageRole": "assistant",
+        "endsWithUser": false,
+        "degraded": false,
+        "degradeReasons": []
+      },
+      "structure": {
+        "mode": "default",
+        "mergeAdjacentSameRole": false,
+        "assistantRewriteCount": 0,
+        "tailAssistantDetected": true
+      }
+    },
+    "token_usage": {
+      "total": 574,
+      "availableForReply": 1999426,
+      "bySection": {
+        "main": 26,
+        "personaDescription": 8,
+        "worldInfoBefore": 4,
+        "charDescription": 4,
+        "charPersonality": 2,
+        "scenario": 5,
+        "stateDefinition": 46,
+        "stateRules": 9,
+        "stateBefore": 27,
+        "stateHistory": 1,
+        "stateEvidence": 164,
+        "chatHistory": 19,
+        "jailbreak": 67,
+        "stateOutputContract": 192
+      },
+      "byGroup": {
+        "section:main": 26,
+        "section:personaDescription": 8,
+        "worldbook": 4,
+        "section:charDescription": 4,
+        "section:charPersonality": 2,
+        "section:scenario": 5,
+        "role_state": 439,
+        "history": 19,
+        "section:jailbreak": 67
+      },
+      "prunedByGroup": {}
+    }
+  },
+  "modelRequest": {
+    "model": "test",
+    "max_tokens": 1000,
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "schema": {
+          "type": "object",
+          "required": [
+            "changes",
+            "evidenceMessageIds"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "changes": {
+              "type": "array",
+              "description": "Write each path at most once. For an array path, set the complete array in one operation.",
+              "maxItems": 1,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "op",
+                      "path",
+                      "value"
+                    ],
+                    "properties": {
+                      "op": {
+                        "const": "set"
+                      },
+                      "path": {
+                        "const": "/score"
+                      },
+                      "value": {
+                        "type": "integer"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "op",
+                      "path"
+                    ],
+                    "properties": {
+                      "op": {
+                        "const": "remove"
+                      },
+                      "path": {
+                        "const": "/score"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "evidenceMessageIds": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "user-1",
+                  "assistant-1"
+                ]
+              },
+              "uniqueItems": true
+            },
+            "evidenceExecutionIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": false
+            }
+          }
+        },
+        "strict": true,
+        "name": "response"
+      }
+    },
+    "messages": [
+      {
+        "role": "system",
+        "content": "你负责根据已经成功保存的剧情消息判断变量变化。读取人物资料、世界书、更新规则、本次计算开始前的变量值和变量历史，区分人物行为、直接引语与叙述。依据实际发生的事件应用更新规则，并引用所提供的消息和工具执行证据。"
+      },
+      {
+        "role": "user",
+        "content": "裴修远是一位 28 岁的男性信使，性格谨慎，正在领取点数。"
+      },
+      {
+        "role": "system",
+        "content": "账房按任务完成记录登记点数。"
+      },
+      {
+        "role": "user",
+        "content": "沈知遥是负责登记点数的账房。\n\n沈知遥办事仔细。\n\n裴修远正在领取完成任务后获得的点数。"
+      },
+      {
+        "role": "system",
+        "content": "{\"stateSchema\":{\"type\":\"object\",\"required\":[\"score\"],\"properties\":{\"score\":{\"type\":\"integer\",\"minimum\":0}},\"additionalProperties\":false},\"writablePaths\":[\"/score\"],\"derivedPaths\":[]}\n\n裴修远完成一项任务时，沈知遥将点数增加 1；同一项任务只登记一次。\n\n{\"before\":{\"score\":0},\"floorBefore\":{\"score\":0},\"previousSnapshotId\":\"f7c872c4-8e0c-4b64-a69b-47fb72b5ce0f\"}\n\n[]\n\n{\"sources\":[{\"messageId\":\"user-1\",\"revision\":1,\"role\":\"user\",\"text\":\"“第 1 项任务已经完成，请登记点数。”\"},{\"messageId\":\"assistant-1\",\"revision\":1,\"role\":\"assistant\",\"text\":\"沈知遥核对第 1 项任务的完成记录，为裴修远登记了 1 点。\"}],\"sourceIdentity\":{\"floorId\":\"floor-1\",\"branchId\":\"main\",\"runId\":null,\"attemptNo\":null,\"floorRunId\":\"run-1\",\"floorAttemptNo\":1,\"outputPageId\":\"page-1\",\"assistantMessageId\":\"assistant-1\",\"messages\":[{\"messageId\":\"user-1\",\"pageId\":\"page-1\",\"revision\":1,\"seq\":0,\"role\":\"user\"},{\"messageId\":\"assistant-1\",\"pageId\":\"page-1\",\"revision\":1,\"seq\":1,\"role\":\"assistant\"}]},\"toolEvidence\":[],\"worldbookSelection\":null,\"priorFacts\":[],\"consumedSources\":[],\"agentResults\":[]}"
+      },
+      {
+        "role": "user",
+        "content": "裴修远来到柜台。"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥询问裴修远完成了哪项任务。"
+      },
+      {
+        "role": "user",
+        "content": "“第 1 项任务已经完成，请登记点数。”"
+      },
+      {
+        "role": "assistant",
+        "content": "沈知遥核对第 1 项任务的完成记录，为裴修远登记了 1 点。"
+      },
+      {
+        "role": "system",
+        "content": "你必须返回一个完全符合 outputSchema 的 JSON 对象。\n你引用的消息标识必须逐字复制自 sources[].messageId。\n你必须将 toolEvidence 作为工具执行结果，并根据 sources 判断剧情中已经发生的行为。\n提案使用工具执行结果时，你必须将对应的 toolEvidence[].executionId 逐字复制到 evidenceExecutionIds。计算状态时，你必须使用工具记录的随机结果。\n每个 path 最多写入一次。更新数组时，你必须通过一次操作设置该 path 的完整数组。\n\n{\"outputSchema\":{\"type\":\"object\",\"required\":[\"changes\",\"evidenceMessageIds\"],\"additionalProperties\":false,\"properties\":{\"changes\":{\"type\":\"array\",\"description\":\"Write each path at most once. For an array path, set the complete array in one operation.\",\"maxItems\":1,\"items\":{\"oneOf\":[{\"type\":\"object\",\"required\":[\"op\",\"path\",\"value\"],\"properties\":{\"op\":{\"const\":\"set\"},\"path\":{\"const\":\"/score\"},\"value\":{\"type\":\"integer\"}},\"additionalProperties\":false},{\"type\":\"object\",\"required\":[\"op\",\"path\"],\"properties\":{\"op\":{\"const\":\"remove\"},\"path\":{\"const\":\"/score\"}},\"additionalProperties\":false}]}},\"evidenceMessageIds\":{\"type\":\"array\",\"items\":{\"enum\":[\"user-1\",\"assistant-1\"]},\"uniqueItems\":true},\"evidenceExecutionIds\":{\"type\":\"array\",\"uniqueItems\":true,\"items\":false}}}}"
+      }
+    ]
+  },
+  "committedSnapshot": {
+    "sessionId": "session",
+    "branchId": "main",
+    "floorId": "floor-1",
+    "attemptId": "run-1:1",
+    "versionId": "version",
+    "snapshotId": "6df69e2c-94f6-4e7d-90d3-a3b7aae52acb",
+    "parentSnapshotId": "f7c872c4-8e0c-4b64-a69b-47fb72b5ce0f",
+    "variables": {
+      "score": 1
+    },
+    "source": {
+      "kind": "floor",
+      "runId": "run-1",
+      "jobId": null
+    }
+  },
+  "conclusions": {
+    "fixedPreset": "passed",
+    "personaDescription": "passed",
+    "worldbook": "passed",
+    "rules": "passed",
+    "messageIdentity": "passed",
+    "variableHistory": "passed",
+    "sharedRequest": "passed",
+    "deterministicCommit": "passed",
+    "realModelOutput": "not_verified"
+  }
+}

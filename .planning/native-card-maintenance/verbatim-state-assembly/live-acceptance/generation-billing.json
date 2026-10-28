@@ -1,0 +1,106 @@
+[
+  {
+    "id": "gen-1791208472-bOJMmTCtliSpEm1YNzD2",
+    "status": 200,
+    "data": {
+      "id": "gen-1791208472-bOJMmTCtliSpEm1YNzD2",
+      "model": "apodex/apodex-1.1-mini-20261001:free",
+      "provider_name": "Novita",
+      "total_cost": 0,
+      "upstream_inference_cost": 0,
+      "is_byok": false,
+      "tokens_prompt": 31702,
+      "tokens_completion": 7525,
+      "native_tokens_reasoning": 581,
+      "finish_reason": "stop"
+    }
+  },
+  {
+    "id": "gen-1791208695-m8e7C3box0FAR6I3oYY1",
+    "status": 200,
+    "data": {
+      "id": "gen-1791208695-m8e7C3box0FAR6I3oYY1",
+      "model": "nvidia/nemotron-3-super-120b-a12b-20230311:free",
+      "provider_name": "Nvidia",
+      "total_cost": 0,
+      "upstream_inference_cost": 0,
+      "is_byok": false,
+      "tokens_prompt": 31702,
+      "tokens_completion": 8207,
+      "native_tokens_reasoning": 8192,
+      "finish_reason": "length"
+    }
+  },
+  {
+    "id": "gen-1791208845-epx3vlYIYlM0t1TQsJcZ",
+    "status": 404,
+    "error": {
+      "message": "Generation gen-1791208845-epx3vlYIYlM0t1TQsJcZ not found",
+      "code": 404
+    }
+  },
+  {
+    "id": "gen-1791208999-2GMAZ4Rch1UMqdpNydPM",
+    "status": 200,
+    "data": {
+      "id": "gen-1791208999-2GMAZ4Rch1UMqdpNydPM",
+      "model": "qwen/qwen3.8-27b-20260814:free",
+      "provider_name": "ModelRun",
+      "total_cost": 0,
+      "upstream_inference_cost": 0,
+      "is_byok": false,
+      "tokens_prompt": 31702,
+      "tokens_completion": 3021,
+      "native_tokens_reasoning": 0,
+      "finish_reason": "stop"
+    }
+  },
+  {
+    "id": "gen-1791209191-dZuhLDjrss8npFWa2Gbp",
+    "status": 200,
+    "data": {
+      "id": "gen-1791209191-dZuhLDjrss8npFWa2Gbp",
+      "model": "qwen/qwen3.8-27b-20260814:free",
+      "provider_name": "ModelRun",
+      "total_cost": 0,
+      "upstream_inference_cost": 0,
+      "is_byok": false,
+      "tokens_prompt": 18200,
+      "tokens_completion": 2708,
+      "native_tokens_reasoning": 0,
+      "finish_reason": "stop"
+    }
+  },
+  {
+    "id": "gen-1791209361-U3l89IEmhEj5KaNmnU49",
+    "status": 200,
+    "data": {
+      "id": "gen-1791209361-U3l89IEmhEj5KaNmnU49",
+      "model": "qwen/qwen3.8-27b-20260814:free",
+      "provider_name": "ModelRun",
+      "total_cost": 0,
+      "upstream_inference_cost": 0,
+      "is_byok": false,
+      "tokens_prompt": 31702,
+      "tokens_completion": 3782,
+      "native_tokens_reasoning": 0,
+      "finish_reason": "stop"
+    }
+  },
+  {
+    "id": "gen-1791209500-pCQHkGQHBAON1ikBLUbg",
+    "status": 200,
+    "data": {
+      "id": "gen-1791209500-pCQHkGQHBAON1ikBLUbg",
+      "model": "qwen/qwen3.8-27b-20260814:free",
+      "provider_name": "ModelRun",
+      "total_cost": 0,
+      "upstream_inference_cost": 0,
+      "is_byok": false,
+      "tokens_prompt": 18200,
+      "tokens_completion": 1709,
+      "native_tokens_reasoning": 0,
+      "finish_reason": "stop"
+    }
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "status": 200,
+  "elapsedMs": 54468,
+  "model": "cohere/north-mini-code:free",
+  "provider": "Cohere",
+  "finishReason": "length",
+  "content": null,
+  "usage": {
+    "prompt_tokens": 34972,
+    "completion_tokens": 8192,
+    "total_tokens": 43164,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 9250,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "formalResponse": {
+    "error": {
+      "code": "ROLE_STATE_OUTPUT_INCOMPLETE",
+      "message": "变量更新模型未完整生成结果。请重试该楼层的变量更新，或请管理员检查模型的输出长度设置。"
+    }
+  }
+}

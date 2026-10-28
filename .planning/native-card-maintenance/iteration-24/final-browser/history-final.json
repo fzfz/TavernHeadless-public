@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-06T11:09:59.597Z",
+  "expression": "(async()=>{const s=Array.from(document.querySelectorAll('*')).find(e=>e.shadowRoot).shadowRoot;const select=document.querySelector('select[aria-label=\"选择要查看的历史状态\"]');const initial=Array.from(select.options).find(o=>o.textContent==='初始状态');select.value=initial.value;select.dispatchEvent(new Event('change',{bubbles:true}));await new Promise(r=>setTimeout(r,400));const historical=[0,1,2,3].map(i=>s.querySelector('#option-'+i).disabled);select.value='latest';select.dispatchEvent(new Event('change',{bubbles:true}));await new Promise(r=>setTimeout(r,400));return {historical,latest:[0,1,2,3].map(i=>s.querySelector('#option-'+i).disabled),feedback:s.querySelector('[data-option-feedback]').textContent}})()",
+  "result": {
+    "historical": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "latest": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "feedback": ""
+  },
+  "errors": []
+}

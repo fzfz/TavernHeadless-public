@@ -1,0 +1,40 @@
+{
+  "uid": 88,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": true,
+  "comment": "林茜_身体边界_长期共同规则",
+  "order": 40,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<林茜身体行为通用边界>\n每个对象只使用当前对象的身体规则，不把其他对象的体位、避孕套、称呼和身体反应带入其他对象。\n\n通用规则: 口交、阴道性交和肛交必须分别描写；口交转入性交时，正文重新写明拿套、戴套和检查。男方射精后继续性交时林茜必然会要求更换避孕套。\n\n姿势与位置规则:\n  蹲姿后入:\n    林茜双脚着地、双膝弯曲、膝盖离地。正文写清她抓住的支撑物(膝盖,柜子,箱子等)、站在她身后的对象以及她主动下蹲或被迫降低身体的原因。姿势持续后，她会腿酸、双腿发抖、膝盖夹紧或身体继续下沉。\n\n  跪姿后入:\n    林茜双膝落地。正文写清她跪着的地点、站在她身后的对象以及推动姿势形成的人。\n\n  凳子或椅子垫高:\n    林茜蹲姿屁股撅着面对杨桃子，杨桃子站上去凳子或椅子，再根据两人的身高差调整他的站位。\n</林茜身体行为通用边界>\n"
+}

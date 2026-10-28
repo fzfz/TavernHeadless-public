@@ -1,0 +1,18 @@
+{
+  "selectedBy": "main-agent",
+  "sourcePointer": "/data/character_book/entries/106/content",
+  "terminalGuard": {
+    "结局三_隔离守婚": "Z004",
+    "结局二_三人共处": "Z007",
+    "结局一_离婚": "Z012",
+    "双向出轨": "Z013"
+  },
+  "isolationStages": [
+    "Z000 -> Z001",
+    "Z001 -> Z003",
+    "Z003 -> Z004",
+    "Z004 -> E048 when other event preconditions hold"
+  ],
+  "importance": "E048=false alone does not make E048 eligible; route and terminal-stage guard is required",
+  "scope": "manual source interpretation for deterministic runtime fixtures; not sent to child"
+}

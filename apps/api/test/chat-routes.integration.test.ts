@@ -1,0 +1,1233 @@
+import { createPresetOutput } from "../src/services/preset-output.js";
+import Fastify, { type FastifyInstance } from "fastify";
+import { afterEach, describe, expect, it, vi } from "vitest";
+
+import { registerChatRoutes } from "../src/routes/chat";
+import { ChatServiceError, type ChatService } from "../src/services/chat/chat-service";
+import { registerDevelopmentTestAuth } from "./helpers/register-test-auth";
+
+interface ChatServiceStub {
+  getRoleTextProcessor: ReturnType<typeof vi.fn>;
+  respond: ReturnType<typeof vi.fn>;
+  regenerate: ReturnType<typeof vi.fn>;
+  dryRun: ReturnType<typeof vi.fn>;
+  retryFloor: ReturnType<typeof vi.fn>;
+  editAndRegenerate: ReturnType<typeof vi.fn>;
+}
+
+function createChatService(overrides: Partial<ChatServiceStub> = {}): ChatServiceStub {
+  return {
+    getRoleTextProcessor: vi.fn(() => createPresetOutput(undefined)),
+    respond: vi.fn(),
+    regenerate: vi.fn(),
+    dryRun: vi.fn(),
+    retryFloor: vi.fn(),
+    editAndRegenerate: vi.fn(),
+    ...overrides,
+  };
+}
+
+function expectTurnOperationLog(route: string) {
+  return {
+    requestId: expect.any(String),
+    route,
+  };
+}
+
+describe("chat routes", () => {
+  let app: FastifyInstance;
+
+  async function mountChatRoutes(
+    chatService: ChatServiceStub,
+    options: { enablePromptDryRun?: boolean; enableSseChat?: boolean } = {}
+  ) {
+    app = Fastify({ logger: false });
+    await registerDevelopmentTestAuth(app);
+    await registerChatRoutes(
+      app,
+      chatService as unknown as ChatService,
+      { enablePromptDryRun: true, enableSseChat: true, ...options }
+    );
+  }
+
+  afterEach(async () => {
+    vi.restoreAllMocks();
+    if (app) {
+      await app.close();
+    }
+  });
+
+  it("maps branch fields and generation params on /sessions/:id/respond", async () => {
+    const chatService = createChatService({
+      respond: vi.fn(async () => ({
+        floorId: "floor-1",
+        floorNo: 3,
+        branchId: "alt",
+        generatedText: "hello",
+        summaries: [],
+        totalUsage: { promptTokens: 1, completionTokens: 2, totalTokens: 3 },
+        memory: { mode: "async", status: "queued", jobId: "memory-job:ingest_turn:floor-1" },
+        finalState: "committed",
+        promptSnapshot: {
+          presetId: "preset-1",
+          presetUpdatedAt: 1710000000000,
+          presetVersion: 3,
+          worldbookId: "worldbook-1",
+          worldbookUpdatedAt: 1710000001000,
+          worldbookVersion: 5,
+          regexProfileId: "regex-1",
+          regexProfileUpdatedAt: 1710000002000,
+          regexProfileVersion: 2,
+          characterId: null,
+          characterVersionId: null,
+          characterImportedFormat: null,
+          characterContentHash: null,
+          worldbookActivatedEntryUids: [7],
+          worldbookActivatedEntries: [],
+          regexPreRuleNames: ["Input Rule"],
+          regexPostRuleNames: [],
+          promptMode: "compat_strict",
+          assetManifestDigest: null,
+          promptDigest: "digest-1",
+          tokenEstimate: 42,
+        },
+        runtimeTrace: {
+          worldbook: {
+            hitCount: 1,
+            matches: [
+              {
+                uid: 7,
+                comment: "Campfire Lore",
+                contentPreview: "The northern pass is watched by old sentries.",
+                order: 100,
+                activationKey: "worldbook:worldbook-1:5:entry:7",
+                assetScopeId: "worldbook:worldbook-1:5",
+                source: {
+                  kind: "session_worldbook",
+                  worldbookId: "worldbook-1",
+                  worldbookName: "Campfire Worldbook",
+                  assetScopeId: "worldbook:worldbook-1:5",
+                },
+                insertion: { position: "before" },
+                activation: {
+                  mode: "triggered",
+                  recursionLevel: 0,
+                  firstMatch: null,
+                },
+              },
+            ],
+          },
+          delivery: {
+            assistantPrefillRequested: true,
+            assistantPrefillApplied: false,
+            assistantPrefillStrategy: "assistant_message_fallback",
+            allowAssistantPrefill: true,
+            requireLastUser: true,
+            noAssistant: false,
+            lastMessageRole: "user",
+            endsWithUser: true,
+            degraded: true,
+            degradeReasons: ["require_last_user"],
+          },
+        },
+      })),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/sessions/s1/respond",
+      payload: {
+        message: "hello",
+        branch_id: "alt",
+        source_floor_id: "floor-source",
+        delivery: {
+          allow_assistant_prefill: false,
+          require_last_user: true,
+          no_assistant: false,
+        },
+        structure: {
+          mode: "no_assistant",
+          merge_adjacent_same_role: false,
+          assistant_rewrite_strategy: "to_system",
+          preserve_system_messages: true,
+        },
+        config: {
+          enableDirector: true,
+          enableVerifier: false,
+          enableMemoryConsolidation: true,
+          verifierFailStrategy: "warn",
+          maxRetries: 2,
+        },
+        generation_params: {
+          temperature: 0.7,
+          max_output_tokens: 256,
+          top_p: 0.9,
+          top_k: 40,
+          frequency_penalty: 0.1,
+          presence_penalty: 0.2,
+          stop_sequences: ["<END>"],
+          seed: 42,
+          repetition_penalty: 1.1,
+          min_p: 0.05,
+          logit_bias: { "42": -5 },
+          response_format: { type: "json_schema", json_schema: { type: "object" } },
+          stream: true,
+          reasoning_effort: "high",
+        },
+        debug_options: {
+          include_prompt_snapshot: true,
+          include_runtime_trace: true,
+          include_worldbook_matches: true,
+        },
+      },
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.json()).toEqual({
+      data: {
+        floor_id: "floor-1",
+        floor_no: 3,
+        branch_id: "alt",
+        generated_text: "hello",
+        summaries: [],
+        total_usage: { prompt_tokens: 1, completion_tokens: 2, total_tokens: 3 },
+        memory: {
+          mode: "async",
+          status: "queued",
+          job_id: "memory-job:ingest_turn:floor-1",
+        },
+        final_state: "committed",
+        prompt_snapshot: {
+          preset_id: "preset-1",
+          preset_updated_at: 1710000000000,
+          preset_version: 3,
+          preset_version_id: null,
+          preset_content_hash: null,
+          worldbook_id: "worldbook-1",
+          worldbook_updated_at: 1710000001000,
+          worldbook_version: 5,
+          worldbook_version_id: null,
+          worldbook_content_hash: null,
+          regex_profile_id: "regex-1",
+          regex_profile_updated_at: 1710000002000,
+          regex_profile_version: 2,
+          regex_profile_version_id: null,
+          regex_profile_content_hash: null,
+          character_id: null,
+          character_version_id: null,
+          character_imported_format: null,
+          character_content_hash: null,
+          worldbook_activated_entry_uids: [7],
+          worldbook_activated_entries: [],
+          regex_pre_rule_names: ["Input Rule"],
+          regex_post_rule_names: [],
+          prompt_mode: "compat_strict",
+          asset_manifest_digest: null,
+          prompt_digest: "digest-1",
+          token_estimate: 42,
+        },
+        runtime_trace: {
+          worldbook: {
+            hit_count: 1,
+            matches: [
+              {
+                uid: 7,
+                comment: "Campfire Lore",
+                content_preview: "The northern pass is watched by old sentries.",
+                order: 100,
+                activation_key: "worldbook:worldbook-1:5:entry:7",
+                asset_scope_id: "worldbook:worldbook-1:5",
+                source: {
+                  kind: "session_worldbook",
+                  worldbook_id: "worldbook-1",
+                  worldbook_name: "Campfire Worldbook",
+                  asset_scope_id: "worldbook:worldbook-1:5",
+                },
+                insertion: { position: "before" },
+                activation: {
+                  mode: "triggered",
+                  recursion_level: 0,
+                  first_match: null,
+                },
+              },
+            ],
+          },
+          delivery: {
+            assistant_prefill_requested: true,
+            assistant_prefill_applied: false,
+            assistant_prefill_strategy: "assistant_message_fallback",
+            allow_assistant_prefill: true,
+            require_last_user: true,
+            no_assistant: false,
+            last_message_role: "user",
+            ends_with_user: true,
+            degraded: true,
+            degrade_reasons: ["require_last_user"],
+          },
+        },
+      },
+    });
+
+    expect(chatService.respond).toHaveBeenCalledWith(
+      "s1",
+      {
+        message: "hello",
+        config: {
+          enableDirector: true,
+          enableVerifier: false,
+          enableMemoryConsolidation: true,
+          verifierFailStrategy: "warn",
+          maxRetries: 2,
+        },
+        generationParams: {
+          temperature: 0.7,
+          maxOutputTokens: 256,
+          topP: 0.9,
+          topK: 40,
+          frequencyPenalty: 0.1,
+          presencePenalty: 0.2,
+          stopSequences: ["<END>"],
+          seed: 42,
+          repetitionPenalty: 1.1,
+          minP: 0.05,
+          logitBias: { "42": -5 },
+          responseFormat: { type: "json_schema", jsonSchema: { type: "object" } },
+          stream: true,
+          reasoningEffort: "high",
+        },
+        branchId: "alt",
+        sourceFloorId: "floor-source",
+        promptIntent: undefined,
+        delivery: {
+          allowAssistantPrefill: false,
+          requireLastUser: true,
+          noAssistant: false,
+        },
+        structure: {
+          mode: "no_assistant",
+          mergeAdjacentSameRole: false,
+          assistantRewriteStrategy: "to_system",
+          preserveSystemMessages: true,
+        },
+        debugOptions: {
+          includePromptSnapshot: true,
+          includeRuntimeTrace: true,
+          includeWorldbookMatches: true,
+        },
+        sessionStateWrites: undefined,
+        sessionStateOperationLog: undefined,
+        turnOperationLog: expectTurnOperationLog("POST /sessions/:id/respond"),
+      },
+      {},
+      "default-admin"
+    );
+  });
+
+
+  it("keeps explicit null generation params when mapping /sessions/:id/respond", async () => {
+    const chatService = createChatService({
+      respond: vi.fn(async () => ({
+        floorId: "floor-1",
+        floorNo: 1,
+        branchId: "main",
+        generatedText: "ok",
+        summaries: [],
+        totalUsage: { promptTokens: 1, completionTokens: 1, totalTokens: 2 },
+        finalState: "committed",
+      })),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/sessions/s1/respond",
+      payload: {
+        message: "hello",
+        generation_params: {
+          temperature: null,
+          max_output_tokens: null,
+          reasoning_effort: null,
+        },
+      },
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(chatService.respond).toHaveBeenCalledWith(
+      "s1",
+      expect.objectContaining({
+        generationParams: expect.objectContaining({
+          temperature: null,
+          maxOutputTokens: null,
+          reasoningEffort: null,
+        }),
+      }),
+      {},
+      "default-admin",
+    );
+  });
+
+  it.each([
+    {
+      name: "session_archived",
+      code: "session_archived",
+      message: "Cannot respond to an archived session",
+      statusCode: 409,
+      errorCode: "session_archived",
+    },
+    {
+      name: "invalid_message_scope",
+      code: "invalid_message_scope",
+      message: "Message scope is invalid",
+      statusCode: 400,
+      errorCode: "invalid_message_scope",
+    },
+    {
+      name: "profile_disabled",
+      code: "profile_disabled",
+      message: "Profile is disabled",
+      statusCode: 409,
+      errorCode: "profile_disabled",
+    },
+    {
+      name: "instance_slot_disabled_required",
+      code: "instance_slot_disabled_required",
+      message: "LLM instance slot 'narrator' is disabled for this session",
+      statusCode: 409,
+      errorCode: "instance_slot_disabled_required",
+    },
+    {
+      name: "tool_replay_blocked",
+      code: "tool_replay_blocked",
+      message: "Verifier retry blocked because replaying tool executions would be unsafe: create_character (never_auto_replay)",
+      statusCode: 409,
+      errorCode: "tool_replay_blocked",
+    },
+    {
+      name: "branch_local_snapshot_missing",
+      code: "branch_local_snapshot_missing",
+      message: "Source floor snapshot is missing",
+      statusCode: 409,
+      errorCode: "branch_local_snapshot_missing",
+    },
+    {
+      name: "secret_unavailable",
+      code: "secret_unavailable",
+      message: "Secret is unavailable",
+      statusCode: 503,
+      errorCode: "secret_unavailable",
+    },
+    {
+      name: "generation_queue_timeout",
+      code: "generation_queue_timeout",
+      message: "Generation queue timed out",
+      statusCode: 503,
+      errorCode: "generation_queue_timeout",
+    },
+    {
+      name: "generation_cancelled",
+      code: "generation_cancelled",
+      message: "Generation was cancelled before execution started",
+      statusCode: 499,
+      errorCode: "generation_cancelled",
+    },
+    {
+      name: "commit_busy",
+      code: "commit_busy",
+      message: "Turn commit failed: database is locked",
+      statusCode: 503,
+      errorCode: "commit_busy",
+    },
+    {
+      name: "generation_timeout",
+      code: "generation_timeout",
+      message: "Turn orchestration failed: LLM request timed out after 60000ms",
+      statusCode: 504,
+      errorCode: "generation_timeout",
+    },
+    {
+      name: "secret_invalid_format",
+      code: "secret_invalid_format",
+      message: "Stored profile secret cannot be decrypted. Check APP_SECRETS_MASTER_KEY or data integrity.",
+      statusCode: 500,
+      errorCode: "secret_invalid_format",
+    },
+    {
+      name: "orchestration_failed",
+      code: "orchestration_failed",
+      message: "Turn orchestration failed",
+      statusCode: 500,
+      errorCode: "orchestration_failed",
+    },
+  ])("maps %s errors on /sessions/:id/respond", async ({ code, message, statusCode, errorCode }) => {
+    const chatService = createChatService({
+      respond: vi.fn(async () => {
+        throw new ChatServiceError(code, message);
+      }),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/sessions/s1/respond",
+      payload: { message: "hello" },
+    });
+
+    expect(response.statusCode).toBe(statusCode);
+    expect(response.json<{ error: { code: string; message: string } }>()).toEqual({
+      error: {
+        code: errorCode,
+        message,
+      },
+    });
+  });
+
+  it("maps commit_conflict on /sessions/:id/respond", async () => {
+    const chatService = createChatService({
+      respond: vi.fn(async () => {
+        throw new ChatServiceError("commit_conflict", "Turn commit failed: floor state conflict");
+      }),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/sessions/s1/respond",
+      payload: { message: "hello" },
+    });
+
+    expect(response.statusCode).toBe(409);
+    expect(response.json<{ error: { code: string; message: string } }>()).toEqual({
+      error: {
+        code: "commit_conflict",
+        message: "Turn commit failed: floor state conflict",
+      },
+    });
+  });
+
+  it("maps turn_commit_failed on /sessions/:id/respond", async () => {
+    const chatService = createChatService({
+      respond: vi.fn(async () => {
+        throw new ChatServiceError("turn_commit_failed", "Turn commit failed: sqlite busy");
+      }),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/sessions/s1/respond",
+      payload: { message: "hello" },
+    });
+
+    expect(response.statusCode).toBe(500);
+    expect(response.json<{ error: { code: string; message: string } }>().error).toEqual({
+      code: "turn_commit_failed",
+      message: "Turn commit failed: sqlite busy",
+    });
+  });
+
+  it.each([
+    {
+      code: "generation_queue_timeout",
+      message: "Generation queue timed out",
+    },
+    {
+      code: "generation_cancelled",
+      message: "Generation was cancelled before execution started",
+    },
+    {
+      code: "commit_busy",
+      message: "Turn commit failed: database is locked",
+    },
+    {
+      code: "generation_timeout",
+      message: "Turn orchestration failed: LLM request timed out after 60000ms",
+    },
+    {
+      code: "secret_invalid_format",
+      message: "Stored profile secret cannot be decrypted. Check APP_SECRETS_MASTER_KEY or data integrity.",
+    },
+    {
+      code: "instance_slot_disabled_required",
+      message: "LLM instance slot 'narrator' is disabled for this session",
+    },
+  ])("emits %s in SSE error payload on /sessions/:id/respond/stream", async ({ code, message }) => {
+    const chatService = createChatService({
+      respond: vi.fn(async () => {
+        throw new ChatServiceError(code, message);
+      }),
+    });
+
+    await mountChatRoutes(chatService, { enableSseChat: true });
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/sessions/s1/respond/stream",
+      payload: { message: "hello" },
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.headers["content-type"]).toContain("text/event-stream");
+    expect(response.body).toContain("event: error");
+    expect(response.body).toContain(`"code":"${code}"`);
+    expect(response.body).toContain(`"message":"${message}"`);
+  });
+
+  it("emits tool events in SSE payloads on /sessions/:id/respond/stream", async () => {
+    const chatService = createChatService({
+      respond: vi.fn(async (_sessionId, _request, runtimeOptions) => {
+        runtimeOptions.onStart?.({ branchId: "main", floorId: "floor-1", floorNo: 1 });
+        runtimeOptions.onRun?.({
+          sessionId: "s1",
+          floorId: "floor-1",
+          runId: "run-1",
+          runType: "respond",
+          status: "running",
+          phase: "page_generating",
+          publicPhase: "generating",
+          phaseSeq: 2,
+          attemptNo: 1,
+          startedAt: 100,
+          updatedAt: 110,
+        });
+        runtimeOptions.onTool?.({
+          executionId: "exec-1",
+          toolName: "set_variable",
+          providerId: "builtin",
+          providerType: "builtin",
+          sideEffectLevel: "sandbox",
+          phase: "start",
+          replaySafety: "uncertain",
+        });
+        runtimeOptions.onTool?.({
+          executionId: "exec-1",
+          toolName: "set_variable",
+          providerId: "builtin",
+          providerType: "builtin",
+          sideEffectLevel: "sandbox",
+          phase: "success",
+          durationMs: 7,
+          replaySafety: "safe",
+        });
+
+        return {
+          floorId: "floor-1",
+          floorNo: 1,
+          branchId: "main",
+          generatedText: "hello",
+          summaries: [],
+          totalUsage: { promptTokens: 1, completionTokens: 2, totalTokens: 3 },
+          finalState: "committed",
+        };
+      }),
+    });
+
+    await mountChatRoutes(chatService, { enableSseChat: true });
+
+    const response = await app.inject({ method: "POST", url: "/sessions/s1/respond/stream", payload: { message: "hello" } });
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toContain("event: run");
+    expect(response.body).toContain('"phase":"page_generating"');
+    expect(response.body).toContain("event: tool");
+    expect(response.body).toContain('"execution_id":"exec-1"');
+    expect(response.body).toContain('"phase":"success"');
+    expect(response.body).toContain('"replay_safety":"safe"');
+  });
+
+  it("returns 500 when /sessions/:id/respond raises an unexpected error", async () => {
+    const chatService = createChatService({
+      respond: vi.fn(async () => {
+        throw new Error("unexpected failure");
+      }),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/sessions/s1/respond",
+      payload: { message: "hello" },
+    });
+
+    expect(response.statusCode).toBe(500);
+  });
+
+  it("forwards account context on /sessions/:id/regenerate with an omitted body", async () => {
+    const chatService = createChatService({
+      regenerate: vi.fn(async () => ({
+        floorId: "floor-r1",
+        floorNo: 2,
+        previousFloorId: "floor-old",
+        generatedText: "regen",
+        summaries: [],
+        totalUsage: { promptTokens: 1, completionTokens: 1, totalTokens: 2 },
+        finalState: "committed",
+      })),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/sessions/s1/regenerate",
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(chatService.regenerate).toHaveBeenCalledWith(
+      "s1",
+      {
+        config: undefined,
+        generationParams: undefined,
+        structure: undefined,
+        delivery: undefined,
+        debugOptions: undefined,
+        confirmedExecutionIds: undefined,
+        sessionStateWrites: undefined,
+        sessionStateOperationLog: undefined,
+        confirmedSessionStateMutationIds: undefined,
+        turnOperationLog: expectTurnOperationLog("POST /sessions/:id/regenerate"),
+      },
+      "default-admin",
+    );
+  });
+
+  it("maps generation params and errors on /sessions/:id/regenerate", async () => {
+    const chatService = createChatService({
+      regenerate: vi.fn(async () => {
+        throw new ChatServiceError("no_floor_to_regenerate", "No floor available to regenerate");
+      }),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/sessions/s1/regenerate",
+      payload: {
+        delivery: {
+          allow_assistant_prefill: false,
+          require_last_user: true,
+          no_assistant: true,
+        },
+        structure: {
+          mode: "no_assistant",
+          merge_adjacent_same_role: false,
+          assistant_rewrite_strategy: "to_system",
+          preserve_system_messages: true,
+        },
+        generation_params: {
+          temperature: 0.5,
+          max_output_tokens: 64,
+          top_p: 0.8,
+          top_k: 20,
+          frequency_penalty: 0.4,
+          presence_penalty: 0.3,
+          stop_sequences: ["STOP"],
+          stream: true,
+          reasoning_effort: "low",
+        },
+        debug_options: {
+          include_prompt_snapshot: true,
+          include_runtime_trace: true,
+          include_worldbook_matches: false,
+        },
+      },
+    });
+
+    expect(response.statusCode).toBe(404);
+    expect(response.json<{ error: { code: string } }>().error.code).toBe("no_floor_to_regenerate");
+    expect(chatService.regenerate).toHaveBeenCalledWith(
+      "s1",
+      {
+        config: undefined,
+        generationParams: {
+          temperature: 0.5,
+          maxOutputTokens: 64,
+          topP: 0.8,
+          topK: 20,
+          frequencyPenalty: 0.4,
+          presencePenalty: 0.3,
+          stopSequences: ["STOP"],
+          stream: true,
+          reasoningEffort: "low",
+        },
+        delivery: {
+          allowAssistantPrefill: false,
+          requireLastUser: true,
+          noAssistant: true,
+        },
+        structure: {
+          mode: "no_assistant",
+          mergeAdjacentSameRole: false,
+          assistantRewriteStrategy: "to_system",
+          preserveSystemMessages: true,
+        },
+        debugOptions: {
+          includePromptSnapshot: true,
+          includeRuntimeTrace: true,
+          includeWorldbookMatches: false,
+        },
+        confirmedExecutionIds: undefined,
+        sessionStateWrites: undefined,
+        sessionStateOperationLog: undefined,
+        confirmedSessionStateMutationIds: undefined,
+        turnOperationLog: expectTurnOperationLog("POST /sessions/:id/regenerate"),
+      },
+      "default-admin"
+    );
+  });
+
+  it("maps generation_target_stale on /sessions/:id/regenerate", async () => {
+    const chatService = createChatService({
+      regenerate: vi.fn(async () => {
+        throw new ChatServiceError("generation_target_stale", "Latest committed floor changed while the regenerate request was waiting to run");
+      }),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/sessions/s1/regenerate",
+    });
+
+    expect(response.statusCode).toBe(409);
+    expect(response.json<{ error: { code: string; message: string } }>()).toEqual({
+      error: {
+        code: "generation_target_stale",
+        message: "Latest committed floor changed while the regenerate request was waiting to run",
+      },
+    });
+  });
+
+  it("handles /floors/:id/retry with an omitted body", async () => {
+    const chatService = createChatService({
+      retryFloor: vi.fn(async () => ({
+        floorId: "floor-failed",
+        floorNo: 4,
+        branchId: "main",
+        generatedText: "retry ok",
+        summaries: ["s"],
+        totalUsage: { promptTokens: 3, completionTokens: 4, totalTokens: 7 },
+        finalState: "committed",
+      })),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/floors/f1/retry",
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(chatService.retryFloor).toHaveBeenCalledWith(
+      "f1",
+      {
+        config: undefined,
+        generationParams: undefined,
+        structure: undefined,
+        delivery: undefined,
+        debugOptions: undefined,
+        confirmedExecutionIds: undefined,
+        sessionStateWrites: undefined,
+        sessionStateOperationLog: undefined,
+        confirmedSessionStateMutationIds: undefined,
+        turnOperationLog: expectTurnOperationLog("POST /floors/:id/retry"),
+      },
+      "default-admin",
+    );
+  });
+
+  it("maps generation params and invalid_state on /floors/:id/retry", async () => {
+    const chatService = createChatService({
+      retryFloor: vi.fn(async () => {
+        throw new ChatServiceError("invalid_state", "Floor is not committed");
+      }),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/floors/f1/retry",
+      payload: {
+        generation_params: {
+          temperature: 0.6,
+          max_output_tokens: 32,
+          top_p: 0.7,
+          top_k: 10,
+          frequency_penalty: 0.2,
+          presence_penalty: 0.1,
+          stop_sequences: ["END"],
+          stream: false,
+          reasoning_effort: "medium",
+        },
+      },
+    });
+
+    expect(response.statusCode).toBe(409);
+    expect(response.json<{ error: { code: string } }>().error.code).toBe("invalid_state");
+    expect(chatService.retryFloor).toHaveBeenCalledWith(
+      "f1",
+      {
+        config: undefined,
+        generationParams: {
+          temperature: 0.6,
+          maxOutputTokens: 32,
+          topP: 0.7,
+          topK: 10,
+          frequencyPenalty: 0.2,
+          presencePenalty: 0.1,
+          stopSequences: ["END"],
+          stream: false,
+          reasoningEffort: "medium",
+        },
+        structure: undefined,
+        delivery: undefined,
+        debugOptions: undefined,
+        confirmedExecutionIds: undefined,
+        sessionStateWrites: undefined,
+        sessionStateOperationLog: undefined,
+        confirmedSessionStateMutationIds: undefined,
+        turnOperationLog: expectTurnOperationLog("POST /floors/:id/retry"),
+      },
+      "default-admin"
+    );
+  });
+
+  it("maps delivery on /floors/:id/retry", async () => {
+    const chatService = createChatService({
+      retryFloor: vi.fn(async () => ({
+        floorId: "floor-failed",
+        floorNo: 4,
+        branchId: "main",
+        generatedText: "retry ok",
+        summaries: ["s"],
+        totalUsage: { promptTokens: 3, completionTokens: 4, totalTokens: 7 },
+        finalState: "committed",
+      })),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/floors/f1/retry",
+      payload: {
+        delivery: {
+          allow_assistant_prefill: false,
+          require_last_user: true,
+          no_assistant: true,
+        },
+        structure: {
+          mode: "no_assistant",
+          merge_adjacent_same_role: false,
+          assistant_rewrite_strategy: "to_system",
+          preserve_system_messages: true,
+        },
+        debug_options: {
+          include_prompt_snapshot: true,
+          include_runtime_trace: true,
+          include_worldbook_matches: false,
+        },
+      },
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(chatService.retryFloor).toHaveBeenCalledWith(
+      "f1",
+      {
+        config: undefined,
+        generationParams: undefined,
+        delivery: {
+          allowAssistantPrefill: false,
+          requireLastUser: true,
+          noAssistant: true,
+        },
+        structure: {
+          mode: "no_assistant",
+          mergeAdjacentSameRole: false,
+          assistantRewriteStrategy: "to_system",
+          preserveSystemMessages: true,
+        },
+        debugOptions: {
+          includePromptSnapshot: true,
+          includeRuntimeTrace: true,
+          includeWorldbookMatches: false,
+        },
+        confirmedExecutionIds: undefined,
+        sessionStateWrites: undefined,
+        sessionStateOperationLog: undefined,
+        confirmedSessionStateMutationIds: undefined,
+        turnOperationLog: expectTurnOperationLog("POST /floors/:id/retry"),
+      },
+      "default-admin"
+    );
+  });
+
+
+  it("maps confirmed_execution_ids and preserves replay confirmation details on /floors/:id/retry", async () => {
+    const chatService = createChatService({
+      retryFloor: vi.fn(async () => {
+        throw new ChatServiceError(
+          "tool_replay_confirmation_required",
+          "Retry requires explicit confirmation for 1 prior tool execution(s).",
+          undefined,
+          {
+            blocking_executions: [
+              {
+                execution_id: "exec-1",
+                tool_name: "create_character",
+                replay_safety: "never_auto_replay",
+              },
+            ],
+          },
+        );
+      }),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/floors/f1/retry",
+      payload: {
+        confirmed_execution_ids: ["exec-1", "exec-2"],
+      },
+    });
+
+    expect(response.statusCode).toBe(409);
+    expect(response.json()).toEqual({
+      error: {
+        code: "tool_replay_confirmation_required",
+        message: "Retry requires explicit confirmation for 1 prior tool execution(s).",
+        details: {
+          blocking_executions: [
+            {
+              execution_id: "exec-1",
+              tool_name: "create_character",
+              replay_safety: "never_auto_replay",
+            },
+          ],
+        },
+      },
+    });
+    expect(chatService.retryFloor).toHaveBeenCalledWith(
+      "f1",
+      {
+        config: undefined,
+        generationParams: undefined,
+        confirmedExecutionIds: ["exec-1", "exec-2"],
+        structure: undefined,
+        delivery: undefined,
+        debugOptions: undefined,
+        sessionStateWrites: undefined,
+        sessionStateOperationLog: undefined,
+        confirmedSessionStateMutationIds: undefined,
+        turnOperationLog: expectTurnOperationLog("POST /floors/:id/retry"),
+      },
+      "default-admin",
+    );
+  });
+
+  it("handles /messages/:id/edit-and-regenerate with mapped generation params", async () => {
+    const chatService = createChatService({
+      editAndRegenerate: vi.fn(async () => ({
+        floorId: "floor-new",
+        floorNo: 5,
+        branchId: "edit-1",
+        sourceFloorId: "floor-old",
+        sourceMessageId: "msg-old",
+        generatedText: "edited",
+        summaries: [],
+        totalUsage: { promptTokens: 2, completionTokens: 3, totalTokens: 5 },
+        memory: { mode: "sync", status: "applied" },
+        promptSnapshot: {
+          presetId: null,
+          presetUpdatedAt: null,
+          presetVersion: null,
+          worldbookId: null,
+          worldbookUpdatedAt: null,
+          worldbookVersion: null,
+          regexProfileId: null,
+          regexProfileUpdatedAt: null,
+          regexProfileVersion: null,
+          characterId: null,
+          characterVersionId: null,
+          characterImportedFormat: null,
+          characterContentHash: null,
+          worldbookActivatedEntryUids: [],
+          worldbookActivatedEntries: [],
+          regexPreRuleNames: [],
+          regexPostRuleNames: [],
+          promptMode: "compat_strict",
+          assetManifestDigest: null,
+          promptDigest: "digest-edit",
+          tokenEstimate: 12,
+        },
+        finalState: "committed",
+      })),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/messages/m1/edit-and-regenerate",
+      payload: {
+        content: "edited user line",
+        branch_id: "edit-1",
+        delivery: {
+          allow_assistant_prefill: false,
+          require_last_user: true,
+          no_assistant: true,
+        },
+        structure: {
+          mode: "no_assistant",
+          merge_adjacent_same_role: false,
+          assistant_rewrite_strategy: "to_system",
+          preserve_system_messages: true,
+        },
+        generation_params: {
+          temperature: 0.4,
+          max_output_tokens: 48,
+          top_p: 0.95,
+          top_k: 30,
+          frequency_penalty: 0.05,
+          presence_penalty: 0.15,
+          stop_sequences: ["HALT"],
+          stream: true,
+          reasoning_effort: "high",
+        },
+        debug_options: {
+          include_prompt_snapshot: true,
+          include_runtime_trace: true,
+          include_worldbook_matches: false,
+        },
+      },
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.json()).toEqual({
+      data: {
+        floor_id: "floor-new",
+        floor_no: 5,
+        branch_id: "edit-1",
+        source_floor_id: "floor-old",
+        source_message_id: "msg-old",
+        generated_text: "edited",
+        summaries: [],
+        total_usage: { prompt_tokens: 2, completion_tokens: 3, total_tokens: 5 },
+        memory: {
+          mode: "sync",
+          status: "applied",
+          job_id: null,
+        },
+        final_state: "committed",
+        prompt_snapshot: {
+          preset_id: null,
+          preset_updated_at: null,
+          preset_version: null,
+          preset_version_id: null,
+          preset_content_hash: null,
+          worldbook_id: null,
+          worldbook_updated_at: null,
+          worldbook_version: null,
+          worldbook_version_id: null,
+          worldbook_content_hash: null,
+          regex_profile_id: null,
+          regex_profile_updated_at: null,
+          regex_profile_version: null,
+          regex_profile_version_id: null,
+          regex_profile_content_hash: null,
+          character_id: null,
+          character_version_id: null,
+          character_imported_format: null,
+          character_content_hash: null,
+          worldbook_activated_entry_uids: [],
+          worldbook_activated_entries: [],
+          regex_pre_rule_names: [],
+          regex_post_rule_names: [],
+          prompt_mode: "compat_strict",
+          asset_manifest_digest: null,
+          prompt_digest: "digest-edit",
+          token_estimate: 12,
+        },
+      },
+    });
+
+    expect(chatService.editAndRegenerate).toHaveBeenCalledWith(
+      "m1",
+      {
+        content: "edited user line",
+        branchId: "edit-1",
+        config: undefined,
+        delivery: {
+          allowAssistantPrefill: false,
+          requireLastUser: true,
+          noAssistant: true,
+        },
+        structure: {
+          mode: "no_assistant",
+          mergeAdjacentSameRole: false,
+          assistantRewriteStrategy: "to_system",
+          preserveSystemMessages: true,
+        },
+        generationParams: {
+          temperature: 0.4,
+          maxOutputTokens: 48,
+          topP: 0.95,
+          topK: 30,
+          frequencyPenalty: 0.05,
+          presencePenalty: 0.15,
+          stopSequences: ["HALT"],
+          stream: true,
+          reasoningEffort: "high",
+        },
+        debugOptions: {
+          includePromptSnapshot: true,
+          includeRuntimeTrace: true,
+          includeWorldbookMatches: false,
+        },
+        confirmedExecutionIds: undefined,
+        sessionStateWrites: undefined,
+        sessionStateOperationLog: undefined,
+        confirmedSessionStateMutationIds: undefined,
+        turnOperationLog: expectTurnOperationLog("POST /messages/:id/edit-and-regenerate"),
+      },
+      "default-admin"
+    );
+  });
+
+  it("maps message_not_found on /messages/:id/edit-and-regenerate", async () => {
+    const chatService = createChatService({
+      editAndRegenerate: vi.fn(async () => {
+        throw new ChatServiceError("message_not_found", "Message not found");
+      }),
+    });
+
+    await mountChatRoutes(chatService);
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/messages/m1/edit-and-regenerate",
+      payload: {
+        content: "edited user line",
+      },
+    });
+
+    expect(response.statusCode).toBe(404);
+    expect(response.json<{ error: { code: string; message: string } }>()).toEqual({
+      error: {
+        code: "message_not_found",
+        message: "Message not found",
+      },
+    });
+  });
+});

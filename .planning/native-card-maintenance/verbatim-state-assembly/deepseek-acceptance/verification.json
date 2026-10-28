@@ -1,0 +1,6356 @@
+{
+  "stageSampleCounts": {
+    "baseline": 13,
+    "corrected": 2
+  },
+  "stageCheckCounts": {
+    "baseline": 453,
+    "corrected": 91,
+    "budget": 2
+  },
+  "historicalDefectCount": 13,
+  "currentFailureCount": 0,
+  "scope": "deterministic structure and transport evidence; semantic conclusions require manual reading",
+  "passed": 533,
+  "failed": 13,
+  "checks": [
+    {
+      "case": "05-linqian-primary-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "05-linqian-primary-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "05-linqian-primary-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "05-linqian-primary-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "06-linqian-primary-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "06-linqian-primary-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "06-linqian-primary-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "06-linqian-primary-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "06-linqian-primary-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": false,
+      "actual": [],
+      "expected": [
+        {
+          "uid": 1,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:1",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 0,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:0",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 17,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:17",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 16,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:16",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 9,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:9",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 14,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:14",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 34,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:34",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 33,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:33",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 32,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:32",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 31,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:31",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 30,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:30",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 29,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:29",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 28,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:28",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 27,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:27",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 26,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:26",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 37,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:37",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 36,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:36",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 35,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:35",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 88,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:88",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 5,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:5",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 4,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:4",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 3,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:3",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 111,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:111",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "user"
+          }
+        },
+        {
+          "uid": 109,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:109",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "user"
+          }
+        },
+        {
+          "uid": 127,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:127",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "user"
+          }
+        },
+        {
+          "uid": 87,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:87",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        }
+      ]
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "11-linqian-primary-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "11-linqian-primary-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "11-linqian-primary-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "11-linqian-primary-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "12-linqian-primary-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "12-linqian-primary-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "12-linqian-primary-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "12-linqian-primary-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "12-linqian-primary-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "history_1_floorId",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "history_1_before",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "history_1_after",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": false,
+      "actual": [],
+      "expected": [
+        {
+          "uid": 1,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:1",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 0,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:0",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 17,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:17",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 16,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:16",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 9,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:9",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 14,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:14",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 34,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:34",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 33,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:33",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 32,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:32",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 31,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:31",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 30,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:30",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 29,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:29",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 28,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:28",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 27,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:27",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 26,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:26",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 37,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:37",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 36,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:36",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 35,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:35",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 88,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:88",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 5,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:5",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 4,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:4",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 3,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:3",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 111,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:111",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "user"
+          }
+        },
+        {
+          "uid": 109,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:109",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "user"
+          }
+        },
+        {
+          "uid": 127,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:127",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "user"
+          }
+        },
+        {
+          "uid": 87,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:87",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        }
+      ]
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "33-linqian-primary-state-update-r3-body-provider-request.json",
+      "stage": "corrected",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "33-linqian-primary-state-update-r3-body-provider-request.json",
+      "stage": "corrected",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "33-linqian-primary-state-update-r3-body-provider-request.json",
+      "stage": "corrected",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "33-linqian-primary-state-update-r3-body-provider-request.json",
+      "stage": "corrected",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "34-linqian-primary-state-update-r3-state-provider-request.json",
+      "stage": "corrected",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "34-linqian-primary-state-update-r3-state-provider-request.json",
+      "stage": "corrected",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "34-linqian-primary-state-update-r3-state-provider-request.json",
+      "stage": "corrected",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "34-linqian-primary-state-update-r3-state-provider-request.json",
+      "stage": "corrected",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "34-linqian-primary-state-update-r3-state-provider-request.json",
+      "stage": "corrected",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "history_1_floorId",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "history_1_before",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "history_1_after",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "history_2_floorId",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "history_2_before",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "history_2_after",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "linqian-primary-state-update-r3",
+      "stage": "corrected",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "07-linqian-backup-mvu-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "07-linqian-backup-mvu-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "07-linqian-backup-mvu-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "07-linqian-backup-mvu-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "08-linqian-backup-mvu-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "08-linqian-backup-mvu-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "08-linqian-backup-mvu-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "08-linqian-backup-mvu-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "08-linqian-backup-mvu-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": false,
+      "actual": [],
+      "expected": [
+        {
+          "uid": 1,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:1",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 0,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:0",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 17,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:17",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 16,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:16",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 9,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:9",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 14,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:14",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 34,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:34",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 33,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:33",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 32,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:32",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 31,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:31",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 30,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:30",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 29,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:29",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 28,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:28",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 27,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:27",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 26,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:26",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 37,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:37",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 36,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:36",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 35,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:35",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 88,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:88",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 5,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:5",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 4,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:4",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 3,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:3",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 111,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:111",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "user"
+          }
+        },
+        {
+          "uid": 109,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:109",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "user"
+          }
+        },
+        {
+          "uid": 127,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:127",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "user"
+          }
+        },
+        {
+          "uid": 87,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:87",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        }
+      ]
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "13-linqian-backup-mvu-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "13-linqian-backup-mvu-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "13-linqian-backup-mvu-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "13-linqian-backup-mvu-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "14-linqian-backup-mvu-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "14-linqian-backup-mvu-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "14-linqian-backup-mvu-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "14-linqian-backup-mvu-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "14-linqian-backup-mvu-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "history_1_floorId",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "history_1_before",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "history_1_after",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": false,
+      "actual": [],
+      "expected": [
+        {
+          "uid": 1,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:1",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 0,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:0",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 17,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:17",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 16,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:16",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 9,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:9",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 14,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:14",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 34,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:34",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 33,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:33",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 32,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:32",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 31,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:31",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 30,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:30",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 29,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:29",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 28,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:28",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 27,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:27",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 26,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:26",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 37,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:37",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 36,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:36",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 35,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:35",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 88,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:88",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 5,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:5",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 4,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:4",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 3,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:3",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "position": "after"
+          }
+        },
+        {
+          "uid": 111,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:111",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "user"
+          }
+        },
+        {
+          "uid": 109,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:109",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "user"
+          }
+        },
+        {
+          "uid": 127,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:127",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "user"
+          }
+        },
+        {
+          "uid": 87,
+          "activationKey": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1:entry:87",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "Xa_y3Z3npZoe1iMECrBdR",
+            "worldbookName": "林茜_世界书_v1.3.32",
+            "assetScopeId": "worldbook:Xa_y3Z3npZoe1iMECrBdR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        }
+      ]
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "linqian-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "01-gushengman-primary-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "01-gushengman-primary-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "01-gushengman-primary-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "01-gushengman-primary-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "03-gushengman-primary-state-update-r1-state-deepseek-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "03-gushengman-primary-state-update-r1-state-deepseek-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "03-gushengman-primary-state-update-r1-state-deepseek-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "03-gushengman-primary-state-update-r1-state-deepseek-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "03-gushengman-primary-state-update-r1-state-deepseek-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "02-gushengman-primary-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "02-gushengman-primary-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "02-gushengman-primary-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "02-gushengman-primary-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "02-gushengman-primary-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "04-gushengman-primary-state-update-r1-state-morph-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "04-gushengman-primary-state-update-r1-state-morph-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "04-gushengman-primary-state-update-r1-state-morph-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "04-gushengman-primary-state-update-r1-state-morph-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "04-gushengman-primary-state-update-r1-state-morph-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": false,
+      "actual": [],
+      "expected": [
+        {
+          "uid": 19,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:19",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 2,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:2",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 5,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:5",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 1,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:1",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 20,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:20",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 6,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:6",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 10,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:10",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 15,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:15",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 3,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:3",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 17,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:17",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 7,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:7",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 18,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:18",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        }
+      ]
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r1",
+      "stage": "baseline",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "15-gushengman-primary-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "15-gushengman-primary-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "15-gushengman-primary-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "15-gushengman-primary-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "16-gushengman-primary-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "16-gushengman-primary-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "16-gushengman-primary-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "16-gushengman-primary-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "16-gushengman-primary-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "history_1_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "history_1_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "history_1_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": false,
+      "actual": [],
+      "expected": [
+        {
+          "uid": 19,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:19",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 4,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:4",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 2,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:2",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 5,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:5",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 1,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:1",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 20,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:20",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 6,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:6",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 10,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:10",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 15,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:15",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 3,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:3",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 17,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:17",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 7,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:7",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 18,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:18",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        }
+      ]
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r2",
+      "stage": "baseline",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "19-gushengman-primary-state-update-r3-body-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "19-gushengman-primary-state-update-r3-body-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "19-gushengman-primary-state-update-r3-body-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "19-gushengman-primary-state-update-r3-body-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "20-gushengman-primary-state-update-r3-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "20-gushengman-primary-state-update-r3-state-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "20-gushengman-primary-state-update-r3-state-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "20-gushengman-primary-state-update-r3-state-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "20-gushengman-primary-state-update-r3-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "history_1_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "history_1_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "history_1_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "history_2_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "history_2_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "history_2_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": false,
+      "actual": [],
+      "expected": [
+        {
+          "uid": 19,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:19",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 4,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:4",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 2,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:2",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 5,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:5",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 1,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:1",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 20,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:20",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 6,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:6",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 10,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:10",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 15,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:15",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 3,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:3",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 17,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:17",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 7,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:7",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 18,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:18",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        }
+      ]
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r3",
+      "stage": "baseline",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "21-gushengman-primary-state-update-r4-body-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "21-gushengman-primary-state-update-r4-body-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "21-gushengman-primary-state-update-r4-body-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "21-gushengman-primary-state-update-r4-body-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "22-gushengman-primary-state-update-r4-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "22-gushengman-primary-state-update-r4-state-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "22-gushengman-primary-state-update-r4-state-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "22-gushengman-primary-state-update-r4-state-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "22-gushengman-primary-state-update-r4-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "history_1_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "history_1_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "history_1_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "history_2_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "history_2_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "history_2_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "history_3_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "history_3_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "history_3_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": false,
+      "actual": [],
+      "expected": [
+        {
+          "uid": 19,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:19",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 4,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:4",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 2,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:2",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 5,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:5",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 1,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:1",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 20,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:20",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 6,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:6",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 10,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:10",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 15,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:15",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 3,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:3",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 17,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:17",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 7,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:7",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 18,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:18",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        }
+      ]
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r4",
+      "stage": "baseline",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "23-gushengman-primary-state-update-r5-body-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "23-gushengman-primary-state-update-r5-body-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "23-gushengman-primary-state-update-r5-body-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "23-gushengman-primary-state-update-r5-body-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "24-gushengman-primary-state-update-r5-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "24-gushengman-primary-state-update-r5-state-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "24-gushengman-primary-state-update-r5-state-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "24-gushengman-primary-state-update-r5-state-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "24-gushengman-primary-state-update-r5-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_1_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_1_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_1_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_2_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_2_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_2_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_3_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_3_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_3_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_4_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_4_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_4_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": false,
+      "actual": [],
+      "expected": [
+        {
+          "uid": 19,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:19",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 4,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:4",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 2,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:2",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 5,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:5",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 1,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:1",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 20,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:20",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 6,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:6",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 10,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:10",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 15,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:15",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 3,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:3",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 17,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:17",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 7,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:7",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 18,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:18",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        }
+      ]
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r5",
+      "stage": "baseline",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "25-gushengman-primary-state-update-r6-body-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "25-gushengman-primary-state-update-r6-body-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "25-gushengman-primary-state-update-r6-body-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "25-gushengman-primary-state-update-r6-body-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "26-gushengman-primary-state-update-r6-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "26-gushengman-primary-state-update-r6-state-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "26-gushengman-primary-state-update-r6-state-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "26-gushengman-primary-state-update-r6-state-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "26-gushengman-primary-state-update-r6-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_1_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_1_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_1_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_2_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_2_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_2_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_3_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_3_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_3_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_4_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_4_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_4_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_5_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_5_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_5_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": false,
+      "actual": [],
+      "expected": [
+        {
+          "uid": 19,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:19",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 4,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:4",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 2,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:2",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 5,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:5",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 1,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:1",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 20,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:20",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 6,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:6",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 10,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:10",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 15,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:15",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 3,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:3",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 17,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:17",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 7,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:7",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 18,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:18",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        }
+      ]
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r6",
+      "stage": "baseline",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "27-gushengman-primary-state-update-r7-body-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "27-gushengman-primary-state-update-r7-body-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "27-gushengman-primary-state-update-r7-body-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "27-gushengman-primary-state-update-r7-body-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "28-gushengman-primary-state-update-r7-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "28-gushengman-primary-state-update-r7-state-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "28-gushengman-primary-state-update-r7-state-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "28-gushengman-primary-state-update-r7-state-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "28-gushengman-primary-state-update-r7-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_2_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_2_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_2_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_3_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_3_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_3_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_4_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_4_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_4_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_5_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_5_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_5_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_6_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_6_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_6_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": false,
+      "actual": [],
+      "expected": [
+        {
+          "uid": 19,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:19",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 4,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:4",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 2,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:2",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 5,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:5",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 1,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:1",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 20,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:20",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 6,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:6",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 10,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:10",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 15,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:15",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 3,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:3",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 17,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:17",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 7,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:7",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 18,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:18",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        }
+      ]
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r7",
+      "stage": "baseline",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "29-gushengman-primary-state-update-r8-body-provider-request.json",
+      "stage": "corrected",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "29-gushengman-primary-state-update-r8-body-provider-request.json",
+      "stage": "corrected",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "29-gushengman-primary-state-update-r8-body-provider-request.json",
+      "stage": "corrected",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "29-gushengman-primary-state-update-r8-body-provider-request.json",
+      "stage": "corrected",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "30-gushengman-primary-state-update-r8-body-retry-timeout-provider-request.json",
+      "stage": "corrected",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "30-gushengman-primary-state-update-r8-body-retry-timeout-provider-request.json",
+      "stage": "corrected",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "30-gushengman-primary-state-update-r8-body-retry-timeout-provider-request.json",
+      "stage": "corrected",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "30-gushengman-primary-state-update-r8-body-retry-timeout-provider-request.json",
+      "stage": "corrected",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "31-gushengman-primary-state-update-r8-body-deepinfra-provider-request.json",
+      "stage": "corrected",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "31-gushengman-primary-state-update-r8-body-deepinfra-provider-request.json",
+      "stage": "corrected",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "31-gushengman-primary-state-update-r8-body-deepinfra-provider-request.json",
+      "stage": "corrected",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "31-gushengman-primary-state-update-r8-body-deepinfra-provider-request.json",
+      "stage": "corrected",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "32-gushengman-primary-state-update-r8-state-provider-request.json",
+      "stage": "corrected",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "32-gushengman-primary-state-update-r8-state-provider-request.json",
+      "stage": "corrected",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "32-gushengman-primary-state-update-r8-state-provider-request.json",
+      "stage": "corrected",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "32-gushengman-primary-state-update-r8-state-provider-request.json",
+      "stage": "corrected",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "32-gushengman-primary-state-update-r8-state-provider-request.json",
+      "stage": "corrected",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_3_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_3_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_3_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_4_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_4_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_4_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_5_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_5_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_5_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_6_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_6_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_6_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_7_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_7_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_7_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "gushengman-primary-state-update-r8",
+      "stage": "corrected",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "09-gushengman-backup-mvu-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "09-gushengman-backup-mvu-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "09-gushengman-backup-mvu-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "09-gushengman-backup-mvu-state-update-r1-body-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "10-gushengman-backup-mvu-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "10-gushengman-backup-mvu-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "10-gushengman-backup-mvu-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "10-gushengman-backup-mvu-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "10-gushengman-backup-mvu-state-update-r1-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": false,
+      "actual": [],
+      "expected": [
+        {
+          "uid": 19,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:19",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 2,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:2",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 5,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:5",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 1,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:1",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 20,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:20",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 6,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:6",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 10,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:10",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 15,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:15",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 3,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:3",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 17,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:17",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 7,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:7",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 18,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:18",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        }
+      ]
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r1",
+      "stage": "baseline",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "17-gushengman-backup-mvu-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "17-gushengman-backup-mvu-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "17-gushengman-backup-mvu-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "17-gushengman-backup-mvu-state-update-r2-body-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "18-gushengman-backup-mvu-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_messages_equal_formal_dry_run",
+      "passed": true
+    },
+    {
+      "case": "18-gushengman-backup-mvu-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "authorized_model",
+      "passed": true
+    },
+    {
+      "case": "18-gushengman-backup-mvu-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "automatic_provider_fallback_disabled",
+      "passed": true
+    },
+    {
+      "case": "18-gushengman-backup-mvu-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "complete_persona_in_actual_messages",
+      "passed": true
+    },
+    {
+      "case": "18-gushengman-backup-mvu-state-update-r2-state-provider-request.json",
+      "stage": "baseline",
+      "check": "actual_output_schema",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "body_committed",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "before_equals_prior_commit",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "previous_snapshot_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "state_parent_identity",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "state_matches_current_view",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "state_floor_matches_body",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "saved_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "recent_history_floor_numbers",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "history_1_floorId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "history_1_before",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "history_1_after",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "history_snapshot_ancestry",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "source_runId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "source_attemptNo",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "source_outputPageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "source_assistantMessageId",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "generated_text_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "raw_stream_equals_saved_model_text",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "public_saved_text_equals_state_evidence",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_records",
+      "passed": false,
+      "actual": [],
+      "expected": [
+        {
+          "uid": 19,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:19",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 4,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:4",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 2,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:2",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 5,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:5",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 1,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:1",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "position": "before"
+          }
+        },
+        {
+          "uid": 20,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:20",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 6,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:6",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 10,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:10",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 15,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:15",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 3,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:3",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 17,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:17",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 7,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:7",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        },
+        {
+          "uid": 18,
+          "activationKey": "worldbook:01se3tW6wL0L5Qo1DtaHR:1:entry:18",
+          "source": {
+            "kind": "session_worldbook",
+            "worldbookId": "01se3tW6wL0L5Qo1DtaHR",
+            "worldbookName": "一同见证、属于白羽祭的花火",
+            "assetScopeId": "worldbook:01se3tW6wL0L5Qo1DtaHR:1"
+          },
+          "insertion": {
+            "depth": 0,
+            "position": "at_depth",
+            "role": "system"
+          }
+        }
+      ]
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "saved_body_worldbook_entry_uids",
+      "passed": true
+    },
+    {
+      "case": "gushengman-backup-mvu-state-update-r2",
+      "stage": "baseline",
+      "check": "fixed_state_preset_version",
+      "passed": true
+    },
+    {
+      "case": "corrected",
+      "stage": "corrected",
+      "check": "required_complete_samples",
+      "passed": true
+    },
+    {
+      "case": "budget",
+      "stage": "budget",
+      "check": "actual_plus_unresolved_reservations_within_authorization",
+      "passed": true
+    },
+    {
+      "case": "budget",
+      "stage": "budget",
+      "check": "request_cap",
+      "passed": true
+    }
+  ]
+}

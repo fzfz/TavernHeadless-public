@@ -1,0 +1,61 @@
+{
+  "method": "主代理逐条对照before原文与当前8份文档判断；结构化记录只保存人工结论",
+  "retained": [
+    {
+      "constraint": "用户只提供单个角色卡JSON，语义决定先于产物生成",
+      "status": "通过",
+      "location": "SKILL.md 第1至3章"
+    },
+    {
+      "constraint": "源卡、API、schema、正式文档只读，缺口提交批准",
+      "status": "通过",
+      "location": "SKILL.md 第1、5章"
+    },
+    {
+      "constraint": "原生包与转换记录分目录，命名及绑定责任明确",
+      "status": "通过",
+      "location": "SKILL.md 第1章；references/conversion-map.md"
+    },
+    {
+      "constraint": "旧协议可退出，有效事实、规则、页面和代码得到承接",
+      "status": "通过",
+      "location": "references/semantic-experience.md 第6章"
+    },
+    {
+      "constraint": "正式包校验、导入、回读及实际请求与交互分别验收",
+      "status": "通过",
+      "location": "SKILL.md 第4章；references/acceptance.md"
+    },
+    {
+      "constraint": "独立手机会话与原子存档恢复整卡排除，其他卡继续",
+      "status": "通过",
+      "location": "SKILL.md 第5章"
+    },
+    {
+      "constraint": "当前实现与拟议架构分别描述，后端批准后实施",
+      "status": "通过",
+      "location": "references/architecture.md 第2.2节；architecture-proposal.md 第2、9章"
+    }
+  ],
+  "replaced": [
+    {
+      "old": "改写为目标表达",
+      "new": "有效语义原文写入，代码按正式API技术转写",
+      "basis": "用户最新最高原则"
+    },
+    {
+      "old": "最小可编辑页面、纯装饰可删",
+      "new": "有效HTML和CSS原文保留，媒体按实际引用承接",
+      "basis": "用户最新HTML和CSS保留要求"
+    },
+    {
+      "old": "自行编写结构化摘要规则",
+      "new": "源规则UTF-8原文文件，当前ruleFiles加载全文",
+      "basis": "用户要求原文规则与系统组装方案"
+    }
+  ],
+  "reviewResponse": {
+    "mandatoryFindingsResolved": true,
+    "optionalSuggestionsRetained": "入口按需读取说明及方案共享契约说明保留，不影响独立审阅通过；未增加新规则或接口"
+  }
+}

@@ -1,0 +1,637 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "card": "C072",
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是18岁的男性，是楚昭昭的同班同学，性格沉着、直率。他已经送楚昭昭回家，并在三天后收到了一条陌生号码的消息。"
+      },
+      "archive": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/page-macros-implementation-2026-10-09/conversions/C072/C072.zip",
+      "formal": {
+        "passed": true,
+        "status": "passed",
+        "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-XhAidb/actual-card-formal/formal-runs/2026-10-09T09-10-06-716Z-8fc288ca-3efb-452f-a3ba-4a1df88ab5ec",
+        "readbackPath": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-XhAidb/actual-card-formal/formal-runs/2026-10-09T09-10-06-716Z-8fc288ca-3efb-452f-a3ba-4a1df88ab5ec/readback.json",
+        "importedCardId": "8v87_C3AvcwlxYM6I6j4L",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/native-cards/imports?fileName=role.zip",
+            "headers": {
+              "content-type": "application/zip"
+            },
+            "bodyReference": "request-bodies/000.bin",
+            "bodyByteLength": 22929,
+            "statusCode": 200
+          },
+          {
+            "method": "POST",
+            "path": "/native-cards/imports/z-5IpGHDpA700C_dT6FIc/confirm",
+            "headers": {},
+            "statusCode": 201
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=character.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=frontend%2Findex.html",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=frontend%2Fmain.js",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=frontend%2Fmanifest.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=frontend%2Fstyle.css",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=manifest.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=openings.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=openings%2Ffirst.txt",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=worldbooks%2Fbook-0%2Fbook.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=worldbooks%2Fbook-0%2Fentries%2Fe0.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=worldbooks%2Fbook-0%2Fentries%2Fe1.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=worldbooks%2Fbook-0%2Fentries%2Fe2.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=worldbooks%2Fbook-0%2Fentries%2Fe3.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=worldbooks%2Fbook-0%2Fentries%2Fe4.json",
+            "headers": {},
+            "statusCode": 200
+          }
+        ],
+        "zipRead": {
+          "status": "passed",
+          "fileCount": 14
+        },
+        "schemaValidation": {
+          "status": "passed",
+          "valid": true,
+          "issues": []
+        },
+        "diagnostics": [],
+        "readback": {
+          "status": "passed",
+          "fileCount": 14,
+          "failedPaths": []
+        }
+      },
+      "sessionId": "Ej5MGrUUVQ25cftS4hDCn",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-XhAidb/preview-runs/2026-10-09T09-10-07-960Z-ea3a2337-6b7c-4aef-9f55-81b69449c173",
+      "dryRuns": [
+        {
+          "id": "scene-continuation",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 4,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "rendered": [
+        {
+          "heading": "楚昭昭",
+          "chatCount": 1,
+          "hasChatText": true
+        }
+      ],
+      "remounted": [
+        {
+          "heading": "楚昭昭",
+          "chatCount": 1,
+          "hasChatText": true
+        }
+      ],
+      "pageErrors": []
+    },
+    {
+      "card": "C072",
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是18岁的男性，是楚昭昭的同班同学，性格沉着、直率。他已经送楚昭昭回家，并在三天后收到了一条陌生号码的消息。"
+      },
+      "archive": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/page-macros-implementation-2026-10-09/conversions/C072/C072.zip",
+      "formal": {
+        "passed": true,
+        "status": "passed",
+        "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-XhAidb/actual-card-formal/formal-runs/2026-10-09T09-10-06-716Z-8fc288ca-3efb-452f-a3ba-4a1df88ab5ec",
+        "readbackPath": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-XhAidb/actual-card-formal/formal-runs/2026-10-09T09-10-06-716Z-8fc288ca-3efb-452f-a3ba-4a1df88ab5ec/readback.json",
+        "importedCardId": "8v87_C3AvcwlxYM6I6j4L",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/native-cards/imports?fileName=role.zip",
+            "headers": {
+              "content-type": "application/zip"
+            },
+            "bodyReference": "request-bodies/000.bin",
+            "bodyByteLength": 22929,
+            "statusCode": 200
+          },
+          {
+            "method": "POST",
+            "path": "/native-cards/imports/z-5IpGHDpA700C_dT6FIc/confirm",
+            "headers": {},
+            "statusCode": 201
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=character.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=frontend%2Findex.html",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=frontend%2Fmain.js",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=frontend%2Fmanifest.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=frontend%2Fstyle.css",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=manifest.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=openings.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=openings%2Ffirst.txt",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=worldbooks%2Fbook-0%2Fbook.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=worldbooks%2Fbook-0%2Fentries%2Fe0.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=worldbooks%2Fbook-0%2Fentries%2Fe1.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=worldbooks%2Fbook-0%2Fentries%2Fe2.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=worldbooks%2Fbook-0%2Fentries%2Fe3.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/8v87_C3AvcwlxYM6I6j4L/file?path=worldbooks%2Fbook-0%2Fentries%2Fe4.json",
+            "headers": {},
+            "statusCode": 200
+          }
+        ],
+        "zipRead": {
+          "status": "passed",
+          "fileCount": 14
+        },
+        "schemaValidation": {
+          "status": "passed",
+          "valid": true,
+          "issues": []
+        },
+        "diagnostics": [],
+        "readback": {
+          "status": "passed",
+          "fileCount": 14,
+          "failedPaths": []
+        }
+      },
+      "sessionId": "SD9udCuqZiceA2cCKXLxr",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-XhAidb/preview-runs/2026-10-09T09-10-10-782Z-078cb86d-bdda-4200-834e-3207112d741e",
+      "dryRuns": [
+        {
+          "id": "scene-continuation",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 4,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "rendered": [
+        {
+          "heading": "楚昭昭",
+          "chatCount": 1,
+          "hasChatText": true
+        }
+      ],
+      "remounted": [
+        {
+          "heading": "楚昭昭",
+          "chatCount": 1,
+          "hasChatText": true
+        }
+      ],
+      "pageErrors": []
+    },
+    {
+      "card": "C025",
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是18岁的女性，是叶昀在匿名树洞中的网友，性格耐心、沉着。她正在阅读叶昀刚刚发来的短信。"
+      },
+      "archive": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/page-macros-implementation-2026-10-09/conversions/C025/C025.zip",
+      "formal": {
+        "passed": true,
+        "status": "passed",
+        "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Z1H5cv/actual-card-formal/formal-runs/2026-10-09T09-10-13-163Z-5c0ce521-e7be-4865-8c9c-1e8bbe6e3e20",
+        "readbackPath": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Z1H5cv/actual-card-formal/formal-runs/2026-10-09T09-10-13-163Z-5c0ce521-e7be-4865-8c9c-1e8bbe6e3e20/readback.json",
+        "importedCardId": "Ylxn5iDfyDz2B-2nQl__5",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/native-cards/imports?fileName=role.zip",
+            "headers": {
+              "content-type": "application/zip"
+            },
+            "bodyReference": "request-bodies/000.bin",
+            "bodyByteLength": 9927,
+            "statusCode": 200
+          },
+          {
+            "method": "POST",
+            "path": "/native-cards/imports/sslM7l1bXTPPnitihU-AS/confirm",
+            "headers": {},
+            "statusCode": 201
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=character.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=frontend%2Findex.html",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=frontend%2Fmain.js",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=frontend%2Fmanifest.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=frontend%2Fstyle.css",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=manifest.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=openings.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=openings%2Falternate-0.txt",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=openings%2Ffirst.txt",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=worldbooks%2Fbook-0%2Fbook.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=worldbooks%2Fbook-0%2Fentries%2Fe0.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=worldbooks%2Fbook-0%2Fentries%2Fe1.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=worldbooks%2Fbook-0%2Fentries%2Fe2.json",
+            "headers": {},
+            "statusCode": 200
+          }
+        ],
+        "zipRead": {
+          "status": "passed",
+          "fileCount": 13
+        },
+        "schemaValidation": {
+          "status": "passed",
+          "valid": true,
+          "issues": []
+        },
+        "diagnostics": [],
+        "readback": {
+          "status": "passed",
+          "fileCount": 13,
+          "failedPaths": []
+        }
+      },
+      "sessionId": "5mPm2dIUzbn_C7K3ZGRoO",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Z1H5cv/preview-runs/2026-10-09T09-10-14-153Z-8adcb12d-daf5-441c-b958-819d9d32f4e2",
+      "dryRuns": [
+        {
+          "id": "scene-continuation",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "rendered": [
+        {
+          "heading": "叶昀",
+          "chatCount": 1,
+          "hasChatText": true
+        }
+      ],
+      "remounted": [
+        {
+          "heading": "叶昀",
+          "chatCount": 1,
+          "hasChatText": true
+        }
+      ],
+      "pageErrors": []
+    },
+    {
+      "card": "C025",
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是18岁的女性，是叶昀在匿名树洞中的网友，性格耐心、沉着。她正在阅读叶昀刚刚发来的短信。"
+      },
+      "archive": "/srv/tavern/TavernHeadless-remove-preview-credentials/.planning/page-macros-implementation-2026-10-09/conversions/C025/C025.zip",
+      "formal": {
+        "passed": true,
+        "status": "passed",
+        "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Z1H5cv/actual-card-formal/formal-runs/2026-10-09T09-10-13-163Z-5c0ce521-e7be-4865-8c9c-1e8bbe6e3e20",
+        "readbackPath": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Z1H5cv/actual-card-formal/formal-runs/2026-10-09T09-10-13-163Z-5c0ce521-e7be-4865-8c9c-1e8bbe6e3e20/readback.json",
+        "importedCardId": "Ylxn5iDfyDz2B-2nQl__5",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/native-cards/imports?fileName=role.zip",
+            "headers": {
+              "content-type": "application/zip"
+            },
+            "bodyReference": "request-bodies/000.bin",
+            "bodyByteLength": 9927,
+            "statusCode": 200
+          },
+          {
+            "method": "POST",
+            "path": "/native-cards/imports/sslM7l1bXTPPnitihU-AS/confirm",
+            "headers": {},
+            "statusCode": 201
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=character.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=frontend%2Findex.html",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=frontend%2Fmain.js",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=frontend%2Fmanifest.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=frontend%2Fstyle.css",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=manifest.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=openings.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=openings%2Falternate-0.txt",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=openings%2Ffirst.txt",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=worldbooks%2Fbook-0%2Fbook.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=worldbooks%2Fbook-0%2Fentries%2Fe0.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=worldbooks%2Fbook-0%2Fentries%2Fe1.json",
+            "headers": {},
+            "statusCode": 200
+          },
+          {
+            "method": "GET",
+            "path": "/native-cards/Ylxn5iDfyDz2B-2nQl__5/file?path=worldbooks%2Fbook-0%2Fentries%2Fe2.json",
+            "headers": {},
+            "statusCode": 200
+          }
+        ],
+        "zipRead": {
+          "status": "passed",
+          "fileCount": 13
+        },
+        "schemaValidation": {
+          "status": "passed",
+          "valid": true,
+          "issues": []
+        },
+        "diagnostics": [],
+        "readback": {
+          "status": "passed",
+          "fileCount": 13,
+          "failedPaths": []
+        }
+      },
+      "sessionId": "IeSkadnQbyH9DKkq2oETb",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-Z1H5cv/preview-runs/2026-10-09T09-10-15-802Z-768aa531-445d-4ea1-bb7f-56031ef53086",
+      "dryRuns": [
+        {
+          "id": "scene-continuation",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "rendered": [
+        {
+          "heading": "叶昀",
+          "chatCount": 1,
+          "hasChatText": true
+        }
+      ],
+      "remounted": [
+        {
+          "heading": "叶昀",
+          "chatCount": 1,
+          "hasChatText": true
+        }
+      ],
+      "pageErrors": []
+    }
+  ]
+}

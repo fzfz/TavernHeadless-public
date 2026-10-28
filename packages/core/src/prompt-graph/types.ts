@@ -1,0 +1,185 @@
+import type { PromptGraphWorldbookEntry } from './worldbook-input.schema.js';
+import type { ChatMessage, ChatRole, PromptIR, TokenCounter } from '../prompt/types.js';
+
+import type {
+  PromptAssemblyCurrentMessage,
+  PromptRunIntent as SharedPromptRunIntent,
+  StatePromptSourceId,
+} from '@tavern/shared';
+
+export type PromptRunIntent = SharedPromptRunIntent;
+export type PromptTrigger = PromptRunIntent;
+
+export type PromptPlacement =
+  | { kind: 'relative'; order: number }
+  | { kind: 'in_chat'; depth: number; order: number }
+  | { kind: 'anchor'; anchorId: string; order: number };
+
+export interface PromptNodeBase {
+  id: string;
+  name: string;
+  nodeType: string;
+  enabled: boolean;
+  role: ChatRole;
+  triggers?: PromptTrigger[];
+  placement: PromptPlacement;
+  metadata?: Record<string, unknown>;
+}
+
+export interface StaticTextNode extends PromptNodeBase {
+  nodeType: 'static_text';
+  template: string;
+}
+
+export interface VariableTemplateNode extends PromptNodeBase {
+  nodeType: 'variable_template';
+  template: string;
+}
+
+export interface MarkerNode extends PromptNodeBase {
+  nodeType: 'marker';
+  markerId: string;
+}
+
+export interface ChatHistoryNode extends PromptNodeBase {
+  nodeType: 'chat_history';
+}
+
+export interface StateDataSourceNode extends PromptNodeBase {
+  nodeType: 'data_source';
+  sourceId: StatePromptSourceId;
+}
+
+export interface CharacterNode extends PromptNodeBase {
+  nodeType: 'character';
+  part: 'description' | 'personality' | 'scenario' | 'system_prompt' | 'post_history';
+}
+
+export interface PersonaNode extends PromptNodeBase {
+  nodeType: 'persona';
+}
+
+export type PromptGraphWorldbookPosition =
+  | 'before'
+  | 'after'
+  | 'an_top'
+  | 'an_bottom'
+  | 'em_top'
+  | 'em_bottom'
+  | 'depth'
+  | 'outlet';
+
+export interface WorldbookNode extends PromptNodeBase {
+  nodeType: 'worldbook';
+  position: PromptGraphWorldbookPosition;
+  depth?: number;
+  outletName?: string;
+}
+
+export interface ExampleDialogueNode extends PromptNodeBase {
+  nodeType: 'example_dialogue';
+}
+
+export interface MemoryNode extends PromptNodeBase {
+  nodeType: 'memory';
+}
+
+export interface ContributorNode extends PromptNodeBase {
+  nodeType: 'contributor';
+  sourceKind: string;
+  title: string;
+  content: string;
+}
+
+export interface ToolResultNode extends PromptNodeBase {
+  nodeType: 'tool_result';
+  toolName: string;
+}
+
+export type PromptNode =
+  | StaticTextNode
+  | VariableTemplateNode
+  | MarkerNode
+  | ChatHistoryNode
+  | StateDataSourceNode
+  | CharacterNode
+  | PersonaNode
+  | WorldbookNode
+  | ExampleDialogueNode
+  | MemoryNode
+  | ContributorNode
+  | ToolResultNode;
+
+export interface PromptEdge {
+  id: string;
+  from: string;
+  to: string;
+  kind: 'order' | 'anchor';
+}
+
+export interface PromptNodeGroup {
+  id: string;
+  name: string;
+  nodes: PromptNode[];
+  edges: PromptEdge[];
+  metadata?: Record<string, unknown>;
+}
+
+export interface PromptExecutionPolicy {
+  continueNudgePrompt?: string;
+  assistantPrefill?: string;
+  continuePrefillAsAssistant?: boolean;
+  continuePostfix?: string;
+  namesBehavior?: 'off' | 'auto' | 'always';
+}
+
+export interface PromptGraphImportBinding {
+  source: 'sillytavern';
+  artifactId: string;
+  groupId: string;
+}
+
+export interface PromptGraphDocument {
+  version: 1;
+  rootGroupId: string;
+  groups: PromptNodeGroup[];
+  policies: PromptExecutionPolicy;
+  imports?: PromptGraphImportBinding[];
+}
+
+export interface PromptGraphCharacterInput {
+  name?: string;
+  description?: string;
+  personality?: string;
+  scenario?: string;
+  systemPrompt?: string;
+  postHistoryInstructions?: string;
+}
+
+export interface PromptGraphPersonaInput {
+  name?: string;
+  description?: string;
+}
+
+export type { PromptGraphWorldbookEntry } from './worldbook-input.schema.js';
+
+export interface PromptGraphCompilerInput {
+  intent?: PromptRunIntent;
+  variables?: Record<string, unknown>;
+  character?: PromptGraphCharacterInput;
+  persona?: PromptGraphPersonaInput;
+  chatHistory?: Array<ChatMessage & Partial<PromptAssemblyCurrentMessage>>;
+  stateData?: Record<string, string>;
+  expandMacros?: (text: string) => string;
+  worldbookEntries?: PromptGraphWorldbookEntry[];
+  exampleDialogue?: string;
+  memorySummary?: string;
+  toolResults?: Record<string, string>;
+  maxTokens: number;
+  reservedForReply: number;
+  tokenCounter?: TokenCounter;
+}
+
+export interface PromptGraphCompiler {
+  compile(document: PromptGraphDocument, input: PromptGraphCompilerInput): PromptIR;
+}

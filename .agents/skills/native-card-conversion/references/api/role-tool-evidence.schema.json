@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://tavern-headless.local/role-tool-evidence.schema.json",
+  "title": "Role model tool execution evidence",
+  "definitions": {
+    "evidenceExecutionIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "toolExecutionEvidence": {
+      "type": "object",
+      "properties": {
+        "executionId": { "type": "string", "minLength": 1 },
+        "callId": { "type": "string", "minLength": 1 },
+        "runId": { "type": "string", "minLength": 1 },
+        "generationAttemptNo": { "type": "integer", "minimum": 1 },
+        "generationStepNo": { "type": "integer", "minimum": 1 },
+        "pageId": { "type": "string", "minLength": 1 },
+        "toolName": { "type": "string", "minLength": 1 },
+        "arguments": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "result": {},
+        "status": {
+          "enum": ["success", "error", "denied"]
+        }
+      },
+      "required": [
+        "executionId",
+        "callId",
+        "runId",
+        "generationAttemptNo",
+        "generationStepNo",
+        "pageId",
+        "toolName",
+        "arguments",
+        "result",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "toolEvidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/toolExecutionEvidence"
+      }
+    }
+  }
+}

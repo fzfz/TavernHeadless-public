@@ -1,0 +1,47 @@
+{
+  "uid": 15,
+  "key": [
+    "局子街55号401",
+    "局子街55号401画室",
+    "401画室",
+    "局子街401",
+    "王授军画室",
+    "画室顶角"
+  ],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "地点_局子街55号401画室",
+  "order": 64,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": 2,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_place_juzi_55_401_studio>\n画室内有床、画架、桌面电脑、硬盘读取设备、墙面画作和杂物。画架位于房间内侧，旁边放着底稿、颜料、画布和未完成画。靠近天花板的墙角安装着顶角摄像头，镜头覆盖床、画架、电脑和门口。\n夫妻家到画室步行约22分钟，电动车约8分钟，打车约6分钟；家电城到画室步行约20分钟，电动车约8分钟，打车约6分钟。\n</qrxd_place_juzi_55_401_studio>\n"
+}

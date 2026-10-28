@@ -1,0 +1,398 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Proposed role model tool contracts",
+  "description": "Planning draft only. Runtime limits and cross-field rules are specified in the architecture proposal.",
+  "$ref": "#/definitions/invocation",
+  "definitions": {
+    "jsonValue": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/jsonValue"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/jsonValue"
+          }
+        }
+      ]
+    },
+    "range": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "integer_range"
+        },
+        "min": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "max": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": ["kind", "min", "max"],
+      "additionalProperties": false
+    },
+    "choices": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "choices"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/jsonValue"
+          },
+          "minItems": 1
+        }
+      },
+      "required": ["kind", "values"],
+      "additionalProperties": false
+    },
+    "uniform": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "uniform"
+        }
+      },
+      "required": ["kind"],
+      "additionalProperties": false
+    },
+    "weighted": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "weighted"
+        },
+        "weights": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          },
+          "minItems": 1
+        }
+      },
+      "required": ["kind", "weights"],
+      "additionalProperties": false
+    },
+    "randomArguments": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "domain": {
+              "$ref": "#/definitions/range"
+            },
+            "distribution": {
+              "$ref": "#/definitions/uniform"
+            },
+            "count": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "replacement": {
+              "type": "boolean"
+            }
+          },
+          "required": ["domain", "distribution", "count", "replacement"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "domain": {
+              "$ref": "#/definitions/choices"
+            },
+            "distribution": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/uniform"
+                },
+                {
+                  "$ref": "#/definitions/weighted"
+                }
+              ]
+            },
+            "count": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "replacement": {
+              "type": "boolean"
+            }
+          },
+          "required": ["domain", "distribution", "count", "replacement"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "numericExpression": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "enum": ["add", "mul", "min", "max"]
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/numericExpression"
+              },
+              "minItems": 2
+            }
+          },
+          "required": ["op", "args"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "enum": ["sub", "div"]
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/numericExpression"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "required": ["op", "args"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "enum": ["floor", "ceil", "trunc"]
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/numericExpression"
+              },
+              "minItems": 1,
+              "maxItems": 1
+            }
+          },
+          "required": ["op", "args"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "comparison": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "enum": ["eq", "ne", "lt", "lte", "gt", "gte"]
+        },
+        "args": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/numericExpression"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "required": ["op", "args"],
+      "additionalProperties": false
+    },
+    "calculateArguments": {
+      "type": "object",
+      "properties": {
+        "expression": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/numericExpression"
+            },
+            {
+              "$ref": "#/definitions/comparison"
+            }
+          ]
+        }
+      },
+      "required": ["expression"],
+      "additionalProperties": false
+    },
+    "randomData": {
+      "type": "object",
+      "properties": {
+        "samples": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/jsonValue"
+          },
+          "minItems": 1
+        },
+        "indices": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "minItems": 1
+            }
+          ]
+        }
+      },
+      "required": ["samples", "indices"],
+      "additionalProperties": false
+    },
+    "calculateData": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "number"
+            },
+            "value": {
+              "type": "number"
+            }
+          },
+          "required": ["type", "value"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "boolean"
+            },
+            "value": {
+              "type": "boolean"
+            }
+          },
+          "required": ["type", "value"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "randomResult": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": true
+        },
+        "data": {
+          "$ref": "#/definitions/randomData"
+        }
+      },
+      "required": ["ok", "data"],
+      "additionalProperties": false
+    },
+    "calculateResult": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": true
+        },
+        "data": {
+          "$ref": "#/definitions/calculateData"
+        }
+      },
+      "required": ["ok", "data"],
+      "additionalProperties": false
+    },
+    "errorResult": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": false
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "enum": [
+                "INVALID_ARGUMENT",
+                "INVALID_RANGE",
+                "INVALID_WEIGHTS",
+                "INSUFFICIENT_POPULATION",
+                "LIMIT_EXCEEDED",
+                "DIVISION_BY_ZERO",
+                "NUMERIC_OVERFLOW",
+                "CAPABILITY_DENIED",
+                "EXECUTION_FAILED"
+              ]
+            },
+            "message": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": ["code", "message"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["ok", "error"],
+      "additionalProperties": false
+    },
+    "invocation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "toolName": {
+              "const": "random"
+            },
+            "arguments": {
+              "$ref": "#/definitions/randomArguments"
+            }
+          },
+          "required": ["toolName", "arguments"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "toolName": {
+              "const": "calculate"
+            },
+            "arguments": {
+              "$ref": "#/definitions/calculateArguments"
+            }
+          },
+          "required": ["toolName", "arguments"],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

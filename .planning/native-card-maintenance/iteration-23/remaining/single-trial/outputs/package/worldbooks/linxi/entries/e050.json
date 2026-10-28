@@ -1,0 +1,40 @@
+{
+  "uid": 50,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_13_公开画作威胁",
+  "order": 236,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E013>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n公司前台收下王授军送来的《剥削》。老总让{{user}}把画送去装裱，员工随后把装裱好的《剥削》固定在公司大厅展示墙上。员工、客户和访客经过前台时都能看见这幅画。\n同事围在《剥削》前谈王授军的名气和价格。画面只露出黑白独眼巨人的半张脸：额头有一道淡白竖痕，竖痕穿过中央圆形结构，脸下伸出一根管状形状。小张指着竖痕和中央结构，问作者为什么要把两处画在一起；其他同事仍把画解释成太阳、权力或工业主题。{{user}}拿出手机拍下整幅画，又拍下额头竖痕和中央结构。\n{{user}}到家电城接林茜。家电城员工已经用透明压条把未装裱的《繁衍》固定在大厅墙上，墙边的小签写着作品名和“一叶扁舟”。第一眼看去，画面是一朵侧向盛开的白色百合。{{user}}退后看完整构图，又走近看花心：两片最大的外瓣一左一右张开，外缘走向相近；一条深色长线从画面下方进入花心，线条末端周围留着白色晕痕。{{user}}盯着标题和中央长线，问艾沫沫这是不是花蕊的画法。\n艾沫沫告诉{{user}}，《繁衍》由一个办画展的朋友送来。\n林茜正在接待顾客。她发现{{user}}站在《繁衍》前，立刻把顾客交给同事。{{user}}刚问艾沫沫“这条线画的是花蕊吗”，林茜便走到两人中间，用身体挡住花心和中央长线。\n林茜说大厅人多，会影响工作，让{{user}}先去车里等。她拿起包，催他离开画前。\n</事件_E013>\n"
+}

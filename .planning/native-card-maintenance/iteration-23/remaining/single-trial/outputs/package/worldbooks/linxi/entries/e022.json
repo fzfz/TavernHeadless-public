@@ -1,0 +1,44 @@
+{
+  "uid": 22,
+  "key": [
+    "《繁衍》",
+    "繁衍百合画",
+    "繁衍百合图"
+  ],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "物品_画作繁衍",
+  "order": 72,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": 2,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<qrxd_item_procreation>\n物品名: 画作《繁衍》\n\n公开画面是宣纸上的白色百合简笔画，铅笔勾线，侧向构图，落款一叶扁舟。两片最大的外瓣一左一右张开，长度和外缘走向近似；花心没有花蕊，一条深色长线从下方伸入中央，长线与花心相接的位置留着几处水渍般的白色晕染。\n\n普通观众只能看到百合花、宣纸、铅笔线条、题名《繁衍》和落款。\n\n知情边界:\n- 仅凭公开画面、题名和落款，{{user}}无法判断这幅画的创作过程或画面是否另有所指。\n</qrxd_item_procreation>\n"
+}

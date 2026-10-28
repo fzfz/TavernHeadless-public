@@ -1,0 +1,42 @@
+{
+  "apiVersion": 1,
+  "html": "view.html",
+  "css": "view.css",
+  "script": "main.js",
+  "assets": {
+    "portrait": {
+      "kind": "image",
+      "file": "assets/portrait.png",
+      "label": "林茜",
+      "tags": [
+        "portrait",
+        "avatar"
+      ]
+    },
+    "visitor": {
+      "kind": "image",
+      "file": "assets/visitor.svg",
+      "label": "演绎者",
+      "tags": [
+        "avatar"
+      ]
+    }
+  },
+  "data": {
+    "characterName": "林茜",
+    "characterAvatar": "portrait",
+    "performerName": "你",
+    "performerAvatar": "visitor",
+    "optionRules": {
+      "minimumLength": 1,
+      "maximumLength": 200,
+      "forbiddenPattern": "[\\r\\n|<>{}]",
+      "prefixes": [
+        "元指令:",
+        "",
+        "",
+        "元指令:"
+      ]
+    }
+  }
+}

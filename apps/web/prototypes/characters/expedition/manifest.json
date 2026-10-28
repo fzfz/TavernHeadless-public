@@ -1,0 +1,104 @@
+{
+  "apiVersion": 1,
+  "html": "view.html",
+  "css": "view.css",
+  "script": "main.js",
+  "floorHtml": "floor.html",
+  "assets": {
+    "portrait": {
+      "kind": "image",
+      "file": "assets/portrait.svg",
+      "label": "伊芙",
+      "tags": ["portrait", "avatar"]
+    },
+    "visitor": {
+      "kind": "image",
+      "file": "assets/visitor.svg",
+      "label": "演绎者",
+      "tags": ["avatar"]
+    },
+    "interior": {
+      "kind": "image",
+      "file": "assets/interior.svg",
+      "label": "室内",
+      "tags": ["background"]
+    },
+    "exterior": {
+      "kind": "image",
+      "file": "assets/exterior.svg",
+      "label": "室外",
+      "tags": ["background"]
+    },
+    "scene-0": {
+      "kind": "image",
+      "file": "assets/scene-0.svg",
+      "label": "山谷",
+      "tags": ["background"]
+    },
+    "scene-1": {
+      "kind": "image",
+      "file": "assets/scene-1.svg",
+      "label": "月色",
+      "tags": ["background"]
+    },
+    "music-0": {
+      "kind": "audio",
+      "file": "assets/theme.wav",
+      "label": "环境音 1",
+      "tags": ["bgm"]
+    },
+    "music-1": {
+      "kind": "audio",
+      "file": "assets/theme.wav",
+      "label": "环境音 2",
+      "tags": ["bgm"]
+    },
+    "music-2": {
+      "kind": "audio",
+      "file": "assets/theme.wav",
+      "label": "环境音 3",
+      "tags": ["bgm"]
+    }
+  },
+  "data": {
+    "title": "雾谷远征",
+    "characterName": "伊芙",
+    "characterAvatar": "portrait",
+    "performerName": "旅人",
+    "performerAvatar": "visitor",
+    "scenes": {
+      "inside": {
+        "background": "interior",
+        "label": "营地 · 篝火"
+      },
+      "outside": {
+        "background": "exterior",
+        "label": "山谷 · 瞭望台"
+      },
+      "valley": {
+        "background": "scene-0",
+        "label": "雾谷 · 石桥"
+      },
+      "moon": {
+        "background": "scene-1",
+        "label": "山脊 · 月色"
+      }
+    },
+    "choices": ["沿石桥前行", "在营地休息"],
+    "music": "music-0",
+    "destinations": [
+      {
+        "id": "bridge",
+        "message": "前往石桥"
+      },
+      {
+        "id": "ridge",
+        "message": "前往月下山脊"
+      },
+      {
+        "id": "camp",
+        "message": "前往营地"
+      }
+    ]
+  }
+}

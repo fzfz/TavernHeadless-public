@@ -1,0 +1,203 @@
+{
+  "phase": "complete",
+  "branch": "codex/native-card-converter-design",
+  "beforeHead": "637c9b263ca94081947a622447bae3d4b7921dc9",
+  "mainTarget": "88722f36568a5b098bb9974a6999c524679c081c",
+  "dirtyTrackedFiles": [
+    "apps/api/src/services/role-runtime/state-update-service.ts",
+    "apps/api/test/native-card-empty-worldbook.integration.test.ts",
+    "apps/user-web/package.json",
+    "apps/user-web/src/App.test.ts",
+    "apps/user-web/src/config/ui.json",
+    "apps/web/prototypes/characters/cinema/main.js",
+    "apps/web/prototypes/characters/expedition/main.js",
+    "apps/web/prototypes/characters/gushengman/main.js",
+    "apps/web/prototypes/characters/gushengman/source-mapping.json",
+    "apps/web/prototypes/characters/harbor/main.js",
+    "apps/web/prototypes/characters/novel/main.js",
+    "apps/web/prototypes/checks/formal-transport-unit.mjs",
+    "apps/web/prototypes/checks/generate-script-validators.mjs",
+    "apps/web/prototypes/checks/generation-inspection-unit.mjs",
+    "apps/web/prototypes/checks/script-backend-unit.mjs",
+    "apps/web/prototypes/checks/script-browser.mjs",
+    "apps/web/prototypes/checks/script-host-legacy-transport.mjs",
+    "apps/web/prototypes/checks/script-host-pending-unit.mjs",
+    "apps/web/prototypes/checks/script-runtime-unit.mjs",
+    "apps/web/prototypes/checks/serve-script-prototype.mjs",
+    "apps/web/prototypes/native-card-converter.prototype.html",
+    "apps/web/prototypes/shared/formal-transport.prototype.js",
+    "apps/web/prototypes/shared/generation-inspection.config.json",
+    "apps/web/prototypes/shared/script-host.prototype.js",
+    "apps/web/prototypes/shared/script-page.prototype.js",
+    "apps/web/prototypes/shared/script-runtime.prototype.js",
+    "apps/web/prototypes/shared/script-transport.schema.json",
+    "apps/web/prototypes/shared/script-validators.prototype.js",
+    "apps/web/src/lib/return-to-role-session.ts",
+    "docs/character-authoring/agent-tools-api.md",
+    "docs/character-authoring/backend-api.md",
+    "docs/character-authoring/examples/api-usage/run-tools.ts",
+    "docs/character-authoring/model-capabilities.md",
+    "docs/character-authoring/mvu-agent-state.md",
+    "docs/character-authoring/runtime-architecture.md",
+    "docs/character-authoring/script-api.md",
+    "docs/character-authoring/script-template-api.md",
+    "docs/character-authoring/state-update-api.md",
+    "docs/plans/generation-details-api-audit.md",
+    "docs/plans/native-card-converter/conversion-capabilities.json",
+    "docs/plans/native-card-converter/conversion-report.schema.json",
+    "docs/plans/native-card-converter/design.md",
+    "docs/plans/native-card-converter/example.thcard.json",
+    "docs/plans/native-card-converter/model-tool-architecture-proposal.md",
+    "docs/plans/native-card-converter/native-card-v1.schema.json",
+    "docs/plans/native-card-converter/progress.md",
+    "docs/plans/native-card-converter/task_plan.md",
+    "docs/plans/role-runtime-core/README.md",
+    "eslint.config.js",
+    "packages/shared/src/generated/role-runtime-validators.ts",
+    "vitepress/reference/api/chat.md",
+    "vitepress/reference/api/tools.md",
+    "vitepress/reference/api/worldbooks.md",
+    "vitest.config.ts"
+  ],
+  "overlap": [
+    "apps/api/src/services/role-runtime/state-update-service.ts",
+    "docs/character-authoring/backend-api.md",
+    "docs/character-authoring/state-update-api.md"
+  ],
+  "skillApiSync": "pending-separate-maintenance-step",
+  "stashCommit": "1109df96aa7c57f152ae702db111a18e80a12879",
+  "mergeCommit": "595bf264cea516c202d0d117e10f78ad990c31f4",
+  "conflictResolutions": {
+    "backend-api.md": "保留本地原生包字段、模块约束、HTTP API 分章，接入独立预设字段、兼容字段说明和正式组装引用。",
+    "state-update-api.md": "采用 main 对当前实现与目标契约的区分，保留本地修订的前端生命周期、提交回调和原型证据引用。",
+    "state-update-service.ts": "自动合并；保留 SQL 过滤开场楼层的本地优化。"
+  },
+  "checks": {
+    "types": {
+      "exitCode": 0,
+      "log": "typecheck.log"
+    },
+    "focusedTests": {
+      "exitCode": 1,
+      "actualSourceFilesPassed": 7,
+      "actualSourceTestsPassed": 91,
+      "failedHistoricalCopies": 3,
+      "log": "state-regression.log",
+      "resolution": "全量命令排除 .planning/** 和 .tmp/**，不改仓库配置。"
+    },
+    "lint": {
+      "exitCode": 0,
+      "warnings": 4,
+      "log": "source-lint.log"
+    },
+    "sdk": {
+      "exitCode": 0,
+      "log": "sdk-check.log"
+    },
+    "docs": {
+      "exitCode": 0,
+      "log": "docs-build.log"
+    },
+    "tests": {
+      "status": "failed-before-preview-adaptation",
+      "log": "project-tests.log",
+      "passed": 5985,
+      "failed": 12,
+      "skipped": 4,
+      "failures": {
+        "preview": 11,
+        "formalTimeout": 1
+      }
+    },
+    "formalRecheck": {
+      "exitCode": 0,
+      "passed": 10,
+      "log": "formal-recheck.log"
+    },
+    "typesFinal": {
+      "exitCode": 0,
+      "log": "typecheck-final.log"
+    },
+    "changedFileLint": {
+      "exitCode": 0,
+      "files": 4
+    },
+    "format": {
+      "exitCode": 0
+    },
+    "previewAndReplay": {
+      "exitCode": 0,
+      "files": 2,
+      "passed": 33,
+      "log": "preview-adaptation.log"
+    },
+    "testsFinal": {
+      "exitCode": 0,
+      "log": "project-tests-final.log",
+      "passedFiles": 588,
+      "skippedFiles": 3,
+      "passed": 6003,
+      "skipped": 4,
+      "durationSeconds": 232.16,
+      "workers": 8,
+      "excludedHistoricalCopies": [
+        ".planning/**",
+        ".tmp/**"
+      ]
+    }
+  },
+  "preservation": {
+    "nonOverlappingFiles": 51,
+    "byteIdentical": true,
+    "adaptedFiles": [
+      "apps/api/src/services/role-runtime/state-update-service.ts",
+      "docs/character-authoring/backend-api.md",
+      "docs/character-authoring/state-update-api.md"
+    ],
+    "unresolvedConflicts": []
+  },
+  "reviews": {
+    "conflictBehavior": {
+      "agent": "/root/main_sync_conflict_review",
+      "findings": 0
+    },
+    "documentSemantic": {
+      "agent": "/root/main_sync_document_audit",
+      "findings": 8,
+      "fixesApplied": true,
+      "closeoutAgent": "/root/main_sync_final_semantic_audit",
+      "closeoutFindings": 1,
+      "closeoutFix": "明确下一轮主楼层才清空 priorFacts。"
+    },
+    "acceptanceSemantic": {
+      "agent": "/root/main_sync_acceptance_wording_audit",
+      "findings": 0
+    },
+    "standards": {
+      "agent": "/root/main_sync_preview_standards",
+      "findings": 0
+    },
+    "spec": {
+      "agent": "/root/main_sync_preview_spec",
+      "findings": 2,
+      "allFixed": true,
+      "fixes": [
+        "正文请求不包含状态预设标记的隔离断言",
+        "sourceIdentity 必须为对象的结构检查"
+      ],
+      "finalFindings": 0
+    }
+  },
+  "previewAdaptation": {
+    "failure": "ROLE_STATE_PRESET_MISSING",
+    "owner": "/root/main_sync_preview_adaptation",
+    "behavior": "显式独立statePreset输入，按正式配置传入预设及版本；缺失时保持正式错误。",
+    "rootCause": "正式组装器以两个换行合并相邻 system 消息，完整 stateEvidence JSON 位于合并内容的独立段落中；旧重放器只解析最后一条 user 消息。",
+    "replayChange": "按正式分隔读取完整 JSON 段落，依据 sources 与 sourceIdentity 识别唯一证据对象；结构错误与多候选明确返回错误。",
+    "evidence": [
+      "stream-flow-failed-request.jsonl",
+      "formal-example-failed-request.jsonl"
+    ]
+  },
+  "nextTask": "按 iteration-23/remaining/next-iteration-plan.md 第4.2节同步 Skill 内置状态 API、schema 和架构说明。"
+}

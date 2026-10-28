@@ -1,0 +1,73 @@
+{
+  "initial": {
+    "scene.id": "inside",
+    "actor.trust": 20,
+    "actor.fatigue": 10,
+    "story.time": "22:10",
+    "story.clue": "尚未展开的旅程",
+    "actor.present": true
+  },
+  "turns": [
+    {
+      "text": "她把信纸推到灯下，指向页角一处模糊的印记。",
+      "variables": {
+        "scene.id": "inside",
+        "actor.trust": 35,
+        "actor.fatigue": 30,
+        "story.time": "22:12",
+        "story.clue": "发现印记",
+        "actor.present": true
+      },
+      "agentText": "她补充道：“把这个细节也记下来。”",
+      "jobVariables": {
+        "scene.id": "inside",
+        "actor.trust": 35,
+        "actor.fatigue": 30,
+        "story.time": "22:12",
+        "story.clue": "发现印记 · 已记录",
+        "actor.present": true
+      }
+    },
+    {
+      "text": "门外的风停了。她转过身，示意你一起出发。",
+      "variables": {
+        "scene.id": "outside",
+        "actor.trust": 60,
+        "actor.fatigue": 85,
+        "story.time": "22:20",
+        "story.clue": "确定方向",
+        "actor.present": false
+      },
+      "agentText": "她补充道：“把这个细节也记下来。”",
+      "jobVariables": {
+        "scene.id": "outside",
+        "actor.trust": 60,
+        "actor.fatigue": 85,
+        "story.time": "22:20",
+        "story.clue": "确定方向 · 已记录",
+        "actor.present": false
+      }
+    },
+    {
+      "text": "她看向远处的灯光，终于说出了心里的疑问。",
+      "variables": {
+        "scene.id": "inside",
+        "actor.trust": 85,
+        "actor.fatigue": 20,
+        "story.time": "22:30",
+        "story.clue": "抵达目的地",
+        "actor.present": true
+      },
+      "agentText": "她补充道：“把这个细节也记下来。”",
+      "jobVariables": {
+        "scene.id": "inside",
+        "actor.trust": 85,
+        "actor.fatigue": 20,
+        "story.time": "22:30",
+        "story.clue": "抵达目的地 · 已记录",
+        "actor.present": true
+      }
+    }
+  ],
+  "failureText": "生成失败，请重试。"
+}

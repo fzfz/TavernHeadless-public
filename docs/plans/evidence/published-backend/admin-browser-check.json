@@ -1,0 +1,55 @@
+{
+  "url": "http://localhost:43876/prototype/apps/web/prototypes/admin-workspace.prototype.html?source=backend",
+  "verified": {
+    "legacy_workspace_script_loaded": false,
+    "resource_character_count": 2,
+    "session_count": 9,
+    "completed_floor_id": "vTRtLGOaOd8mgBT6hQSS0",
+    "completed_run_id": "PinyAP9KpqfLfDcG1BQ2u",
+    "input_tokens": 11498,
+    "output_tokens": 565,
+    "failed_run_id": "ti7hEE5buLfz9zqSE7Dtg",
+    "failed_error_expanded": true,
+    "input_message_visible": true,
+    "columns_scrollable": true
+  },
+  "resource_write_browser_acceptance": {
+    "worldbook": {
+      "created": true,
+      "edited": true,
+      "position": 4,
+      "depth": 5,
+      "extensions_depth": 5,
+      "read_after_save": true,
+      "temporary_resource_deleted": true
+    },
+    "persona": {
+      "created": true,
+      "read_after_save": true,
+      "temporary_resource_deleted": true
+    },
+    "model": {
+      "credential_input_type": "password"
+    },
+    "regex": {
+      "channel": "display",
+      "placement": 2,
+      "input": "港口——灯塔",
+      "output": "港口，灯塔",
+      "matched_rule_names": [
+        "【夏瑾】破折号处理"
+      ]
+    },
+    "session_switch": {
+      "character": "林茜_妻心如刀_v1.3.32",
+      "regex": "林茜_妻心如刀_v1.3.32 正则"
+    },
+    "runtime_navigation": [
+      "tools",
+      "mcp",
+      "runtime",
+      "agent-types",
+      "agent-bindings"
+    ]
+  }
+}

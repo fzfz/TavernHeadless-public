@@ -1,0 +1,29 @@
+{
+  "scope": "真实 Chrome 中的生产聊天组件边界；使用受控传输，完整 API 流程另见 chat-flows.cjs。",
+  "cases": [
+    {
+      "name": "有界重读已加载较早页，更新正文并保持阅读锚点、菜单与键盘焦点",
+      "status": "passed",
+      "queries": [
+        null,
+        "5",
+        "3"
+      ],
+      "anchorDelta": -0.1484375
+    },
+    {
+      "name": "已加载较早页消息删除后移除原正文",
+      "status": "passed"
+    },
+    {
+      "name": "正在操作的消息更新后恢复菜单动作焦点，删除后焦点移至相邻消息",
+      "status": "passed"
+    },
+    {
+      "name": "中断正文保持可读取文本，分别显示待确认与未保存状态，并与保存历史分开",
+      "status": "passed"
+    }
+  ],
+  "errors": [],
+  "status": "passed"
+}

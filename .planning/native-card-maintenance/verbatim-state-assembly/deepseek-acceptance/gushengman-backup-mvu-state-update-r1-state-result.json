@@ -1,0 +1,29 @@
+{
+  "sessionId": "LrmpKr8l2lKJequJyyTiC",
+  "branchId": "main",
+  "floorId": "LpJLh6wc2K84qB7t3BiwW",
+  "attemptId": "W38HtWfVPMOQ9WcFh7QhK:1",
+  "versionId": "HkdRM1AnnRgadXaEkJ4fT",
+  "snapshotId": "eb1364aa-89de-49dc-adb2-8ebbfa7f1bf7",
+  "parentSnapshotId": "edd9f65d-f81f-4b88-b4c9-a306927a7077",
+  "variables": {
+    "世界": {
+      "当前地址": "旧教学楼三楼走廊",
+      "当前时间": "2025年12月15日17:35",
+      "事件状态": "无"
+    },
+    "顾声慢": {
+      "情感连结度": 2,
+      "创作完成度": 0,
+      "心象映射": {
+        "当前心声": "他听出来了……那段过渡段亮起来的感觉。七天里第一次说上话，我却问了个冒失的问题。他会怎么回答？",
+        "当前脑内旋律": "《君の知らない物語》"
+      }
+    }
+  },
+  "source": {
+    "kind": "floor",
+    "runId": "W38HtWfVPMOQ9WcFh7QhK",
+    "jobId": null
+  }
+}

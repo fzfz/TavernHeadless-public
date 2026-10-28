@@ -1,0 +1,48 @@
+{
+  "baseline": "c40db8b3221f1f710791f7367d2094187101cbf8",
+  "lenses": ["Spec", "Standards"],
+  "findingsFixed": [
+    "关联原文文件",
+    "片段默认值",
+    "共享世界书引用顺序",
+    "文件路径单一来源",
+    "正则ID碰撞及重选",
+    "预览关闭缓存写入"
+  ],
+  "finalIndependentReview": "repair-review.json",
+  "finalResult": "范围内没有遗留实质问题",
+  "userAuthorizedMarkerPrecheck": "筛出MVU、EJS、JSON输出及变量更新指令供Agent判断，不由程序决定语义归属",
+  "deliveryReview": {
+    "role": "Reviewer",
+    "scope": "公共选项解析、命令分派及管道参数",
+    "testFiles": 7,
+    "passedTests": 292,
+    "parameterPermutations": 776,
+    "validCaseChecks": 11,
+    "invalidCaseChecks": 4,
+    "result": "没有遗留实质问题"
+  },
+  "textCloseout": {
+    "scope": [
+      "source-config.ts 三条格式错误说明",
+      "tool-config.ts 四条关闭或清理错误说明",
+      "progress.md 第8章第1、4项"
+    ],
+    "issue": "进度记录末尾的范围内没有遗留实质问题缺少对象且重复",
+    "resolution": "删除该尾句",
+    "otherReviewedText": "合格"
+  },
+  "recordAudit": {
+    "scope": ["retrospective.md 第2章", "progress.md 第7章第1项、第8章第5项"],
+    "fixed": [
+      "将字段一致性结果放回正确性章节",
+      "为大输入添加样本路径",
+      "耗时章节只保留测试耗时与结果",
+      "删除重复的超时原因及修复过程",
+      "删除否定式尾句",
+      "补齐SIGTERM关闭行为的程序主体、关闭对象与结果",
+      "将源测试替换为实际测试对象"
+    ],
+    "accepted": ["全量测试命令、结果、耗时与日志位置"]
+  }
+}

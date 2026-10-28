@@ -1,0 +1,11 @@
+{
+  "selected": 72,
+  "missingLocalImports": [],
+  "repaired": [
+    {
+      "from": ".agents/skills/native-card-conversion/references/api/examples/api-usage/run-tools.ts",
+      "path": ".agents/skills/native-card-conversion/apps/api/config/role-model-capabilities.json"
+    }
+  ],
+  "repair": "API example import points to bundled config; replacement recorded in API source manifest"
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "key": "linqian",
+    "releaseId": "QspBKo6Zw4uZWqaVAn3-1",
+    "previousReleaseId": "hw2xnyHVl64sRK1pLqV1s",
+    "characterVersionId": "VJ6-gqYOqdI597510yLAs",
+    "worldbookVersionId": "QaT3SKbi7g1RtFtEUKU1x",
+    "regexVersionId": "BPFQRSst3MnUAEJBztosg",
+    "remainingRules": 10
+  },
+  {
+    "key": "gushengman",
+    "releaseId": "oztwEAgYFcXUs93jI4nV4",
+    "previousReleaseId": "Uz8r2AIrDM27HL2dEYLGJ",
+    "characterVersionId": "rcFmb2tNywq5ghvIwHRkQ",
+    "worldbookVersionId": "fqN2Ntoy-uFs2JIsx-PcN",
+    "regexVersionId": "sTmmlj6UXhS00BPwJkDL4",
+    "remainingRules": 10
+  }
+]

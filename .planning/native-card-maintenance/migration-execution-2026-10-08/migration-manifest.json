@@ -1,0 +1,242 @@
+[
+  {
+    "source": "scripts/native-card-conversion/reference-resources.json",
+    "target": ".agents/skills/native-card-conversion/scripts/reference-resources.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/output.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/output.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/pack-publish.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/pack-publish.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/write.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/write.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/source-config.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/source-config.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/runtime.schema.json",
+    "target": ".agents/skills/native-card-conversion/scripts/runtime.schema.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/runtime.json",
+    "target": ".agents/skills/native-card-conversion/scripts/runtime.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/tool.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/tool.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/replay-fixture.example.json",
+    "target": ".agents/skills/native-card-conversion/scripts/replay-fixture.example.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/source.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/source.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/source-read.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/source-read.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/task-context.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/task-context.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/source-features.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/source-features.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/index.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/index.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/write-copy.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/write-copy.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/diagnostic.schema.json",
+    "target": ".agents/skills/native-card-conversion/scripts/diagnostic.schema.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/tool-config.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/tool-config.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/preview.schema.json",
+    "target": ".agents/skills/native-card-conversion/scripts/preview.schema.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/source.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/source.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/png-source.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/png-source.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/tool.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/tool.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/cli.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/cli.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/cli-flow.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/cli-flow.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/evals.json",
+    "target": ".agents/skills/native-card-conversion/scripts/evals.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/output.schema.json",
+    "target": ".agents/skills/native-card-conversion/scripts/output.schema.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/write-regex.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/write-regex.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/replay-fixture.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/replay-fixture.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/index-config.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/index-config.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/acceptance.example.json",
+    "target": ".agents/skills/native-card-conversion/scripts/acceptance.example.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/atomic-write.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/atomic-write.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/png-source.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/png-source.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/replay-fixture.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/replay-fixture.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/mvu-regressions.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/mvu-regressions.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/write-parse.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/write-parse.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/service-isolation.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/service-isolation.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/formal.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/formal.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/formal.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/formal.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/source-assessment.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/source-assessment.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/acceptance.schema.json",
+    "target": ".agents/skills/native-card-conversion/scripts/acceptance.schema.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/preview-runtime.schema.json",
+    "target": ".agents/skills/native-card-conversion/scripts/preview-runtime.schema.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/preview.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/preview.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/cli-process.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/cli-process.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/preview-runtime.json",
+    "target": ".agents/skills/native-card-conversion/scripts/preview-runtime.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/preview.example.json",
+    "target": ".agents/skills/native-card-conversion/scripts/preview.example.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/tsconfig.json",
+    "target": ".agents/skills/native-card-conversion/scripts/tsconfig.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/map-entry-batch.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/map-entry-batch.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/cli-contract.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/cli-contract.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/index.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/index.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/write-mapping.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/write-mapping.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/creation.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/creation.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/output.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/output.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/write.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/write.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/cli-test-result.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/cli-test-result.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/creation.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/creation.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/write-config.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/write-config.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/cli-service.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/cli-service.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/source-aliases.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/source-aliases.test.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/replay-fixture.schema.json",
+    "target": ".agents/skills/native-card-conversion/scripts/replay-fixture.schema.json"
+  },
+  {
+    "source": "scripts/native-card-conversion/preview.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/preview.ts"
+  },
+  {
+    "source": "scripts/native-card-conversion/skill-entry.test.ts",
+    "target": ".agents/skills/native-card-conversion/scripts/skill-entry.test.ts"
+  }
+]

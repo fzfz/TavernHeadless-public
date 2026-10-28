@@ -1,0 +1,48 @@
+{
+  "method": "SystemRandom.sample without replacement",
+  "populationSize": 114,
+  "fixed": [
+    {
+      "id": "USER002",
+      "inputFile": "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json",
+      "catalogInputFile": "/srv/data/mac bookpro old/AI/sillytavern_cards/books/妻心如刀/SillyTavern角色卡/林茜_单主角多线路/projects/林茜_妻心如刀/versions/v1.3.32/dist/林茜_妻心如刀_v1.3.32.json"
+    },
+    {
+      "id": "C011",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/一定会NTR的世界：很容易或很难被NTR的人妻.png",
+      "catalogInputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/5b2bee10d450a23655879484f733b430ea6f9e971fcbe8ba47d28b06372f1b51"
+    },
+    {
+      "id": "C024",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/双面恋人v1.0.png",
+      "catalogInputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/480d293daedb65aa38298af23ccdb504493ac891c6ee22e3ba763eab3e44063a"
+    }
+  ],
+  "random": [
+    {
+      "id": "C035",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/妻悦论坛.png",
+      "catalogInputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b8f57d770f4ed67ecffb027910b47c686ace29dc65834402b857f975cbae5da3"
+    },
+    {
+      "id": "C034",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/妻心如刀.png",
+      "catalogInputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/b071d44b0b91e9e2a2b2b296e884a679eebf251720a423f7395731e20fe21d65"
+    },
+    {
+      "id": "C078",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/爱如雨止.png",
+      "catalogInputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/4eaa12b5100c9cb4cbd56033456e917862c71d079f796adfb2637b182cec9cd3"
+    },
+    {
+      "id": "C056",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/教堂拆除计划 0.8.png",
+      "catalogInputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/e595c6cf18668d867c1af956cd262d83ee3faee5f5e96dfe2de75fee70a5f30a"
+    },
+    {
+      "id": "C043",
+      "inputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/default-user/characters/我请的导师，在琴房享用我的未婚妻 1.1 NTL视角.png",
+      "catalogInputFile": "/srv/data/mac bookpro old/AI/SillyTavern/data/_cache/characters/9cc300207c3fcab18b5376c300254268d20393653e63d5b62f02bfe97cba9a9d"
+    }
+  ]
+}

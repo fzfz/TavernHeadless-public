@@ -1,0 +1,29 @@
+{
+  "paths": {
+    "frontendManifest": "frontend/manifest.json",
+    "runtime": "frontend/page-macros.js",
+    "bindings": "frontend/page-macro-bindings.js",
+    "entry": "frontend/page-macro-entry.js",
+    "installation": "data/page-macro-installation.json",
+    "card": "data/page-macro-card.json"
+  },
+  "exports": { "bindings": "pageMacroBindings" },
+  "layout": {
+    "id": "pageMacros",
+    "attribute": "data-page-macro",
+    "tag": "span"
+  },
+  "diagnostics": {
+    "request": "绑定请求不符合结构要求；请按 page-macro-bindings.schema.json 修正请求文件。",
+    "source": "源位置 {pointer} 的指定区间与模板不一致；请核对 UTF-16 起止位置和 template。",
+    "location": "页面 {file} 的模板位置匹配 {count} 次；请填写 location.before 和 location.after，使模板在 HTML 文字节点中恰好匹配一次。",
+    "boundary": "页面 {file} 的模板边界切开了 HTML 实体或换行；请选择完整文字范围。",
+    "text": "页面 {file} 的位置不是可挂载的 HTML 文字节点；请选择属性、script、style、textarea、title 和 SVG 之外的文字。",
+    "html": "页面 {file} 未登记在 frontend/manifest.json 的 html 中；请填写当前页面路径。",
+    "entry": "页面入口 {file} 必须具有当前前端检查器允许的唯一具名 mount({ api }) 函数；请按入口诊断修正原文件。",
+    "collision": "绑定 {id} 已登记在另一源位置；请为不同文字位置使用不同 id。",
+    "schema": "变量 {name} 的路径 {path} 未在状态 schema {file} 中定义；请修正字段对应关系。",
+    "path": "包内文件路径 {file} 无效；请使用当前任务中的已登记普通文件路径。",
+    "generated": "生成文件 {file} 已存在且未登记为页面宏产物；请为该文件采用其他名称并更新其引用。"
+  }
+}

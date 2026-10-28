@@ -1,0 +1,72 @@
+{
+  "converter": {
+    "command": "pnpm exec vitest run scripts/native-card-conversion --exclude '**/.planning/**'",
+    "filesPassed": 20,
+    "testsPassed": 733,
+    "failed": 0,
+    "log": "converter-tests.log"
+  },
+  "formalRecheck": {
+    "command": "pnpm exec vitest run scripts/native-card-conversion/formal.test.ts --exclude '**/.planning/**'",
+    "passed": 10,
+    "failed": 0,
+    "log": "formal-recheck.log"
+  },
+  "projectTests": {
+    "passed": 5904,
+    "failed": 1,
+    "skipped": 4,
+    "failure": "formal.test.ts 5000ms timeout and cleanup race",
+    "recheck": {
+      "files": 1,
+      "passed": 10,
+      "failed": 0
+    }
+  },
+  "projectTypes": {
+    "command": "pnpm typecheck",
+    "passed": true,
+    "log": "project-types.log"
+  },
+  "scriptTypes": {
+    "command": "pnpm exec tsc --project scripts/native-card-conversion/tsconfig.json --noEmit",
+    "passed": true
+  },
+  "projectDocs": {
+    "command": "pnpm docs:build",
+    "passed": true,
+    "log": "project-docs.log"
+  },
+  "sourceLint": {
+    "passed": true,
+    "errors": 0,
+    "warnings": 4,
+    "command": "pnpm lint --ignore-pattern '**/.planning/**'"
+  },
+  "fullLint": {
+    "passed": false,
+    "snapshotErrors": 15756,
+    "sourceErrors": 0,
+    "evidence": "lint-scope.json"
+  },
+  "focusedLint": {
+    "passed": true,
+    "log": "lint.log"
+  },
+  "formatCheck": {
+    "passed": true,
+    "log": "format-check.log"
+  },
+  "diffCheck": {
+    "passed": true
+  },
+  "actualSourceIntegration": {
+    "passed": true,
+    "evidence": "integration.json"
+  },
+  "reviews": {
+    "reviewer": "entry_path_code_closeout",
+    "standards": "passed",
+    "spec": "passed"
+  }
+}

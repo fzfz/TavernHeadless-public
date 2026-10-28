@@ -1,0 +1,453 @@
+{
+  "files": 12,
+  "links": 89,
+  "scope": "本次成果的本地文件引用及新增最高原则标题；其他锚点沿用既有引用",
+  "missing": [],
+  "checks": [
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/semantic-experience.md#6-%E5%88%A0%E9%99%A4%E4%B8%8E%E6%94%B9%E5%86%99%E7%9A%84%E5%88%A4%E6%96%AD",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/tools.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/architecture.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/character-fields.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/worldbook-fields.md#1-%E4%B9%A6%E7%BA%A7%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%86%85%E5%AE%B9%E8%81%8C%E8%B4%A3",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/extension-fields.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/semantic-experience.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/architecture.md#21-%E4%BA%BA%E7%89%A9%E5%BC%80%E5%9C%BA%E4%B8%8E%E6%8F%90%E7%A4%BA%E7%BB%84%E8%A3%85",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/semantic-experience.md#4-%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/architecture.md#26-%E6%AD%A3%E6%96%87%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/semantic-experience.md#6-%E5%88%A0%E9%99%A4%E4%B8%8E%E6%94%B9%E5%86%99%E7%9A%84%E5%88%A4%E6%96%AD",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/semantic-experience.md#1-%E5%88%9D%E5%80%BC%E5%8F%98%E9%87%8F%E8%A7%84%E5%88%99%E4%B8%8E%E4%BA%8B%E4%BB%B6",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/conversion-records.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/conversion-map.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/extension-fields.md#3-mvu-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B6%88%E8%B4%B9",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/sources.md#3-%E8%BD%AC%E6%8D%A2-agent-%E4%BD%95%E6%97%B6%E8%AF%BB%E5%8F%96-api-%E8%B5%84%E6%96%99",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/character-fields.md#3-%E5%85%83%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%B5%84%E6%BA%90",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/acceptance.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/SKILL.md",
+      "href": "references/acceptance.md#1-%E9%AA%8C%E6%94%B6%E8%AE%B0%E5%BD%95",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/semantic-experience.md",
+      "href": "../SKILL.md#%E8%BD%AC%E6%8D%A2%E6%9C%80%E9%AB%98%E5%8E%9F%E5%88%99%E5%8E%9F%E6%96%87%E6%89%BF%E6%8E%A5",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/semantic-experience.md",
+      "href": "conversion-map.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/semantic-experience.md",
+      "href": "extension-fields.md#3-mvu-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B6%88%E8%B4%B9",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/semantic-experience.md",
+      "href": "extension-fields.md#3-mvu-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B6%88%E8%B4%B9",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/semantic-experience.md",
+      "href": "architecture.md#13-mvu-%E6%A1%86%E6%9E%B6%E6%98%AF%E4%BB%80%E4%B9%88",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/semantic-experience.md",
+      "href": "api/model-capabilities.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/semantic-experience.md",
+      "href": "conversion-records.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/semantic-experience.md",
+      "href": "../SKILL.md#%E8%BD%AC%E6%8D%A2%E6%9C%80%E9%AB%98%E5%8E%9F%E5%88%99%E5%8E%9F%E6%96%87%E6%89%BF%E6%8E%A5",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/semantic-experience.md",
+      "href": "conversion-records.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/conversion-map.md",
+      "href": "sources.md#2-%E5%8F%AA%E8%AF%BB%E5%AE%9E%E7%8E%B0%E4%BE%9D%E6%8D%AE",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/conversion-map.md",
+      "href": "tools.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/conversion-map.md",
+      "href": "../SKILL.md#%E8%BD%AC%E6%8D%A2%E6%9C%80%E9%AB%98%E5%8E%9F%E5%88%99%E5%8E%9F%E6%96%87%E6%89%BF%E6%8E%A5",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/acceptance.md",
+      "href": "formats/acceptance.schema.json",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/acceptance.md",
+      "href": "../SKILL.md#4-%E9%AA%8C%E8%AF%81%E6%A0%B8%E5%BF%83%E9%80%BB%E8%BE%91%E5%B9%B6%E4%BA%A4%E4%BB%98",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/acceptance.md",
+      "href": "formats/preview.schema.json",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/acceptance.md",
+      "href": "tools.md#preview%E5%9C%A8%E6%AD%A3%E5%BC%8F%E9%A1%B5%E9%9D%A2%E6%B5%8B%E8%AF%95%E8%A7%92%E8%89%B2%E5%8D%A1",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/acceptance.md",
+      "href": "api/model-capabilities.md#%E5%90%AF%E7%94%A8%E8%83%BD%E5%8A%9B",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/acceptance.md",
+      "href": "formats/replay-fixture.schema.json",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/acceptance.md",
+      "href": "api/agent-tools-api.md#4-%E6%A8%A1%E5%9E%8B%E8%B0%83%E7%94%A8%E6%A0%BC%E5%BC%8F%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%97%B6%E5%BA%8F",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/acceptance.md",
+      "href": "../SKILL.md#3-%E6%8C%89%E5%88%A4%E6%96%AD%E7%94%9F%E6%88%90%E5%8E%9F%E7%94%9F%E6%96%87%E4%BB%B6",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/acceptance.md",
+      "href": "api/script-api.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/acceptance.md",
+      "href": "../SKILL.md#%E8%BD%AC%E6%8D%A2%E6%9C%80%E9%AB%98%E5%8E%9F%E5%88%99%E5%8E%9F%E6%96%87%E6%89%BF%E6%8E%A5",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "../SKILL.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "sources.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "conversion-map.md#2-%E5%8E%9F%E7%94%9F%E8%90%BD%E7%82%B9",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "extension-fields.md#1-%E6%AD%A3%E5%88%99%E5%AD%97%E6%AE%B5",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "worldbook-fields.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "extension-fields.md#3-mvu-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B6%88%E8%B4%B9",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "semantic-experience.md#3-%E4%B8%96%E7%95%8C%E4%B9%A6%E8%AF%BB%E5%8F%96%E4%B8%8E%E5%8A%A8%E6%80%81%E6%8F%90%E7%A4%BA",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "extension-fields.md#2-%E5%8A%A9%E6%89%8B%E4%B8%8E%E5%85%B6%E4%BB%96%E6%89%A9%E5%B1%95",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "character-fields.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "conversion-map.md#1-%E5%8C%85%E7%9B%AE%E5%BD%95%E5%91%BD%E5%90%8D%E4%B8%8E%E5%88%9B%E5%BB%BA%E8%B4%A3%E4%BB%BB",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "character-fields.md#2-%E4%BA%BA%E7%89%A9%E6%8F%90%E7%A4%BA%E4%B8%8E%E5%BC%80%E5%9C%BA",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "worldbook-fields.md#3-%E6%89%AB%E6%8F%8F%E6%9D%A5%E6%BA%90%E9%80%92%E5%BD%92%E4%B8%8E%E9%A2%84%E7%AE%97",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "api/backend-api.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "../SKILL.md#5-%E6%8E%92%E9%99%A4%E9%A1%B9%E8%83%BD%E5%8A%9B%E7%BC%BA%E5%8F%A3%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%9D%A1%E4%BB%B6",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "api/backend-api.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "worldbook-fields.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "api/script-api.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "api/script-template-api.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "semantic-experience.md#4-%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "api/model-capabilities.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/architecture.md",
+      "href": "api/model-capabilities.md#%E5%90%8C%E8%BD%AE%E7%BB%93%E6%9E%9C%E5%92%8C%E7%8A%B6%E6%80%81%E8%AF%81%E6%8D%AE",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "href": "conversion-map.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "href": "sources.md#1-%E9%80%82%E7%94%A8%E7%89%88%E6%9C%AC%E4%B8%8E%E6%AD%A3%E5%BC%8F%E6%9D%A5%E6%BA%90",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "href": "../SKILL.md#%E8%BD%AC%E6%8D%A2%E6%9C%80%E9%AB%98%E5%8E%9F%E5%88%99%E5%8E%9F%E6%96%87%E6%89%BF%E6%8E%A5",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "href": "conversion-records.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "href": "conversion-records.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "href": "worldbook-fields.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "href": "extension-fields.md#3-mvu-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B6%88%E8%B4%B9",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "href": "worldbook-fields.md#1-%E4%B9%A6%E7%BA%A7%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%86%85%E5%AE%B9%E8%81%8C%E8%B4%A3",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "href": "../SKILL.md#1-%E8%AF%BB%E5%8F%96%E4%B8%80%E4%B8%AA%E8%A7%92%E8%89%B2%E5%8D%A1-json",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "href": "../SKILL.md#5-%E6%8E%92%E9%99%A4%E9%A1%B9%E8%83%BD%E5%8A%9B%E7%BC%BA%E5%8F%A3%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%9D%A1%E4%BB%B6",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "href": "extension-fields.md#1-%E6%AD%A3%E5%88%99%E5%AD%97%E6%AE%B5",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/character-fields.md",
+      "href": "extension-fields.md#2-%E5%8A%A9%E6%89%8B%E4%B8%8E%E5%85%B6%E4%BB%96%E6%89%A9%E5%B1%95",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/extension-fields.md",
+      "href": "conversion-map.md",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/extension-fields.md",
+      "href": "sources.md#1-%E9%80%82%E7%94%A8%E7%89%88%E6%9C%AC%E4%B8%8E%E6%AD%A3%E5%BC%8F%E6%9D%A5%E6%BA%90",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/extension-fields.md",
+      "href": "architecture.md#2-%E7%9B%AE%E6%A0%87%E6%9E%B6%E6%9E%84tavernheadless-%E5%8E%9F%E7%94%9F%E8%A7%92%E8%89%B2%E5%8D%A1",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/extension-fields.md",
+      "href": "semantic-experience.md#2-%E6%AD%A3%E5%88%99%E9%A1%B5%E9%9D%A2%E4%B8%8E%E6%98%BE%E7%A4%BA",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/extension-fields.md",
+      "href": "semantic-experience.md#6-%E5%88%A0%E9%99%A4%E4%B8%8E%E6%94%B9%E5%86%99%E7%9A%84%E5%88%A4%E6%96%AD",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/extension-fields.md",
+      "href": "../SKILL.md#%E8%BD%AC%E6%8D%A2%E6%9C%80%E9%AB%98%E5%8E%9F%E5%88%99%E5%8E%9F%E6%96%87%E6%89%BF%E6%8E%A5",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/extension-fields.md",
+      "href": "semantic-experience.md#6-%E5%88%A0%E9%99%A4%E4%B8%8E%E6%94%B9%E5%86%99%E7%9A%84%E5%88%A4%E6%96%AD",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/extension-fields.md",
+      "href": "architecture.md#22-%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%8E%E7%8B%AC%E7%AB%8B%E7%8A%B6%E6%80%81-agent",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/conversion-records.md",
+      "href": "formats/field-decisions.schema.json",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/conversion-records.md",
+      "href": "character-fields.md#1-%E6%A0%BC%E5%BC%8F%E4%B8%8E%E5%AD%97%E6%AE%B5%E5%88%A4%E6%96%AD",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/conversion-records.md",
+      "href": "sources.md#2-%E5%8F%AA%E8%AF%BB%E5%AE%9E%E7%8E%B0%E4%BE%9D%E6%8D%AE",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/conversion-records.md",
+      "href": "formats/behavior-map.schema.json",
+      "targetExists": true
+    },
+    {
+      "file": ".agents/skills/native-card-conversion/references/conversion-records.md",
+      "href": "../SKILL.md#5-%E6%8E%92%E9%99%A4%E9%A1%B9%E8%83%BD%E5%8A%9B%E7%BC%BA%E5%8F%A3%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%9D%A1%E4%BB%B6",
+      "targetExists": true
+    },
+    {
+      "file": ".planning/native-card-maintenance/verbatim-state-assembly/architecture-proposal.md",
+      "href": "../../../.agents/skills/native-card-conversion/SKILL.md#%E8%BD%AC%E6%8D%A2%E6%9C%80%E9%AB%98%E5%8E%9F%E5%88%99%E5%8E%9F%E6%96%87%E6%89%BF%E6%8E%A5",
+      "targetExists": true
+    },
+    {
+      "file": ".planning/native-card-maintenance/verbatim-state-assembly/task_plan.md",
+      "href": "../../../.agents/skills/native-card-conversion/SKILL.md#%E8%BD%AC%E6%8D%A2%E6%9C%80%E9%AB%98%E5%8E%9F%E5%88%99%E5%8E%9F%E6%96%87%E6%89%BF%E6%8E%A5",
+      "targetExists": true
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "instanceSlots": ["*", "narrator", "director", "verifier", "memory", "state_updater"],
+  "modelSlots": ["narrator", "director", "verifier", "memory", "state_updater"],
+  "defaultStateModelSlots": ["narrator", "director", "verifier", "memory"],
+  "stateUpdaterSlot": "state_updater"
+}

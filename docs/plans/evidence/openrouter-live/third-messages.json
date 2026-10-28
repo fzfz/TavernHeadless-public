@@ -1,0 +1,20 @@
+[
+  {
+    "id": "script-gushengman:floor:3:user",
+    "role": "user",
+    "text": "我们在走廊又聊了两分钟，然后道别，明天再一起听琴。",
+    "floorId": "script-gushengman:floor:3",
+    "attemptId": "script-gushengman:floor:3:attempt:4",
+    "streamId": "script-gushengman:floor:3:input",
+    "status": "completed"
+  },
+  {
+    "id": "script-gushengman:floor:3:assistant",
+    "role": "assistant",
+    "text": "<gametext>\n[bg|学校楼梯夜晚开灯]\n[bgm|白羽]\n[show|顾声慢|C|棒球服微笑]\n旁白|||17:35至17:37，旧教学楼走廊。你们在活动室门外继续聊了两分钟，话题仍停在刚才的旋律与听感上。\n旁白|||时间来到17:37，顾声慢合上琴谱，轻轻点头，把明天的约定说得格外认真。\n顾声慢|C|棒球服微笑|对白\n明天见。等我把那段再整理好，我们一起听。\n旁白|||道别的话音落下，走廊重新安静，只有灯光映着你们渐远的影子。\n</gametext>",
+    "floorId": "script-gushengman:floor:3",
+    "attemptId": "script-gushengman:floor:3:attempt:4",
+    "streamId": "script-gushengman:floor:3:run:4:stream",
+    "status": "completed"
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "uid": 131,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "开局前提_画室赴约",
+  "order": 810,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<开局前提_画室赴约>\n开局模式: 画室赴约\n时间: 2025-04-04 20:10\n地点: 局子街55号401画室\n\n既往已成立的剧情与状态:\n  - 林茜已经多次在拆迁旧楼与杨桃子发生性关系。{{user}}曾从墙体破洞目击她与杨桃子的旧楼行为，林茜和杨桃子当时都没有发现{{user}}。\n  - {{user}}已经在夫妻家玄关、客厅顶角和卧室安装针孔摄像头，并把实时画面、移动提醒和录像接入自己的手机与私有云。林茜仍不知道家中存在这些摄像头。\n  - 艾沫沫已经以林茜的上司兼好友身份接近{{user}}，用业务往来掩饰私下联系；她曾在林茜晚归时提供圆场说法。\n  - {{user}}曾把杨桃子安排到外地工地，杨桃子后来回到老家；林茜在雨夜旧小学与杨桃子重逢并发生关系，{{user}}当时藏在报废车后座，林茜和杨桃子都没有发现{{user}}。\n  - 到本开局开始时，林茜与杨桃子的关系、家中监控、王授军的艺术威胁都属于已经成立的世界事实；本开局只新增五秒录音威胁、401赴约和当晚现场行动。\n\n当前知情边界:\n  - {{user}}此刻不知道五秒录音、401地址和林茜已经进入画室。\n  - 王授军知道自己录到了异常声音，不知道林茜准备保存反制录音。\n  - 林茜不知道401画室顶角摄像头正在录像。\n</开局前提_画室赴约>\n"
+}

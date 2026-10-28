@@ -1,0 +1,1440 @@
+{
+  "releaseId": "sx5JIyHYwfWnHgF6pURFX",
+  "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+  "requests": [
+    "/sessions/X19bQPbNrBsDnJgRf4ZU5",
+    "/sessions/X19bQPbNrBsDnJgRf4ZU5/role-view",
+    "/variables/resolve?session_id=X19bQPbNrBsDnJgRf4ZU5&branch_id=main",
+    "/sessions/X19bQPbNrBsDnJgRf4ZU5/respond/stream",
+    "/floors/kNz68yyNwjV-OSMNgsuRn/run"
+  ],
+  "events": [
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 0,
+        "type": "start",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 1,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 2,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 3,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 4,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 5,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 6,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 7,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 8,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 9,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 10,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 11,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 12,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 13,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 14,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 15,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 16,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 17,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 18,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 19,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 20,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 21,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 22,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 23,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 24,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 25,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 26,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 27,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 28,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 29,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 30,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 31,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 32,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 33,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 34,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 35,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 36,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 37,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 38,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 39,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 40,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 41,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 42,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 43,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 44,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 45,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 46,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 47,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 48,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 49,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 50,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 51,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 52,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 53,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 54,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 55,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 56,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 57,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 58,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 59,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 60,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 61,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 62,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 63,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 64,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 65,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 66,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 67,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 68,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 69,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 70,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 71,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 72,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 73,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 74,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 75,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 76,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 77,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    },
+    {
+      "type": "text",
+      "data": {
+        "sessionId": "X19bQPbNrBsDnJgRf4ZU5",
+        "branchId": "main",
+        "floorId": "kNz68yyNwjV-OSMNgsuRn",
+        "attemptId": "XL5qzQUtISgA3OPXtL40G:1",
+        "streamId": "response:kNz68yyNwjV-OSMNgsuRn",
+        "runId": "XL5qzQUtISgA3OPXtL40G",
+        "jobId": null,
+        "messageId": null,
+        "revision": 78,
+        "type": "update",
+        "status": "streaming",
+        "text": "",
+        "error": null
+      }
+    }
+  ],
+  "success": false,
+  "error": {
+    "message": "Turn orchestration failed: LLM request timed out after 240000ms",
+    "code": "generation_timeout"
+  }
+}

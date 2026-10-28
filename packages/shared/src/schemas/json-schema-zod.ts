@@ -1,0 +1,268 @@
+import { z } from "zod";
+
+/**
+ * 当前路由层用于从 JSON Schema 片段生成 Zod 校验器的最小子集。
+ *
+ * 这里只覆盖项目当前已经在请求体验证中使用到的结构，
+ * 不追求完整实现所有 JSON Schema 语义。
+ */
+export type SupportedJsonSchema =
+  | {
+      type?: never;
+      anyOf?: never;
+      properties?: never;
+      required?: never;
+      additionalProperties?: never;
+    }
+  | { type: "null" }
+  | {
+      type:
+        "boolean" | readonly ["boolean", "null"] | readonly ["null", "boolean"];
+    }
+  | {
+      type:
+        "number" | readonly ["number", "null"] | readonly ["null", "number"];
+      minimum?: number;
+      maximum?: number;
+    }
+  | {
+      type:
+        "integer" | readonly ["integer", "null"] | readonly ["null", "integer"];
+      minimum?: number;
+      maximum?: number;
+    }
+  | {
+      type:
+        "string" | readonly ["string", "null"] | readonly ["null", "string"];
+      minLength?: number;
+      maxLength?: number;
+      enum?: readonly (string | null)[];
+    }
+  | {
+      type: "array" | readonly ["array", "null"] | readonly ["null", "array"];
+      items: SupportedJsonSchema;
+      maxItems?: number;
+    }
+  | {
+      anyOf: readonly [
+        SupportedJsonSchema,
+        SupportedJsonSchema,
+        ...SupportedJsonSchema[],
+      ];
+    }
+  | {
+      type: "object";
+      properties?: Record<string, SupportedJsonSchema>;
+      required?: readonly string[];
+      additionalProperties?: boolean | SupportedJsonSchema;
+      maxProperties?: number;
+    };
+
+export type SupportedJsonObjectSchema = Extract<
+  SupportedJsonSchema,
+  { type: "object" }
+>;
+
+export interface BuildZodObjectSchemaOptions {
+  trimStringFields?: readonly string[];
+  coerceBooleanFields?: readonly string[];
+  defaultValues?: Record<string, unknown>;
+}
+
+/**
+ * 根据受支持的 JSON Schema 子集构造对应的 Zod Schema。
+ */
+export function buildZodSchemaFromJsonSchema(
+  schema: SupportedJsonSchema,
+): z.ZodTypeAny {
+  if ("anyOf" in schema && schema.anyOf) {
+    const includesNull = schema.anyOf.some(
+      (item) => "type" in item && item.type === "null",
+    );
+    const primarySchema = schema.anyOf.find(
+      (item) => !("type" in item && item.type === "null"),
+    );
+
+    if (!primarySchema) {
+      return z.null();
+    }
+
+    const built = buildZodSchemaFromJsonSchema(primarySchema);
+    return includesNull ? built.nullable() : built;
+  }
+  if (!("type" in schema) || schema.type === undefined) {
+    return z.unknown();
+  }
+
+  if (Array.isArray(schema.type)) {
+    const includesNull = schema.type.includes("null");
+    const primaryType = schema.type.find((item) => item !== "null");
+    if (!primaryType) {
+      return z.null();
+    }
+
+    const built = buildZodSchemaFromJsonSchema({
+      ...(schema as Record<string, unknown>),
+      type: primaryType,
+    } as SupportedJsonSchema);
+    return includesNull ? built.nullable() : built;
+  }
+
+  switch (schema.type) {
+    case "null":
+      return z.null();
+    case "boolean":
+      return z.boolean();
+    case "number": {
+      let numberSchema = z.number();
+      if (schema.minimum !== undefined)
+        numberSchema = numberSchema.min(schema.minimum);
+      if (schema.maximum !== undefined)
+        numberSchema = numberSchema.max(schema.maximum);
+      return numberSchema;
+    }
+    case "integer": {
+      let integerSchema = z.number().int();
+      if (schema.minimum !== undefined)
+        integerSchema = integerSchema.min(schema.minimum);
+      if (schema.maximum !== undefined)
+        integerSchema = integerSchema.max(schema.maximum);
+      return integerSchema;
+    }
+    case "string": {
+      if (schema.enum && schema.enum.length > 0) {
+        const stringValues = schema.enum.filter(
+          (item): item is string => typeof item === "string",
+        );
+        if (stringValues.length === 0) {
+          return z.null();
+        }
+        const stringSchema = z.enum([...stringValues] as [string, ...string[]]);
+        return schema.enum.includes(null)
+          ? stringSchema.or(z.null())
+          : stringSchema;
+      }
+      let stringSchema = z.string();
+      if (schema.minLength !== undefined)
+        stringSchema = stringSchema.min(schema.minLength);
+      if (schema.maxLength !== undefined)
+        stringSchema = stringSchema.max(schema.maxLength);
+      return stringSchema;
+    }
+    case "array": {
+      let arraySchema = z.array(buildZodSchemaFromJsonSchema(schema.items));
+      if (schema.maxItems !== undefined) {
+        arraySchema = arraySchema.max(schema.maxItems);
+      }
+      return arraySchema;
+    }
+    case "object":
+      return buildZodObjectSchema<Record<string, unknown>>(schema);
+
+    default:
+      return z.never();
+  }
+}
+
+type ZodObjectShape<T> = {
+  [Key in keyof T & string]-?: Pick<T, Key> extends Required<Pick<T, Key>>
+    ? z.ZodType<T[Key]>
+    : z.ZodOptional<z.ZodType<T[Key]>>;
+};
+
+/**
+ * 根据对象型 JSON Schema 片段构造严格 Zod 对象。
+ */
+export function buildZodObjectSchema<T>(
+  schema: SupportedJsonObjectSchema,
+  options: BuildZodObjectSchemaOptions = {},
+): z.ZodObject<ZodObjectShape<T>> {
+  const requiredKeys = new Set(schema.required ?? []);
+  const trimStringFields = new Set(options.trimStringFields ?? []);
+  const coerceBooleanFields = new Set(options.coerceBooleanFields ?? []);
+  const defaultValues = options.defaultValues ?? {};
+  const properties = schema.properties ?? {};
+  const shape: Record<string, z.ZodTypeAny> = {};
+
+  for (const [key, propertySchema] of Object.entries(properties)) {
+    let fieldSchema: z.ZodTypeAny;
+
+    if (
+      "type" in propertySchema &&
+      propertySchema.type === "string" &&
+      trimStringFields.has(key) &&
+      !propertySchema.enum
+    ) {
+      let stringSchema = z.string().trim();
+      if (propertySchema.minLength !== undefined)
+        stringSchema = stringSchema.min(propertySchema.minLength);
+      if (propertySchema.maxLength !== undefined)
+        stringSchema = stringSchema.max(propertySchema.maxLength);
+      fieldSchema = stringSchema;
+    } else if (
+      "type" in propertySchema &&
+      propertySchema.type === "boolean" &&
+      coerceBooleanFields.has(key)
+    ) {
+      fieldSchema = z.coerce.boolean();
+    } else {
+      fieldSchema = buildZodSchemaFromJsonSchema(propertySchema);
+    }
+
+    if (!requiredKeys.has(key)) {
+      fieldSchema = fieldSchema.optional();
+    }
+
+    if (Object.prototype.hasOwnProperty.call(defaultValues, key)) {
+      fieldSchema = fieldSchema.prefault(defaultValues[key]);
+    }
+
+    shape[key] = fieldSchema;
+  }
+
+  const baseObjectSchema = z.object(shape);
+  let objectSchema =
+    schema.additionalProperties === false
+      ? baseObjectSchema.strict()
+      : schema.additionalProperties === true
+        ? baseObjectSchema.catchall(z.unknown())
+        : schema.additionalProperties
+          ? baseObjectSchema.catchall(
+              buildZodSchemaFromJsonSchema(schema.additionalProperties),
+            )
+          : baseObjectSchema;
+
+  if (schema.maxProperties !== undefined) {
+    const maximum = schema.maxProperties;
+    objectSchema = objectSchema.superRefine((value, context) => {
+      if (
+        value &&
+        typeof value === "object" &&
+        Object.keys(value as Record<string, unknown>).length > maximum
+      ) {
+        context.addIssue({
+          code: z.ZodIssueCode.too_big,
+          maximum,
+          inclusive: true,
+          origin: "object",
+          input: value,
+          message: `Object must contain at most ${maximum} properties`,
+        });
+      }
+    });
+  }
+
+  return objectSchema as z.ZodObject<ZodObjectShape<T>>;
+}
+
+/**
+ * 根据对象型 JSON Schema 片段构造可选 Zod 对象。
+ */
+export function buildZodOptionalObjectSchema<T>(
+  schema: SupportedJsonObjectSchema,
+  options: BuildZodObjectSchemaOptions = {},
+): z.ZodType<T | undefined> {
+  return buildZodObjectSchema<T>(schema, options).optional() as z.ZodType<
+    T | undefined
+  >;
+}

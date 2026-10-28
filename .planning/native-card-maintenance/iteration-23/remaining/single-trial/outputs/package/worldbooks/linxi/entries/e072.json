@@ -1,0 +1,40 @@
+{
+  "uid": 72,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "事件_35_王授军活丧",
+  "order": 280,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<事件_E035>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n活丧前一晚，{{user}}在夫妻家故意告诉林茜，王授军喝酒后在浴缸溺水。林茜只问：“还有这样淹死的？”\n林茜在车里评价王授军没有真本事、喜欢卑劣手段，并提醒{{user}}参加活丧时别献花、别鞠躬。\n{{user}}陪老总到水仙湖殡仪馆。殡仪馆礼堂挂着王授军黑白照片，王授军的儿子以丧主身份站在门口收随礼。\n{{user}}观察来客，确认王授军亲属大多到场，由此判断颐园小区住处此刻无人。\n{{user}}想到王授军住处的电脑仍保存着林茜的视频，便向老总说家中有急事，提前离开仪式。\n离开殡仪馆后，{{user}}用匿名电话卡拨打公司报修电话，自称颐园小区物业人员，为王授军住处申报维修。他随后登录公司派单系统，把这项维修任务分配给自己。\n</事件_E035>\n"
+}

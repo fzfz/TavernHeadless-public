@@ -1,0 +1,1081 @@
+{
+  "passed": true,
+  "formal": {
+    "passed": true,
+    "status": "passed",
+    "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TSmI1G/page-macro-formal/formal-runs/2026-10-09T09-54-12-231Z-5d38ddba-a873-4b49-9266-6620d50a6584",
+    "readbackPath": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TSmI1G/page-macro-formal/formal-runs/2026-10-09T09-54-12-231Z-5d38ddba-a873-4b49-9266-6620d50a6584/readback.json",
+    "importedCardId": "KOKlzqGnUTL_VMoqNsGlD",
+    "requests": [
+      {
+        "method": "POST",
+        "path": "/native-cards/imports?fileName=role.zip",
+        "headers": {
+          "content-type": "application/zip"
+        },
+        "bodyReference": "request-bodies/000.bin",
+        "bodyByteLength": 170511,
+        "statusCode": 200
+      },
+      {
+        "method": "POST",
+        "path": "/native-cards/imports/hHZfbkLLqXTp3-gGAI5Kc/confirm",
+        "headers": {},
+        "statusCode": 201
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=agents%2Fstate-update%2Fprofile.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=agents%2Fstate-update%2Freadonly-inner.txt",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=agents%2Fstate-update%2Frules.txt",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=backend%2Fcontrollers%2Fconfig.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=backend%2Fcontrollers%2Fprompt.js",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=backend%2Fvariable-tools%2Fnormalize.js",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=character.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=data%2Fpage-macro-installation.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=data%2Fruntime.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=frontend%2Findex.html",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=frontend%2Fmain.js",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=frontend%2Fmanifest.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=frontend%2Fpage-macro-bindings.js",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=frontend%2Fpage-macro-entry.js",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=frontend%2Fpage-macros.js",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=frontend%2Fstyle.css",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=manifest.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=openings.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=openings%2Fblank.txt",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=openings%2Fboss-office.txt",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=openings%2Fcourier-arrives.txt",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=openings%2Fdefault.txt",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=openings%2Fhusband-away.txt",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=openings%2Fhusband-home.txt",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=openings%2Flin-arrives.txt",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=openings%2Fmaple-massage.txt",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=openings%2Fstreet-encounter.txt",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=state%2Finitial%2Fblank.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=state%2Finitial%2Fboss-office.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=state%2Finitial%2Fcourier-arrives.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=state%2Finitial%2Fdefault.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=state%2Finitial%2Fhusband-away.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=state%2Finitial%2Fhusband-home.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=state%2Finitial%2Flin-arrives.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=state%2Finitial%2Fmaple-massage.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=state%2Finitial%2Fstreet-encounter.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=state%2Fschema.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fbook.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe0.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe1.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe10.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe11.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe12.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe13.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe14.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe15.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe16.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe17.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe18.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe19.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe2.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe20.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe21.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe22.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe23.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe24.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe25.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe26.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe27.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe29.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe3.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe30.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe33.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe4.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe5.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe8.json",
+        "headers": {},
+        "statusCode": 200
+      },
+      {
+        "method": "GET",
+        "path": "/native-cards/KOKlzqGnUTL_VMoqNsGlD/file?path=worldbooks%2Fbook-0%2Fentries%2Fe9.json",
+        "headers": {},
+        "statusCode": 200
+      }
+    ],
+    "zipRead": {
+      "status": "passed",
+      "fileCount": 67
+    },
+    "schemaValidation": {
+      "status": "passed",
+      "valid": true,
+      "issues": []
+    },
+    "diagnostics": [],
+    "readback": {
+      "status": "passed",
+      "fileCount": 67,
+      "failedPaths": []
+    }
+  },
+  "results": [
+    {
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是陆泽的妻子，性格沉着、直率。她正在阅读人物介绍，准备了解陆泽与其他人物的关系。"
+      },
+      "openingCase": {
+        "openingId": "default",
+        "kind": "introduction"
+      },
+      "initial": {
+        "sessionId": "coDwWII_Kg_foXwdfP5bE",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "t72kYB9-Wh0M8iA0TIhDL",
+        "snapshotId": "22e923a1-efc9-4a35-b6c9-821a7363ce11",
+        "parentSnapshotId": null,
+        "variables": {
+          "world": {
+            "date": "2024-09-16",
+            "day_of_week": "星期一",
+            "time": "10:30",
+            "weather": "晴",
+            "countdown": 30
+          },
+          "location": {
+            "user": "家",
+            "LZ": "德国柏林",
+            "LYB": "公司",
+            "FLZ": "公司",
+            "F": "秋枫堂",
+            "CFY": "街头",
+            "XY": "派送途中"
+          },
+          "LZ": {
+            "jealousy": 0,
+            "lust": 10,
+            "exposure": {
+              "LYB": 0,
+              "FLZ": 0,
+              "F": 0,
+              "CFY": 0,
+              "XY": 0
+            },
+            "inner": "好想宝宝啊，等忙完这段时间，一定要好好陪她，让她一个人在家太对不起她了。"
+          },
+          "favor": {
+            "LYB": 45,
+            "FLZ": 0,
+            "F": 15,
+            "CFY": 60,
+            "XY": 15
+          },
+          "lust": {
+            "LYB": 10,
+            "FLZ": 10,
+            "F": 20,
+            "CFY": 10,
+            "XY": 10
+          },
+          "aggressiveness": {
+            "LYB": 30,
+            "FLZ": 25,
+            "F": 20,
+            "CFY": 40,
+            "XY": 15
+          },
+          "jealousy": {
+            "LYB": 30,
+            "FLZ": 0,
+            "F": 0,
+            "CFY": 10,
+            "XY": 5
+          },
+          "inner": {
+            "LYB": "她又更新动态了，陆泽不在家，她看起来好寂寞。是不是…我的机会来了？",
+            "FLZ": "陆泽的工作能力和眼光很好，他的妻子也不错。是时候让他更忙一点了。",
+            "F": "陆太太的身体线条真是完美，可惜她丈夫不懂得欣赏。",
+            "CFY": "啧，那个女人昨天又一个人回家了。她老公是死的吗？下次再看到她，一定要把她堵住。",
+            "XY": "这个小区的快递快送完了，好累。上次那位姐姐人真好，想再看到她。"
+          },
+          "progress": {
+            "LYB": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "FLZ": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "F": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "CFY": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "XY": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            }
+          }
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "sessionId": "coDwWII_Kg_foXwdfP5bE",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TSmI1G/preview-runs/2026-10-09T09-54-30-675Z-9e2b588c-4142-455a-bf28-accab5436a53",
+      "dryRuns": [
+        {
+          "id": "read-introduction",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "rendered": [
+        {
+          "id": "userHusband",
+          "text": "沈知夏 $ <林&>的丈夫，启星科技项目负责人"
+        },
+        {
+          "id": "userHusbandStatus",
+          "text": "经常在外地甚至外国出差，只能通过视频通话联系。深信你们的感情坚不可摧，却忽略了沈知夏 $ <林&>的寂寞。"
+        },
+        {
+          "id": "userLin",
+          "text": "家里有一个上锁的房间，贴满了偷拍沈知夏 $ <林&>的照片和收集的私人物品。暗恋沈知夏 $ <林&>十年，视陆泽为挚友和夺爱仇人。"
+        },
+        {
+          "id": "userMaple",
+          "text": "带有催情效果的精油按摩，以及让女性沉沦的手段。现在对人妻沈知夏 $ <林&>很感兴趣。"
+        },
+        {
+          "id": "userCen",
+          "text": "对沈知夏 $ <林&>一见钟情，看不惯沈知夏 $ <林&>被冷落，用最笨拙粗暴的方式表达爱意。"
+        },
+        {
+          "id": "userXia",
+          "text": "渴望阶级跨越，同时也迷恋沈知夏 $ <林&>的魅力。擅长利用自己与大学时陆泽相像的气质，伪装成无害的弟弟登堂入室。"
+        }
+      ],
+      "remountCount": 1,
+      "errors": []
+    },
+    {
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是31岁的女性，是陆泽的妻子，性格沉着、直率。她正在阅读人物介绍，准备了解陆泽与其他人物的关系。"
+      },
+      "openingCase": {
+        "openingId": "default",
+        "kind": "introduction"
+      },
+      "initial": {
+        "sessionId": "-oE6nRKE2X2CxchdgNmt8",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "2QD3W6D3U3I9QejEoc0ho",
+        "snapshotId": "515143e2-0db5-47d8-8102-2a82d204cdee",
+        "parentSnapshotId": null,
+        "variables": {
+          "world": {
+            "date": "2024-09-16",
+            "day_of_week": "星期一",
+            "time": "10:30",
+            "weather": "晴",
+            "countdown": 30
+          },
+          "location": {
+            "user": "家",
+            "LZ": "德国柏林",
+            "LYB": "公司",
+            "FLZ": "公司",
+            "F": "秋枫堂",
+            "CFY": "街头",
+            "XY": "派送途中"
+          },
+          "LZ": {
+            "jealousy": 0,
+            "lust": 10,
+            "exposure": {
+              "LYB": 0,
+              "FLZ": 0,
+              "F": 0,
+              "CFY": 0,
+              "XY": 0
+            },
+            "inner": "好想宝宝啊，等忙完这段时间，一定要好好陪她，让她一个人在家太对不起她了。"
+          },
+          "favor": {
+            "LYB": 45,
+            "FLZ": 0,
+            "F": 15,
+            "CFY": 60,
+            "XY": 15
+          },
+          "lust": {
+            "LYB": 10,
+            "FLZ": 10,
+            "F": 20,
+            "CFY": 10,
+            "XY": 10
+          },
+          "aggressiveness": {
+            "LYB": 30,
+            "FLZ": 25,
+            "F": 20,
+            "CFY": 40,
+            "XY": 15
+          },
+          "jealousy": {
+            "LYB": 30,
+            "FLZ": 0,
+            "F": 0,
+            "CFY": 10,
+            "XY": 5
+          },
+          "inner": {
+            "LYB": "她又更新动态了，陆泽不在家，她看起来好寂寞。是不是…我的机会来了？",
+            "FLZ": "陆泽的工作能力和眼光很好，他的妻子也不错。是时候让他更忙一点了。",
+            "F": "陆太太的身体线条真是完美，可惜她丈夫不懂得欣赏。",
+            "CFY": "啧，那个女人昨天又一个人回家了。她老公是死的吗？下次再看到她，一定要把她堵住。",
+            "XY": "这个小区的快递快送完了，好累。上次那位姐姐人真好，想再看到她。"
+          },
+          "progress": {
+            "LYB": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "FLZ": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "F": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "CFY": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "XY": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            }
+          }
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "sessionId": "-oE6nRKE2X2CxchdgNmt8",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TSmI1G/preview-runs/2026-10-09T09-54-39-781Z-3ce2c59d-523d-4650-a67c-622f8ef5fa98",
+      "dryRuns": [
+        {
+          "id": "read-introduction",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 3,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "rendered": [
+        {
+          "id": "userHusband",
+          "text": "林婉宁的丈夫，启星科技项目负责人"
+        },
+        {
+          "id": "userHusbandStatus",
+          "text": "经常在外地甚至外国出差，只能通过视频通话联系。深信你们的感情坚不可摧，却忽略了林婉宁的寂寞。"
+        },
+        {
+          "id": "userLin",
+          "text": "家里有一个上锁的房间，贴满了偷拍林婉宁的照片和收集的私人物品。暗恋林婉宁十年，视陆泽为挚友和夺爱仇人。"
+        },
+        {
+          "id": "userMaple",
+          "text": "带有催情效果的精油按摩，以及让女性沉沦的手段。现在对人妻林婉宁很感兴趣。"
+        },
+        {
+          "id": "userCen",
+          "text": "对林婉宁一见钟情，看不惯林婉宁被冷落，用最笨拙粗暴的方式表达爱意。"
+        },
+        {
+          "id": "userXia",
+          "text": "渴望阶级跨越，同时也迷恋林婉宁的魅力。擅长利用自己与大学时陆泽相像的气质，伪装成无害的弟弟登堂入室。"
+        }
+      ],
+      "remountCount": 1,
+      "errors": []
+    },
+    {
+      "persona": {
+        "name": "沈知夏 $ <林&>",
+        "description": "沈知夏 $ <林&>是31岁的女性，是陆泽的妻子，性格沉着、直率。她正在阅读人物介绍，准备了解陆泽与其他人物的关系。"
+      },
+      "openingCase": {
+        "openingId": "husband-away",
+        "kind": "state-name",
+        "path": ["location", "user"]
+      },
+      "initial": {
+        "sessionId": "0NLkTXvzuMXN3GfQkV9IH",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "yvBFO8bHGLJR101YpnhON",
+        "snapshotId": "f3d22990-29d0-466a-bb21-7819d8a7699b",
+        "parentSnapshotId": null,
+        "variables": {
+          "world": {
+            "date": "2025-10-20",
+            "day_of_week": "星期一",
+            "time": "13:00",
+            "weather": "晴",
+            "countdown": 30
+          },
+          "location": {
+            "user": "沈知夏 $ <林&>与陆泽的家",
+            "LZ": "德国·柏林",
+            "LYB": "启星科技公司",
+            "FLZ": "扶令昭的办公室",
+            "F": "秋枫堂",
+            "CFY": "岑锋野的地盘",
+            "XY": "江城"
+          },
+          "LZ": {
+            "jealousy": 0,
+            "lust": 15,
+            "exposure": {
+              "LYB": 0,
+              "FLZ": 0,
+              "F": 0,
+              "CFY": 0,
+              "XY": 0
+            },
+            "inner": "宝宝一个人在家会不会孤单？好想她，得快点完成工作回去陪她。"
+          },
+          "favor": {
+            "LYB": 45,
+            "FLZ": 0,
+            "F": 15,
+            "CFY": 60,
+            "XY": 15
+          },
+          "lust": {
+            "LYB": 10,
+            "FLZ": 10,
+            "F": 20,
+            "CFY": 10,
+            "XY": 10
+          },
+          "aggressiveness": {
+            "LYB": 30,
+            "FLZ": 25,
+            "F": 20,
+            "CFY": 40,
+            "XY": 15
+          },
+          "jealousy": {
+            "LYB": 30,
+            "FLZ": 0,
+            "F": 0,
+            "CFY": 10,
+            "XY": 5
+          },
+          "inner": {
+            "LYB": "她又更新动态了，陆泽不在家，她看起来好寂寞。是不是…我的机会来了？",
+            "FLZ": "陆泽的工作能力和眼光很好，他的妻子也不错。是时候让他更忙一点了。",
+            "F": "陆太太的身体线条真是完美，可惜她丈夫不懂得欣赏。",
+            "CFY": "啧，那个女人昨天又一个人回家了。她老公是死的吗？下次再看到她，一定要把她堵住。",
+            "XY": "这个小区的快递快送完了，好累。上次那位姐姐人真好，想再看到她。"
+          },
+          "progress": {
+            "LYB": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "FLZ": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "F": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "CFY": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "XY": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            }
+          }
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "sessionId": "0NLkTXvzuMXN3GfQkV9IH",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TSmI1G/preview-runs/2026-10-09T09-54-48-193Z-6db703aa-a4a3-4fee-b092-ef1671515c2d",
+      "dryRuns": [
+        {
+          "id": "read-introduction",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 4,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "rendered": [
+        {
+          "id": "userHusband",
+          "text": "沈知夏 $ <林&>的丈夫，启星科技项目负责人"
+        },
+        {
+          "id": "userHusbandStatus",
+          "text": "经常在外地甚至外国出差，只能通过视频通话联系。深信你们的感情坚不可摧，却忽略了沈知夏 $ <林&>的寂寞。"
+        },
+        {
+          "id": "userLin",
+          "text": "家里有一个上锁的房间，贴满了偷拍沈知夏 $ <林&>的照片和收集的私人物品。暗恋沈知夏 $ <林&>十年，视陆泽为挚友和夺爱仇人。"
+        },
+        {
+          "id": "userMaple",
+          "text": "带有催情效果的精油按摩，以及让女性沉沦的手段。现在对人妻沈知夏 $ <林&>很感兴趣。"
+        },
+        {
+          "id": "userCen",
+          "text": "对沈知夏 $ <林&>一见钟情，看不惯沈知夏 $ <林&>被冷落，用最笨拙粗暴的方式表达爱意。"
+        },
+        {
+          "id": "userXia",
+          "text": "渴望阶级跨越，同时也迷恋沈知夏 $ <林&>的魅力。擅长利用自己与大学时陆泽相像的气质，伪装成无害的弟弟登堂入室。"
+        }
+      ],
+      "remountCount": 1,
+      "errors": []
+    },
+    {
+      "persona": {
+        "name": "林婉宁",
+        "description": "林婉宁是31岁的女性，是陆泽的妻子，性格沉着、直率。她正在阅读人物介绍，准备了解陆泽与其他人物的关系。"
+      },
+      "openingCase": {
+        "openingId": "husband-away",
+        "kind": "state-name",
+        "path": ["location", "user"]
+      },
+      "initial": {
+        "sessionId": "6LzxjKp1zVXnmQBQc2Cv8",
+        "branchId": "main",
+        "floorId": null,
+        "attemptId": null,
+        "versionId": "0qKVmU9dkXDFBp6jabpO_",
+        "snapshotId": "bfd39ed1-7c59-414e-900a-ba80cdcad9cc",
+        "parentSnapshotId": null,
+        "variables": {
+          "world": {
+            "date": "2025-10-20",
+            "day_of_week": "星期一",
+            "time": "13:00",
+            "weather": "晴",
+            "countdown": 30
+          },
+          "location": {
+            "user": "林婉宁与陆泽的家",
+            "LZ": "德国·柏林",
+            "LYB": "启星科技公司",
+            "FLZ": "扶令昭的办公室",
+            "F": "秋枫堂",
+            "CFY": "岑锋野的地盘",
+            "XY": "江城"
+          },
+          "LZ": {
+            "jealousy": 0,
+            "lust": 15,
+            "exposure": {
+              "LYB": 0,
+              "FLZ": 0,
+              "F": 0,
+              "CFY": 0,
+              "XY": 0
+            },
+            "inner": "宝宝一个人在家会不会孤单？好想她，得快点完成工作回去陪她。"
+          },
+          "favor": {
+            "LYB": 45,
+            "FLZ": 0,
+            "F": 15,
+            "CFY": 60,
+            "XY": 15
+          },
+          "lust": {
+            "LYB": 10,
+            "FLZ": 10,
+            "F": 20,
+            "CFY": 10,
+            "XY": 10
+          },
+          "aggressiveness": {
+            "LYB": 30,
+            "FLZ": 25,
+            "F": 20,
+            "CFY": 40,
+            "XY": 15
+          },
+          "jealousy": {
+            "LYB": 30,
+            "FLZ": 0,
+            "F": 0,
+            "CFY": 10,
+            "XY": 5
+          },
+          "inner": {
+            "LYB": "她又更新动态了，陆泽不在家，她看起来好寂寞。是不是…我的机会来了？",
+            "FLZ": "陆泽的工作能力和眼光很好，他的妻子也不错。是时候让他更忙一点了。",
+            "F": "陆太太的身体线条真是完美，可惜她丈夫不懂得欣赏。",
+            "CFY": "啧，那个女人昨天又一个人回家了。她老公是死的吗？下次再看到她，一定要把她堵住。",
+            "XY": "这个小区的快递快送完了，好累。上次那位姐姐人真好，想再看到她。"
+          },
+          "progress": {
+            "LYB": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "FLZ": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "F": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "CFY": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            },
+            "XY": {
+              "kiss": 0,
+              "date": 0,
+              "sex": 0
+            }
+          }
+        },
+        "source": {
+          "kind": "initial",
+          "runId": null,
+          "jobId": null
+        }
+      },
+      "sessionId": "6LzxjKp1zVXnmQBQc2Cv8",
+      "evidenceDirectory": "/srv/tavern/TavernHeadless-remove-preview-credentials/.tmp/native-card-conversion/run-TSmI1G/preview-runs/2026-10-09T09-54-56-299Z-c4c46632-baaf-4647-ae29-aa47722d6e5a",
+      "dryRuns": [
+        {
+          "id": "read-introduction",
+          "passed": true,
+          "status": 200,
+          "checks": {
+            "assembledMessageCount": 4,
+            "personaDescriptionIncluded": true,
+            "personaNameInRoleView": true
+          }
+        }
+      ],
+      "rendered": [
+        {
+          "id": "userHusband",
+          "text": "林婉宁的丈夫，启星科技项目负责人"
+        },
+        {
+          "id": "userHusbandStatus",
+          "text": "经常在外地甚至外国出差，只能通过视频通话联系。深信你们的感情坚不可摧，却忽略了林婉宁的寂寞。"
+        },
+        {
+          "id": "userLin",
+          "text": "家里有一个上锁的房间，贴满了偷拍林婉宁的照片和收集的私人物品。暗恋林婉宁十年，视陆泽为挚友和夺爱仇人。"
+        },
+        {
+          "id": "userMaple",
+          "text": "带有催情效果的精油按摩，以及让女性沉沦的手段。现在对人妻林婉宁很感兴趣。"
+        },
+        {
+          "id": "userCen",
+          "text": "对林婉宁一见钟情，看不惯林婉宁被冷落，用最笨拙粗暴的方式表达爱意。"
+        },
+        {
+          "id": "userXia",
+          "text": "渴望阶级跨越，同时也迷恋林婉宁的魅力。擅长利用自己与大学时陆泽相像的气质，伪装成无害的弟弟登堂入室。"
+        }
+      ],
+      "remountCount": 1,
+      "errors": []
+    }
+  ]
+}

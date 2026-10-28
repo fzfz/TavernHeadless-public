@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "declaration": false,
+    "declarationMap": false
+  },
+  "include": [
+    "./*.ts",
+    "../generate-agent-artifacts.ts",
+    "../generate-skill-artifacts.ts",
+    "../prepare-docs-release.ts"
+  ]
+}

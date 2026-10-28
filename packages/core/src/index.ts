@@ -1,0 +1,787 @@
+// ── Events ────────────────────────────────────────────
+export { createEventBus } from "./events/index.js";
+export type { CoreEventBus } from "./events/index.js";
+export type {
+  CoreEventMap,
+  FloorStateChangedEvent,
+  FloorCommittedEvent,
+  FloorFailedEvent,
+  FloorRunType,
+  FloorRunStatus,
+  FloorRunPhase,
+  FloorRunPublicPhase,
+  FloorRunPendingOutputState,
+  FloorRunVerifierStatus,
+  FloorRunVerifierIssue,
+  FloorRunVerifierSnapshot,
+  FloorRunPendingOutput,
+  FloorRunError,
+  FloorRunSnapshot,
+  FloorRunUpdatedEvent,
+  FloorRunCompletedEvent,
+  FloorRunFailedEvent,
+  VariableSetEvent,
+  VariablePromotedEvent,
+  VariableDeletedEvent,
+  GenerationStartedEvent,
+  GenerationChunkEvent,
+  GenerationCompletedEvent,
+  GenerationFailedEvent,
+  CommitRetryEvent,
+  CommitBusyEvent,
+  CommitSucceededAfterRetryEvent,
+  MemoryEventContext,
+  MemoryEventEntityType,
+  MemoryJobEventContext,
+  MemoryMutationSource,
+  MemoryCreatedEvent,
+  MemoryUpdatedEvent,
+  MemoryDeprecatedEvent,
+  MemoryDeletedEvent,
+  MemoryEdgeCreatedEvent,
+  MemoryEdgeDeletedEvent,
+  MemoryInjectionFailedEvent,
+  MemoryPersistFailedEvent,
+  MemoryConsolidationContextFailedEvent,
+  MemoryConsolidationJsonParseFailedEvent,
+  MemoryConsolidatedEvent,
+  MemoryConsolidationFailedEvent,
+  RuntimeJobEvent,
+  RuntimeJobEnqueuedEvent,
+  RuntimeJobLeasedEvent,
+  RuntimeJobStartedEvent,
+  RuntimeJobProgressUpdatedEvent,
+  RuntimeJobSucceededEvent,
+  RuntimeJobRetryScheduledEvent,
+  RuntimeJobDeadLetteredEvent,
+  RuntimeJobCancelledEvent,
+  RuntimeJobLeaseLostEvent,
+  RuntimeMutationEvent,
+  RuntimeMutationCreatedEvent,
+  RuntimeMutationAppliedEvent,
+  RuntimeMutationSkippedEvent,
+  RuntimeMutationFailedEvent,
+  RuntimeMutationEventOutcome,
+  ToolCallStartedEvent,
+  ToolCallCompletedEvent,
+  ToolCallFailedEvent,
+  ToolCallDeniedEvent,
+  ToolCallAwaitingConfirmationEvent,
+  McpServerConnectedEvent,
+  McpServerDisconnectedEvent,
+  McpServerErrorEvent,
+} from "./events/index.js";
+
+// ── Realtime Protocol (experimental, RT0) ─────────────
+export type {
+  RealtimeProtocolVersion,
+  RealtimeEventEnvelope,
+  RealtimeResumeControl,
+  RealtimeAckControl,
+  RealtimeClientControl,
+  RealtimeActiveRunHint,
+  RealtimeSessionControl,
+  RealtimeErrorCode,
+  RealtimeErrorControl,
+  RealtimeServerControl,
+  RealtimeEventFrame,
+  RealtimeServerFrame,
+  RealtimeClientFrame,
+} from "./realtime/index.js";
+
+// ── Floor ─────────────────────────────────────────────
+export { FloorStateMachine } from "./floor/index.js";
+export { FloorLifecycle } from "./floor/index.js";
+export {
+  FloorNotFoundError,
+  FloorStateConflictError,
+  InvalidStateTransitionError,
+} from "./errors.js";
+export type { FloorEntity } from "./types.js";
+export type { FloorRepository } from "./ports/floor-repository.js";
+
+// ── Variables ─────────────────────────────────────────
+export { VariableResolver } from "./variables/index.js";
+export { VariableStore } from "./variables/index.js";
+export type {
+  VariableWriteIntent,
+  VariableWriteSourceMetadata,
+  VariableWriteTargetSurface,
+} from "./variables/index.js";
+export type { VariableContext } from "./types.js";
+export type {
+  VariableRepository,
+  VariableRepositoryOptions,
+} from "./ports/variable-repository.js";
+
+// ── Repository Ports ──────────────────────────────────
+export type { MemoryRepository } from "./ports/memory-repository.js";
+
+// ── Prompt ────────────────────────────────────────────
+export type {
+  ChatRole,
+  IRMessage,
+  IRSection,
+  IRSectionInsertion,
+  IRSectionSemantic,
+  PromptIR,
+  PromptMetadata,
+  PromptBudgetGroup,
+  TokenCounter,
+  ChatMessage,
+  AssembledPrompt,
+  PromptSnapshotRecord,
+  PromptSnapshotWorldbookActivation,
+  PromptSnapshotWorldbookActivationSource,
+  PromptSnapshotWorldbookInsertion,
+  PromptRuntimeBudgetGroupTrace,
+  PromptTrimReasonCode,
+  PromptTrimReason,
+  PromptRuntimeBudgetTrace,
+  PromptRuntimeSourceKind,
+  PromptSourceExclusionReasonCode,
+  PromptSourceExclusionReason,
+  PromptRuntimePresetTrace,
+  PromptRuntimeWorldbookTrace,
+  PromptRuntimeRegexTrace,
+  PromptRuntimeRegexPhaseId,
+  PromptRuntimeRegexPhaseStatus,
+  PromptRuntimeRegexSkipReason,
+  PromptRuntimeRegexSubstitutionMode,
+  PromptRuntimeRegexSkippedRule,
+  PromptRuntimeRegexPhaseTrace,
+  PromptRuntimeStructureTrace,
+  PromptRuntimeMemoryStrategy,
+  PromptRuntimeMemorySelectedItemTrace,
+  PromptRuntimeMemoryTokenStats,
+  PromptRuntimeMemoryScopeResolutionTrace,
+  PromptRuntimeMemoryProposalStatus,
+  PromptRuntimeMemoryPromotionStatus,
+  PromptRuntimeMemoryTrace,
+  PromptRuntimeMacroWarning,
+  PromptRuntimeMacroMutationPreview,
+  PromptRuntimeMacroStagedMutation,
+  PromptRuntimeMacroTraceEntry,
+  PromptRuntimeMacroTrace,
+  PromptRuntimeDeliveryDegradeReason,
+  PromptRuntimeDeliveryTrace,
+  PromptRuntimeVisibilityRange,
+  PromptRuntimeVisibilityTrace,
+  PromptRuntimeSourceSelectionTrace,
+  PromptRuntimeSectionStat,
+  PromptRuntimeDiffChangeType,
+  PromptRuntimeDiffEntry,
+  PromptRuntimeGenerationParamName,
+  PromptRuntimeGenerationParamFinalState,
+  PromptRuntimeGenerationParamOrigin,
+  PromptRuntimeGenerationParamLayer,
+  PromptRuntimeGenerationParamFilterReason,
+  PromptRuntimeGenerationParamResolution,
+  PromptRuntimeToolTransportTrace,
+  PromptRuntimeGovernanceRetention,
+  PromptRuntimeGovernancePolicy,
+  PromptRuntimeGovernanceSeedEntry,
+  PromptRuntimeGovernanceSeed,
+  PromptRuntimeTrace,
+  PromptRuntimeDebugView,
+  PromptRuntimeSourceDescriptor,
+  PromptRuntimeBudgetGroupDescriptor,
+  TemplateOptions,
+  MessageBuilderOptions,
+} from "./prompt/index.js";
+export type { PromptRuntimeSourceGovernanceLevel } from "./prompt/index.js";
+export { TemplateEngine, TemplateVariableError } from "./prompt/index.js";
+export { TokenBudget, SimpleTokenCounter } from "./prompt/index.js";
+export {
+  buildPromptRuntimeSectionBudgetGroup,
+  resolvePromptRuntimeSourceDescriptor,
+  resolvePromptRuntimeBudgetGroupDescriptor,
+  resolvePromptRuntimeBudgetGroupDefaults,
+  resolvePromptRuntimeBudgetGroupExclusionSource,
+  resolvePromptRuntimeBudgetGroupTraceLabel,
+  resolvePromptRuntimeSourceGovernanceLevel,
+  PROMPT_MEMORY_SECTION_NAME,
+  PROMPT_MEMORY_MESSAGE_SOURCE,
+  buildPromptRuntimeGovernanceSeed,
+  inferPromptRuntimeGovernanceSourceKind,
+  resolvePromptRuntimeGovernancePolicy,
+} from "./prompt/index.js";
+export type {
+  NativePromptMode,
+  NativePipelinePhase,
+  NativeWorldbookEntry,
+  NativePipelineInput,
+  NativePipelineState,
+  NativePipelineNode,
+  NativePipelineNodeOutput,
+  NativePipelineNodeStateSnapshot,
+  NativePipelineNodeTraceEntry,
+  NativePipelineInputSummary,
+  NativePipelineStateSummary,
+  ConditionNodeOptions,
+  TransformRule,
+  TransformNodeOptions,
+} from "./prompt/index.js";
+export {
+  assembleNativePrompt,
+  runNativePipeline,
+  TemplateNode,
+  ConditionNode,
+  WorldbookResolveNode,
+  TransformNode,
+  MemoryInjectNode,
+  TokenBudgetNode,
+  PackMessagesNode,
+  NativePipelineError,
+} from "./prompt/index.js";
+export { MessageBuilder } from "./prompt/index.js";
+
+// ── Prompt Assets ─────────────────────────────────────
+export type {
+  PromptAssetKind,
+  PromptAssetOrigin,
+  PromptAssetRef,
+  PromptAssetDeclarationPart,
+  PromptAssetDeclaration,
+  PromptAssetManifest,
+} from "./prompt-assets/index.js";
+export {
+  createPromptAssetDeclaration,
+  createPromptAssetManifest,
+  stableStringifyPromptAssetManifest,
+  buildPromptAssetScopeId,
+  createPromptAssetRef,
+  PROMPT_ASSET_CHARACTER_BUDGET_GROUP,
+  PROMPT_ASSET_CHARACTER_SOURCE_KIND,
+} from "./prompt-assets/index.js";
+
+// ── Prompt Graph ──────────────────────────────────────
+export type {
+  PromptRunIntent,
+  PromptTrigger,
+  PromptPlacement,
+  PromptNodeBase,
+  StaticTextNode,
+  VariableTemplateNode,
+  MarkerNode,
+  ChatHistoryNode,
+  StateDataSourceNode,
+  CharacterNode,
+  PersonaNode,
+  WorldbookNode,
+  ExampleDialogueNode,
+  MemoryNode,
+  ContributorNode,
+  ToolResultNode,
+  PromptNode,
+  PromptEdge,
+  PromptNodeGroup,
+  PromptExecutionPolicy,
+  PromptGraphImportBinding,
+  PromptGraphDocument,
+  PromptGraphCharacterInput,
+  PromptGraphPersonaInput,
+  PromptGraphWorldbookPosition,
+  PromptGraphWorldbookEntry,
+  PromptGraphCompilerInput,
+  PromptGraphCompiler,
+} from "./prompt-graph/index.js";
+export {
+  compilePromptGraph,
+  PromptGraphCompileError,
+} from "./prompt-graph/index.js";
+
+// ── Node Graph Runtime ─────────────────────────────────
+export type {
+  CompiledNodeGraph,
+  NodeGraphBudgetOverrides,
+  NodeGraphRuntimeBudget,
+  NodeGraphCheckpointPolicy,
+  NodeGraphCompilerOptions,
+  NodeGraphDiagnostic,
+  NodeGraphDocument,
+  NodeGraphEdge,
+  NodeGraphEdgeEndpoint,
+  NodeGraphEdgeKind,
+  NodeGraphExposedGroupConfig,
+  NodeGraphFailurePolicy,
+  NodeGraphGroup,
+  NodeGraphNode,
+  NodeGraphNodeCategory,
+  NodeGraphNodeConfigFieldKnowledge,
+  NodeGraphNodeConfigFieldType,
+  NodeGraphNodeConfigKnowledge,
+  NodeGraphNodeExample,
+  NodeGraphNodeRunOutput,
+  NodeGraphNodeRunRecord,
+  NodeGraphNodeRunStatus,
+  NodeGraphNodeScope,
+  NodeGraphNodeTypeKnowledge,
+  NodeGraphNodeTypeKnowledgeDetail,
+  NodeGraphNodeTypeKnowledgeListItem,
+  NodeGraphNodeTypePortSummary,
+  NodeGraphPermissionManifest,
+  NodeGraphPhase,
+  NodeGraphPolicies,
+  NodeGraphPortDefinition,
+  NodeGraphPortType,
+  NodeGraphPreview,
+  NodeGraphPreviewPolicy,
+  NodeGraphRetryPolicy,
+  NodeGraphRunIntent,
+  NodeGraphRunRecord,
+  NodeGraphRunStatus,
+  NodeGraphSchemaVersion,
+  NodeTypeRegistryEntry,
+  NodeGraphConditionExpr,
+  NodeGraphConditionTraceEntry,
+  NodeGraphConditionValidationIssue,
+  NodeGraphConditionValidationOptions,
+  NodeGraphValueLiteral,
+  NodeGraphValueRef,
+  NodeGraphValueSource,
+  NodeGraphControlActivation,
+  NodeGraphControlActivationInput,
+  NodeGraphControlNodeType,
+  NodeGraphControlSignal,
+  NodeGraphOnSkipBehavior,
+  NodeGraphCheckpointEligibilityInput,
+  NodeGraphCheckpointReuseDecision,
+  NodeGraphCheckpointReuseInput,
+  NodeGraphCheckpointReuseReason,
+  NodeGraphCheckpointReuseResult,
+  NodeGraphMigrationResult,
+  NodeGraphSchemaMigrationDiagnostic,
+  CompileNodeGraphOptions,
+  NodeGraphValidationOptions,
+  NodeGraphValidationResult,
+  AssetReference,
+  ExportNodeGraphPackageInput,
+  GraphImportDiagnostic,
+  GraphImportDiagnosticCode,
+  GraphImportResolution,
+  GraphImportResolutionAction,
+  GroupDependency,
+  MCPDependency,
+  NodeGraphPackage,
+  NodeGraphPackageCompatibility,
+  NodeGraphPackageDependencies,
+  NodeGraphPackageEnvironment,
+  NodeGraphPackageIntegrity,
+  NodeGraphPackageMetadata,
+  NodeGraphPackagePreflightResult,
+  NodeGraphPackageSecuritySummary,
+  NodeTypeDependency,
+  SessionStateDependency,
+  ToolPermissionRequirement,
+  NativePromptFloorStructure,
+  CompatPromptFloorStructure,
+} from "./node-graph/index.js";
+export {
+  NODE_GRAPH_AGENT_SOURCES,
+  readNodeGraphPresetRef,
+  readNodeGraphSubgraphRef,
+  resolveNodeGraphAgentSource,
+  type NodeGraphAgentSource,
+  type NodeGraphPresetRef,
+  type NodeGraphSubgraphRef,
+} from "./node-graph/index.js";
+export {
+  DEFAULT_NODE_GRAPH_RUNTIME_BUDGET,
+  DEFAULT_NODE_GRAPH_SYNC_PREVIEW_BUDGET,
+  countNodeGraphNestedAgentJobs,
+  countNodeGraphTemporaryConversations,
+  countRuntimeNodes,
+  resolveNodeGraphBudget,
+  summarizeNodeGraphBudgetUsage,
+  type NodeGraphBudgetUsageSummary,
+} from "./node-graph/index.js";
+export {
+  buildNativePromptFloorStructure,
+  buildNativePromptFloorTemplate,
+  NATIVE_PROMPT_FLOOR_TEMPLATE_ID,
+  NATIVE_PROMPT_FLOOR_TEMPLATE_VERSION,
+  buildCompatPromptFloorStructure,
+  buildCompatPromptFloorTemplate,
+  COMPAT_PROMPT_FLOOR_TEMPLATE_ID,
+  COMPAT_PROMPT_FLOOR_TEMPLATE_VERSION,
+  BUILTIN_ADVISOR_SUBGRAPH_VERSION,
+  DIRECTOR_ADVISOR_SUBGRAPH_ID,
+  CONTINUITY_VERIFIER_SUBGRAPH_ID,
+  PLAYER_AGENCY_VERIFIER_SUBGRAPH_ID,
+  MEMORY_RETRIEVE_SUBGRAPH_ID,
+  buildDirectorAdvisorSubgraph,
+  buildContinuityVerifierSubgraph,
+  buildPlayerAgencyVerifierSubgraph,
+  buildMemoryRetrieveSubgraph,
+  listBuiltinAdvisorSubgraphs,
+  BUILTIN_ADVISOR_SUBGRAPH_IDS,
+  isBuiltinAdvisorSubgraphId,
+  getBuiltinAdvisorSubgraphById,
+  NATIVE_PROMPT_FLOOR_SUBGRAPH_REF_TEMPLATE_ID,
+  buildNativePromptFloorTemplateWithAdvisorRefs,
+  NODE_GRAPH_BUILTIN_NODE_TYPES,
+  NODE_GRAPH_CHECKPOINT_POLICIES,
+  NODE_GRAPH_CONTROL_NODE_TYPES,
+  NODE_GRAPH_CONTROL_OUTPUT_PORTS,
+  NODE_GRAPH_NODE_CATEGORIES,
+  NODE_GRAPH_NODE_CATEGORY_LABELS,
+  NODE_GRAPH_NODE_SCOPES,
+  NODE_GRAPH_ON_SKIP_BEHAVIORS,
+  NODE_GRAPH_PHASES,
+  NODE_GRAPH_PORT_TYPES,
+  NODE_GRAPH_SCHEMA_VERSION,
+  NODE_GRAPH_SCHEMA_VERSION_V2,
+  NODE_GRAPH_SUPPORTED_SCHEMA_VERSIONS,
+  NODE_GRAPH_VALUE_SOURCES,
+  DEFAULT_NODE_GRAPH_ON_SKIP,
+  NodeGraphCompileError,
+  NodeTypeRegistry,
+  classifyNodeGraphCheckpointReuse,
+  collectNodeGraphConditionValueRefs,
+  compileNodeGraph,
+  computeNodeGraphControlSignal,
+  createDefaultNodeTypeRegistry,
+  createNodeGraphDiagnostic,
+  describeNodeTypeKnowledge,
+  describeNodeTypeKnowledgeFromEntry,
+  detectNodeGraphSchemaMigration,
+  evaluateNodeGraphCondition,
+  evaluateNodeGraphConditionWithTrace,
+  formatNodeGraphDiagnostics,
+  hasNodeGraphErrors,
+  isNodeFloorCheckpointEligible,
+  isNodeGraphControlEdge,
+  isNodeGraphControlNodeType,
+  isNodeGraphPreResponsePhase,
+  listNodeTypeKnowledge,
+  getNodeTypeCategoryLabel,
+  migrateNodeGraphDocumentToV2,
+  nodeGraphControlOutputPorts,
+  nodeGraphDocumentSchemaVersion,
+  nodeGraphEdgeKind,
+  resolveNodeGraphControlActivation,
+  validateNodeGraph,
+  validateNodeGraphConditionExpr,
+  GRAPH_IMPORT_DIAGNOSTIC_CODES,
+  NODE_GRAPH_CRITICAL_NODE_TYPES,
+  NODE_GRAPH_DEGRADABLE_NODE_TYPES,
+  NODE_GRAPH_NODE_TYPE_CAPABILITIES,
+  NODE_GRAPH_PACKAGE_GRAPH_API_VERSION,
+  NODE_GRAPH_PACKAGE_KIND,
+  NODE_GRAPH_PACKAGE_PLATFORM_VERSION,
+  NODE_GRAPH_PACKAGE_SCHEMA_VERSION,
+  NODE_GRAPH_PLATFORM_CAPABILITIES,
+  buildNodeGraphPackageSecuritySummary,
+  collectAssetReferences,
+  collectGroupDependencies,
+  collectMcpServers,
+  collectNodeGraphPackageDependencies,
+  collectNodeGraphPackagePermissions,
+  collectNodeTypeDependencies,
+  collectSessionStateNamespaces,
+  computeNodeGraphPackageContentHash,
+  deriveNodeGraphRequiredCapabilities,
+  exportNodeGraphPackage,
+  NodeGraphPackageParseError,
+  parseNodeGraphPackage,
+  preflightNodeGraphPackage,
+  findNodeGraphPersistentOutputNodeIds,
+  isNodeGraphPersistentOutputNodeType,
+  NODE_GRAPH_SUBGRAPH_PERSISTENT_OUTPUT_FORBIDDEN_CODE,
+} from "./node-graph/index.js";
+
+// ── LLM ───────────────────────────────────────────────
+export type {
+  ProviderType,
+  InstanceSlot,
+  ProviderConfig,
+  ModelConfig,
+  GenerationResponseFormat,
+  GenerationParams,
+  LLMRole,
+  LLMInstance,
+  LLMRequest,
+  TokenUsage,
+  LLMResponse,
+  StreamCallbacks,
+  LLMPort,
+  ProviderFactory,
+  LLMToolDefinition,
+  LLMToolSchemaDefinition,
+  LLMToolCall,
+  LLMStepResult,
+  LLMMessage,
+  PlainTextModelMessage,
+  StructuredModelMessage,
+  AssistantToolCallMessage,
+  ToolResultModelMessage,
+  ModelTextPart,
+  ModelToolCallPart,
+  ModelToolResultPart,
+  ModelToolResultOutput,
+} from "./llm/index.js";
+export { isPlainTextModelMessage } from "./llm/index.js";
+export {
+  ProviderRegistry,
+  ProviderNotFoundError,
+  ProviderInitError,
+} from "./llm/index.js";
+export {
+  LLMService,
+  LLMServiceError,
+  LLMTimeoutError,
+  LLMAbortError,
+} from "./llm/index.js";
+
+// ── Generation ────────────────────────────────────────
+export type {
+  GenerationInput,
+  GenerationOutput,
+  AssemblyInfo,
+  PipelineCallbacks,
+  SummaryExtractionResult,
+  SummaryExtractorOptions,
+} from "./generation/index.js";
+export { extractSummaries } from "./generation/index.js";
+export {
+  GenerationPipeline,
+  GenerationPipelineError,
+} from "./generation/index.js";
+
+// ── Memory ────────────────────────────────────────────
+export type {
+  MemoryItem,
+  MemoryEdge,
+  MemoryQuery,
+  MemoryConsolidationOutput,
+  MemoryFactAddOperation,
+  MemoryFactUpdateOperation,
+  MemoryFactDeprecateOperation,
+  MemoryOpenLoopAddOperation,
+  MemoryOpenLoopResolveOperation,
+  MemoryCompactionOutput,
+  MemoryIngestOutput,
+  MemoryInjectionOptions,
+  MemoryInjectionResult,
+  MemoryInjectionScopeResolutionDiagnostics,
+  MemoryInjectionScopeResolutionMode,
+  MemoryAccessOptions,
+  MemoryScopeContext,
+  MemoryScopeRef,
+  MemoryRuntimeMode,
+  MemoryProposalBatch,
+} from "./memory/index.js";
+export { MemoryStore } from "./memory/index.js";
+export { MemoryConsolidator } from "./memory/index.js";
+export { MemoryInjectionSelector } from "./memory/index.js";
+export { MemoryIngestProcessor } from "./memory/index.js";
+export {
+  MemoryCompactionPlanner,
+  MemoryCompactionProcessor,
+} from "./memory/index.js";
+export {
+  MemoryScopeResolver,
+  MemoryScopeResolutionError,
+  MemoryMutationApplier,
+  MemoryRevisionGuard,
+  MemoryRevisionConflictError,
+} from "./memory/index.js";
+export type {
+  MemoryInjectionStrategy,
+  MemoryScopeResolutionContext,
+  ResolvedMemoryScopeRef,
+  MemoryMutationStore,
+  MemoryMutationEvent,
+  MemoryMutationCounts,
+  MemorySummaryMutationResult,
+  MemoryRevisionRef,
+  MemoryRevisionSnapshot,
+} from "./memory/index.js";
+
+// ── Orchestration ─────────────────────────────────────
+export { isRoleToolProtocolRejection } from "./orchestration/role-tool-protocol-error.js";
+export {
+  TurnOrchestrator,
+  TurnError,
+  ToolReplayBlockedError,
+  UnsupportedToolModeError,
+} from "./orchestration/turn-orchestrator.js";
+export { Director } from "./orchestration/director.js";
+export { Verifier } from "./orchestration/verifier.js";
+export type {
+  TurnConfig,
+  VerifierFailStrategy,
+  ToolMode,
+  TurnInput,
+  TurnExecutionResult,
+  TurnOutput,
+  TurnRunObserver,
+  GraphAssistantAgentLoopConfig,
+  TurnPendingToolConfirmation,
+} from "./orchestration/types.js";
+export {
+  TextProtocolAgentLoop,
+  TextProtocolTransport,
+} from "./orchestration/text-protocol-agent-loop.js";
+export type {
+  GraphToolConfirmationDecision,
+  GraphToolConfirmationContext,
+  GraphToolConfirmationDecider,
+} from "./orchestration/text-protocol-agent-loop.js";
+export {
+  runAgentLoop,
+  projectAgentLoopMessagesToChat,
+  MAX_CONSECUTIVE_INVALID_STEPS,
+} from "./orchestration/agent-loop.js";
+export type {
+  ToolConfirmationDecision,
+  ToolConfirmationContext,
+  ToolConfirmationDecider,
+  NormalizedToolCall,
+  AgentLoopStepInput,
+  AgentLoopStepOutput,
+  AgentLoopGenerate,
+  AgentLoopStopReason,
+  AgentLoopPendingConfirmation,
+  AgentLoopResult,
+  AgentLoopRunInput,
+  AgentLoopTransport,
+  AgentLoopExecutedCall,
+  AgentLoopPriorRoundtrip,
+  AgentLoopPriorRoundtripCall,
+} from "./orchestration/agent-loop.js";
+export {
+  NativeFunctionCallAgentLoop,
+  NativeFunctionCallTransport,
+} from "./orchestration/native-function-call-agent-loop.js";
+export type {
+  DirectorInput,
+  DirectorResult,
+} from "./orchestration/director.js";
+export type {
+  VerifierInput,
+  VerifierResult,
+} from "./orchestration/verifier.js";
+
+// ── Tools ─────────────────────────────────────────────
+export { ToolRegistry } from "./tools/tool-registry.js";
+export { ToolExecutor } from "./tools/tool-executor.js";
+export { ROLE_MODEL_CAPABILITY_PROVIDER_ID } from "./tools/tool-executor.js";
+export {
+  ROLE_MODEL_CAPABILITIES_PROVIDER_ID,
+  ROLE_MODEL_CAPABILITY_NAMES,
+  RoleModelCapabilitiesToolProvider,
+  executeRoleModelCapability,
+} from "./tools/role-model-capability-executor.js";
+export type {
+  ExecuteRoleModelCapabilityInput,
+  RoleModelCapabilitiesToolProviderOptions,
+} from "./tools/role-model-capability-executor.js";
+export { BuiltinToolProvider } from "./tools/builtin-provider.js";
+export { PresetToolProvider } from "./tools/preset-provider.js";
+export { ToolMutationBuffer } from "./tools/tool-mutation-buffer.js";
+export {
+  TextProtocolToolCallParser,
+  TextProtocolToolListRenderer,
+  TextProtocolToolResultFormatter,
+  TEXT_PROTOCOL_TOOL_CALL_INSTRUCTIONS,
+  NATIVE_FUNCTION_CALL_TOOL_CALL_INSTRUCTIONS,
+  isModelToolResultEnvelope,
+  modelVisibleToolResult,
+  buildNativeToolNameMapping,
+  isValidNativeToolName,
+} from "./tools/transport/index.js";
+export type {
+  ModelToolResultEnvelope,
+  NativeToolNameMapping,
+} from "./tools/transport/index.js";
+export { applyStructuredTextHunks } from "./tools/text-edit/index.js";
+export type {
+  StructuredTextHunk,
+  TextHunkMatchKind,
+  TextHunkOutcome,
+  TextHunkApplyResult,
+} from "./tools/text-edit/index.js";
+export type {
+  ToolDefinition,
+  ToolSideEffectLevel,
+  ToolExecutionDeliveryMode,
+  ToolAsyncCapability,
+  ToolResultVisibility,
+  ToolParameterProperty,
+  ToolParameterSchema,
+  ToolAsyncReceipt,
+  RuntimeToolEnvelope,
+  PendingToolJobRequest,
+  RuntimeToolDispatchResult,
+  ToolCallResult,
+  StructuredToolExecutionOutcome,
+  ToolCallStatus,
+  ToolProvider,
+  BufferedToolVariableMutation,
+  ToolPermissions,
+  ToolProviderType,
+  ToolDenyReason,
+  ToolCallRecord,
+  ExecutedToolCallRecord,
+  ToolExecutionOpenRecord,
+  ToolExecutionFinishPatch,
+  ToolExecutionContext,
+  ToolExecutionStatus,
+  ToolExecutionCommitOutcome,
+  ToolExecutionLifecycleState,
+  ToolReplaySafety,
+  ToolProviderCompensationMode,
+  ToolReplaySafetyEvaluation,
+  ToolExecutionProviderType,
+  McpToolProviderConfig,
+  ParsedToolCall,
+  ToolCallParseDiagnostic,
+  ToolCallParseDiagnosticReason,
+  ToolCallParseInput,
+  ToolCallParseOutput,
+  ToolCallParseStats,
+  ToolCallTransport,
+  ToolCallTransportKind,
+  ToolCallTransportReasonCode,
+  ToolCallTransportSelection,
+  ToolListRenderInput,
+  ToolListRenderOutput,
+  ToolResultFormatInput,
+  ToolResultFormatOutput,
+} from "./tools/index.js";
+export type { PresetToolInput } from "./tools/preset-provider.js";
+export {
+  evaluateToolReplaySafety,
+  evaluateExecutedToolCallReplaySafety,
+  isAutoReplaySafe,
+  resolveToolProviderCompensationMode,
+} from "./tools/replay-safety.js";
+
+// ── Ports ─────────────────────────────────────────────
+export type { PromptSnapshotRepository } from "./ports/prompt-snapshot-repository.js";
+export type { ToolExecutionRepository } from "./ports/tool-execution-repository.js";
+
+// ── Debug (Debug Sink) ─────────────────────────────────
+export type {
+  DebugDomain,
+  DebugLevel,
+  DebugRecord,
+  DebugSink,
+} from "./debug/index.js";
+export {
+  configureDebugSink,
+  getDebugSink,
+  isDebugEnabled,
+  emitDebug,
+} from "./debug/index.js";
+
+export {
+  ModelCallPersistenceError,
+  findModelCallPersistenceError,
+  modelCallPersistenceDetails,
+  type ModelCallRecorder,
+} from "./llm/model-call-recorder.js";
+
+export type { ModelCallRecording } from "./llm/model-call-recorder.js";

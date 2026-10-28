@@ -1,0 +1,17 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+ RUN  v2.1.9 /srv/tavern/TavernHeadless-remove-preview-credentials
+
+ ✓ scripts/native-card-conversion/formal.test.ts (10 tests) 7645ms
+   ✓ verifyFormalPackage > imports through the formal API and compares every saved file byte-for-byte 1923ms
+   ✓ verifyFormalPackage > saves API and shared-schema diagnostics when package validation fails 648ms
+   ✓ verifyFormalPackage > records ZIP reader and API errors for an invalid archive 590ms
+   ✓ verifyFormalPackage > preserves the confirmation response and does not attempt readback after confirmation fails 646ms
+   ✓ verifyFormalPackage > marks mismatched saved bytes as failed and records the changed GET response 1484ms
+   ✓ verifyFormalPackage > continues file checks when the readback endpoint returns an error 1690ms
+   ✓ verifyFormalPackage > returns the confirmation response when saving formal evidence fails 642ms
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  14:50:35
+   Duration  11.78s (transform 2.41s, setup 0ms, collect 3.84s, tests 7.64s, environment 0ms, prepare 44ms)

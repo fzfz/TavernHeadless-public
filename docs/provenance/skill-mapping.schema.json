@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Upstream to local skill mapping",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contractVersion", "checkedAt", "upstreamCommit", "upstreamSkillSnapshots", "mappings"],
+  "properties": {
+    "$schema": { "const": "skill-mapping.schema.json" },
+    "contractVersion": { "const": 1 },
+    "checkedAt": { "type": "string", "format": "date" },
+    "upstreamCommit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "upstreamSkillSnapshots": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "mappings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "skillId", "sourcePointer", "constraint", "handling", "localTargets"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "skillId": { "enum": ["tavern-client-integration", "tavern-project-contributing"] },
+          "sourcePointer": { "type": "string", "pattern": "^/" },
+          "constraint": { "type": "string", "minLength": 1 },
+          "handling": { "enum": ["preserved", "adapted", "version-gated", "moved-to-project-doc"] },
+          "localTargets": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["path", "pointer", "purpose"],
+              "properties": {
+                "path": { "type": "string", "minLength": 1 },
+                "pointer": { "type": "string", "minLength": 1 },
+                "purpose": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

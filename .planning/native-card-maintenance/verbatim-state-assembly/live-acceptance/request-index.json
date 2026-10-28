@@ -1,0 +1,481 @@
+{
+  "date": "2026-10-05",
+  "requestCount": 21,
+  "models": [
+    "dots-studio/dots-3-note-preview:free",
+    "apodex/apodex-1.1-mini:free",
+    "nvidia/nemotron-3-super-120b-a12b:free",
+    "qwen/qwen3.8-27b:free",
+    "google/gemma-4-31b-it:free",
+    "liquid/lfm-2.5-2.6b:free"
+  ],
+  "bodyRequests": 9,
+  "stateRequests": 12,
+  "nonemptyBodyResponses": 5,
+  "stateCommits": 0,
+  "allModelsZeroPriced": true,
+  "billing": {
+    "generationsFound": 6,
+    "allFoundGenerationsZeroCost": true,
+    "usageBefore": 0.040084413,
+    "usageAfter": 0.040084413,
+    "usageChange": 0
+  },
+  "requests": [
+    {
+      "number": 1,
+      "model": "dots-studio/dots-3-note-preview:free",
+      "endpoint": "https://openrouter.ai/api/v1/responses",
+      "phase": "body",
+      "status": 400,
+      "evidence": "preflight-responses-400-model-call-records.json"
+    },
+    {
+      "number": 2,
+      "model": "dots-studio/dots-3-note-preview:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "body",
+      "status": 400,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Provider returned error",
+        "code": 400,
+        "metadata": {
+          "raw": "{\"code\":400,\"msg\":\"bad request\",\"request_id\":\"3ff6530f-0fa8-47f4-a03b-3d7f7312f6f3\"}",
+          "provider_name": "AtlasCloud",
+          "is_byok": false
+        }
+      },
+      "request": "02-linqian-primary-state-update-r1-body-provider-request.json",
+      "response": "02-linqian-primary-state-update-r1-body-provider-response.json"
+    },
+    {
+      "number": 3,
+      "model": "dots-studio/dots-3-note-preview:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "body",
+      "status": 400,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Provider returned error",
+        "code": 400,
+        "metadata": {
+          "raw": "{\"code\":400,\"msg\":\"bad request\",\"request_id\":\"ff964930-5fc0-43fc-94fa-6806c66abe7f\"}",
+          "provider_name": "AtlasCloud",
+          "is_byok": false
+        }
+      },
+      "request": "03-linqian-primary-state-update-r1-body-provider-request.json",
+      "response": "03-linqian-primary-state-update-r1-body-provider-response.json"
+    },
+    {
+      "number": 4,
+      "model": "apodex/apodex-1.1-mini:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "body",
+      "status": 200,
+      "contentCharacters": 7878,
+      "reasoningCharacters": 731,
+      "finishReason": "stop",
+      "request": "04-linqian-primary-state-update-r1-body-provider-request.json",
+      "response": "04-linqian-primary-state-update-r1-body-provider-response.json"
+    },
+    {
+      "number": 5,
+      "model": "apodex/apodex-1.1-mini:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "state",
+      "status": 400,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Provider returned error",
+        "code": 400,
+        "metadata": {
+          "raw": "{\"code\":400,\"reason\":\"INVALID_REQUEST_BODY\",\"message\":\"Model 'apodex/apodex-1.1-mini' does not support 'json_schema' response format. Supported formats: json_object.\",\"metadata\":{}}",
+          "provider_name": "Novita",
+          "is_byok": false
+        }
+      },
+      "request": "05-linqian-primary-state-update-r1-state-provider-request.json",
+      "response": "05-linqian-primary-state-update-r1-state-provider-response.json"
+    },
+    {
+      "number": 6,
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "body",
+      "status": 200,
+      "contentCharacters": 0,
+      "reasoningCharacters": 20405,
+      "finishReason": "length",
+      "request": "06-linqian-primary-state-update-r1-body-provider-request.json",
+      "response": "06-linqian-primary-state-update-r1-body-provider-response.json"
+    },
+    {
+      "number": 7,
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "state",
+      "status": 200,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Upstream error from Nvidia: ValueError: Grammar error: Unimplemented keys: [\"uniqueItems\"]",
+        "code": 400,
+        "metadata": {
+          "error_type": "invalid_request"
+        }
+      },
+      "request": "07-linqian-primary-state-update-r1-state-provider-request.json",
+      "response": "07-linqian-primary-state-update-r1-state-provider-response.json"
+    },
+    {
+      "number": 8,
+      "model": "qwen/qwen3.8-27b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "body",
+      "status": 200,
+      "contentCharacters": 3353,
+      "reasoningCharacters": 0,
+      "finishReason": "stop",
+      "request": "08-linqian-primary-state-update-r1-body-provider-request.json",
+      "response": "08-linqian-primary-state-update-r1-body-provider-response.json"
+    },
+    {
+      "number": 9,
+      "model": "qwen/qwen3.8-27b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "state",
+      "status": 429,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Provider returned error",
+        "code": 429,
+        "metadata": {
+          "raw": "qwen/qwen3.8-27b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations",
+          "provider_name": "ModelRun",
+          "is_byok": false,
+          "limit_source": "upstream_provider_shared_pool",
+          "remedy_hint": "Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"
+        }
+      },
+      "request": "09-linqian-primary-state-update-r1-state-provider-request.json",
+      "response": "09-linqian-primary-state-update-r1-state-provider-response.json"
+    },
+    {
+      "number": 10,
+      "model": "qwen/qwen3.8-27b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "body",
+      "status": 200,
+      "contentCharacters": 3131,
+      "reasoningCharacters": 0,
+      "finishReason": "stop",
+      "request": "10-gushengman-primary-state-update-r1-body-provider-request.json",
+      "response": "10-gushengman-primary-state-update-r1-body-provider-response.json"
+    },
+    {
+      "number": 11,
+      "model": "qwen/qwen3.8-27b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "state",
+      "status": 429,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Provider returned error",
+        "code": 429,
+        "metadata": {
+          "raw": "qwen/qwen3.8-27b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations",
+          "provider_name": "ModelRun",
+          "is_byok": false,
+          "limit_source": "upstream_provider_shared_pool",
+          "remedy_hint": "Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"
+        }
+      },
+      "request": "11-gushengman-primary-state-update-r1-state-provider-request.json",
+      "response": "11-gushengman-primary-state-update-r1-state-provider-response.json"
+    },
+    {
+      "number": 12,
+      "model": "qwen/qwen3.8-27b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "body",
+      "status": 200,
+      "contentCharacters": 4278,
+      "reasoningCharacters": 0,
+      "finishReason": "stop",
+      "request": "12-linqian-backup-mvu-state-update-r1-body-provider-request.json",
+      "response": "12-linqian-backup-mvu-state-update-r1-body-provider-response.json"
+    },
+    {
+      "number": 13,
+      "model": "qwen/qwen3.8-27b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "state",
+      "status": 400,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Provider returned error",
+        "code": 400,
+        "metadata": {
+          "raw": "{\"error\":{\"code\":\"400\",\"message\":\"stream error: rpc error: code = InvalidArgument desc = grammar does not compile: xgrammar StructuralTag compilation failed: [14:11:26] external/+http_archive+xgrammar/cpp/json_schema_converter.cc:6201: unsupported schema keyword: oneOf with overlapping or non-provably-disjoint branches\\n\",\"type\":\"invalid_request_error\"}}\n",
+          "provider_name": "ModelRun",
+          "is_byok": false,
+          "provider_error_code": "400"
+        }
+      },
+      "request": "13-linqian-backup-mvu-state-update-r1-state-provider-request.json",
+      "response": "13-linqian-backup-mvu-state-update-r1-state-provider-response.json"
+    },
+    {
+      "number": 14,
+      "model": "qwen/qwen3.8-27b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "body",
+      "status": 200,
+      "contentCharacters": 1952,
+      "reasoningCharacters": 0,
+      "finishReason": "stop",
+      "request": "14-gushengman-backup-mvu-state-update-r1-body-provider-request.json",
+      "response": "14-gushengman-backup-mvu-state-update-r1-body-provider-response.json"
+    },
+    {
+      "number": 15,
+      "model": "qwen/qwen3.8-27b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "state",
+      "status": 429,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Provider returned error",
+        "code": 429,
+        "metadata": {
+          "raw": "qwen/qwen3.8-27b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations",
+          "provider_name": "ModelRun",
+          "is_byok": false,
+          "limit_source": "upstream_provider_shared_pool",
+          "remedy_hint": "Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"
+        }
+      },
+      "request": "15-gushengman-backup-mvu-state-update-r1-state-provider-request.json",
+      "response": "15-gushengman-backup-mvu-state-update-r1-state-provider-response.json"
+    },
+    {
+      "number": 16,
+      "model": "google/gemma-4-31b-it:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "state",
+      "status": 429,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Provider returned error",
+        "code": 429,
+        "metadata": {
+          "raw": "google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations",
+          "provider_name": "Google AI Studio",
+          "is_byok": false,
+          "provider_error_code": "429",
+          "limit_source": "upstream_provider_shared_pool",
+          "remedy_hint": "Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"
+        }
+      },
+      "request": "16-linqian-primary-state-update-r2-state-provider-request.json",
+      "response": "16-linqian-primary-state-update-r2-state-provider-response.json"
+    },
+    {
+      "number": 17,
+      "model": "google/gemma-4-31b-it:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "state",
+      "status": 429,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Provider returned error",
+        "code": 429,
+        "metadata": {
+          "raw": "google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations",
+          "provider_name": "Google AI Studio",
+          "is_byok": false,
+          "provider_error_code": "429",
+          "limit_source": "upstream_provider_shared_pool",
+          "remedy_hint": "Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"
+        }
+      },
+      "request": "17-gushengman-primary-state-update-r2-state-provider-request.json",
+      "response": "17-gushengman-primary-state-update-r2-state-provider-response.json"
+    },
+    {
+      "number": 18,
+      "model": "google/gemma-4-31b-it:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "state",
+      "status": 429,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Provider returned error",
+        "code": 429,
+        "metadata": {
+          "raw": "google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations",
+          "provider_name": "Google AI Studio",
+          "is_byok": false,
+          "provider_error_code": "429",
+          "limit_source": "upstream_provider_shared_pool",
+          "remedy_hint": "Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"
+        }
+      },
+      "request": "18-linqian-backup-mvu-state-update-r2-state-provider-request.json",
+      "response": "18-linqian-backup-mvu-state-update-r2-state-provider-response.json"
+    },
+    {
+      "number": 19,
+      "model": "google/gemma-4-31b-it:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "state",
+      "status": 429,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Provider returned error",
+        "code": 429,
+        "metadata": {
+          "raw": "google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations",
+          "provider_name": "Google AI Studio",
+          "is_byok": false,
+          "provider_error_code": "429",
+          "limit_source": "upstream_provider_shared_pool",
+          "remedy_hint": "Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"
+        }
+      },
+      "request": "19-gushengman-backup-mvu-state-update-r2-state-provider-request.json",
+      "response": "19-gushengman-backup-mvu-state-update-r2-state-provider-response.json"
+    },
+    {
+      "number": 20,
+      "model": "liquid/lfm-2.5-2.6b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "state",
+      "status": 400,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Reasoning is mandatory for this endpoint and cannot be disabled.",
+        "code": 400,
+        "metadata": {
+          "provider_name": null
+        }
+      },
+      "request": "20-gushengman-primary-state-update-r3-state-provider-request.json",
+      "response": "20-gushengman-primary-state-update-r3-state-provider-response.json"
+    },
+    {
+      "number": 21,
+      "model": "liquid/lfm-2.5-2.6b:free",
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+      "phase": "state",
+      "status": 400,
+      "contentCharacters": 0,
+      "reasoningCharacters": 0,
+      "error": {
+        "message": "Provider returned error",
+        "code": 400,
+        "metadata": {
+          "raw": "{\"error\":{\"message\":\"The `uniqueItems` JSON Schema keyword is not supported.\",\"type\":\"invalid_request_error\",\"param\":\"response_format.json_schema.schema.properties.evidenceMessageIds.uniqueItems\",\"code\":null}}",
+          "provider_name": "Liquid",
+          "is_byok": false
+        }
+      },
+      "request": "21-gushengman-primary-state-update-r4-state-provider-request.json",
+      "response": "21-gushengman-primary-state-update-r4-state-provider-response.json"
+    }
+  ]
+}

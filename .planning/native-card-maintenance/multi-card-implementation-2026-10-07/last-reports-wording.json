@@ -1,0 +1,82 @@
+{
+  "status": "needs_changes",
+  "review_type": "独立逐行文字审计",
+  "scope": [
+    ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/acceptance-report.md",
+    ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/next-improvement-plan.md",
+    ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/progress.md",
+    ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/task_plan.md",
+    "docs/character-authoring/script-api.md 第1章",
+    ".agents/skills/native-card-conversion/references/api/script-api.md 第1章"
+  ],
+  "findings": [
+    {
+      "id": "W1",
+      "file": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/progress.md",
+      "lines": [
+        33
+      ],
+      "problem": "“主代理完成……再……提交”没有明确表示已完成状态还是待执行步骤；同组 task_plan.md 第40、44行将最终文字审计和提交记为待完成。恢复上下文的读者无法据此确定下一步。",
+      "minimal_change": "改为“下一步，主代理完成最新报告、修复计划及 API 文字的独立语义审计，再核对提交文件清单并提交本次修改。”"
+    },
+    {
+      "id": "W2",
+      "file": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/task_plan.md",
+      "lines": [
+        20,
+        21
+      ],
+      "problem": "两个问题均以“需要”开头，未明确承担修复和验证工作的主体。",
+      "minimal_change": "第20行改为“主代理需要修正规则遗漏、回复失败分支和缺少确定性初值覆写的问题。”；第21行改为“主代理需要使用不同结构的卡验证转换 Skill 的通用性，并区分转换错误、验收输入错误和真实模型或供应商错误。”"
+    },
+    {
+      "id": "W3",
+      "file": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/next-improvement-plan.md",
+      "lines": [
+        134
+      ],
+      "problem": "“独立语义审计通过修改后的每份文字文档”将审计过程写成通过文档的主体，未清晰表达由谁检查以及通过的结果。",
+      "minimal_change": "改为“独立审计队员逐行审查修改后的每份文字文档，所有文档的审计结论均为通过。”"
+    },
+    {
+      "id": "W4",
+      "file": ".planning/native-card-maintenance/multi-card-implementation-2026-10-07/acceptance-report.md",
+      "lines": [
+        37
+      ],
+      "problem": "末句“下一次修改应……”属于后续实施指令，混入“与上一版对照”节；第7章已引导读者按同一修复计划继续处理。删除该句不影响对照结论或后续执行。",
+      "minimal_change": "删除“下一次修改应按 `next-improvement-plan.md` 修正规则写入和模块接口读取顺序，再测量修正次数。”"
+    },
+    {
+      "id": "W5",
+      "files": [
+        "docs/character-authoring/script-api.md",
+        ".agents/skills/native-card-conversion/references/api/script-api.md"
+      ],
+      "lines": [
+        90
+      ],
+      "problem": "“角色包的 script”没有明确字段所属文件；第82行已经分别引入根清单和前端清单，读者可能将 script 理解为根清单字段。",
+      "minimal_change": "将首句改为“前端清单的 `script` 字段指向导出 `mount` 的入口文件。”"
+    },
+    {
+      "id": "W6",
+      "files": [
+        "docs/character-authoring/script-api.md",
+        ".agents/skills/native-card-conversion/references/api/script-api.md"
+      ],
+      "lines": [
+        82,
+        90
+      ],
+      "problem": "第82行和第90行重复解释入口脚本导出 mount；两段末尾又以不同名称指向同一模板契约。重复说明增加入口阅读负担。",
+      "minimal_change": "删除第82行的“入口脚本导出下例的 `mount`”；保留第90行的字段与调用时序说明。删除第90行末尾“包内文件、资源声明与加载方式见[模板与入口](script-template-api.md)”，由第82行统一提供模板契约入口。"
+    }
+  ],
+  "passed_checks": [
+    "六处目标均有文档用途与读取时机 YAML 头。",
+    "目标文档使用 Headings 表达层级，并以有序列表组织同层内容。",
+    "后续修复计划明确区分计划执行者修改 Skill 的工作和转换 Agent 的运行工作。",
+    "未发现需要读取其他参考资料才能判断的文字问题被当作已确认事实报告。"
+  ]
+}

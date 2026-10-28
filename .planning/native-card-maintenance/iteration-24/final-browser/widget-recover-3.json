@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-06T11:09:46.988Z",
+  "expression": "(async()=>{const s=Array.from(document.querySelectorAll('*')).find(e=>e.shadowRoot).shadowRoot;const c=s.querySelector('#system-chat').firstElementChild.shadowRoot;c.querySelector('.retry-response').click();await new Promise(r=>setTimeout(r,2400));return {error:c.querySelector('.error').textContent,retryHidden:c.querySelector('.retry-response').hidden,sendDisabled:c.querySelector('.send').disabled,feedback:s.querySelector('[data-option-feedback]').textContent,options:[0,1,2,3].map(i=>s.querySelector('#option-'+i).disabled),historyTail:c.querySelector('.history').innerText.slice(-350)}})()",
+  "result": {
+    "error": "",
+    "retryHidden": true,
+    "sendDisabled": false,
+    "feedback": "",
+    "options": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "historyTail": "裴修远\n\n元指令:细腻演绎5分钟内林茜的剧情。\n\n裴修远仍握着窗沿，没有进屋，也没有出声。屋内的两人继续留在原处。\n\n裴修远\n\n元指令:细腻演绎5分钟内林茜的剧情。\n\n裴修远\n\n元指令:细腻演绎5分钟内林茜的剧情。\n\n裴修远仍握着窗沿，没有进屋，也没有出声。屋内的两人继续留在原处。"
+  },
+  "errors": []
+}

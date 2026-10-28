@@ -1,0 +1,183 @@
+{
+  "$schema": "./environments.schema.json",
+  "version": 1,
+  "defaults": {
+    "listenHost": "127.0.0.1",
+    "gatewayListenHost": "0.0.0.0",
+    "hostAliases": ["127.0.0.1", "localhost", "tavern.local"],
+    "timeouts": {
+      "startSeconds": 60,
+      "stopSeconds": 30,
+      "proxySeconds": 3600,
+      "pollMs": 100,
+      "probeSeconds": 5
+    },
+    "probes": {
+      "api": "/health",
+      "frontend": "/"
+    },
+    "files": {
+      "processIdentity": "processes.json",
+      "archive": "release.tar.gz",
+      "manifest": "manifest.json"
+    },
+    "layout": {
+      "config": "config",
+      "applicationEnv": "config/application.env",
+      "secretsEnv": "config/secrets.env",
+      "publicConfig": "config/public",
+      "nginxConfig": "config/nginx/nginx.conf",
+      "data": "data",
+      "releases": "releases",
+      "current": "current",
+      "buildWork": "build/work",
+      "artifacts": "build/artifacts",
+      "run": "run",
+      "processLogs": "logs/processes",
+      "operations": "logs/operations",
+      "backups": "backups"
+    },
+    "frontends": ["web", "user-web", "studio"],
+    "hostVariables": [
+      "PATH",
+      "HOME",
+      "TMPDIR",
+      "LANG",
+      "LC_ALL",
+      "TZ",
+      "SystemRoot"
+    ],
+    "managedVariables": [
+      "PORT",
+      "HOST",
+      "USER_SESSION_COOKIE_NAME",
+      "USER_SESSION_COOKIE_SECURE",
+      "NODE_ENV",
+      "DATA_DIR",
+      "DATABASE_URL",
+      "DB_PATH",
+      "CHAT_TRANSFER_ARTIFACT_DIR",
+      "BACKUP_ARTIFACT_DIR",
+      "TAVERN_LOG_DIR",
+      "TAVERN_ENVIRONMENT",
+      "NODE_OPTIONS",
+      "NODE_PATH"
+    ],
+    "secretVariables": [
+      "AUTH_API_KEYS",
+      "AUTH_JWT_SECRET",
+      "AUTH_API_KEY_ACCOUNTS",
+      "APP_SECRETS_MASTER_KEY",
+      "LLM_API_KEY"
+    ],
+    "retainedReleases": 3
+  },
+  "tools": {
+    "node": {
+      "path": "node",
+      "versionSource": "engines.node"
+    },
+    "pnpm": {
+      "path": "pnpm",
+      "versionSource": "packageManager"
+    },
+    "nginx": {
+      "path": "/opt/homebrew/bin/nginx",
+      "version": "1.31.8"
+    },
+    "openssl": {
+      "version": "4.0.3"
+    },
+    "pcre2": {
+      "version": "10.49"
+    },
+    "caCertificates": {
+      "version": "2026-10-20"
+    }
+  },
+  "environments": {
+    "dev": {
+      "root": "/srv/tavern/TavernHeadless",
+      "mode": "development",
+      "hostname": "192.0.2.31",
+      "processPrefix": "tavern:dev",
+      "sessionCookieName": "tavern_dev_session",
+      "sessionCookieSecure": false,
+      "ports": {
+        "api": 4010,
+        "frontends": {
+          "web": {
+            "http": 4000,
+            "dev": 4020
+          },
+          "user-web": {
+            "http": 4001,
+            "dev": 4021
+          },
+          "studio": {
+            "http": 4002,
+            "dev": 4022
+          }
+        }
+      }
+    },
+    "staging": {
+      "root": "/srv/tavern/TavernHeadless-staging",
+      "mode": "release",
+      "hostname": "192.0.2.31",
+      "processPrefix": "tavern:staging",
+      "sessionCookieName": "tavern_staging_session",
+      "sessionCookieSecure": false,
+      "ports": {
+        "api": 4110,
+        "frontends": {
+          "web": {
+            "http": 4100,
+            "dev": 4120
+          },
+          "user-web": {
+            "http": 4101,
+            "dev": 4121
+          },
+          "studio": {
+            "http": 4102,
+            "dev": 4122
+          }
+        }
+      }
+    },
+    "prod": {
+      "root": "/srv/tavern/TavernHeadless-prod",
+      "mode": "release",
+      "hostname": "192.0.2.31",
+      "processPrefix": "tavern:prod",
+      "sessionCookieName": "tavern_prod_session",
+      "sessionCookieSecure": false,
+      "ports": {
+        "api": 4210,
+        "frontends": {
+          "web": {
+            "http": 4200,
+            "dev": 4220
+          },
+          "user-web": {
+            "http": 4201,
+            "dev": 4221
+          },
+          "studio": {
+            "http": 4202,
+            "dev": 4222
+          }
+        }
+      }
+    }
+  },
+  "verification": {
+    "rootNames": {
+      "dev": "dev",
+      "staging": "staging",
+      "prod": "prod"
+    },
+    "portOffset": 20000
+  }
+}

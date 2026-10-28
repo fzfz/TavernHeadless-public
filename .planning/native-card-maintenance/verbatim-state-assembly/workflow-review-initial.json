@@ -1,0 +1,33 @@
+{
+  "standards": {
+    "agent": "/root/workflow_semantic_audit",
+    "findings": [
+      {
+        "issue": "同层指令未用有序列表",
+        "resolution": "角色字段、世界书和扩展参考的同层说明与指令改为有序列表；保留字段表。"
+      },
+      {
+        "issue": "extensions.world 重复定义",
+        "resolution": "世界书参考只引用角色字段参考第3章。"
+      },
+      {
+        "issue": "未决记录引用错误章节",
+        "resolution": "引用转换记录第2章的行为映射。"
+      }
+    ]
+  },
+  "spec": {
+    "agent": "/root/workflow_spec_review",
+    "findings": [
+      {
+        "issue": "页面验收先于 ZIP 生成",
+        "resolution": "第4.1节先完成校验、打包与正式导入，第4.2节使用已生成 ZIP 执行行为验收。"
+      },
+      {
+        "issue": "工具文档混入验收与修正流程",
+        "resolution": "工具文档保留调用条件、命令作用和结果位置；诊断修正步骤移入入口第4.1节。"
+      }
+    ]
+  },
+  "newConversionTests": 0
+}

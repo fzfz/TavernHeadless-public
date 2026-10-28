@@ -1,0 +1,501 @@
+{
+  "sessionId": "SJDBVVnr2IhZBigVCMAfa",
+  "persona": {
+    "name": "赵闻溪",
+    "description": "赵闻溪，二十四岁，女性，夜间档案整理员，细心谨慎。"
+  },
+  "deliveryMode": "custom",
+  "dryRunMessages": [
+    {
+      "role": "system",
+      "content": "写作者必须采用第三人称叙述，使用人物姓名区分动作主体，直接引语保留说话者自身的人称。承接已经发生的开场和历史，不提前告知角色尚未获得的信息。\n\n你在雾港经营一家深夜邮局。来往旅人留下信件与秘密；值夜的向导沈知夏会陪你追查一封没有收件人的信。\n\n沈知夏，29 岁，雾港的夜间向导。说话温和直接，擅长观察街道的细微变化。她会说明自己知道的事情，也会坦承不确定之处。\n\n秋夜，邮局即将关门。一封潮湿的信被塞进门缝，信封上只有灯塔的素描。\n\n赵闻溪，二十四岁，女性，夜间档案整理员，细心谨慎。\n\n当前地点：夜间邮局。\n\n旧灯塔位于北岬。通往灯塔的石阶在涨潮时会被海水淹没。\n\n守灯人每晚会到码头买一份报纸。他认识沈知夏，但从不主动谈起灯塔的旧事。"
+    },
+    {
+      "role": "assistant",
+      "content": "钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”"
+    },
+    {
+      "role": "user",
+      "content": "“我先检查信封上的邮戳。”"
+    }
+  ],
+  "prompt_snapshot": {
+    "preset_id": "5KR_HLlAMWK07xizdOBmT",
+    "preset_updated_at": 1792488036789,
+    "preset_version": 1,
+    "preset_version_id": "2FwucZDdwCy3S8QJfXo3H",
+    "preset_content_hash": "sha256:f119562e560ef751a4935c9c2a52601ceeaa319609268c08ddf3c29cbc53b1d6",
+    "worldbook_id": null,
+    "worldbook_updated_at": null,
+    "worldbook_version": null,
+    "worldbook_version_id": null,
+    "worldbook_content_hash": null,
+    "regex_profile_id": null,
+    "regex_profile_updated_at": null,
+    "regex_profile_version": null,
+    "regex_profile_version_id": null,
+    "regex_profile_content_hash": null,
+    "character_id": "7kfzc0UdPtNN4mjQlWcxs",
+    "character_version_id": "9f2Q7gkox1ZH5QVV7hmTB",
+    "character_imported_format": null,
+    "character_content_hash": "09210ca757cfa983372bf2f513ea2e1a630c926df4f83e107a5c4b076ec39701",
+    "worldbook_activated_entry_uids": [
+      110,
+      120,
+      110
+    ],
+    "worldbook_activated_entries": [
+      {
+        "uid": 110,
+        "activation_key": "worldbook:470M9bne_v1PUpP_0ykCh:1:entry:110",
+        "source": {
+          "kind": "session_worldbook",
+          "worldbook_id": "470M9bne_v1PUpP_0ykCh",
+          "worldbook_name": "雾港地理",
+          "asset_scope_id": "worldbook:470M9bne_v1PUpP_0ykCh:1"
+        },
+        "insertion": {
+          "position": "before"
+        }
+      },
+      {
+        "uid": 120,
+        "activation_key": "worldbook:470M9bne_v1PUpP_0ykCh:1:entry:120",
+        "source": {
+          "kind": "session_worldbook",
+          "worldbook_id": "470M9bne_v1PUpP_0ykCh",
+          "worldbook_name": "雾港地理",
+          "asset_scope_id": "worldbook:470M9bne_v1PUpP_0ykCh:1"
+        },
+        "insertion": {
+          "position": "before"
+        }
+      },
+      {
+        "uid": 110,
+        "activation_key": "worldbook:5ere6chUxO3NLqLcRvN1j:1:entry:110",
+        "source": {
+          "kind": "session_worldbook",
+          "worldbook_id": "5ere6chUxO3NLqLcRvN1j",
+          "worldbook_name": "雾港人物",
+          "asset_scope_id": "worldbook:5ere6chUxO3NLqLcRvN1j:1"
+        },
+        "insertion": {
+          "position": "before"
+        }
+      }
+    ],
+    "regex_pre_rule_names": [],
+    "regex_post_rule_names": [
+      "first",
+      "second"
+    ],
+    "prompt_mode": "compat_plus",
+    "asset_manifest_digest": "cd90bdb5947a9c24c8201511791154871c0f3059cd28f9f2e6b1a4079c1bfd55",
+    "prompt_digest": "efb7eadaefa6179bbe5a34ff9386bc9f5e6d262f73a7076cc08c8da17049d622",
+    "token_estimate": 100
+  },
+  "runtime_trace": {
+    "preset": {
+      "selected_prompt_order_character_id": 100001,
+      "ignored_prompt_order_character_ids": [],
+      "unsupported_fields": [],
+      "ignored_fields": [
+        "top_level.name"
+      ],
+      "unresolved_markers": [],
+      "warnings": [],
+      "trigger_filtered_entry_ids": [],
+      "in_chat_inserted_entry_ids": [],
+      "continue_nudge_applied": false,
+      "continue_nudge_text": null,
+      "names_behavior_applied": "off"
+    },
+    "worldbook": {
+      "hit_count": 3
+    },
+    "regex": {
+      "user_input_rules": [],
+      "ai_output_rules": [
+        "first",
+        "second"
+      ],
+      "preprocessed_user_message": "“我先检查信封上的邮戳。”",
+      "phases": [
+        {
+          "phase_id": "persist.user_input",
+          "placement": 1,
+          "channel": "persist",
+          "status": "executed",
+          "changed": false,
+          "depth": 0,
+          "input_text_hash": "f393625b196da453cde4b1c4219ad0674c227b5c4f8bf1bae7c2505c25573cbf",
+          "output_text_hash": "f393625b196da453cde4b1c4219ad0674c227b5c4f8bf1bae7c2505c25573cbf",
+          "candidate_rule_names": [],
+          "matched_rule_names": [],
+          "skipped_rules": []
+        },
+        {
+          "phase_id": "prompt.user_input",
+          "placement": 1,
+          "channel": "prompt",
+          "status": "executed",
+          "changed": false,
+          "depth": 0,
+          "input_text_hash": "f393625b196da453cde4b1c4219ad0674c227b5c4f8bf1bae7c2505c25573cbf",
+          "output_text_hash": "f393625b196da453cde4b1c4219ad0674c227b5c4f8bf1bae7c2505c25573cbf",
+          "candidate_rule_names": [],
+          "matched_rule_names": [],
+          "skipped_rules": []
+        }
+      ],
+      "substitution_mode": "bare_variable_only"
+    },
+    "budgets": {
+      "by_group": [
+        {
+          "group": "history",
+          "token_count": 20
+        },
+        {
+          "group": "section:charDescription",
+          "token_count": 12
+        },
+        {
+          "group": "section:charPersonality",
+          "token_count": 15
+        },
+        {
+          "group": "section:main",
+          "token_count": 18
+        },
+        {
+          "group": "section:personaDescription",
+          "token_count": 7
+        },
+        {
+          "group": "section:scenario",
+          "token_count": 9
+        },
+        {
+          "group": "worldbook",
+          "token_count": 19
+        }
+      ]
+    },
+    "memory": {
+      "summary_injected": false,
+      "runtime_mode": "disabled",
+      "requested_write": false,
+      "effective_write": false,
+      "strategy": "none"
+    },
+    "macro": {
+      "warnings": [
+        {
+          "code": "macro_value_missing",
+          "message": "Macro authorsNote has no resolved value and fell back to empty string.",
+          "macro_name": "authorsNote"
+        },
+        {
+          "code": "macro_value_missing",
+          "message": "Macro defaultAuthorsNote has no resolved value and fell back to empty string.",
+          "macro_name": "defaultAuthorsNote"
+        },
+        {
+          "code": "macro_value_missing",
+          "message": "Macro model has no resolved value and fell back to empty string.",
+          "macro_name": "model"
+        }
+      ],
+      "used_names": [],
+      "mutation_preview": [],
+      "staged_mutations": [],
+      "traces": []
+    },
+    "delivery": {
+      "assistant_prefill_requested": false,
+      "assistant_prefill_applied": false,
+      "assistant_prefill_strategy": "none",
+      "allow_assistant_prefill": true,
+      "require_last_user": false,
+      "no_assistant": false,
+      "last_message_role": "user",
+      "ends_with_user": true,
+      "degraded": false,
+      "degrade_reasons": []
+    },
+    "history_normalization": {
+      "raw_entry_count": 2,
+      "effective_turn_count": 2,
+      "selected_turn_count": 2,
+      "trailing_user_source_floor_ids": [],
+      "merged_user_groups": [],
+      "violations": []
+    },
+    "tool_transport": {
+      "selection": {
+        "transport": "none",
+        "reason_code": "tools_disabled",
+        "reason_detail": "No callable tools are enabled for the current turn."
+      },
+      "tool_list": {
+        "injected": false,
+        "tool_count": 0
+      }
+    }
+  },
+  "events": "event: start\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"floor_no\":1,\"branch_id\":\"main\"}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"semantic_resolved\",\"public_phase\":\"preparing\",\"phase_seq\":2,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488106714,\"completed_at\":null,\"pending_output\":null,\"verifier\":null,\"error\":null}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"prechecked\",\"public_phase\":\"preparing\",\"phase_seq\":3,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488106715,\"completed_at\":null,\"pending_output\":null,\"verifier\":null,\"error\":null}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"prompt_assembled\",\"public_phase\":\"preparing\",\"phase_seq\":4,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488107338,\"completed_at\":null,\"pending_output\":null,\"verifier\":null,\"error\":null}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"page_generating\",\"public_phase\":\"generating\",\"phase_seq\":5,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488107344,\"completed_at\":null,\"pending_output\":null,\"verifier\":null,\"error\":null}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"page_generating\",\"public_phase\":\"generating\",\"phase_seq\":6,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488107345,\"completed_at\":null,\"pending_output\":{\"temp_id\":\"temp-oZ8BNJ1DN_LyiapUBUqFg-1-JrkM5E\",\"attempt_no\":1,\"state\":\"draft\",\"text\":\"\",\"started_at\":1792488107345,\"updated_at\":1792488107345,\"error\":null},\"verifier\":null,\"error\":null}\n\nevent: chunk\ndata: {\"chunk\":\"沈知夏\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"把信封\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"转向灯\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"光，指\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"着邮戳\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"说：“\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“\",\"phase\":\"streaming\"}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"page_generating\",\"public_phase\":\"generating\",\"phase_seq\":7,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488107876,\"completed_at\":null,\"pending_output\":{\"temp_id\":\"temp-oZ8BNJ1DN_LyiapUBUqFg-1-JrkM5E\",\"attempt_no\":1,\"state\":\"streaming\",\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“\",\"started_at\":1792488107345,\"updated_at\":1792488107876,\"error\":null},\"verifier\":null,\"error\":null}\n\nevent: chunk\ndata: {\"chunk\":\"我们可\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"以先核\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"对这个\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"地址。\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"”她将\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"一张旧\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧\",\"phase\":\"streaming\"}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"page_generating\",\"public_phase\":\"generating\",\"phase_seq\":8,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488108420,\"completed_at\":null,\"pending_output\":{\"temp_id\":\"temp-oZ8BNJ1DN_LyiapUBUqFg-1-JrkM5E\",\"attempt_no\":1,\"state\":\"streaming\",\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧\",\"started_at\":1792488107345,\"updated_at\":1792488108420,\"error\":null},\"verifier\":null,\"error\":null}\n\nevent: chunk\ndata: {\"chunk\":\"街区地\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"图铺在\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"柜台上\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"，等待\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"下一步\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步\",\"phase\":\"streaming\"}\n\nevent: chunk\ndata: {\"chunk\":\"线索。\"}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。\",\"phase\":\"streaming\"}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"page_generating\",\"public_phase\":\"generating\",\"phase_seq\":9,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488108973,\"completed_at\":null,\"pending_output\":{\"temp_id\":\"temp-oZ8BNJ1DN_LyiapUBUqFg-1-JrkM5E\",\"attempt_no\":1,\"state\":\"streaming\",\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。\",\"started_at\":1792488107345,\"updated_at\":1792488108973,\"error\":null},\"verifier\":null,\"error\":null}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"page_generating\",\"public_phase\":\"generating\",\"phase_seq\":10,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488109075,\"completed_at\":null,\"pending_output\":{\"temp_id\":\"temp-oZ8BNJ1DN_LyiapUBUqFg-1-JrkM5E\",\"attempt_no\":1,\"state\":\"generated\",\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。\",\"started_at\":1792488107345,\"updated_at\":1792488109075,\"error\":null},\"verifier\":null,\"error\":null}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"candidate_generated\",\"public_phase\":\"verifying\",\"phase_seq\":11,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488109079,\"completed_at\":null,\"pending_output\":{\"temp_id\":\"temp-oZ8BNJ1DN_LyiapUBUqFg-1-JrkM5E\",\"attempt_no\":1,\"state\":\"generated\",\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。\",\"started_at\":1792488107345,\"updated_at\":1792488109075,\"error\":null},\"verifier\":null,\"error\":null}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"candidate_generated\",\"public_phase\":\"verifying\",\"phase_seq\":12,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488109083,\"completed_at\":null,\"pending_output\":{\"temp_id\":\"temp-oZ8BNJ1DN_LyiapUBUqFg-1-JrkM5E\",\"attempt_no\":1,\"state\":\"generated\",\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。\",\"started_at\":1792488107345,\"updated_at\":1792488109075,\"error\":null},\"verifier\":{\"status\":\"skipped\",\"suggestion\":null,\"issues\":null},\"error\":null}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"verifier_checked\",\"public_phase\":\"verifying\",\"phase_seq\":13,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488109085,\"completed_at\":null,\"pending_output\":{\"temp_id\":\"temp-oZ8BNJ1DN_LyiapUBUqFg-1-JrkM5E\",\"attempt_no\":1,\"state\":\"generated\",\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。\",\"started_at\":1792488107345,\"updated_at\":1792488109075,\"error\":null},\"verifier\":{\"status\":\"skipped\",\"suggestion\":null,\"issues\":null},\"error\":null}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"transaction_prepared\",\"public_phase\":\"committing\",\"phase_seq\":14,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488109086,\"completed_at\":null,\"pending_output\":{\"temp_id\":\"temp-oZ8BNJ1DN_LyiapUBUqFg-1-JrkM5E\",\"attempt_no\":1,\"state\":\"generated\",\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。\",\"started_at\":1792488107345,\"updated_at\":1792488109075,\"error\":null},\"verifier\":{\"status\":\"skipped\",\"suggestion\":null,\"issues\":null},\"error\":null}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"transaction_committed\",\"public_phase\":\"committing\",\"phase_seq\":15,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488109097,\"completed_at\":null,\"pending_output\":{\"temp_id\":\"temp-oZ8BNJ1DN_LyiapUBUqFg-1-JrkM5E\",\"attempt_no\":1,\"state\":\"generated\",\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。\",\"started_at\":1792488107345,\"updated_at\":1792488109075,\"error\":null},\"verifier\":{\"status\":\"skipped\",\"suggestion\":null,\"issues\":null},\"error\":null}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"running\",\"phase\":\"post_commit_scheduled\",\"public_phase\":\"post_processing\",\"phase_seq\":16,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488109097,\"completed_at\":null,\"pending_output\":{\"temp_id\":\"temp-oZ8BNJ1DN_LyiapUBUqFg-1-JrkM5E\",\"attempt_no\":1,\"state\":\"generated\",\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。\",\"started_at\":1792488107345,\"updated_at\":1792488109075,\"error\":null},\"verifier\":{\"status\":\"skipped\",\"suggestion\":null,\"issues\":null},\"error\":null}\n\nevent: run\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"run_id\":\"oZ8BNJ1DN_LyiapUBUqFg\",\"run_type\":\"respond\",\"status\":\"completed\",\"phase\":\"post_commit_scheduled\",\"public_phase\":\"post_processing\",\"phase_seq\":17,\"attempt_no\":1,\"started_at\":1792488106705,\"updated_at\":1792488109098,\"completed_at\":1792488109098,\"pending_output\":null,\"verifier\":{\"status\":\"skipped\",\"suggestion\":null,\"issues\":null},\"error\":null}\n\nevent: role_text\ndata: {\"text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。\",\"phase\":\"completed\"}\n\nevent: done\ndata: {\"floor_id\":\"jIGxJTN3TMw78ftp1NQiK\",\"floor_no\":1,\"branch_id\":\"main\",\"generated_text\":\"沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。\",\"summaries\":[],\"total_usage\":{\"prompt_tokens\":100,\"completion_tokens\":50,\"total_tokens\":150},\"final_state\":\"committed\"}\n\n",
+  "timeline": {
+    "session_id": "SJDBVVnr2IhZBigVCMAfa",
+    "branch_id": "main",
+    "floors": [
+      {
+        "id": "EOwfHKO6Qh-3do8E0Jzb9",
+        "floor_no": 0,
+        "state": "committed",
+        "token_in": 0,
+        "token_out": 16,
+        "created_at": 1792488104976,
+        "pages": [
+          {
+            "id": "R1q6dRfNzNUWX52kwU6z3",
+            "page_no": 0,
+            "page_kind": "output",
+            "is_active": true,
+            "version": 1,
+            "messages": [
+              {
+                "id": "qFYCILaLEY7pScQRnoDRL",
+                "seq": 0,
+                "role": "assistant",
+                "content": "钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”",
+                "content_format": "text"
+              }
+            ]
+          }
+        ],
+        "active_pages": [
+          {
+            "id": "R1q6dRfNzNUWX52kwU6z3",
+            "page_no": 0,
+            "page_kind": "output",
+            "version": 1,
+            "messages": [
+              {
+                "id": "qFYCILaLEY7pScQRnoDRL",
+                "seq": 0,
+                "role": "assistant",
+                "content": "钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”",
+                "content_format": "text"
+              }
+            ]
+          }
+        ],
+        "active_page": {
+          "id": "R1q6dRfNzNUWX52kwU6z3",
+          "page_no": 0,
+          "page_kind": "output",
+          "version": 1,
+          "messages": [
+            {
+              "id": "qFYCILaLEY7pScQRnoDRL",
+              "seq": 0,
+              "role": "assistant",
+              "content": "钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”",
+              "content_format": "text"
+            }
+          ]
+        },
+        "messages": [
+          {
+            "id": "qFYCILaLEY7pScQRnoDRL",
+            "seq": 0,
+            "role": "assistant",
+            "content": "钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”",
+            "content_format": "text"
+          }
+        ],
+        "page_count": 1
+      },
+      {
+        "id": "jIGxJTN3TMw78ftp1NQiK",
+        "floor_no": 1,
+        "state": "committed",
+        "token_in": 100,
+        "token_out": 50,
+        "created_at": 1792488106705,
+        "pages": [
+          {
+            "id": "SS2mipHSensREmyc-7iha",
+            "page_no": 0,
+            "page_kind": "input",
+            "is_active": true,
+            "version": 1,
+            "messages": [
+              {
+                "id": "9pqPAT69tW2GU1q_p7zGg",
+                "seq": 0,
+                "role": "user",
+                "content": "“我先检查信封上的邮戳。”",
+                "content_format": "text"
+              }
+            ]
+          },
+          {
+            "id": "ANGRSF7rThmzU96dXP3Kt",
+            "page_no": 1,
+            "page_kind": "output",
+            "is_active": true,
+            "version": 1,
+            "messages": [
+              {
+                "id": "RyCgygifSfrhoB74Q4Ivv",
+                "seq": 0,
+                "role": "assistant",
+                "content": "沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。",
+                "content_format": "text"
+              }
+            ]
+          }
+        ],
+        "active_pages": [
+          {
+            "id": "SS2mipHSensREmyc-7iha",
+            "page_no": 0,
+            "page_kind": "input",
+            "version": 1,
+            "messages": [
+              {
+                "id": "9pqPAT69tW2GU1q_p7zGg",
+                "seq": 0,
+                "role": "user",
+                "content": "“我先检查信封上的邮戳。”",
+                "content_format": "text"
+              }
+            ]
+          },
+          {
+            "id": "ANGRSF7rThmzU96dXP3Kt",
+            "page_no": 1,
+            "page_kind": "output",
+            "version": 1,
+            "messages": [
+              {
+                "id": "RyCgygifSfrhoB74Q4Ivv",
+                "seq": 0,
+                "role": "assistant",
+                "content": "沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。",
+                "content_format": "text"
+              }
+            ]
+          }
+        ],
+        "active_page": null,
+        "messages": [
+          {
+            "id": "9pqPAT69tW2GU1q_p7zGg",
+            "seq": 0,
+            "role": "user",
+            "content": "“我先检查信封上的邮戳。”",
+            "content_format": "text"
+          },
+          {
+            "id": "RyCgygifSfrhoB74Q4Ivv",
+            "seq": 0,
+            "role": "assistant",
+            "content": "沈知夏把信封转向灯光，指着邮戳说：“我们可以先核对这个地址。”她将一张旧街区地图铺在柜台上，等待下一步线索。",
+            "content_format": "text"
+          }
+        ],
+        "page_count": 2
+      }
+    ]
+  },
+  "after": {
+    "character_id": "7kfzc0UdPtNN4mjQlWcxs",
+    "character_version_id": "9f2Q7gkox1ZH5QVV7hmTB",
+    "name": "雾港来信",
+    "delivery": {
+      "html": "<section class=\"story\"><h1>雾港来信</h1><img src=\"/role-assets/9f2Q7gkox1ZH5QVV7hmTB/assets/portrait.svg\" alt=\"雾港夜景\"><p id=\"location\"></p><button id=\"latest\">返回最新状态</button><div id=\"chat\"></div></section>",
+      "css": ".story {color:#d4e1df;background:#132c30;padding:24px;} .story img{width:240px;max-width:100%;} button{padding:8px;}",
+      "floorHtml": null,
+      "assets": {
+        "cover": {
+          "kind": "image",
+          "url": "/role-assets/9f2Q7gkox1ZH5QVV7hmTB/assets/portrait.svg",
+          "label": "雾港夜景",
+          "tags": [
+            "封面"
+          ]
+        }
+      },
+      "data": {
+        "caseFile": {
+          "location": "雾港邮局",
+          "clue": "灯塔素描"
+        },
+        "opening": "钟声穿过薄雾。沈知夏把潮湿的信封放在柜台上。\n\n“邮戳是今天的，寄件地址却是旧灯塔。”她看向你，“先检查信封，还是去码头问问？”",
+        "performerName": "赵闻溪"
+      },
+      "scriptUrl": "/role-assets/9f2Q7gkox1ZH5QVV7hmTB/frontend/main.js",
+      "htmlUrl": "/role-assets/9f2Q7gkox1ZH5QVV7hmTB/frontend/index.html",
+      "htmlAssetOriginOffsets": [
+        46
+      ],
+      "dataUrls": {
+        "caseFile": "/role-assets/9f2Q7gkox1ZH5QVV7hmTB/data/case.json"
+      },
+      "cssUrl": "/role-assets/9f2Q7gkox1ZH5QVV7hmTB/frontend/style.css",
+      "mode": "custom"
+    },
+    "initial": {
+      "sessionId": "SJDBVVnr2IhZBigVCMAfa",
+      "branchId": "main",
+      "floorId": null,
+      "attemptId": null,
+      "versionId": "9f2Q7gkox1ZH5QVV7hmTB",
+      "snapshotId": "ac02ca28-3e8e-418c-ba4b-70f741b19c2d",
+      "parentSnapshotId": null,
+      "variables": {
+        "location": "夜间邮局",
+        "hour": 23,
+        "trust": 20
+      },
+      "source": {
+        "kind": "initial",
+        "runId": null,
+        "jobId": null
+      }
+    },
+    "current": {
+      "sessionId": "SJDBVVnr2IhZBigVCMAfa",
+      "branchId": "main",
+      "floorId": null,
+      "attemptId": null,
+      "versionId": "9f2Q7gkox1ZH5QVV7hmTB",
+      "snapshotId": "ac02ca28-3e8e-418c-ba4b-70f741b19c2d",
+      "parentSnapshotId": null,
+      "variables": {
+        "location": "夜间邮局",
+        "hour": 23,
+        "trust": 20
+      },
+      "source": {
+        "kind": "initial",
+        "runId": null,
+        "jobId": null
+      }
+    },
+    "processing": {
+      "pendingMain": null,
+      "pendingFollowups": false,
+      "pendingStateFloorId": "jIGxJTN3TMw78ftp1NQiK"
+    },
+    "capabilities": {
+      "send": false,
+      "history": true,
+      "customFloors": false
+    }
+  }
+}

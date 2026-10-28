@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-06T11:40:03.713Z",
+  "elapsedMs": 55221,
+  "path": "/sessions/Svw6OVPc-BoMf-twtc-wk/role-state/updates",
+  "request": {
+    "floor_id": "QcFRWTVa3_DtH1rFqKuaY",
+    "expected_snapshot_id": "16d81929-58cc-40ef-ad3b-f58c3ffad14a"
+  },
+  "status": 422,
+  "body": {
+    "error": {
+      "code": "ROLE_STATE_OUTPUT_INCOMPLETE",
+      "message": "变量更新模型未完整生成结果。请重试该楼层的变量更新，或请管理员检查模型的输出长度设置。"
+    }
+  }
+}

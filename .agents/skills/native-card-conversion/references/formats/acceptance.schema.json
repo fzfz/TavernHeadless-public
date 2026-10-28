@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["taskId", "checks", "zip", "overall"],
+  "properties": {
+    "taskId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status", "evidence", "conclusion"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": ["passed", "failed", "not_executed"]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "conclusion": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "zip": {
+      "type": ["string", "null"]
+    },
+    "overall": {
+      "enum": ["passed", "failed", "not_executed"]
+    }
+  }
+}

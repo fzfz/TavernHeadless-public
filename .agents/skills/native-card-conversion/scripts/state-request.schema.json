@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "pointer": { "type": "string", "pattern": "^(?:/(?:[^~/]|~[01])*)*$" },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": { "$ref": "#/$defs/pointer", "minLength": 1 },
+          "write": { "type": "boolean" }
+        },
+        "required": ["field", "write"],
+        "additionalProperties": false
+      }
+    },
+    "profile": {
+      "type": "object",
+      "properties": { "writablePaths": false, "stateSchemaFile": false }
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "sourcePointer": { "$ref": "#/$defs/pointer" },
+        "symbol": { "type": "string", "minLength": 1 },
+        "mappings": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "source": { "$ref": "#/$defs/pointer" },
+                  "target": { "$ref": "#/$defs/pointer", "minLength": 1 }
+                },
+                "required": ["source", "target"],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "source": { "$ref": "#/$defs/pointer" },
+                  "reason": { "type": "string", "pattern": "\\S" }
+                },
+                "required": ["source", "reason"],
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "reason": { "type": "string", "pattern": "\\S" }
+            },
+            "required": ["id", "reason"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": ["sourcePointer", "symbol", "mappings", "decisions"],
+      "additionalProperties": false
+    },
+    "state-source": {
+      "type": "object",
+      "properties": {
+        "sourcePointer": { "$ref": "#/$defs/pointer" },
+        "symbol": { "type": "string", "minLength": 1 }
+      },
+      "required": ["sourcePointer", "symbol"],
+      "additionalProperties": false
+    },
+    "state-schema": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "type": { "const": "object" },
+            "$schema": {
+              "const": "https://json-schema.org/draft/2020-12/schema"
+            }
+          }
+        },
+        "coverage": { "$ref": "#/$defs/coverage" },
+        "initialStates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "openingId": { "type": "string", "minLength": 1 },
+              "value": {}
+            },
+            "required": ["openingId", "value"],
+            "additionalProperties": false
+          }
+        },
+        "permissions": { "$ref": "#/$defs/permissions" },
+        "profile": { "$ref": "#/$defs/profile" }
+      },
+      "required": ["schema"],
+      "additionalProperties": false
+    },
+    "state-initial": {
+      "type": "object",
+      "properties": { "value": {} },
+      "required": ["value"],
+      "additionalProperties": false
+    },
+    "state-permissions": {
+      "type": "object",
+      "properties": {
+        "permissions": { "$ref": "#/$defs/permissions" },
+        "profile": { "$ref": "#/$defs/profile" }
+      },
+      "required": ["permissions"],
+      "additionalProperties": false
+    }
+  }
+}

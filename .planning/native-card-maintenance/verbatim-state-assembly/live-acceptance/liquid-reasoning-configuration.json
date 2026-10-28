@@ -1,0 +1,31 @@
+{
+  "sessionId": "OBsNd4GrJfWKIwkEVcOBE",
+  "profileId": "nFVEdfpO5Hc8hTjdzLXB3",
+  "model": "liquid/lfm-2.5-2.6b:free",
+  "params": {
+    "max_context_tokens": 65536,
+    "max_output_tokens": 4096,
+    "temperature": 0.2,
+    "timeout_ms": 180000,
+    "max_retries": 0,
+    "reasoning_effort": "low"
+  },
+  "result": {
+    "data": {
+      "profile_id": "nFVEdfpO5Hc8hTjdzLXB3",
+      "scope": "session",
+      "scope_id": "OBsNd4GrJfWKIwkEVcOBE",
+      "instance_slot": "verifier",
+      "params": {
+        "max_context_tokens": 65536,
+        "max_output_tokens": 4096,
+        "temperature": 0.2,
+        "timeout_ms": 180000,
+        "max_retries": 0,
+        "reasoning_effort": "low"
+      },
+      "profile_snapshot": null,
+      "activated": true
+    }
+  }
+}

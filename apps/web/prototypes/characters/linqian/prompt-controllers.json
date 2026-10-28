@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "controllers": [
+    {
+      "entryId": 109,
+      "sourceEntryId": 109,
+      "sourceComment": "林茜_身体边界控制器"
+    },
+    {
+      "entryId": 111,
+      "sourceEntryId": 111,
+      "sourceComment": "关键事件控制器"
+    },
+    {
+      "entryId": 127,
+      "sourceEntryId": 127,
+      "sourceComment": "开局前提控制器"
+    }
+  ]
+}

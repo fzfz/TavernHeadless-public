@@ -1,0 +1,627 @@
+{
+  "version": 1,
+  "sourceFile": "source-card.json",
+  "schemaSource": "data.extensions.tavern_helper.scripts[0].content",
+  "openingSources": [
+    {
+      "source": "data.first_mes/initvar",
+      "openingId": "first",
+      "status": "preserved-by-opening-import"
+    },
+    {
+      "source": "data.alternate_greetings[0]/initvar",
+      "openingId": "alternate-1",
+      "status": "preserved-by-opening-import"
+    }
+  ],
+  "sourceRuleMappings": [
+    {
+      "sourceId": 110,
+      "kind": "semantic-rule",
+      "target": [
+        "update-rules.json#/structuredIndex/routeRuleSourceIds",
+        "derive.js#deriveEnding",
+        "validate.js#ENDING_ROUTE_LOCKED"
+      ],
+      "status": "converted"
+    },
+    {
+      "sourceId": 112,
+      "kind": "snapshot-macro",
+      "target": ["state.schema.json", "live-model.json#stateSchemaFile"],
+      "status": "replaced-by-structured-snapshot"
+    },
+    {
+      "sourceId": 113,
+      "kind": "transport-rule",
+      "target": ["live-model.json#updaterPrompt"],
+      "status": "replaced-by-agent-output-contract"
+    },
+    {
+      "sourceId": 114,
+      "kind": "transport-and-operation-rule",
+      "target": [
+        "live-model.json#updaterPrompt",
+        "live-model.json#writablePaths",
+        "derive.js"
+      ],
+      "status": "replaced-by-set-remove-proposal"
+    },
+    {
+      "sourceId": 115,
+      "kind": "semantic-rule-set",
+      "target": [
+        "live-model.json#factsSchema",
+        "derive.js",
+        "validate.js",
+        "state.schema.json"
+      ],
+      "status": "converted"
+    }
+  ],
+  "associatedRequirementMappings": [
+    {
+      "sourceId": 38,
+      "tags": ["事件_E001"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 39,
+      "tags": ["事件_E002"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 40,
+      "tags": ["事件_E003"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 41,
+      "tags": ["事件_E005"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 42,
+      "tags": ["事件_E008"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 43,
+      "tags": ["事件_E009"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 44,
+      "tags": ["事件_E010"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 45,
+      "tags": ["事件_E011"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 46,
+      "tags": ["事件_E012"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 47,
+      "tags": ["事件_E019"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 48,
+      "tags": ["事件_E018"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 49,
+      "tags": ["事件_E022"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 50,
+      "tags": ["事件_E013"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 51,
+      "tags": ["事件_E014"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 52,
+      "tags": ["事件_E015"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 53,
+      "tags": ["事件_E016"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 54,
+      "tags": ["事件_E017"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 55,
+      "tags": ["事件_E020"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 56,
+      "tags": ["事件_E021"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 57,
+      "tags": ["事件_E023"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 58,
+      "tags": ["事件_E024"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 59,
+      "tags": ["事件_E025"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 60,
+      "tags": ["事件_E026"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 61,
+      "tags": ["事件_E028"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 62,
+      "tags": ["事件_E029"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 63,
+      "tags": ["事件_E004"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 64,
+      "tags": ["事件_E006"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 65,
+      "tags": ["事件_E048"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 66,
+      "tags": ["事件_E049"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 67,
+      "tags": ["事件_E030"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 68,
+      "tags": ["事件_E032"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 69,
+      "tags": ["事件_E031"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 70,
+      "tags": ["事件_E033"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 71,
+      "tags": ["事件_E034"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 72,
+      "tags": ["事件_E035"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 73,
+      "tags": ["终局阶段_Z002"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 74,
+      "tags": ["终局阶段_Z005"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 75,
+      "tags": ["终局阶段_Z008"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 76,
+      "tags": ["终局阶段_Z009"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 77,
+      "tags": ["终局阶段_Z010_Z013"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 78,
+      "tags": ["终局阶段_Z012"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 79,
+      "tags": ["终局阶段_Z011"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 80,
+      "tags": ["终局阶段_Z006"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 81,
+      "tags": ["终局阶段_Z007"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 82,
+      "tags": ["终局阶段_Z001"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 83,
+      "tags": ["终局阶段_Z003"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 84,
+      "tags": ["终局阶段_Z004"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 85,
+      "tags": ["事件_D003"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 86,
+      "tags": ["事件_D002"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 111,
+      "tags": [],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 126,
+      "tags": ["事件_D001"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    },
+    {
+      "sourceId": 135,
+      "tags": ["事件_E027"],
+      "target": [
+        "update-rules.json#/entries",
+        "update-rules.json#/structuredIndex"
+      ],
+      "status": "preserved-as-agent-evidence"
+    }
+  ],
+  "operationMappings": [
+    {
+      "sourceOperation": "replace",
+      "target": "set",
+      "application": "模型可写路径直接设置候选值。"
+    },
+    {
+      "sourceOperation": "delta",
+      "target": "facts + derive",
+      "application": "数值语义事实由 Agent 判断，角色函数基于固定前值结算。"
+    },
+    {
+      "sourceOperation": "insert",
+      "target": "set complete subtree",
+      "application": "宿主通用适配器计算完整数组或对象子树后设置。"
+    },
+    {
+      "sourceOperation": "remove",
+      "target": "remove or set complete subtree",
+      "application": "可缺省对象字段使用 remove；数组由宿主计算完整数组后设置。"
+    },
+    {
+      "sourceOperation": "move",
+      "target": "set complete subtree",
+      "application": "宿主通用适配器按固定前值计算移动后的完整数组或对象子树。"
+    }
+  ],
+  "structuredRuleMappings": [
+    {
+      "rule": "current-value-authority",
+      "sourceId": 115,
+      "target": "宿主固定 before 与证据消息"
+    },
+    {
+      "rule": "clock-and-period",
+      "sourceId": 115,
+      "target": "facts.elapsedMinutes + deriveClock"
+    },
+    {
+      "rule": "final-location",
+      "sourceId": 115,
+      "target": "facts.finalLocation + derive"
+    },
+    {
+      "rule": "a1-date-and-count",
+      "sourceId": 115,
+      "target": "facts.completedA1Events + deriveA1"
+    },
+    {
+      "rule": "d001-completion",
+      "sourceId": 115,
+      "target": "facts.d001Completed + derive"
+    },
+    {
+      "rule": "one-time-event-order",
+      "sourceId": 115,
+      "target": "facts.completedOneTimeEvents + deriveEvents + validate"
+    },
+    {
+      "rule": "ending-stage-completion",
+      "sourceId": 115,
+      "target": "facts.ending.completedStage + deriveEnding"
+    },
+    {
+      "rule": "route-lock-and-divorce",
+      "sourceId": 110,
+      "target": "facts.ending + deriveEnding + validate"
+    },
+    {
+      "rule": "opening-mode-lock",
+      "sourceId": 115,
+      "target": "deriveEnding"
+    },
+    {
+      "rule": "inner-thought",
+      "sourceId": 115,
+      "target": "writable path + validate"
+    },
+    {
+      "rule": "affection-settlement",
+      "sourceId": 115,
+      "target": "facts.relationship + deriveNumbers"
+    },
+    {
+      "rule": "corruption-settlement",
+      "sourceId": 115,
+      "target": "facts.corruptionSettlement + deriveNumbers"
+    },
+    {
+      "rule": "four-action-options",
+      "sourceId": 115,
+      "target": "writable paths + state schema + validate"
+    }
+  ],
+  "uncovered": []
+}

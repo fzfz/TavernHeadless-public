@@ -1,0 +1,42 @@
+{
+  "uid": 24,
+  "key": [
+    "肛塞"
+  ],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "物品_肛塞",
+  "order": 74,
+  "disable": false,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": 2,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<肛塞>\n形状结构（从尖端到底座）:\n\n大多数肛塞都是对称旋转体，通常分成四段：\n\n- 尖端（tip）：圆锥形或子弹形，直径最小，负责引导插入，减少不适感\n- 主体（body）：从尖端向后逐渐膨胀，到最大直径处。这是\"塞住\"的核心段。常见形状有水滴形、球形、或梭形\n- 颈部（neck / stem）：最大直径之后急剧收窄成一根细杆，直径通常只有 1-2 cm 左右\n- 底座（base / flange）：末端一个横向展开的扁平圆盘或 T 型横杆，直径明显大于颈部\n\n整根看起来像：细尖 → 逐渐变粗 → 突然变细 → 底座展开。\n\n塞入后的位置（肠道解剖视角）:\n\n塞入后从外到内的位置关系：\n\n底座 → 留在体外，紧紧贴在肛门口（anus）外侧。它的唯一作用就是防止整个肛塞完全滑进直肠。\n\n颈部 → 恰好卡在肛门括约肌环（anal sphincter）中间。括约肌会自然收紧夹住这一段细颈，这是肛塞能固定的关键机制——括约肌在颈部收紧后，比颈部粗得多的大头（主体）和底座就被锁在两边，不会自己脱落。\n\n主体最粗的部分 → 位于肛门内约 3–5 cm 的直肠壶腹（rectal ampulla）内。直肠这一段本来就是一个可以膨胀的空腔，最宽处塞在这里，被括约肌\"关\"在里面。\n\n简单概括就是：底座在外面挡着，括约肌夹住细颈，大头被关在直肠里。塞入后整个肛塞不会滑进去，也不会自己掉出来——这正是\"颈部+底座\"这种形状设计的物理原理。\n</肛塞>\n"
+}

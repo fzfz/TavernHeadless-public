@@ -1,0 +1,216 @@
+{
+  "unrelatedTrackedFiles": [
+    {
+      "file": "apps/api/src/services/role-runtime/state-update-service.ts",
+      "unchanged": true
+    },
+    {
+      "file": "apps/api/test/native-card-empty-worldbook.integration.test.ts",
+      "unchanged": true
+    },
+    {
+      "file": "apps/user-web/package.json",
+      "unchanged": true
+    },
+    {
+      "file": "apps/user-web/src/App.test.ts",
+      "unchanged": true
+    },
+    {
+      "file": "apps/user-web/src/config/ui.json",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/characters/cinema/main.js",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/characters/expedition/main.js",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/characters/gushengman/main.js",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/characters/gushengman/source-mapping.json",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/characters/harbor/main.js",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/characters/novel/main.js",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/checks/formal-transport-unit.mjs",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/checks/generate-script-validators.mjs",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/checks/generation-inspection-unit.mjs",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/checks/script-backend-unit.mjs",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/checks/script-browser.mjs",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/checks/script-host-legacy-transport.mjs",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/checks/script-host-pending-unit.mjs",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/checks/script-runtime-unit.mjs",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/checks/serve-script-prototype.mjs",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/native-card-converter.prototype.html",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/shared/formal-transport.prototype.js",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/shared/generation-inspection.config.json",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/shared/script-host.prototype.js",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/shared/script-page.prototype.js",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/shared/script-runtime.prototype.js",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/shared/script-transport.schema.json",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/prototypes/shared/script-validators.prototype.js",
+      "unchanged": true
+    },
+    {
+      "file": "apps/web/src/lib/return-to-role-session.ts",
+      "unchanged": true
+    },
+    {
+      "file": "docs/character-authoring/agent-tools-api.md",
+      "unchanged": true
+    },
+    {
+      "file": "docs/character-authoring/examples/api-usage/run-tools.ts",
+      "unchanged": true
+    },
+    {
+      "file": "docs/character-authoring/model-capabilities.md",
+      "unchanged": true
+    },
+    {
+      "file": "docs/character-authoring/mvu-agent-state.md",
+      "unchanged": true
+    },
+    {
+      "file": "docs/character-authoring/runtime-architecture.md",
+      "unchanged": true
+    },
+    {
+      "file": "docs/character-authoring/script-api.md",
+      "unchanged": true
+    },
+    {
+      "file": "docs/character-authoring/script-template-api.md",
+      "unchanged": true
+    },
+    {
+      "file": "docs/plans/generation-details-api-audit.md",
+      "unchanged": true
+    },
+    {
+      "file": "docs/plans/native-card-converter/conversion-capabilities.json",
+      "unchanged": true
+    },
+    {
+      "file": "docs/plans/native-card-converter/conversion-report.schema.json",
+      "unchanged": true
+    },
+    {
+      "file": "docs/plans/native-card-converter/design.md",
+      "unchanged": true
+    },
+    {
+      "file": "docs/plans/native-card-converter/example.thcard.json",
+      "unchanged": true
+    },
+    {
+      "file": "docs/plans/native-card-converter/model-tool-architecture-proposal.md",
+      "unchanged": true
+    },
+    {
+      "file": "docs/plans/native-card-converter/native-card-v1.schema.json",
+      "unchanged": true
+    },
+    {
+      "file": "docs/plans/native-card-converter/progress.md",
+      "unchanged": true
+    },
+    {
+      "file": "docs/plans/native-card-converter/task_plan.md",
+      "unchanged": true
+    },
+    {
+      "file": "docs/plans/role-runtime-core/README.md",
+      "unchanged": true
+    },
+    {
+      "file": "eslint.config.js",
+      "unchanged": true
+    },
+    {
+      "file": "packages/shared/src/generated/role-runtime-validators.ts",
+      "unchanged": true
+    },
+    {
+      "file": "vitepress/reference/api/chat.md",
+      "unchanged": true
+    },
+    {
+      "file": "vitepress/reference/api/tools.md",
+      "unchanged": true
+    },
+    {
+      "file": "vitepress/reference/api/worldbooks.md",
+      "unchanged": true
+    },
+    {
+      "file": "vitest.config.ts",
+      "unchanged": true
+    }
+  ],
+  "partiallyStagedDocuments": [
+    "docs/character-authoring/backend-api.md",
+    "docs/character-authoring/state-update-api.md"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "axis": "Standards",
+  "baseline": "474174208fe1dcc99d2bcf46479d20d0b93f5e19",
+  "scope": "review-scope.json 的 13 个暂存文件",
+  "findings": [
+    {
+      "priority": "P2",
+      "classification": "硬性违反",
+      "location": "scripts/native-card-conversion/write.ts:873-889",
+      "ruleSource": "用户项目规则：Cli 程序必须可安全重试；新功能测试必须包含各分支。",
+      "finding": "首轮直接写入 operation.value；随后对子字段覆写会修改源操作中的对象值。重试预检因此读取变异后的操作，错误拒绝合法且可重复的数组。",
+      "evidence": "内联调用 runParse 已复现：初值 {a:null}；依次 replace /a={b:{c:0}}、replace /a/b/c=1、replace /a/b=2。正确结果每次都是 {a:{b:2}}；当前报告第 2 项 /a/b/c 不存在，目标保持原值。",
+      "change": "首轮传入 structuredClone(operation.value)，保持源操作值独立；增加先初始化祖先、修改后代、覆盖中间祖先的连续重复执行测试。"
+    }
+  ],
+  "simplifications": [
+    {
+      "classification": "判断建议",
+      "location": "scripts/native-card-conversion/write.ts:862-892",
+      "ruleSource": "Fowler Duplicated Code；仓库规范优先。",
+      "suggestion": "验证时生成带 path、tokens 和 value 的局部操作数组，并用同一应用循环处理首轮与重试预检，可删除第二轮的类型断言与重复路径解码。保留现有错误位置与写入边界。"
+    }
+  ],
+  "verification": "只读审阅暂存差异、相关领域与规范、指针遍历和原子写入；执行针对上述边界的临时探针。未运行全仓检查。其他已检查内容未发现实质规范问题。"
+}

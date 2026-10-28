@@ -1,0 +1,233 @@
+{
+  "judgmentBy": "main-agent",
+  "overall": "failed",
+  "trialStatus": "terminated_readonly_boundary_violation",
+  "cases": [
+    {
+      "id": "I01",
+      "source": "/data/first_mes",
+      "expectation": "默认开场使用开场initvar与JSONPatch后的状态，A1计数=1，初始开局模式=原始首次撞见；正文保留实际剧情，去掉旧更新块及状态栏挂载标记。",
+      "status": "passed",
+      "conclusion": "两个开场的原剧情文本均为源字段的连续原文；默认初值计数为1，开局模式正确。",
+      "evidence": [
+        "package-preservation.json"
+      ]
+    },
+    {
+      "id": "I02",
+      "source": "/data/alternate_greetings/0",
+      "expectation": "画室赴约开场使用自身日期、地点、心情、评分、事件前置标记和四个JSONPatch覆写后的选项；E012保持false。",
+      "status": "passed",
+      "conclusion": "画室初值保存自身日期、地点、四选项，E012保持false。",
+      "evidence": [
+        "observations.json"
+      ]
+    },
+    {
+      "id": "W01",
+      "source": "/data/character_book/entries/104",
+      "expectation": "用户身体边界阈值300/450；杨桃子称呼阈值200/380/620与身体边界81/220/380/620分别选择；E012=true且E035=false时载入王授军规则。",
+      "status": "passed",
+      "conclusion": "10组阈值与王授军规则样例，源模板与转换模块输出和引用条目相同。",
+      "evidence": [
+        "controller-results.json"
+      ]
+    },
+    {
+      "id": "W02",
+      "source": "/data/character_book/entries/106",
+      "expectation": "关键事件优先于终局阶段，均未选中时才选日常事件；保留完整前置事件、阈值、日期、计数和无效值条件。",
+      "status": "not_executed",
+      "conclusion": "本次已核对终局守卫及4组优先顺序；其余事件、日期、计数与无效值分支未完成逐组验收。",
+      "evidence": [
+        "controller-results.json"
+      ]
+    },
+    {
+      "id": "W03",
+      "source": "/data/character_book/entries/122",
+      "expectation": "按11种源开局模式显式读取对应禁用前提条目，原生控制器使用正式变量；保留知情边界。",
+      "status": "passed",
+      "conclusion": "11种开局模式的源模板和转换模块输出、引用条目均相同。",
+      "evidence": [
+        "controller-results.json"
+      ]
+    },
+    {
+      "id": "S01",
+      "source": "/data/character_book/entries/110",
+      "expectation": "业务变化规则交给状态Agent；当前值、已发生事实、时间进位、跨日计数、事件完成、关系增量与非用户行为结算条件完整。",
+      "status": "not_executed",
+      "conclusion": "110规则全文与源值一致，profile已引用；未取得正式状态更新请求，无法判定实际消费。",
+      "evidence": [
+        "package-preservation.json"
+      ]
+    },
+    {
+      "id": "S02",
+      "source": "/data/character_book/entries/105",
+      "expectation": "终局路线规则的载入条件、不可任意改写与用户重选条件仍有实际消费者。",
+      "status": "failed",
+      "conclusion": "源105禁用且由E032条件载入；目标规则文件却始终包含它，还标称源条目启用。E032=false时derive接受路线变化。",
+      "evidence": [
+        "route-rule-result.json"
+      ]
+    },
+    {
+      "id": "D01",
+      "source": "/data/post_history_instructions, /data/character_book/entries/108,109",
+      "expectation": "删除旧正文变量输出协议；109中的业务约束先拆出；正文不再要求JSONPatch块。",
+      "status": "failed",
+      "conclusion": "108、109旧输出协议仍保存为条目；正文由updaterEntries排除，109的业务约束未进入所配ruleFiles。",
+      "evidence": [
+        "outputs/package/backend/controllers/config.json"
+      ]
+    },
+    {
+      "id": "D02",
+      "source": "/data/extensions/regex_scripts",
+      "expectation": "只服务旧协议和旧状态栏挂载的正则删除；实际仍有消费者的正文边界或其他有效内容分别判断。",
+      "status": "passed",
+      "conclusion": "旧协议隐藏、旧挂载与旧正文闭合处理的正则已移除；状态栏另有前端入口，其原文保留问题列入U01。",
+      "evidence": [
+        "outputs/package/character.json"
+      ]
+    },
+    {
+      "id": "U01",
+      "source": "/data/extensions/regex_scripts/5",
+      "expectation": "最低必要呈现保留正式变量显示、四选项、当前与历史状态的正确读取和发送锁，明确记录源UI中其余有效操作的承接或退出依据。",
+      "status": "failed",
+      "conclusion": "目标HTML/CSS为新写页面，源两段CSS均未原样保存。默认正式预览初始化失败，交互、发送锁、历史快照未执行。",
+      "evidence": [
+        "default-preview-failure.json"
+      ]
+    },
+    {
+      "id": "F01",
+      "source": "/data/character_book/entries/46",
+      "expectation": "画室赴约已有前提与E012剩余完成条件区分；需要跨回合的事件进展必须作为状态或明确事实供状态Agent取得。",
+      "status": "not_executed",
+      "conclusion": "相关条目原文保留；未取得跨轮成功正文、状态请求和变量更新结果。",
+      "evidence": [
+        "outputs/package/agents/state-update/event-evidence.json"
+      ]
+    },
+    {
+      "id": "F02",
+      "source": "/data/character_book/entries/58",
+      "expectation": "材料异常标签只覆盖第一段无阴道插入的视频；第二段生插事实独立判断，标签范围不被扩大。",
+      "status": "not_executed",
+      "conclusion": "原条目的材料异常标签边界保留；未取得状态请求或真实生成，无法判定实际消费者的范围理解。",
+      "evidence": [
+        "outputs/package/worldbooks/linxi/entries/e058.json"
+      ]
+    },
+    {
+      "id": "S03",
+      "source": "/data/character_book/entries/106/content",
+      "expectation": "前置事件完成、E048=false、隔离守婚路线、Z000时，终局未完成守卫阻止E048抢占，选择Z001；Z001选择Z003；Z003选择Z004；Z004终局守卫成立后才选择E048。源卡问题声明须与完整条件相符。",
+      "status": "passed",
+      "conclusion": "Z000、Z001、Z003、Z004分别选择Z001、Z003、Z004、E048；4组与源模板输出相同。",
+      "evidence": [
+        "controller-results.json"
+      ]
+    }
+  ],
+  "counts": {
+    "passed": 6,
+    "failed": 3,
+    "not_executed": 4
+  },
+  "additionalChecks": [
+    {
+      "name": "包格式",
+      "status": "passed",
+      "evidence": [
+        "validation.json"
+      ]
+    },
+    {
+      "name": "最终ZIP与包目录",
+      "status": "passed",
+      "evidence": [
+        "package-preservation.json"
+      ]
+    },
+    {
+      "name": "正式导入及155文件回读",
+      "status": "passed",
+      "evidence": [
+        "formal.json",
+        "readback.json"
+      ]
+    },
+    {
+      "name": "默认正式会话创建",
+      "status": "failed",
+      "evidence": [
+        "default-preview-failure.json",
+        "default-preview-requests.json"
+      ]
+    },
+    {
+      "name": "正式页面与交互",
+      "status": "not_executed",
+      "evidence": [
+        "default-preview-failure.json"
+      ]
+    },
+    {
+      "name": "真实模型",
+      "status": "not_executed",
+      "evidence": []
+    },
+    {
+      "name": "输入来源",
+      "status": "failed",
+      "evidence": [
+        "observations.json",
+        "public-execution.jsonl"
+      ]
+    },
+    {
+      "name": "只读边界",
+      "status": "failed",
+      "evidence": [
+        "termination-and-boundary.json",
+        "readonly-final.json"
+      ]
+    },
+    {
+      "name": "效率",
+      "status": "failed",
+      "evidence": [
+        "execution-summary.json"
+      ]
+    }
+  ],
+  "runtimeEvidenceScope": "临时256上限取得的dry-run仅作为违规操作及辅助观察证据，不计默认系统通过。",
+  "issueLayers": {
+    "conversion_target": [
+      "规则105的消费时机改变"
+    ],
+    "deletion_omission": [
+      "旧协议条目仍保留",
+      "109业务约束无所配状态消费者"
+    ],
+    "content_rewrite": [
+      "HTML/CSS重写",
+      "规则来源状态误写为启用"
+    ],
+    "code_translation": [
+      "首次模块导出、全局对象、导入不符合API；修复后格式通过",
+      "规则激活守卫未在derive保留"
+    ],
+    "runtime_capacity": [
+      "默认模块资源计数包括所有data JSON，正式预览500"
+    ],
+    "real_model": [
+      "未执行；未据此归因模型理解"
+    ]
+  }
+}

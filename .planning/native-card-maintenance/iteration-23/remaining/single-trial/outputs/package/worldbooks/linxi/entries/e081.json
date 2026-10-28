@@ -1,0 +1,40 @@
+{
+  "uid": 81,
+  "key": [],
+  "keysecondary": [],
+  "selective": false,
+  "constant": false,
+  "comment": "终局阶段_Z007_艾沫沫日记",
+  "order": 301,
+  "disable": true,
+  "position": 1,
+  "selectiveLogic": 0,
+  "depth": 1,
+  "role": 0,
+  "scanDepth": null,
+  "caseSensitive": null,
+  "matchWholeWords": null,
+  "excludeRecursion": true,
+  "preventRecursion": true,
+  "delayUntilRecursion": 0,
+  "outletName": "",
+  "extra": {
+    "extensions": {
+      "ignore_budget": false,
+      "probability": 100,
+      "useProbability": true,
+      "group": "",
+      "group_weight": 100,
+      "group_override": false,
+      "delay": 0,
+      "match_persona_description": false,
+      "match_character_description": false,
+      "match_character_personality": false,
+      "match_character_depth_prompt": false,
+      "match_scenario": false,
+      "match_creator_notes": false,
+      "triggers": []
+    }
+  },
+  "content": "<终局阶段_Z007>\n以下是强制事件,必须以合理的描述延续和融入当前情景立即触发\n\n艾沫沫把林茜从火车站带回家后，从包里拿出一本日记，放到林茜面前，让她从第一页开始看。\n\n林茜逐页阅读。艾沫沫在日记里依次写明自己怎样把药掺进咖啡、茶和醒酒饮，怎样把药片混进维生素盒，怎样在林茜晚归时陪她回家，又怎样向{{user}}解释加班、应酬和身体不舒服。每篇记录还写着投药顺序、饮品名称、被联系人的姓名和晚归解释。\n\n艾沫沫在日记后半部分写下自己第一次与林茜发生性关系的经过。林茜读到这里后停下来，抬头问艾沫沫，投药、联系男人和替她圆场持续了多久。艾沫沫承认自己实施了日记里记录的每次投药、联系和圆场，也承认自己一直想得到{{user}}。\n\n林茜把日记合上，坐在原处，要求艾沫沫说清她给谁打过电话、问过哪些朋友、查到哪些地址。艾沫沫打开手机里的通话记录、聊天记录和地址照片，把手机放到桌上，两人开始逐项核对。\n</终局阶段_Z007>\n"
+}
