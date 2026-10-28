@@ -3,7 +3,7 @@ import { randomUUID } from "node:crypto";
 import { once } from "node:events";
 import { promisify } from "node:util";
 import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
-import { dirname, join, resolve } from "node:path";
+import { join, resolve } from "node:path";
 import { tmpdir } from "node:os";
 import { afterEach, expect, it } from "vitest";
 const execute = promisify(execFile),
@@ -19,7 +19,12 @@ afterEach(async () => {
     roots.splice(0).map((path) => rm(path, { recursive: true, force: true })),
   );
 });
-async function service() {
+async function service(
+  options: {
+    signalAtReady?: "SIGINT" | "SIGTERM";
+    failCloseRecord?: boolean;
+  } = {},
+) {
   const root = await mkdtemp(join(tmpdir(), "cli-service-"));
   roots.push(root);
   const config = join(root, "replay.json"),
@@ -36,7 +41,31 @@ async function service() {
     }),
   );
   const args = ["replay-fixture", config, root, "--request-id", id];
-  const child = spawn(process.execPath, [entry, ...args]);
+  const preload: string[] = [];
+  if (options.signalAtReady) {
+    const hook = join(root, "signal-at-ready.mjs");
+    await writeFile(
+      hook,
+      `
+import { writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+const write = process.stdout.write.bind(process.stdout);
+process.stdout.write = (chunk, ...args) => {
+  const ref = JSON.parse(String(chunk));
+  const result = write(chunk, ...args);
+  if (ref.resultFile?.includes("/ready/")) {
+    if (${Boolean(options.failCloseRecord)}) {
+      writeFileSync(join(dirname(dirname(ref.resultFile)), "closed"), "block directory");
+    }
+    process.kill(process.pid, ${JSON.stringify(options.signalAtReady)});
+  }
+  return result;
+};
+`,
+    );
+    preload.push("--import", hook);
+  }
+  const child = spawn(process.execPath, [...preload, entry, ...args]);
   children.push(child);
   const output: Buffer[] = [],
     errors: Buffer[] = [],
@@ -99,12 +128,10 @@ it("前台回放同ID复用一个地址，关闭保存路径且关闭后的重�
   }
 }, 20000);
 it("关闭结果无法写入时服务仍释放，stderr输出短错误并退出非零", async () => {
-  const running = await service();
-  await writeFile(
-    join(dirname(dirname(running.ready.resultFile)), "closed"),
-    "阻止创建目录",
-  );
-  running.child.kill("SIGTERM");
+  const running = await service({
+    signalAtReady: "SIGTERM",
+    failCloseRecord: true,
+  });
   expect((await running.closed)[0]).toBe(1);
   expect(Buffer.concat(running.errors).length).toBeLessThan(1024);
   expect(JSON.parse(Buffer.concat(running.errors).toString()).code).toBe(
@@ -112,3 +139,20 @@ it("关闭结果无法写入时服务仍释放，stderr输出短错误并退出�
   );
   await expect(fetch(running.data.baseUrl)).rejects.toThrow();
 }, 20000);
+
+it.each(["SIGINT", "SIGTERM"] as const)(
+  "就绪时收到 %s 后保存关闭结果并释放服务",
+  async (signal) => {
+    const running = await service({ signalAtReady: signal });
+    expect(await running.closed).toEqual([0, null]);
+    const lines = Buffer.concat(running.output).toString().trim().split("\n");
+    expect(lines).toHaveLength(2);
+    const saved = JSON.parse(
+      await readFile(JSON.parse(lines[1]!).resultFile, "utf8"),
+    );
+    expect(saved.data).toMatchObject({ status: "stopped", signal });
+    expect(Buffer.concat(running.errors).length).toBe(0);
+    await expect(fetch(running.data.baseUrl)).rejects.toThrow();
+  },
+  20000,
+);
