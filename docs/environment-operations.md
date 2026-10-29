@@ -13,8 +13,8 @@
    `node scripts/environments/cli.mjs <command> --env <dev|staging|prod>`。`pnpm environment`
    调用相同入口。后文中的子命令均接在 `node scripts/environments/cli.mjs` 后执行。
 2. 目录规范见根
-   [AGENTS.md](../AGENTS.md#三环境目录约定)。环境名称、根目录、端口、主机名、进程标识和运行模式由
-   `config/environments.json` 维护。关联 worktree 从 Git 主工作区读取该文件。
+   [AGENTS.md](../AGENTS.md#三环境目录约定)。关联 worktree 从 Git 主工作区读取
+   `config/environments.json`。
 3. 执行 `node scripts/environments/cli.mjs --help` 查看子命令。执行
    `<command> --help` 查看参数类型、必填项、默认值和示例。参数定义位于
    `scripts/environments/commands.json`。
@@ -42,13 +42,12 @@
 
 1. 创建本机环境配置并初始化 dev：
 
-   1. 在 dev 源码根目录执行 `cp -n config/environments.example.json config/environments.json`，创建缺失的本机配置并保留已有文件。`config/environments.json` 由 Git 忽略。
+   1. 在 dev 源码根目录执行 `cp -n config/environments.example.json config/environments.json`，创建缺失的本机配置并保留已有文件。
    2. 填写三环境的绝对根目录、主机名、访问别名和工具路径。dev 根目录填写当前源码目录；staging 与 prod 使用独立目录。模板中的根目录和地址仅供示例，其他配置字段按模板维护。
    3. 执行 `init --env dev`，预期创建缺失目录和环境变量模板，保留已有配置与数据。
 
 2. 编辑目标环境的 `config/application.env` 和
-   `config/secrets.env`。业务开关来自前者；密钥来自后者。密钥文件权限为
-   `0600`。模板位于 `config/environments/`。
+   `config/secrets.env`。模板位于 `config/environments/`；文件职责与权限见第 1 节引用的目录规范。
 3. 配置每个环境独立的认证凭据和 `APP_SECRETS_MASTER_KEY`。`AUTH_MODE=api_key`
    时填写 `AUTH_API_KEYS`；JWT 模式填写 `AUTH_JWT_SECRET`。其他认证要求以
    `apps/api/src/config.ts` 为准。用户 Web 注册与登录需要 `ACCOUNT_MODE=multi`；API Key 模式同时填写 `AUTH_API_KEY_ACCOUNTS`，将管理凭据映射到本环境的 `default-admin`。
@@ -120,8 +119,8 @@
 3. 按第 6.1 节完成兼容性验收并保存记录。随后执行
    `rollback --env <staging|prod> --release <目标版本> --backup <操作前备份> --compatibility <兼容性记录>`。应用回退保持业务数据原样。
 4. 迁移改变了目标应用所需的数据结构或含义时，使用配套备份恢复。恢复会以备份时间点的数据替换当前数据。dev 先执行 `restore --env dev --backup <backupId> --preview`；staging 和 prod 执行 `restore --env <staging|prod> --backup <backupId> --release <匹配版本> --preview`。核对预览中的数据时间点、替换目录和匹配版本。
-5. 取得使用备份替换目标环境当前数据的授权后，按第 6.2 节保存授权记录。执行对应的预览命令，去掉 `--preview`，增加
-   `--authorization <授权JSON>`。dev 恢复要求源码提交与备份一致，且受版本控制的文件无未提交改动。
+5. 取得使用备份替换目标环境当前数据的授权后，按第 6.2 节保存授权记录。将对应预览命令中的 `--preview` 替换为
+   `--authorization <授权JSON>`，再执行恢复命令。dev 恢复要求源码提交与备份一致，且受版本控制的文件无未提交改动。
 6. 恢复成功后，当前数据与所选备份一致，服务保持停止。结果中的 `previousSnapshot` 给出操作前原始快照的目录与清单路径。
 7. 确认原始快照已保存后，执行
    `start --env <name>`，再执行健康、登录、角色文件读取、模型档案读取和会话验收。
@@ -143,7 +142,7 @@
 
 ### 6.2 数据恢复授权记录
 
-1. 先完成恢复预览，再取得对预览所列环境、备份时间点和替换范围的授权。将授权来源与以下 JSON 保存在目标环境的操作证据目录；以 JSON 文件的绝对路径传给 `--authorization`。
+1. 将第 6 节第 5 项取得的授权来源与以下 JSON 保存在目标环境的操作证据目录；以 JSON 文件的绝对路径传给 `--authorization`。
 
    ```json
    {
@@ -191,7 +190,7 @@
    `docs/agents/development-checks.json`，并包含环境测试与 Studio 独立测试。
 3. 在 GitHub Actions 手动运行 `CI`，选择待验收分支，填写 `release_ref`、`release_id`，并将 `installation_approved` 设为 `true`。该入口调用 `.github/workflows/native-environments.yml`，在 macOS runner 执行同一 `verify` 和 `build` 命令。CI 归档用于验证；本机 prod 的候选归档由当前 macOS 主机构建。
 4. 验收索引使用 `schemaVersion: 1`，填写 `environment`、`release`、`commit`、`operatorConfirmed: true`，以及 `checks: [{ id, evidencePath }]`。必需验收编号见 `scripts/environments/acceptance.json`。
-5. 每个证据文件使用以下字段。将文件保存到目标环境的操作证据目录，并把路径填入索引的 `evidencePath`；相对路径从索引所在目录解析。操作者逐项确认结果后提交索引。验证命令核对结构、身份和入口探针，缺少材料返回 `3`，失败项返回 `7`。
+5. 每个证据文件使用以下字段。将文件保存到目标环境的操作证据目录，并把路径填入索引的 `evidencePath`；相对路径从索引所在目录解析。操作者逐项确认结果后提交索引。字段与入口探针的验证规则见 `scripts/environments/verify.mjs`。
 
    | 字段                                                | 填写要求                                                                               |
    | --------------------------------------------------- | -------------------------------------------------------------------------------------- |
