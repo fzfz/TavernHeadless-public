@@ -218,6 +218,7 @@ it(
       passed: true,
     });
   }),
+  testRuntime.integrationTimeoutMs,
 );
 
 async function additionalRequest(
@@ -627,6 +628,7 @@ it(
       passed: true,
     });
   }),
+  testRuntime.integrationTimeoutMs,
 );
 
 it(
