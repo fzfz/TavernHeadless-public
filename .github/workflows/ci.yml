@@ -385,8 +385,8 @@ jobs:
       - name: Studio unit + integration tests (with coverage gate)
         run: pnpm --filter @tavern/studio test:coverage
 
-  coverage:
-    name: Coverage
+  coverage-slices:
+    name: Coverage slice ${{ matrix.slice }}/${{ strategy.job-total }} (internal)
     if: (github.event_name == 'workflow_dispatch' && github.event.inputs.run_coverage == 'true') || (github.event_name == 'push' && github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -397,26 +397,82 @@ jobs:
       - test-shard-2
       - test-shard-3
       - build
-
+    strategy:
+      fail-fast: false
+      matrix:
+        slice: [1, 2, 3, 4, 5, 6]
+    outputs:
+      shard_count: ${{ strategy.job-total }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
         with:
           node-version-file: package.json
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
-
       - name: Install
         run: pnpm install --frozen-lockfile
+      - name: Collect coverage slice
+        run: pnpm exec vitest run --coverage --coverage.reporter=json --reporter=verbose --reporter=blob --shard=${{ matrix.slice }}/${{ strategy.job-total }} --maxWorkers=2
+      - name: Save coverage slice
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-blob-${{ matrix.slice }}
+          overwrite: true
+          path: .vitest-reports/blob-${{ matrix.slice }}-${{ strategy.job-total }}.json
+          include-hidden-files: true
+          if-no-files-found: error
 
-      - name: Coverage
-        run: pnpm test:ci:coverage --maxWorkers=2
+  coverage:
+    name: Coverage
+    if: always() && ((github.event_name == 'workflow_dispatch' && github.event.inputs.run_coverage == 'true') || (github.event_name == 'push' && github.ref == 'refs/heads/main'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: coverage-slices
+    steps:
+      - name: Require every coverage slice
+        env:
+          SLICE_RESULT: ${{ needs.coverage-slices.result }}
+        run: test "$SLICE_RESULT" = success
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Download coverage slices
+        uses: actions/download-artifact@v4
+        with:
+          pattern: coverage-blob-*
+          path: .vitest-reports
+          merge-multiple: true
+      - name: Verify complete report set
+        env:
+          COVERAGE_SHARD_COUNT: ${{ needs.coverage-slices.outputs.shard_count }}
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readdir } from 'node:fs/promises';
+          const count = Number(process.env.COVERAGE_SHARD_COUNT);
+          assert.ok(Number.isSafeInteger(count) && count > 0, 'Missing coverage shard count');
+          const expected = Array.from({ length: count }, (_, index) => `blob-${index + 1}-${count}.json`).sort();
+          assert.deepEqual((await readdir('.vitest-reports')).sort(), expected, 'Coverage report set is incomplete');
+          NODE
+      - name: Merge coverage
+        run: pnpm exec vitest --merge-reports=.vitest-reports --coverage --reporter=verbose --coverage.reporter=text-summary --coverage.reporter=json-summary
+      - name: Save coverage summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-summary
+          overwrite: true
+          path: coverage/coverage-summary.json
+          if-no-files-found: error
 
   api-smoke:
     name: API Smoke
