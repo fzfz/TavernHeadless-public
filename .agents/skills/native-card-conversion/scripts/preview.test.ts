@@ -24,6 +24,7 @@ vi.mock("vite", async (importOriginal) => {
 import { writeNativeCardZip } from "../../../../apps/api/src/services/native-card/zip.js";
 import {
   startPreviewServer as startPreviewWithArchive,
+  runPreviewForeground,
   type PreviewScenario,
   type PreviewDependencies,
 } from "./preview.js";
@@ -232,8 +233,7 @@ async function writePreviewInput(
     ),
   ) as Record<string, unknown>;
   const statePresetPrompts = statePresetData.prompts as
-    | Array<Record<string, unknown>>
-    | undefined;
+    Array<Record<string, unknown>> | undefined;
   const statePresetMain = statePresetPrompts?.find(
     (prompt) => prompt.identifier === "main",
   );
@@ -675,8 +675,7 @@ describe("formal isolated native-card preview server", () => {
     const requestMessages =
       (
         secondNarrator?.requestBody as
-          | { messages?: Array<{ role?: string; content?: unknown }> }
-          | undefined
+          { messages?: Array<{ role?: string; content?: unknown }> } | undefined
       )?.messages ?? [];
     const userHistoryAndInput = requestMessages
       .filter((message) => message.role === "user")
@@ -1827,3 +1826,44 @@ describe("formal isolated native-card preview server", () => {
     expect(await readFile(previewRunsPath)).toEqual(originalBytes);
   });
 });
+
+it.each(["SIGINT", "SIGTERM"] as const)(
+  "foreground preview handles %s at readiness and closes its listeners",
+  async (signal) => {
+    const task = await createTask({
+      offlineReplay: {
+        steps: [{ purpose: "narrator", model: "offline", text: "样本正文" }],
+      },
+    });
+    const references: string[] = [];
+    let handledAtReady = false;
+    vi.spyOn(process.stdout, "write").mockImplementation((chunk) => {
+      const ref = JSON.parse(String(chunk)) as { resultFile: string };
+      references.push(ref.resultFile);
+      if (ref.resultFile.includes("/ready/")) {
+        handledAtReady = process.emit(signal);
+        if (!handledAtReady) setImmediate(() => process.emit(signal));
+      }
+      return true;
+    });
+    await runPreviewForeground(task, join(task, "role.zip"));
+    expect(handledAtReady).toBe(true);
+    expect(references).toHaveLength(2);
+    const ready = JSON.parse(await readFile(references[0]!, "utf8"));
+    const closed = JSON.parse(await readFile(references[1]!, "utf8"));
+    expect(closed).toMatchObject({
+      command: "preview",
+      passed: true,
+      data: { status: "stopped", signal },
+    });
+    expect(closed.data.offlineReplay).toBeDefined();
+    for (const address of [
+      ready.data.url,
+      ready.data.apiUrl,
+      ready.data.offlineReplayUrl,
+    ]) {
+      await expect(fetch(address)).rejects.toThrow();
+    }
+  },
+  30000,
+);

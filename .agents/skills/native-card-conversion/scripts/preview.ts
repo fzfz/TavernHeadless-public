@@ -32,12 +32,8 @@ import { createDatabase } from "../../../../apps/api/src/db/client.js";
 import { migrateDatabase } from "../../../../apps/api/src/db/migrations.js";
 import { loadStorageConfig } from "../../../../apps/api/src/storage-config.js";
 import { formatToolMessage, toolMessages } from "./tool-config.ts";
-import {
-  createCallDirectory,
-  emitCommandResult,
-  getCallDirectory,
-} from "./output.ts";
-import { markCreationReady, markCreationClosed } from "./creation.ts";
+import { createCallDirectory, getCallDirectory } from "./output.ts";
+import { runForegroundService } from "./foreground-service.ts";
 import { DEFAULT_ADMIN_ACCOUNT_ID } from "../../../../apps/api/src/accounts/constants.js";
 import {
   accountUsers,
@@ -1468,69 +1464,26 @@ export async function runPreviewForeground(
     {},
     archivePath,
   );
-  const ready = {
-    status: "listening",
-    url: preview.url,
-    apiUrl: preview.apiUrl,
-    offlineReplayUrl: preview.offlineReplayUrl,
-    generationMode: preview.generationMode,
-    evidenceDirectory: preview.evidenceDirectory,
-    sessionId: preview.sessionId,
-    cardId: preview.cardId,
-    dryRuns: preview.dryRuns,
-  };
-  try {
-    await markCreationReady(ready);
-    if (
-      !(await emitCommandResult("preview", ready, join(callDirectory, "ready")))
-    ) {
-      await preview.close();
-      await markCreationClosed({ status: "failed", stage: "ready_record" });
-      return;
-    }
-  } catch (error) {
-    await preview.close();
-    throw error;
-  }
-  await new Promise<void>((resolveSignal) => {
-    let stopping = false;
-    const stop = async (signal: NodeJS.Signals) => {
-      if (stopping) return;
-      stopping = true;
-      try {
-        await preview.close();
-        const data = {
-          status: "stopped",
-          signal,
-          offlineReplay: preview.replaySnapshot(),
-        };
-        await markCreationClosed(data);
-        await emitCommandResult("preview", data, join(callDirectory, "closed"));
-        resolveSignal();
-      } catch (error) {
-        const data = {
-          error: describeError(error),
-          action: "检查关闭记录中的服务错误及端口占用。",
-        };
-        await markCreationClosed(data).catch((recordError) => {
-          data.error += `；关闭记录保存失败：${describeError(recordError)}`;
-        });
-        await emitCommandResult(
-          "preview",
-          data,
-          join(callDirectory, "closed"),
-          false,
-        );
-        resolveSignal();
-      } finally {
-        process.off("SIGINT", onInterrupt);
-        process.off("SIGTERM", onTerminate);
-      }
-    };
-    const onInterrupt = () => void stop("SIGINT");
-    const onTerminate = () => void stop("SIGTERM");
-    process.on("SIGINT", onInterrupt);
-    process.on("SIGTERM", onTerminate);
+  await runForegroundService({
+    command: "preview",
+    callDirectory,
+    ready: {
+      status: "listening",
+      url: preview.url,
+      apiUrl: preview.apiUrl,
+      offlineReplayUrl: preview.offlineReplayUrl,
+      generationMode: preview.generationMode,
+      evidenceDirectory: preview.evidenceDirectory,
+      sessionId: preview.sessionId,
+      cardId: preview.cardId,
+      dryRuns: preview.dryRuns,
+    },
+    close: () => preview.close(),
+    snapshot: () => ({ offlineReplay: preview.replaySnapshot() }),
+    failure: {
+      describe: describeError,
+      action: "检查关闭记录中的服务错误及端口占用。",
+    },
   });
 }
 

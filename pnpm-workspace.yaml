@@ -9,6 +9,7 @@ injectWorkspacePackages: true
 syncInjectedDepsAfterScripts:
   - build
 overrides:
+  markdownlint@0.42.0>re2js: 2.8.7
   defu: 6.1.7
   vitepress@1.6.4>vite: 6.4.5
   "@esbuild-kit/core-utils@3.3.2>esbuild": 0.25.12

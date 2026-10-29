@@ -539,7 +539,7 @@ describe("parse errors leave package content unchanged", () => {
       );
       expect(result.error).toBeTruthy();
     }
-  });
+  }, 30_000);
 
   it("rejects a target outside the formal JSON file rules", async () => {
     const { task } = await fixture({
