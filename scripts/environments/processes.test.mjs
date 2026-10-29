@@ -26,6 +26,12 @@ import {
 } from "./processes.mjs";
 
 const fixtures = fileURLToPath(new URL("./test-fixtures/", import.meta.url));
+const environmentDefaults = JSON.parse(
+  await readFile(
+    new URL("../../config/environments.example.json", import.meta.url),
+    "utf8",
+  ),
+).defaults;
 
 async function freePort() {
   const server = createServer();
@@ -52,10 +58,8 @@ async function environment(t, name = "dev") {
     frontends: ["web", "user-web", "studio"],
     uploadMaxBytes: 83886080,
     timeouts: {
-      startSeconds: 6,
-      stopSeconds: 3,
+      ...environmentDefaults.timeouts,
       pollMs: 40,
-      proxySeconds: 3600,
       probeSeconds: 1,
     },
     probes: { api: "/health", frontend: "/" },
@@ -236,6 +240,7 @@ for (const runnerAlive of [true, false]) {
 
   test(`graceful stop preserves upstreams and process identities when gateway listeners stay open (${runnerState} runner)`, async (t) => {
     const env = await environment(t);
+    env.timeouts.stopSeconds = 3;
     await writeFile(
       env.tools.nginx.path,
       `${await readFile(env.tools.nginx.path, "utf8")}

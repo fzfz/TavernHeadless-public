@@ -14,12 +14,8 @@ import {
 import { join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import Ajv from "ajv/dist/2020.js";
-import {
-  createCallDirectory,
-  emitCommandResult,
-  getCallDirectory,
-} from "./output.ts";
-import { markCreationReady, markCreationClosed } from "./creation.ts";
+import { createCallDirectory, getCallDirectory } from "./output.ts";
+import { runForegroundService } from "./foreground-service.ts";
 
 type ReplayPurpose = "narrator" | "state_updater";
 type AgentChange =
@@ -703,72 +699,25 @@ export async function runReplayForeground(
   evidenceDirectory: string,
 ): Promise<void> {
   const config = await readReplayFixtureConfig(resolve(configPath));
-  const fixture = await startReplayFixture(config, evidenceDirectory);
   const callDirectory =
     getCallDirectory() ?? (await createCallDirectory(evidenceDirectory));
-  const ready = {
-    status: "listening",
-    bindAddress: `${fixture.host}:${fixture.port}`,
-    baseUrl: fixture.baseUrl,
-    evidenceDirectory: fixture.evidenceDirectory,
-    configuredSteps: config.steps.length,
-  };
-  try {
-    await markCreationReady(ready);
-    if (
-      !(await emitCommandResult(
-        "replay-fixture",
-        ready,
-        join(callDirectory, "ready"),
-      ))
-    ) {
-      await fixture.close();
-      await markCreationClosed({ status: "failed", stage: "ready_record" });
-      return;
-    }
-  } catch (error) {
-    await fixture.close();
-    throw error;
-  }
-
-  await new Promise<void>((resolveSignal) => {
-    let closing = false;
-    const stop = async (signal: string) => {
-      if (closing) return;
-      closing = true;
-      try {
-        await fixture.close();
-        const closed = { status: "stopped", signal, ...fixture.snapshot() };
-        await markCreationClosed(closed);
-        await emitCommandResult(
-          "replay-fixture",
-          closed,
-          join(callDirectory, "closed"),
-        );
-      } catch (error) {
-        const data = {
-          error: String(error),
-          action: "检查回放服务关闭记录及证据目录写入权限。",
-        };
-        await markCreationClosed(data).catch((recordError) => {
-          data.error += `；关闭记录保存失败：${String(recordError)}`;
-        });
-        await emitCommandResult(
-          "replay-fixture",
-          data,
-          join(callDirectory, "closed"),
-          false,
-        );
-      } finally {
-        process.off("SIGINT", onInterrupt);
-        process.off("SIGTERM", onTerminate);
-        resolveSignal();
-      }
-    };
-    const onInterrupt = () => void stop("SIGINT");
-    const onTerminate = () => void stop("SIGTERM");
-    process.on("SIGINT", onInterrupt);
-    process.on("SIGTERM", onTerminate);
+  const fixture = await startReplayFixture(config, evidenceDirectory);
+  await runForegroundService({
+    command: "replay-fixture",
+    callDirectory,
+    ready: {
+      status: "listening",
+      bindAddress: `${fixture.host}:${fixture.port}`,
+      baseUrl: fixture.baseUrl,
+      evidenceDirectory: fixture.evidenceDirectory,
+      configuredSteps: config.steps.length,
+    },
+    close: () => fixture.close(),
+    snapshot: () => fixture.snapshot(),
+    failure: {
+      describe: String,
+      action: "检查回放服务关闭记录及证据目录写入权限。",
+    },
   });
 }
 
